@@ -68,10 +68,15 @@ export default function ProductCard({
                 {product.rating.toFixed(1)}
               </span>
               <span>({product.reviewCount})</span>
-              <span aria-hidden>·</span>
             </>
           )}
-          <span className="truncate">{product.farmName}</span>
+          {/* 홍보 문구가 없으면 위에 농가 이름이 이미 보여서 생략 */}
+          {product.tagline && (
+            <span className="truncate">
+              {product.rating !== undefined && "· "}
+              {product.farmName}
+            </span>
+          )}
         </p>
       </div>
     </Link>
