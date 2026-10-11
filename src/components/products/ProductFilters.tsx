@@ -28,7 +28,7 @@ function Chip({
     return (
       <span
         aria-disabled="true"
-        className="inline-flex h-12 shrink-0 cursor-not-allowed items-center rounded-full bg-stone-100 px-4 text-sm font-semibold text-stone-400"
+        className="inline-flex h-12 shrink-0 cursor-not-allowed items-center rounded-full bg-brand-soft px-4 text-sm font-semibold text-ink-muted"
       >
         {children}
       </span>
@@ -42,8 +42,8 @@ function Chip({
       className={
         "inline-flex h-12 shrink-0 items-center rounded-full px-4 text-sm font-semibold transition " +
         (active
-          ? "bg-green-800 text-white"
-          : "bg-white text-stone-700 ring-1 ring-stone-200 hover:bg-stone-100")
+          ? "bg-brand text-white"
+          : "bg-surface text-ink-muted ring-1 ring-line hover:bg-brand-soft")
       }
     >
       {children}
@@ -87,10 +87,7 @@ export default function ProductFilters({
             {label}
           </Chip>
         ))}
-        <span
-          aria-hidden
-          className="mx-1 w-px shrink-0 self-stretch bg-stone-200"
-        />
+        <span aria-hidden className="mx-1 w-px shrink-0 self-stretch bg-line" />
         {reasons.map(([value, label]) => (
           <Chip
             key={value}
@@ -120,8 +117,8 @@ export default function ProductFilters({
             className={
               "inline-flex h-12 shrink-0 items-center px-2 text-sm " +
               (filters.sort === value
-                ? "font-bold text-green-800"
-                : "text-stone-500 hover:text-stone-900")
+                ? "font-bold text-brand-dark"
+                : "text-ink-muted hover:text-ink")
             }
           >
             {label}
@@ -131,7 +128,7 @@ export default function ProductFilters({
           <Link
             href="/products"
             scroll={false}
-            className="ml-auto inline-flex h-12 shrink-0 items-center px-2 text-sm text-orange-700 hover:underline"
+            className="ml-auto inline-flex h-12 shrink-0 items-center px-2 text-sm text-accent hover:underline"
           >
             초기화
           </Link>
