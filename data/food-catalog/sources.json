@@ -1,0 +1,359 @@
+[
+  {
+    "id": "98666",
+    "organization": "농촌진흥청",
+    "title": "감자",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=98666&dtlCode=2&menuId=PS03599&month=06&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "description",
+      "storage",
+      "preparation"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "09933550922ba26d1dc685b923e27926e38803e4b3b857870e25a4ff659fe9ce"
+  },
+  {
+    "id": "carrot101944",
+    "organization": "농촌진흥청",
+    "title": "당근의 특성 및 영양학적 가치",
+    "url": "https://www.nongsaro.go.kr/portal/ps/psz/psza/contentSub.ps?cntntsNo=101944&menuId=PS03796&sSeCode=374006&totalSearchYn=Y",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "description",
+      "storage",
+      "preparation"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "5170c28ef7de2a4b69203ed2cf32b75da52acc017837276a3db2d5018b8a3dcd"
+  },
+  {
+    "id": "98665",
+    "organization": "농촌진흥청",
+    "title": "양파",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=98665&dtlCode=2&menuId=PS03599&month=06&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "description",
+      "storage",
+      "preparation"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "09dc1570c7241f1ebd3c6a634ee8fb7754190e86d5ba75b0bd93c45dd8248d53"
+  },
+  {
+    "id": "208634",
+    "organization": "농촌진흥청",
+    "title": "애호박",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=208634&dtlCode=2&menuId=PS03599&month=07&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "description",
+      "storage",
+      "preparation"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "d2540633e942cbb1147e01ea136d0deabba5309a820f7ee06e890767b9e8be35"
+  },
+  {
+    "id": "206741",
+    "organization": "농촌진흥청",
+    "title": "가지",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=206741&dtlCode=2&menuId=PS03599&month=06&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "description",
+      "storage",
+      "preparation"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "4bb4c022f010b28cfcef6dfbdd7beb50287a913152f72ae20b669dbb3fa26797"
+  },
+  {
+    "id": "pepper101924",
+    "organization": "농촌진흥청",
+    "title": "파프리카 보관",
+    "url": "https://www.nongsaro.go.kr/portal/ps/psz/psza/contentSub.ps?cntntsNo=101924&menuId=PS03796&sSeCode=374004&totalSearchYn=Y",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "storage"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "bceb2c89b20185c4950d28b365888bab2ec190803b6a7d6ef783f1e3ae3e036b"
+  },
+  {
+    "id": "fct-2006",
+    "organization": "농촌진흥청 / FAO 배포",
+    "title": "식품성분표 제7개정판 제I편 (2006)",
+    "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/regional/Korean_food_compositon_table_vol._1_7th__2006_.pdf",
+    "accessed_at": "2026-10-08",
+    "verification": "pdf_table_visually_checked",
+    "confirmed_fields": [
+      "raw_edible_100g_nutrition"
+    ],
+    "license_status": "facts_only_no_pdf_redistribution",
+    "evidence_sha256": "3c1be0d1501a210a13236f1044b6a7543e35ae09b1a1aa81763291b7e2a8b6df"
+  },
+  {
+    "id": "98711",
+    "organization": "농촌진흥청",
+    "title": "옥수수 감자 옹심이",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=98711&dtlCode=3&menuId=PS03599&month=07&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings_not_stated"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "384a450b24e3e19e864bce74cf22605e0e6e4242ce54bf67d55a8b010e2fb878"
+  },
+  {
+    "id": "208530",
+    "organization": "농촌진흥청",
+    "title": "잡채달걀전(달걀만두전)",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=208530&dtlCode=3&menuId=PS03599&month=06&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings_not_stated"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "c4c2273cf0d1b78e4aeafe7bd5855240aa8c52670e54bc94ed7b584e5fea83d5"
+  },
+  {
+    "id": "206629",
+    "organization": "농촌진흥청",
+    "title": "상추토마토샐러드",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=206629&dtlCode=3&menuId=PS03599&month=05&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "ea4eb23d5e1c773716c1bf12803857171f3854847430531fe05ee057cc6aa2fc"
+  },
+  {
+    "id": "98889",
+    "organization": "농촌진흥청",
+    "title": "호박고지잡채",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=98889&dtlCode=3&menuId=PS03599&month=10&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings_not_stated"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "2cf8d688db1accc53338f975ea253939492dda9ccaea7fe150ce6c997fa578b0"
+  },
+  {
+    "id": "200113",
+    "organization": "농촌진흥청",
+    "title": "시래기만두",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=200113&dtlCode=3&menuId=PS03599&month=02&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings_not_stated"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "354be31da9a285ff05e0349821a28811d26c635caa3c5431143b9614a3842ae2"
+  },
+  {
+    "id": "98885",
+    "organization": "농촌진흥청",
+    "title": "홍시소스를 곁들인 구운채소샐러드",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=98885&dtlCode=3&menuId=PS03599&month=10&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings_not_stated"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "727aabc1bd069c322cbfa0f0b426e93f274d08af87787211c3f157fc5f322ef6"
+  },
+  {
+    "id": "sprout207811",
+    "organization": "농촌진흥청",
+    "title": "새싹 가지 샐러드",
+    "url": "https://www.nongsaro.go.kr/portal/ps/psv/psvr/psvrc/rdaInterDtl.ps?cntntsNo=207811&menuId=PS00063",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings_not_stated"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "37320f75f8742ee39d61789c28fb4cdee7615531abb4c1095130f748240193cc"
+  },
+  {
+    "id": "mfds253",
+    "organization": "식품의약품안전처",
+    "title": "토마토오리볶음",
+    "url": "https://www.foodsafetykorea.go.kr/portal/cookrcp/cookrcpInfoDtl.do?rcp_seq=253",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings_not_stated"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "81d0264ea3698c4a5a2fd78d2ae3f3b878131f7f25f1c3413422b88e423cd0b9"
+  },
+  {
+    "id": "mfds454",
+    "organization": "식품의약품안전처",
+    "title": "닭고기채소스파게티",
+    "url": "https://www.foodsafetykorea.go.kr/portal/cookrcp/cookrcpInfoDtl.do?rcp_seq=454",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings_not_stated"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "98c1de4b1ee5d90ca9eb443ea8595db16f697536a81e612b1476eca2b61435e1"
+  },
+  {
+    "id": "208146",
+    "organization": "농촌진흥청",
+    "title": "파프리카조그라탕",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=208146&dtlCode=3&menuId=PS03599&month=02&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "7b294653a353b41e57c911708b860286a8d44abfe15ae099b1d62f3acada9599"
+  },
+  {
+    "id": "201257",
+    "organization": "농촌진흥청",
+    "title": "오디물김치",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=201257&dtlCode=3&menuId=PS03599&month=06&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "4d024ec209120d48b9e8913cada8dc143a5fc5bccec48ff0bf8c79146a3b9701"
+  },
+  {
+    "id": "208263",
+    "organization": "농촌진흥청",
+    "title": "닭가슴살양배추찜",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=208263&dtlCode=3&menuId=PS03599&month=03&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "66345053556421a4c282bfb80630d3e21877feb963c551afce05c0ee43c1627c"
+  },
+  {
+    "id": "mfds3287",
+    "organization": "식품의약품안전처",
+    "title": "사과채소타코",
+    "url": "https://www.foodsafetykorea.go.kr/portal/cookrcp/cookrcpInfoDtl.do?rcp_seq=3287",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "a1c40544ecf13bfe764e07e9222cd1e0b36af5180a773e909c93860eb92f8262"
+  },
+  {
+    "id": "213103",
+    "organization": "농촌진흥청",
+    "title": "표고버섯 토마토 샐러드",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=213103&dtlCode=3&menuId=PS03599&month=09&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings_not_stated"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "83dd6b6a0803d05df042e647bc8951f866f45043a8f4435cf3b4242e7a8b83d9"
+  },
+  {
+    "id": "200809",
+    "organization": "농촌진흥청",
+    "title": "닭가슴살 채소조림",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=200809&dtlCode=3&menuId=PS03599&month=03&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings_not_stated"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "7e4af4697504fa69b2ef2d7d7116fa25e5e069fe4832eb1ac7bbbff4217838bf"
+  },
+  {
+    "id": "211734",
+    "organization": "농촌진흥청",
+    "title": "찰옥수수알감자조림",
+    "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=211734&dtlCode=3&menuId=PS03599&month=07&tabCode=1",
+    "accessed_at": "2026-10-08",
+    "verification": "page_read",
+    "confirmed_fields": [
+      "recipe_title",
+      "ingredients",
+      "steps",
+      "servings_not_stated"
+    ],
+    "license_status": "not_confirmed",
+    "evidence_sha256": "a847359f675411a585d8578e5ed501dd9b43e49391ae26f4605ec6f8f7bb5264"
+  }
+]

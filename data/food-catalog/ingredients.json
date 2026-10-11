@@ -1,0 +1,482 @@
+[
+  {
+    "id": "i001",
+    "name": "감자",
+    "vegetable_id": "potato"
+  },
+  {
+    "id": "i002",
+    "name": "옥수수",
+    "vegetable_id": null
+  },
+  {
+    "id": "i003",
+    "name": "청고추",
+    "vegetable_id": null
+  },
+  {
+    "id": "i004",
+    "name": "홍고추",
+    "vegetable_id": null
+  },
+  {
+    "id": "i005",
+    "name": "멸치",
+    "vegetable_id": null
+  },
+  {
+    "id": "i006",
+    "name": "다시마",
+    "vegetable_id": null
+  },
+  {
+    "id": "i007",
+    "name": "마늘",
+    "vegetable_id": null
+  },
+  {
+    "id": "i008",
+    "name": "대파",
+    "vegetable_id": null
+  },
+  {
+    "id": "i009",
+    "name": "전분",
+    "vegetable_id": null
+  },
+  {
+    "id": "i010",
+    "name": "소금",
+    "vegetable_id": null
+  },
+  {
+    "id": "i011",
+    "name": "당면",
+    "vegetable_id": null
+  },
+  {
+    "id": "i012",
+    "name": "양파",
+    "vegetable_id": "onion"
+  },
+  {
+    "id": "i013",
+    "name": "당근",
+    "vegetable_id": "carrot"
+  },
+  {
+    "id": "i014",
+    "name": "달걀",
+    "vegetable_id": null
+  },
+  {
+    "id": "i015",
+    "name": "식용유",
+    "vegetable_id": null
+  },
+  {
+    "id": "i016",
+    "name": "설탕",
+    "vegetable_id": null
+  },
+  {
+    "id": "i017",
+    "name": "간장",
+    "vegetable_id": null
+  },
+  {
+    "id": "i018",
+    "name": "맛술",
+    "vegetable_id": null
+  },
+  {
+    "id": "i019",
+    "name": "후춧가루",
+    "vegetable_id": null
+  },
+  {
+    "id": "i020",
+    "name": "고춧가루",
+    "vegetable_id": null
+  },
+  {
+    "id": "i021",
+    "name": "식초",
+    "vegetable_id": null
+  },
+  {
+    "id": "i022",
+    "name": "물",
+    "vegetable_id": null
+  },
+  {
+    "id": "i023",
+    "name": "토마토",
+    "vegetable_id": null
+  },
+  {
+    "id": "i024",
+    "name": "상추",
+    "vegetable_id": null
+  },
+  {
+    "id": "i025",
+    "name": "고추장아찌",
+    "vegetable_id": null
+  },
+  {
+    "id": "i026",
+    "name": "땅콩",
+    "vegetable_id": null
+  },
+  {
+    "id": "i027",
+    "name": "적양배추",
+    "vegetable_id": null
+  },
+  {
+    "id": "i028",
+    "name": "고추장아찌 국물",
+    "vegetable_id": null
+  },
+  {
+    "id": "i029",
+    "name": "올리브유",
+    "vegetable_id": null
+  },
+  {
+    "id": "i030",
+    "name": "애호박",
+    "vegetable_id": "aehobak"
+  },
+  {
+    "id": "i031",
+    "name": "소고기",
+    "vegetable_id": null
+  },
+  {
+    "id": "i032",
+    "name": "느타리버섯",
+    "vegetable_id": null
+  },
+  {
+    "id": "i033",
+    "name": "참기름",
+    "vegetable_id": null
+  },
+  {
+    "id": "i034",
+    "name": "삶은 시래기",
+    "vegetable_id": null
+  },
+  {
+    "id": "i035",
+    "name": "밀가루",
+    "vegetable_id": null
+  },
+  {
+    "id": "i036",
+    "name": "표고버섯",
+    "vegetable_id": null
+  },
+  {
+    "id": "i037",
+    "name": "깨소금",
+    "vegetable_id": null
+  },
+  {
+    "id": "i038",
+    "name": "홍시",
+    "vegetable_id": null
+  },
+  {
+    "id": "i039",
+    "name": "곶감",
+    "vegetable_id": null
+  },
+  {
+    "id": "i040",
+    "name": "죽순",
+    "vegetable_id": null
+  },
+  {
+    "id": "i041",
+    "name": "가지",
+    "vegetable_id": "eggplant"
+  },
+  {
+    "id": "i042",
+    "name": "파프리카",
+    "vegetable_id": "bell-pepper"
+  },
+  {
+    "id": "i043",
+    "name": "유자청",
+    "vegetable_id": null
+  },
+  {
+    "id": "i044",
+    "name": "새싹",
+    "vegetable_id": null
+  },
+  {
+    "id": "i045",
+    "name": "두부",
+    "vegetable_id": null
+  },
+  {
+    "id": "i046",
+    "name": "레몬즙",
+    "vegetable_id": null
+  },
+  {
+    "id": "i047",
+    "name": "통깨",
+    "vegetable_id": null
+  },
+  {
+    "id": "i048",
+    "name": "오리고기",
+    "vegetable_id": null
+  },
+  {
+    "id": "i049",
+    "name": "새송이버섯",
+    "vegetable_id": null
+  },
+  {
+    "id": "i050",
+    "name": "브로콜리",
+    "vegetable_id": null
+  },
+  {
+    "id": "i051",
+    "name": "부추",
+    "vegetable_id": null
+  },
+  {
+    "id": "i052",
+    "name": "방울토마토",
+    "vegetable_id": null
+  },
+  {
+    "id": "i053",
+    "name": "풋고추",
+    "vegetable_id": null
+  },
+  {
+    "id": "i054",
+    "name": "고추장",
+    "vegetable_id": null
+  },
+  {
+    "id": "i055",
+    "name": "물엿",
+    "vegetable_id": null
+  },
+  {
+    "id": "i056",
+    "name": "닭고기",
+    "vegetable_id": null
+  },
+  {
+    "id": "i057",
+    "name": "스파게티",
+    "vegetable_id": null
+  },
+  {
+    "id": "i058",
+    "name": "양송이",
+    "vegetable_id": null
+  },
+  {
+    "id": "i059",
+    "name": "토마토페이스트",
+    "vegetable_id": null
+  },
+  {
+    "id": "i060",
+    "name": "육수",
+    "vegetable_id": null
+  },
+  {
+    "id": "i061",
+    "name": "토마토소스",
+    "vegetable_id": null
+  },
+  {
+    "id": "i062",
+    "name": "케첩",
+    "vegetable_id": null
+  },
+  {
+    "id": "i063",
+    "name": "생크림",
+    "vegetable_id": null
+  },
+  {
+    "id": "i064",
+    "name": "조",
+    "vegetable_id": null
+  },
+  {
+    "id": "i065",
+    "name": "쌀",
+    "vegetable_id": null
+  },
+  {
+    "id": "i066",
+    "name": "모차렐라치즈",
+    "vegetable_id": null
+  },
+  {
+    "id": "i067",
+    "name": "슬라이스치즈",
+    "vegetable_id": null
+  },
+  {
+    "id": "i068",
+    "name": "굴소스",
+    "vegetable_id": null
+  },
+  {
+    "id": "i069",
+    "name": "오이",
+    "vegetable_id": null
+  },
+  {
+    "id": "i070",
+    "name": "배추",
+    "vegetable_id": null
+  },
+  {
+    "id": "i071",
+    "name": "사과",
+    "vegetable_id": null
+  },
+  {
+    "id": "i072",
+    "name": "오디",
+    "vegetable_id": null
+  },
+  {
+    "id": "i073",
+    "name": "양배추",
+    "vegetable_id": null
+  },
+  {
+    "id": "i074",
+    "name": "닭가슴살",
+    "vegetable_id": null
+  },
+  {
+    "id": "i075",
+    "name": "땅콩버터",
+    "vegetable_id": null
+  },
+  {
+    "id": "i076",
+    "name": "올리고당",
+    "vegetable_id": null
+  },
+  {
+    "id": "i077",
+    "name": "양상추",
+    "vegetable_id": null
+  },
+  {
+    "id": "i078",
+    "name": "토르티야",
+    "vegetable_id": null
+  },
+  {
+    "id": "i079",
+    "name": "할라피뇨 피클",
+    "vegetable_id": null
+  },
+  {
+    "id": "i080",
+    "name": "스리라차 소스",
+    "vegetable_id": null
+  },
+  {
+    "id": "i081",
+    "name": "스테비아",
+    "vegetable_id": null
+  },
+  {
+    "id": "i082",
+    "name": "아보카도",
+    "vegetable_id": null
+  },
+  {
+    "id": "i083",
+    "name": "살사소스",
+    "vegetable_id": null
+  },
+  {
+    "id": "i084",
+    "name": "라임즙",
+    "vegetable_id": null
+  },
+  {
+    "id": "i085",
+    "name": "무가당 플레인 요거트",
+    "vegetable_id": null
+  },
+  {
+    "id": "i086",
+    "name": "마요네즈",
+    "vegetable_id": null
+  },
+  {
+    "id": "i087",
+    "name": "파슬리가루",
+    "vegetable_id": null
+  },
+  {
+    "id": "i088",
+    "name": "셀러리",
+    "vegetable_id": null
+  },
+  {
+    "id": "i089",
+    "name": "고수",
+    "vegetable_id": null
+  },
+  {
+    "id": "i090",
+    "name": "까나리액젓",
+    "vegetable_id": null
+  },
+  {
+    "id": "i091",
+    "name": "청피망",
+    "vegetable_id": null
+  },
+  {
+    "id": "i092",
+    "name": "생강",
+    "vegetable_id": null
+  },
+  {
+    "id": "i093",
+    "name": "청주",
+    "vegetable_id": null
+  },
+  {
+    "id": "i094",
+    "name": "매실청",
+    "vegetable_id": null
+  },
+  {
+    "id": "i095",
+    "name": "꽈리고추",
+    "vegetable_id": null
+  },
+  {
+    "id": "i096",
+    "name": "참깨",
+    "vegetable_id": null
+  }
+]

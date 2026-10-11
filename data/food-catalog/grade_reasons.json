@@ -1,0 +1,98 @@
+[
+  {
+    "id": "potato-shape",
+    "vegetable_id": "potato",
+    "code": "shape",
+    "description": "굽음·갈라진 모양 등 외형 차이",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  },
+  {
+    "id": "potato-size",
+    "vegetable_id": "potato",
+    "code": "size",
+    "description": "크기 불균일",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  },
+  {
+    "id": "carrot-shape",
+    "vegetable_id": "carrot",
+    "code": "shape",
+    "description": "굽음·갈라진 모양 등 외형 차이",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  },
+  {
+    "id": "carrot-size",
+    "vegetable_id": "carrot",
+    "code": "size",
+    "description": "크기 불균일",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  },
+  {
+    "id": "onion-shape",
+    "vegetable_id": "onion",
+    "code": "shape",
+    "description": "굽음·갈라진 모양 등 외형 차이",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  },
+  {
+    "id": "onion-size",
+    "vegetable_id": "onion",
+    "code": "size",
+    "description": "크기 불균일",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  },
+  {
+    "id": "aehobak-shape",
+    "vegetable_id": "aehobak",
+    "code": "shape",
+    "description": "굽음·갈라진 모양 등 외형 차이",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  },
+  {
+    "id": "aehobak-size",
+    "vegetable_id": "aehobak",
+    "code": "size",
+    "description": "크기 불균일",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  },
+  {
+    "id": "eggplant-shape",
+    "vegetable_id": "eggplant",
+    "code": "shape",
+    "description": "굽음·갈라진 모양 등 외형 차이",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  },
+  {
+    "id": "eggplant-size",
+    "vegetable_id": "eggplant",
+    "code": "size",
+    "description": "크기 불균일",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  },
+  {
+    "id": "bell-pepper-shape",
+    "vegetable_id": "bell-pepper",
+    "code": "shape",
+    "description": "굽음·갈라진 모양 등 외형 차이",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  },
+  {
+    "id": "bell-pepper-size",
+    "vegetable_id": "bell-pepper",
+    "code": "size",
+    "description": "크기 불균일",
+    "classification": "editorial_example",
+    "edibility_guarantee": false
+  }
+]

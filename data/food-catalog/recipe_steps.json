@@ -1,0 +1,722 @@
+[
+  {
+    "id": "98711-s1",
+    "recipe_id": "98711",
+    "position": 1,
+    "instruction": "감자를 갈아 물기를 조절한다.",
+    "source_id": "98711",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "98711-s2",
+    "recipe_id": "98711",
+    "position": 2,
+    "instruction": "감자와 옥수수를 섞고 둥글게 빚어 전분을 묻힌다.",
+    "source_id": "98711",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "98711-s3",
+    "recipe_id": "98711",
+    "position": 3,
+    "instruction": "멸치와 다시마 등으로 국물을 내고 건더기를 거른다.",
+    "source_id": "98711",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "98711-s4",
+    "recipe_id": "98711",
+    "position": 4,
+    "instruction": "반죽을 끓는 국물에 넣어 익히고 고추를 더한다.",
+    "source_id": "98711",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208530-s1",
+    "recipe_id": "208530",
+    "position": 1,
+    "instruction": "당면을 삶아 헹군 뒤 잘라 밑간한다.",
+    "source_id": "208530",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208530-s2",
+    "recipe_id": "208530",
+    "position": 2,
+    "instruction": "채소를 썰고 달걀물에 양념한다.",
+    "source_id": "208530",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208530-s3",
+    "recipe_id": "208530",
+    "position": 3,
+    "instruction": "당면과 채소를 달걀물에 섞는다.",
+    "source_id": "208530",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208530-s4",
+    "recipe_id": "208530",
+    "position": 4,
+    "instruction": "기름을 두른 팬에 반죽을 놓고 반달로 접어 굽는다.",
+    "source_id": "208530",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208530-s5",
+    "recipe_id": "208530",
+    "position": 5,
+    "instruction": "초간장을 따로 섞어 곁들인다.",
+    "source_id": "208530",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "206629-s1",
+    "recipe_id": "206629",
+    "position": 1,
+    "instruction": "채소를 씻고 먹기 편한 크기로 준비한다.",
+    "source_id": "206629",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "206629-s2",
+    "recipe_id": "206629",
+    "position": 2,
+    "instruction": "장아찌 국물에 식초와 올리브유를 섞는다.",
+    "source_id": "206629",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "206629-s3",
+    "recipe_id": "206629",
+    "position": 3,
+    "instruction": "채소에 드레싱을 더하고 땅콩을 올린다.",
+    "source_id": "206629",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "98889-s1",
+    "recipe_id": "98889",
+    "position": 1,
+    "instruction": "말린 애호박을 불리고 당면을 익힌다.",
+    "source_id": "98889",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "98889-s2",
+    "recipe_id": "98889",
+    "position": 2,
+    "instruction": "채소와 고기를 먹기 좋은 크기로 손질한다.",
+    "source_id": "98889",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "98889-s3",
+    "recipe_id": "98889",
+    "position": 3,
+    "instruction": "각 재료를 볶은 뒤 당면과 합친다.",
+    "source_id": "98889",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "98889-s4",
+    "recipe_id": "98889",
+    "position": 4,
+    "instruction": "양념을 넣어 고루 섞는다.",
+    "source_id": "98889",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "200113-s1",
+    "recipe_id": "200113",
+    "position": 1,
+    "instruction": "밀가루 반죽을 만들어 쉬게 한다.",
+    "source_id": "200113",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "200113-s2",
+    "recipe_id": "200113",
+    "position": 2,
+    "instruction": "시래기의 질긴 부분을 손질하고 채소와 버섯을 자른다.",
+    "source_id": "200113",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "200113-s3",
+    "recipe_id": "200113",
+    "position": 3,
+    "instruction": "양념한 고기와 채소를 볶아 속을 만든다.",
+    "source_id": "200113",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "200113-s4",
+    "recipe_id": "200113",
+    "position": 4,
+    "instruction": "반죽을 펴 속을 넣고 만두를 빚는다.",
+    "source_id": "200113",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "200113-s5",
+    "recipe_id": "200113",
+    "position": 5,
+    "instruction": "찜기에 올려 익힌다.",
+    "source_id": "200113",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "98885-s1",
+    "recipe_id": "98885",
+    "position": 1,
+    "instruction": "홍시를 손질해 소스 재료와 섞고 차게 둔다.",
+    "source_id": "98885",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "98885-s2",
+    "recipe_id": "98885",
+    "position": 2,
+    "instruction": "죽순은 데치고 나머지 채소를 자른다.",
+    "source_id": "98885",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "98885-s3",
+    "recipe_id": "98885",
+    "position": 3,
+    "instruction": "채소를 팬이나 오븐에 굽는다.",
+    "source_id": "98885",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "98885-s4",
+    "recipe_id": "98885",
+    "position": 4,
+    "instruction": "구운 채소에 소스를 곁들인다.",
+    "source_id": "98885",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "sprout207811-s1",
+    "recipe_id": "sprout207811",
+    "position": 1,
+    "instruction": "두부에 전분을 입혀 팬에 구운 뒤 자른다.",
+    "source_id": "sprout207811",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "sprout207811-s2",
+    "recipe_id": "sprout207811",
+    "position": 2,
+    "instruction": "파프리카를 썰고 가지를 올리브유에 굽는다.",
+    "source_id": "sprout207811",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "sprout207811-s3",
+    "recipe_id": "sprout207811",
+    "position": 3,
+    "instruction": "새싹의 물기를 제거하고 다른 재료와 담는다.",
+    "source_id": "sprout207811",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "sprout207811-s4",
+    "recipe_id": "sprout207811",
+    "position": 4,
+    "instruction": "소스 재료를 섞어 채소에 곁들인다.",
+    "source_id": "sprout207811",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds253-s1",
+    "recipe_id": "mfds253",
+    "position": 1,
+    "instruction": "오리에 밑간하고 채소를 손질한다.",
+    "source_id": "mfds253",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds253-s2",
+    "recipe_id": "mfds253",
+    "position": 2,
+    "instruction": "토마토·양파·풋고추를 간다.",
+    "source_id": "mfds253",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds253-s3",
+    "recipe_id": "mfds253",
+    "position": 3,
+    "instruction": "마늘과 고추장을 볶아 간 채소 및 물엿으로 소스를 만든다.",
+    "source_id": "mfds253",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds253-s4",
+    "recipe_id": "mfds253",
+    "position": 4,
+    "instruction": "오리와 채소를 볶고 소스를 섞는다.",
+    "source_id": "mfds253",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds253-s5",
+    "recipe_id": "mfds253",
+    "position": 5,
+    "instruction": "부추와 방울토마토를 곁들인다.",
+    "source_id": "mfds253",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds454-s1",
+    "recipe_id": "mfds454",
+    "position": 1,
+    "instruction": "닭고기를 자르고 후추로 밑간한다.",
+    "source_id": "mfds454",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds454-s2",
+    "recipe_id": "mfds454",
+    "position": 2,
+    "instruction": "브로콜리를 데치고 나머지 채소와 버섯을 자른다.",
+    "source_id": "mfds454",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds454-s3",
+    "recipe_id": "mfds454",
+    "position": 3,
+    "instruction": "스파게티를 삶아 준비한다.",
+    "source_id": "mfds454",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds454-s4",
+    "recipe_id": "mfds454",
+    "position": 4,
+    "instruction": "닭고기와 채소를 볶아 토마토페이스트를 더한다.",
+    "source_id": "mfds454",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds454-s5",
+    "recipe_id": "mfds454",
+    "position": 5,
+    "instruction": "육수·소스·크림을 넣고 끓여 면과 합친다.",
+    "source_id": "mfds454",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208146-s1",
+    "recipe_id": "208146",
+    "position": 1,
+    "instruction": "조와 쌀을 불려 밥을 짓는다.",
+    "source_id": "208146",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208146-s2",
+    "recipe_id": "208146",
+    "position": 2,
+    "instruction": "채소를 다지고 파프리카의 속을 제거한다.",
+    "source_id": "208146",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208146-s3",
+    "recipe_id": "208146",
+    "position": 3,
+    "instruction": "다진 채소와 고기를 볶고 밥과 양념을 섞는다.",
+    "source_id": "208146",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208146-s4",
+    "recipe_id": "208146",
+    "position": 4,
+    "instruction": "파프리카에 속을 채우고 치즈를 올린다.",
+    "source_id": "208146",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208146-s5",
+    "recipe_id": "208146",
+    "position": 5,
+    "instruction": "190℃ 오븐에서 7분 굽는 원문 단계를 따른다.",
+    "source_id": "208146",
+    "duration_min": 7,
+    "duration_max": 7,
+    "temperature_c": 190
+  },
+  {
+    "id": "201257-s1",
+    "recipe_id": "201257",
+    "position": 1,
+    "instruction": "오이·배추·파프리카·사과를 작게 자른다.",
+    "source_id": "201257",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "201257-s2",
+    "recipe_id": "201257",
+    "position": 2,
+    "instruction": "오이와 배추를 소금 일부로 절인 뒤 물기를 뺀다.",
+    "source_id": "201257",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "201257-s3",
+    "recipe_id": "201257",
+    "position": 3,
+    "instruction": "오디즙에 물과 남은 소금·설탕을 섞는다.",
+    "source_id": "201257",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "201257-s4",
+    "recipe_id": "201257",
+    "position": 4,
+    "instruction": "채소를 국물에 넣어 숙성한다.",
+    "source_id": "201257",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208263-s1",
+    "recipe_id": "208263",
+    "position": 1,
+    "instruction": "양배추를 찌고 파프리카를 손질한다.",
+    "source_id": "208263",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208263-s2",
+    "recipe_id": "208263",
+    "position": 2,
+    "instruction": "닭가슴살을 다져 양념과 섞는다.",
+    "source_id": "208263",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208263-s3",
+    "recipe_id": "208263",
+    "position": 3,
+    "instruction": "양배추로 속을 감싸 찜기에 넣어 익힌다.",
+    "source_id": "208263",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "208263-s4",
+    "recipe_id": "208263",
+    "position": 4,
+    "instruction": "땅콩버터 소스를 만들어 곁들인다.",
+    "source_id": "208263",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds3287-s1",
+    "recipe_id": "mfds3287",
+    "position": 1,
+    "instruction": "채소와 사과를 자르고 살사 재료를 섞는다.",
+    "source_id": "mfds3287",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds3287-s2",
+    "recipe_id": "mfds3287",
+    "position": 2,
+    "instruction": "아보카도를 으깨 과카몰레를 만든다.",
+    "source_id": "mfds3287",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds3287-s3",
+    "recipe_id": "mfds3287",
+    "position": 3,
+    "instruction": "요거트와 마요네즈 등으로 소스를 준비한다.",
+    "source_id": "mfds3287",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds3287-s4",
+    "recipe_id": "mfds3287",
+    "position": 4,
+    "instruction": "마른 팬에 토르티야를 구워 모양을 잡는다.",
+    "source_id": "mfds3287",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "mfds3287-s5",
+    "recipe_id": "mfds3287",
+    "position": 5,
+    "instruction": "토르티야에 재료와 소스를 담는다.",
+    "source_id": "mfds3287",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "213103-s1",
+    "recipe_id": "213103",
+    "position": 1,
+    "instruction": "버섯과 채소를 손질한다.",
+    "source_id": "213103",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "213103-s2",
+    "recipe_id": "213103",
+    "position": 2,
+    "instruction": "파프리카 표면을 구워 껍질을 제거한다.",
+    "source_id": "213103",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "213103-s3",
+    "recipe_id": "213103",
+    "position": 3,
+    "instruction": "파프리카와 드레싱 재료를 간다.",
+    "source_id": "213103",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "213103-s4",
+    "recipe_id": "213103",
+    "position": 4,
+    "instruction": "표고버섯을 찜기에 3분 찐다.",
+    "source_id": "213103",
+    "duration_min": 3,
+    "duration_max": 3,
+    "temperature_c": null
+  },
+  {
+    "id": "213103-s5",
+    "recipe_id": "213103",
+    "position": 5,
+    "instruction": "버섯과 채소를 담고 드레싱을 올린다.",
+    "source_id": "213103",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "200809-s1",
+    "recipe_id": "200809",
+    "position": 1,
+    "instruction": "닭가슴살을 펴고 청주·소금·후추로 밑간한다.",
+    "source_id": "200809",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "200809-s2",
+    "recipe_id": "200809",
+    "position": 2,
+    "instruction": "채소를 얇게 썰어 팬에 볶는다.",
+    "source_id": "200809",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "200809-s3",
+    "recipe_id": "200809",
+    "position": 3,
+    "instruction": "조림 양념을 팬에서 끓인다.",
+    "source_id": "200809",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "200809-s4",
+    "recipe_id": "200809",
+    "position": 4,
+    "instruction": "닭가슴살에 채소를 넣어 말고 꼬치로 고정한다.",
+    "source_id": "200809",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "200809-s5",
+    "recipe_id": "200809",
+    "position": 5,
+    "instruction": "양념장에서 고기말이를 굴려 조린 뒤 잘라 담는다.",
+    "source_id": "200809",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "211734-s1",
+    "recipe_id": "211734",
+    "position": 1,
+    "instruction": "옥수수·마늘·꽈리고추를 손질한다.",
+    "source_id": "211734",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "211734-s2",
+    "recipe_id": "211734",
+    "position": 2,
+    "instruction": "알감자를 물에서 반쯤 익힌다.",
+    "source_id": "211734",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "211734-s3",
+    "recipe_id": "211734",
+    "position": 3,
+    "instruction": "감자와 마늘을 볶고 물·설탕·맛술·간장을 넣어 끓인다.",
+    "source_id": "211734",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "211734-s4",
+    "recipe_id": "211734",
+    "position": 4,
+    "instruction": "익힌 옥수수를 더해 국물을 줄인다.",
+    "source_id": "211734",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  },
+  {
+    "id": "211734-s5",
+    "recipe_id": "211734",
+    "position": 5,
+    "instruction": "고추와 물엿을 넣고 감자가 익으면 참깨를 더한다.",
+    "source_id": "211734",
+    "duration_min": null,
+    "duration_max": null,
+    "temperature_c": null
+  }
+]

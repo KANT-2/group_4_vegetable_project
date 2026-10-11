@@ -1,0 +1,12 @@
+[
+  {
+    "id": "onion-harvest",
+    "vegetable_id": "onion",
+    "kind": "harvest",
+    "start_month": 4,
+    "end_month": 6,
+    "region": "국내 가을 파종 재배 일반 설명",
+    "source_id": "98665",
+    "verification": "verified"
+  }
+]

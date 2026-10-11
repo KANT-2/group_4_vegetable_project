@@ -1,0 +1,68 @@
+[
+  {
+    "id": "potato",
+    "name": "감자",
+    "scientific_name": "Solanum tuberosum",
+    "description": "전분이 있는 덩이줄기. 삶기·조림·옹심이에 활용한다.",
+    "preparation": "씻어 껍질을 손질한다. 껍질을 벗긴 뒤 물에 담가 갈변을 줄일 수 있다.",
+    "source_id": "98666",
+    "verification": "partial",
+    "safety_rule": "곰팡이·부패·심한 물러짐·원인 불명의 변색·깊은 손상은 외형 등급 대상에서 제외한다.",
+    "safety_status": "editorial_conservative_rule"
+  },
+  {
+    "id": "carrot",
+    "name": "당근",
+    "scientific_name": "Daucus carota",
+    "description": "뿌리를 먹는 채소. 샐러드·카레 재료로 활용한다.",
+    "preparation": null,
+    "source_id": "carrot101944",
+    "verification": "partial",
+    "safety_rule": "곰팡이·부패·심한 물러짐·원인 불명의 변색·깊은 손상은 외형 등급 대상에서 제외한다.",
+    "safety_status": "editorial_conservative_rule"
+  },
+  {
+    "id": "onion",
+    "name": "양파",
+    "scientific_name": "Allium cepa",
+    "description": "생으로는 매운 향이 있으며 가열하면 부드러워진다. 볶음·샐러드·양념에 쓴다.",
+    "preparation": "뿌리와 마른 껍질을 제거하고 용도에 맞게 썬다.",
+    "source_id": "98665",
+    "verification": "partial",
+    "safety_rule": "곰팡이·부패·심한 물러짐·원인 불명의 변색·깊은 손상은 외형 등급 대상에서 제외한다.",
+    "safety_status": "editorial_conservative_rule"
+  },
+  {
+    "id": "aehobak",
+    "name": "애호박",
+    "scientific_name": null,
+    "description": "덜 자란 열매를 먹는 국내 애호박. 볶음·전·찌개에 사용한다. 주키니와 별도 재료로 관리한다.",
+    "preparation": "씻고 꼭지를 제거한 뒤 조리 방법에 맞춰 자른다.",
+    "source_id": "208634",
+    "verification": "partial",
+    "safety_rule": "곰팡이·부패·심한 물러짐·원인 불명의 변색·깊은 손상은 외형 등급 대상에서 제외한다.",
+    "safety_status": "editorial_conservative_rule"
+  },
+  {
+    "id": "eggplant",
+    "name": "가지",
+    "scientific_name": "Solanum melongena",
+    "description": "담백하고 익히면 부드러운 식감. 구이·볶음·조림·나물로 사용한다.",
+    "preparation": "흐르는 물로 세척한다.",
+    "source_id": "206741",
+    "verification": "partial",
+    "safety_rule": "곰팡이·부패·심한 물러짐·원인 불명의 변색·깊은 손상은 외형 등급 대상에서 제외한다.",
+    "safety_status": "editorial_conservative_rule"
+  },
+  {
+    "id": "bell-pepper",
+    "name": "파프리카",
+    "scientific_name": null,
+    "description": "착색 단고추. 빨강·노랑·주황·녹색의 영양값을 합치지 않는다.",
+    "preparation": null,
+    "source_id": "pepper101924",
+    "verification": "partial",
+    "safety_rule": "곰팡이·부패·심한 물러짐·원인 불명의 변색·깊은 손상은 외형 등급 대상에서 제외한다.",
+    "safety_status": "editorial_conservative_rule"
+  }
+]

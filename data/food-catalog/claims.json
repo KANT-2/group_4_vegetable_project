@@ -1,0 +1,370 @@
+[
+  {
+    "id": "c0001",
+    "entity_id": "potato",
+    "field": "description",
+    "source_id": "98666",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0002",
+    "entity_id": "potato",
+    "field": "preparation",
+    "source_id": "98666",
+    "status": "verified",
+    "note": "씻어 껍질을 손질한다. 껍질을 벗긴 뒤 물에 담가 갈변을 줄일 수 있다."
+  },
+  {
+    "id": "c0003",
+    "entity_id": "carrot",
+    "field": "description",
+    "source_id": "carrot101944",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0004",
+    "entity_id": "carrot",
+    "field": "preparation",
+    "source_id": "carrot101944",
+    "status": "pending",
+    "note": "미확인"
+  },
+  {
+    "id": "c0005",
+    "entity_id": "onion",
+    "field": "description",
+    "source_id": "98665",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0006",
+    "entity_id": "onion",
+    "field": "preparation",
+    "source_id": "98665",
+    "status": "verified",
+    "note": "뿌리와 마른 껍질을 제거하고 용도에 맞게 썬다."
+  },
+  {
+    "id": "c0007",
+    "entity_id": "aehobak",
+    "field": "description",
+    "source_id": "208634",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0008",
+    "entity_id": "aehobak",
+    "field": "preparation",
+    "source_id": "208634",
+    "status": "verified",
+    "note": "씻고 꼭지를 제거한 뒤 조리 방법에 맞춰 자른다."
+  },
+  {
+    "id": "c0009",
+    "entity_id": "eggplant",
+    "field": "description",
+    "source_id": "206741",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0010",
+    "entity_id": "eggplant",
+    "field": "preparation",
+    "source_id": "206741",
+    "status": "verified",
+    "note": "흐르는 물로 세척한다."
+  },
+  {
+    "id": "c0011",
+    "entity_id": "bell-pepper",
+    "field": "description",
+    "source_id": "pepper101924",
+    "status": "editorial",
+    "note": ""
+  },
+  {
+    "id": "c0012",
+    "entity_id": "bell-pepper",
+    "field": "preparation",
+    "source_id": "pepper101924",
+    "status": "pending",
+    "note": "미확인"
+  },
+  {
+    "id": "c0013",
+    "entity_id": "potato",
+    "field": "safety",
+    "source_id": "98666",
+    "status": "verified",
+    "note": "녹색화·싹 발생과 독성 성분 관련 원문 경고. 프로젝트는 판매·활용 후보에서 제외하는 보수적 편집 기준을 적용한다."
+  },
+  {
+    "id": "c0014",
+    "entity_id": "98711",
+    "field": "ingredients",
+    "source_id": "98711",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0015",
+    "entity_id": "98711",
+    "field": "steps",
+    "source_id": "98711",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0016",
+    "entity_id": "208530",
+    "field": "ingredients",
+    "source_id": "208530",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0017",
+    "entity_id": "208530",
+    "field": "steps",
+    "source_id": "208530",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0018",
+    "entity_id": "206629",
+    "field": "ingredients",
+    "source_id": "206629",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0019",
+    "entity_id": "206629",
+    "field": "steps",
+    "source_id": "206629",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0020",
+    "entity_id": "98889",
+    "field": "ingredients",
+    "source_id": "98889",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0021",
+    "entity_id": "98889",
+    "field": "steps",
+    "source_id": "98889",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0022",
+    "entity_id": "200113",
+    "field": "ingredients",
+    "source_id": "200113",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0023",
+    "entity_id": "200113",
+    "field": "steps",
+    "source_id": "200113",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0024",
+    "entity_id": "98885",
+    "field": "ingredients",
+    "source_id": "98885",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0025",
+    "entity_id": "98885",
+    "field": "steps",
+    "source_id": "98885",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0026",
+    "entity_id": "sprout207811",
+    "field": "ingredients",
+    "source_id": "sprout207811",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0027",
+    "entity_id": "sprout207811",
+    "field": "steps",
+    "source_id": "sprout207811",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0028",
+    "entity_id": "mfds253",
+    "field": "ingredients",
+    "source_id": "mfds253",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0029",
+    "entity_id": "mfds253",
+    "field": "steps",
+    "source_id": "mfds253",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0030",
+    "entity_id": "mfds454",
+    "field": "ingredients",
+    "source_id": "mfds454",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0031",
+    "entity_id": "mfds454",
+    "field": "steps",
+    "source_id": "mfds454",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0032",
+    "entity_id": "208146",
+    "field": "ingredients",
+    "source_id": "208146",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0033",
+    "entity_id": "208146",
+    "field": "steps",
+    "source_id": "208146",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0034",
+    "entity_id": "201257",
+    "field": "ingredients",
+    "source_id": "201257",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0035",
+    "entity_id": "201257",
+    "field": "steps",
+    "source_id": "201257",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0036",
+    "entity_id": "208263",
+    "field": "ingredients",
+    "source_id": "208263",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0037",
+    "entity_id": "208263",
+    "field": "steps",
+    "source_id": "208263",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0038",
+    "entity_id": "mfds3287",
+    "field": "ingredients",
+    "source_id": "mfds3287",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0039",
+    "entity_id": "mfds3287",
+    "field": "steps",
+    "source_id": "mfds3287",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0040",
+    "entity_id": "213103",
+    "field": "ingredients",
+    "source_id": "213103",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0041",
+    "entity_id": "213103",
+    "field": "steps",
+    "source_id": "213103",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0042",
+    "entity_id": "200809",
+    "field": "ingredients",
+    "source_id": "200809",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0043",
+    "entity_id": "200809",
+    "field": "steps",
+    "source_id": "200809",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0044",
+    "entity_id": "211734",
+    "field": "ingredients",
+    "source_id": "211734",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0045",
+    "entity_id": "211734",
+    "field": "steps",
+    "source_id": "211734",
+    "status": "verified",
+    "note": ""
+  },
+  {
+    "id": "c0046",
+    "entity_id": "200809",
+    "field": "steps_editorial_omission",
+    "source_id": "200809",
+    "status": "editorial",
+    "note": "원문의 생닭 헹굼 지시는 전재하지 않음. 서비스 적용 전 식품안전 지침 별도 검토 필요"
+  }
+]

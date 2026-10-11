@@ -1,0 +1,72 @@
+[
+  {
+    "id": "potato-whole",
+    "vegetable_id": "potato",
+    "form": "whole",
+    "guidance": "빛을 차단하고 통풍되는 곳에 둔다. 원문은 7~10℃에서 몇 주라고 설명한다.",
+    "temp_min_c": null,
+    "temp_max_c": null,
+    "duration_min": null,
+    "duration_max": null,
+    "duration_unit": null,
+    "humidity": null,
+    "source_id": "98666",
+    "verification": "verified"
+  },
+  {
+    "id": "onion-whole",
+    "vegetable_id": "onion",
+    "form": "whole",
+    "guidance": "종이봉투나 망에 넣고 건조하며 통풍되는 곳에 보관한다. 원문 온도는 15~25℃다.",
+    "temp_min_c": null,
+    "temp_max_c": null,
+    "duration_min": null,
+    "duration_max": null,
+    "duration_unit": null,
+    "humidity": null,
+    "source_id": "98665",
+    "verification": "verified"
+  },
+  {
+    "id": "aehobak-whole",
+    "vegetable_id": "aehobak",
+    "form": "whole",
+    "guidance": "손질하지 않은 상태로 종이에 싸서 냉장한다.",
+    "temp_min_c": null,
+    "temp_max_c": null,
+    "duration_min": null,
+    "duration_max": null,
+    "duration_unit": null,
+    "humidity": null,
+    "source_id": "208634",
+    "verification": "verified"
+  },
+  {
+    "id": "eggplant-whole",
+    "vegetable_id": "eggplant",
+    "form": "whole",
+    "guidance": "밀봉해 냉장한다.",
+    "temp_min_c": null,
+    "temp_max_c": null,
+    "duration_min": null,
+    "duration_max": null,
+    "duration_unit": null,
+    "humidity": null,
+    "source_id": "206741",
+    "verification": "verified"
+  },
+  {
+    "id": "bell-pepper-whole",
+    "vegetable_id": "bell-pepper",
+    "form": "whole",
+    "guidance": "원문 조건 8~10℃에서 3~4주, 습도 90~95%. 일반 가정 냉장고의 소비기한으로 사용하지 않는다.",
+    "temp_min_c": 8,
+    "temp_max_c": 10,
+    "duration_min": 3,
+    "duration_max": 4,
+    "duration_unit": "week",
+    "humidity": "90~95%",
+    "source_id": "pepper101924",
+    "verification": "verified"
+  }
+]
