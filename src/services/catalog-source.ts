@@ -1,4 +1,5 @@
 import "server-only";
+import { getImageUrl } from "@/lib/storage";
 import { getSupabaseConfig } from "@/lib/supabase/config";
 
 // .env.local에 Supabase 값이 없으면 Mock Data로 화면을 보여 줘요.
@@ -8,10 +9,11 @@ export function isMockCatalog() {
 }
 
 // DB의 image_path("products/carrot.jpg")를 화면용 주소로 바꿔요.
-// Storage(market-images)에 사진을 올리기 전까지는 public/images의 같은 파일을 써요.
-// 업로드가 끝나면 이 함수만 getImageUrl()로 바꾸면 돼요.
+// DB 연결 시: Storage(market-images)의 공개 주소
+// Mock 모드: public/images의 같은 파일 (Storage에 올린 사진과 같아요)
 export function toImageSrc(path: string | null): string | undefined {
   if (!path) return undefined;
+  if (!isMockCatalog()) return getImageUrl(path) ?? undefined;
   const fileName = path.split("/").pop();
   return fileName ? `/images/${fileName}` : undefined;
 }
