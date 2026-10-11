@@ -35,9 +35,11 @@ export default function ProductCard({
         </span>
       </div>
 
-      {/* 농가 → 이름·단위 → 할인율·가격·정상가 */}
+      {/* 홍보 문구 → 이름·단위 → 할인율·가격·정상가 → 별점·농가 */}
       <div className="p-3 sm:p-4">
-        <p className="text-xs text-stone-500">{product.farmName}</p>
+        <p className="line-clamp-1 text-xs text-stone-500">
+          {product.tagline ?? product.farmName}
+        </p>
         <h3 className="mt-1 text-sm font-bold text-stone-900 sm:text-base">
           {product.name}
         </h3>
@@ -54,6 +56,22 @@ export default function ProductCard({
               {formatPrice(product.originalPrice)}
             </span>
           )}
+        </p>
+        <p className="mt-1 flex items-center gap-1 text-xs text-stone-500">
+          {product.rating !== undefined && (
+            <>
+              <span aria-hidden className="text-amber-500">
+                ★
+              </span>
+              <span className="sr-only">별점</span>
+              <span className="font-semibold text-stone-700">
+                {product.rating.toFixed(1)}
+              </span>
+              <span>({product.reviewCount})</span>
+              <span aria-hidden>·</span>
+            </>
+          )}
+          <span className="truncate">{product.farmName}</span>
         </p>
       </div>
     </Link>

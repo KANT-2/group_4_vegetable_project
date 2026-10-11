@@ -1,5 +1,5 @@
 // 판매 상품 67개 (Mock Data)
-// 농가 이름, 가격, 이야기는 시연용 가상 데이터예요.
+// 농가 이름, 가격, 이야기, 별점·리뷰 수는 시연용 가상 데이터예요.
 // 나중에는 DB의 products 표에서 같은 모양으로 가져와요.
 
 import type { Product } from "../../types/product";
@@ -22,6 +22,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: true,
     isActive: true,
+    tagline: "휘어도 달콤함은 곧게 자랐어요",
+    rating: 4.5,
+    reviewCount: 35,
   },
   {
     id: "apple-scratched-2kg",
@@ -40,6 +43,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: true,
     isActive: true,
+    tagline: "바람이 남긴 자국, 맛은 그대로",
+    rating: 4.6,
+    reviewCount: 183,
   },
   {
     id: "shiitake-irregular-500g",
@@ -58,6 +64,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: true,
     isActive: true,
+    tagline: "향은 그대로, 가격은 가볍게",
+    rating: 4.7,
+    reviewCount: 225,
   },
   {
     id: "cabbage-small-1ea",
@@ -76,6 +85,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: true,
     isActive: true,
+    tagline: "혼자 먹기 딱 좋은 크기",
+    rating: 4.3,
+    reviewCount: 132,
   },
   {
     id: "paprika-irregular-4ea",
@@ -94,6 +106,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "삐뚤어도 알록달록 네 가지 색",
+    rating: 4.9,
+    reviewCount: 101,
   },
   {
     id: "onion-small-2kg",
@@ -112,6 +127,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "작아서 볶음에 통째로 쏙",
+    rating: 4.3,
+    reviewCount: 164,
   },
   {
     id: "potato-small-3kg",
@@ -130,6 +148,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "껍질째 통으로 굽기 좋아요",
+    rating: 4.8,
+    reviewCount: 177,
   },
   {
     id: "potato-scratched-2kg",
@@ -148,6 +169,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "껍질만 벗기면 정상품과 같아요",
+    rating: 4.5,
+    reviewCount: 289,
   },
   {
     id: "sweet-potato-bent-2kg",
@@ -166,6 +190,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "모양은 자유롭게, 맛은 꿀처럼",
+    rating: 4.5,
+    reviewCount: 27,
   },
   {
     id: "sweet-potato-small-1-5kg",
@@ -184,6 +211,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "에어프라이어에 딱 맞는 크기",
+    rating: 4.4,
+    reviewCount: 179,
   },
   {
     id: "tomato-irregular-1kg",
@@ -202,6 +232,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "줄기에서 다 익혀 땄어요",
+    rating: 4.8,
+    reviewCount: 198,
   },
   {
     id: "cucumber-bent-5ea",
@@ -220,6 +253,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "휘어도 아삭함은 꼿꼿해요",
+    rating: 4.6,
+    reviewCount: 168,
   },
   {
     id: "green-onion-small-1bunch",
@@ -238,6 +274,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "짧아도 향은 진하게",
+    rating: 4.8,
+    reviewCount: 91,
   },
   {
     id: "spinach-small-500g",
@@ -256,6 +295,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "잎이 작아 더 연해요",
+    rating: 4.4,
+    reviewCount: 168,
   },
   {
     id: "carrot-irregular-3kg",
@@ -274,6 +316,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "당근주스 넉넉히 만드는 양",
+    rating: 4.5,
+    reviewCount: 58,
   },
   {
     id: "apple-small-3kg",
@@ -292,6 +337,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "도시락에 쏙 들어가는 크기",
+    rating: 4.6,
+    reviewCount: 55,
   },
   {
     id: "carrot-scratched-2kg",
@@ -310,6 +358,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "겉은 거칠어도 속은 단단해요",
+    rating: 4.5,
+    reviewCount: 20,
   },
   {
     id: "onion-scratched-3kg",
@@ -328,6 +379,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "껍질 까는 수고를 덜었어요",
+    rating: 4.9,
+    reviewCount: 132,
   },
   {
     id: "onion-irregular-5kg",
@@ -346,6 +400,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "매일 요리하는 집을 위한 넉넉함",
+    rating: 4.6,
+    reviewCount: 98,
   },
   {
     id: "potato-irregular-5kg",
@@ -364,6 +421,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "으깨면 모양은 상관없어요",
+    rating: 4.4,
+    reviewCount: 148,
   },
   {
     id: "sweet-potato-scratched-3kg",
@@ -382,6 +442,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "구우면 흠집은 잊혀요",
+    rating: 4.6,
+    reviewCount: 160,
   },
   {
     id: "radish-bent-1ea",
@@ -400,6 +463,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "휘어도 국물은 시원하게",
+    rating: 4.9,
+    reviewCount: 252,
   },
   {
     id: "radish-scratched-2ea",
@@ -418,6 +484,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "깍두기 넉넉히 담그는 양",
+    rating: 4.3,
+    reviewCount: 245,
   },
   {
     id: "radish-irregular-1ea",
@@ -436,6 +505,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "두 다리로 걸어온 무",
+    rating: 4.6,
+    reviewCount: 119,
   },
   {
     id: "cabbage-scratched-1ea",
@@ -454,6 +526,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "겉잎 한 장 떼면 새것 같아요",
+    rating: 4.5,
+    reviewCount: 128,
   },
   {
     id: "cabbage-irregular-2ea",
@@ -472,6 +547,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "동그랗지 않아도 속은 꽉",
+    rating: 4.9,
+    reviewCount: 182,
   },
   {
     id: "spinach-irregular-1kg",
@@ -490,6 +568,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "나물 넉넉히 무치는 날",
+    rating: 4.3,
+    reviewCount: 287,
   },
   {
     id: "spinach-scratched-500g",
@@ -508,6 +589,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "데치면 감쪽같아요",
+    rating: 4.7,
+    reviewCount: 105,
   },
   {
     id: "broccoli-small-3ea",
@@ -526,6 +610,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "한 송이씩 데쳐 먹기 좋아요",
+    rating: 4.9,
+    reviewCount: 185,
   },
   {
     id: "broccoli-irregular-2ea",
@@ -544,6 +631,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "송이로 나누면 다 똑같아요",
+    rating: 4.8,
+    reviewCount: 75,
   },
   {
     id: "broccoli-scratched-2ea",
@@ -562,6 +652,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "반값으로 챙기는 초록 한 접시",
+    rating: 4.7,
+    reviewCount: 70,
   },
   {
     id: "napa-cabbage-small-2ea",
@@ -580,6 +673,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "쌈으로 바로 먹는 고소한 속잎",
+    rating: 4.3,
+    reviewCount: 205,
   },
   {
     id: "napa-cabbage-scratched-1ea",
@@ -598,6 +694,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "김치가 되면 똑같아요",
+    rating: 4.3,
+    reviewCount: 134,
   },
   {
     id: "napa-cabbage-irregular-1ea",
@@ -616,6 +715,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "기울어도 속은 꽉 찼어요",
+    rating: 4.8,
+    reviewCount: 10,
   },
   {
     id: "paprika-small-1kg",
@@ -634,6 +736,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "도시락 반찬에 하나씩 쏙",
+    rating: 4.5,
+    reviewCount: 82,
   },
   {
     id: "paprika-scratched-3ea",
@@ -652,6 +757,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "구우면 더 달아져요",
+    rating: 4.8,
+    reviewCount: 100,
   },
   {
     id: "tomato-scratched-2kg",
@@ -670,6 +778,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "껍질이 터질 만큼 잘 익었어요",
+    rating: 4.7,
+    reviewCount: 51,
   },
   {
     id: "tomato-small-1-5kg",
@@ -688,6 +799,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "작을수록 단맛은 진하게",
+    rating: 4.9,
+    reviewCount: 94,
   },
   {
     id: "cucumber-scratched-10ea",
@@ -706,6 +820,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "오이지 한 통 넉넉하게",
+    rating: 4.9,
+    reviewCount: 267,
   },
   {
     id: "cucumber-small-7ea",
@@ -724,6 +841,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "무침 한 번에 딱 맞는 길이",
+    rating: 4.3,
+    reviewCount: 241,
   },
   {
     id: "aehobak-small-3ea",
@@ -742,6 +862,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "전 한 판 부치기 딱 좋은 크기",
+    rating: 4.4,
+    reviewCount: 239,
   },
   {
     id: "aehobak-bent-2ea",
@@ -760,6 +883,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "썰면 다 같은 동그라미",
+    rating: 4.4,
+    reviewCount: 167,
   },
   {
     id: "aehobak-scratched-3ea",
@@ -778,6 +904,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "된장찌개 속에선 아무도 몰라요",
+    rating: 4.8,
+    reviewCount: 151,
   },
   {
     id: "eggplant-bent-5ea",
@@ -796,6 +925,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "구부러져도 속은 부드럽게",
+    rating: 4.9,
+    reviewCount: 218,
   },
   {
     id: "eggplant-scratched-4ea",
@@ -814,6 +946,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "튀김옷 입히면 티가 안 나요",
+    rating: 4.6,
+    reviewCount: 229,
   },
   {
     id: "eggplant-small-7ea",
@@ -832,6 +967,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "반 갈라 굽기 좋은 크기",
+    rating: 4.8,
+    reviewCount: 184,
   },
   {
     id: "sweet-pumpkin-small-3ea",
@@ -850,6 +988,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "한 통씩 쪄 먹는 간식",
+    rating: 4.6,
+    reviewCount: 170,
   },
   {
     id: "sweet-pumpkin-scratched-2ea",
@@ -868,6 +1009,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "껍질 속은 노랗게 달콤해요",
+    rating: 4.6,
+    reviewCount: 100,
   },
   {
     id: "sweet-pumpkin-irregular-2ea",
@@ -886,6 +1030,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "찌그러져도 포슬포슬",
+    rating: 4.9,
+    reviewCount: 269,
   },
   {
     id: "shiitake-small-300g",
@@ -904,6 +1051,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "손질 없이 통째로 쏙",
+    rating: 4.8,
+    reviewCount: 143,
   },
   {
     id: "shiitake-scratched-1kg",
@@ -922,6 +1072,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "갈라진 틈으로 향이 더 진하게",
+    rating: 4.6,
+    reviewCount: 207,
   },
   {
     id: "king-oyster-small-500g",
@@ -940,6 +1093,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "꼬치 하나에 하나씩",
+    rating: 4.3,
+    reviewCount: 166,
   },
   {
     id: "king-oyster-bent-500g",
@@ -958,6 +1114,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "결대로 찢으면 모양은 그만",
+    rating: 4.5,
+    reviewCount: 161,
   },
   {
     id: "king-oyster-bent-1kg",
@@ -976,6 +1135,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "장조림 넉넉히 하는 날",
+    rating: 4.6,
+    reviewCount: 219,
   },
   {
     id: "king-oyster-scratched-500g",
@@ -994,6 +1156,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "가격은 절반 가까이, 쫄깃함은 그대로",
+    rating: 4.8,
+    reviewCount: 170,
   },
   {
     id: "king-oyster-irregular-1kg",
@@ -1012,6 +1177,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "굵은 건 구이, 얇은 건 볶음",
+    rating: 4.9,
+    reviewCount: 242,
   },
   {
     id: "apple-irregular-2kg",
@@ -1030,6 +1198,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "선물 상자 대신 우리 집 식탁으로",
+    rating: 4.5,
+    reviewCount: 155,
   },
   {
     id: "mandarin-small-3kg",
@@ -1048,6 +1219,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "작을수록 껍질 얇고 달아요",
+    rating: 4.6,
+    reviewCount: 235,
   },
   {
     id: "mandarin-scratched-5kg",
@@ -1066,6 +1240,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "까면 다 똑같은 귤",
+    rating: 4.8,
+    reviewCount: 288,
   },
   {
     id: "mandarin-irregular-3kg",
@@ -1084,6 +1261,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "귤청 담그기 좋은 넉넉함",
+    rating: 4.9,
+    reviewCount: 63,
   },
   {
     id: "green-onion-bent-1bunch",
@@ -1102,6 +1282,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "썰면 다 같은 송송",
+    rating: 4.6,
+    reviewCount: 106,
   },
   {
     id: "green-onion-irregular-2bunch",
@@ -1120,6 +1303,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "썰어서 얼려 두는 실속",
+    rating: 4.3,
+    reviewCount: 111,
   },
   {
     id: "green-onion-scratched-1bunch",
@@ -1138,6 +1324,9 @@ export const products: Product[] = [
     isSeasonal: false,
     isFeatured: false,
     isActive: true,
+    tagline: "끝만 자르면 흰 대는 싱싱",
+    rating: 4.9,
+    reviewCount: 72,
   },
   {
     id: "chili-small-300g",
@@ -1156,6 +1345,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "쌈장에 콕 찍어 한입",
+    rating: 4.7,
+    reviewCount: 225,
   },
   {
     id: "chili-bent-500g",
@@ -1174,6 +1366,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "꼬불꼬불 춤추는 홍고추",
+    rating: 4.3,
+    reviewCount: 37,
   },
   {
     id: "chili-scratched-500g",
@@ -1192,6 +1387,9 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "찌개를 칼칼하게",
+    rating: 4.7,
+    reviewCount: 219,
   },
   {
     id: "chili-irregular-500g",
@@ -1210,5 +1408,8 @@ export const products: Product[] = [
     isSeasonal: true,
     isFeatured: false,
     isActive: true,
+    tagline: "장아찌 한 통 담그기 좋아요",
+    rating: 4.3,
+    reviewCount: 251,
   },
 ];

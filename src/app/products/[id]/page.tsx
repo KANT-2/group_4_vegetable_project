@@ -57,9 +57,26 @@ export default async function ProductDetailPage({
               </span>
             )}
           </p>
-          <h1 className="text-2xl font-bold text-stone-900 sm:text-3xl">
-            {product.name}
-          </h1>
+          <div>
+            {product.tagline && (
+              <p className="text-sm text-stone-500">{product.tagline}</p>
+            )}
+            <h1 className="text-2xl font-bold text-stone-900 sm:text-3xl">
+              {product.name}
+            </h1>
+            {product.rating !== undefined && (
+              <p className="mt-1 flex items-center gap-1 text-sm text-stone-500">
+                <span aria-hidden className="text-amber-500">
+                  ★
+                </span>
+                <span className="sr-only">별점</span>
+                <span className="font-semibold text-stone-700">
+                  {product.rating.toFixed(1)}
+                </span>
+                <span>· 리뷰 {product.reviewCount}개</span>
+              </p>
+            )}
+          </div>
           <p className="text-stone-600">{product.description}</p>
 
           <p className="flex flex-wrap items-baseline gap-x-3">

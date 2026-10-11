@@ -29,6 +29,9 @@ function toProduct(row: ProductRow): Product {
     isSeasonal: row.is_seasonal,
     isFeatured: row.is_featured,
     isActive: row.is_active,
+    tagline: row.tagline ?? undefined,
+    rating: row.rating ?? undefined,
+    reviewCount: row.review_count,
   };
 }
 
