@@ -24,6 +24,7 @@ export interface Product {
   id: string; // 번호표. 예: "carrot-bent-1kg" (겹치면 안 돼요)
   vegetableId: string; // 어떤 채소의 상품인지. vegetables의 id를 가리켜요. 예: "carrot"
   name: string; // 상품 이름. 예: "못난이 당근 1kg"
+  tagline?: string | null; // 선택 홍보 문구. 없으면 화면에서 생략해요.
   price: number; // 판매 가격(원). 0보다 커야 해요
   originalPrice: number; // 원래 가격(원). 판매 가격보다 같거나 커야 해요
   unit: string; // 판매 단위. 예: "1kg", "4입"

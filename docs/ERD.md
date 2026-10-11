@@ -44,6 +44,7 @@ erDiagram
         text id PK "예: carrot-bent-1kg"
         text vegetable_id FK "예: carrot"
         text name "예: 못난이 당근 1kg"
+        text tagline "선택 홍보 문구, NULL 허용"
         int price "판매가, 0보다 큼"
         int original_price "정상가, price 이상"
         text unit "예: 1kg"
@@ -161,6 +162,7 @@ erDiagram
 | `id` | text | PK | | 예: `carrot-bent-1kg` |
 | `vegetable_id` | text | O | | FK → `vegetables.id` |
 | `name` | text | O | | 상품명 |
+| `tagline` | text | | | 선택 홍보 문구. 미등록 시 NULL, 이름과 별도로 표시 |
 | `price` | integer | O | | 판매가(원). `price > 0` |
 | `original_price` | integer | O | | 정상가(원). `original_price >= price` |
 | `unit` | text | O | | 판매 단위. 예: 1kg, 4입 |
@@ -382,6 +384,7 @@ Table products {
   id text [pk, note: 'carrot-bent-1kg']
   vegetable_id text [not null, ref: > vegetables.id]
   name text [not null, note: '공백만 불가, 1~100자']
+  tagline text [note: '선택 홍보 문구, NULL 허용']
   price int [not null, note: '> 0']
   original_price int [not null, note: '>= price']
   unit text [not null]

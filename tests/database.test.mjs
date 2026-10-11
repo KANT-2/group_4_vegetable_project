@@ -77,6 +77,35 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
     assert.equal(rows.length, 9);
   });
 
+  await t.test(
+    "홍보 문구가 없는 기존 상품과 선택 문구를 함께 지원한다",
+    async () => {
+      await db.exec("reset role");
+      assert.equal(
+        (
+          await db.query(
+            "select tagline from products where id = 'test-carrot'",
+          )
+        ).rows[0].tagline,
+        null,
+      );
+      await db.query(
+        "update products set tagline = $1 where id = 'test-carrot'",
+        ["맛은 그대로, 가격은 가볍게"],
+      );
+      await asRole("anon");
+      assert.equal(
+        (
+          await db.query(
+            "select tagline from products where id = 'test-carrot'",
+          )
+        ).rows[0].tagline,
+        "맛은 그대로, 가격은 가볍게",
+      );
+      await db.exec("reset role");
+    },
+  );
+
   await t.test("가격·수량·JSON·주문 상태·외래 키를 검증한다", async () => {
     for (const sql of [
       "update public.products set price = 0 where id = 'test-carrot'",

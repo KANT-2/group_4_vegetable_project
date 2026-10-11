@@ -180,6 +180,7 @@ export type Database = {
           name: string;
           original_price: number;
           price: number;
+          tagline: string | null;
           ugly_reason: string;
           unit: string;
           updated_at: string;
@@ -200,6 +201,7 @@ export type Database = {
           name: string;
           original_price: number;
           price: number;
+          tagline?: string | null;
           ugly_reason: string;
           unit: string;
           updated_at?: string;
@@ -220,6 +222,7 @@ export type Database = {
           name?: string;
           original_price?: number;
           price?: number;
+          tagline?: string | null;
           ugly_reason?: string;
           unit?: string;
           updated_at?: string;
