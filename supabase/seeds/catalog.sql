@@ -2,7 +2,7 @@ begin;
 -- =========================================================
 -- B · 상품·채소 초기 데이터 (seed)
 -- 원본: src/data/mock/vegetables.ts, products.ts (변환기로 자동 생성)
--- 202610110001_product_display_fields.sql 적용 후 실행합니다 (tagline·rating·review_count).
+-- 202610110002_product_display_fields.sql 적용 후 실행합니다 (tagline·rating·review_count).
 -- 별점·리뷰 수는 시연용 가상 데이터입니다.
 -- 채소 21개, 상품 67개
 -- 농가 이름·가격·보관법 문구는 시연용 가상 데이터입니다.
