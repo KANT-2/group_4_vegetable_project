@@ -2,6 +2,9 @@ import Link from "next/link";
 import { SafeImage } from "@/components/common/SafeImage";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/products/ProductCard";
+import { RecipeCard } from "@/components/recipes/RecipeCard";
+import { routes } from "@/lib/routes";
+import { getRecipesByVegetable } from "@/services/recipes";
 import { getProductsByVegetable } from "@/services/products";
 import { getVegetableById } from "@/services/vegetables";
 import { VEGETABLE_CATEGORY_LABELS } from "@/types/vegetable";
@@ -23,9 +26,10 @@ export default async function VegetablePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [vegetable, products] = await Promise.all([
+  const [vegetable, products, recipes] = await Promise.all([
     getVegetableById(id),
     getProductsByVegetable(id),
+    getRecipesByVegetable(id),
   ]);
   if (!vegetable) notFound();
 
@@ -83,7 +87,30 @@ export default async function VegetablePage({
         </div>
       </section>
 
-      {/* 이 채소로 파는 상품 (TODO: A의 관련 레시피 연결) */}
+      {recipes.length > 0 && (
+        <section className="mt-8" aria-label={`${vegetable.name} 레시피`}>
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+            <h2 className="text-lg font-bold text-ink">
+              {vegetable.name}로 만드는 요리
+            </h2>
+            <Link
+              href={routes.recipesByVegetable(id)}
+              className="btn btn-secondary text-sm"
+            >
+              레시피 모두 보기
+            </Link>
+          </div>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {recipes.slice(0, 3).map((recipe) => (
+              <li key={recipe.id}>
+                <RecipeCard recipe={recipe} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* 이 채소로 파는 상품 */}
       <section className="mt-8">
         <h2 className="mb-3 text-lg font-bold text-ink">
           {vegetable.name} 못난이 상품
