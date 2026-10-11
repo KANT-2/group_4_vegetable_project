@@ -43,8 +43,10 @@ export interface Recipe {
   id: string; // 예: "carrot-rapee"
   name: string; // 요리 이름
   description: string; // 한 줄 소개
-  cookTimeMin: number; // 조리 시간(분)
-  difficulty: RecipeDifficulty;
+  cookTimeMin: number | null; // 원문 미기재는 null
+  difficulty: RecipeDifficulty | null;
+  sourceUrl?: string;
+  sourceName?: string;
   servings?: number; // 기준 인분
   ingredients: RecipeIngredient[];
   steps: string[]; // 조리 순서 (배열 순서가 곧 단계 순서)

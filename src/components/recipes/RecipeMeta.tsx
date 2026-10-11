@@ -22,17 +22,21 @@ export function RecipeMeta({
       className={`flex flex-wrap items-center gap-x-4 gap-y-2 ${size === "lg" ? "text-base" : "text-sm"}`}
       aria-label="레시피 정보"
     >
-      <li className="inline-flex items-center gap-1.5">
-        <ClockIcon width={iconSize} height={iconSize} />
-        <span className="sr-only">조리 시간</span>
-        {recipe.cookTimeMin}분
-      </li>
-      <li>
-        <span className="sr-only">난이도</span>
-        <span className={`chip ${DIFFICULTY_STYLE[recipe.difficulty]}`}>
-          {RECIPE_DIFFICULTY_LABELS[recipe.difficulty]}
-        </span>
-      </li>
+      {recipe.cookTimeMin != null && (
+        <li className="inline-flex items-center gap-1.5">
+          <ClockIcon width={iconSize} height={iconSize} />
+          <span className="sr-only">조리 시간</span>
+          {recipe.cookTimeMin}분
+        </li>
+      )}
+      {recipe.difficulty != null && (
+        <li>
+          <span className="sr-only">난이도</span>
+          <span className={`chip ${DIFFICULTY_STYLE[recipe.difficulty]}`}>
+            {RECIPE_DIFFICULTY_LABELS[recipe.difficulty]}
+          </span>
+        </li>
+      )}
       {recipe.servings && (
         <li className="inline-flex items-center gap-1.5">
           <UsersIcon width={iconSize} height={iconSize} />

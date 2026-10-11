@@ -9,7 +9,8 @@
 
 import "server-only";
 import { cache } from "react";
-import { mockRecipes } from "@/data/mock/recipes";
+import verifiedRecipes from "@/data/generated/verified-recipes.json";
+import { connectCatalogRecipes } from "@/lib/recipe-catalog";
 import { products as mockProducts } from "@/data/mock/products";
 import { vegetables as mockVegetables } from "@/data/mock/vegetables";
 import { recipeRowSchema, type RecipeRow } from "@/schemas/recipe";
@@ -28,51 +29,14 @@ import type {
 // ---------- Mock 모드 ----------
 
 function loadMockRecipes(): Recipe[] {
-  const vegetableById = new Map(
-    mockVegetables.map((vegetable) => [vegetable.id, vegetable]),
-  );
-
-  return mockRecipes.map(({ productIds, ...recipe }) => {
-    const products: RecipeProduct[] = [];
-    for (const productId of productIds) {
-      const product = mockProducts.find(
-        (item) => item.id === productId && item.isActive,
-      );
-      if (!product) continue;
-      products.push({
-        id: product.id,
-        vegetableId: product.vegetableId,
-        name: product.name,
-        price: product.price,
-        originalPrice: product.originalPrice,
-        unit: product.unit,
-        uglyReason: product.uglyReason,
-        imageUrl: product.imageUrl,
-      });
-    }
-
-    const vegetables = uniqueVegetables(
-      products.flatMap((product) => {
-        const vegetable = vegetableById.get(product.vegetableId);
-        return vegetable
-          ? [
-              {
-                id: vegetable.id,
-                name: vegetable.name,
-                imageUrl: vegetable.imageUrl,
-              },
-            ]
-          : [];
-      }),
-    );
-    return { ...recipe, products, vegetables };
-  });
+  return connectCatalogRecipes(verifiedRecipes, mockProducts, mockVegetables);
 }
 
 // ---------- Supabase 모드 ----------
 
 const RECIPE_SELECT = `
   id, name, description, cook_time_min, difficulty, servings, ingredients, steps, image_path,
+  source_url, source_name, vegetables,
   recipe_products (
     products (
       id, vegetable_id, name, price, original_price, unit, ugly_reason, image_path,
@@ -135,7 +99,9 @@ function rowToRecipe(row: RecipeRow): Recipe {
     steps: row.steps,
     imageUrl: getImageUrl(row.image_path) ?? undefined,
     products,
-    vegetables: uniqueVegetables(vegetables),
+    vegetables: uniqueVegetables([...row.vegetables, ...vegetables]),
+    sourceUrl: row.source_url ?? undefined,
+    sourceName: row.source_name ?? undefined,
   };
 }
 

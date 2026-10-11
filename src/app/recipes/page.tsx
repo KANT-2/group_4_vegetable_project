@@ -4,7 +4,7 @@
 
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { MockDataNotice } from "@/components/common/MockDataNotice";
+import { RecipeDataNotice } from "@/components/recipes/RecipeDataNotice";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { RecipeFilters } from "@/components/recipes/RecipeFilters";
 import { routes } from "@/lib/routes";
@@ -32,7 +32,7 @@ export default function RecipesPage({
       </header>
 
       <div className="mt-4">
-        <MockDataNotice subject="레시피" />
+        <RecipeDataNotice />
       </div>
 
       <Suspense fallback={<ResultsSkeleton />}>

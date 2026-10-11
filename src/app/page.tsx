@@ -101,7 +101,7 @@ export default async function HomePage() {
 
       {/* 2. 개발용 예시 안내 (Mock 모드에서만 보여요) */}
       <div className="container-page mt-4">
-        <MockDataNotice subject="상품·농가·레시피" />
+        <MockDataNotice subject="상품·농가" />
       </div>
 
       {/* 3. 추천 농산물 */}
