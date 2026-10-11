@@ -1,0 +1,1334 @@
+[
+  {
+    "id": "official-98711",
+    "name": "옥수수 감자 옹심이",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": null,
+    "ingredients": [
+      {
+        "name": "감자",
+        "amount": "3개"
+      },
+      {
+        "name": "옥수수",
+        "amount": "300g"
+      },
+      {
+        "name": "청고추",
+        "amount": "1개"
+      },
+      {
+        "name": "홍고추",
+        "amount": "1개"
+      },
+      {
+        "name": "멸치",
+        "amount": "10g"
+      },
+      {
+        "name": "다시마",
+        "amount": "3×4cm 2장"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "대파",
+        "amount": "50g"
+      },
+      {
+        "name": "전분",
+        "amount": "100g"
+      },
+      {
+        "name": "소금",
+        "amount": "약간"
+      }
+    ],
+    "steps": [
+      "감자를 갈아 물기를 조절한다.",
+      "감자와 옥수수를 섞고 둥글게 빚어 전분을 묻힌다.",
+      "멸치와 다시마 등으로 국물을 내고 건더기를 거른다.",
+      "반죽을 끓는 국물에 넣어 익히고 고추를 더한다."
+    ],
+    "vegetables": [
+      {
+        "id": "potato",
+        "name": "감자"
+      }
+    ],
+    "productVegetableIds": ["potato"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=98711&dtlCode=3&menuId=PS03599&month=07&tabCode=1",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-208530",
+    "name": "잡채달걀전",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": null,
+    "ingredients": [
+      {
+        "name": "당면",
+        "amount": "40g"
+      },
+      {
+        "name": "양파",
+        "amount": "100g"
+      },
+      {
+        "name": "당근",
+        "amount": "50g"
+      },
+      {
+        "name": "대파",
+        "amount": "10cm"
+      },
+      {
+        "name": "달걀",
+        "amount": "4개"
+      },
+      {
+        "name": "식용유",
+        "amount": "3T"
+      },
+      {
+        "name": "설탕",
+        "amount": "1T"
+      },
+      {
+        "name": "간장",
+        "amount": "1T"
+      },
+      {
+        "name": "맛술",
+        "amount": "1T"
+      },
+      {
+        "name": "간장",
+        "amount": "1T"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2,t"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1/2T"
+      },
+      {
+        "name": "맛술",
+        "amount": "1T"
+      },
+      {
+        "name": "후춧가루",
+        "amount": "약간"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "1t"
+      },
+      {
+        "name": "식초",
+        "amount": "1/2T"
+      },
+      {
+        "name": "간장",
+        "amount": "1/2T"
+      },
+      {
+        "name": "물",
+        "amount": "1T"
+      }
+    ],
+    "steps": [
+      "당면을 삶아 헹군 뒤 잘라 밑간한다.",
+      "채소를 썰고 달걀물에 양념한다.",
+      "당면과 채소를 달걀물에 섞는다.",
+      "기름을 두른 팬에 반죽을 놓고 반달로 접어 굽는다.",
+      "초간장을 따로 섞어 곁들인다."
+    ],
+    "vegetables": [
+      {
+        "id": "onion",
+        "name": "양파"
+      },
+      {
+        "id": "carrot",
+        "name": "당근"
+      }
+    ],
+    "productVegetableIds": ["onion", "carrot"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=208530&dtlCode=3&menuId=PS03599&month=06&tabCode=1",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-206629",
+    "name": "상추토마토샐러드",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "토마토",
+        "amount": "1개"
+      },
+      {
+        "name": "상추",
+        "amount": "12장"
+      },
+      {
+        "name": "고추장아찌",
+        "amount": "3개"
+      },
+      {
+        "name": "땅콩",
+        "amount": "2T"
+      },
+      {
+        "name": "적양배추",
+        "amount": "3장"
+      },
+      {
+        "name": "당근",
+        "amount": "1/4개"
+      },
+      {
+        "name": "고추장아찌 국물",
+        "amount": "3T"
+      },
+      {
+        "name": "식초",
+        "amount": "1T"
+      },
+      {
+        "name": "올리브유",
+        "amount": "3T"
+      }
+    ],
+    "steps": [
+      "채소를 씻고 먹기 편한 크기로 준비한다.",
+      "장아찌 국물에 식초와 올리브유를 섞는다.",
+      "채소에 드레싱을 더하고 땅콩을 올린다."
+    ],
+    "vegetables": [
+      {
+        "id": "carrot",
+        "name": "당근"
+      }
+    ],
+    "productVegetableIds": ["carrot"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=206629&dtlCode=3&menuId=PS03599&month=05&tabCode=1",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-98889",
+    "name": "호박고지잡채",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": null,
+    "ingredients": [
+      {
+        "name": "애호박고지",
+        "amount": "60g"
+      },
+      {
+        "name": "당근",
+        "amount": "50g"
+      },
+      {
+        "name": "양파",
+        "amount": "30g"
+      },
+      {
+        "name": "소고기",
+        "amount": "100g"
+      },
+      {
+        "name": "데친 느타리버섯",
+        "amount": "80g"
+      },
+      {
+        "name": "당면",
+        "amount": "60g"
+      },
+      {
+        "name": "간장",
+        "amount": "3큰술"
+      },
+      {
+        "name": "다진 파",
+        "amount": "25g"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "15g"
+      },
+      {
+        "name": "참기름",
+        "amount": "약간"
+      },
+      {
+        "name": "후추",
+        "amount": "약간"
+      }
+    ],
+    "steps": [
+      "말린 애호박을 불리고 당면을 익힌다.",
+      "채소와 고기를 먹기 좋은 크기로 손질한다.",
+      "각 재료를 볶은 뒤 당면과 합친다.",
+      "양념을 넣어 고루 섞는다."
+    ],
+    "vegetables": [
+      {
+        "id": "aehobak",
+        "name": "애호박"
+      },
+      {
+        "id": "carrot",
+        "name": "당근"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["carrot", "onion"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=98889&dtlCode=3&menuId=PS03599&month=10&tabCode=1",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-200113",
+    "name": "시래기만두",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": null,
+    "ingredients": [
+      {
+        "name": "삶은 시래기",
+        "amount": "400g"
+      },
+      {
+        "name": "다진 소고기",
+        "amount": "200g"
+      },
+      {
+        "name": "밀가루",
+        "amount": "2C"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2ts"
+      },
+      {
+        "name": "물",
+        "amount": "1/2C"
+      },
+      {
+        "name": "당근",
+        "amount": "1/2개"
+      },
+      {
+        "name": "애호박",
+        "amount": "1/2개"
+      },
+      {
+        "name": "불린 표고버섯",
+        "amount": "3개"
+      },
+      {
+        "name": "식용유",
+        "amount": "100g"
+      },
+      {
+        "name": "간장",
+        "amount": "30g"
+      },
+      {
+        "name": "설탕",
+        "amount": "12g"
+      },
+      {
+        "name": "다진 파",
+        "amount": "15g"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "10g"
+      },
+      {
+        "name": "후춧가루",
+        "amount": "약간"
+      },
+      {
+        "name": "참기름",
+        "amount": "40g"
+      },
+      {
+        "name": "깨소금",
+        "amount": "10g"
+      },
+      {
+        "name": "소금",
+        "amount": "약간"
+      }
+    ],
+    "steps": [
+      "밀가루 반죽을 만들어 쉬게 한다.",
+      "시래기의 질긴 부분을 손질하고 채소와 버섯을 자른다.",
+      "양념한 고기와 채소를 볶아 속을 만든다.",
+      "반죽을 펴 속을 넣고 만두를 빚는다.",
+      "찜기에 올려 익힌다."
+    ],
+    "vegetables": [
+      {
+        "id": "carrot",
+        "name": "당근"
+      },
+      {
+        "id": "aehobak",
+        "name": "애호박"
+      }
+    ],
+    "productVegetableIds": ["carrot", "aehobak"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=200113&dtlCode=3&menuId=PS03599&month=02&tabCode=1",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-98885",
+    "name": "홍시소스를 곁들인 구운채소샐러드",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": null,
+    "ingredients": [
+      {
+        "name": "홍시",
+        "amount": "2개"
+      },
+      {
+        "name": "곶감",
+        "amount": "2개"
+      },
+      {
+        "name": "죽순",
+        "amount": "200g"
+      },
+      {
+        "name": "양파",
+        "amount": "100g"
+      },
+      {
+        "name": "애호박",
+        "amount": "80g"
+      },
+      {
+        "name": "가지",
+        "amount": "100g"
+      },
+      {
+        "name": "홍·노랑 파프리카",
+        "amount": "1/3개"
+      },
+      {
+        "name": "식초",
+        "amount": "60g"
+      },
+      {
+        "name": "설탕",
+        "amount": "12g"
+      },
+      {
+        "name": "유자청",
+        "amount": "20g"
+      },
+      {
+        "name": "소금",
+        "amount": "약간"
+      }
+    ],
+    "steps": [
+      "홍시를 손질해 소스 재료와 섞고 차게 둔다.",
+      "죽순은 데치고 나머지 채소를 자른다.",
+      "채소를 팬이나 오븐에 굽는다.",
+      "구운 채소에 소스를 곁들인다."
+    ],
+    "vegetables": [
+      {
+        "id": "onion",
+        "name": "양파"
+      },
+      {
+        "id": "aehobak",
+        "name": "애호박"
+      },
+      {
+        "id": "eggplant",
+        "name": "가지"
+      },
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      }
+    ],
+    "productVegetableIds": ["onion", "aehobak", "eggplant", "paprika"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=98885&dtlCode=3&menuId=PS03599&month=10&tabCode=1",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-sprout207811",
+    "name": "새싹 가지 샐러드",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": null,
+    "ingredients": [
+      {
+        "name": "가지",
+        "amount": "미기재"
+      },
+      {
+        "name": "새싹",
+        "amount": "미기재"
+      },
+      {
+        "name": "파프리카",
+        "amount": "미기재"
+      },
+      {
+        "name": "두부",
+        "amount": "미기재"
+      },
+      {
+        "name": "전분가루",
+        "amount": "미기재"
+      },
+      {
+        "name": "양파",
+        "amount": "미기재"
+      },
+      {
+        "name": "간장",
+        "amount": "미기재"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "미기재"
+      },
+      {
+        "name": "올리브유",
+        "amount": "미기재"
+      },
+      {
+        "name": "통깨",
+        "amount": "미기재"
+      }
+    ],
+    "steps": [
+      "두부에 전분을 입혀 팬에 구운 뒤 자른다.",
+      "파프리카를 썰고 가지를 올리브유에 굽는다.",
+      "새싹의 물기를 제거하고 다른 재료와 담는다.",
+      "소스 재료를 섞어 채소에 곁들인다."
+    ],
+    "vegetables": [
+      {
+        "id": "eggplant",
+        "name": "가지"
+      },
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["eggplant", "paprika", "onion"],
+    "sourceUrl": "https://www.nongsaro.go.kr/portal/ps/psv/psvr/psvrc/rdaInterDtl.ps?cntntsNo=207811&menuId=PS00063",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-mfds253",
+    "name": "토마토오리볶음",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": null,
+    "ingredients": [
+      {
+        "name": "오리고기",
+        "amount": "90g"
+      },
+      {
+        "name": "가지",
+        "amount": "15g"
+      },
+      {
+        "name": "양파",
+        "amount": "15g"
+      },
+      {
+        "name": "파프리카",
+        "amount": "15g"
+      },
+      {
+        "name": "새송이버섯",
+        "amount": "10g"
+      },
+      {
+        "name": "브로콜리",
+        "amount": "15g"
+      },
+      {
+        "name": "부추",
+        "amount": "5g"
+      },
+      {
+        "name": "방울토마토",
+        "amount": "10g"
+      },
+      {
+        "name": "식용유",
+        "amount": "3g"
+      },
+      {
+        "name": "후춧가루",
+        "amount": "1g"
+      },
+      {
+        "name": "맛술",
+        "amount": "5g"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "3g"
+      },
+      {
+        "name": "토마토",
+        "amount": "35g"
+      },
+      {
+        "name": "양파",
+        "amount": "5g"
+      },
+      {
+        "name": "풋고추",
+        "amount": "5g"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1g"
+      },
+      {
+        "name": "고추장",
+        "amount": "5g"
+      },
+      {
+        "name": "물엿",
+        "amount": "3g"
+      }
+    ],
+    "steps": [
+      "오리에 밑간하고 채소를 손질한다.",
+      "토마토·양파·풋고추를 간다.",
+      "마늘과 고추장을 볶아 간 채소 및 물엿으로 소스를 만든다.",
+      "오리와 채소를 볶고 소스를 섞는다.",
+      "부추와 방울토마토를 곁들인다."
+    ],
+    "vegetables": [
+      {
+        "id": "eggplant",
+        "name": "가지"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      },
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      }
+    ],
+    "productVegetableIds": ["eggplant", "onion", "paprika"],
+    "sourceUrl": "https://www.foodsafetykorea.go.kr/portal/cookrcp/cookrcpInfoDtl.do?rcp_seq=253",
+    "sourceName": "식품의약품안전처"
+  },
+  {
+    "id": "official-mfds454",
+    "name": "닭고기채소스파게티",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": null,
+    "ingredients": [
+      {
+        "name": "닭고기살",
+        "amount": "100g"
+      },
+      {
+        "name": "후춧가루",
+        "amount": "0.03g"
+      },
+      {
+        "name": "스파게티",
+        "amount": "60g"
+      },
+      {
+        "name": "올리브유",
+        "amount": "3g"
+      },
+      {
+        "name": "브로콜리",
+        "amount": "20g"
+      },
+      {
+        "name": "양송이",
+        "amount": "20g"
+      },
+      {
+        "name": "표고버섯",
+        "amount": "20g"
+      },
+      {
+        "name": "파프리카",
+        "amount": "20g"
+      },
+      {
+        "name": "당근",
+        "amount": "20g"
+      },
+      {
+        "name": "양파",
+        "amount": "20g"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "10g"
+      },
+      {
+        "name": "토마토",
+        "amount": "20g"
+      },
+      {
+        "name": "토마토페이스트",
+        "amount": "20g"
+      },
+      {
+        "name": "육수",
+        "amount": "50g"
+      },
+      {
+        "name": "토마토소스",
+        "amount": "20g"
+      },
+      {
+        "name": "케첩",
+        "amount": "20g"
+      },
+      {
+        "name": "생크림",
+        "amount": "20g"
+      },
+      {
+        "name": "소금",
+        "amount": "미기재"
+      }
+    ],
+    "steps": [
+      "닭고기를 자르고 후추로 밑간한다.",
+      "브로콜리를 데치고 나머지 채소와 버섯을 자른다.",
+      "스파게티를 삶아 준비한다.",
+      "닭고기와 채소를 볶아 토마토페이스트를 더한다.",
+      "육수·소스·크림을 넣고 끓여 면과 합친다."
+    ],
+    "vegetables": [
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      },
+      {
+        "id": "carrot",
+        "name": "당근"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["paprika", "carrot", "onion"],
+    "sourceUrl": "https://www.foodsafetykorea.go.kr/portal/cookrcp/cookrcpInfoDtl.do?rcp_seq=454",
+    "sourceName": "식품의약품안전처"
+  },
+  {
+    "id": "official-208146",
+    "name": "파프리카조그라탕",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": 3,
+    "ingredients": [
+      {
+        "name": "조",
+        "amount": "2컵"
+      },
+      {
+        "name": "쌀",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "당근",
+        "amount": "1/6개"
+      },
+      {
+        "name": "대파",
+        "amount": "1대"
+      },
+      {
+        "name": "다진 소고기",
+        "amount": "100g"
+      },
+      {
+        "name": "양파",
+        "amount": "1/4개"
+      },
+      {
+        "name": "식용유",
+        "amount": "1T"
+      },
+      {
+        "name": "모차렐라치즈",
+        "amount": "1컵"
+      },
+      {
+        "name": "슬라이스치즈",
+        "amount": "1장"
+      },
+      {
+        "name": "소금",
+        "amount": "1/8t"
+      },
+      {
+        "name": "후춧가루",
+        "amount": "1/8t"
+      },
+      {
+        "name": "굴소스",
+        "amount": "1/2T"
+      },
+      {
+        "name": "파프리카",
+        "amount": "미기재"
+      }
+    ],
+    "steps": [
+      "조와 쌀을 불려 밥을 짓는다.",
+      "채소를 다지고 파프리카의 속을 제거한다.",
+      "다진 채소와 고기를 볶고 밥과 양념을 섞는다.",
+      "파프리카에 속을 채우고 치즈를 올린다.",
+      "190℃ 오븐에서 7분 굽는 원문 단계를 따른다."
+    ],
+    "vegetables": [
+      {
+        "id": "carrot",
+        "name": "당근"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      },
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      }
+    ],
+    "productVegetableIds": ["carrot", "onion", "paprika"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=208146&dtlCode=3&menuId=PS03599&month=02&tabCode=1",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-201257",
+    "name": "오디물김치",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "오이",
+        "amount": "1/3개"
+      },
+      {
+        "name": "배추",
+        "amount": "2장"
+      },
+      {
+        "name": "파프리카",
+        "amount": "1/4개"
+      },
+      {
+        "name": "사과",
+        "amount": "1/4개"
+      },
+      {
+        "name": "오디",
+        "amount": "1컵"
+      },
+      {
+        "name": "소금",
+        "amount": "2+1/2작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1작은술"
+      },
+      {
+        "name": "물",
+        "amount": "2컵"
+      }
+    ],
+    "steps": [
+      "오이·배추·파프리카·사과를 작게 자른다.",
+      "오이와 배추를 소금 일부로 절인 뒤 물기를 뺀다.",
+      "오디즙에 물과 남은 소금·설탕을 섞는다.",
+      "채소를 국물에 넣어 숙성한다."
+    ],
+    "vegetables": [
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      }
+    ],
+    "productVegetableIds": ["paprika"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=201257&dtlCode=3&menuId=PS03599&month=06&tabCode=1",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-208263",
+    "name": "닭가슴살양배추찜",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": 3,
+    "ingredients": [
+      {
+        "name": "양배추",
+        "amount": "10~15장"
+      },
+      {
+        "name": "파프리카",
+        "amount": "1/2개"
+      },
+      {
+        "name": "닭가슴살",
+        "amount": "3쪽"
+      },
+      {
+        "name": "간장",
+        "amount": "2.5T"
+      },
+      {
+        "name": "맛술",
+        "amount": "1.5T"
+      },
+      {
+        "name": "후춧가루",
+        "amount": "약간"
+      },
+      {
+        "name": "식초",
+        "amount": "2t"
+      },
+      {
+        "name": "땅콩버터",
+        "amount": "3T"
+      },
+      {
+        "name": "올리고당",
+        "amount": "1.5T"
+      },
+      {
+        "name": "올리브유",
+        "amount": "1T"
+      }
+    ],
+    "steps": [
+      "양배추를 찌고 파프리카를 손질한다.",
+      "닭가슴살을 다져 양념과 섞는다.",
+      "양배추로 속을 감싸 찜기에 넣어 익힌다.",
+      "땅콩버터 소스를 만들어 곁들인다."
+    ],
+    "vegetables": [
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      }
+    ],
+    "productVegetableIds": ["paprika"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=208263&dtlCode=3&menuId=PS03599&month=03&tabCode=1",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-mfds3287",
+    "name": "사과채소타코",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "양상추",
+        "amount": "2장"
+      },
+      {
+        "name": "사과",
+        "amount": "1/2개"
+      },
+      {
+        "name": "토르티야",
+        "amount": "4장"
+      },
+      {
+        "name": "모차렐라치즈",
+        "amount": "약간"
+      },
+      {
+        "name": "양파",
+        "amount": "1/8개"
+      },
+      {
+        "name": "파프리카",
+        "amount": "1/8개"
+      },
+      {
+        "name": "토마토",
+        "amount": "1/2개"
+      },
+      {
+        "name": "할라피뇨 피클",
+        "amount": "4개"
+      },
+      {
+        "name": "스리라차 소스",
+        "amount": "1Ts"
+      },
+      {
+        "name": "스테비아",
+        "amount": "0.5Ts"
+      },
+      {
+        "name": "아보카도",
+        "amount": "1/2개"
+      },
+      {
+        "name": "살사소스",
+        "amount": "1Ts"
+      },
+      {
+        "name": "라임즙",
+        "amount": "1Ts"
+      },
+      {
+        "name": "무가당 플레인 요거트",
+        "amount": "2Ts"
+      },
+      {
+        "name": "마요네즈",
+        "amount": "1Ts"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1Ts"
+      },
+      {
+        "name": "파슬리가루",
+        "amount": "0.5Ts"
+      },
+      {
+        "name": "라임즙",
+        "amount": "1Ts"
+      },
+      {
+        "name": "후춧가루",
+        "amount": "약간"
+      }
+    ],
+    "steps": [
+      "채소와 사과를 자르고 살사 재료를 섞는다.",
+      "아보카도를 으깨 과카몰레를 만든다.",
+      "요거트와 마요네즈 등으로 소스를 준비한다.",
+      "마른 팬에 토르티야를 구워 모양을 잡는다.",
+      "토르티야에 재료와 소스를 담는다."
+    ],
+    "vegetables": [
+      {
+        "id": "onion",
+        "name": "양파"
+      },
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      }
+    ],
+    "productVegetableIds": ["onion", "paprika"],
+    "sourceUrl": "https://www.foodsafetykorea.go.kr/portal/cookrcp/cookrcpInfoDtl.do?rcp_seq=3287",
+    "sourceName": "식품의약품안전처"
+  },
+  {
+    "id": "official-213103",
+    "name": "표고버섯 토마토 샐러드",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": null,
+    "ingredients": [
+      {
+        "name": "표고버섯",
+        "amount": "150g"
+      },
+      {
+        "name": "양파",
+        "amount": "1/4개"
+      },
+      {
+        "name": "토마토",
+        "amount": "2개"
+      },
+      {
+        "name": "셀러리",
+        "amount": "1대"
+      },
+      {
+        "name": "고수",
+        "amount": "약간"
+      },
+      {
+        "name": "빨간 파프리카",
+        "amount": "1개"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "2큰술"
+      },
+      {
+        "name": "물",
+        "amount": "1큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "약간"
+      },
+      {
+        "name": "까나리액젓",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1+1/2큰술"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1작은술"
+      }
+    ],
+    "steps": [
+      "버섯과 채소를 손질한다.",
+      "파프리카 표면을 구워 껍질을 제거한다.",
+      "파프리카와 드레싱 재료를 간다.",
+      "표고버섯을 찜기에 3분 찐다.",
+      "버섯과 채소를 담고 드레싱을 올린다."
+    ],
+    "vegetables": [
+      {
+        "id": "onion",
+        "name": "양파"
+      },
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      }
+    ],
+    "productVegetableIds": ["onion", "paprika"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=213103&dtlCode=3&menuId=PS03599&month=09&tabCode=1",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-200809",
+    "name": "닭가슴살 채소조림",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": null,
+    "ingredients": [
+      {
+        "name": "닭가슴살",
+        "amount": "3쪽"
+      },
+      {
+        "name": "양파",
+        "amount": "1/2개"
+      },
+      {
+        "name": "청피망",
+        "amount": "1/2개"
+      },
+      {
+        "name": "노란 파프리카",
+        "amount": "1/2개"
+      },
+      {
+        "name": "마늘",
+        "amount": "10g"
+      },
+      {
+        "name": "빨간 파프리카",
+        "amount": "1/2개"
+      },
+      {
+        "name": "생강",
+        "amount": "5g"
+      },
+      {
+        "name": "청주",
+        "amount": "15g"
+      },
+      {
+        "name": "간장",
+        "amount": "45g"
+      },
+      {
+        "name": "설탕",
+        "amount": "20g"
+      },
+      {
+        "name": "물",
+        "amount": "45g"
+      },
+      {
+        "name": "참기름",
+        "amount": "8g"
+      },
+      {
+        "name": "깨소금",
+        "amount": "5g"
+      },
+      {
+        "name": "매실청",
+        "amount": "20g"
+      },
+      {
+        "name": "후추",
+        "amount": "약간"
+      },
+      {
+        "name": "소금",
+        "amount": "약간"
+      },
+      {
+        "name": "식용유",
+        "amount": "미기재"
+      }
+    ],
+    "steps": [
+      "닭가슴살을 펴고 청주·소금·후추로 밑간한다.",
+      "채소를 얇게 썰어 팬에 볶는다.",
+      "조림 양념을 팬에서 끓인다.",
+      "닭가슴살에 채소를 넣어 말고 꼬치로 고정한다.",
+      "양념장에서 고기말이를 굴려 조린 뒤 잘라 담는다."
+    ],
+    "vegetables": [
+      {
+        "id": "onion",
+        "name": "양파"
+      },
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      }
+    ],
+    "productVegetableIds": ["onion", "paprika"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=200809&dtlCode=3&menuId=PS03599&month=03&tabCode=1",
+    "sourceName": "농촌진흥청"
+  },
+  {
+    "id": "official-211734",
+    "name": "찰옥수수알감자조림",
+    "description": "공식 자료를 확인해 재료와 과정을 독립적으로 요약한 레시피.",
+    "cookTimeMin": null,
+    "difficulty": null,
+    "servings": null,
+    "ingredients": [
+      {
+        "name": "찰옥수수",
+        "amount": "1대"
+      },
+      {
+        "name": "꽈리고추",
+        "amount": "80g"
+      },
+      {
+        "name": "마늘",
+        "amount": "3쪽"
+      },
+      {
+        "name": "알감자",
+        "amount": "10개"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1큰술"
+      },
+      {
+        "name": "맛술",
+        "amount": "1큰술"
+      },
+      {
+        "name": "간장",
+        "amount": "3+1/2큰술"
+      },
+      {
+        "name": "물엿",
+        "amount": "1큰술"
+      },
+      {
+        "name": "후춧가루",
+        "amount": "약간"
+      },
+      {
+        "name": "참깨",
+        "amount": "약간"
+      },
+      {
+        "name": "물",
+        "amount": "1컵"
+      }
+    ],
+    "steps": [
+      "옥수수·마늘·꽈리고추를 손질한다.",
+      "알감자를 물에서 반쯤 익힌다.",
+      "감자와 마늘을 볶고 물·설탕·맛술·간장을 넣어 끓인다.",
+      "익힌 옥수수를 더해 국물을 줄인다.",
+      "고추와 물엿을 넣고 감자가 익으면 참깨를 더한다."
+    ],
+    "vegetables": [
+      {
+        "id": "potato",
+        "name": "감자"
+      }
+    ],
+    "productVegetableIds": ["potato"],
+    "sourceUrl": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=211734&dtlCode=3&menuId=PS03599&month=07&tabCode=1",
+    "sourceName": "농촌진흥청"
+  }
+]

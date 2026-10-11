@@ -1,0 +1,188 @@
+// 연습용 레시피 7개 (Mock Data)
+// 메인·목록 첫 화면에 여러 채소가 고르게 보이도록 같은 채소가 연달아 나오지 않게 정렬했어요.
+// 재료·순서는 가정에서 흔히 쓰는 방식으로 새로 적은 개발용 예시예요. 팀 확정 전에 검수가 필요해요.
+// 요리 사진은 아직 없어서 imageUrl 을 비워 두었고, 화면에는 재료(채소) 사진이 임시로 표시돼요.
+// 나중에는 DB의 recipes 표와 recipe_products 표에서 같은 모양으로 가져와요.
+// productIds 는 B의 Mock 상품(src/data/mock/products.ts)의 id 와 같아야 해요.
+// 재료에 실제로 들어간 채소의 상품만 연결해요. (예: 당근 라페 ↔ 당근 상품 2개)
+
+import type { Recipe } from "../../types/recipe";
+
+// 화면용 Recipe 에서 상품·채소는 productIds 로부터 채워져요. (services/recipes.ts)
+export type MockRecipe = Omit<Recipe, "products" | "vegetables"> & { productIds: string[] };
+
+export const mockRecipes: MockRecipe[] = [
+  {
+    id: "carrot-rapee",
+    name: "당근 라페",
+    description: "새콤달콤하게 절인 채 썬 당근 샐러드. 샌드위치나 고기 요리에 곁들이기 좋아요.",
+    cookTimeMin: 15,
+    difficulty: "easy",
+    servings: 2,
+    ingredients: [
+      { name: "당근", amount: "2개 (약 300g)" },
+      { name: "소금", amount: "1/2작은술" },
+      { name: "올리브유", amount: "2큰술" },
+      { name: "레몬즙", amount: "1큰술" },
+      { name: "홀그레인 머스터드", amount: "1작은술" },
+      { name: "설탕 또는 꿀", amount: "1작은술" },
+      { name: "후추", amount: "약간" },
+    ],
+    steps: [
+      "당근을 깨끗이 씻어 필러나 칼로 얇게 채 썬다. 모양이 휜 당근도 채 썰면 티가 나지 않는다.",
+      "채 썬 당근에 소금을 뿌려 10분 정도 두었다가, 나온 물기를 손으로 꼭 짠다.",
+      "올리브유, 레몬즙, 홀그레인 머스터드, 설탕, 후추를 섞어 드레싱을 만든다.",
+      "당근에 드레싱을 넣고 고루 버무린다.",
+      "바로 먹어도 좋지만 냉장고에서 30분 이상 두면 맛이 더 잘 어우러진다. (조리 시간에는 숙성 시간이 포함되지 않아요.)",
+    ],
+    productIds: ["carrot-bent-1kg", "carrot-irregular-3kg"],
+  },
+  {
+    id: "cabbage-tuna-stir-fry",
+    name: "양배추 참치 볶음",
+    description: "꼬마 양배추 한 통을 한 번에 쓰기 좋은 간단 밥반찬이에요.",
+    cookTimeMin: 15,
+    difficulty: "easy",
+    servings: 2,
+    ingredients: [
+      { name: "양배추", amount: "1/4통 (약 300g)" },
+      { name: "참치캔", amount: "1캔 (150g)" },
+      { name: "양파", amount: "1/2개" },
+      { name: "다진 마늘", amount: "1작은술" },
+      { name: "간장", amount: "1큰술" },
+      { name: "식용유", amount: "1큰술" },
+      { name: "후추", amount: "약간" },
+    ],
+    steps: [
+      "양배추는 한입 크기로 썰고 양파는 채 썬다. 참치는 체에 밭쳐 기름을 뺀다.",
+      "달군 팬에 식용유를 두르고 다진 마늘과 양파를 1~2분 볶는다.",
+      "양배추를 넣고 숨이 죽을 때까지 센 불에서 3~4분 볶는다.",
+      "참치와 간장을 넣고 1~2분 더 볶은 뒤 후추를 뿌려 마무리한다.",
+    ],
+    productIds: ["cabbage-small-1ea", "onion-small-2kg"],
+  },
+  {
+    id: "apple-cabbage-salad",
+    name: "사과 양배추 샐러드",
+    description: "아삭한 양배추와 새콤달콤한 사과를 요거트 드레싱에 버무린 샐러드예요.",
+    cookTimeMin: 10,
+    difficulty: "easy",
+    servings: 2,
+    ingredients: [
+      { name: "사과", amount: "1개" },
+      { name: "양배추", amount: "200g" },
+      { name: "플레인 요거트", amount: "3큰술" },
+      { name: "마요네즈", amount: "1큰술" },
+      { name: "레몬즙", amount: "1큰술" },
+      { name: "소금", amount: "한 꼬집" },
+    ],
+    steps: [
+      "양배추를 가늘게 채 썰어 찬물에 잠깐 담갔다가 물기를 털어낸다.",
+      "사과는 씨를 빼고 얇게 채 썬다. 흠집 난 부분은 도려낸다. 갈변하지 않도록 레몬즙을 조금 뿌려 둔다.",
+      "요거트, 마요네즈, 남은 레몬즙, 소금을 섞어 드레싱을 만든다.",
+      "양배추와 사과에 드레싱을 넣고 가볍게 버무려 바로 낸다.",
+    ],
+    productIds: ["apple-scratched-2kg", "cabbage-small-1ea", "apple-small-3kg"],
+  },
+  {
+    id: "shiitake-soy-stir-fry",
+    name: "표고버섯 간장 볶음",
+    description: "표고의 진한 향을 살린 간단한 볶음. 밥반찬과 술안주 모두 잘 어울려요.",
+    cookTimeMin: 20,
+    difficulty: "easy",
+    servings: 2,
+    ingredients: [
+      { name: "표고버섯", amount: "300g" },
+      { name: "양파", amount: "1/2개" },
+      { name: "대파", amount: "1/2대" },
+      { name: "간장", amount: "1큰술" },
+      { name: "다진 마늘", amount: "1/2작은술" },
+      { name: "식용유", amount: "1큰술" },
+      { name: "참기름", amount: "1작은술" },
+    ],
+    steps: [
+      "표고버섯은 밑동을 떼고 젖은 행주로 겉을 닦은 뒤 먹기 좋게 썬다. 크기가 제각각이면 큰 것만 더 잘게 나눈다.",
+      "양파는 채 썰고 대파는 송송 썬다.",
+      "달군 팬에 식용유를 두르고 표고버섯을 넣어 물기가 날아가고 노릇해질 때까지 볶는다.",
+      "양파와 다진 마늘을 넣고 1~2분 볶다가 간장을 팬 가장자리로 둘러 넣어 섞는다.",
+      "대파와 참기름을 넣고 불을 끈 뒤 섞는다.",
+    ],
+    productIds: ["shiitake-irregular-500g", "onion-small-2kg", "green-onion-small-1bunch"],
+  },
+  {
+    id: "carrot-soup",
+    name: "당근 수프",
+    description: "당근과 양파를 푹 익혀 갈아 만든 부드럽고 달큰한 수프예요.",
+    cookTimeMin: 30,
+    difficulty: "normal",
+    servings: 2,
+    ingredients: [
+      { name: "당근", amount: "2개 (약 300g)" },
+      { name: "양파", amount: "1/2개" },
+      { name: "버터", amount: "1큰술" },
+      { name: "물 또는 채소 육수", amount: "400ml" },
+      { name: "우유", amount: "100ml" },
+      { name: "소금", amount: "약간" },
+      { name: "후추", amount: "약간" },
+    ],
+    steps: [
+      "당근은 껍질을 얇게 벗겨 작게 썰고, 양파는 잘게 썬다.",
+      "냄비에 버터를 녹이고 양파를 투명해질 때까지 볶는다.",
+      "당근을 넣고 2~3분 더 볶은 뒤 물(또는 육수)을 붓고 뚜껑을 덮어 당근이 푹 익을 때까지 15분쯤 끓인다.",
+      "한 김 식힌 뒤 믹서에 곱게 간다. 뜨거운 내용물은 믹서 뚜껑을 꼭 잡고 조심해서 간다.",
+      "냄비에 다시 붓고 우유를 넣어 약불에서 데운 뒤 소금과 후추로 간을 맞춘다.",
+    ],
+    productIds: ["carrot-bent-1kg", "onion-small-2kg", "carrot-irregular-3kg"],
+  },
+  {
+    id: "paprika-omelette",
+    name: "파프리카 오믈렛",
+    description: "삐뚤빼뚤한 파프리카를 잘게 썰어 넣어 색이 알록달록한 한 끼 오믈렛이에요.",
+    cookTimeMin: 15,
+    difficulty: "normal",
+    servings: 1,
+    ingredients: [
+      { name: "파프리카", amount: "1개" },
+      { name: "달걀", amount: "3개" },
+      { name: "우유", amount: "2큰술" },
+      { name: "소금", amount: "한 꼬집" },
+      { name: "후추", amount: "약간" },
+      { name: "식용유", amount: "1큰술" },
+    ],
+    steps: [
+      "파프리카는 꼭지와 씨를 빼고 잘게 깍둑썬다.",
+      "달걀에 우유, 소금, 후추를 넣고 흰자가 풀어질 때까지 섞는다.",
+      "중불로 달군 팬에 식용유를 두르고 파프리카를 1~2분 볶아 덜어 둔다.",
+      "같은 팬에 달걀물을 붓고 가장자리가 익으면 젓가락으로 가볍게 저어 반숙 상태로 만든다.",
+      "한쪽에 파프리카를 올리고 반으로 접어 접시에 담는다.",
+    ],
+    productIds: ["paprika-irregular-4ea"],
+  },
+  {
+    id: "carrot-cake",
+    name: "당근 케이크",
+    description: "곱게 간 당근이 들어가 촉촉하고 은은하게 달콤한 홈베이킹 케이크예요.",
+    cookTimeMin: 60,
+    difficulty: "normal",
+    servings: 4,
+    ingredients: [
+      { name: "당근", amount: "1개 (약 150g)" },
+      { name: "박력분", amount: "150g" },
+      { name: "설탕", amount: "80g" },
+      { name: "달걀", amount: "2개" },
+      { name: "식용유", amount: "80ml" },
+      { name: "베이킹파우더", amount: "1작은술" },
+      { name: "시나몬 가루", amount: "1/2작은술" },
+      { name: "다진 호두", amount: "30g (선택)" },
+    ],
+    steps: [
+      "오븐을 175℃로 예열하고 틀에 유산지를 깐다. 당근은 강판에 곱게 간다.",
+      "볼에 달걀과 설탕을 넣고 설탕이 녹을 때까지 섞은 뒤 식용유를 조금씩 넣으며 섞는다.",
+      "박력분, 베이킹파우더, 시나몬 가루를 체에 쳐서 넣고 가루가 보이지 않을 때까지 가볍게 섞는다.",
+      "간 당근과 호두를 넣고 한두 번 더 섞은 뒤 틀에 붓는다.",
+      "예열한 오븐에서 35~40분 굽는다. 꼬치로 찔러 반죽이 묻어 나오지 않으면 다 구워진 것이다.",
+      "틀에서 꺼내 식힘망에서 충분히 식힌 뒤 썬다. (오븐마다 차이가 있으니 굽는 시간은 상태를 보며 조절하세요.)",
+    ],
+    productIds: ["carrot-bent-1kg", "carrot-irregular-3kg"],
+  },
+];
