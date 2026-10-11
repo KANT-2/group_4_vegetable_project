@@ -6,11 +6,7 @@
     "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=98666&dtlCode=2&menuId=PS03599&month=06&tabCode=1",
     "accessed_at": "2026-10-08",
     "verification": "page_read",
-    "confirmed_fields": [
-      "description",
-      "storage",
-      "preparation"
-    ],
+    "confirmed_fields": ["description", "storage", "preparation"],
     "license_status": "not_confirmed",
     "evidence_sha256": "09933550922ba26d1dc685b923e27926e38803e4b3b857870e25a4ff659fe9ce"
   },
@@ -21,11 +17,7 @@
     "url": "https://www.nongsaro.go.kr/portal/ps/psz/psza/contentSub.ps?cntntsNo=101944&menuId=PS03796&sSeCode=374006&totalSearchYn=Y",
     "accessed_at": "2026-10-08",
     "verification": "page_read",
-    "confirmed_fields": [
-      "description",
-      "storage",
-      "preparation"
-    ],
+    "confirmed_fields": ["description", "storage", "preparation"],
     "license_status": "not_confirmed",
     "evidence_sha256": "5170c28ef7de2a4b69203ed2cf32b75da52acc017837276a3db2d5018b8a3dcd"
   },
@@ -36,11 +28,7 @@
     "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=98665&dtlCode=2&menuId=PS03599&month=06&tabCode=1",
     "accessed_at": "2026-10-08",
     "verification": "page_read",
-    "confirmed_fields": [
-      "description",
-      "storage",
-      "preparation"
-    ],
+    "confirmed_fields": ["description", "storage", "preparation"],
     "license_status": "not_confirmed",
     "evidence_sha256": "09dc1570c7241f1ebd3c6a634ee8fb7754190e86d5ba75b0bd93c45dd8248d53"
   },
@@ -51,11 +39,7 @@
     "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=208634&dtlCode=2&menuId=PS03599&month=07&tabCode=1",
     "accessed_at": "2026-10-08",
     "verification": "page_read",
-    "confirmed_fields": [
-      "description",
-      "storage",
-      "preparation"
-    ],
+    "confirmed_fields": ["description", "storage", "preparation"],
     "license_status": "not_confirmed",
     "evidence_sha256": "d2540633e942cbb1147e01ea136d0deabba5309a820f7ee06e890767b9e8be35"
   },
@@ -66,11 +50,7 @@
     "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=206741&dtlCode=2&menuId=PS03599&month=06&tabCode=1",
     "accessed_at": "2026-10-08",
     "verification": "page_read",
-    "confirmed_fields": [
-      "description",
-      "storage",
-      "preparation"
-    ],
+    "confirmed_fields": ["description", "storage", "preparation"],
     "license_status": "not_confirmed",
     "evidence_sha256": "4bb4c022f010b28cfcef6dfbdd7beb50287a913152f72ae20b669dbb3fa26797"
   },
@@ -81,9 +61,7 @@
     "url": "https://www.nongsaro.go.kr/portal/ps/psz/psza/contentSub.ps?cntntsNo=101924&menuId=PS03796&sSeCode=374004&totalSearchYn=Y",
     "accessed_at": "2026-10-08",
     "verification": "page_read",
-    "confirmed_fields": [
-      "storage"
-    ],
+    "confirmed_fields": ["storage"],
     "license_status": "not_confirmed",
     "evidence_sha256": "bceb2c89b20185c4950d28b365888bab2ec190803b6a7d6ef783f1e3ae3e036b"
   },
@@ -94,9 +72,7 @@
     "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/regional/Korean_food_compositon_table_vol._1_7th__2006_.pdf",
     "accessed_at": "2026-10-08",
     "verification": "pdf_table_visually_checked",
-    "confirmed_fields": [
-      "raw_edible_100g_nutrition"
-    ],
+    "confirmed_fields": ["raw_edible_100g_nutrition"],
     "license_status": "facts_only_no_pdf_redistribution",
     "evidence_sha256": "3c1be0d1501a210a13236f1044b6a7543e35ae09b1a1aa81763291b7e2a8b6df"
   },
@@ -139,12 +115,7 @@
     "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=206629&dtlCode=3&menuId=PS03599&month=05&tabCode=1",
     "accessed_at": "2026-10-08",
     "verification": "page_read",
-    "confirmed_fields": [
-      "recipe_title",
-      "ingredients",
-      "steps",
-      "servings"
-    ],
+    "confirmed_fields": ["recipe_title", "ingredients", "steps", "servings"],
     "license_status": "not_confirmed",
     "evidence_sha256": "ea4eb23d5e1c773716c1bf12803857171f3854847430531fe05ee057cc6aa2fc"
   },
@@ -251,12 +222,7 @@
     "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=208146&dtlCode=3&menuId=PS03599&month=02&tabCode=1",
     "accessed_at": "2026-10-08",
     "verification": "page_read",
-    "confirmed_fields": [
-      "recipe_title",
-      "ingredients",
-      "steps",
-      "servings"
-    ],
+    "confirmed_fields": ["recipe_title", "ingredients", "steps", "servings"],
     "license_status": "not_confirmed",
     "evidence_sha256": "7b294653a353b41e57c911708b860286a8d44abfe15ae099b1d62f3acada9599"
   },
@@ -267,12 +233,7 @@
     "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=201257&dtlCode=3&menuId=PS03599&month=06&tabCode=1",
     "accessed_at": "2026-10-08",
     "verification": "page_read",
-    "confirmed_fields": [
-      "recipe_title",
-      "ingredients",
-      "steps",
-      "servings"
-    ],
+    "confirmed_fields": ["recipe_title", "ingredients", "steps", "servings"],
     "license_status": "not_confirmed",
     "evidence_sha256": "4d024ec209120d48b9e8913cada8dc143a5fc5bccec48ff0bf8c79146a3b9701"
   },
@@ -283,12 +244,7 @@
     "url": "https://www.nongsaro.go.kr/mfood/kfi/foodMonth/view?cntntsNo=208263&dtlCode=3&menuId=PS03599&month=03&tabCode=1",
     "accessed_at": "2026-10-08",
     "verification": "page_read",
-    "confirmed_fields": [
-      "recipe_title",
-      "ingredients",
-      "steps",
-      "servings"
-    ],
+    "confirmed_fields": ["recipe_title", "ingredients", "steps", "servings"],
     "license_status": "not_confirmed",
     "evidence_sha256": "66345053556421a4c282bfb80630d3e21877feb963c551afce05c0ee43c1627c"
   },
@@ -299,12 +255,7 @@
     "url": "https://www.foodsafetykorea.go.kr/portal/cookrcp/cookrcpInfoDtl.do?rcp_seq=3287",
     "accessed_at": "2026-10-08",
     "verification": "page_read",
-    "confirmed_fields": [
-      "recipe_title",
-      "ingredients",
-      "steps",
-      "servings"
-    ],
+    "confirmed_fields": ["recipe_title", "ingredients", "steps", "servings"],
     "license_status": "not_confirmed",
     "evidence_sha256": "a1c40544ecf13bfe764e07e9222cd1e0b36af5180a773e909c93860eb92f8262"
   },

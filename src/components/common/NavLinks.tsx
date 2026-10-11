@@ -15,7 +15,7 @@ function isActive(pathname: string, href: string) {
 export function NavLinks({ links }: { links: NavLink[] }) {
   const pathname = usePathname();
   return (
-    <nav aria-label="주요 메뉴" className="hidden md:block">
+    <nav aria-label="주요 메뉴" className="hidden lg:block">
       <ul className="flex items-center gap-2">
         {links.map((link) => {
           const active = isActive(pathname, link.href);

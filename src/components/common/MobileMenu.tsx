@@ -1,13 +1,10 @@
 "use client";
 
-// 모바일 메뉴 (헤더 오른쪽 버튼 → 아래로 펼쳐지는 링크 목록)
-// 열기·닫기 버튼, Esc 로 닫기, 링크를 누르거나 페이지가 바뀌면 자동으로 닫혀요.
-// (공통 헤더·메뉴의 최종 담당은 C예요. C가 개인 메뉴를 붙일 수 있게 링크 목록만 받도록 만들었어요.)
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { CloseIcon, MenuIcon } from "./Icons";
+import { PersonalMenu } from "./PersonalMenu";
 
 export interface NavLink {
   href: string;
@@ -17,59 +14,103 @@ export interface NavLink {
 export function MobileMenu({ links }: { links: NavLink[] }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [openedAt, setOpenedAt] = useState(pathname);
   const buttonRef = useRef<HTMLButtonElement>(null);
-
-  // 다른 페이지로 이동하면 메뉴를 닫아요.
-  const isOpen = open && openedAt === pathname;
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const previousOverflow = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!isOpen) return;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-        buttonRef.current?.focus();
-      }
+    dialogRef.current?.close();
+  }, [pathname]);
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) dialogRef.current?.close();
     };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [isOpen]);
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      desktop.removeEventListener("change", closeOnDesktop);
+      if (previousOverflow.current !== null)
+        document.body.style.overflow = previousOverflow.current;
+    };
+  }, []);
+
+  function close() {
+    dialogRef.current?.close();
+  }
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         ref={buttonRef}
         type="button"
         className="inline-flex size-12 items-center justify-center rounded-full hover:bg-sand"
-        aria-expanded={isOpen}
+        aria-label="메뉴 열기"
+        aria-expanded={open}
         aria-controls="mobile-menu-panel"
         onClick={() => {
-          setOpenedAt(pathname);
-          setOpen(!isOpen);
+          dialogRef.current?.showModal();
+          previousOverflow.current = document.body.style.overflow;
+          document.body.style.overflow = "hidden";
+          setOpen(true);
         }}
       >
-        {isOpen ? (
-          <CloseIcon width={24} height={24} />
-        ) : (
-          <MenuIcon width={24} height={24} />
-        )}
-        <span className="sr-only">{isOpen ? "메뉴 닫기" : "메뉴 열기"}</span>
+        <MenuIcon width={24} height={24} />
       </button>
-
-      {isOpen && (
-        <nav
-          id="mobile-menu-panel"
-          aria-label="모바일 메뉴"
-          className="absolute inset-x-0 top-full border-b border-line bg-surface shadow-card"
-        >
-          <ul className="container-page py-2">
+      <dialog
+        ref={dialogRef}
+        id="mobile-menu-panel"
+        aria-labelledby="mobile-menu-title"
+        className="fixed inset-y-0 left-auto right-0 m-0 h-dvh max-h-none w-full max-w-sm overflow-y-auto border-0 bg-surface p-6 text-ink backdrop:bg-ink/40"
+        onClick={(event) => {
+          if (
+            event.target === event.currentTarget &&
+            event.clientX < event.currentTarget.getBoundingClientRect().left
+          )
+            close();
+        }}
+        onClose={() => {
+          setOpen(false);
+          if (previousOverflow.current !== null)
+            document.body.style.overflow = previousOverflow.current;
+          previousOverflow.current = null;
+          buttonRef.current?.focus();
+        }}
+      >
+        <div className="flex items-center justify-between gap-4">
+          <h2
+            id="mobile-menu-title"
+            className="text-xl font-extrabold text-brand-dark"
+          >
+            메뉴
+          </h2>
+          <button
+            autoFocus
+            type="button"
+            className="inline-flex size-12 items-center justify-center rounded-full hover:bg-sand"
+            aria-label="메뉴 닫기"
+            onClick={close}
+          >
+            <CloseIcon width={24} height={24} />
+          </button>
+        </div>
+        <nav aria-label="모바일 메뉴" className="mt-6">
+          <ul className="space-y-2">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  onClick={() => setOpen(false)}
-                  aria-current={pathname === link.href ? "page" : undefined}
-                  className="flex min-h-12 items-center rounded-xl px-3 font-bold hover:bg-sand aria-[current=page]:text-brand"
+                  onClick={close}
+                  aria-current={
+                    link.href === "/"
+                      ? pathname === "/"
+                        ? "page"
+                        : undefined
+                      : pathname === link.href ||
+                          pathname.startsWith(`${link.href}/`)
+                        ? "page"
+                        : undefined
+                  }
+                  className="flex min-h-12 items-center rounded-control px-3 font-bold hover:bg-sand aria-[current=page]:bg-brand-soft aria-[current=page]:text-brand"
                 >
                   {link.label}
                 </Link>
@@ -77,7 +118,10 @@ export function MobileMenu({ links }: { links: NavLink[] }) {
             ))}
           </ul>
         </nav>
-      )}
+        <div className="mt-6 border-t border-line pt-6">
+          <PersonalMenu expanded />
+        </div>
+      </dialog>
     </div>
   );
 }

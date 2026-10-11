@@ -34,7 +34,7 @@ export async function signIn(input: unknown): Promise<ActionResult> {
   redirect(safeNextPath(parsed.data.next));
 }
 
-export async function signOut(): Promise<ActionResult> {
+export async function signOut(returnToHome = true): Promise<ActionResult> {
   try {
     const supabase = await createClient();
     const { error } = await supabase.auth.signOut();
@@ -52,5 +52,6 @@ export async function signOut(): Promise<ActionResult> {
 
   revalidatePath("/", "layout");
   // 프론트에서 별도 Context를 사용한다면 로그아웃할 때 그 상태도 초기화합니다.
-  redirect("/", "replace");
+  if (returnToHome) redirect("/", "replace");
+  return { ok: true };
 }
