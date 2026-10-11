@@ -23,20 +23,18 @@ export default function ProductSection({
 
   return (
     <section className="mt-8 first:mt-0">
-      <div className="flex items-center gap-3 rounded-[20px] bg-gradient-to-b from-green-50 to-transparent px-4 py-4 sm:px-6">
+      <div className="flex items-center gap-3 rounded-card bg-gradient-to-b from-brand-soft to-transparent px-4 py-4 sm:px-6">
         <span aria-hidden className="text-3xl">
           {emoji}
         </span>
         <div className="min-w-0 flex-1">
-          <h2 className="text-lg font-bold text-stone-900 sm:text-xl">
-            {title}
-          </h2>
-          <p className="mt-0.5 text-sm text-stone-500">{description}</p>
+          <h2 className="text-lg font-bold text-ink sm:text-xl">{title}</h2>
+          <p className="mt-0.5 text-sm text-ink-muted">{description}</p>
         </div>
         {moreHref && (
           <Link
             href={moreHref}
-            className="inline-flex h-12 shrink-0 items-center rounded-full bg-white px-4 text-sm font-semibold text-stone-700 ring-1 ring-stone-200 hover:bg-stone-100"
+            className="btn btn-secondary shrink-0 px-4 text-sm"
           >
             더보기 ›
           </Link>
