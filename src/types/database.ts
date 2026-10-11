@@ -288,10 +288,13 @@ export type Database = {
       };
       recipes: {
         Row: {
-          cook_time_min: number;
+          source_url: string | null;
+          source_name: string | null;
+          vegetables: Json;
+          cook_time_min: number | null;
           created_at: string;
           description: string;
-          difficulty: string;
+          difficulty: string | null;
           id: string;
           image_path: string | null;
           ingredients: Json;
@@ -300,10 +303,13 @@ export type Database = {
           steps: Json;
         };
         Insert: {
-          cook_time_min: number;
+          source_url?: string | null;
+          source_name?: string | null;
+          vegetables?: Json;
+          cook_time_min?: number | null;
           created_at?: string;
           description: string;
-          difficulty: string;
+          difficulty?: string | null;
           id: string;
           image_path?: string | null;
           ingredients?: Json;
@@ -312,10 +318,13 @@ export type Database = {
           steps?: Json;
         };
         Update: {
-          cook_time_min?: number;
+          source_url?: string | null;
+          source_name?: string | null;
+          vegetables?: Json;
+          cook_time_min?: number | null;
           created_at?: string;
           description?: string;
-          difficulty?: string;
+          difficulty?: string | null;
           id?: string;
           image_path?: string | null;
           ingredients?: Json;
