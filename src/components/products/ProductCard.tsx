@@ -55,8 +55,9 @@ export default function ProductCard({
           )}
         </p>
         <p className="mt-1 flex items-center gap-1 text-xs text-ink-muted">
+          {/* 별점은 줄바꿈 없이 한 덩어리, 농가 이름만 길면 … 으로 잘라요 */}
           {product.rating !== undefined && (
-            <>
+            <span className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap">
               <span aria-hidden className="text-amber-500">
                 ★
               </span>
@@ -65,11 +66,11 @@ export default function ProductCard({
                 {product.rating.toFixed(1)}
               </span>
               <span>({product.reviewCount})</span>
-            </>
+            </span>
           )}
           {/* 홍보 문구가 없으면 위에 농가 이름이 이미 보여서 생략 */}
           {product.tagline && (
-            <span className="truncate">
+            <span className="min-w-0 truncate">
               {product.rating !== undefined && "· "}
               {product.farmName}
             </span>

@@ -21,6 +21,7 @@ export function catalogHref(
   if (next.reason) query.set("reason", next.reason);
   if (next.sort && next.sort !== "newest") query.set("sort", next.sort);
   if (next.collection) query.set("collection", next.collection);
+  if (next.q) query.set("q", next.q);
   const text = query.toString();
   return text ? `/products?${text}` : "/products";
 }
@@ -40,6 +41,7 @@ export const COLLECTIONS: Record<
   CollectionKey,
   {
     emoji: string;
+    short: string; // 상단 코너 버튼에 쓰는 짧은 이름
     title: string;
     description: string;
     match: (p: Product) => boolean;
@@ -47,24 +49,28 @@ export const COLLECTIONS: Record<
 > = {
   seasonal: {
     emoji: "🍂",
+    short: "제철",
     title: "지금이 제철이에요",
     description: "가장 맛있을 때 밭에서 바로 왔어요.",
     match: (p) => p.isSeasonal,
   },
   bigsale: {
     emoji: "💸",
+    short: "특가",
     title: "40% 넘게 아껴요",
     description: "모양만 다르고 맛은 같은데, 가격은 훨씬 가벼워요.",
     match: (p) => getDiscountRate(p.price, p.originalPrice) >= 40,
   },
   bulk: {
     emoji: "🧺",
+    short: "대용량",
     title: "넉넉하게 담았어요",
     description: "자주 요리하는 집을 위한 3kg 이상 실속 상품이에요.",
     match: (p) => weightKg(p.unit) >= 3,
   },
   single: {
     emoji: "🙋",
+    short: "1인 가구",
     title: "혼자 먹기 딱 좋아요",
     description: "작아서 한 번에 다 쓰기 좋은 1인 가구용이에요.",
     match: (p) => p.uglyReason === "small" && weightKg(p.unit) < 3,

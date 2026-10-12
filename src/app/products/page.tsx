@@ -1,7 +1,9 @@
 import Link from "next/link";
+import CollectionNav from "@/components/products/CollectionNav";
 import MockDataNotice from "@/components/products/MockDataNotice";
 import ProductCard from "@/components/products/ProductCard";
 import ProductFilters from "@/components/products/ProductFilters";
+import ProductSearch from "@/components/products/ProductSearch";
 import ProductSection from "@/components/products/ProductSection";
 import { COLLECTIONS, type CollectionKey } from "@/lib/catalog";
 import { getDiscountRate } from "@/lib/format";
@@ -47,6 +49,7 @@ export default async function ProductsPage({
     !filters.category &&
     !filters.reason &&
     !filters.collection &&
+    !filters.q &&
     filters.sort === "newest";
   // 앞 코너에 나온 상품은 다음 코너에서 빼서 겹치지 않게 해요.
   const shown = new Set<string>();
@@ -69,29 +72,27 @@ export default async function ProductsPage({
 
   return (
     <div className="container-page py-6">
-      {collection ? (
-        <>
-          <Link
-            href="/products"
-            className="inline-flex h-12 items-center text-sm text-ink-muted hover:text-ink"
-          >
-            ← 전체 상품
-          </Link>
-          <h1 className="text-2xl font-bold text-ink">
+      <h1 className="sr-only">{collection ? collection.title : "상품 목록"}</h1>
+      <ProductSearch q={filters.q} />
+      <div className="mt-4">
+        <CollectionNav active={filters.collection} />
+      </div>
+
+      {filters.q && (
+        <p className="mt-6 text-xl font-bold text-ink">
+          ‘{filters.q}’ 검색 결과
+        </p>
+      )}
+
+      {collection && (
+        <div className="mt-6">
+          <p className="text-xl font-bold text-ink" aria-hidden>
             {collection.emoji} {collection.title}
-          </h1>
+          </p>
           <p className="mt-1 text-sm text-ink-muted">
             {collection.description}
           </p>
-        </>
-      ) : (
-        <>
-          {/* 첫 화면에 상품이 보이도록 소개는 한 줄만 */}
-          <h1 className="text-2xl font-bold text-ink">못난이 상품</h1>
-          <p className="mt-1 text-sm text-ink-muted">
-            모양만 조금 다를 뿐, 맛은 그대로예요.
-          </p>
-        </>
+        </div>
       )}
 
       {sections.length > 0 && (
@@ -132,9 +133,15 @@ export default async function ProductsPage({
         </div>
       ) : (
         <div className="rounded-card bg-surface p-10 text-center ring-1 ring-line">
-          <p className="font-bold text-ink">조건에 맞는 상품이 없어요.</p>
+          <p className="font-bold text-ink">
+            {filters.q
+              ? `‘${filters.q}’에 맞는 상품이 없어요.`
+              : "조건에 맞는 상품이 없어요."}
+          </p>
           <p className="mt-1 text-sm text-ink-muted">
-            다른 조건을 골라 보세요.
+            {filters.q
+              ? "채소 이름(예: 감자)으로 찾아보세요."
+              : "다른 조건을 골라 보세요."}
           </p>
           <Link href="/products" className="mt-4 btn btn-primary">
             조건 초기화
