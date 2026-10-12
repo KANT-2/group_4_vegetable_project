@@ -1,0 +1,76 @@
+import Link from "next/link";
+import { Suspense } from "react";
+import { redirect } from "next/navigation";
+import type { Metadata } from "next";
+import { getCurrentUser } from "@/lib/auth";
+import { loginNext } from "@/lib/auth-urls";
+import { getGoogleLoginStatus } from "@/services/auth-settings";
+import { GoogleLoginButton } from "@/components/account/GoogleLoginButton";
+
+export const metadata: Metadata = { title: "로그인" };
+type SearchParams = Promise<{
+  next?: string | string[];
+  error?: string | string[];
+}>;
+
+async function LoginContent({ searchParams }: { searchParams: SearchParams }) {
+  const params = await searchParams;
+  const next = loginNext(
+    typeof params.next === "string" ? params.next : undefined,
+  );
+  const user = await getCurrentUser();
+  if (user && !params.error) redirect(next);
+  const status = await getGoogleLoginStatus();
+  return (
+    <>
+      {params.error && (
+        <p
+          className="mb-6 rounded-control bg-danger-soft p-4 text-danger"
+          role="alert"
+        >
+          로그인을 완료하지 못했어요. 취소했거나 연결이 만료되었을 수 있어요.
+          다시 시도해 주세요.
+        </p>
+      )}
+      <GoogleLoginButton
+        next={next}
+        ready={status.ready}
+        message={status.message}
+      />
+    </>
+  );
+}
+
+export default function LoginPage({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  return (
+    <section className="container-page section">
+      <div className="card mx-auto max-w-md p-6 sm:p-8">
+        <p className="mb-3 font-bold text-brand">못난이마켓</p>
+        <h1 className="page-title">반가워요!</h1>
+        <p className="mb-8 mt-3 text-ink-muted">
+          Google 계정으로 로그인하고
+          <br />
+          나만의 장바구니와 찜을 이어가세요.
+        </p>
+        <Suspense
+          fallback={<p aria-live="polite">로그인 연결을 확인하고 있어요.</p>}
+        >
+          <LoginContent searchParams={searchParams} />
+        </Suspense>
+        <p className="mt-6 text-sm text-ink-muted">
+          처음 이용하는 경우 Google 인증 후 계정이 생성돼요.
+        </p>
+        <Link
+          href="/"
+          className="mt-6 inline-flex min-h-12 items-center font-bold text-brand"
+        >
+          로그인 없이 둘러보기 →
+        </Link>
+      </div>
+    </section>
+  );
+}

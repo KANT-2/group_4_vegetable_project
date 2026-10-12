@@ -6,6 +6,43 @@ import { createClient } from "@/lib/supabase/server";
 import { signInSchema } from "@/schemas/auth";
 import { safeNextPath } from "@/lib/redirect";
 import type { ActionResult } from "@/types/action";
+import { googleCallbackUrl } from "@/lib/auth-urls";
+import { requireSupabaseConfig } from "@/lib/supabase/config";
+import { getGoogleLoginStatus } from "@/services/auth-settings";
+
+export async function signInWithGoogle(next: string): Promise<ActionResult> {
+  let authorizeUrl: string;
+  try {
+    const status = await getGoogleLoginStatus();
+    if (!status.ready) return { ok: false, error: status.message };
+    const supabase = await createClient();
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: googleCallbackUrl(
+          process.env.NEXT_PUBLIC_SITE_URL,
+          typeof next === "string" ? next : undefined,
+        ),
+        scopes: "openid email profile",
+        queryParams: { prompt: "select_account" },
+      },
+    });
+    if (error || !data.url) throw new Error("oauth unavailable");
+    const url = new URL(data.url);
+    if (
+      url.origin !== new URL(requireSupabaseConfig().url).origin ||
+      url.pathname !== "/auth/v1/authorize"
+    )
+      throw new Error("unexpected oauth destination");
+    authorizeUrl = url.toString();
+  } catch {
+    return {
+      ok: false,
+      error: "Google 로그인에 연결하지 못했어요. 다시 시도해 주세요.",
+    };
+  }
+  redirect(authorizeUrl);
+}
 
 export async function signIn(input: unknown): Promise<ActionResult> {
   const parsed = signInSchema.safeParse(input);
