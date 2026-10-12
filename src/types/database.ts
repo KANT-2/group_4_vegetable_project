@@ -244,6 +244,38 @@ export type Database = {
           },
         ];
       };
+      refund_requests: {
+        Row: {
+          order_id: string;
+          reason: string;
+          status: string;
+          created_at: string;
+          reviewed_at: string | null;
+        };
+        Insert: {
+          order_id: string;
+          reason: string;
+          status?: string;
+          created_at?: string;
+          reviewed_at?: string | null;
+        };
+        Update: {
+          order_id?: string;
+          reason?: string;
+          status?: string;
+          created_at?: string;
+          reviewed_at?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "refund_requests_order_id_fkey";
+            columns: ["order_id"];
+            isOneToOne: true;
+            referencedRelation: "orders";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       profiles: {
         Row: {
           recipient_name: string | null;
