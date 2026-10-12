@@ -970,3 +970,8 @@ python scripts/food_catalog.py validate
 `feat/integration-a-b`에 공식 레시피 16개와 B 상품 67개/채소 화면을 통합했습니다. 레시피 → 상품 → 채소 → 레시피 이동, 공통 디자인, 모바일 메뉴 및 시연 데이터 모드를 검증했습니다. 테스트 15개·lint·typecheck·build가 통과했습니다.
 
 실행: `npm ci`, `npm run dev`. 상세 진행 결과와 실제 DB·C 화면·배포의 남은 작업은 [A 작업 현황](docs/progress-A-20261011.md)을 확인하세요. main 병합과 실제 Supabase 적용은 아직 완료하지 않았습니다.
+
+
+### A 로컬 작업 위치 (2026-10-12)
+
+앞으로 `C:/dev/group_6_vegetable_project`, `feat/a-work`에서 작업합니다. 기존 미커밋 작업은 로컬 stash/백업 태그로 보존했고 최신 main과 A/B 통합 변경을 합쳤습니다. 원래 폴더에서 테스트 19개·lint·typecheck·build 통과. [복구·실행 안내](docs/local-workspace.md)를 확인하세요.
