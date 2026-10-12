@@ -4,6 +4,9 @@ import type { Product, ProductSort } from "@/types/product";
 
 // 정렬 버튼에 보여 줄 이름
 export const SORT_LABELS: Record<ProductSort, string> = {
+  recommended: "추천순",
+  seasonal: "제철순",
+  reviews: "리뷰순(시연)",
   newest: "기본순",
   price_asc: "낮은 가격순",
   price_desc: "높은 가격순",
@@ -19,7 +22,7 @@ export function catalogHref(
   const query = new URLSearchParams();
   if (next.category) query.set("category", next.category);
   if (next.reason) query.set("reason", next.reason);
-  if (next.sort && next.sort !== "newest") query.set("sort", next.sort);
+  if (next.sort && next.sort !== "recommended") query.set("sort", next.sort);
   if (next.collection) query.set("collection", next.collection);
   const text = query.toString();
   return text ? `/products?${text}` : "/products";

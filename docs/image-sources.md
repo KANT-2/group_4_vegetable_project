@@ -81,3 +81,7 @@
 | `king-oyster-scratched-1kg.jpg`  | 갓 상처 새송이버섯 1kg                 | [Anastasiya Badun](https://unsplash.com/@badun) (부분 확대)                                                                       | [사진](https://unsplash.com/photos/4neQmf4qvxc) |
 
 > aT 식재료 아카이브 사진: 본 저작물은 한국농수산식품유통공사가 공공누리 제1유형으로 개방한 저작물을 이용했으며, 공공누리(kogl.or.kr)에서 무료로 내려받을 수 있습니다. 정사각형으로 잘라 사용했습니다.
+
+## 레시피 참고 사진 추가 (2026-10-12)
+
+상품 사진과 별도로 공식 레시피 16개에 참고 사진 10개를 연결했습니다. [작가·출처·라이선스](recipe-photo-sources.md)를 확인하세요. 실제 레시피의 완성 사진이 아님을 화면에 표시합니다.

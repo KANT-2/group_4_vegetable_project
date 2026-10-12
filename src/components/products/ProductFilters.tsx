@@ -65,7 +65,7 @@ export default function ProductFilters({
   const reasons = Object.entries(UGLY_REASON_LABELS) as [UglyReason, string][];
   const sorts = Object.entries(SORT_LABELS) as [ProductSort, string][];
   const hasFilter = Boolean(
-    filters.category || filters.reason || filters.sort !== "newest",
+    filters.category || filters.reason || filters.sort !== "recommended",
   );
 
   return (

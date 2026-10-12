@@ -1,0 +1,112 @@
+{
+  "soup": {
+    "title": "File:Korea-Sokcho-Gamja ongsimi-Potato dumpling soup-02.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/a/af/Korea-Sokcho-Gamja_ongsimi-Potato_dumpling_soup-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:Korea-Sokcho-Gamja_ongsimi-Potato_dumpling_soup-02.jpg",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "by Junho Jung at Flickr from South Korea",
+    "imageUrl": "/images/recipes/soup.jpg",
+    "usage": "similar-dish-reference",
+    "transform": "display crop; Wikimedia-supplied thumbnail where available"
+  },
+  "pancake": {
+    "title": "File:Korean pancake-Jeon-01.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Korean_pancake-Jeon-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:Korean_pancake-Jeon-01.jpg",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "author": "by karendotcom127",
+    "imageUrl": "/images/recipes/pancake.jpg",
+    "usage": "similar-dish-reference",
+    "transform": "display crop; Wikimedia-supplied thumbnail where available"
+  },
+  "salad": {
+    "title": "File:Tomato, Pesto & Bocconcini Salad - Fatto a Mano.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Tomato%2C_Pesto_%26_Bocconcini_Salad_-_Fatto_a_Mano.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:Tomato,_Pesto_%26_Bocconcini_Salad_-_Fatto_a_Mano.jpg",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "author": "Andy Li",
+    "imageUrl": "/images/recipes/salad.jpg",
+    "usage": "similar-dish-reference",
+    "transform": "display crop; Wikimedia-supplied thumbnail where available"
+  },
+  "dumplings": {
+    "title": "File:Korean mandu dumplings.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/6/63/Korean_mandu_dumplings.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:Korean_mandu_dumplings.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Piotrus",
+    "imageUrl": "/images/recipes/dumplings.jpg",
+    "usage": "similar-dish-reference",
+    "transform": "display crop; Wikimedia-supplied thumbnail where available"
+  },
+  "pasta": {
+    "title": "File:Spaghetti dish, Wine, Rostov-on-Don, Russia.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Spaghetti_dish%2C_Wine%2C_Rostov-on-Don%2C_Russia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:Spaghetti_dish,_Wine,_Rostov-on-Don,_Russia.jpg",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "author": "Vyacheslav Argenberg",
+    "imageUrl": "/images/recipes/pasta.jpg",
+    "usage": "similar-dish-reference",
+    "transform": "display crop; Wikimedia-supplied thumbnail where available"
+  },
+  "gratin": {
+    "title": "File:A gratin d auphinois on april 2025.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/A_gratin_d_auphinois_on_april_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:A_gratin_d_auphinois_on_april_2025.jpg",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "author": "GinoOnassis",
+    "imageUrl": "/images/recipes/gratin.jpg",
+    "usage": "similar-dish-reference",
+    "transform": "display crop; Wikimedia-supplied thumbnail where available"
+  },
+  "water-kimchi": {
+    "title": "File:KOCIS Dongchimi (4814810848).jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/51/KOCIS_Dongchimi_%284814810848%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:KOCIS_Dongchimi_(4814810848).jpg",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "author": "Korea.net / Korean Culture and Information Service",
+    "imageUrl": "/images/recipes/water-kimchi.jpg",
+    "usage": "similar-dish-reference",
+    "transform": "display crop; Wikimedia-supplied thumbnail where available"
+  },
+  "tacos": {
+    "title": "File:Fish tacos with lemonade.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/36/Fish_tacos_with_lemonade.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:Fish_tacos_with_lemonade.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "FranHogan",
+    "imageUrl": "/images/recipes/tacos.jpg",
+    "usage": "similar-dish-reference",
+    "transform": "display crop; Wikimedia-supplied thumbnail where available"
+  },
+  "stew": {
+    "title": "File:Vegetables soup.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Vegetables_soup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:Vegetables_soup.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Zahraswaty",
+    "imageUrl": "/images/recipes/stew.jpg",
+    "usage": "similar-dish-reference",
+    "transform": "display crop; Wikimedia-supplied thumbnail where available"
+  },
+  "japchae": {
+    "title": "File:Japchae.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Japchae.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:Japchae.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "최광모",
+    "imageUrl": "/images/recipes/japchae.jpg",
+    "usage": "similar-dish-reference",
+    "transform": "display crop; Wikimedia-supplied thumbnail where available"
+  }
+}

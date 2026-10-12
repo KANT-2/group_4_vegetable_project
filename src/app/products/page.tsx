@@ -1,5 +1,11 @@
 import Link from "next/link";
 import MockDataNotice from "@/components/products/MockDataNotice";
+import { ProductSpotlight } from "@/components/common/ProductSpotlight";
+import {
+  selectSeasonalFruit,
+  RECOMMENDATION_RULE,
+  rankProducts,
+} from "@/lib/product-ranking";
 import ProductCard from "@/components/products/ProductCard";
 import ProductFilters from "@/components/products/ProductFilters";
 import ProductSection from "@/components/products/ProductSection";
@@ -47,13 +53,13 @@ export default async function ProductsPage({
     !filters.category &&
     !filters.reason &&
     !filters.collection &&
-    filters.sort === "newest";
+    filters.sort === "recommended";
   // 앞 코너에 나온 상품은 다음 코너에서 빼서 겹치지 않게 해요.
   const shown = new Set<string>();
   const sections = showSections
     ? (Object.keys(COLLECTIONS) as CollectionKey[]).map((key) => {
-        let list = all.filter(
-          (p) => COLLECTIONS[key].match(p) && !shown.has(p.id),
+        let list = rankProducts(
+          all.filter((p) => COLLECTIONS[key].match(p) && !shown.has(p.id)),
         );
         if (key === "bigsale")
           list = [...list].sort(
@@ -68,7 +74,12 @@ export default async function ProductsPage({
     : [];
 
   return (
-    <div className="container-page py-6">
+    <div className="container-page py-4">
+      {showSections && (
+        <div className="mb-6">
+          <ProductSpotlight products={selectSeasonalFruit(all)} />
+        </div>
+      )}
       {collection ? (
         <>
           <Link
@@ -119,6 +130,15 @@ export default async function ProductsPage({
         상품 {products.length}개
       </p>
 
+      {filters.sort === "recommended" && (
+        <p className="mb-4 text-sm text-ink-muted">{RECOMMENDATION_RULE}</p>
+      )}
+      {filters.sort === "reviews" && (
+        <p className="mb-4 text-sm text-ink-muted">
+          리뷰 수가 많은 순서예요. 현재 별점·리뷰 수는 시연용 예시이며 실제 구매
+          인기 순위는 아니에요.
+        </p>
+      )}
       {products.length > 0 ? (
         // 모바일 2열 → 데스크톱(lg) 4열
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-6">

@@ -1,3 +1,4 @@
+import { RecipePhotoCredits } from "@/components/recipes/RecipePhotoCredits";
 // 레시피 목록 /recipes (A 담당)
 // 검색(q)과 채소 필터(vegetable)는 주소의 검색 매개변수로 유지돼요.
 // 예: /recipes?q=샐러드&vegetable=carrot
@@ -97,6 +98,7 @@ async function RecipeResults({
           </Link>
         </div>
       )}
+      <RecipePhotoCredits recipes={recipes} />
     </>
   );
 }
