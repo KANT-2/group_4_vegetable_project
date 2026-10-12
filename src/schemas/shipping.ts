@@ -33,3 +33,11 @@ export const shippingSchema = z
   .strict();
 
 export type ShippingAddress = z.infer<typeof shippingSchema>;
+
+export const checkoutShippingSchema = shippingSchema.extend({
+  address_detail: z
+    .string()
+    .trim()
+    .min(1, "상세주소를 입력해 주세요.")
+    .max(100, "상세주소는 100자 이하여야 합니다."),
+});

@@ -64,6 +64,9 @@ Supabase Dashboard의 프로젝트 → SQL Editor에서 아래 순서로 파일 
 7. `supabase/migrations/202610120001_profile_shipping.sql`
 8. `supabase/migrations/202610120002_refund_requests.sql`
 9. `supabase/migrations/202610120003_mock_checkout.sql`
+10. `supabase/migrations/202610120004_order_payment_method.sql`
+11. `supabase/migrations/202610120005_required_checkout_address_detail.sql`
+12. `supabase/migrations/202610120006_order_shipping_fee.sql`
 
 **2026-10-12 모의 결제 공용 DB 적용 완료:** `mock_checkout` RPC에서 본인 장바구니의 DB 가격으로 주문·상품 스냅샷을 저장합니다. 성공 시 주문 상품을 장바구니에서 정리하며 실패 시 유지합니다. 일반 사용자의 orders/order_items 직접 쓰기 권한은 그대로 차단합니다. SQL Editor 실행 성공 후 authenticated EXECUTE=true, anon EXECUTE=false, authenticated orders INSERT=false를 확인했습니다. SQL Editor 적용이므로 CLI migration 이력에는 자동 등록되지 않습니다. [사용법·검증](mock-payment.md).
 
@@ -105,3 +108,9 @@ npm test
 `tests/database.test.mjs`는 PGlite PostgreSQL 엔진에 Supabase의 최소 Auth·Storage 테이블·역할·auth.uid() 테스트 대역을 구성하고 실제 migration 세 개를 실행합니다. 9개 테이블의 RLS 활성화, 공개·판매 종료 상품 조회, 두 사용자 간 개인 데이터 분리·변경 차단, 가격·수량·상태·외래 키·유일성 제약과 Storage 일반 사용자 쓰기 차단을 검사합니다. 실제 Supabase 프로젝트에 데이터를 보내지 않습니다.
 
 실제 Auth JWT 검증과 PostgREST 연동은 대역 테스트의 범위에 포함되지 않으므로 공유 DB 적용 후 테스트 계정 2개로 다시 확인합니다. [PostgreSQL RLS 공식 문서](https://www.postgresql.org/docs/current/ddl-rowsecurity.html), [PGlite 공식 문서](https://pglite.dev/docs/)를 참고했습니다.
+
+**2026-10-12 결제 수단 적용 완료:** `202610120004_order_payment_method.sql`로 orders.payment_method와 기존 mock_checkout 저장 로직을 추가했습니다. 기존 주문은 NULL 유지, 선택값은 card / bank_transfer / easy_pay로 CHECK 검증합니다. 함수 서명·기존 실행 권한·orders 직접 쓰기 차단은 유지합니다. 실제 계좌이체 선택 주문 저장 및 새로고침 유지 확인.
+
+**2026-10-12 결제 상세주소 필수 적용 완료:** `202610120005_required_checkout_address_detail.sql`로 기존 mock_checkout 함수의 새 주문 검증을 강화했습니다. 상세주소를 공백 제거 후 1~100자로 제한합니다. 기존 주문·프로필 데이터와 함수 실행 권한은 유지합니다. 결제 화면에서 빈 상세주소 제출 시 안내가 뜨고 주문이 저장되지 않는 것을 확인했습니다.
+
+**2026-10-12 배송비 정책 공용 DB 적용 완료:** `202610120006_order_shipping_fee.sql` 적용 후 상품 13,800원 + 배송비 3,500원 = 총 17,300원 주문 저장을 실제 화면에서 확인했습니다. 20,700원 장바구니는 무료배송 표시를 확인했습니다. DB와 화면 경계값 19,999/20,000/20,001원 테스트 통과. 기존 주문 총액은 수정하지 않았습니다.

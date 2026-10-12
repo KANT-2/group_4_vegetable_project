@@ -531,7 +531,7 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
         recipient_phone: "01012345678",
         postal_code: "01234",
         address: "테스트 가상 주소",
-        address_detail: "",
+        address_detail: "테스트 상세주소",
       };
       const items = [
         { product_id: "test-carrot", quantity: 2, unit_price: 1500 },
@@ -559,12 +559,39 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
       await assert.rejects(
         call(key, items, false, { ...shipping, postal_code: "ABCDE" }),
       );
-      const failed = (await call(key)).rows[0].id;
+      await assert.rejects(
+        call(key, items, false, { ...shipping, payment_method: "cash" }),
+      );
+      await assert.rejects(
+        call(key, items, true, { ...shipping, address_detail: "  " }),
+      );
+      const failed = (
+        await call(key, items, false, {
+          ...shipping,
+          payment_method: "bank_transfer",
+        })
+      ).rows[0].id;
+      assert.equal(
+        (
+          await db.query("select payment_method from orders where id=$1", [
+            failed,
+          ])
+        ).rows[0].payment_method,
+        "bank_transfer",
+      );
       assert.equal((await call(key, items, true)).rows[0].id, failed);
       assert.equal(
         (
+          await db.query("select payment_method from orders where id=$1", [
+            failed,
+          ])
+        ).rows[0].payment_method,
+        "bank_transfer",
+      );
+      assert.equal(
+        (
           await db.query(
-            "select status,total_amount,paid_at from orders where id=$1",
+            "select status,total_amount,paid_at,shipping_fee from orders where id=$1",
             [failed],
           )
         ).rows[0].status,
@@ -574,16 +601,30 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
         (await db.query("select quantity from cart_items")).rows[0].quantity,
         2,
       );
-      const paid = (await call(successKey, items, true)).rows[0].id;
+      const paid = (
+        await call(successKey, items, true, {
+          ...shipping,
+          payment_method: "easy_pay",
+        })
+      ).rows[0].id;
+      assert.equal(
+        (
+          await db.query("select payment_method from orders where id=$1", [
+            paid,
+          ])
+        ).rows[0].payment_method,
+        "easy_pay",
+      );
       assert.equal((await call(successKey, items, true)).rows[0].id, paid);
       const saved = (
         await db.query(
-          "select status,total_amount,paid_at from orders where id=$1",
+          "select status,total_amount,paid_at,shipping_fee from orders where id=$1",
           [paid],
         )
       ).rows[0];
       assert.equal(saved.status, "paid");
-      assert.equal(Number(saved.total_amount), 3000);
+      assert.equal(Number(saved.total_amount), 6500);
+      assert.equal(saved.shipping_fee, 3500);
       assert.ok(saved.paid_at);
       assert.equal((await db.query("select * from cart_items")).rows.length, 0);
       assert.equal(
@@ -612,6 +653,74 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
         paid,
         other,
       ]);
+    },
+  );
+
+  await t.test(
+    "DB가 20,000원 배송비 경계를 계산하고 기존 주문 금액은 유지한다",
+    async () => {
+      const shipping = {
+        recipient_name: "테스트회원",
+        recipient_phone: "01000000000",
+        postal_code: "00000",
+        address: "테스트 가상 주소",
+        address_detail: "상세주소",
+        payment_method: "card",
+        shipping_fee: 0,
+      };
+      await db.exec("reset role");
+      assert.equal(
+        (
+          await db.query(
+            "select shipping_fee,total_amount from orders where id=$1",
+            [order1],
+          )
+        ).rows[0].shipping_fee,
+        0,
+      );
+      await asRole("authenticated", user1);
+      await db.query(
+        "insert into cart_items(product_id,quantity) values ('test-carrot',1)",
+      );
+      const created = [];
+      for (const [price, fee, suffix] of [
+        [19999, 3500, "93"],
+        [20000, 0, "94"],
+        [20001, 0, "95"],
+      ]) {
+        await db.exec("reset role");
+        await db.query(
+          "update products set price=$1,original_price=30000 where id='test-carrot'",
+          [price],
+        );
+        await asRole("authenticated", user1);
+        const key = `00000000-0000-4000-8000-0000000000${suffix}`;
+        const { rows } = await db.query(
+          "select mock_checkout($1,$2::jsonb,$3::jsonb,false) as id",
+          [
+            key,
+            JSON.stringify(shipping),
+            JSON.stringify([
+              { product_id: "test-carrot", quantity: 1, unit_price: price },
+            ]),
+          ],
+        );
+        created.push(rows[0].id);
+        const order = (
+          await db.query(
+            "select total_amount,shipping_fee from orders where id=$1",
+            [rows[0].id],
+          )
+        ).rows[0];
+        assert.equal(Number(order.total_amount), price + fee);
+        assert.equal(order.shipping_fee, fee);
+      }
+      await db.query("delete from cart_items where user_id=$1", [user1]);
+      await db.exec("reset role");
+      await db.query("delete from orders where id=any($1::uuid[])", [created]);
+      await db.query(
+        "update products set price=1500,original_price=2000 where id='test-carrot'",
+      );
     },
   );
 

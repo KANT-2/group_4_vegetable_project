@@ -6,15 +6,19 @@ import { useRouter } from "next/navigation";
 import { mockCheckout } from "@/actions/checkout";
 import { type CartLine, summarizeCart } from "@/lib/cart";
 import { formatPrice } from "@/lib/format";
-import { shippingSchema, type ShippingAddress } from "@/schemas/shipping";
+import {
+  checkoutShippingSchema,
+  type ShippingAddress,
+} from "@/schemas/shipping";
 import { useNavigation } from "@/components/common/NavigationProvider";
+import { paymentMethods, type PaymentMethod } from "@/lib/payment";
 
 const fields = [
   ["recipient_name", "받는 분", "shipping name", 40],
   ["recipient_phone", "연락처", "shipping tel", 20],
   ["postal_code", "우편번호", "shipping postal-code", 5],
   ["address", "기본 주소", "shipping address-line1", 200],
-  ["address_detail", "상세주소 (선택)", "shipping address-line2", 100],
+  ["address_detail", "상세주소", "shipping address-line2", 100],
 ] as const;
 
 export function CheckoutForm({
@@ -27,12 +31,13 @@ export function CheckoutForm({
   initialAddress: ShippingAddress;
 }) {
   const [address, setAddress] = useState(initialAddress);
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("card");
   const [error, setError] = useState("");
   const [pending, startTransition] = useTransition();
   const [request, setRequest] = useState<{
     key: string;
-    success: boolean;
     shipping: ShippingAddress;
+    paymentMethod: PaymentMethod;
   } | null>(null);
   const busy = useRef(false);
   const router = useRouter();
@@ -40,9 +45,9 @@ export function CheckoutForm({
   const summary = summarizeCart(lines);
   const canOrder = lines.length > 0 && summary.unavailable === 0;
 
-  function submit(success: boolean) {
+  function submit() {
     if (busy.current || !canOrder) return;
-    const parsed = shippingSchema.safeParse(address);
+    const parsed = checkoutShippingSchema.safeParse(address);
     if (!parsed.success) {
       setError(parsed.error.issues[0].message);
       return;
@@ -50,8 +55,8 @@ export function CheckoutForm({
     // 응답이 유실돼도 같은 내용과 키로 재전송해 중복 주문을 방지합니다.
     const attempt = request ?? {
       key: crypto.randomUUID(),
-      success,
       shipping: parsed.data,
+      paymentMethod,
     };
     setRequest(attempt);
     busy.current = true;
@@ -62,7 +67,8 @@ export function CheckoutForm({
           userId,
           requestKey: attempt.key,
           shipping: attempt.shipping,
-          success: attempt.success,
+          paymentMethod: attempt.paymentMethod,
+          success: true,
           items: lines.map((l) => ({
             product_id: l.productId,
             quantity: l.quantity,
@@ -100,9 +106,18 @@ export function CheckoutForm({
             </li>
           ))}
         </ul>
-        <p className="mt-4">배송비 0원 (모의 주문)</p>
+        <p className="mt-4">상품 금액 {formatPrice(summary.total)}</p>
+        <p className="mt-2">배송비 {formatPrice(summary.shippingFee)}</p>
+        <p className="mt-2 text-sm text-ink-muted">
+          상품 금액 20,000원 이상 무료배송 · 미만은 3,500원
+        </p>
+        {summary.shippingFee > 0 && (
+          <p className="mt-2 text-sm font-semibold text-brand">
+            {formatPrice(20_000 - summary.total)} 더 담으면 무료배송이에요.
+          </p>
+        )}
         <p className="mt-3 text-xl font-bold">
-          합계 {formatPrice(summary.total)}
+          총 결제금액 {formatPrice(summary.orderTotal)}
         </p>
         {!canOrder && (
           <p role="alert" className="field-error">
@@ -120,7 +135,7 @@ export function CheckoutForm({
         aria-busy={pending}
         onSubmit={(e) => {
           e.preventDefault();
-          submit(true);
+          submit();
         }}
       >
         <h2 className="text-xl font-bold">배송지</h2>
@@ -149,7 +164,7 @@ export function CheckoutForm({
                       ? "tel"
                       : "text"
                 }
-                required={name !== "address_detail"}
+                required
                 disabled={pending || !!request}
                 onChange={(e) =>
                   setAddress({ ...address, [name]: e.target.value })
@@ -158,10 +173,30 @@ export function CheckoutForm({
             </div>
           ))}
         </div>
-        <p className="mt-6 text-sm text-ink-muted">
-          실제 결제나 배송은 진행되지 않아요. 성공·실패를 선택해 동작을 확인할
-          수 있어요.
-        </p>
+        <fieldset
+          className="mt-6 border-t border-line pt-5"
+          disabled={pending || !!request}
+        >
+          <legend className="text-xl font-bold">결제 수단</legend>
+          <div className="mt-3 grid gap-3">
+            {Object.entries(paymentMethods).map(([value, label]) => (
+              <label
+                key={value}
+                className={`flex cursor-pointer items-center gap-3 rounded-control border p-4 ${paymentMethod === value ? "border-brand bg-sand" : "border-line"}`}
+              >
+                <input
+                  type="radio"
+                  name="payment_method"
+                  value={value}
+                  checked={paymentMethod === value}
+                  onChange={() => setPaymentMethod(value as PaymentMethod)}
+                  className="size-4 accent-brand"
+                />
+                <span className="font-semibold">{label}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
         {error && (
           <p role="alert" className="field-error">
             {error}
@@ -170,18 +205,10 @@ export function CheckoutForm({
         <div className="mt-4 flex flex-wrap gap-3">
           <button
             className="btn btn-primary"
-            disabled={pending || !canOrder || request?.success === false}
+            disabled={pending || !canOrder}
             type="submit"
           >
-            {pending ? "처리 중…" : "모의 결제 성공"}
-          </button>
-          <button
-            className="btn btn-secondary"
-            disabled={pending || !canOrder || request?.success === true}
-            type="button"
-            onClick={() => submit(false)}
-          >
-            모의 결제 실패
+            {pending ? "처리 중…" : "주문하기"}
           </button>
         </div>
         {request && error && (

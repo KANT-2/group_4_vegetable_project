@@ -178,13 +178,17 @@ export function CartList({ initialLines }: { initialLines: CartLine[] }) {
           <p className="text-sm text-ink-muted">
             {summary.kinds}종 {summary.quantity}개
             <span className="block text-lg font-bold text-ink tabular-nums">
-              {formatPrice(summary.total)}
+              {formatPrice(summary.orderTotal)}
             </span>
           </p>
           <OrderButton
             disabled={!!busy || summary.kinds === 0 || summary.unavailable > 0}
           />
         </div>
+        <p className="mt-2 text-xs text-ink-muted">
+          배송비 {formatPrice(summary.shippingFee)} 포함 · 20,000원 이상
+          무료배송
+        </p>
       </div>
     </div>
   );
@@ -208,15 +212,28 @@ function SummaryRows({
         </dd>
       </div>
       <div className="flex justify-between border-t border-line pt-2 text-base font-bold">
-        <dt>결제 예정 금액</dt>
+        <dt>상품 금액</dt>
         <dd className="tabular-nums">{formatPrice(summary.total)}</dd>
       </div>
+      <div className="flex justify-between">
+        <dt className="text-ink-muted">배송비</dt>
+        <dd className="tabular-nums">{formatPrice(summary.shippingFee)}</dd>
+      </div>
+      <div className="flex justify-between border-t border-line pt-2 text-base font-bold">
+        <dt>결제 예정 금액</dt>
+        <dd className="tabular-nums">{formatPrice(summary.orderTotal)}</dd>
+      </div>
       <p className="text-xs text-ink-muted">
-        {summary.kinds}종 {summary.quantity}개 · 배송비는 주문 단계에서
-        안내돼요.
+        {summary.kinds}종 {summary.quantity}개 · 상품 금액 20,000원 이상
+        무료배송, 미만은 3,500원
         {summary.unavailable > 0 &&
           ` 구매할 수 없는 상품 ${summary.unavailable}종은 빠졌어요.`}
       </p>
+      {summary.shippingFee > 0 && (
+        <p className="text-sm font-semibold text-brand">
+          {formatPrice(20_000 - summary.total)} 더 담으면 무료배송이에요.
+        </p>
+      )}
     </dl>
   );
 }
