@@ -5,7 +5,6 @@ import { RecipePhotoCredits } from "@/components/recipes/RecipePhotoCredits";
 
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { RecipeDataNotice } from "@/components/recipes/RecipeDataNotice";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { RecipeFilters } from "@/components/recipes/RecipeFilters";
 import { routes } from "@/lib/routes";
@@ -27,14 +26,7 @@ export default function RecipesPage({
     <div className="container-page pb-10 pt-6 md:py-16">
       <header className="max-w-2xl">
         <h1 className="page-title">못난이 채소 레시피</h1>
-        <p className="mt-3 text-ink-muted">
-          요리 이름이나 재료로 검색하거나, 채소별로 모아 볼 수 있어요.
-        </p>
       </header>
-
-      <div className="mt-4">
-        <RecipeDataNotice />
-      </div>
 
       <Suspense fallback={<ResultsSkeleton />}>
         <RecipeResults searchParams={searchParams} />
@@ -64,11 +56,15 @@ async function RecipeResults({
 
   return (
     <>
-      <div className="mt-8">
+      <div className="mt-5 md:mt-8">
         <RecipeFilters filters={filters} vegetables={vegetables} />
       </div>
 
-      <p role="status" className="mt-8 font-bold" data-testid="result-count">
+      <p
+        role="status"
+        className="mt-5 font-bold md:mt-8"
+        data-testid="result-count"
+      >
         {conditions.length > 0 ? `${conditions.join(" · ")} — ` : ""}레시피{" "}
         {recipes.length}개
       </p>

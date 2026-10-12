@@ -6,7 +6,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon } from "@/components/common/Icons";
-import { RecipeDataNotice } from "@/components/recipes/RecipeDataNotice";
 import { ProductPreviewCard } from "@/components/common/ProductPreviewCard";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { RecipeImage } from "@/components/recipes/RecipeImage";
@@ -86,7 +85,6 @@ export default async function RecipeDetailPage({
         />
         <div className="space-y-5">
           <h1 className="page-title">{recipe.name}</h1>
-          <p className="text-lg text-ink-muted">{recipe.description}</p>
           <RecipeMeta recipe={recipe} size="lg" />
           {recipe.sourceUrl && (
             <a
@@ -103,13 +101,6 @@ export default async function RecipeDetailPage({
             목록으로 돌아가기
           </Link>
         </div>
-      </div>
-
-      <div className="mt-6">
-        <RecipeDataNotice />
-        <RecipePhotoCredits
-          recipes={[recipe, ...recipe.relatedRecipes.slice(0, 3)]}
-        />
       </div>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[22rem_1fr] lg:gap-14">
@@ -177,6 +168,10 @@ export default async function RecipeDetailPage({
           </ul>
         </section>
       )}
+
+      <RecipePhotoCredits
+        recipes={[recipe, ...recipe.relatedRecipes.slice(0, 3)]}
+      />
 
       <div className="mt-14 text-center">
         <Link href={routes.recipes} className="btn btn-secondary">
