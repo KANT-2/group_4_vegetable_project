@@ -4,6 +4,7 @@ import { requireUser } from "@/lib/auth";
 import { getProfile } from "@/services/profile";
 import { ProfileForm } from "@/components/account/ProfileForm";
 import { ProfileRetry } from "@/components/account/ProfileRetry";
+import { AccountNav } from "@/components/account/AccountNav";
 
 export const metadata: Metadata = { title: "마이페이지" };
 
@@ -35,6 +36,7 @@ async function ProfileContent() {
 export default function MyPage() {
   return (
     <section className="container-page section">
+      <AccountNav active="profile" />
       <div className="card mx-auto max-w-3xl p-6 sm:p-8">
         <h1 className="page-title">마이페이지</h1>
         <p className="mb-8 mt-3 text-ink-muted">

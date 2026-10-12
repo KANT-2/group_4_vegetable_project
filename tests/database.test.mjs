@@ -70,12 +70,89 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
     ]);
   }
 
-  await t.test("9개 테이블에 RLS가 활성화된다", async () => {
+  await t.test("10개 테이블에 RLS가 활성화된다", async () => {
     const { rows } = await db.query(
       "select relname from pg_class where relnamespace = 'public'::regnamespace and relkind = 'r' and relrowsecurity",
     );
-    assert.equal(rows.length, 9);
+    assert.equal(rows.length, 10);
   });
+
+  await t.test(
+    "환불은 본인 결제 완료 주문만 신청하고 승인 상태·중복·타인 접근을 차단한다",
+    async () => {
+      await asRole("authenticated", user1);
+      const reason = "테스트 주문의 환불을 신청합니다.";
+      await assert.rejects(
+        db.query(
+          "insert into refund_requests(order_id, reason) values ($1,$2)",
+          [order1, reason],
+        ),
+      );
+      await db.exec("reset role");
+      await db.query(
+        "update orders set status='paid', paid_at=now() where id=$1",
+        [order1],
+      );
+      await db.query(
+        "update orders set status='paid', paid_at=now() where id=$1",
+        [order2],
+      );
+      await asRole("authenticated", user1);
+      await assert.rejects(
+        db.query(
+          "insert into refund_requests(order_id, reason) values ($1,$2)",
+          [order2, reason],
+        ),
+      );
+      await assert.rejects(
+        db.query(
+          "insert into refund_requests(order_id, reason, status) values ($1,$2,'approved')",
+          [order1, reason],
+        ),
+      );
+      await assert.rejects(
+        db.query(
+          "insert into refund_requests(order_id, reason) values ($1,'짧음')",
+          [order1],
+        ),
+      );
+      await db.query(
+        "insert into refund_requests(order_id, reason) values ($1,$2)",
+        [order1, reason],
+      );
+      assert.equal(
+        (await db.query("select status from refund_requests")).rows[0].status,
+        "requested",
+      );
+      await assert.rejects(
+        db.query(
+          "insert into refund_requests(order_id, reason) values ($1,$2)",
+          [order1, reason],
+        ),
+      );
+      await assert.rejects(
+        db.query(
+          "update refund_requests set status='approved', reviewed_at=now() where order_id=$1",
+          [order1],
+        ),
+      );
+      await assert.rejects(
+        db.query("delete from refund_requests where order_id=$1", [order1]),
+      );
+      await asRole("authenticated", user2);
+      assert.equal(
+        (await db.query("select * from refund_requests")).rows.length,
+        0,
+      );
+      await asRole("anon");
+      await assert.rejects(db.query("select * from refund_requests"));
+      await db.exec("reset role");
+      await db.query(
+        "update orders set status='pending', paid_at=null where id in ($1,$2)",
+        [order1, order2],
+      );
+    },
+  );
 
   await t.test(
     "기본 배송지는 본인만 저장·조회·삭제하며 잘못된 주소를 차단한다",

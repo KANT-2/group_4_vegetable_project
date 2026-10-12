@@ -59,13 +59,24 @@ export async function getProductList(
     getVegetables(),
   ]);
   const categoryOf = new Map(vegetables.map((v) => [v.id, v.category]));
+  const vegetableName = new Map(vegetables.map((v) => [v.id, v.name]));
+  // 검색은 띄어쓰기·대소문자 무시: "꿀 고구마" = "꿀고구마"
+  const normalize = (text: string) => text.replace(/\s+/g, "").toLowerCase();
+  const keyword = filters.q ? normalize(filters.q) : "";
+  const matchesKeyword = (p: Product) =>
+    normalize(
+      [p.name, p.farmName, p.tagline, vegetableName.get(p.vegetableId)].join(
+        " ",
+      ),
+    ).includes(keyword);
 
   const list = products
     .map((p) => ({ ...p, category: categoryOf.get(p.vegetableId) ?? "root" }))
     .filter(
       (p) =>
         (!filters.category || p.category === filters.category) &&
-        (!filters.reason || p.uglyReason === filters.reason),
+        (!filters.reason || p.uglyReason === filters.reason) &&
+        (!keyword || matchesKeyword(p)),
     );
 
   return filters.sort === "newest" ? list : rankProducts(list, filters.sort);

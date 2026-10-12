@@ -4,6 +4,7 @@ import { safeNextPath } from "../src/lib/redirect.ts";
 import { signInSchema } from "../src/schemas/auth.ts";
 import { profileSchema } from "../src/schemas/profile.ts";
 import { shippingSchema } from "../src/schemas/shipping.ts";
+import { refundSchema } from "../src/schemas/refund.ts";
 
 test("로그인 후 이동은 내부 경로만 허용한다", () => {
   assert.equal(safeNextPath("/cart?tab=wishlist"), "/cart?tab=wishlist");
@@ -74,4 +75,21 @@ test("배송지는 필수값·우편번호·연락처를 검증하고 ID 주입�
     { ...valid, address_detail: "가".repeat(101) },
   ])
     assert.equal(shippingSchema.safeParse(invalid).success, false);
+});
+
+test("환불 사유 길이·주문 번호와 승인 상태 주입을 검증한다", () => {
+  const input = {
+    order_id: "00000000-0000-4000-8000-000000000011",
+    reason: "  테스트 주문의 환불을 신청합니다.  ",
+  };
+  assert.equal(refundSchema.parse(input).reason, input.reason.trim());
+  for (const invalid of [
+    { ...input, order_id: "invalid" },
+    { ...input, reason: "짧음" },
+    { ...input, reason: "가".repeat(501) },
+    { ...input, status: "approved" },
+    { ...input, user_id: "other-user" },
+    { ...input, reason: " ".repeat(20) },
+  ])
+    assert.equal(refundSchema.safeParse(invalid).success, false);
 });

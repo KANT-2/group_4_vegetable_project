@@ -27,7 +27,7 @@ export const collectionSchema = z.enum([
   "single",
 ]);
 
-// 주소의 ?category=&reason=&sort=&collection= 검사
+// 주소의 ?category=&reason=&sort=&collection=&q= 검사
 // 허용되지 않은 값(예: ?sort=hack)은 오류 대신 기본값으로 바꿔요.
 const firstValue = (value: unknown) =>
   Array.isArray(value) ? value[0] : value;
@@ -45,6 +45,16 @@ export const catalogFiltersSchema = z.object({
   collection: z.preprocess(
     firstValue,
     collectionSchema.optional().catch(undefined),
+  ),
+  // 검색어: 앞뒤 공백 제거, 빈 값은 없음으로, 너무 길면 30자까지만
+  q: z.preprocess(
+    firstValue,
+    z
+      .string()
+      .trim()
+      .transform((v) => v.slice(0, 30) || undefined)
+      .optional()
+      .catch(undefined),
   ),
 });
 
