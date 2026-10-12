@@ -9,8 +9,22 @@
 
 import "server-only";
 import { cache } from "react";
+import easyRecipes from "@/data/easy-recipes.json";
+import { getPublicProducts } from "./products";
+import { getPublicVegetables } from "./vegetables";
+import {
+  mergeRecipeCatalogs,
+  recipeVegetableIds,
+} from "@/lib/recipe-relevance";
 import verifiedRecipes from "@/data/generated/verified-recipes.json";
-import { connectCatalogRecipes } from "@/lib/recipe-catalog";
+import {
+  connectCatalogRecipes,
+  type CatalogRecipe,
+} from "@/lib/recipe-catalog";
+const easyCatalog = easyRecipes.map((recipe): CatalogRecipe => ({
+  ...recipe,
+  difficulty: "easy",
+}));
 import { withRecipePhoto } from "@/lib/recipe-photos";
 import { products as mockProducts } from "@/data/mock/products";
 import { vegetables as mockVegetables } from "@/data/mock/vegetables";
@@ -30,7 +44,10 @@ import type {
 // ---------- Mock 모드 ----------
 
 function loadMockRecipes(): Recipe[] {
-  return connectCatalogRecipes(verifiedRecipes, mockProducts, mockVegetables);
+  return mergeRecipeCatalogs(
+    connectCatalogRecipes(easyCatalog, mockProducts, mockVegetables),
+    connectCatalogRecipes(verifiedRecipes, mockProducts, mockVegetables),
+  );
 }
 
 // ---------- Supabase 모드 ----------
@@ -120,15 +137,24 @@ function uniqueVegetables(vegetables: RecipeVegetable[]): RecipeVegetable[] {
 // 한 요청 안에서 여러 번 불러도 한 번만 읽어요.
 const loadAllRecipes = cache(async (): Promise<Recipe[]> => {
   if (getDataSource() === "mock") return loadMockRecipes();
-  const rows = await fetchSupabaseRecipeRows();
-  return rows.map((row) => withRecipePhoto(rowToRecipe(row)));
+  // 편집 레시피는 배포에 포함되고 상품 연결은 실제 DB 상품으로 계산해요.
+  // DB 오류는 그대로 전파하며, 공식 DB 데이터를 Mock으로 대체하지 않아요.
+  const [rows, products, vegetables] = await Promise.all([
+    fetchSupabaseRecipeRows(),
+    getPublicProducts(),
+    getPublicVegetables(),
+  ]);
+  return mergeRecipeCatalogs(
+    connectCatalogRecipes(easyCatalog, products, vegetables),
+    rows.map((row) => withRecipePhoto(rowToRecipe(row))),
+  );
 });
 
 function matchesFilters(
   recipe: Recipe,
   { q, vegetable }: RecipeFilters,
 ): boolean {
-  if (vegetable && !recipe.vegetables.some((item) => item.id === vegetable))
+  if (vegetable && !recipeVegetableIds(recipe).includes(vegetable))
     return false;
 
   const terms = (q ?? "").toLowerCase().split(/\s+/).filter(Boolean);
@@ -163,7 +189,9 @@ export async function getRecipeVegetableOptions(): Promise<
   const recipes = await loadAllRecipes();
   const options = new Map<string, RecipeVegetableOption>();
   for (const recipe of recipes) {
-    for (const vegetable of recipe.vegetables) {
+    for (const vegetable of recipe.vegetables.filter((item) =>
+      recipeVegetableIds(recipe).includes(item.id),
+    )) {
       const current = options.get(vegetable.id);
       options.set(vegetable.id, {
         ...vegetable,
@@ -180,13 +208,11 @@ export async function getRecipe(id: string): Promise<RecipeDetail | null> {
   const recipe = recipes.find((item) => item.id === id);
   if (!recipe) return null;
 
-  const vegetableIds = new Set(
-    recipe.vegetables.map((vegetable) => vegetable.id),
-  );
+  const vegetableIds = new Set(recipeVegetableIds(recipe));
   const relatedRecipes = recipes.filter(
     (other) =>
       other.id !== recipe.id &&
-      other.vegetables.some((item) => vegetableIds.has(item.id)),
+      recipeVegetableIds(other).some((id) => vegetableIds.has(id)),
   );
   return { ...recipe, relatedRecipes };
 }

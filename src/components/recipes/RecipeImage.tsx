@@ -5,7 +5,10 @@ import { SafeImage } from "@/components/common/SafeImage";
 import type { Recipe } from "@/types/recipe";
 
 interface RecipeImageProps {
-  recipe: Pick<Recipe, "name" | "imageUrl" | "vegetables" | "photoReference">;
+  recipe: Pick<
+    Recipe,
+    "name" | "imageUrl" | "vegetables" | "photoReference" | "imageAlt"
+  >;
   className?: string;
   priority?: boolean;
 }
@@ -25,7 +28,10 @@ export function RecipeImage({
     <div className="relative">
       <SafeImage
         src={dishUrl ?? substituteUrl}
-        alt={isSubstitute ? `${recipe.name} 재료 사진` : `${recipe.name} 사진`}
+        alt={
+          recipe.imageAlt ??
+          (isSubstitute ? `${recipe.name} 재료 사진` : `${recipe.name} 사진`)
+        }
         className={className}
         priority={priority}
         placeholderText="요리 사진 준비 중"

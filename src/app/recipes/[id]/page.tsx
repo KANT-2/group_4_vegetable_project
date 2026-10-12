@@ -1,4 +1,3 @@
-import { RecipePhotoCredits } from "@/components/recipes/RecipePhotoCredits";
 // 레시피 상세 /recipes/[id] (A 담당)
 // 없는 id 는 404 화면(src/app/not-found.tsx)으로 보내요.
 
@@ -168,10 +167,6 @@ export default async function RecipeDetailPage({
           </ul>
         </section>
       )}
-
-      <RecipePhotoCredits
-        recipes={[recipe, ...recipe.relatedRecipes.slice(0, 3)]}
-      />
 
       <div className="mt-14 text-center">
         <Link href={routes.recipes} className="btn btn-secondary">
