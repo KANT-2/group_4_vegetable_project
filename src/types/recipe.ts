@@ -49,6 +49,7 @@ export interface Recipe {
     title: string;
     imageUrl: string;
   };
+  primaryVegetableId?: string; // 직접 작성한 집밥 레시피의 주재료
   id: string; // 예: "carrot-rapee"
   name: string; // 요리 이름
   description: string; // 한 줄 소개
@@ -59,6 +60,7 @@ export interface Recipe {
   servings?: number; // 기준 인분
   ingredients: RecipeIngredient[];
   steps: string[]; // 조리 순서 (배열 순서가 곧 단계 순서)
+  imageAlt?: string;
   imageUrl?: string; // 요리 사진 (없어도 됨)
   products: RecipeProduct[]; // 연결된 판매 상품
   vegetables: RecipeVegetable[]; // 연결된 상품의 채소 (중복 없음)

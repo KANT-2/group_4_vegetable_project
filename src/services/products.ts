@@ -1,5 +1,6 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
+import { createPublicSupabaseClient } from "@/lib/supabase/public";
 import { products as mockProducts } from "@/data/mock/products";
 import { rankProducts } from "@/lib/product-ranking";
 import { uglyReasonSchema, type CatalogFilters } from "@/schemas/product";
@@ -36,10 +37,12 @@ function toProduct(row: ProductRow): Product {
 }
 
 // 판매 중인 상품 전체 (RLS가 is_active = true인 상품만 돌려줘요)
-async function getActiveProducts(): Promise<Product[]> {
+async function getActiveProducts(publicOnly = false): Promise<Product[]> {
   if (isMockCatalog()) return mockProducts.filter((p) => p.isActive);
 
-  const supabase = await createClient();
+  const supabase = publicOnly
+    ? createPublicSupabaseClient()
+    : await createClient();
   const { data, error } = await supabase
     .from("products")
     .select("*")
@@ -109,4 +112,9 @@ export async function getProductsByVegetable(
 ): Promise<Product[]> {
   const products = await getActiveProducts();
   return products.filter((p) => p.vegetableId === vegetableId);
+}
+
+// 레시피 빌드와 공개 조회에는 사용자 쿠키를 읽지 않는 연결을 사용해요.
+export async function getPublicProducts(): Promise<Product[]> {
+  return getActiveProducts(true);
 }

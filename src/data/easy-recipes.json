@@ -1,0 +1,1125 @@
+[
+  {
+    "id": "easy-potato-1",
+    "name": "감자채볶음",
+    "description": "감자가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "감자",
+        "amount": "2개"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "물",
+        "amount": "2큰술"
+      }
+    ],
+    "steps": [
+      "감자는 껍질을 벗겨 3mm 굵기로 채 썰고 찬물에 헹군 뒤 물기를 빼요.",
+      "팬에 기름을 두르고 감자를 중불에서 2분 볶아요.",
+      "물과 소금을 넣고 뚜껑을 덮어 약불에서 5~7분 익혀요. 감자가 부드러워지면 뚜껑을 열고 물기를 날려요."
+    ],
+    "vegetables": [
+      {
+        "id": "potato",
+        "name": "감자"
+      }
+    ],
+    "productVegetableIds": ["potato"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "potato",
+    "imageUrl": "/images/recipes/easy-potato-1.webp"
+  },
+  {
+    "id": "easy-potato-2",
+    "name": "감자 간장조림",
+    "description": "감자가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 25,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "감자",
+        "amount": "2개"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1작은술"
+      },
+      {
+        "name": "물",
+        "amount": "150ml"
+      },
+      {
+        "name": "식용유",
+        "amount": "1작은술"
+      },
+      {
+        "name": "참깨",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "감자를 껍질 벗겨 2cm 크기로 썰어요.",
+      "냄비에 감자와 기름을 넣고 1분 볶은 뒤 간장·설탕·물을 넣어요.",
+      "뚜껑을 덮고 중약불에서 12~15분 익혀요. 젓가락이 잘 들어가면 뚜껑을 열고 국물을 졸인 뒤 깨를 뿌려요."
+    ],
+    "vegetables": [
+      {
+        "id": "potato",
+        "name": "감자"
+      }
+    ],
+    "productVegetableIds": ["potato"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "potato",
+    "imageUrl": "/images/potato-scratched.jpg",
+    "imageAlt": "감자 — 감자 간장조림의 주재료"
+  },
+  {
+    "id": "easy-carrot-1",
+    "name": "당근라페",
+    "description": "당근가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "당근",
+        "amount": "1개"
+      },
+      {
+        "name": "올리브유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      }
+    ],
+    "steps": [
+      "당근을 깨끗이 씻어 가늘게 채 썰어요.",
+      "소금을 섞고 5분 둔 뒤 나온 물을 가볍게 짜요.",
+      "올리브유·레몬즙·설탕을 넣고 골고루 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "carrot",
+        "name": "당근"
+      }
+    ],
+    "productVegetableIds": ["carrot"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "carrot",
+    "imageUrl": "/images/recipes/easy-carrot-1.webp"
+  },
+  {
+    "id": "easy-carrot-2",
+    "name": "당근 달걀볶음",
+    "description": "당근가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 10,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "당근",
+        "amount": "1개"
+      },
+      {
+        "name": "달걀",
+        "amount": "2개"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      }
+    ],
+    "steps": [
+      "당근은 가늘게 채 썰고 달걀은 소금 절반을 넣어 풀어요.",
+      "기름을 두른 팬에서 당근을 중불로 3~4분 볶아요.",
+      "남은 소금을 넣고 당근을 옆으로 밀어 달걀을 부어요. 달걀이 완전히 익으면 당근과 섞어요."
+    ],
+    "vegetables": [
+      {
+        "id": "carrot",
+        "name": "당근"
+      }
+    ],
+    "productVegetableIds": ["carrot"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "carrot",
+    "imageUrl": "/images/carrot.jpg",
+    "imageAlt": "당근 — 당근 달걀볶음의 주재료"
+  },
+  {
+    "id": "easy-aehobak-1",
+    "name": "애호박전",
+    "description": "애호박가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "애호박",
+        "amount": "1개"
+      },
+      {
+        "name": "달걀",
+        "amount": "1개"
+      },
+      {
+        "name": "밀가루",
+        "amount": "3큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      }
+    ],
+    "steps": [
+      "애호박을 5mm 두께로 썰고 소금을 살짝 뿌려 5분 둔 뒤 물기를 닦아요.",
+      "양면에 밀가루를 얇게 묻히고 풀어 둔 달걀을 입혀요.",
+      "팬에 기름을 두르고 중약불에서 앞뒤 각각 2~3분 노릇하게 익혀요. 속까지 익었는지 확인해요."
+    ],
+    "vegetables": [
+      {
+        "id": "aehobak",
+        "name": "애호박"
+      }
+    ],
+    "productVegetableIds": ["aehobak"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "aehobak",
+    "imageUrl": "/images/recipes/easy-aehobak-1.webp"
+  },
+  {
+    "id": "easy-aehobak-2",
+    "name": "애호박 새우젓볶음",
+    "description": "애호박가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "애호박",
+        "amount": "1개"
+      },
+      {
+        "name": "새우젓",
+        "amount": "1작은술"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "물",
+        "amount": "2큰술"
+      },
+      {
+        "name": "참깨",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "애호박을 반달 모양으로 5mm 두께로 썰어요.",
+      "팬에 기름을 두르고 애호박을 중불에서 2분 볶아요.",
+      "새우젓과 물을 넣고 약불에서 3~4분 더 익힌 뒤 깨를 뿌려요."
+    ],
+    "vegetables": [
+      {
+        "id": "aehobak",
+        "name": "애호박"
+      }
+    ],
+    "productVegetableIds": ["aehobak"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "aehobak",
+    "imageUrl": "/images/aehobak-small.jpg",
+    "imageAlt": "애호박 — 애호박 새우젓볶음의 주재료"
+  },
+  {
+    "id": "easy-eggplant-1",
+    "name": "가지무침",
+    "description": "가지가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "가지",
+        "amount": "2개"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "참기름",
+        "amount": "1작은술"
+      },
+      {
+        "name": "다진",
+        "amount": "마늘 1/2작은술"
+      },
+      {
+        "name": "참깨",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "가지는 꼭지를 떼고 길게 반으로 잘라요.",
+      "김이 오른 찜기에 넣고 6~8분 쪄요. 젓가락이 쉽게 들어가면 꺼내 한김 식혀요.",
+      "먹기 좋게 찢고 간장·참기름·다진 마늘·깨를 넣어 가볍게 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "eggplant",
+        "name": "가지"
+      }
+    ],
+    "productVegetableIds": ["eggplant"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "eggplant",
+    "imageUrl": "/images/eggplant-small.jpg",
+    "imageAlt": "가지 — 가지무침의 주재료"
+  },
+  {
+    "id": "easy-eggplant-2",
+    "name": "가지 간장구이",
+    "description": "가지가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "가지",
+        "amount": "2개"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1작은술"
+      },
+      {
+        "name": "물",
+        "amount": "1큰술"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      }
+    ],
+    "steps": [
+      "가지를 길게 1cm 두께로 썰고 간장·설탕·물을 섞어요.",
+      "기름을 두른 팬에서 가지를 중불로 앞뒤 각각 2~3분 익혀요.",
+      "약불로 줄여 양념을 넣고 뒤집어 가며 1~2분 졸여요."
+    ],
+    "vegetables": [
+      {
+        "id": "eggplant",
+        "name": "가지"
+      }
+    ],
+    "productVegetableIds": ["eggplant"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "eggplant",
+    "imageUrl": "/images/eggplant-small.jpg",
+    "imageAlt": "가지 — 가지 간장구이의 주재료"
+  },
+  {
+    "id": "easy-onion-1",
+    "name": "양파 달걀덮밥",
+    "description": "양파가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "양파",
+        "amount": "1개"
+      },
+      {
+        "name": "달걀",
+        "amount": "2개"
+      },
+      {
+        "name": "밥",
+        "amount": "2공기"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1작은술"
+      },
+      {
+        "name": "물",
+        "amount": "100ml"
+      }
+    ],
+    "steps": [
+      "양파를 얇게 채 썰고 달걀을 풀어요.",
+      "작은 팬에 양파·간장·설탕·물을 넣고 중불에서 5분 끓여요.",
+      "달걀을 둘러 넣고 약불에서 완전히 익힌 뒤 따뜻한 밥 위에 올려요."
+    ],
+    "vegetables": [
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["onion"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "onion",
+    "imageUrl": "/images/onion-irregular.jpg",
+    "imageAlt": "양파 — 양파 달걀덮밥의 주재료"
+  },
+  {
+    "id": "easy-onion-2",
+    "name": "양파 간장볶음",
+    "description": "양파가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "양파",
+        "amount": "2개"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "참깨",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "양파를 1cm 굵기로 썰어요.",
+      "팬에 기름을 두르고 중불에서 6~8분 볶아 가장자리가 갈색이 되게 해요.",
+      "약불로 줄여 간장을 넣고 1분 더 볶은 뒤 깨를 뿌려요."
+    ],
+    "vegetables": [
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["onion"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "onion",
+    "imageUrl": "/images/onion-irregular.jpg",
+    "imageAlt": "양파 — 양파 간장볶음의 주재료"
+  },
+  {
+    "id": "easy-cabbage-1",
+    "name": "양배추 달걀전",
+    "description": "양배추가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "양배추",
+        "amount": "200g"
+      },
+      {
+        "name": "달걀",
+        "amount": "2개"
+      },
+      {
+        "name": "밀가루",
+        "amount": "2큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      }
+    ],
+    "steps": [
+      "양배추를 씻어 물기를 빼고 가늘게 채 썰어요.",
+      "달걀·밀가루·소금을 섞은 뒤 양배추를 넣어 버무려요.",
+      "팬에 기름을 두르고 반죽을 얇게 펴요. 중약불에서 앞뒤 각각 4~5분 속까지 익혀요."
+    ],
+    "vegetables": [
+      {
+        "id": "cabbage",
+        "name": "양배추"
+      }
+    ],
+    "productVegetableIds": ["cabbage"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "cabbage",
+    "imageUrl": "/images/cabbage.jpg",
+    "imageAlt": "양배추 — 양배추 달걀전의 주재료"
+  },
+  {
+    "id": "easy-cabbage-2",
+    "name": "양배추 간장볶음",
+    "description": "양배추가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 10,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "양배추",
+        "amount": "250g"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "다진",
+        "amount": "마늘 1/2작은술"
+      }
+    ],
+    "steps": [
+      "양배추를 씻어 물기를 빼고 한입 크기로 썰어요.",
+      "팬에 기름과 마늘을 넣고 약불에서 30초 볶아요.",
+      "중불로 올려 양배추를 4~5분 볶고 간장을 넣어 1분 더 볶아요."
+    ],
+    "vegetables": [
+      {
+        "id": "cabbage",
+        "name": "양배추"
+      }
+    ],
+    "productVegetableIds": ["cabbage"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "cabbage",
+    "imageUrl": "/images/cabbage.jpg",
+    "imageAlt": "양배추 — 양배추 간장볶음의 주재료"
+  },
+  {
+    "id": "easy-cucumber-1",
+    "name": "오이무침",
+    "description": "오이가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 10,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "오이",
+        "amount": "1개"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "1작은술"
+      },
+      {
+        "name": "식초",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "참깨",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "오이를 씻어 5mm 두께로 썰어요.",
+      "고춧가루·식초·설탕·소금을 섞어 양념을 만들어요.",
+      "오이에 양념을 넣고 가볍게 버무린 뒤 깨를 뿌려 바로 먹어요."
+    ],
+    "vegetables": [
+      {
+        "id": "cucumber",
+        "name": "오이"
+      }
+    ],
+    "productVegetableIds": ["cucumber"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "cucumber",
+    "imageUrl": "/images/recipes/easy-cucumber-1.webp"
+  },
+  {
+    "id": "easy-cucumber-2",
+    "name": "오이 참깨샐러드",
+    "description": "오이가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 10,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "오이",
+        "amount": "1개"
+      },
+      {
+        "name": "참깨",
+        "amount": "1큰술"
+      },
+      {
+        "name": "간장",
+        "amount": "1작은술"
+      },
+      {
+        "name": "식초",
+        "amount": "1큰술"
+      },
+      {
+        "name": "참기름",
+        "amount": "1작은술"
+      }
+    ],
+    "steps": [
+      "오이를 씻어 반달 모양으로 얇게 썰어요.",
+      "참깨를 가볍게 으깨고 간장·식초·참기름을 섞어요.",
+      "오이에 양념을 넣고 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "cucumber",
+        "name": "오이"
+      }
+    ],
+    "productVegetableIds": ["cucumber"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "cucumber",
+    "imageUrl": "/images/cucumber.jpg",
+    "imageAlt": "오이 — 오이 참깨샐러드의 주재료"
+  },
+  {
+    "id": "easy-spinach-1",
+    "name": "시금치나물",
+    "description": "시금치가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "시금치",
+        "amount": "200g"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "참기름",
+        "amount": "1작은술"
+      },
+      {
+        "name": "다진",
+        "amount": "마늘 1/2작은술"
+      },
+      {
+        "name": "참깨",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "시금치의 뿌리 끝을 다듬고 여러 번 씻어요.",
+      "끓는 물에 넣고 30~60초 데친 뒤 찬물에 헹궈 물기를 짜요.",
+      "먹기 좋게 썰고 소금·참기름·마늘·깨를 넣어 무쳐요."
+    ],
+    "vegetables": [
+      {
+        "id": "spinach",
+        "name": "시금치"
+      }
+    ],
+    "productVegetableIds": ["spinach"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "spinach",
+    "imageUrl": "/images/spinach-irregular.jpg",
+    "imageAlt": "시금치 — 시금치나물의 주재료"
+  },
+  {
+    "id": "easy-spinach-2",
+    "name": "시금치 달걀볶음",
+    "description": "시금치가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 10,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "시금치",
+        "amount": "150g"
+      },
+      {
+        "name": "달걀",
+        "amount": "2개"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      }
+    ],
+    "steps": [
+      "시금치를 씻어 물기를 빼고 4cm 길이로 썰어요. 달걀은 소금을 넣고 풀어요.",
+      "팬에 기름을 두르고 달걀을 완전히 익혀 잠시 덜어 놓아요.",
+      "같은 팬에서 시금치를 1~2분 볶고 달걀을 다시 넣어 섞어요."
+    ],
+    "vegetables": [
+      {
+        "id": "spinach",
+        "name": "시금치"
+      }
+    ],
+    "productVegetableIds": ["spinach"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "spinach",
+    "imageUrl": "/images/spinach-irregular.jpg",
+    "imageAlt": "시금치 — 시금치 달걀볶음의 주재료"
+  },
+  {
+    "id": "easy-broccoli-1",
+    "name": "브로콜리 참깨무침",
+    "description": "브로콜리가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "브로콜리",
+        "amount": "1송이"
+      },
+      {
+        "name": "참깨",
+        "amount": "1큰술"
+      },
+      {
+        "name": "간장",
+        "amount": "1작은술"
+      },
+      {
+        "name": "참기름",
+        "amount": "1작은술"
+      }
+    ],
+    "steps": [
+      "브로콜리를 한입 크기로 나누고 줄기는 겉껍질을 얇게 벗겨 썰어요. 흐르는 물에 씻어요.",
+      "끓는 물에서 2~3분 데친 뒤 건져 물기를 충분히 빼요.",
+      "으깬 참깨·간장·참기름을 넣고 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "broccoli",
+        "name": "브로콜리"
+      }
+    ],
+    "productVegetableIds": ["broccoli"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "broccoli",
+    "imageUrl": "/images/broccoli-small.jpg",
+    "imageAlt": "브로콜리 — 브로콜리 참깨무침의 주재료"
+  },
+  {
+    "id": "easy-broccoli-2",
+    "name": "브로콜리 마늘볶음",
+    "description": "브로콜리가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "브로콜리",
+        "amount": "1송이"
+      },
+      {
+        "name": "마늘",
+        "amount": "3쪽"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "물",
+        "amount": "3큰술"
+      }
+    ],
+    "steps": [
+      "브로콜리를 씻어 한입 크기로 나누고 마늘을 얇게 썰어요.",
+      "팬에 기름과 마늘을 넣고 약불에서 1분 볶아요.",
+      "브로콜리와 물을 넣고 뚜껑을 덮어 중약불에서 3분 익혀요. 소금을 넣고 뚜껑을 열어 1분 볶아요."
+    ],
+    "vegetables": [
+      {
+        "id": "broccoli",
+        "name": "브로콜리"
+      }
+    ],
+    "productVegetableIds": ["broccoli"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "broccoli",
+    "imageUrl": "/images/broccoli-small.jpg",
+    "imageAlt": "브로콜리 — 브로콜리 마늘볶음의 주재료"
+  },
+  {
+    "id": "easy-radish-1",
+    "name": "무생채",
+    "description": "무가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "무",
+        "amount": "300g"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "1작은술"
+      },
+      {
+        "name": "식초",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "다진",
+        "amount": "마늘 1/2작은술"
+      }
+    ],
+    "steps": [
+      "무를 씻고 껍질을 얇게 벗겨 가늘게 채 썰어요.",
+      "고춧가루를 먼저 넣어 골고루 버무려 색을 입혀요.",
+      "식초·설탕·소금·마늘을 넣고 버무려요. 5분 두었다가 먹어요."
+    ],
+    "vegetables": [
+      {
+        "id": "radish",
+        "name": "무"
+      }
+    ],
+    "productVegetableIds": ["radish"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "radish",
+    "imageUrl": "/images/radish-bent.jpg",
+    "imageAlt": "무 — 무생채의 주재료"
+  },
+  {
+    "id": "easy-radish-2",
+    "name": "들깨 무나물",
+    "description": "무가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "무",
+        "amount": "300g"
+      },
+      {
+        "name": "들깨가루",
+        "amount": "1큰술"
+      },
+      {
+        "name": "식용유",
+        "amount": "1작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "물",
+        "amount": "100ml"
+      }
+    ],
+    "steps": [
+      "무를 씻어 껍질을 얇게 벗기고 5mm 굵기로 채 썰어요.",
+      "냄비에 기름과 무를 넣고 2분 볶은 뒤 물과 소금을 넣어요.",
+      "뚜껑을 덮고 중약불에서 8~10분 익혀요. 무가 부드러워지면 들깨가루를 넣어 1분 더 익혀요."
+    ],
+    "vegetables": [
+      {
+        "id": "radish",
+        "name": "무"
+      }
+    ],
+    "productVegetableIds": ["radish"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "radish",
+    "imageUrl": "/images/radish-bent.jpg",
+    "imageAlt": "무 — 들깨 무나물의 주재료"
+  },
+  {
+    "id": "easy-shiitake-1",
+    "name": "표고버섯 간장볶음",
+    "description": "표고버섯가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "표고버섯",
+        "amount": "6개"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "다진",
+        "amount": "마늘 1/2작은술"
+      },
+      {
+        "name": "물",
+        "amount": "2큰술"
+      }
+    ],
+    "steps": [
+      "표고버섯을 가볍게 씻고 단단한 밑동을 잘라 5mm 두께로 썰어요.",
+      "팬에 기름과 마늘을 넣고 약불에서 30초 볶아요.",
+      "버섯·간장·물을 넣고 중불에서 5~7분 충분히 익혀요."
+    ],
+    "vegetables": [
+      {
+        "id": "shiitake",
+        "name": "표고버섯"
+      }
+    ],
+    "productVegetableIds": ["shiitake"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "shiitake",
+    "imageUrl": "/images/shiitake-small.jpg",
+    "imageAlt": "표고버섯 — 표고버섯 간장볶음의 주재료"
+  },
+  {
+    "id": "easy-shiitake-2",
+    "name": "표고버섯 달걀국",
+    "description": "표고버섯가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "표고버섯",
+        "amount": "4개"
+      },
+      {
+        "name": "달걀",
+        "amount": "1개"
+      },
+      {
+        "name": "물",
+        "amount": "500ml"
+      },
+      {
+        "name": "국간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/8작은술"
+      }
+    ],
+    "steps": [
+      "표고버섯을 가볍게 씻고 단단한 밑동을 잘라 얇게 썰어요. 달걀을 풀어요.",
+      "냄비에 물과 버섯을 넣고 끓기 시작하면 중불에서 5분 끓여요.",
+      "국간장과 소금을 넣고 달걀을 가늘게 부어요. 달걀이 완전히 익도록 1~2분 더 끓여요."
+    ],
+    "vegetables": [
+      {
+        "id": "shiitake",
+        "name": "표고버섯"
+      }
+    ],
+    "productVegetableIds": ["shiitake"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "shiitake",
+    "imageUrl": "/images/shiitake-small.jpg",
+    "imageAlt": "표고버섯 — 표고버섯 달걀국의 주재료"
+  },
+  {
+    "id": "easy-tomato-1",
+    "name": "토마토 달걀볶음",
+    "description": "토마토가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "토마토",
+        "amount": "2개"
+      },
+      {
+        "name": "달걀",
+        "amount": "2개"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "토마토를 씻어 꼭지를 떼고 한입 크기로 썰어요. 달걀에 소금 절반을 넣어 풀어요.",
+      "팬에 기름 절반을 두르고 달걀을 완전히 익혀 덜어 놓아요.",
+      "남은 기름에 토마토·설탕·남은 소금을 넣고 3~4분 볶아요. 달걀을 다시 넣어 가볍게 섞어요."
+    ],
+    "vegetables": [
+      {
+        "id": "tomato",
+        "name": "토마토"
+      }
+    ],
+    "productVegetableIds": ["tomato"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "tomato",
+    "imageUrl": "/images/recipes/easy-tomato-1.webp"
+  },
+  {
+    "id": "easy-tomato-2",
+    "name": "토마토 양파샐러드",
+    "description": "토마토가 주재료인 간단한 집밥 요리",
+    "cookTimeMin": 10,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "토마토",
+        "amount": "2개"
+      },
+      {
+        "name": "양파",
+        "amount": "1/4개"
+      },
+      {
+        "name": "올리브유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "식초",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/8작은술"
+      }
+    ],
+    "steps": [
+      "토마토를 씻어 꼭지를 떼고 한입 크기로 썰어요. 양파는 얇게 썰어요.",
+      "양파를 찬물에 5분 담갔다가 물기를 빼요.",
+      "올리브유·식초·설탕·소금을 섞어 토마토와 양파에 가볍게 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "tomato",
+        "name": "토마토"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["tomato", "onion"],
+    "sourceUrl": "",
+    "sourceName": "못난이마켓",
+    "primaryVegetableId": "tomato",
+    "imageUrl": "/images/tomato.jpg",
+    "imageAlt": "토마토 — 토마토 양파샐러드의 주재료"
+  }
+]

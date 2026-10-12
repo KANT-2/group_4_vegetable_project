@@ -58,7 +58,7 @@ export function RecipeFilters({
       </Form>
 
       <nav aria-label="채소로 레시피 거르기">
-        <ul className="flex flex-wrap gap-2">
+        <ul className="flex gap-2 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible">
           <li>
             <FilterChip
               href={listHref({ q: filters.q })}
@@ -103,7 +103,7 @@ function FilterChip({
     <Link
       href={href}
       aria-current={active ? "true" : undefined}
-      className={`inline-flex min-h-12 items-center rounded-full border px-5 font-bold transition-colors ${
+      className={`inline-flex min-h-12 shrink-0 items-center whitespace-nowrap rounded-full border px-5 font-bold transition-colors ${
         active
           ? "border-brand bg-brand text-white"
           : "border-line bg-surface hover:bg-brand-soft"

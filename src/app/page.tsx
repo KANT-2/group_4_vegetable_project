@@ -1,4 +1,3 @@
-import { RecipePhotoCredits } from "@/components/recipes/RecipePhotoCredits";
 // 메인 화면 / (A 담당)
 // 구성: 짧은 소개 → 추천 농산물(첫 화면에 보이도록) → 채소로 찾기 → 추천 레시피 → 농가 이야기 → 우리 이야기 안내
 // 서비스 가치·이용 흐름 같은 긴 소개는 /story 의 "우리 이야기"로 옮겼어요. 휴대폰 첫 화면에서 상품이 먼저 보이게 하기 위해서예요.
@@ -157,7 +156,6 @@ export default async function HomePage() {
                 </li>
               ))}
             </ul>
-            <RecipePhotoCredits recipes={recipes.slice(0, HOME_RECIPE_COUNT)} />
             <div className="mt-8 text-center">
               <Link href={routes.recipes} className="btn btn-primary">
                 전체 레시피 보기

@@ -181,40 +181,6 @@ export default async function StoryPage() {
         )}
       </section>
 
-      <div className="container-page">
-        <details className="rounded-card border border-line bg-surface p-4 text-xs text-ink-muted">
-          <summary className="cursor-pointer py-1 font-bold">사진 출처</summary>
-          <p className="mt-3">
-            실제 한국 농촌·농작업 사진을 사용했습니다. 소개된 시연 농가의
-            인물이나 현장을 촬영한 사진은 아닙니다.
-          </p>
-          <ul className="mt-3 space-y-2">
-            {farmPhotos.map((photo) => (
-              <li key={photo.source}>
-                <a
-                  href={photo.source}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  {photo.title}
-                </a>{" "}
-                · {photo.author} ·{" "}
-                <a
-                  href={photo.licenseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  {photo.license}
-                </a>{" "}
-                · WebP 축소 / 화면 크롭
-              </li>
-            ))}
-          </ul>
-        </details>
-      </div>
-
       <section
         id="about"
         aria-labelledby="about-title"
