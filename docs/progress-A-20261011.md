@@ -1,5 +1,11 @@
 # A 조영우 작업 현황 — 2026-10-11
 
+## 최신 배포 안내 — 2026-10-12
+
+팀 DB에 레시피 metadata migration이 없으면 `source_url` 조회로 Vercel 빌드/메인 화면이 실패할 수 있다. 두 원본 SQL은 main `7795d8d`와 동일한 최신 버전이며, **migration → 공식 seed → 적용 후 검사 → Vercel Redeploy** 순서가 필요하다. 원본 migration은 중복 실행하지 않는다. 컬럼이 일부만 있으면 중단하고 상태를 공유한다.
+
+적용 전후 검사 SQL과 실제 적용 기록 양식은 [공통 DB 문서](database.md#레시피-배포-차단-해소--2026-10-12)에 있다. 실제 팀 DB 적용은 확인되지 않았으며 시연 데이터의 로컬 빌드 결과로 대신하지 않는다.
+
 ## 확인한 기준
 
 - 원격 main: `bb2f3be` (B 상품·채소 데이터와 C 공통 DB·인증 기반 포함).
@@ -66,7 +72,6 @@ node scripts/export-app-recipes.mjs
 2. `supabase/seeds/verified-recipes.sql`
 
 첫 파일은 migration이라 한 번만 적용한다. seed는 재실행할 수 있지만 해당 공식 레시피와 판매 상품 연결을 현재 활성 상품에 맞춰 갱신한다. 운영 앱은 `public.recipes`를 읽으므로 별도 검토용 `food_catalog` 스키마를 공개할 필요가 없다.
-
 
 ## A·B 통합 후속 결과 — 2026-10-11
 

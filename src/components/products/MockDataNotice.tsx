@@ -2,7 +2,8 @@
 export default function MockDataNotice({ usingMock }: { usingMock: boolean }) {
   return (
     <p className="rounded-xl border border-dashed border-bark/40 bg-accent-soft px-3 py-2 text-xs text-bark">
-      농가 이름·유기농·무농약 표시·가격·사진·별점·리뷰 수는 시연용 가상 데이터예요.
+      농가 이름·유기농·무농약 표시·가격·사진·별점·리뷰 수는 시연용 가상
+      데이터예요.
       {usingMock && " (DB 연결 전 Mock Data)"}
     </p>
   );

@@ -5,6 +5,11 @@ import ProductCard from "@/components/products/ProductCard";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { routes } from "@/lib/routes";
 import { getRecipesByVegetable } from "@/services/recipes";
+import NutritionCard from "@/components/vegetables/NutritionCard";
+import {
+  getNutritionByVegetable,
+  NUTRITION_SOURCE,
+} from "@/services/nutrition";
 import { getProductsByVegetable } from "@/services/products";
 import { getVegetableById } from "@/services/vegetables";
 import { VEGETABLE_CATEGORY_LABELS } from "@/types/vegetable";
@@ -86,6 +91,11 @@ export default async function VegetablePage({
           </p>
         </div>
       </section>
+
+      <NutritionCard
+        profiles={getNutritionByVegetable(vegetable.id)}
+        source={NUTRITION_SOURCE}
+      />
 
       {recipes.length > 0 && (
         <section className="mt-8" aria-label={`${vegetable.name} 레시피`}>
