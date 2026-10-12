@@ -313,7 +313,11 @@ async function FarmCard({ farm }: { farm: FarmStory }) {
         <div>
           <div className="flex items-center gap-3">
             <SafeImage
-              src={lead.imageUrl}
+              src={
+                farm.farmName === "영주 사과마을"
+                  ? "/images/farms/youngju-apples.webp"
+                  : lead.imageUrl
+              }
               alt={lead.name}
               className="size-14 shrink-0 rounded-xl object-cover"
             />

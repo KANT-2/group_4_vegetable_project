@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
-import { access } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
+import { createHash } from "node:crypto";
 import easy from "../src/data/easy-recipes.json" with { type: "json" };
 import official from "../src/data/generated/verified-recipes.json" with { type: "json" };
 import { connectCatalogRecipes } from "../src/lib/recipe-catalog.ts";
@@ -67,4 +68,19 @@ test("편집 레시피를 먼저 표시하고 공식 16개를 보존하며 DB의
   assert.deepEqual(merged.slice(0, 24), local);
   assert.deepEqual(merged.slice(24), db);
   assert.equal(mergeRecipeCatalogs(local, []).length, 24);
+});
+
+test("40개 레시피의 대표 사진은 주소와 실제 파일 내용 모두 중복되지 않는다", async () => {
+  const recipes = connectCatalogRecipes([...easy, ...official], [], []);
+  assert.equal(new Set(recipes.map((r) => r.imageUrl)).size, 40);
+  const hashes = await Promise.all(
+    recipes.map(async (r) =>
+      createHash("sha256")
+        .update(
+          await readFile(new URL("../public" + r.imageUrl, import.meta.url)),
+        )
+        .digest("hex"),
+    ),
+  );
+  assert.equal(new Set(hashes).size, 40);
 });

@@ -3,6 +3,7 @@
 // 자바스크립트가 없어도 동작하는 일반 폼과 링크로 만들었어요.
 
 import Form from "next/form";
+import ScrollRow from "@/components/products/ScrollRow";
 import Link from "next/link";
 import { SearchIcon } from "@/components/common/Icons";
 import { routes } from "@/lib/routes";
@@ -29,7 +30,7 @@ export function RecipeFilters({
   const hasFilters = Boolean(filters.q || filters.vegetable);
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-3 md:space-y-5">
       <Form action={routes.recipes} role="search" className="flex gap-2">
         {/* 검색어를 바꿔도 선택한 채소는 유지해요. */}
         {filters.vegetable && (
@@ -48,34 +49,40 @@ export function RecipeFilters({
             placeholder="요리 이름이나 재료로 검색"
             autoComplete="off"
             enterKeyHint="search"
-            className="field"
+            className="field min-h-11 text-sm md:min-h-12 md:text-base"
           />
         </div>
-        <button type="submit" className="btn btn-primary shrink-0 px-5">
+        <button
+          type="submit"
+          className="btn btn-primary min-h-11 shrink-0 px-4 text-sm md:min-h-12 md:px-5 md:text-base"
+        >
           <SearchIcon width={20} height={20} />
           검색
         </button>
       </Form>
 
-      <nav aria-label="채소로 레시피 거르기">
-        <ul className="flex gap-2 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible">
-          <li>
-            <FilterChip
-              href={listHref({ q: filters.q })}
-              active={!filters.vegetable}
-              label="전체"
-            />
-          </li>
+      <nav
+        aria-label="채소로 레시피 거르기"
+        className="-mx-4 border-b border-line md:mx-0 md:border-0"
+      >
+        <ScrollRow
+          label="채소"
+          className="gap-1 px-2 md:flex-wrap md:gap-2 md:px-0"
+        >
+          <FilterChip
+            href={listHref({ q: filters.q })}
+            active={!filters.vegetable}
+            label="전체"
+          />
           {vegetables.map((vegetable) => (
-            <li key={vegetable.id}>
-              <FilterChip
-                href={listHref({ q: filters.q, vegetable: vegetable.id })}
-                active={filters.vegetable === vegetable.id}
-                label={vegetable.name}
-              />
-            </li>
+            <FilterChip
+              key={vegetable.id}
+              href={listHref({ q: filters.q, vegetable: vegetable.id })}
+              active={filters.vegetable === vegetable.id}
+              label={vegetable.name}
+            />
           ))}
-        </ul>
+        </ScrollRow>
       </nav>
 
       {hasFilters && (
@@ -103,10 +110,11 @@ function FilterChip({
     <Link
       href={href}
       aria-current={active ? "true" : undefined}
-      className={`inline-flex min-h-12 shrink-0 items-center whitespace-nowrap rounded-full border px-5 font-bold transition-colors ${
+      scroll={false}
+      className={`inline-flex min-h-12 shrink-0 items-center whitespace-nowrap border-b-2 px-3 text-sm font-bold transition-colors md:rounded-full md:border md:px-5 md:text-base ${
         active
-          ? "border-brand bg-brand text-white"
-          : "border-line bg-surface hover:bg-brand-soft"
+          ? "border-brand text-brand-dark md:bg-brand md:text-white"
+          : "border-transparent text-ink-muted hover:text-brand-dark md:border-line md:bg-surface md:text-ink md:hover:bg-brand-soft"
       }`}
     >
       {label}

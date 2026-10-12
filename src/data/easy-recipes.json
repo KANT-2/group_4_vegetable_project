@@ -89,8 +89,16 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "potato",
-    "imageUrl": "/images/potato-scratched.jpg",
-    "imageAlt": "감자 — 감자 간장조림의 주재료"
+    "imageUrl": "/images/recipes/easy-potato-2-internet.webp",
+    "photoReference": {
+      "title": "File:Gamja jorim Korean.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Gamja_jorim_Korean.jpg",
+      "author": "P1898",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "imageUrl": "/images/recipes/easy-potato-2-internet.webp",
+      "transform": "WebP encoding / display crop"
+    }
   },
   {
     "id": "easy-carrot-1",
@@ -271,8 +279,16 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "aehobak",
-    "imageUrl": "/images/aehobak-small.jpg",
-    "imageAlt": "애호박 — 애호박 새우젓볶음의 주재료"
+    "imageUrl": "/images/recipes/easy-aehobak-2-internet.webp",
+    "photoReference": {
+      "title": "File:Aehobak-bokkeum.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Aehobak-bokkeum.jpg",
+      "author": "행복한 초록개구리",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "imageUrl": "/images/recipes/easy-aehobak-2-internet.webp",
+      "transform": "WebP encoding / display crop"
+    }
   },
   {
     "id": "easy-eggplant-1",
@@ -365,8 +381,16 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "eggplant",
-    "imageUrl": "/images/eggplant-small.jpg",
-    "imageAlt": "가지 — 가지 간장구이의 주재료"
+    "imageUrl": "/images/recipes/easy-eggplant-2-internet.webp",
+    "photoReference": {
+      "title": "File:Gaji-bokkeum.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Gaji-bokkeum.jpg",
+      "author": "Hyeon-Jeong Suk",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "imageUrl": "/images/recipes/easy-eggplant-2-internet.webp",
+      "transform": "WebP encoding / display crop"
+    }
   },
   {
     "id": "easy-onion-1",
@@ -416,8 +440,16 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "onion",
-    "imageUrl": "/images/onion-irregular.jpg",
-    "imageAlt": "양파 — 양파 달걀덮밥의 주재료"
+    "imageUrl": "/images/recipes/easy-onion-1-internet.webp",
+    "photoReference": {
+      "title": "File:Tamagodon.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Tamagodon.jpg",
+      "author": "sheepman",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "imageUrl": "/images/recipes/easy-onion-1-internet.webp",
+      "transform": "WebP encoding / display crop"
+    }
   },
   {
     "id": "easy-onion-2",
@@ -506,8 +538,16 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "cabbage",
-    "imageUrl": "/images/cabbage.jpg",
-    "imageAlt": "양배추 — 양배추 달걀전의 주재료"
+    "imageUrl": "/images/recipes/easy-cabbage-1-internet.webp",
+    "photoReference": {
+      "title": "File:Okonomiyaki on a plate in a restaurant in Osaka, Japan - September 2015.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Okonomiyaki_on_a_plate_in_a_restaurant_in_Osaka,_Japan_-_September_2015.jpg",
+      "author": "Rickard Törnblad",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "imageUrl": "/images/recipes/easy-cabbage-1-internet.webp",
+      "transform": "WebP encoding / display crop"
+    }
   },
   {
     "id": "easy-cabbage-2",
@@ -693,8 +733,16 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "spinach",
-    "imageUrl": "/images/spinach-irregular.jpg",
-    "imageAlt": "시금치 — 시금치나물의 주재료"
+    "imageUrl": "/images/recipes/easy-spinach-1-internet.webp",
+    "photoReference": {
+      "title": "File:Sigeumchi-namul.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Sigeumchi-namul.jpg",
+      "author": "쑤기언니",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "imageUrl": "/images/recipes/easy-spinach-1-internet.webp",
+      "transform": "WebP encoding / display crop"
+    }
   },
   {
     "id": "easy-spinach-2",
@@ -736,8 +784,16 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "spinach",
-    "imageUrl": "/images/spinach-irregular.jpg",
-    "imageAlt": "시금치 — 시금치 달걀볶음의 주재료"
+    "imageUrl": "/images/recipes/easy-spinach-2-internet.webp",
+    "photoReference": {
+      "title": "File:Liat Portal for Foodie Disorder - Scrambled eggs with spinach.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Scrambled_eggs_with_spinach.jpg",
+      "author": "HaJunkiyada",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "imageUrl": "/images/recipes/easy-spinach-2-internet.webp",
+      "transform": "WebP encoding / display crop"
+    }
   },
   {
     "id": "easy-broccoli-1",
@@ -779,8 +835,16 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "broccoli",
-    "imageUrl": "/images/broccoli-small.jpg",
-    "imageAlt": "브로콜리 — 브로콜리 참깨무침의 주재료"
+    "imageUrl": "/images/recipes/easy-broccoli-1-internet.webp",
+    "photoReference": {
+      "title": "File:Tenderstem broccoli dressed with sesame sauce 001.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Tenderstem_broccoli_dressed_with_sesame_sauce_001.jpg",
+      "author": "Flickr user yoppy",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "imageUrl": "/images/recipes/easy-broccoli-1-internet.webp",
+      "transform": "WebP encoding / display crop"
+    }
   },
   {
     "id": "easy-broccoli-2",
@@ -826,8 +890,16 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "broccoli",
-    "imageUrl": "/images/broccoli-small.jpg",
-    "imageAlt": "브로콜리 — 브로콜리 마늘볶음의 주재료"
+    "imageUrl": "/images/recipes/easy-broccoli-2-internet.webp",
+    "photoReference": {
+      "title": "File:Cooked broccoli florets in a textured glass bowl.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Cooked_broccoli_florets_in_a_textured_glass_bowl.jpg",
+      "author": "Horacio Cambeiro",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "imageUrl": "/images/recipes/easy-broccoli-2-internet.webp",
+      "transform": "WebP encoding / display crop"
+    }
   },
   {
     "id": "easy-radish-1",
@@ -877,8 +949,16 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "radish",
-    "imageUrl": "/images/radish-bent.jpg",
-    "imageAlt": "무 — 무생채의 주재료"
+    "imageUrl": "/images/recipes/easy-radish-1-internet.webp",
+    "photoReference": {
+      "title": "File:Mu-saengchae.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Mu-saengchae.jpg",
+      "author": "chomjong",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "imageUrl": "/images/recipes/easy-radish-1-internet.webp",
+      "transform": "WebP encoding / display crop"
+    }
   },
   {
     "id": "easy-radish-2",
@@ -924,8 +1004,16 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "radish",
-    "imageUrl": "/images/radish-bent.jpg",
-    "imageAlt": "무 — 들깨 무나물의 주재료"
+    "imageUrl": "/images/recipes/easy-radish-2-internet.webp",
+    "photoReference": {
+      "title": "File:Mu-namul.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Mu-namul.jpg",
+      "author": "초롱",
+      "license": "CC BY 2.0 kr",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/kr/deed.en",
+      "imageUrl": "/images/recipes/easy-radish-2-internet.webp",
+      "transform": "WebP encoding / display crop"
+    }
   },
   {
     "id": "easy-shiitake-1",
@@ -971,8 +1059,8 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "shiitake",
-    "imageUrl": "/images/shiitake-small.jpg",
-    "imageAlt": "표고버섯 — 표고버섯 간장볶음의 주재료"
+    "imageUrl": "/images/shiitake-scratched.jpg",
+    "imageAlt": "표고버섯 간장볶음의 주재료 표고버섯"
   },
   {
     "id": "easy-shiitake-2",

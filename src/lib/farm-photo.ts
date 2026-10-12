@@ -17,6 +17,12 @@ export function getFarmPhoto(farm: FarmStory): {
   imageUrl: string;
   alt: string;
 } {
+  if (farm.farmName === "영주 사과마을") {
+    return {
+      imageUrl: "/images/farms/youngju-orchard.webp",
+      alt: "붉은 사과가 달린 사과 과수원 풍경",
+    };
+  }
   const lead = farm.products[0];
   return (
     CROP_PHOTOS[lead?.vegetableId] ?? {

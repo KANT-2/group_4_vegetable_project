@@ -130,5 +130,149 @@
     "usage": "generated-dish-reference",
     "transform": "AI 생성 원본 / 화면 크롭",
     "generated": true
+  },
+  "internet-easy-potato-2": {
+    "title": "File:Gamja jorim Korean.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Gamja_jorim_Korean.jpg",
+    "author": "P1898",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "imageUrl": "/images/recipes/easy-potato-2-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-easy-aehobak-2": {
+    "title": "File:Aehobak-bokkeum.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Aehobak-bokkeum.jpg",
+    "author": "행복한 초록개구리",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "imageUrl": "/images/recipes/easy-aehobak-2-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-easy-eggplant-2": {
+    "title": "File:Gaji-bokkeum.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Gaji-bokkeum.jpg",
+    "author": "Hyeon-Jeong Suk",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "imageUrl": "/images/recipes/easy-eggplant-2-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-easy-onion-1": {
+    "title": "File:Tamagodon.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Tamagodon.jpg",
+    "author": "sheepman",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "imageUrl": "/images/recipes/easy-onion-1-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-easy-cabbage-1": {
+    "title": "File:Okonomiyaki on a plate in a restaurant in Osaka, Japan - September 2015.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Okonomiyaki_on_a_plate_in_a_restaurant_in_Osaka,_Japan_-_September_2015.jpg",
+    "author": "Rickard Törnblad",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageUrl": "/images/recipes/easy-cabbage-1-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-easy-spinach-1": {
+    "title": "File:Sigeumchi-namul.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Sigeumchi-namul.jpg",
+    "author": "쑤기언니",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "imageUrl": "/images/recipes/easy-spinach-1-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-easy-spinach-2": {
+    "title": "File:Liat Portal for Foodie Disorder - Scrambled eggs with spinach.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Scrambled_eggs_with_spinach.jpg",
+    "author": "HaJunkiyada",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageUrl": "/images/recipes/easy-spinach-2-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-easy-broccoli-1": {
+    "title": "File:Tenderstem broccoli dressed with sesame sauce 001.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Tenderstem_broccoli_dressed_with_sesame_sauce_001.jpg",
+    "author": "Flickr user yoppy",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "imageUrl": "/images/recipes/easy-broccoli-1-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-easy-broccoli-2": {
+    "title": "File:Cooked broccoli florets in a textured glass bowl.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Cooked_broccoli_florets_in_a_textured_glass_bowl.jpg",
+    "author": "Horacio Cambeiro",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "imageUrl": "/images/recipes/easy-broccoli-2-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-easy-radish-1": {
+    "title": "File:Mu-saengchae.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Mu-saengchae.jpg",
+    "author": "chomjong",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "imageUrl": "/images/recipes/easy-radish-1-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-easy-radish-2": {
+    "title": "File:Mu-namul.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Mu-namul.jpg",
+    "author": "초롱",
+    "license": "CC BY 2.0 kr",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/kr/deed.en",
+    "imageUrl": "/images/recipes/easy-radish-2-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-official-sprout207811": {
+    "title": "File:Grilled Eggplant Salad.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Grilled_Eggplant_Salad.jpg",
+    "author": "nabila64",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageUrl": "/images/recipes/official-sprout207811-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-official-213103": {
+    "title": "File:Mushroom Asparagus and Lettuce Salad.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Mushroom_Asparagus_and_Lettuce_Salad.jpg",
+    "author": "Dr. Chinchu C.",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "imageUrl": "/images/recipes/official-213103-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-official-200809": {
+    "title": "File:Chicken stew with mixed vegetables.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Chicken_stew_with_mixed_vegetables.jpg",
+    "author": "FBenjr123",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageUrl": "/images/recipes/official-200809-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-official-211734": {
+    "title": "File:Gamja jorim 감자조림1.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Gamja_jorim_%EA%B0%90%EC%9E%90%EC%A1%B0%EB%A6%BC1.jpg",
+    "author": "Wikimedia contributor",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageUrl": "/images/recipes/official-211734-internet.webp",
+    "transform": "WebP encoding / display crop"
+  },
+  "internet-official-98885": {
+    "title": "File:Roasted vegetables.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Roasted_vegetables.jpg",
+    "author": "Kykk wiki",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageUrl": "/images/recipes/official-98885-internet.webp",
+    "transform": "WebP encoding / display crop"
   }
 }

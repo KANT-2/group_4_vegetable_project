@@ -7,17 +7,17 @@ const PHOTO_BY_RECIPE: Record<string, keyof typeof assets> = {
   "official-206629": "salad",
   "official-98889": "japchae",
   "official-200113": "dumplings",
-  "official-98885": "salad",
-  "official-sprout207811": "salad",
+  "official-98885": "internet-official-98885",
+  "official-sprout207811": "internet-official-sprout207811",
   "official-mfds253": "tomato-duck",
   "official-mfds454": "pasta",
   "official-208146": "gratin",
   "official-201257": "water-kimchi",
   "official-208263": "chicken-vegetables",
   "official-mfds3287": "tacos",
-  "official-213103": "salad",
-  "official-200809": "chicken-vegetables",
-  "official-211734": "gratin",
+  "official-213103": "internet-official-213103",
+  "official-200809": "internet-official-200809",
+  "official-211734": "internet-official-211734",
 };
 export function withRecipePhoto<T extends Recipe>(recipe: T): T {
   const key = PHOTO_BY_RECIPE[recipe.id];
