@@ -523,6 +523,98 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
     },
   );
 
+  await t.test(
+    "모의 결제는 DB 가격·배송지를 검증하고 재전송·사용자 분리·실패 시 장바구니 유지를 보장한다",
+    async () => {
+      const shipping = {
+        recipient_name: "테스트회원",
+        recipient_phone: "01012345678",
+        postal_code: "01234",
+        address: "테스트 가상 주소",
+        address_detail: "",
+      };
+      const items = [
+        { product_id: "test-carrot", quantity: 2, unit_price: 1500 },
+      ];
+      const key = "00000000-0000-4000-8000-000000000091";
+      const successKey = "00000000-0000-4000-8000-000000000092";
+      const call = (
+        key,
+        expected = items,
+        success = false,
+        address = shipping,
+      ) =>
+        db.query(
+          "select public.mock_checkout($1,$2::jsonb,$3::jsonb,$4) as id",
+          [key, JSON.stringify(address), JSON.stringify(expected), success],
+        );
+      await asRole("anon");
+      await assert.rejects(call(key), { code: "42501" });
+      await asRole("authenticated", user1);
+      await assert.rejects(call(key)); // 빈 장바구니
+      await db.query(
+        "insert into cart_items(product_id,quantity) values ('test-carrot',2)",
+      );
+      await assert.rejects(call(key, [{ ...items[0], unit_price: 1 }]));
+      await assert.rejects(
+        call(key, items, false, { ...shipping, postal_code: "ABCDE" }),
+      );
+      const failed = (await call(key)).rows[0].id;
+      assert.equal((await call(key, items, true)).rows[0].id, failed);
+      assert.equal(
+        (
+          await db.query(
+            "select status,total_amount,paid_at from orders where id=$1",
+            [failed],
+          )
+        ).rows[0].status,
+        "payment_failed",
+      );
+      assert.equal(
+        (await db.query("select quantity from cart_items")).rows[0].quantity,
+        2,
+      );
+      const paid = (await call(successKey, items, true)).rows[0].id;
+      assert.equal((await call(successKey, items, true)).rows[0].id, paid);
+      const saved = (
+        await db.query(
+          "select status,total_amount,paid_at from orders where id=$1",
+          [paid],
+        )
+      ).rows[0];
+      assert.equal(saved.status, "paid");
+      assert.equal(Number(saved.total_amount), 3000);
+      assert.ok(saved.paid_at);
+      assert.equal((await db.query("select * from cart_items")).rows.length, 0);
+      assert.equal(
+        (
+          await db.query(
+            "select quantity,unit_price from order_items where order_id=$1",
+            [paid],
+          )
+        ).rows[0].quantity,
+        2,
+      );
+      await asRole("authenticated", user2);
+      assert.equal(
+        (await db.query("select * from orders where id=$1", [paid])).rows
+          .length,
+        0,
+      );
+      const other = (
+        await call(successKey, [{ ...items[0], quantity: 1 }], false)
+      ).rows[0].id;
+      assert.notEqual(other, paid);
+      assert.equal((await db.query("select * from cart_items")).rows.length, 1);
+      await db.exec("reset role");
+      await db.query("delete from orders where id in ($1,$2,$3)", [
+        failed,
+        paid,
+        other,
+      ]);
+    },
+  );
+
   await t.test("B catalog seed는 두 번 실행해도 중복되지 않는다", async () => {
     await db.exec("reset role");
     const seed = await readFile(

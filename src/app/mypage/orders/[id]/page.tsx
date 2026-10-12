@@ -26,6 +26,19 @@ async function OrderDetails({ params }: { params: Params }) {
         <p className="font-bold text-brand">
           {orderStatusLabels[order.status] ?? "상태 확인 필요"}
         </p>
+        <p className="mt-3 text-sm text-ink-muted">
+          모의 주문 기록입니다. 실제 결제나 배송은 진행되지 않아요.
+        </p>
+        {order.status === "payment_failed" && (
+          <div className="mt-4">
+            <p role="status">
+              모의 결제가 실패했어요. 장바구니 상품은 유지됩니다.
+            </p>
+            <Link href="/cart" className="btn btn-primary mt-3">
+              장바구니에서 다시 주문
+            </Link>
+          </div>
+        )}
         <p className="mt-2 text-ink-muted">
           {formatOrderDate(order.created_at)}
         </p>
