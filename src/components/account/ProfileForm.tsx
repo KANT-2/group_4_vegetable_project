@@ -52,6 +52,8 @@ export function ProfileForm({
   return (
     <div className="space-y-8">
       <form
+        // 브라우저 기본 검사 대신 Zod 검사 결과를 안내 문구로 보여 줍니다.
+        noValidate
         aria-busy={pending}
         onSubmit={(event) => {
           event.preventDefault();
