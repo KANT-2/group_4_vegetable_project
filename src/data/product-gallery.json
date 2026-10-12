@@ -1,0 +1,116 @@
+{
+  "carrot": [
+    "/images/carrot.jpg",
+    "/images/carrot-bulk.jpg",
+    "/images/carrot-scratched.jpg"
+  ],
+  "apple": [
+    "/images/apple.jpg",
+    "/images/apple-small.jpg",
+    "/images/apple-irregular.jpg"
+  ],
+  "shiitake": [
+    "/images/shiitake.jpg",
+    "/images/shiitake-small.jpg",
+    "/images/shiitake-scratched.jpg"
+  ],
+  "cabbage": [
+    "/images/cabbage.jpg",
+    "/images/cabbage-scratched.jpg",
+    "/images/cabbage-irregular.jpg"
+  ],
+  "paprika": [
+    "/images/paprika.jpg",
+    "/images/paprika-small.jpg",
+    "/images/paprika-scratched.jpg"
+  ],
+  "onion": [
+    "/images/onion.jpg",
+    "/images/onion-scratched.jpg",
+    "/images/onion-irregular.jpg"
+  ],
+  "potato": [
+    "/images/potato-small.jpg",
+    "/images/potato-scratched.jpg",
+    "/images/potato-irregular.jpg"
+  ],
+  "sweet-potato": [
+    "/images/sweet-potato.jpg",
+    "/images/sweet-potato-small.jpg",
+    "/images/sweet-potato-scratched.jpg"
+  ],
+  "tomato": [
+    "/images/tomato.jpg",
+    "/images/tomato-scratched.jpg",
+    "/images/tomato-small.jpg"
+  ],
+  "cucumber": [
+    "/images/cucumber.jpg",
+    "/images/cucumber-scratched.jpg",
+    "/images/cucumber-small.jpg"
+  ],
+  "green-onion": [
+    "/images/green-onion.jpg",
+    "/images/green-onion-bent.jpg",
+    "/images/green-onion-irregular.jpg",
+    "/images/green-onion-scratched.jpg"
+  ],
+  "spinach": [
+    "/images/spinach.jpg",
+    "/images/spinach-irregular.jpg",
+    "/images/spinach-scratched.jpg"
+  ],
+  "radish": [
+    "/images/radish-bent.jpg",
+    "/images/radish-scratched.jpg",
+    "/images/radish-irregular.jpg",
+    "/images/radish-small.jpg",
+    "/images/radish.jpg"
+  ],
+  "broccoli": [
+    "/images/broccoli-small.jpg",
+    "/images/broccoli-irregular.jpg",
+    "/images/broccoli-scratched.jpg"
+  ],
+  "napa-cabbage": [
+    "/images/napa-cabbage-small.jpg",
+    "/images/napa-cabbage-scratched.jpg",
+    "/images/napa-cabbage-irregular.jpg"
+  ],
+  "aehobak": [
+    "/images/aehobak-small.jpg",
+    "/images/aehobak-bent.jpg",
+    "/images/aehobak-scratched.jpg"
+  ],
+  "eggplant": [
+    "/images/eggplant-bent.jpg",
+    "/images/eggplant-scratched.jpg",
+    "/images/eggplant-small.jpg",
+    "/images/eggplant-irregular.jpg"
+  ],
+  "sweet-pumpkin": [
+    "/images/danhobak-small.jpg",
+    "/images/danhobak-scratched.jpg",
+    "/images/danhobak-irregular.jpg"
+  ],
+  "king-oyster": [
+    "/images/king-oyster-small.jpg",
+    "/images/king-oyster-bent.jpg",
+    "/images/king-oyster-bent-bulk.jpg",
+    "/images/king-oyster-scratched.jpg",
+    "/images/king-oyster-irregular.jpg",
+    "/images/king-oyster-irregular-500g.jpg",
+    "/images/king-oyster-scratched-1kg.jpg"
+  ],
+  "mandarin": [
+    "/images/mandarin-small.jpg",
+    "/images/mandarin-scratched.jpg",
+    "/images/mandarin-irregular.jpg"
+  ],
+  "chili": [
+    "/images/chili-small.jpg",
+    "/images/chili-bent.jpg",
+    "/images/chili-scratched.jpg",
+    "/images/chili-irregular.jpg"
+  ]
+}

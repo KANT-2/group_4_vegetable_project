@@ -169,6 +169,7 @@ export default async function RecipeDetailPage({
                 <ProductPreviewCard
                   name={product.name}
                   imageUrl={product.imageUrl}
+                  vegetableId={product.vegetableId}
                   unit={product.unit}
                   price={product.price}
                   originalPrice={product.originalPrice}

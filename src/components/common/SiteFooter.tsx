@@ -4,7 +4,7 @@
 
 import Link from "next/link";
 import { routes } from "@/lib/routes";
-import { LeafIcon } from "./Icons";
+import { BrandLogo } from "./BrandLogo";
 
 export function SiteFooter() {
   const links = [
@@ -20,8 +20,7 @@ export function SiteFooter() {
       <div className="container-page grid gap-8 py-10 md:grid-cols-2">
         <div>
           <p className="inline-flex items-center gap-2 text-xl font-black text-brand">
-            <LeafIcon width={24} height={24} />
-            못난이마켓
+            <BrandLogo />
           </p>
           <p className="mt-2 text-ink-muted">
             버려지는 농산물을 줄이는 가치소비 쇼핑 서비스

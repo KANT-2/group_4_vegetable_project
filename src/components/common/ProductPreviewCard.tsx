@@ -8,11 +8,13 @@ import type { ReactNode } from "react";
 import { UGLY_REASON_LABELS, type UglyReason } from "@/types/product";
 import { getDiscountRate } from "@/lib/format";
 import { QuickAddButton } from "./QuickAddButton";
-import { SafeImage } from "./SafeImage";
+import { ProductImageRotator } from "@/components/products/ProductImageRotator";
+import { getProductImages } from "@/lib/product-gallery";
 
 interface ProductPreviewCardProps {
   name: string;
   imageUrl?: string;
+  vegetableId?: string;
   unit: string;
   price: number;
   originalPrice: number;
@@ -30,6 +32,7 @@ const won = (n: number) => n.toLocaleString("ko-KR");
 export function ProductPreviewCard({
   name,
   imageUrl,
+  vegetableId,
   unit,
   price,
   originalPrice,
@@ -56,9 +59,9 @@ export function ProductPreviewCard({
     <div className="group">
       {wrap(
         <div className="relative overflow-hidden rounded-[0.25rem] bg-sand">
-          <SafeImage
-            src={imageUrl}
-            alt={`${name} 사진`}
+          <ProductImageRotator
+            images={getProductImages({ imageUrl, vegetableId })}
+            name={name}
             priority={priority}
             className="aspect-[249/320] w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
