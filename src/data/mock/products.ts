@@ -8,7 +8,7 @@ export const products: Product[] = [
   {
     id: "carrot-bent-1kg",
     vegetableId: "carrot",
-    name: "못난이 당근 1kg",
+    name: "해남 흙당근 1kg",
     price: 2900,
     originalPrice: 4800,
     unit: "1kg (5~8개)",
@@ -29,7 +29,7 @@ export const products: Product[] = [
   {
     id: "apple-scratched-2kg",
     vegetableId: "apple",
-    name: "흠과 사과 2kg",
+    name: "청송 꿀사과 가정용 2kg",
     price: 12900,
     originalPrice: 19800,
     unit: "2kg (7~9개)",
@@ -50,7 +50,7 @@ export const products: Product[] = [
   {
     id: "shiitake-irregular-500g",
     vegetableId: "shiitake",
-    name: "B급 표고버섯 500g",
+    name: "무농약 원목 표고버섯 500g",
     price: 6900,
     originalPrice: 9900,
     unit: "500g",
@@ -71,7 +71,7 @@ export const products: Product[] = [
   {
     id: "cabbage-small-1ea",
     vegetableId: "cabbage",
-    name: "꼬마 양배추 1통",
+    name: "평창 고랭지 미니 양배추 1통",
     price: 1900,
     originalPrice: 3500,
     unit: "1통",
@@ -92,7 +92,7 @@ export const products: Product[] = [
   {
     id: "paprika-irregular-4ea",
     vegetableId: "paprika",
-    name: "못난이 파프리카 4입",
+    name: "무농약 컬러 파프리카 4입",
     price: 4900,
     originalPrice: 7900,
     unit: "4입",
@@ -113,7 +113,7 @@ export const products: Product[] = [
   {
     id: "onion-small-2kg",
     vegetableId: "onion",
-    name: "꼬마 양파 2kg",
+    name: "무안 황토 햇양파 2kg",
     price: 3900,
     originalPrice: 6700,
     unit: "2kg",
@@ -134,7 +134,7 @@ export const products: Product[] = [
   {
     id: "potato-small-3kg",
     vegetableId: "potato",
-    name: "꼬마 감자 3kg",
+    name: "강릉 고랭지 알감자 3kg",
     price: 5900,
     originalPrice: 9800,
     unit: "3kg",
@@ -155,7 +155,7 @@ export const products: Product[] = [
   {
     id: "potato-scratched-2kg",
     vegetableId: "potato",
-    name: "흠집 감자 2kg",
+    name: "평창 수미감자 가정용 2kg",
     price: 4500,
     originalPrice: 6900,
     unit: "2kg",
@@ -176,7 +176,7 @@ export const products: Product[] = [
   {
     id: "sweet-potato-bent-2kg",
     vegetableId: "sweet-potato",
-    name: "못난이 꿀고구마 2kg",
+    name: "해남 황토 꿀고구마 2kg",
     price: 7900,
     originalPrice: 12900,
     unit: "2kg",
@@ -197,7 +197,7 @@ export const products: Product[] = [
   {
     id: "sweet-potato-small-1-5kg",
     vegetableId: "sweet-potato",
-    name: "한입 고구마 1.5kg",
+    name: "여주 한입 꿀고구마 1.5kg",
     price: 5500,
     originalPrice: 8500,
     unit: "1.5kg",
@@ -218,7 +218,7 @@ export const products: Product[] = [
   {
     id: "tomato-irregular-1kg",
     vegetableId: "tomato",
-    name: "못난이 토마토 1kg",
+    name: "부여 완숙 찰토마토 1kg",
     price: 4900,
     originalPrice: 7900,
     unit: "1kg",
@@ -239,7 +239,7 @@ export const products: Product[] = [
   {
     id: "cucumber-bent-5ea",
     vegetableId: "cucumber",
-    name: "휜 오이 5입",
+    name: "무농약 백다다기 오이 5입",
     price: 2900,
     originalPrice: 4500,
     unit: "5입",
@@ -260,7 +260,7 @@ export const products: Product[] = [
   {
     id: "green-onion-small-1bunch",
     vegetableId: "green-onion",
-    name: "짧은 대파 1단",
+    name: "진도 겨울 대파 1단",
     price: 1900,
     originalPrice: 3200,
     unit: "1단",
@@ -281,7 +281,7 @@ export const products: Product[] = [
   {
     id: "spinach-small-500g",
     vegetableId: "spinach",
-    name: "잎 작은 시금치 500g",
+    name: "남해 섬초 시금치 500g",
     price: 2500,
     originalPrice: 3900,
     unit: "500g",
@@ -302,7 +302,7 @@ export const products: Product[] = [
   {
     id: "carrot-irregular-3kg",
     vegetableId: "carrot",
-    name: "굵기 제각각 당근 3kg",
+    name: "제주 구좌 당근 실속 3kg",
     price: 6900,
     originalPrice: 11500,
     unit: "3kg",
@@ -323,7 +323,7 @@ export const products: Product[] = [
   {
     id: "apple-small-3kg",
     vegetableId: "apple",
-    name: "소과 사과 3kg",
+    name: "영주 부사 소과 3kg",
     price: 15900,
     originalPrice: 25800,
     unit: "3kg (14~18개)",
@@ -344,7 +344,7 @@ export const products: Product[] = [
   {
     id: "carrot-scratched-2kg",
     vegetableId: "carrot",
-    name: "흠집 당근 2kg",
+    name: "해남 흙당근 가정용 2kg",
     price: 3900,
     originalPrice: 6400,
     unit: "2kg",
@@ -365,7 +365,7 @@ export const products: Product[] = [
   {
     id: "onion-scratched-3kg",
     vegetableId: "onion",
-    name: "껍질 벗겨진 양파 3kg",
+    name: "무안 햇양파 실속 3kg",
     price: 4500,
     originalPrice: 7500,
     unit: "3kg",
@@ -386,7 +386,7 @@ export const products: Product[] = [
   {
     id: "onion-irregular-5kg",
     vegetableId: "onion",
-    name: "모양 제각각 양파 5kg",
+    name: "창녕 양파 대용량 5kg",
     price: 6900,
     originalPrice: 11900,
     unit: "5kg",
@@ -407,7 +407,7 @@ export const products: Product[] = [
   {
     id: "potato-irregular-5kg",
     vegetableId: "potato",
-    name: "울퉁불퉁 감자 5kg",
+    name: "강릉 수미감자 대용량 5kg",
     price: 8900,
     originalPrice: 14500,
     unit: "5kg",
@@ -428,7 +428,7 @@ export const products: Product[] = [
   {
     id: "sweet-potato-scratched-3kg",
     vegetableId: "sweet-potato",
-    name: "흠집 꿀고구마 3kg",
+    name: "해남 꿀고구마 실속 3kg",
     price: 8500,
     originalPrice: 13900,
     unit: "3kg",
@@ -471,7 +471,7 @@ export const products: Product[] = [
   {
     id: "radish-scratched-2ea",
     vegetableId: "radish",
-    name: "흠집 무 2개",
+    name: "평창 고랭지 무 2개",
     price: 2500,
     originalPrice: 4600,
     unit: "2개 (약 3kg)",
@@ -492,7 +492,7 @@ export const products: Product[] = [
   {
     id: "radish-irregular-1ea",
     vegetableId: "radish",
-    name: "다리 무 1개",
+    name: "제주 월동무 1개",
     price: 1300,
     originalPrice: 2800,
     unit: "1개 (약 1.2kg)",
@@ -513,7 +513,7 @@ export const products: Product[] = [
   {
     id: "cabbage-scratched-1ea",
     vegetableId: "cabbage",
-    name: "겉잎 상처 양배추 1통",
+    name: "평창 고랭지 양배추 1통",
     price: 2500,
     originalPrice: 4200,
     unit: "1통 (약 2kg)",
@@ -534,7 +534,7 @@ export const products: Product[] = [
   {
     id: "cabbage-irregular-2ea",
     vegetableId: "cabbage",
-    name: "모양 제각각 양배추 2통",
+    name: "제주 한림 양배추 2통",
     price: 3900,
     originalPrice: 6900,
     unit: "2통",
@@ -555,7 +555,7 @@ export const products: Product[] = [
   {
     id: "spinach-irregular-1kg",
     vegetableId: "spinach",
-    name: "잎 모양 제각각 시금치 1kg",
+    name: "남해 섬초 시금치 대용량 1kg",
     price: 4500,
     originalPrice: 6900,
     unit: "1kg",
@@ -576,7 +576,7 @@ export const products: Product[] = [
   {
     id: "spinach-scratched-500g",
     vegetableId: "spinach",
-    name: "잎끝 상처 시금치 500g",
+    name: "포항 섬초 시금치 500g",
     price: 2200,
     originalPrice: 3900,
     unit: "500g",
@@ -597,7 +597,7 @@ export const products: Product[] = [
   {
     id: "broccoli-small-3ea",
     vegetableId: "broccoli",
-    name: "꼬마 브로콜리 3송이",
+    name: "제주 미니 브로콜리 3송이",
     price: 3900,
     originalPrice: 6500,
     unit: "3송이",
@@ -618,7 +618,7 @@ export const products: Product[] = [
   {
     id: "broccoli-irregular-2ea",
     vegetableId: "broccoli",
-    name: "모양 제각각 브로콜리 2송이",
+    name: "무농약 고랭지 브로콜리 2송이",
     price: 3500,
     originalPrice: 5800,
     unit: "2송이",
@@ -639,7 +639,7 @@ export const products: Product[] = [
   {
     id: "broccoli-scratched-2ea",
     vegetableId: "broccoli",
-    name: "겉송이 멍 브로콜리 2송이",
+    name: "제주 브로콜리 실속 2송이",
     price: 2900,
     originalPrice: 5800,
     unit: "2송이",
@@ -660,7 +660,7 @@ export const products: Product[] = [
   {
     id: "napa-cabbage-small-2ea",
     vegetableId: "napa-cabbage",
-    name: "알배기 배추 2통",
+    name: "해남 알배기 배추 2통",
     price: 3900,
     originalPrice: 6500,
     unit: "2통",
@@ -681,7 +681,7 @@ export const products: Product[] = [
   {
     id: "napa-cabbage-scratched-1ea",
     vegetableId: "napa-cabbage",
-    name: "겉잎 상처 배추 1통",
+    name: "괴산 김장배추 1통",
     price: 2900,
     originalPrice: 5500,
     unit: "1통 (약 3kg)",
@@ -702,7 +702,7 @@ export const products: Product[] = [
   {
     id: "napa-cabbage-irregular-1ea",
     vegetableId: "napa-cabbage",
-    name: "모양 제각각 배추 1통",
+    name: "해남 겨울배추 1통",
     price: 2500,
     originalPrice: 5500,
     unit: "1통 (약 2.5kg)",
@@ -723,7 +723,7 @@ export const products: Product[] = [
   {
     id: "paprika-small-1kg",
     vegetableId: "paprika",
-    name: "꼬마 파프리카 1kg",
+    name: "영양 미니 파프리카 1kg",
     price: 5900,
     originalPrice: 9500,
     unit: "1kg (8~10개)",
@@ -744,7 +744,7 @@ export const products: Product[] = [
   {
     id: "paprika-scratched-3ea",
     vegetableId: "paprika",
-    name: "흠집 빨강 파프리카 3입",
+    name: "김제 빨강 파프리카 실속 3입",
     price: 3500,
     originalPrice: 5700,
     unit: "3입",
@@ -765,7 +765,7 @@ export const products: Product[] = [
   {
     id: "tomato-scratched-2kg",
     vegetableId: "tomato",
-    name: "갈라진 토마토 2kg",
+    name: "부여 완숙토마토 주스용 2kg",
     price: 6900,
     originalPrice: 11800,
     unit: "2kg",
@@ -786,7 +786,7 @@ export const products: Product[] = [
   {
     id: "tomato-small-1-5kg",
     vegetableId: "tomato",
-    name: "꼬마 토마토 1.5kg",
+    name: "담양 대추방울토마토 1.5kg",
     price: 5500,
     originalPrice: 8900,
     unit: "1.5kg",
@@ -807,7 +807,7 @@ export const products: Product[] = [
   {
     id: "cucumber-scratched-10ea",
     vegetableId: "cucumber",
-    name: "흠집 오이 10입",
+    name: "천안 백다다기 오이 실속 10입",
     price: 4900,
     originalPrice: 7900,
     unit: "10입",
@@ -828,7 +828,7 @@ export const products: Product[] = [
   {
     id: "cucumber-small-7ea",
     vegetableId: "cucumber",
-    name: "짧은 오이 7입",
+    name: "상주 미니 백오이 7입",
     price: 2900,
     originalPrice: 4900,
     unit: "7입",
@@ -849,7 +849,7 @@ export const products: Product[] = [
   {
     id: "aehobak-small-3ea",
     vegetableId: "aehobak",
-    name: "꼬마 애호박 3입",
+    name: "무농약 미니 애호박 3입",
     price: 2900,
     originalPrice: 4800,
     unit: "3입",
@@ -870,7 +870,7 @@ export const products: Product[] = [
   {
     id: "aehobak-bent-2ea",
     vegetableId: "aehobak",
-    name: "휜 애호박 2입",
+    name: "춘천 애호박 2입",
     price: 2500,
     originalPrice: 4200,
     unit: "2입",
@@ -891,7 +891,7 @@ export const products: Product[] = [
   {
     id: "aehobak-scratched-3ea",
     vegetableId: "aehobak",
-    name: "흠집 애호박 3입",
+    name: "진주 애호박 실속 3입",
     price: 3200,
     originalPrice: 5400,
     unit: "3입",
@@ -934,7 +934,7 @@ export const products: Product[] = [
   {
     id: "eggplant-scratched-4ea",
     vegetableId: "eggplant",
-    name: "흠집 가지 4입",
+    name: "하동 섬진강 가지 4입",
     price: 2900,
     originalPrice: 4900,
     unit: "4입",
@@ -955,7 +955,7 @@ export const products: Product[] = [
   {
     id: "eggplant-small-7ea",
     vegetableId: "eggplant",
-    name: "꼬마 가지 7입",
+    name: "하동 미니 가지 7입",
     price: 3900,
     originalPrice: 6500,
     unit: "7입",
@@ -976,7 +976,7 @@ export const products: Product[] = [
   {
     id: "sweet-pumpkin-small-3ea",
     vegetableId: "sweet-pumpkin",
-    name: "꼬마 단호박 3통",
+    name: "유기농 미니 단호박 3통",
     price: 5900,
     originalPrice: 9800,
     unit: "3통",
@@ -997,7 +997,7 @@ export const products: Product[] = [
   {
     id: "sweet-pumpkin-scratched-2ea",
     vegetableId: "sweet-pumpkin",
-    name: "껍질 흠집 단호박 2통",
+    name: "경주 밤단호박 2통",
     price: 4900,
     originalPrice: 7900,
     unit: "2통",
@@ -1018,7 +1018,7 @@ export const products: Product[] = [
   {
     id: "sweet-pumpkin-irregular-2ea",
     vegetableId: "sweet-pumpkin",
-    name: "울퉁불퉁 단호박 2통",
+    name: "춘천 단호박 실속 2통",
     price: 4500,
     originalPrice: 7900,
     unit: "2통",
@@ -1039,7 +1039,7 @@ export const products: Product[] = [
   {
     id: "shiitake-small-300g",
     vegetableId: "shiitake",
-    name: "꼬마 표고버섯 300g",
+    name: "장흥 미니 표고버섯 300g",
     price: 4500,
     originalPrice: 6900,
     unit: "300g",
@@ -1060,7 +1060,7 @@ export const products: Product[] = [
   {
     id: "shiitake-scratched-1kg",
     vegetableId: "shiitake",
-    name: "갓 갈라진 표고버섯 1kg",
+    name: "청양 원목 화고 표고 1kg",
     price: 11900,
     originalPrice: 18900,
     unit: "1kg",
@@ -1081,7 +1081,7 @@ export const products: Product[] = [
   {
     id: "king-oyster-small-500g",
     vegetableId: "king-oyster",
-    name: "꼬마 새송이버섯 500g",
+    name: "화성 미니 새송이 500g",
     price: 2900,
     originalPrice: 4800,
     unit: "500g",
@@ -1146,7 +1146,7 @@ export const products: Product[] = [
   {
     id: "king-oyster-scratched-500g",
     vegetableId: "king-oyster",
-    name: "갓 상처 새송이버섯 500g",
+    name: "화성 새송이버섯 500g",
     price: 2500,
     originalPrice: 4800,
     unit: "500g",
@@ -1167,7 +1167,7 @@ export const products: Product[] = [
   {
     id: "king-oyster-irregular-1kg",
     vegetableId: "king-oyster",
-    name: "굵기 제각각 새송이버섯 1kg",
+    name: "청양 새송이버섯 1kg",
     price: 4500,
     originalPrice: 8900,
     unit: "1kg",
@@ -1188,7 +1188,7 @@ export const products: Product[] = [
   {
     id: "apple-irregular-2kg",
     vegetableId: "apple",
-    name: "모양 제각각 사과 2kg",
+    name: "영주 부사 가정용 2kg",
     price: 11900,
     originalPrice: 17800,
     unit: "2kg (6~8개)",
@@ -1209,7 +1209,7 @@ export const products: Product[] = [
   {
     id: "mandarin-small-3kg",
     vegetableId: "mandarin",
-    name: "꼬마 귤 3kg",
+    name: "서귀포 노지 소과 감귤 3kg",
     price: 8900,
     originalPrice: 14900,
     unit: "3kg",
@@ -1230,7 +1230,7 @@ export const products: Product[] = [
   {
     id: "mandarin-scratched-5kg",
     vegetableId: "mandarin",
-    name: "껍질 흠집 귤 5kg",
+    name: "서귀포 노지 감귤 가정용 5kg",
     price: 12900,
     originalPrice: 21900,
     unit: "5kg",
@@ -1251,7 +1251,7 @@ export const products: Product[] = [
   {
     id: "mandarin-irregular-3kg",
     vegetableId: "mandarin",
-    name: "모양 제각각 귤 3kg",
+    name: "제주 한림 감귤 3kg",
     price: 9900,
     originalPrice: 15900,
     unit: "3kg",
@@ -1272,7 +1272,7 @@ export const products: Product[] = [
   {
     id: "green-onion-bent-1bunch",
     vegetableId: "green-onion",
-    name: "휜 대파 1단",
+    name: "진도 대파 1단",
     price: 1900,
     originalPrice: 3200,
     unit: "1단",
@@ -1293,7 +1293,7 @@ export const products: Product[] = [
   {
     id: "green-onion-irregular-2bunch",
     vegetableId: "green-onion",
-    name: "굵기 제각각 대파 2단",
+    name: "진도 대파 실속 2단",
     price: 3500,
     originalPrice: 5900,
     unit: "2단",
@@ -1314,7 +1314,7 @@ export const products: Product[] = [
   {
     id: "green-onion-scratched-1bunch",
     vegetableId: "green-onion",
-    name: "잎끝 마른 대파 1단",
+    name: "진도 흙대파 1단",
     price: 1700,
     originalPrice: 3200,
     unit: "1단",
@@ -1335,7 +1335,7 @@ export const products: Product[] = [
   {
     id: "chili-small-300g",
     vegetableId: "chili",
-    name: "짧은 풋고추 300g",
+    name: "무농약 풋고추 300g",
     price: 2500,
     originalPrice: 3900,
     unit: "300g",
@@ -1356,7 +1356,7 @@ export const products: Product[] = [
   {
     id: "chili-bent-500g",
     vegetableId: "chili",
-    name: "꼬부랑 홍고추 500g",
+    name: "청양 홍고추 500g",
     price: 3900,
     originalPrice: 6500,
     unit: "500g",
@@ -1377,7 +1377,7 @@ export const products: Product[] = [
   {
     id: "chili-scratched-500g",
     vegetableId: "chili",
-    name: "흠집 청양고추 500g",
+    name: "청양 토종 청양고추 500g",
     price: 3500,
     originalPrice: 5900,
     unit: "500g",
@@ -1398,7 +1398,7 @@ export const products: Product[] = [
   {
     id: "chili-irregular-500g",
     vegetableId: "chili",
-    name: "크기 제각각 고추 500g",
+    name: "청양 모둠 고추 500g",
     price: 2900,
     originalPrice: 4900,
     unit: "500g",
@@ -1419,7 +1419,7 @@ export const products: Product[] = [
   {
     id: "radish-small-2ea",
     vegetableId: "radish",
-    name: "꼬마 무 2개",
+    name: "고창 황토 꼬마무 2개",
     price: 2900,
     originalPrice: 4800,
     unit: "2개 (약 1.6kg)",
@@ -1440,7 +1440,7 @@ export const products: Product[] = [
   {
     id: "eggplant-irregular-5ea",
     vegetableId: "eggplant",
-    name: "모양 제각각 가지 5입",
+    name: "진주 햇가지 5입",
     price: 3500,
     originalPrice: 5900,
     unit: "5입",
@@ -1461,7 +1461,7 @@ export const products: Product[] = [
   {
     id: "king-oyster-irregular-500g",
     vegetableId: "king-oyster",
-    name: "굵기 제각각 새송이버섯 500g",
+    name: "화성 새송이버섯 실속 500g",
     price: 2700,
     originalPrice: 4800,
     unit: "500g",
@@ -1482,7 +1482,7 @@ export const products: Product[] = [
   {
     id: "king-oyster-scratched-1kg",
     vegetableId: "king-oyster",
-    name: "갓 상처 새송이버섯 1kg",
+    name: "새송이버섯 대용량 1kg",
     price: 4900,
     originalPrice: 8900,
     unit: "1kg",
