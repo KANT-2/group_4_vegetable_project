@@ -13,3 +13,7 @@ A 조영우 담당. `/story`에서 긴 소개 글을 먼저 읽어야 농가 사
 검증: 390px/360px 모바일 가로 넘침 없음, 사진 로드와 농가 이동·상품 더 보기 확인. PC 1280px 배치 확인. lint·typecheck·format:check·build와 기존 테스트 실행 결과를 PR에 기록합니다. 실제 팀 DB와 휴대폰 실기기 검수는 별도입니다.
 
 캡처: `docs/screenshots/story-mobile.png`, `story-desktop.png`, `story-farm-mobile.png`.
+
+## 농작업·농장 사진 적용
+
+큰 농산물 사진을 실제 한국 농작업/농장 풍경 3종으로 바꾸고, 상품 사진은 작은 썸네일로 줄였습니다. 상단은 농작업 장면과 짧은 소개로 구성합니다. 사진 속 농장을 시연 농가의 실제 현장으로 소개하지 않으며 [작가·출처](farm-photo-sources.md)를 페이지 아래 접힌 출처에 표시합니다.
