@@ -14,6 +14,8 @@ export const personalPages = { login: true, cart: true, mypage: true };
 export const routes = {
   home: "/",
   story: "/story",
+  // 농가 상세: 농가 이름을 그대로 주소에 써요. (예: /story/영주%20사과마을)
+  farm: (farmName: string) => `/story/${encodeURIComponent(farmName)}`,
   recipes: "/recipes",
   recipe: (id: string) => `/recipes/${id}`,
   recipesByVegetable: (vegetableId: string) =>

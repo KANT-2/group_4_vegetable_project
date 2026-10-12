@@ -22,26 +22,35 @@ export default function ProductSection({
   if (products.length === 0) return null;
 
   return (
-    <section className="mt-8 first:mt-0">
-      <div className="flex items-center gap-3 rounded-card bg-gradient-to-b from-brand-soft to-transparent px-4 py-4 sm:px-6">
-        <span aria-hidden className="text-3xl">
-          {emoji}
-        </span>
-        <div className="min-w-0 flex-1">
-          <h2 className="text-lg font-bold text-ink sm:text-xl">{title}</h2>
-          <p className="mt-0.5 text-sm text-ink-muted">{description}</p>
-        </div>
-        {moreHref && (
-          <Link
-            href={moreHref}
-            className="btn btn-secondary shrink-0 px-4 text-sm"
-          >
-            더보기 ›
-          </Link>
-        )}
+    <section className="mt-14 first:mt-4">
+      {/* v2 시안(마켓컬리 기준): 가운데 제목 + › 링크, 아래 회색 설명 */}
+      <div className="mb-5 text-center md:mb-7">
+        <h2 className="text-[1.375rem] font-medium leading-snug text-ink md:text-[1.75rem]">
+          {moreHref ? (
+            <Link
+              href={moreHref}
+              className="inline-flex items-center gap-1 hover:text-brand"
+            >
+              <span aria-hidden>{emoji}</span> {title}
+              <span
+                aria-hidden
+                className="text-[1.6em] font-light leading-none"
+              >
+                ›
+              </span>
+            </Link>
+          ) : (
+            <>
+              <span aria-hidden>{emoji}</span> {title}
+            </>
+          )}
+        </h2>
+        <p className="mt-1 text-sm text-ink-muted md:text-base">
+          {description}
+        </p>
       </div>
 
-      <div className="mt-3 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-6">
+      <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-[18px] lg:grid-cols-4">
         {products.map((product, index) => (
           <ProductCard
             key={product.id}

@@ -7,26 +7,26 @@
  */
 
 @theme {
-  /* 바탕과 면 */
-  --color-canvas: #fbf9f5; /* 페이지 배경 (크림) */
+  /* 바탕과 면 (v2 시안: 마켓컬리처럼 흰 바탕 + 연한 회색 면) */
+  --color-canvas: #ffffff; /* 페이지 배경 */
   --color-surface: #ffffff; /* 카드·입력창 */
-  --color-sand: #f5ebdd; /* 이미지 자리·강조 패널 (베이지) */
+  --color-sand: #f7f7f7; /* 이미지 자리·구역 배경·띠 배너 (마켓컬리 회색 면) */
 
   /* 글자 */
-  --color-ink: #2b2b2b; /* 본문 */
-  --color-ink-muted: #5f5b55; /* 보조 설명 (크림 위 대비 5:1 이상) */
+  --color-ink: #333333; /* 본문 (흰 바탕 대비 12.6:1) */
+  --color-ink-muted: #767676; /* 보조 설명·정가 (흰 바탕 대비 4.5:1) */
 
   /* 선 */
-  --color-line: #e6dfd3;
+  --color-line: #dddddd; /* [담기] 버튼·입력창 테두리 */
 
-  /* 주 강조색: 초록 */
-  --color-brand: #2e7d32; /* 주요 버튼 (흰 글자 대비 5:1 이상) */
-  --color-brand-dark: #1e4d2b; /* 상단 띠·진한 패널·링크 */
-  --color-brand-soft: #e8f3e8; /* 연한 초록 면 */
+  /* 주 강조색: 갈색과 주황 사이 (흙·햇빛 느낌의 테라코타) */
+  --color-brand: #b4541f; /* 주요 버튼·로고·선택된 메뉴 (흰 글자 대비 5.0:1) */
+  --color-brand-dark: #7a3a12; /* 진한 글자·링크 (흰 바탕 대비 8.6:1) */
+  --color-brand-soft: #fbf1e9; /* 연한 주황 면, 선택된 항목 배경 */
 
-  /* 보조색: 주황·갈색 (할인·난이도·경고 등 필요한 곳에만) */
-  --color-accent: #b9460f; /* 할인율 글자 (크림 위 대비 5:1 이상) */
-  --color-accent-soft: #fff1e3;
+  /* 보조색: 할인·혜택 빨강 (가격 할인율·혜택 꼬리표에만) */
+  --color-accent: #d9381e; /* 할인율 글자 (흰 바탕 대비 4.6:1) */
+  --color-accent-soft: #fff0ec;
   --color-bark: #6b4f3a; /* 갈색 보조 */
 
   /* 오류·삭제: 입력 오류 문구, 위험한 동작에만 사용 */
@@ -36,18 +36,18 @@
   /* 입력창 테두리: 흰 배경 위 대비 3.7:1 (UI 경계 기준 3:1 이상) */
   --color-field-border: #8c8579;
 
-  /* 글꼴: 웹폰트 없이 시스템 한글 글꼴을 사용해 오프라인에서도 같은 구조로 동작 */
+  /* 글꼴: 마켓컬리와 같은 Pretendard (SIL OFL). layout.tsx 에서 필요한 글자 묶음만 불러와요.
+     불러오지 못하면 시스템 한글 글꼴로 같은 구조를 유지해요. */
   --font-sans:
-    "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
-    "맑은 고딕", system-ui, sans-serif;
+    "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "맑은 고딕", system-ui, sans-serif;
 
   /* 모서리 */
-  --radius-card: 1.25rem;
-  --radius-control: 0.75rem;
+  --radius-card: 0.5rem; /* 마켓컬리처럼 거의 각진 모서리 */
+  --radius-control: 0.25rem;
 
-  /* 그림자는 한 단계만 사용 */
-  --shadow-card:
-    0 1px 2px rgb(43 43 43 / 0.06), 0 4px 16px rgb(43 43 43 / 0.05);
+  /* 그림자는 한 단계만, 흰 바탕에서 카드가 떠 보이지 않도록 아주 옅게 */
+  --shadow-card: 0 1px 3px rgb(31 36 33 / 0.06);
 }
 
 @layer base {
@@ -89,7 +89,7 @@
   /* 페이지 가로 폭과 좌우 여백 (모바일 16px → 데스크톱 최대 1120px) */
   .container-page {
     width: 100%;
-    max-width: 70rem;
+    max-width: 68.625rem; /* 본문 1050px + 좌우 여백 (마켓컬리 기준) */
     margin-inline: auto;
     padding-inline: 1rem;
   }
@@ -111,7 +111,7 @@
 
   .page-title {
     font-size: 1.75rem;
-    font-weight: 800;
+    font-weight: 700;
   }
   @media (min-width: 48rem) {
     .page-title {
@@ -121,7 +121,7 @@
 
   .section-title {
     font-size: 1.375rem;
-    font-weight: 800;
+    font-weight: 700;
   }
   @media (min-width: 48rem) {
     .section-title {
@@ -136,7 +136,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: 999px;
+    border-radius: 0.25rem; /* 마켓컬리 버튼: 4px 모서리 */
     border: 1px solid transparent;
     padding: 0.5rem 1.5rem;
     font-weight: 700;
@@ -163,9 +163,9 @@
   /* 비활성: 눌러도 아무 일도 일어나지 않는 버튼은 반드시 이 상태로 보여줘요 */
   .btn:disabled,
   .btn[aria-disabled="true"] {
-    background: #e4dfd5;
-    border-color: #e4dfd5;
-    color: #6b665e;
+    background: #e6e9e5;
+    border-color: #e6e9e5;
+    color: #626a64;
     cursor: not-allowed;
   }
 

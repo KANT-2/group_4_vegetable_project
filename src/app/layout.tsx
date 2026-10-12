@@ -4,6 +4,8 @@ import type { Metadata, Viewport } from "next";
 import { SiteFooter } from "@/components/common/SiteFooter";
 import { SiteHeader } from "@/components/common/SiteHeader";
 import { NavigationProvider } from "@/components/common/NavigationProvider";
+// 마켓컬리와 같은 Pretendard 글꼴: 화면에 쓰인 글자 묶음만 내려받는 동적 부분 집합 (SIL OFL)
+import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,7 +17,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#fbf9f5",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
