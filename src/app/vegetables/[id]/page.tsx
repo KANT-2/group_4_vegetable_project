@@ -2,6 +2,11 @@ import Link from "next/link";
 import { SafeImage } from "@/components/common/SafeImage";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/products/ProductCard";
+import NutritionCard from "@/components/vegetables/NutritionCard";
+import {
+  getNutritionByVegetable,
+  NUTRITION_SOURCE,
+} from "@/services/nutrition";
 import { getProductsByVegetable } from "@/services/products";
 import { getVegetableById } from "@/services/vegetables";
 import { VEGETABLE_CATEGORY_LABELS } from "@/types/vegetable";
@@ -82,6 +87,12 @@ export default async function VegetablePage({
           </p>
         </div>
       </section>
+
+      {/* 영양 정보 (식품성분표 기준, 없는 채소는 "준비 중") */}
+      <NutritionCard
+        profiles={getNutritionByVegetable(vegetable.id)}
+        source={NUTRITION_SOURCE}
+      />
 
       {/* 이 채소로 파는 상품 (TODO: A의 관련 레시피 연결) */}
       <section className="mt-8">
