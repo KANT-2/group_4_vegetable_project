@@ -63,7 +63,7 @@ export function WishlistList({
         <p className="mt-1 text-sm text-ink-muted">
           찜해두면 헤매지 않고 금방 찾을 수 있어요.
         </p>
-        <Link href="/products" className="btn btn-secondary mt-6">
+        <Link href="/products" className="btn btn-primary mt-6">
           상품 둘러보기
         </Link>
       </div>
