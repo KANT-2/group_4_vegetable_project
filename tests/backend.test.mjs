@@ -3,6 +3,7 @@ import test from "node:test";
 import { safeNextPath } from "../src/lib/redirect.ts";
 import { signInSchema } from "../src/schemas/auth.ts";
 import { profileSchema } from "../src/schemas/profile.ts";
+import { shippingSchema } from "../src/schemas/shipping.ts";
 
 test("로그인 후 이동은 내부 경로만 허용한다", () => {
   assert.equal(safeNextPath("/cart?tab=wishlist"), "/cart?tab=wishlist");
@@ -50,4 +51,27 @@ test("프로필은 닉네임만 변경하고 길이를 검증한다", () => {
   ]) {
     assert.equal(profileSchema.safeParse(input).success, false);
   }
+});
+
+test("배송지는 필수값·우편번호·연락처를 검증하고 ID 주입을 거부한다", () => {
+  const valid = {
+    recipient_name: " 가상회원 ",
+    recipient_phone: "010-1234-5678",
+    postal_code: "01234",
+    address: " 가상 테스트 주소 ",
+    address_detail: "",
+  };
+  const parsed = shippingSchema.parse(valid);
+  assert.equal(parsed.recipient_phone, "01012345678");
+  assert.equal(parsed.address, "가상 테스트 주소");
+  for (const invalid of [
+    { ...valid, id: "other-user" },
+    { ...valid, recipient_name: " " },
+    { ...valid, postal_code: "1234" },
+    { ...valid, postal_code: "ABCDE" },
+    { ...valid, recipient_phone: "phone" },
+    { ...valid, address: " " },
+    { ...valid, address_detail: "가".repeat(101) },
+  ])
+    assert.equal(shippingSchema.safeParse(invalid).success, false);
 });

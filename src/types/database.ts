@@ -246,18 +246,33 @@ export type Database = {
       };
       profiles: {
         Row: {
+          recipient_name: string | null;
+          recipient_phone: string | null;
+          postal_code: string | null;
+          address: string | null;
+          address_detail: string | null;
           created_at: string;
           id: string;
           nickname: string;
           updated_at: string;
         };
         Insert: {
+          recipient_name?: string | null;
+          recipient_phone?: string | null;
+          postal_code?: string | null;
+          address?: string | null;
+          address_detail?: string | null;
           created_at?: string;
           id: string;
           nickname: string;
           updated_at?: string;
         };
         Update: {
+          recipient_name?: string | null;
+          recipient_phone?: string | null;
+          postal_code?: string | null;
+          address?: string | null;
+          address_detail?: string | null;
           created_at?: string;
           id?: string;
           nickname?: string;

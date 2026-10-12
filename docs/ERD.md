@@ -2,6 +2,7 @@
 
 > 작성일: 2026-10-07 · 상태: **v5 (공통 테이블·제약·RLS 적용 완료)** · v2: `products.is_featured` 추가 · v3: `products.description` 추가
 > 수정일: 2026-10-08 · v4: 주문 테이블 설계 추가 · v5: 실제 migration·Storage·DB 타입 적용 상태와 관계·제약 반영
+> 확장일: 2026-10-12 · profiles 기본 배송지 컬럼 5개·CHECK·본인 수정 권한 적용. 아래 관계도·DBML에 반영했습니다.
 > 기준 문서: 팀 개발 가이드 8장 "데이터베이스 설계"
 
 전체 테이블 생성·제약 조건·RLS·migration은 **C 이상재**가 일괄 담당해요. A는 레시피, B는 상품·채소의 컬럼 검토·seed·조회 함수·화면을 맡아요. 2026-10-08 실제 공유 DB에 9개 테이블과 RLS·B의 채소 12개·상품 16개를 적용했어요. 주문·모의 결제·주문 내역 처리 함수와 화면은 별도 구현 범위예요. [DB 구성과 적용 기록](database.md)을 참고해요.
@@ -88,6 +89,11 @@ erDiagram
     profiles {
         uuid id PK,FK "auth.users.id"
         text nickname "2~20자"
+        text recipient_name "기본 배송지 받는 분, 선택"
+        text recipient_phone "기본 배송지 연락처, 선택"
+        text postal_code "기본 배송지 우편번호 5자리, 선택"
+        text address "기본 주소, 선택"
+        text address_detail "상세주소, 선택"
         timestamptz created_at
         timestamptz updated_at
     }
@@ -226,6 +232,11 @@ erDiagram
 | --- | --- | --- | --- | --- |
 | `id` | uuid | PK, FK | | → `auth.users.id`, 회원 탈퇴 시 함께 삭제 (`ON DELETE CASCADE`) |
 | `nickname` | text | O | | 2~20자 |
+| `recipient_name` | text | 배송지 저장 시 | NULL | 2~40자, 앞뒤 공백 없음 |
+| `recipient_phone` | text | 배송지 저장 시 | NULL | 0으로 시작하는 숫자 9~11자리 |
+| `postal_code` | text | 배송지 저장 시 | NULL | 숫자 5자리 |
+| `address` | text | 배송지 저장 시 | NULL | 5~200자, 앞뒤 공백 없음 |
+| `address_detail` | text | 배송지 저장 시 | NULL | 0~100자, 빈 문자열 허용 |
 | `created_at` | timestamptz | O | `now()` | |
 | `updated_at` | timestamptz | O | `now()` | |
 
@@ -431,6 +442,11 @@ Table auth_users {
 Table profiles {
   id uuid [pk, ref: - auth_users.id, note: '첫 프로필 조회 시 생성, 사용자당 0~1개']
   nickname text [not null, note: '2~20자']
+  recipient_name text [note: '기본 배송지 받는 분 2~40자, 선택']
+  recipient_phone text [note: '기본 배송지 연락처, 선택']
+  postal_code text [note: '기본 배송지 우편번호 5자리, 선택']
+  address text [note: '기본 배송지 주소 5~200자, 선택']
+  address_detail text [note: '상세주소 0~100자, 선택']
   created_at timestamptz [not null, default: `now()`]
   updated_at timestamptz [not null, default: `now()`]
 }

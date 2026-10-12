@@ -34,6 +34,11 @@ Supabase Dashboard의 프로젝트 → SQL Editor에서 아래 순서로 파일 
 2. `supabase/migrations/202610080002_market_tables.sql`
 3. `supabase/migrations/202610080003_storage.sql`
 4. `supabase/migrations/202610080004_product_tagline.sql`
+5. `supabase/migrations/202610110001_verified_recipe_metadata.sql`
+6. `supabase/migrations/202610110002_product_display_fields.sql`
+7. `supabase/migrations/202610120001_profile_shipping.sql`
+
+**2026-10-12 기본 배송지 적용 완료:** C가 공용 `vegetable` 프로젝트의 profiles에 받는 분·연락처·우편번호·기본 주소·상세주소를 추가했습니다. 기존 행은 모두 NULL로 유지하며, 주소 저장 시 필수 항목·형식·길이를 CHECK로 검증합니다. 기존 본인 전용 RLS 아래에서 배송지 컬럼 수정만 허용합니다. 기본 배송지 변경은 기존 orders의 배송 정보를 수정하지 않습니다.
 
 위 순서는 새 개발 DB를 구성할 때의 기준입니다. 초기 migration 세 개는 공유 DB에 적용 완료했으며, 추가 컬럼 migration의 적용 기록은 아래를 확인합니다. 각 파일은 트랜잭션으로 구성했으며 테이블·정책·컬럼이 이미 존재하면 실패하도록 했습니다. CLI를 사용할 경우 적용 이력을 확인하고 동일한 파일을 두 번 적용하지 않습니다.
 
