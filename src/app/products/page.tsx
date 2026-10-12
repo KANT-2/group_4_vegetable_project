@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { VisitMark } from "@/components/products/BackLink";
 import CollectionNav from "@/components/products/CollectionNav";
 import MockDataNotice from "@/components/products/MockDataNotice";
 import { rankProducts } from "@/lib/product-ranking";
@@ -73,6 +74,7 @@ export default async function ProductsPage({
 
   return (
     <div className="container-page py-4">
+      <VisitMark />
       <h1 className="sr-only">{collection ? collection.title : "상품 목록"}</h1>
       {/* 검색창과 코너 아이콘: 큰 화면에서는 가운데에 같은 폭으로 */}
       <div className="mx-auto max-w-md">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BackLink from "@/components/products/BackLink";
 import { SafeImage } from "@/components/common/SafeImage";
 import { notFound } from "next/navigation";
 import MockDataNotice from "@/components/products/MockDataNotice";
@@ -36,12 +37,7 @@ export default async function ProductDetailPage({
 
   return (
     <div className="container-page pb-32 pt-4 md:pb-12">
-      <Link
-        href="/products"
-        className="inline-flex h-12 items-center text-sm text-ink-muted hover:text-ink"
-      >
-        ← 상품 목록
-      </Link>
+      <BackLink fallbackHref="/products" />
 
       {/* 모바일: 세로, 데스크톱(md): 사진 | 정보 */}
       <div className="grid gap-6 md:grid-cols-2 md:gap-10">
