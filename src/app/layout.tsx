@@ -1,9 +1,9 @@
-// 전체 레이아웃 (최종 담당은 C). A 화면 실행에 필요한 최소 틀만 구성했어요.
-// Provider(로그인·장바구니 상태 등)는 C가 이 파일에 이어서 연결해요.
+// C 전체 레이아웃: A 화면과 공통 로그인·장바구니 상태를 연결합니다.
 
 import type { Metadata, Viewport } from "next";
 import { SiteFooter } from "@/components/common/SiteFooter";
 import { SiteHeader } from "@/components/common/SiteHeader";
+import { NavigationProvider } from "@/components/common/NavigationProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,11 +32,13 @@ export default function RootLayout({
         >
           본문 바로가기
         </a>
-        <SiteHeader />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
+        <NavigationProvider>
+          <SiteHeader />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <SiteFooter />
+        </NavigationProvider>
       </body>
     </html>
   );

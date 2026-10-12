@@ -1,6 +1,6 @@
 # C 백엔드 공통 기반
 
-상재님이 프론트 화면과 공통 layout을 만들고, 이 작업에서는 Next.js 서버 설정·Supabase 연결·인증·프로필 처리만 준비합니다. `layout.tsx`, Header, Footer, 로그인 폼은 생성하지 않았습니다.
+초기 작업은 Next.js 서버 설정·Supabase 연결·인증·프로필 처리를 준비했습니다. 2026-10-12 A의 공통 디자인과 layout·Header·Footer를 이어서 Provider·개인 상태 API·모바일 메뉴를 구현했습니다. 현재 범위와 남은 연결 검증은 [공통 레이아웃 기록](common-layout.md)을 참고합니다. 로그인 폼은 아직 별도 일감입니다.
 
 ## 실행
 

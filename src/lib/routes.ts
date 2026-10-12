@@ -8,6 +8,9 @@ const PAGE_READY = {
   vegetableDetail: true, // /vegetables/[id]
 };
 
+// C의 개인 화면이 연결되면 해당 값을 true로 바꿉니다.
+export const personalPages = { login: false, cart: false, mypage: false };
+
 export const routes = {
   home: "/",
   story: "/story",

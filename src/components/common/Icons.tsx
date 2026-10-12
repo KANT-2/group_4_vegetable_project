@@ -72,3 +72,11 @@ export const LeafIcon = (props: SVGProps<SVGSVGElement>) => (
     <path d="M5 19c3-4 6-6 10-8" />
   </Icon>
 );
+
+export const CartIcon = (props: SVGProps<SVGSVGElement>) => (
+  <Icon {...props}>
+    <path d="M2 3h3l3 13h11l3-9H6" />
+    <circle cx="9" cy="21" r="1" />
+    <circle cx="19" cy="21" r="1" />
+  </Icon>
+);
