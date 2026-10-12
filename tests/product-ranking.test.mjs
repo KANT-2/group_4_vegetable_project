@@ -60,8 +60,14 @@ test("16개 참고 사진은 출처·작가·라이선스와 실제 파일을 �
   for (const recipe of recipes) {
     const p = recipe.photoReference;
     assert.ok(p && p.author && p.license);
-    assert.match(p.source, /^https:\/\/commons.wikimedia.org\//);
-    assert.match(p.licenseUrl, /^https?:\/\/creativecommons.org\//);
+    if (!p.generated)
+      assert.match(p.source, /^https:\/\/commons.wikimedia.org\//);
+    if (!p.generated)
+      assert.match(p.licenseUrl, /^https?:\/\/creativecommons.org\//);
+    else {
+      assert.equal(p.license, "AI 생성 이미지");
+      assert.match(p.source, /^https:\/\/github.com\/KANT-2\//);
+    }
     await access(new URL("../public" + p.imageUrl, import.meta.url));
   }
   const actual = {
@@ -76,5 +82,5 @@ test("16개 참고 사진은 출처·작가·라이선스와 실제 파일을 �
       "utf8",
     ),
   );
-  assert.equal(Object.keys(manifest).length, 10);
+  assert.equal(Object.keys(manifest).length, 12);
 });

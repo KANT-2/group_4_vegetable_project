@@ -63,7 +63,7 @@ export function ProductSpotlight({
       aria-label="제철 과일 자동 슬라이드"
       aria-roledescription="캐러셀"
       data-play-state={moving ? "playing" : "paused"}
-      className="overflow-hidden rounded-[1.5rem] border border-line bg-sand"
+      className="overflow-hidden rounded-[1.75rem] border border-line bg-sand"
       onMouseEnter={() => setInteracting(true)}
       onMouseLeave={() => setInteracting(false)}
       onFocusCapture={() => setInteracting(true)}
@@ -120,8 +120,8 @@ export function ProductSpotlight({
                 aria-roledescription="슬라이드"
                 aria-label={`${i + 1} / ${products.length}`}
               >
-                <div className="grid md:min-h-[24rem] md:grid-cols-2">
-                  <div className="relative order-1 h-52 bg-brand-soft sm:h-72 md:order-2 md:h-full">
+                <div className="grid md:min-h-[32rem] md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:min-h-[36rem]">
+                  <div className="relative order-1 h-[clamp(18rem,78vw,26rem)] bg-brand-soft sm:h-96 md:order-2 md:h-full">
                     <SafeImage
                       src={product.imageUrl}
                       alt={product.name}
@@ -134,13 +134,13 @@ export function ProductSpotlight({
                         : "모양만 다른 맛있는 발견"}
                     </span>
                   </div>
-                  <div className="order-2 flex flex-col justify-center p-5 sm:p-7 md:order-1 md:p-10">
+                  <div className="order-2 flex flex-col justify-center p-6 sm:p-8 md:order-1 md:p-8 lg:p-10">
                     <p className="text-sm font-bold text-brand-dark">
                       {home
                         ? "못난이마켓의 제철 과일"
                         : "지금 맛있는 제철 과일"}
                     </p>
-                    <h2 className="mt-2 text-2xl font-black leading-tight sm:text-3xl md:text-4xl">
+                    <h2 className="mt-2 text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
                       {product.name}
                     </h2>
                     <p className="mt-2 text-sm text-ink-muted md:text-base">
@@ -151,7 +151,7 @@ export function ProductSpotlight({
                       <span className="text-2xl font-black text-accent">
                         {discount}%
                       </span>
-                      <span className="text-3xl font-black">
+                      <span className="text-3xl font-black lg:text-4xl">
                         {product.price.toLocaleString("ko-KR")}원
                       </span>
                       <del className="text-sm text-ink-muted">

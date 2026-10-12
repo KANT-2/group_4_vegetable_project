@@ -42,7 +42,7 @@ export default async function HomePage() {
   const featured = pickRecommended(catalogProducts, 4);
   return (
     <>
-      <section className="container-page pt-4 md:pt-6">
+      <section className="container-page pt-4 md:max-w-[90rem] md:pt-6">
         <h1 className="sr-only">못난이마켓 · 오늘의 추천 농산물</h1>
         <ProductSpotlight
           products={selectSeasonalFruit(catalogProducts)}

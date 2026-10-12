@@ -41,6 +41,7 @@ export type RecipeProduct = Pick<
 
 export interface Recipe {
   photoReference?: {
+    generated?: boolean;
     source: string;
     author: string;
     license: string;

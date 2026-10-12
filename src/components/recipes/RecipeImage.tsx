@@ -27,7 +27,7 @@ export function RecipeImage({
         src={dishUrl ?? substituteUrl}
         alt={
           recipe.photoReference
-            ? `${recipe.name}의 유사 요리 참고 사진 (실제 조리 결과 아님)`
+            ? `${recipe.name}의 ${recipe.photoReference.generated ? "AI 요리 참고 이미지" : "유사 요리 참고 사진"} (실제 조리 결과 아님)`
             : isSubstitute
               ? `${recipe.name}에 쓰는 재료 사진`
               : `${recipe.name} 사진`
@@ -38,7 +38,9 @@ export function RecipeImage({
       />
       {recipe.photoReference && (
         <span className="absolute bottom-3 left-3 rounded-full bg-surface/95 px-3 py-1 text-xs text-bark">
-          유사 요리 참고 사진 · {recipe.photoReference.license}
+          {recipe.photoReference.generated
+            ? "AI 요리 참고 이미지"
+            : `유사 요리 참고 사진 · ${recipe.photoReference.license}`}
         </span>
       )}
       {isSubstitute && (
