@@ -4,13 +4,16 @@ import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
-import { shippingSchema } from "@/schemas/shipping";
+import { checkoutShippingSchema } from "@/schemas/shipping";
 
 const checkoutSchema = z
   .object({
     requestKey: z.uuid(),
     userId: z.uuid(),
-    shipping: shippingSchema,
+    shipping: checkoutShippingSchema,
+    paymentMethod: z.enum(["card", "bank_transfer", "easy_pay"], {
+      error: "결제 수단을 선택해 주세요.",
+    }),
     items: z
       .array(
         z
@@ -42,7 +45,10 @@ export async function mockCheckout(
     const supabase = await createClient();
     const { data, error } = await supabase.rpc("mock_checkout", {
       p_request_key: parsed.data.requestKey,
-      p_shipping: parsed.data.shipping,
+      p_shipping: {
+        ...parsed.data.shipping,
+        payment_method: parsed.data.paymentMethod,
+      },
       p_expected_items: parsed.data.items.sort((a, b) =>
         a.product_id < b.product_id ? -1 : a.product_id > b.product_id ? 1 : 0,
       ),

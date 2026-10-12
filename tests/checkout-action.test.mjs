@@ -3,7 +3,7 @@ import test from "node:test";
 import { readFileSync } from "node:fs";
 import ts from "typescript";
 import { z } from "zod";
-import { shippingSchema } from "../src/schemas/shipping.ts";
+import { checkoutShippingSchema } from "../src/schemas/shipping.ts";
 
 test("모의 결제 Action은 계정 전환·추가 필드·잘못된 입력을 차단하고 RPC 실패를 안내한다", async () => {
   const userId = "00000000-0000-4000-8000-000000000001";
@@ -15,7 +15,7 @@ test("모의 결제 Action은 계정 전환·추가 필드·잘못된 입력을 
     zod: { z },
     "next/cache": { revalidatePath: (path) => paths.push(path) },
     "@/lib/auth": { getCurrentUser: async () => user },
-    "@/schemas/shipping": { shippingSchema },
+    "@/schemas/shipping": { checkoutShippingSchema },
     "@/lib/supabase/server": {
       createClient: async () => ({
         rpc: async (name, args) => {
@@ -38,6 +38,7 @@ test("모의 결제 Action은 계정 전환·추가 필드·잘못된 입력을 
     exports,
   );
   const input = {
+    paymentMethod: "bank_transfer",
     userId,
     requestKey: "00000000-0000-4000-8000-000000000099",
     shipping: {
@@ -45,7 +46,7 @@ test("모의 결제 Action은 계정 전환·추가 필드·잘못된 입력을 
       recipient_phone: "010-1234-5678",
       postal_code: "01234",
       address: "테스트 가상 주소",
-      address_detail: "",
+      address_detail: "테스트 상세주소",
     },
     items: [
       { product_id: "b", quantity: 1, unit_price: 1000 },
@@ -57,6 +58,19 @@ test("모의 결제 Action은 계정 전환·추가 필드·잘못된 입력을 
   user = { id: "00000000-0000-4000-8000-000000000002" };
   assert.equal((await exports.mockCheckout(input)).ok, false);
   user = { id: userId };
+  assert.match(
+    (
+      await exports.mockCheckout({
+        ...input,
+        shipping: { ...input.shipping, address_detail: "  " },
+      })
+    ).error,
+    /상세주소/,
+  );
+  assert.equal(
+    (await exports.mockCheckout({ ...input, paymentMethod: "cash" })).ok,
+    false,
+  );
   assert.equal(
     (await exports.mockCheckout({ ...input, total_amount: 1 })).ok,
     false,
@@ -81,6 +95,7 @@ test("모의 결제 Action은 계정 전환·추가 필드·잘못된 입력을 
     ["a", "b"],
   );
   assert.equal(calls[0].args.p_shipping.recipient_phone, "01012345678");
+  assert.equal(calls[0].args.p_shipping.payment_method, "bank_transfer");
   assert.deepEqual(paths, ["/cart", "/mypage/orders"]);
   error = { message: "CART_CHANGED" };
   assert.match((await exports.mockCheckout(input)).error, /변경/);

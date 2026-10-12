@@ -125,6 +125,8 @@ erDiagram
         text address
         text address_detail
         timestamptz paid_at "모의 결제 성공 시각"
+        text payment_method "card / bank_transfer / easy_pay, 기존 주문 NULL"
+        int shipping_fee "0 또는 3500, 주문 당시 배송비"
         timestamptz created_at
         timestamptz updated_at
     }
@@ -284,6 +286,8 @@ erDiagram
 | `address` | text | O | | 기본 주소. 공백만 입력 불가 |
 | `address_detail` | text | | | 상세 주소 |
 | `paid_at` | timestamptz | | | 모의 결제 성공 시 서버에서 설정. `paid`일 때만 값 존재 |
+| `payment_method` | text | | | card / bank_transfer / easy_pay. 기존 주문은 NULL, 신규 주문은 선택한 수단 저장 |
+| `shipping_fee` | integer | O | | 상품 금액 20,000원 이상 0, 미만 3,500. total_amount는 배송비 포함, 기존 주문은 0 유지 |
 | `created_at` | timestamptz | O | `now()` | 주문 생성 시각 |
 | `updated_at` | timestamptz | O | `now()` | 주문 상태 변경 시 자동 갱신 |
 

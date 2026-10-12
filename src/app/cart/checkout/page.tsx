@@ -4,7 +4,7 @@ import { getProfile } from "@/services/profile";
 import { AccountGuard } from "@/components/account/AccountGuard";
 import { CheckoutForm } from "@/components/shopping/CheckoutForm";
 
-export const metadata = { title: "주문·모의 결제" };
+export const metadata = { title: "결제" };
 
 async function CheckoutContent() {
   const { userId, lines } = await getCart();
@@ -31,7 +31,7 @@ async function CheckoutContent() {
 export default function CheckoutPage() {
   return (
     <section className="container-page section">
-      <h1 className="page-title mb-6">주문·모의 결제</h1>
+      <h1 className="page-title mb-6">결제</h1>
       <Suspense fallback={<p role="status">주문 정보를 불러오고 있어요.</p>}>
         <CheckoutContent />
       </Suspense>

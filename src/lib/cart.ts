@@ -20,6 +20,15 @@ export interface WishlistLine {
   imageUrl?: string;
 }
 
+export const FREE_SHIPPING_MINIMUM = 20_000;
+export const STANDARD_SHIPPING_FEE = 3_500;
+
+export function shippingFeeFor(subtotal: number) {
+  return subtotal > 0 && subtotal < FREE_SHIPPING_MINIMUM
+    ? STANDARD_SHIPPING_FEE
+    : 0;
+}
+
 // 합계는 판매 중인 상품만 계산해요. 금액은 화면에 보여 줄 예상 금액이며,
 // 주문 시 서버가 가격을 다시 확인합니다.
 export function summarizeCart(lines: CartLine[]) {
@@ -38,6 +47,8 @@ export function summarizeCart(lines: CartLine[]) {
     originalTotal,
     discount: originalTotal - total,
     total,
+    shippingFee: shippingFeeFor(total),
+    orderTotal: total + shippingFeeFor(total),
     unavailable: lines.length - buyable.length,
   };
 }

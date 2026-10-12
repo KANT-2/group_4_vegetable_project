@@ -208,6 +208,29 @@ test("합계는 판매 중인 상품만 계산하고 할인액을 정확히 낸�
     originalTotal: 17500,
     discount: 6800,
     total: 10700,
+    shippingFee: 3500,
+    orderTotal: 14200,
     unavailable: 1,
   });
+});
+
+test("배송비는 할인 후 상품금액 20,000원 경계를 적용하고 빈 장바구니는 0원이다", () => {
+  const line = {
+    productId: "a",
+    name: "A",
+    unit: "1kg",
+    quantity: 1,
+    available: true,
+    originalPrice: 30000,
+  };
+  for (const [price, fee] of [
+    [19999, 3500],
+    [20000, 0],
+    [20001, 0],
+  ]) {
+    const result = summarizeCart([{ ...line, price }]);
+    assert.equal(result.shippingFee, fee);
+    assert.equal(result.orderTotal, price + fee);
+  }
+  assert.equal(summarizeCart([]).orderTotal, 0);
 });

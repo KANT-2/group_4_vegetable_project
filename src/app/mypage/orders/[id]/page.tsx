@@ -11,6 +11,7 @@ import {
 } from "@/lib/orders";
 import { AccountGuard } from "@/components/account/AccountGuard";
 import { AccountNav } from "@/components/account/AccountNav";
+import { paymentMethods, type PaymentMethod } from "@/lib/payment";
 
 export const metadata: Metadata = { title: "주문 상세" };
 type Params = Promise<{ id: string }>;
@@ -65,8 +66,19 @@ async function OrderDetails({ params }: { params: Params }) {
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-xl font-bold">
+        <p className="mt-4 text-ink-muted">
+          상품 금액 {formatPrice(order.total_amount - order.shipping_fee)} ·
+          배송비 {formatPrice(order.shipping_fee)}
+        </p>
+        <p className="mt-3 text-xl font-bold">
           총 주문금액 {formatPrice(order.total_amount)}
+        </p>
+        <p className="mt-3 text-ink-muted">
+          결제 수단:{" "}
+          {order.payment_method
+            ? (paymentMethods[order.payment_method as PaymentMethod] ??
+              "확인 필요")
+            : "기록 없음 (기존 주문)"}
         </p>
         <h2 className="mb-4 mt-8 text-xl font-bold">주문 당시 배송지</h2>
         <dl className="space-y-3">

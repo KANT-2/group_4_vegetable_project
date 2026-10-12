@@ -118,6 +118,8 @@ export type Database = {
       };
       orders: {
         Row: {
+          shipping_fee: number;
+          payment_method: string | null;
           address: string;
           address_detail: string | null;
           created_at: string;
@@ -133,6 +135,8 @@ export type Database = {
           user_id: string;
         };
         Insert: {
+          shipping_fee?: number;
+          payment_method?: string | null;
           address: string;
           address_detail?: string | null;
           created_at?: string;
@@ -148,6 +152,8 @@ export type Database = {
           user_id: string;
         };
         Update: {
+          shipping_fee?: number;
+          payment_method?: string | null;
           address?: string;
           address_detail?: string | null;
           created_at?: string;
