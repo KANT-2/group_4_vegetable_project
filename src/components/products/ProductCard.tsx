@@ -17,6 +17,7 @@ export default function ProductCard({
     <ProductPreviewCard
       name={product.name}
       imageUrl={product.imageUrl}
+      vegetableId={product.vegetableId}
       unit={product.unit}
       price={product.price}
       originalPrice={product.originalPrice}

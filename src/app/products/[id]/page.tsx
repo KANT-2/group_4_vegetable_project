@@ -1,6 +1,7 @@
 import Link from "next/link";
 import BackLink from "@/components/products/BackLink";
-import { SafeImage } from "@/components/common/SafeImage";
+import { ProductGallery } from "@/components/products/ProductGallery";
+import { getProductImages } from "@/lib/product-gallery";
 import { notFound } from "next/navigation";
 import MockDataNotice from "@/components/products/MockDataNotice";
 import { AddToCartButton } from "@/components/shopping/AddToCartButton";
@@ -42,19 +43,11 @@ export default async function ProductDetailPage({
 
       {/* 모바일: 세로, 데스크톱(md): 사진 | 정보 */}
       <div className="grid gap-6 md:grid-cols-2 md:gap-10">
-        <div className="relative aspect-square w-full overflow-hidden rounded-card bg-sand">
-          {product.imageUrl && (
-            <SafeImage
-              src={product.imageUrl}
-              alt={product.name}
-              className="absolute inset-0 h-full w-full object-cover"
-              priority
-            />
-          )}
-          <span className="absolute left-3 top-3 rounded-full bg-surface/90 px-3 py-1 text-sm font-semibold text-brand-dark">
-            {UGLY_REASON_LABELS[product.uglyReason]}
-          </span>
-        </div>
+        <ProductGallery
+          name={product.name}
+          images={getProductImages(product)}
+          badge={UGLY_REASON_LABELS[product.uglyReason]}
+        />
 
         <div className="flex flex-col gap-4">
           <p className="text-sm font-semibold text-brand-dark">

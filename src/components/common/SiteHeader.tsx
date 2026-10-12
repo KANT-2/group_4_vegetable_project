@@ -11,9 +11,10 @@ import {
 } from "@/types/vegetable";
 import { HeaderAccount } from "./HeaderAccount";
 import { HeaderIcons } from "./HeaderIcons";
-import { LeafIcon, MenuIcon, SearchIcon } from "./Icons";
+import { MenuIcon, SearchIcon } from "./Icons";
 import { MobileMenu, type NavLink } from "./MobileMenu";
 import { NavLinks } from "./NavLinks";
+import { BrandLogo } from "./BrandLogo";
 
 function HeaderSearch({ id }: { id: string }) {
   return (
@@ -109,8 +110,7 @@ export function SiteHeader() {
           href={routes.home}
           className="inline-flex min-h-12 shrink-0 items-center gap-2 text-xl font-black tracking-tight text-brand lg:w-64 lg:text-2xl"
         >
-          <LeafIcon width={28} height={28} />
-          못난이마켓
+          <BrandLogo />
         </Link>
         <div className="hidden w-[25rem] lg:block">
           <HeaderSearch id="header-search" />
