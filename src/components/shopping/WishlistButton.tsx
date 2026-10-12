@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { setWishlist } from "@/actions/cart";
+import { HeartIcon } from "@/components/common/Icons";
 import { useLoginReturn } from "./useLoginReturn";
 
 // 찜 버튼. 누르면 바로 바뀌고(낙관적 표시), 저장에 실패하면 원래대로 돌아가요.
@@ -58,9 +59,12 @@ export function WishlistButton({
             : "btn btn-secondary gap-2"
         }
       >
-        <span aria-hidden className={wished ? "text-accent" : "text-ink-muted"}>
-          {wished ? "♥" : "♡"}
-        </span>
+        <HeartIcon
+          width={24}
+          height={24}
+          fill={wished ? "currentColor" : "none"}
+          className={wished ? "text-danger" : "text-ink-muted"}
+        />
         {!compact && (wished ? "찜했어요" : "찜하기")}
       </button>
       {error && (
