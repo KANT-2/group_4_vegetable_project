@@ -65,3 +65,9 @@ Wikimedia 제공 축소본(가능한 파일)과 화면 표시용 크롭을 사�
 - `/images/recipes/easy-potato-2/01.png`: 그릇에 담긴 감자 간장조림. 대표 사진입니다.
 - `/images/recipes/easy-potato-2/02.png`: 감자 간장조림 근접 사진. 상세 화면의 두 번째 사진입니다.
 - 연결 레시피: `easy-potato-2`. 교체한 사진에 기존 Wikimedia 출처가 잘못 붙지 않도록 해당 레시피의 이전 `photoReference`를 제거했습니다.
+
+# 2026-10-12 추가 사진과 자동 전환
+
+- 감자채볶음 `easy-potato-1/03.png`, 감자 간장조림 `easy-potato-2/03.png`: 사용자 제공 PNG 원본. 출처·작가·라이선스 정보는 제공되지 않았습니다.
+- 각 레시피는 `imageUrl` 대표 사진과 `additionalImageUrls` 추가 사진 배열을 사용합니다. 목록·메인·상세의 공통 `RecipeImage`에서 2초마다 순환합니다.
+- 사진 번호와 조작 버튼 없이 사진만 표시합니다. 마우스·키보드 조작 중, 백그라운드 탭, 동작 줄이기 설정에서는 자동 전환을 멈춥니다.
