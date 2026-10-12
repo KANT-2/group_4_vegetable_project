@@ -71,7 +71,7 @@ export default function ProductFilters({
   return (
     <div className="flex flex-col gap-2">
       {/* 분류 + 못난이 이유를 한 줄로: 모바일은 옆으로 밀어서, 큰 화면은 넘치면 다음 줄로 */}
-      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
+      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
         <Chip
           href={catalogHref(filters, { category: undefined })}
           active={!filters.category}
@@ -107,7 +107,7 @@ export default function ProductFilters({
       </div>
 
       {/* 정렬 + 초기화 */}
-      <div className="-mx-4 flex items-center gap-1 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+      <div className="-mx-4 flex items-center gap-1 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0">
         {sorts.map(([value, label]) => (
           <Link
             key={value}
