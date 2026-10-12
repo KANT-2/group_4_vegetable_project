@@ -46,8 +46,10 @@ async function OrderDetails({ params }: { params: Params }) {
         <p className="mt-2 break-all text-sm text-ink-muted">
           주문번호 {order.id}
         </p>
-        <h2 className="mb-4 mt-8 text-xl font-bold">주문 상품</h2>
-        <ul className="divide-y divide-line">
+        <h2 className="mb-4 mt-8 border-t border-line pt-6 text-xl font-bold">
+          주문 상품
+        </h2>
+        <ul className="divide-y divide-line border-b border-line">
           {items.map((item) => (
             <li
               key={item.product_id}
@@ -66,33 +68,46 @@ async function OrderDetails({ params }: { params: Params }) {
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-ink-muted">
-          상품 금액 {formatPrice(order.total_amount - order.shipping_fee)} ·
-          배송비 {formatPrice(order.shipping_fee)}
-        </p>
-        <p className="mt-3 text-xl font-bold">
-          총 주문금액 {formatPrice(order.total_amount)}
-        </p>
-        <p className="mt-3 text-ink-muted">
-          결제 수단:{" "}
-          {order.payment_method
-            ? (paymentMethods[order.payment_method as PaymentMethod] ??
-              "확인 필요")
-            : "기록 없음 (기존 주문)"}
-        </p>
-        <h2 className="mb-4 mt-8 text-xl font-bold">주문 당시 배송지</h2>
-        <dl className="space-y-3">
-          <div>
+        <dl className="divide-y divide-line">
+          <div className="flex justify-between gap-3 py-3 text-ink-muted">
+            <dt>상품 금액</dt>
+            <dd className="tabular-nums">
+              {formatPrice(order.total_amount - order.shipping_fee)}
+            </dd>
+          </div>
+          <div className="flex justify-between gap-3 py-3 text-ink-muted">
+            <dt>배송비</dt>
+            <dd className="tabular-nums">{formatPrice(order.shipping_fee)}</dd>
+          </div>
+          <div className="flex flex-wrap justify-between gap-2 py-4 text-xl font-bold">
+            <dt>총 주문금액</dt>
+            <dd className="tabular-nums">{formatPrice(order.total_amount)}</dd>
+          </div>
+          <div className="flex flex-wrap justify-between gap-2 py-3 text-ink-muted">
+            <dt>결제 수단</dt>
+            <dd>
+              {order.payment_method
+                ? (paymentMethods[order.payment_method as PaymentMethod] ??
+                  "확인 필요")
+                : "기록 없음 (기존 주문)"}
+            </dd>
+          </div>
+        </dl>
+        <h2 className="mb-4 mt-6 border-t border-line pt-6 text-xl font-bold">
+          주문 당시 배송지
+        </h2>
+        <dl className="divide-y divide-line border-y border-line">
+          <div className="grid gap-1 py-3 sm:grid-cols-[7rem_1fr]">
             <dt className="font-bold">받는 분</dt>
             <dd>{order.recipient_name}</dd>
           </div>
-          <div>
+          <div className="grid gap-1 py-3 sm:grid-cols-[7rem_1fr]">
             <dt className="font-bold">연락처</dt>
             <dd>{order.recipient_phone}</dd>
           </div>
-          <div>
+          <div className="grid gap-1 py-3 sm:grid-cols-[7rem_1fr]">
             <dt className="font-bold">주소</dt>
-            <dd className="break-words">
+            <dd className="min-w-0 break-words">
               ({order.postal_code}) {order.address} {order.address_detail}
             </dd>
           </div>

@@ -7,8 +7,10 @@ import { CheckoutForm } from "@/components/shopping/CheckoutForm";
 export const metadata = { title: "결제" };
 
 async function CheckoutContent() {
-  const { userId, lines } = await getCart();
-  const profile = await getProfile();
+  const [{ userId, lines }, profile] = await Promise.all([
+    getCart(),
+    getProfile(),
+  ]);
   if (profile.id !== userId)
     throw new Error("로그인 계정이 변경됐어요. 새로고침해 주세요.");
   return (

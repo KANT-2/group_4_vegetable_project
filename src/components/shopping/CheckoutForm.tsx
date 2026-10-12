@@ -93,7 +93,7 @@ export function CheckoutForm({
     <div className="grid items-start gap-6 lg:grid-cols-2">
       <section className="card p-6">
         <h2 className="text-xl font-bold">주문 상품</h2>
-        <ul className="mt-4 divide-y divide-line">
+        <ul className="mt-4 divide-y divide-line border-y border-line">
           {lines.map((l) => (
             <li
               key={l.productId}
@@ -106,9 +106,17 @@ export function CheckoutForm({
             </li>
           ))}
         </ul>
-        <p className="mt-4">상품 금액 {formatPrice(summary.total)}</p>
-        <p className="mt-2">배송비 {formatPrice(summary.shippingFee)}</p>
-        <p className="mt-2 text-sm text-ink-muted">
+        <dl className="divide-y divide-line">
+          <div className="flex justify-between gap-3 py-3">
+            <dt>상품 금액</dt>
+            <dd className="tabular-nums">{formatPrice(summary.total)}</dd>
+          </div>
+          <div className="flex justify-between gap-3 py-3">
+            <dt>배송비</dt>
+            <dd className="tabular-nums">{formatPrice(summary.shippingFee)}</dd>
+          </div>
+        </dl>
+        <p className="border-t border-line pt-3 text-sm text-ink-muted">
           상품 금액 20,000원 이상 무료배송 · 미만은 3,500원
         </p>
         {summary.shippingFee > 0 && (
@@ -116,8 +124,11 @@ export function CheckoutForm({
             {formatPrice(20_000 - summary.total)} 더 담으면 무료배송이에요.
           </p>
         )}
-        <p className="mt-3 text-xl font-bold">
-          총 결제금액 {formatPrice(summary.orderTotal)}
+        <p className="mt-4 flex flex-wrap justify-between gap-2 border-t border-line pt-4 text-xl font-bold">
+          <span>총 결제금액</span>
+          <span className="tabular-nums">
+            {formatPrice(summary.orderTotal)}
+          </span>
         </p>
         {!canOrder && (
           <p role="alert" className="field-error">
