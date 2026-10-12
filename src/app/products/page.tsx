@@ -5,7 +5,6 @@ import MockDataNotice from "@/components/products/MockDataNotice";
 import { rankProducts } from "@/lib/product-ranking";
 import ProductCard from "@/components/products/ProductCard";
 import ProductFilters from "@/components/products/ProductFilters";
-import ProductSearch from "@/components/products/ProductSearch";
 import ProductSection from "@/components/products/ProductSection";
 import { COLLECTIONS, type CollectionKey } from "@/lib/catalog";
 import { getDiscountRate } from "@/lib/format";
@@ -76,12 +75,9 @@ export default async function ProductsPage({
     <div className="container-page py-4">
       <VisitMark />
       <h1 className="sr-only">{collection ? collection.title : "상품 목록"}</h1>
-      {/* 검색창과 코너 아이콘: 큰 화면에서는 가운데에 같은 폭으로 */}
-      <div className="mx-auto max-w-md">
-        <ProductSearch q={filters.q} />
-        <div className="mt-4">
-          <CollectionNav active={filters.collection} />
-        </div>
+      {/* 코너 아이콘 (검색창은 v2 시안에서 헤더 가운데로 옮겼어요) */}
+      <div className="mx-auto max-w-md pt-2">
+        <CollectionNav active={filters.collection} />
       </div>
 
       {filters.q && (
@@ -134,7 +130,7 @@ export default async function ProductsPage({
       )}
       {products.length > 0 ? (
         // 모바일 2열 → 데스크톱(lg) 4열
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-6">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-[18px] lg:grid-cols-4">
           {products.map((product, index) => (
             <ProductCard
               key={product.id}

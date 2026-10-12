@@ -1,10 +1,13 @@
 // 메인·레시피 상세에서 판매 상품을 간단히 보여주는 카드 (A 담당)
-// B의 ProductCard 가 main 에 합쳐지면 그 컴포넌트로 교체할 수 있어요.
+// v2 시안(마켓컬리 기준): 249×320 비율 사진 → [담기] → [농가] 상품명 → 정가(취소선) → 할인율·판매가 → 후기 수
 // 상품 상세 페이지(B)가 아직 없으면 href 가 null 이고, 링크 없는 카드로만 보여줘요.
+// productId 를 넘기면 사진 아래에 [담기] 버튼이 생겨요. (버튼은 링크 밖에 둬야 해서 사진·글자를 따로 감싸요.)
 
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { UGLY_REASON_LABELS, type UglyReason } from "@/types/product";
-import { formatPrice, getDiscountRate } from "@/lib/format";
+import { getDiscountRate } from "@/lib/format";
+import { QuickAddButton } from "./QuickAddButton";
 import { SafeImage } from "./SafeImage";
 
 interface ProductPreviewCardProps {
@@ -14,9 +17,15 @@ interface ProductPreviewCardProps {
   price: number;
   originalPrice: number;
   uglyReason: UglyReason;
-  eyebrow?: string; // 이름 위에 작게 보여줄 말 (예: 농가 이름)
+  eyebrow?: string; // 이름 앞 [ ] 안에 보여줄 말 (예: 농가 이름)
   href: string | null;
+  productId?: string; // 있으면 [담기] 버튼을 보여줘요
+  reviewCount?: number;
+  description?: string; // 이름 아래 회색 한 줄 (예: 홍보 문구)
+  priority?: boolean; // 첫 화면 사진은 먼저 불러와요
 }
+
+const won = (n: number) => n.toLocaleString("ko-KR");
 
 export function ProductPreviewCard({
   name,
@@ -27,53 +36,89 @@ export function ProductPreviewCard({
   uglyReason,
   eyebrow,
   href,
+  productId,
+  reviewCount,
+  description,
+  priority = false,
 }: ProductPreviewCardProps) {
   const discount = getDiscountRate(price, originalPrice);
 
-  const body = (
-    <>
-      <div className="relative">
-        <SafeImage
-          src={imageUrl}
-          alt={`${name} 사진`}
-          className="aspect-square w-full rounded-card object-cover"
-        />
-        <span className="chip absolute left-3 top-3 bg-surface text-brand-dark">
-          {UGLY_REASON_LABELS[uglyReason]}
-        </span>
-      </div>
-      <div className="mt-3 px-1">
-        {eyebrow && <p className="text-sm text-ink-muted">{eyebrow}</p>}
-        <h3 className="font-bold">{name}</h3>
-        <p className="text-sm text-ink-muted">{unit}</p>
-        <p className="mt-1 flex flex-wrap items-baseline gap-x-2">
-          {discount > 0 && (
-            <span className="font-extrabold text-accent">{discount}%</span>
-          )}
-          <span className="font-extrabold">{formatPrice(price)}</span>
-          {discount > 0 && (
-            <span className="text-sm text-ink-muted line-through">
-              {formatPrice(originalPrice)}
-            </span>
-          )}
-        </p>
-      </div>
-    </>
-  );
-
-  if (!href) {
-    return (
-      <div className="block">
-        {body}
-        <p className="mt-1 px-1 text-xs text-ink-muted">
-          상품 상세 페이지 준비 중
-        </p>
-      </div>
+  const wrap = (children: ReactNode, className: string) =>
+    href ? (
+      <Link href={href} className={className}>
+        {children}
+      </Link>
+    ) : (
+      <div className={className}>{children}</div>
     );
-  }
+
   return (
-    <Link href={href} className="group block">
-      {body}
-    </Link>
+    <div className="group">
+      {wrap(
+        <div className="relative overflow-hidden rounded-[0.25rem] bg-sand">
+          <SafeImage
+            src={imageUrl}
+            alt={`${name} 사진`}
+            priority={priority}
+            className="aspect-[249/320] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <span className="absolute left-2.5 top-2.5 rounded-[0.25rem] bg-brand px-2 py-0.5 text-sm font-medium text-white">
+            {UGLY_REASON_LABELS[uglyReason]}
+          </span>
+        </div>,
+        "block",
+      )}
+      {productId && <QuickAddButton productId={productId} productName={name} />}
+      {wrap(
+        <>
+          <h3 className="line-clamp-2 text-base leading-[1.45] text-ink">
+            {eyebrow && `[${eyebrow}] `}
+            {name}
+          </h3>
+          {description && (
+            <p className="mt-0.5 line-clamp-1 text-sm text-ink-muted">
+              {description}
+            </p>
+          )}
+          <p className="sr-only">{unit}</p>
+          {discount > 0 && (
+            <p className="mt-1.5 text-sm leading-tight text-ink-muted">
+              <span className="sr-only">정가 </span>
+              <del>{won(originalPrice)}원</del>
+            </p>
+          )}
+          <p className="mt-0.5 text-base font-bold leading-normal">
+            {discount > 0 && (
+              <span className="mr-1.5 text-accent">
+                {discount}%<span className="sr-only"> 할인</span>
+              </span>
+            )}
+            {won(price)}원
+          </p>
+          {reviewCount !== undefined && reviewCount > 0 && (
+            <p className="mt-1 flex items-center gap-1 text-[0.8125rem] text-ink-muted">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                className="size-3.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.3"
+              >
+                <path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z" />
+              </svg>
+              <span className="sr-only">후기</span>
+              {reviewCount > 9999 ? "9,999+" : won(reviewCount)}
+            </p>
+          )}
+          {!href && (
+            <p className="mt-1 text-xs text-ink-muted">
+              상품 상세 페이지 준비 중
+            </p>
+          )}
+        </>,
+        "mt-3.5 block",
+      )}
+    </div>
   );
 }

@@ -9,6 +9,7 @@ import { formatPrice, getDiscountRate } from "@/lib/format";
 import { isMockCatalog } from "@/services/catalog-source";
 import { getSavedState } from "@/services/cart";
 import { getProductById } from "@/services/products";
+import { routes } from "@/lib/routes";
 import { UGLY_REASON_LABELS } from "@/types/product";
 
 // 브라우저 탭 제목: "못난이 당근 1kg | 못난이마켓"
@@ -116,6 +117,12 @@ export default async function ProductDetailPage({
               <p className="mt-1 text-sm text-brand-dark/80">
                 {product.farmStory}
               </p>
+              <Link
+                href={routes.farm(product.farmName)}
+                className="mt-2 inline-flex min-h-10 items-center text-sm font-bold text-brand hover:underline"
+              >
+                {product.farmName} 농가 이야기 자세히 보기 ›
+              </Link>
             </div>
           )}
 
