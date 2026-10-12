@@ -68,6 +68,10 @@ Supabase Dashboard의 프로젝트 → SQL Editor에서 아래 순서로 파일 
 5. `supabase/migrations/202610110001_verified_recipe_metadata.sql`
 6. `supabase/migrations/202610110002_product_display_fields.sql`
 7. `supabase/migrations/202610120001_profile_shipping.sql`
+8. `supabase/migrations/202610120002_refund_requests.sql`
+9. `supabase/migrations/202610120003_mock_checkout.sql`
+
+**2026-10-12 모의 결제 공용 DB 적용 완료:** `mock_checkout` RPC에서 본인 장바구니의 DB 가격으로 주문·상품 스냅샷을 저장합니다. 성공 시 주문 상품을 장바구니에서 정리하며 실패 시 유지합니다. 일반 사용자의 orders/order_items 직접 쓰기 권한은 그대로 차단합니다. SQL Editor 실행 성공 후 authenticated EXECUTE=true, anon EXECUTE=false, authenticated orders INSERT=false를 확인했습니다. SQL Editor 적용이므로 CLI migration 이력에는 자동 등록되지 않습니다. [사용법·검증](mock-payment.md).
 
 **2026-10-12 기본 배송지 적용 완료:** C가 공용 `vegetable` 프로젝트의 profiles에 받는 분·연락처·우편번호·기본 주소·상세주소를 추가했습니다. 기존 행은 모두 NULL로 유지하며, 주소 저장 시 필수 항목·형식·길이를 CHECK로 검증합니다. 기존 본인 전용 RLS 아래에서 배송지 컬럼 수정만 허용합니다. 기본 배송지 변경은 기존 orders의 배송 정보를 수정하지 않습니다.
 
