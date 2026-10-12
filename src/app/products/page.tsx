@@ -2,11 +2,7 @@ import Link from "next/link";
 import CollectionNav from "@/components/products/CollectionNav";
 import MockDataNotice from "@/components/products/MockDataNotice";
 import { ProductSpotlight } from "@/components/common/ProductSpotlight";
-import {
-  selectSeasonalFruit,
-  RECOMMENDATION_RULE,
-  rankProducts,
-} from "@/lib/product-ranking";
+import { selectSeasonalFruit, rankProducts } from "@/lib/product-ranking";
 import ProductCard from "@/components/products/ProductCard";
 import ProductFilters from "@/components/products/ProductFilters";
 import ProductSearch from "@/components/products/ProductSearch";
@@ -134,9 +130,6 @@ export default async function ProductsPage({
         상품 {products.length}개
       </p>
 
-      {filters.sort === "recommended" && (
-        <p className="mb-4 text-sm text-ink-muted">{RECOMMENDATION_RULE}</p>
-      )}
       {filters.sort === "reviews" && (
         <p className="mb-4 text-sm text-ink-muted">
           리뷰 수가 많은 순서예요. 현재 별점·리뷰 수는 시연용 예시이며 실제 구매
