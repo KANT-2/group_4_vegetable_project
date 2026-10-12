@@ -1,3 +1,4 @@
+import { RecipePhotoCredits } from "@/components/recipes/RecipePhotoCredits";
 // 메인 화면 / (A 담당)
 // 구성: 짧은 소개 → 추천 농산물(첫 화면에 보이도록) → 채소로 찾기 → 추천 레시피 → 농가 이야기 → 우리 이야기 안내
 // 서비스 가치·이용 흐름 같은 긴 소개는 /story 의 "우리 이야기"로 옮겼어요. 휴대폰 첫 화면에서 상품이 먼저 보이게 하기 위해서예요.
@@ -6,12 +7,19 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/common/Icons";
 import { MockDataNotice } from "@/components/common/MockDataNotice";
+import { ProductSpotlight } from "@/components/common/ProductSpotlight";
+import {
+  pickRecommended,
+  selectSeasonalFruit,
+  RECOMMENDATION_RULE,
+} from "@/lib/product-ranking";
+import { getProductList } from "@/services/products";
 import { ProductPreviewCard } from "@/components/common/ProductPreviewCard";
 import { SafeImage } from "@/components/common/SafeImage";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { routes } from "@/lib/routes";
 import { getRecipes, getRecipeVegetableOptions } from "@/services/recipes";
-import { getFarmStories, getFeaturedProducts } from "@/services/showcase";
+import { getFarmStories } from "@/services/showcase";
 
 const HOME_RECIPE_COUNT = 3;
 const HOME_FARM_COUNT = 3;
@@ -20,8 +28,8 @@ const HOME_FARM_COUNT = 3;
 export const revalidate = 300;
 
 export default async function HomePage() {
-  const [featured, farms, recipes, vegetables] = await Promise.all([
-    getFeaturedProducts(),
+  const [catalogProducts, farms, recipes, vegetables] = await Promise.all([
+    getProductList({ sort: "recommended" }),
     getFarmStories(),
     getRecipes(),
     getRecipeVegetableOptions(),
@@ -31,72 +39,15 @@ export default async function HomePage() {
     routes.vegetable(vegetable.id),
   );
 
+  const featured = pickRecommended(catalogProducts, 4);
   return (
     <>
-      {/* 1. 짧은 소개: 모바일에서는 이미지를 빼서 바로 아래 상품이 첫 화면에 보여요. */}
-      <section className="container-page pt-4 md:pt-8">
-        <div className="grid overflow-hidden rounded-[1.5rem] bg-sand md:grid-cols-[1.1fr_1fr] md:items-center md:rounded-[2rem]">
-          <div className="p-5 sm:p-8 md:p-10">
-            <p className="chip hidden bg-surface text-brand-dark sm:inline-flex">
-              B급이라 더 착한 가격
-            </p>
-            <h1 className="text-[1.75rem] font-black leading-tight sm:mt-3 sm:text-4xl md:text-5xl">
-              못생겨도 맛은 <span className="text-brand">1등급</span>입니다
-            </h1>
-            <p className="mt-2 max-w-md text-ink-muted md:mt-3 md:text-lg">
-              모양이 달라 버려질 뻔한 농산물과 농가 이야기, 그 채소로 만드는
-              요리를 만나보세요.
-            </p>
-            <div className="mt-4 flex gap-3 md:mt-6">
-              {routes.productList ? (
-                <>
-                  <Link
-                    href={routes.productList}
-                    className="btn btn-primary flex-1 sm:flex-none"
-                  >
-                    상품 보기
-                    <ArrowRightIcon
-                      width={18}
-                      height={18}
-                      className="hidden sm:block"
-                    />
-                  </Link>
-                  <Link
-                    href={routes.recipes}
-                    className="btn btn-secondary flex-1 sm:flex-none"
-                  >
-                    레시피 보기
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link
-                    href={routes.recipes}
-                    className="btn btn-primary flex-1 sm:flex-none"
-                  >
-                    레시피 보기
-                    <ArrowRightIcon
-                      width={18}
-                      height={18}
-                      className="hidden sm:block"
-                    />
-                  </Link>
-                  <Link
-                    href={routes.story}
-                    className="btn btn-secondary flex-1 sm:flex-none"
-                  >
-                    농가 이야기
-                  </Link>
-                </>
-              )}
-            </div>
-          </div>
-          <SafeImage
-            src="/images/hero.jpg"
-            alt="바구니에 담긴 여러 가지 채소와 과일"
-            className="hidden size-full object-cover md:block md:min-h-[17rem]"
-          />
-        </div>
+      <section className="container-page pt-4 md:pt-6">
+        <h1 className="sr-only">못난이마켓 · 오늘의 추천 농산물</h1>
+        <ProductSpotlight
+          products={selectSeasonalFruit(catalogProducts)}
+          home
+        />
       </section>
 
       {/* 2. 개발용 예시 안내 (Mock 모드에서만 보여요) */}
@@ -112,7 +63,7 @@ export default async function HomePage() {
         >
           <div className="flex items-end justify-between gap-4">
             <h2 id="featured-title" className="section-title">
-              추천 못난이 농산물
+              오늘의 추천 농산물
             </h2>
             {routes.productList && (
               <Link
@@ -123,6 +74,7 @@ export default async function HomePage() {
               </Link>
             )}
           </div>
+          <p className="mt-2 text-sm text-ink-muted">{RECOMMENDATION_RULE}</p>
           <ul className="mt-4 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
             {featured.map((product) => (
               <li key={product.id}>
@@ -205,6 +157,7 @@ export default async function HomePage() {
                 </li>
               ))}
             </ul>
+            <RecipePhotoCredits recipes={recipes.slice(0, HOME_RECIPE_COUNT)} />
             <div className="mt-8 text-center">
               <Link href={routes.recipes} className="btn btn-primary">
                 전체 레시피 보기

@@ -11,6 +11,7 @@ import "server-only";
 import { cache } from "react";
 import verifiedRecipes from "@/data/generated/verified-recipes.json";
 import { connectCatalogRecipes } from "@/lib/recipe-catalog";
+import { withRecipePhoto } from "@/lib/recipe-photos";
 import { products as mockProducts } from "@/data/mock/products";
 import { vegetables as mockVegetables } from "@/data/mock/vegetables";
 import { recipeRowSchema, type RecipeRow } from "@/schemas/recipe";
@@ -120,7 +121,7 @@ function uniqueVegetables(vegetables: RecipeVegetable[]): RecipeVegetable[] {
 const loadAllRecipes = cache(async (): Promise<Recipe[]> => {
   if (getDataSource() === "mock") return loadMockRecipes();
   const rows = await fetchSupabaseRecipeRows();
-  return rows.map(rowToRecipe);
+  return rows.map((row) => withRecipePhoto(rowToRecipe(row)));
 });
 
 function matchesFilters(

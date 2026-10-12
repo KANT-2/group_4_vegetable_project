@@ -48,7 +48,7 @@ export interface ProductListItem extends Product {
 }
 
 // 상품 목록을 고를 때 쓰는 조건 (필터·정렬)
-export type ProductSort = "newest" | "price_asc" | "price_desc" | "discount_desc";
+export type ProductSort = "recommended" | "seasonal" | "reviews" | "newest" | "price_asc" | "price_desc" | "discount_desc";
 
 export interface ProductFilters {
   category?: VegetableCategory; // 분류로 고르기

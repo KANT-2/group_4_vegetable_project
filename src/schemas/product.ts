@@ -10,6 +10,9 @@ export const uglyReasonSchema = z.enum([
 ]);
 
 export const productSortSchema = z.enum([
+  "recommended",
+  "seasonal",
+  "reviews",
   "newest",
   "price_asc",
   "price_desc",
@@ -38,7 +41,7 @@ export const catalogFiltersSchema = z.object({
     firstValue,
     uglyReasonSchema.optional().catch(undefined),
   ),
-  sort: z.preprocess(firstValue, productSortSchema.catch("newest")),
+  sort: z.preprocess(firstValue, productSortSchema.catch("recommended")),
   collection: z.preprocess(
     firstValue,
     collectionSchema.optional().catch(undefined),

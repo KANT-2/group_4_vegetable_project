@@ -1,7 +1,7 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import { products as mockProducts } from "@/data/mock/products";
-import { getDiscountRate } from "@/lib/format";
+import { rankProducts } from "@/lib/product-ranking";
 import { uglyReasonSchema, type CatalogFilters } from "@/schemas/product";
 import type { Database } from "@/types/database";
 import type { Product, ProductListItem, UglyReason } from "@/types/product";
@@ -79,15 +79,7 @@ export async function getProductList(
         (!keyword || matchesKeyword(p)),
     );
 
-  if (filters.sort === "price_asc") list.sort((a, b) => a.price - b.price);
-  if (filters.sort === "price_desc") list.sort((a, b) => b.price - a.price);
-  if (filters.sort === "discount_desc")
-    list.sort(
-      (a, b) =>
-        getDiscountRate(b.price, b.originalPrice) -
-        getDiscountRate(a.price, a.originalPrice),
-    );
-  return list;
+  return filters.sort === "newest" ? list : rankProducts(list, filters.sort);
 }
 
 // 못난이 이유별 상품 개수 (필터 버튼에 보여 줘요)

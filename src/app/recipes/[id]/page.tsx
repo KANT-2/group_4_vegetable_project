@@ -1,3 +1,4 @@
+import { RecipePhotoCredits } from "@/components/recipes/RecipePhotoCredits";
 // 레시피 상세 /recipes/[id] (A 담당)
 // 없는 id 는 404 화면(src/app/not-found.tsx)으로 보내요.
 
@@ -106,6 +107,9 @@ export default async function RecipeDetailPage({
 
       <div className="mt-6">
         <RecipeDataNotice />
+        <RecipePhotoCredits
+          recipes={[recipe, ...recipe.relatedRecipes.slice(0, 3)]}
+        />
       </div>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[22rem_1fr] lg:gap-14">

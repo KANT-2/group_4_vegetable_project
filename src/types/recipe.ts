@@ -40,6 +40,14 @@ export type RecipeProduct = Pick<
 >;
 
 export interface Recipe {
+  photoReference?: {
+    source: string;
+    author: string;
+    license: string;
+    licenseUrl: string;
+    title: string;
+    imageUrl: string;
+  };
   id: string; // 예: "carrot-rapee"
   name: string; // 요리 이름
   description: string; // 한 줄 소개
