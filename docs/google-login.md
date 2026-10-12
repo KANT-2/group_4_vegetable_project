@@ -27,6 +27,8 @@ Google Cloud `motnani-story` 프로젝트의 앱 이름은 못난이이야기이
 5. 발급한 Client ID·Secret을 Supabase 프로젝트의 Google provider 설정에 등록하고 활성화합니다. 비밀값은 채팅·Git·로그·캡처에 기록하지 않습니다.
 6. Supabase URL Configuration에는 실제 앱 Site URL과 앱 callback 허용 URL을 등록합니다. 로컬 기본값은 `http://localhost:3000`, 앱 callback은 `http://localhost:3000/auth/callback`입니다. 현재 검증 서버는 `http://127.0.0.1:3103`과 해당 `/auth/callback`을 사용합니다.
 7. `.env.local`의 NEXT_PUBLIC_SITE_URL과 접속 origin을 정확히 맞춥니다. 운영에서는 실제 HTTPS 배포 URL을 사용합니다. 광범위한 wildcard는 등록하지 않습니다.
+   - `NEXT_PUBLIC_SITE_URL=http://localhost:3000`이면 브라우저에서도 `http://localhost:3000`으로 접속해야 합니다. `http://127.0.0.1:3000`은 같은 PC라도 다른 호스트여서 콜백 Host 검증이 실패하며, 인증 쿠키도 공유되지 않습니다.
+   - `127.0.0.1`로 검증하려면 NEXT_PUBLIC_SITE_URL과 Supabase callback 허용 주소를 해당 호스트·포트로 맞추고 서버를 다시 실행합니다. Host 비교를 느슨하게 바꾸지 않습니다.
 8. 실제 계정으로 로그인·새로고침 유지·로그아웃을 검증합니다. 계정별 데이터 분리는 DB RLS 자동 테스트로 검증하며, 실제 두 Google 계정 전환은 팀원이 본인 계정으로 참여할 때 추가 확인합니다. 테스트를 위해 새 계정을 만들 필요는 없습니다.
 
 OAuth 클라이언트 발급·Supabase 인증정보 저장·Google provider 활성화·콜백 허용·실제 계정 동의는 각 실행 단계에서 사용자 승인을 받고 진행했습니다.
@@ -36,6 +38,7 @@ OAuth 클라이언트 발급·Supabase 인증정보 저장·Google provider 활�
 - 단위·DB 테스트 19개 통과: 외부 이동·인증 루프·잘못된 origin·개인 경로 구분, 기존 RLS·계정별 데이터 분리 포함.
 - 타입 검사·lint 통과.
 - `node scripts/check-login.mjs http://127.0.0.1:3103`: 비로그인 개인 경로 차단, 외부 next와 잘못된 OAuth 코드 실패, 캐시 차단 검증.
+- 리뷰 수정 후 Supabase URL·공개 키를 비운 Mock 서버에서도 `check-login.mjs`가 통과했습니다. 환경변수가 없는 개인 경로 redirect에도 `Cache-Control: private, no-store`를 적용합니다.
 - Google provider 미설정 로그인 화면·안내 확인 후, 실제 활성화된 Google 로그인 버튼에서 계정 선택·동의·PKCE 콜백·홈 복귀를 검증했습니다.
 - 실제 계정의 `새싹회원` 프로필 표시, 새로고침 후 세션 유지, 로그아웃 후 개인 표시 제거를 확인했습니다. 두 실제 계정 전환은 아직 미검증입니다.
 - 실제 본문 DB에는 A의 recipes.source_url 컬럼이 아직 없어 화면 검증 시만 USE_MOCK_DATA=true를 명시합니다. 인증·개인 상태는 Mock 계정으로 우회하지 않습니다.

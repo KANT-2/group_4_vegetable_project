@@ -13,7 +13,12 @@ export async function updateSession(request: NextRequest) {
     "next",
     `${request.nextUrl.pathname}${request.nextUrl.search}`,
   );
-  if (!config) return privatePath ? NextResponse.redirect(loginUrl) : response;
+  if (!config) {
+    if (!privatePath) return response;
+    const denied = NextResponse.redirect(loginUrl);
+    denied.headers.set("Cache-Control", "private, no-store");
+    return denied;
+  }
 
   const supabase = createServerClient<Database>(config.url, config.key, {
     cookies: {

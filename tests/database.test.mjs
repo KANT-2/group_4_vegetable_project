@@ -78,6 +78,58 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
   });
 
   await t.test(
+    "기본 배송지는 본인만 저장·조회·삭제하며 잘못된 주소를 차단한다",
+    async () => {
+      await asRole("authenticated", user1);
+      const values = [
+        "가상회원",
+        "01012345678",
+        "01234",
+        "가상 테스트 주소",
+        "테스트 상세",
+        user1,
+      ];
+      const update =
+        "update public.profiles set recipient_name=$1, recipient_phone=$2, postal_code=$3, address=$4, address_detail=$5 where id=$6 returning id";
+      assert.equal((await db.query(update, values)).rows.length, 1);
+      assert.equal(
+        (await db.query(update, [...values.slice(0, 5), user2])).rows.length,
+        0,
+      );
+      assert.equal(
+        (await db.query("select address from profiles where id=$1", [user2]))
+          .rows.length,
+        0,
+      );
+      assert.equal(
+        (await db.query("select address from profiles where id=$1", [user1]))
+          .rows[0].address,
+        "가상 테스트 주소",
+      );
+      await assert.rejects(
+        db.query("update profiles set postal_code='ABCDE' where id=$1", [
+          user1,
+        ]),
+      );
+      await assert.rejects(
+        db.query("update profiles set address=null where id=$1", [user1]),
+      );
+      await asRole("anon");
+      await assert.rejects(db.query("select address from profiles"));
+      await asRole("authenticated", user1);
+      await db.query(
+        "update profiles set recipient_name=null, recipient_phone=null, postal_code=null, address=null, address_detail=null where id=$1",
+        [user1],
+      );
+      assert.equal(
+        (await db.query("select address from profiles where id=$1", [user1]))
+          .rows[0].address,
+        null,
+      );
+    },
+  );
+
+  await t.test(
     "홍보 문구가 없는 기존 상품과 선택 문구를 함께 지원한다",
     async () => {
       await db.exec("reset role");
@@ -405,7 +457,7 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
     const { rows } = await db.query(
       "select (select count(*)::int from vegetables) as vegetables, (select count(*)::int from products) as products",
     );
-    // 기존 fixture 상품 2개 + B 상품 67개. carrot 채소는 ID가 같아 덮어씁니다.
-    assert.deepEqual(rows[0], { vegetables: 21, products: 69 });
+    // 기존 fixture 상품 2개 + B 상품 71개(판매 종료 4개 포함). carrot 채소는 ID가 같아 덮어씁니다.
+    assert.deepEqual(rows[0], { vegetables: 21, products: 73 });
   });
 });

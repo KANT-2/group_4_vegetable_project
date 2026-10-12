@@ -16,7 +16,7 @@ export async function getProfile() {
 
   const { data, error } = await supabase
     .from("profiles")
-    .select("id, nickname, created_at, updated_at")
+    .select("*")
     .eq("id", user.id)
     .single();
   if (error) throw new Error("프로필을 불러오지 못했습니다.");

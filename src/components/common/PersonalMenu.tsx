@@ -77,7 +77,12 @@ export function PersonalMenu({ expanded = false }: { expanded?: boolean }) {
       )}
       <div className={expanded ? "block" : "hidden lg:block"}>
         {state?.user ? (
-          <div>
+          <div className="flex flex-wrap items-center gap-2">
+            {personalPages.mypage && (
+              <Link className="btn btn-secondary" href="/mypage">
+                마이페이지
+              </Link>
+            )}
             <button
               className="btn btn-secondary"
               disabled={pending}
