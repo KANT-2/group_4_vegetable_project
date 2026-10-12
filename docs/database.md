@@ -1,5 +1,30 @@
 # 공통 DB 테이블 구성
 
+## 레시피 배포 차단 해소 — 2026-10-12
+
+Vercel에서 `recipes.source_url` 누락으로 빌드 또는 메인 화면 조회가 실패하면 먼저 **앱과 같은 팀 Supabase 프로젝트**에 아래 두 파일을 적용한다. 로컬 시연 데이터 빌드 성공은 실제 DB 적용을 확인한 결과가 아니다.
+
+현재 main `7795d8d` 기준 두 파일이 최신임을 확인했다. 아래 SQL 원본은 변경하지 않았다.
+
+1. [레시피 metadata migration](../supabase/migrations/202610110001_verified_recipe_metadata.sql)
+2. [공식 레시피 seed](../supabase/seeds/verified-recipes.sql)
+
+### 적용 순서
+
+1. 팀 Supabase SQL Editor에서 [적용 전 검사 SQL](../supabase/checks/verified-recipes-preflight.sql)을 실행한다. `public.recipes`가 있어야 한다.
+2. `source_url`, `source_name`, `vegetables`가 모두 없으면 migration **파일 전체**를 한 번 실행한다. `cook_time_min`·`difficulty`는 NULL 허용으로 바뀌며 기존 행은 삭제하지 않는다.
+3. 세 컬럼이 이미 있으면 text/text/jsonb 타입, vegetables NOT NULL 및 나머지 네 컬럼 NULL 허용을 확인하고 migration은 건너뛴다. 일부 컬럼만 있거나 타입이 다르면 중단하고 결과를 공유한다. 원본 migration은 `ADD COLUMN`이라 그대로 재실행하면 중복 컬럼 오류가 난다.
+4. 공식 seed 파일 전체를 실행한다. 공식 `official-*` 레시피만 upsert하고 이 16개 레시피의 상품 연결을 현재 활성 상품에 맞춰 다시 만든다. 기존 예시 레시피·상품·개인 데이터·RLS는 보존한다.
+5. [적용 후 검사 SQL](../supabase/checks/verified-recipes-after.sql)을 실행한다. 현재 카탈로그 기준 공식 레시피 **16개 / 재료 213개 / 조리 단계 72개 / 출처 있는 레시피 16개**가 나와야 한다. anon 조회 예시도 한 행이 나와야 한다.
+6. Vercel의 Supabase URL·공개 키가 방금 적용한 팀 프로젝트를 가리키는지 확인한다. DB 운영 모드에서는 `USE_MOCK_DATA=true`를 두지 않는다. Preview와 Production 환경변수는 각각 확인한다.
+7. Vercel에서 실패한 배포를 **Redeploy**한 뒤 `/`, `/recipes`, `/recipes/official-sprout207811`을 확인한다. SQL Editor에서 정상인데 API가 컬럼을 못 찾으면 schema cache 갱신을 확인한다.
+
+### 실제 적용 기록
+
+- 확인된 상태: 두 원본 파일의 main 버전 확인 및 PostgreSQL 테스트 엔진에서 누락 오류 재현/적용 후 조회 검증.
+- **팀 Supabase 실제 적용: 미확인.** 적용한 사람이 프로젝트명, 실행 시각, migration 적용/건너뜀, 위 집계 결과, 공개 키 API 조회 및 Redeploy 결과를 이 절에 기록한다.
+- 빌드 통과만으로 실제 로그인이나 팀 DB 검수 완료를 표시하지 않는다.
+
 DB 생성 담당은 C 이상재입니다. 하나의 Supabase 프로젝트에서 공통 테이블·외래 키·CHECK·인덱스·수정 시각 트리거·RLS를 관리합니다. A는 레시피, B는 상품·채소의 컬럼 검토·예시 데이터·조회 함수·화면을 담당합니다.
 
 ## 준비된 테이블

@@ -87,8 +87,46 @@ test("공통 DB에 공식 시드를 두 번 적용해도 중복·사용자 데�
   const migrations = new URL("../supabase/migrations/", import.meta.url);
   for (const file of (await readdir(migrations))
     .filter((name) => name.endsWith(".sql"))
-    .sort())
+    .sort()) {
+    if (file === "202610110001_verified_recipe_metadata.sql") {
+      await db.exec(
+        await readFile(
+          new URL(
+            "../supabase/checks/verified-recipes-preflight.sql",
+            import.meta.url,
+          ),
+          "utf8",
+        ),
+      );
+      // Reproduce the shared DB failure before the recipe metadata migration.
+      await assert.rejects(db.query("select source_url from public.recipes"), {
+        code: "42703",
+      });
+    }
     await db.exec(await readFile(new URL(file, migrations), "utf8"));
+  }
+  const metadataColumns = (
+    await db.query(`
+    select column_name, data_type, is_nullable
+    from information_schema.columns
+    where table_schema = 'public' and table_name = 'recipes'
+      and column_name in ('source_url', 'source_name', 'vegetables', 'cook_time_min', 'difficulty')
+    order by column_name
+  `)
+  ).rows;
+  assert.equal(metadataColumns.length, 5);
+  assert.ok(
+    metadataColumns.every(
+      (column) =>
+        column.is_nullable ===
+        (column.column_name === "vegetables" ? "NO" : "YES"),
+    ),
+  );
+  assert.equal(
+    metadataColumns.find((column) => column.column_name === "vegetables")
+      .data_type,
+    "jsonb",
+  );
   await db.exec(
     await readFile(
       new URL("../supabase/seeds/catalog.sql", import.meta.url),
@@ -105,6 +143,19 @@ test("공통 DB에 공식 시드를 두 번 적용해도 중복·사용자 데�
     "utf8",
   );
   await db.exec(seed);
+  const officialTotals = (
+    await db.query(`
+    select count(*)::int as recipes,
+      sum(jsonb_array_length(ingredients))::int as ingredients,
+      sum(jsonb_array_length(steps))::int as steps
+    from public.recipes where id like 'official-%'
+  `)
+  ).rows[0];
+  assert.deepEqual(officialTotals, {
+    recipes: 16,
+    ingredients: 213,
+    steps: 72,
+  });
   const firstLinks = (
     await db.query(
       "select * from public.recipe_products order by recipe_id, product_id",
@@ -139,6 +190,12 @@ test("공통 DB에 공식 시드를 두 번 적용해도 중복·사용자 데�
       )
     ).rows[0].n,
     16,
+  );
+  await db.exec(
+    await readFile(
+      new URL("../supabase/checks/verified-recipes-after.sql", import.meta.url),
+      "utf8",
+    ),
   );
   await db.exec("set role anon");
   assert.equal(

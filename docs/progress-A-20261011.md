@@ -1,5 +1,11 @@
 # A 조영우 작업 현황 — 2026-10-11
 
+## 최신 배포 안내 — 2026-10-12
+
+팀 DB에 레시피 metadata migration이 없으면 `source_url` 조회로 Vercel 빌드/메인 화면이 실패할 수 있다. 두 원본 SQL은 main `7795d8d`와 동일한 최신 버전이며, **migration → 공식 seed → 적용 후 검사 → Vercel Redeploy** 순서가 필요하다. 원본 migration은 중복 실행하지 않는다. 컬럼이 일부만 있으면 중단하고 상태를 공유한다.
+
+적용 전후 검사 SQL과 실제 적용 기록 양식은 [공통 DB 문서](database.md#레시피-배포-차단-해소--2026-10-12)에 있다. 실제 팀 DB 적용은 확인되지 않았으며 시연 데이터의 로컬 빌드 결과로 대신하지 않는다.
+
 ## 확인한 기준
 
 - 원격 main: `bb2f3be` (B 상품·채소 데이터와 C 공통 DB·인증 기반 포함).
@@ -66,3 +72,14 @@ node scripts/export-app-recipes.mjs
 2. `supabase/seeds/verified-recipes.sql`
 
 첫 파일은 migration이라 한 번만 적용한다. seed는 재실행할 수 있지만 해당 공식 레시피와 판매 상품 연결을 현재 활성 상품에 맞춰 갱신한다. 운영 앱은 `public.recipes`를 읽으므로 별도 검토용 `food_catalog` 스키마를 공개할 필요가 없다.
+
+## A·B 통합 후속 결과 — 2026-10-11
+
+- 통합 브랜치: `feat/integration-a-b`. A PR #10, B PR #9 및 `feat/products-design`의 공통 디자인 변경을 함께 검증했다.
+- 전체 상품 67개 화면을 A 메뉴에서 열 수 있고, 레시피 → 상품 상세 → 채소 정보 → 채소별 레시피를 왕복할 수 있다. 채소 화면에는 해당 채소의 레시피 최대 3개와 전체 보기 링크를 추가했다.
+- A와 B 모두 `USE_MOCK_DATA=true` 및 환경변수 유무에 같은 데이터 모드 규칙을 적용한다. DB 오류는 시연 데이터로 숨기지 않는다.
+- 최종 통합 검증: 테스트 15개, lint/typecheck/build 통과. 상품 67개, 뿌리채소 필터 15개 및 가격 정렬 확인. 360/390/1280px 상품 화면에서 가로 넘침·깨진 이미지 없음. 모바일 메뉴 열기·Esc 닫기·상품 이동과 채소별 레시피 왕복 확인.
+- 로컬 시연: `http://localhost:3017/recipes` 또는 `http://localhost:3017/products`.
+- C 로그인·마이페이지·장바구니 화면은 아직 원격 main/담당 브랜치에 없어 통합하지 않았다. 장바구니 버튼은 준비 중으로 유지한다.
+- 실제 Supabase 팀 조직 접근, DB migration/seed 적용, 실제 휴대폰 및 Vercel 배포 검증은 미완료. 브라우저 모바일 검수를 실제 휴대폰 완료로 표시하지 않는다.
+- PR 병합은 연결 도구의 쓰기 권한 부족으로 아직 실행하지 못했다. GitHub에서 main 병합 후 배포와 실제 DB 검수를 이어간다.
