@@ -101,7 +101,7 @@ export default async function VegetablePage({
         <section className="mt-8" aria-label={`${vegetable.name} 레시피`}>
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-lg font-bold text-ink">
-              {vegetable.name}로 만드는 요리
+              {vegetable.name} 요리
             </h2>
             <Link
               href={routes.recipesByVegetable(id)}
