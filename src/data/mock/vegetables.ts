@@ -133,7 +133,7 @@ export const vegetables: Vegetable[] = [
     storageGuide: "잎을 잘라 내고 신문지에 싸서 서늘한 곳이나 냉장고에 세워 두세요.",
     prepGuide: "흙을 씻고 껍질은 얇게 벗겨요. 윗부분은 달고 아랫부분은 매워요.",
     season: "10~12월",
-    imageUrl: "/images/radish-bent.jpg",
+    imageUrl: "/images/radish.jpg",
   },
   {
     id: "broccoli",

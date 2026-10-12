@@ -405,7 +405,7 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
     const { rows } = await db.query(
       "select (select count(*)::int from vegetables) as vegetables, (select count(*)::int from products) as products",
     );
-    // 기존 fixture 상품 2개 + B 상품 67개. carrot 채소는 ID가 같아 덮어씁니다.
-    assert.deepEqual(rows[0], { vegetables: 21, products: 69 });
+    // 기존 fixture 상품 2개 + B 상품 71개(판매 종료 4개 포함). carrot 채소는 ID가 같아 덮어씁니다.
+    assert.deepEqual(rows[0], { vegetables: 21, products: 73 });
   });
 });
