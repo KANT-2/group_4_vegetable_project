@@ -10,7 +10,7 @@ import { isMockCatalog } from "@/services/catalog-source";
 import { countByReason, getProductList } from "@/services/products";
 import type { Product } from "@/types/product";
 
-export const metadata = { title: "상품 목록 | 못난이마켓" };
+export const metadata = { title: "상품 목록" };
 
 // 코너마다 4개: 같은 채소가 겹치지 않게 먼저 고르고, 모자라면 나머지로 채워요.
 function pickFour(list: Product[]) {
@@ -68,27 +68,27 @@ export default async function ProductsPage({
     : [];
 
   return (
-    <main className="mx-auto w-full max-w-[1120px] px-4 py-6 sm:px-6">
+    <div className="container-page py-6">
       {collection ? (
         <>
           <Link
             href="/products"
-            className="inline-flex h-12 items-center text-sm text-stone-500 hover:text-stone-900"
+            className="inline-flex h-12 items-center text-sm text-ink-muted hover:text-ink"
           >
             ← 전체 상품
           </Link>
-          <h1 className="text-2xl font-bold text-stone-900">
+          <h1 className="text-2xl font-bold text-ink">
             {collection.emoji} {collection.title}
           </h1>
-          <p className="mt-1 text-sm text-stone-500">
+          <p className="mt-1 text-sm text-ink-muted">
             {collection.description}
           </p>
         </>
       ) : (
         <>
           {/* 첫 화면에 상품이 보이도록 소개는 한 줄만 */}
-          <h1 className="text-2xl font-bold text-stone-900">못난이 상품</h1>
-          <p className="mt-1 text-sm text-stone-500">
+          <h1 className="text-2xl font-bold text-ink">못난이 상품</h1>
+          <p className="mt-1 text-sm text-ink-muted">
             모양만 조금 다를 뿐, 맛은 그대로예요.
           </p>
         </>
@@ -107,7 +107,7 @@ export default async function ProductsPage({
               preloadFirst={i === 0}
             />
           ))}
-          <h2 className="mt-12 text-xl font-bold text-stone-900">전체 상품</h2>
+          <h2 className="mt-12 text-xl font-bold text-ink">전체 상품</h2>
         </div>
       )}
 
@@ -115,7 +115,7 @@ export default async function ProductsPage({
         <ProductFilters filters={filters} reasonCounts={reasonCounts} />
       </div>
 
-      <p className="mb-3 mt-4 text-sm text-stone-500">
+      <p className="mb-3 mt-4 text-sm text-ink-muted">
         상품 {products.length}개
       </p>
 
@@ -131,15 +131,12 @@ export default async function ProductsPage({
           ))}
         </div>
       ) : (
-        <div className="rounded-[20px] bg-white p-10 text-center ring-1 ring-stone-200">
-          <p className="font-bold text-stone-900">조건에 맞는 상품이 없어요.</p>
-          <p className="mt-1 text-sm text-stone-500">
+        <div className="rounded-card bg-surface p-10 text-center ring-1 ring-line">
+          <p className="font-bold text-ink">조건에 맞는 상품이 없어요.</p>
+          <p className="mt-1 text-sm text-ink-muted">
             다른 조건을 골라 보세요.
           </p>
-          <Link
-            href="/products"
-            className="mt-4 inline-flex h-12 items-center rounded-xl bg-green-800 px-5 font-semibold text-white"
-          >
+          <Link href="/products" className="mt-4 btn btn-primary">
             조건 초기화
           </Link>
         </div>
@@ -148,6 +145,6 @@ export default async function ProductsPage({
       <div className="mt-8">
         <MockDataNotice usingMock={isMockCatalog()} />
       </div>
-    </main>
+    </div>
   );
 }
