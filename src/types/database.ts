@@ -460,7 +460,15 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      mock_checkout: {
+        Args: {
+          p_request_key: string;
+          p_shipping: Json;
+          p_expected_items: Json;
+          p_success: boolean;
+        };
+        Returns: string;
+      };
     };
     Enums: {
       [_ in never]: never;

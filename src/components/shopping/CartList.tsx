@@ -168,7 +168,9 @@ export function CartList({ initialLines }: { initialLines: CartLine[] }) {
       <aside aria-label="결제 예정 금액" className="hidden lg:block">
         <div className="card sticky top-4 space-y-3 p-5">
           <SummaryRows summary={summary} />
-          <OrderButton />
+          <OrderButton
+            disabled={!!busy || summary.kinds === 0 || summary.unavailable > 0}
+          />
         </div>
       </aside>
       <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-surface px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] lg:hidden">
@@ -179,7 +181,9 @@ export function CartList({ initialLines }: { initialLines: CartLine[] }) {
               {formatPrice(summary.total)}
             </span>
           </p>
-          <OrderButton />
+          <OrderButton
+            disabled={!!busy || summary.kinds === 0 || summary.unavailable > 0}
+          />
         </div>
       </div>
     </div>
@@ -217,11 +221,16 @@ function SummaryRows({
   );
 }
 
-// 주문·모의 결제 화면이 생기면 연결합니다.
-function OrderButton() {
+function OrderButton({ disabled }: { disabled: boolean }) {
+  if (!disabled)
+    return (
+      <Link href="/cart/checkout" className="btn btn-primary">
+        주문하기
+      </Link>
+    );
   return (
     <button type="button" className="btn btn-primary" disabled>
-      주문하기 (준비 중)
+      주문하기
     </button>
   );
 }
