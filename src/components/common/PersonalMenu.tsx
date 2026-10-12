@@ -46,7 +46,7 @@ export function PersonalMenu({ expanded = false }: { expanded?: boolean }) {
           href="/cart"
           className="relative inline-flex size-12 items-center justify-center rounded-full hover:bg-sand"
           aria-label={
-            state ? `장바구니 ${state.cartCount}종` : "장바구니, 수 확인 중"
+            state ? `장바구니 ${state.cartCount}개` : "장바구니, 수 확인 중"
           }
         >
           <CartIcon width={24} height={24} />
@@ -62,7 +62,7 @@ export function PersonalMenu({ expanded = false }: { expanded?: boolean }) {
           className="relative inline-flex size-12 items-center justify-center text-ink-muted"
           aria-label={
             state
-              ? `장바구니 ${state.cartCount}종, 화면 준비 중`
+              ? `장바구니 ${state.cartCount}개, 화면 준비 중`
               : "장바구니 준비 중"
           }
           title="장바구니 준비 중"

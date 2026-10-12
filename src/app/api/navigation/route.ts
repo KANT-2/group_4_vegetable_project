@@ -22,17 +22,14 @@ export async function GET() {
         .select("nickname")
         .eq("id", user.id)
         .maybeSingle(),
-      supabase
-        .from("cart_items")
-        .select("id", { count: "exact", head: true })
-        .eq("user_id", user.id),
+      supabase.from("cart_items").select("quantity").eq("user_id", user.id),
     ]);
-    if (profile.error || cart.error)
+    if (profile.error || cart.error || !cart.data)
       throw new Error("navigation lookup failed");
     return Response.json(
       {
         user: { id: user.id, nickname: profile.data?.nickname ?? "회원" },
-        cartCount: cart.count ?? 0,
+        cartCount: cart.data.reduce((total, item) => total + item.quantity, 0),
       } satisfies NavigationState,
       { headers },
     );
