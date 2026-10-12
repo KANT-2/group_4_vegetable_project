@@ -34,7 +34,7 @@
 | `onion-scratched.jpg`        | 껍질 벗겨진 양파 3kg                   | [mayu ken](https://unsplash.com/@mkmy)                               | [사진](https://unsplash.com/photos/CNZ-9s5p2i8) |
 | `onion-irregular.jpg`        | 모양 제각각 양파 5kg                   | [Lars Blankers](https://unsplash.com/@lmablankers)                   | [사진](https://unsplash.com/photos/pmS8XSz5NU0) |
 | `potato-irregular.jpg`       | 울퉁불퉁 감자 5kg                      | [blackieshoot](https://unsplash.com/@blackieshoot)                   | [사진](https://unsplash.com/photos/p_SSRvFJmeI) |
-| `sweet-potato-scratched.jpg` | 흠집 꿀고구마 3kg                      | [Student LunchBox](https://unsplash.com/@slbcommunity)               | [사진](https://unsplash.com/photos/D832G4pa0Ic) |
+| `sweet-potato-scratched.jpg` | 흠집 꿀고구마 3kg                      | 외부 사이트 이미지 (시연용, 팀원 제공)                               | 출처 확인 필요                                  |
 | `tomato-scratched.jpg`       | 갈라진 토마토 2kg                      | [Kate Laine](https://unsplash.com/@kikimora33)                       | [사진](https://unsplash.com/photos/opP_MREJj1w) |
 | `tomato-small.jpg`           | 꼬마 토마토 1.5kg                      | [Aleksander Joachimiak](https://unsplash.com/@aleksander_joachimiak) | [사진](https://unsplash.com/photos/czNnLt2GRcs) |
 | `cucumber-scratched.jpg`     | 흠집 오이 10입                         | [Eric Prouzet](https://unsplash.com/@eprouzet)                       | [사진](https://unsplash.com/photos/Ky6x9T8j128) |
