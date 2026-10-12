@@ -1,8 +1,7 @@
 import Link from "next/link";
 import CollectionNav from "@/components/products/CollectionNav";
 import MockDataNotice from "@/components/products/MockDataNotice";
-import { ProductSpotlight } from "@/components/common/ProductSpotlight";
-import { selectSeasonalFruit, rankProducts } from "@/lib/product-ranking";
+import { rankProducts } from "@/lib/product-ranking";
 import ProductCard from "@/components/products/ProductCard";
 import ProductFilters from "@/components/products/ProductFilters";
 import ProductSearch from "@/components/products/ProductSearch";
@@ -74,11 +73,6 @@ export default async function ProductsPage({
 
   return (
     <div className="container-page py-4">
-      {showSections && (
-        <div className="mb-6 md:relative md:left-1/2 md:w-[min(90rem,calc(100vw-3rem))] md:-translate-x-1/2">
-          <ProductSpotlight products={selectSeasonalFruit(all)} />
-        </div>
-      )}
       <h1 className="sr-only">{collection ? collection.title : "상품 목록"}</h1>
       {/* 검색창과 코너 아이콘: 큰 화면에서는 가운데에 같은 폭으로 */}
       <div className="mx-auto max-w-md">
