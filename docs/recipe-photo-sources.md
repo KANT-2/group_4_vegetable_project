@@ -49,3 +49,25 @@ Wikimedia 제공 축소본(가능한 파일)과 화면 표시용 크롭을 사�
 | /images/recipes/official-200809-internet.webp       | FBenjr123             | https://commons.wikimedia.org/wiki/File:Chicken_stew_with_mixed_vegetables.jpg                                      | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)         | WebP encoding / display crop |
 | /images/recipes/official-211734-internet.webp       | Wikimedia contributor | https://commons.wikimedia.org/wiki/File:Gamja_jorim_%EA%B0%90%EC%9E%90%EC%A1%B0%EB%A6%BC1.jpg                       | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)         | WebP encoding / display crop |
 | /images/recipes/official-98885-internet.webp        | Kykk wiki             | https://commons.wikimedia.org/wiki/File:Roasted_vegetables.jpg                                                      | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en)        | WebP encoding / display crop |
+
+# 2026-10-12 감자채볶음 사진 교체
+
+사용자가 제공한 사진 두 장을 원본 PNG 그대로 저장했습니다. 원본 출처·작가·라이선스 정보는 제공되지 않았습니다.
+
+- `/images/recipes/easy-potato-1/01.png`: 접시에 담긴 감자채볶음. 목록·메인·상세의 대표 사진입니다.
+- `/images/recipes/easy-potato-1/02.png`: 팬에 담긴 감자채볶음. 상세 화면에서 대표 사진과 함께 표시합니다.
+- 연결 레시피: `easy-potato-1`. 기존 레시피 내용과 다른 레시피 사진은 유지합니다.
+
+# 2026-10-12 감자 간장조림 사진 교체
+
+사용자가 제공한 사진 두 장을 원본 PNG 그대로 저장했습니다. 원본 출처·작가·라이선스 정보는 제공되지 않았습니다. 이전 Wikimedia 사진의 출처는 아래 기존 기록에 보존합니다.
+
+- `/images/recipes/easy-potato-2/01.png`: 그릇에 담긴 감자 간장조림. 대표 사진입니다.
+- `/images/recipes/easy-potato-2/02.png`: 감자 간장조림 근접 사진. 상세 화면의 두 번째 사진입니다.
+- 연결 레시피: `easy-potato-2`. 교체한 사진에 기존 Wikimedia 출처가 잘못 붙지 않도록 해당 레시피의 이전 `photoReference`를 제거했습니다.
+
+# 2026-10-12 추가 사진과 자동 전환
+
+- 감자채볶음 `easy-potato-1/03.png`, 감자 간장조림 `easy-potato-2/03.png`: 사용자 제공 PNG 원본. 출처·작가·라이선스 정보는 제공되지 않았습니다.
+- 각 레시피는 `imageUrl` 대표 사진과 `additionalImageUrls` 추가 사진 배열을 사용합니다. 목록·메인·상세의 공통 `RecipeImage`에서 2초마다 순환합니다.
+- 사진 번호와 조작 버튼 없이 사진만 표시합니다. 마우스·키보드 조작 중, 백그라운드 탭, 동작 줄이기 설정에서는 자동 전환을 멈춥니다.

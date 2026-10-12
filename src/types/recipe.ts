@@ -62,6 +62,7 @@ export interface Recipe {
   steps: string[]; // 조리 순서 (배열 순서가 곧 단계 순서)
   imageAlt?: string;
   imageUrl?: string; // 요리 사진 (없어도 됨)
+  additionalImageUrls?: string[]; // 대표 사진 다음에 순환할 추가 요리 사진
   products: RecipeProduct[]; // 연결된 판매 상품
   vegetables: RecipeVegetable[]; // 연결된 상품의 채소 (중복 없음)
 }

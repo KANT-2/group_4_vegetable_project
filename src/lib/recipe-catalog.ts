@@ -19,6 +19,7 @@ export interface CatalogRecipe {
   primaryVegetableId?: string;
   imageAlt?: string;
   imageUrl?: string;
+  additionalImageUrls?: string[];
   photoReference?: Recipe["photoReference"];
 }
 

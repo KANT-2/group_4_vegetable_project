@@ -17,23 +17,24 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
 
   return (
     <article className="card group h-full overflow-hidden">
-      <Link
-        href={routes.recipe(recipe.id)}
-        className="flex h-full flex-col focus-visible:outline-offset-[-3px]"
-      >
+      <div className="flex h-full flex-col">
         <RecipeImage
           recipe={recipe}
+          href={routes.recipe(recipe.id)}
           className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
         />
-        <div className="flex flex-1 flex-col gap-3 p-4 sm:p-5">
+        <Link
+          href={routes.recipe(recipe.id)}
+          className="flex flex-1 flex-col gap-3 p-4 sm:p-5"
+        >
           <h3 className="text-lg font-extrabold">{recipe.name}</h3>
           <RecipeMeta recipe={recipe} />
           <p className="mt-auto border-t border-line pt-3 text-sm text-ink-muted">
             <span className="font-bold text-ink">주요 재료</span>{" "}
             {mainIngredients.join(" · ")}
           </p>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </article>
   );
 }
