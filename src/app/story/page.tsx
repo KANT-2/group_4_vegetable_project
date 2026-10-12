@@ -6,6 +6,10 @@ import { getFarmPhoto } from "@/lib/farm-photo";
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  HomeBanner,
+  type HomeBannerSlide,
+} from "@/components/common/HomeBanner";
 import { ArrowRightIcon } from "@/components/common/Icons";
 import { MockDataNotice } from "@/components/common/MockDataNotice";
 import { SafeImage } from "@/components/common/SafeImage";
@@ -85,34 +89,72 @@ export default async function StoryPage() {
     getProductList({ sort: "recommended" }),
   ]);
 
+  // 배너: 메인처럼 여러 장이 넘어가요. 가로로 긴 농장 사진만 쓰고, 사진마다 맞는 농가 상세로 이어져요.
+  const farmSlide = (
+    farmName: string,
+    imageUrl: string,
+    title: string,
+  ): HomeBannerSlide[] => {
+    const farm = farms.find((f) => f.farmName === farmName);
+    if (!farm) return [];
+    return [
+      {
+        id: farmName,
+        href: routes.farm(farmName),
+        imageUrl,
+        eyebrow: `📍 ${farm.farmRegion ?? "농가 이야기"} · ${farmName}`,
+        title,
+        sub: farm.story,
+        highlight: `농산물 ${farm.products.length}개 보러 가기 ›`,
+      },
+    ];
+  };
+  const slides: HomeBannerSlide[] = [
+    {
+      id: "intro",
+      href: "#farms",
+      imageUrl: farmPhotos[0].imageUrl,
+      eyebrow: "FARM TO TABLE · 농가 이야기",
+      title: "한 끼의 시작은, 농가의 하루에서.",
+      sub: "밭을 돌보고, 계절을 기다리는 사람들을 만나보세요.",
+      highlight: `농가 ${farms.length}곳 만나보기 ›`,
+    },
+    ...farmSlide(
+      "영주 사과마을",
+      "/images/farms/youngju-orchard.webp",
+      "작아도 아삭하고 달콤한 사과",
+    ),
+    ...farmSlide(
+      "부여 토마토하우스",
+      "/images/farms/greenhouse.webp",
+      "햇살 가득한 온실에서 익은 토마토",
+    ),
+    ...farmSlide(
+      "청송 사과농원",
+      "/images/farms/apple-orchard.webp",
+      "산골 과수원의 단단한 사과",
+    ),
+    ...farmSlide(
+      "진주 들판농장",
+      "/images/farms/fields.webp",
+      "넓은 들판에서 계절을 기다려요",
+    ),
+    {
+      id: "about",
+      href: "#about",
+      imageUrl: "/images/hero.jpg",
+      eyebrow: "못난이마켓 선별 기준",
+      title: "모양만 다를 뿐, 맛과 신선도는 그대로",
+      sub: "버려질 뻔한 농산물이 식탁에 오르기까지",
+      highlight: "우리 이야기 보기 ›",
+    },
+  ];
+
   return (
     <>
-      {/* 1. 화면 너비 사진 배너 (마켓컬리 기준) */}
-      <section className="relative h-[clamp(15rem,45vw,23.125rem)] overflow-hidden bg-sand">
-        <SafeImage
-          src={farmPhotos[0].imageUrl}
-          alt="한국 농촌에서 농작업 중인 농부와 논 풍경"
-          priority
-          className="absolute inset-0 size-full object-cover"
-        />
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/30 to-transparent"
-        />
-        <div className="container-page relative flex h-full flex-col justify-center text-white">
-          <p className="text-sm font-medium opacity-90 md:text-base">
-            FARM TO TABLE · 농가 이야기
-          </p>
-          <h1 className="mt-2 text-[1.75rem] font-bold leading-tight md:text-[2.5rem]">
-            한 끼의 시작은,
-            <br />
-            농가의 하루에서.
-          </h1>
-          <p className="mt-2 text-sm opacity-90 md:text-lg">
-            밭을 돌보고, 계절을 기다리는 사람들을 만나보세요.
-          </p>
-        </div>
-      </section>
+      <h1 className="sr-only">농가 이야기 · 한 끼의 시작은, 농가의 하루에서</h1>
+      {/* 1. 화면 너비 사진 배너: 메인과 같은 넘김 배너 (마켓컬리 기준) */}
+      <HomeBanner slides={slides} />
 
       <div className="container-page pt-6">
         <MockDataNotice subject="농가 이야기와 농산물 정보" />
