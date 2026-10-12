@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { VisitMark } from "@/components/products/BackLink";
 import CollectionNav from "@/components/products/CollectionNav";
 import MockDataNotice from "@/components/products/MockDataNotice";
 import { ProductSpotlight } from "@/components/common/ProductSpotlight";
@@ -74,6 +75,7 @@ export default async function ProductsPage({
 
   return (
     <div className="container-page py-4">
+      <VisitMark />
       {showSections && (
         <div className="mb-6 md:relative md:left-1/2 md:w-[min(90rem,calc(100vw-3rem))] md:-translate-x-1/2">
           <ProductSpotlight products={selectSeasonalFruit(all)} />
