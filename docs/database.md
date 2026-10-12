@@ -22,7 +22,13 @@ Vercel에서 `recipes.source_url` 누락으로 빌드 또는 메인 화면 조�
 ### 실제 적용 기록
 
 - 확인된 상태: 두 원본 파일의 main 버전 확인 및 PostgreSQL 테스트 엔진에서 누락 오류 재현/적용 후 조회 검증.
-- **팀 Supabase 실제 적용: 미확인.** 적용한 사람이 프로젝트명, 실행 시각, migration 적용/건너뜀, 위 집계 결과, 공개 키 API 조회 및 Redeploy 결과를 이 절에 기록한다.
+- **팀 Supabase 실제 적용: 2026-10-12 오전 완료 (B 심우섭).** 앱 `.env.local`과 같은 `vegetable` 프로젝트의 SQL Editor에서 진행했다.
+  - 적용 전 검사: `public.recipes` 있음, 레시피 0개. `source_url`·`source_name`·`vegetables` 세 컬럼 모두 없음, `cook_time_min`·`difficulty`는 NOT NULL.
+  - migration: 세 컬럼이 모두 없어 원본 파일 전체를 한 번 **적용**했다 (건너뜀 아님).
+  - seed: `verified-recipes.sql` 전체 실행. 첫 실행은 Dashboard의 삭제 문 확인 창에서 멈춰 반영되지 않았고(0개), 다시 실행해 확인 창 승인 후 반영했다.
+  - 적용 후 검사: `source_name`·`source_url` text NULL 허용, `vegetables` jsonb NOT NULL, `cook_time_min`·`difficulty` NULL 허용. 공식 레시피 **16 / 재료 213 / 조리 단계 72 / 출처 있는 레시피 16**, 전체 레시피 16, `recipe_products` 99행, recipes·recipe_products RLS 활성, 판매 중 상품 67개 유지.
+  - 공개 키 API: `recipes?id=eq.official-sprout207811` 조회 200, `새싹 가지 샐러드 / 농촌진흥청` 한 행. `source_url`·`vegetables` 선택 조회도 200.
+  - Vercel: 실패한 Production 배포를 Redeploy해 성공. 배포 주소에서 `/`, `/recipes`, `/recipes/official-sprout207811` 모두 200.
 - 빌드 통과만으로 실제 로그인이나 팀 DB 검수 완료를 표시하지 않는다.
 
 DB 생성 담당은 C 이상재입니다. 하나의 Supabase 프로젝트에서 공통 테이블·외래 키·CHECK·인덱스·수정 시각 트리거·RLS를 관리합니다. A는 레시피, B는 상품·채소의 컬럼 검토·예시 데이터·조회 함수·화면을 담당합니다.
