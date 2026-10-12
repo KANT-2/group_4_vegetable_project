@@ -70,43 +70,49 @@ export default function ProductFilters({
 
   return (
     <div className="flex flex-col gap-2">
-      {/* 1줄: 채소 분류 (모바일에서는 옆으로 밀어서 봐요) */}
-      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
-        <Chip
-          href={catalogHref(filters, { category: undefined })}
-          active={!filters.category}
-        >
-          전체
-        </Chip>
-        {categories.map(([value, label]) => (
+      {/* 분류 + 못난이 이유
+          모바일: 한 줄로 이어 붙여 한 번에 옆으로 밀어서 봐요
+          큰 화면: 분류 1줄, 못난이 이유 1줄로 나눠요 */}
+      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-col sm:overflow-visible sm:px-0">
+        <div className="flex shrink-0 gap-2 sm:flex-wrap">
           <Chip
-            key={value}
-            href={catalogHref(filters, { category: value })}
-            active={filters.category === value}
+            href={catalogHref(filters, { category: undefined })}
+            active={!filters.category}
           >
-            {label}
+            전체
           </Chip>
-        ))}
-      </div>
-
-      {/* 2줄: 못난이 이유 */}
-      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
-        {reasons.map(([value, label]) => (
-          <Chip
-            key={value}
-            // 이미 고른 걸 다시 누르면 해제
-            href={catalogHref(filters, {
-              reason: filters.reason === value ? undefined : value,
-            })}
-            active={filters.reason === value}
-            disabled={reasonCounts[value] === 0 && filters.reason !== value}
-          >
-            {label}
-            <span className="ml-1 font-normal opacity-70">
-              {reasonCounts[value]}
-            </span>
-          </Chip>
-        ))}
+          {categories.map(([value, label]) => (
+            <Chip
+              key={value}
+              href={catalogHref(filters, { category: value })}
+              active={filters.category === value}
+            >
+              {label}
+            </Chip>
+          ))}
+        </div>
+        <span
+          aria-hidden
+          className="w-px shrink-0 self-stretch bg-line sm:hidden"
+        />
+        <div className="flex shrink-0 gap-2 sm:flex-wrap">
+          {reasons.map(([value, label]) => (
+            <Chip
+              key={value}
+              // 이미 고른 걸 다시 누르면 해제
+              href={catalogHref(filters, {
+                reason: filters.reason === value ? undefined : value,
+              })}
+              active={filters.reason === value}
+              disabled={reasonCounts[value] === 0 && filters.reason !== value}
+            >
+              {label}
+              <span className="ml-1 font-normal opacity-70">
+                {reasonCounts[value]}
+              </span>
+            </Chip>
+          ))}
+        </div>
       </div>
 
       {/* 정렬 + 초기화 */}
