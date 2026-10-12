@@ -6,6 +6,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon } from "@/components/common/Icons";
 import { ProductPreviewCard } from "@/components/common/ProductPreviewCard";
+import { SafeImage } from "@/components/common/SafeImage";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { RecipeImage } from "@/components/recipes/RecipeImage";
 import { RecipeIngredients } from "@/components/recipes/RecipeIngredients";
@@ -77,11 +78,26 @@ export default async function RecipeDetailPage({
       </nav>
 
       <div className="mt-4 grid gap-6 md:grid-cols-2 md:items-center md:gap-10">
-        <RecipeImage
-          recipe={recipe}
-          priority
-          className="aspect-[4/3] w-full rounded-card object-cover"
-        />
+        <div
+          className={recipe.additionalImageUrl ? "grid grid-cols-2 gap-3" : ""}
+        >
+          <RecipeImage
+            recipe={recipe}
+            priority
+            className={
+              recipe.additionalImageUrl
+                ? "aspect-[3/4] w-full rounded-card object-cover"
+                : "aspect-[4/3] w-full rounded-card object-cover"
+            }
+          />
+          {recipe.additionalImageUrl && (
+            <SafeImage
+              src={recipe.additionalImageUrl}
+              alt={`${recipe.name} 두 번째 사진`}
+              className="aspect-[3/4] w-full rounded-card object-cover"
+            />
+          )}
+        </div>
         <div className="space-y-5">
           <h1 className="page-title">{recipe.name}</h1>
           <RecipeMeta recipe={recipe} size="lg" />
