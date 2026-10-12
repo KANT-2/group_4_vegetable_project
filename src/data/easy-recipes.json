@@ -40,7 +40,10 @@
     "sourceName": "못난이마켓",
     "primaryVegetableId": "potato",
     "imageUrl": "/images/recipes/easy-potato-1/01.png",
-    "additionalImageUrl": "/images/recipes/easy-potato-1/02.png"
+    "additionalImageUrls": [
+      "/images/recipes/easy-potato-1/02.png",
+      "/images/recipes/easy-potato-1/03.png"
+    ]
   },
   {
     "id": "easy-potato-2",
@@ -91,7 +94,10 @@
     "sourceName": "못난이마켓",
     "primaryVegetableId": "potato",
     "imageUrl": "/images/recipes/easy-potato-2/01.png",
-    "additionalImageUrl": "/images/recipes/easy-potato-2/02.png"
+    "additionalImageUrls": [
+      "/images/recipes/easy-potato-2/02.png",
+      "/images/recipes/easy-potato-2/03.png"
+    ]
   },
   {
     "id": "easy-carrot-1",
