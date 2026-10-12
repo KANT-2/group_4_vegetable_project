@@ -9,6 +9,7 @@ import { MockDataNotice } from "@/components/common/MockDataNotice";
 import { SafeImage } from "@/components/common/SafeImage";
 import { routes } from "@/lib/routes";
 import { getRecipesByVegetable } from "@/services/recipes";
+import { getProductList } from "@/services/products";
 import { getFarmStories } from "@/services/showcase";
 import { UGLY_REASON_LABELS, type UglyReason } from "@/types/product";
 import type { FarmStory } from "@/types/showcase";
@@ -34,7 +35,7 @@ const REASONS: { reason: UglyReason; description: string }[] = [
   {
     reason: "scratched",
     description:
-      "바람에 가지가 흔들리거나 자라는 동안 작은 상처가 나면 껍질에 흠집이 남을 수 있어요. 흠집 난 부분만 도려내면 먹는 데는 문제가 없어요.",
+      "바람에 가지가 흔들리거나 자라는 동안 작은 상처가 나면 껍질에 흠집이 남을 수 있어요. 겉모양과 실제 품질은 별도로 확인해야 해요.",
   },
   {
     reason: "irregular",
@@ -81,26 +82,114 @@ const VISIBLE_FARMS = 6;
 export const revalidate = 300;
 
 export default async function StoryPage() {
-  const farms = await getFarmStories();
+  const [farms, products] = await Promise.all([
+    getFarmStories(),
+    getProductList({ sort: "recommended" }),
+  ]);
+  const coverProducts = farms.slice(0, 3).map((farm) => farm.products[0]);
 
   return (
     <>
-      <section className="bg-sand/60">
-        <div className="container-page section">
-          <h1 className="page-title max-w-2xl">
-            모양은 달라도, 정성은 똑같아요
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-ink-muted">
-            못난이 농산물은 맛과 영양에 문제가 있는 것이 아니라, 정해진 규격과
-            조금 다르게 자란 농산물이에요. 어떤 이유로 모양이 달라지는지, 어떤
-            농가에서 자란 채소인지 만나보세요.
-          </p>
+      <section className="container-page pb-6 pt-4 md:py-8">
+        <div className="overflow-hidden rounded-[1.5rem] bg-sand md:grid md:grid-cols-2">
+          <div className="relative grid h-60 grid-cols-3 grid-rows-2 gap-1 md:order-2 md:h-full md:min-h-96">
+            {coverProducts.length > 0 ? (
+              coverProducts.map((product, index) => (
+                <div
+                  key={product.id}
+                  className={`relative overflow-hidden ${index === 0 ? "col-span-2 row-span-2" : "col-span-1"}`}
+                >
+                  <SafeImage
+                    src={product.imageUrl}
+                    alt={`${product.vegetableName} 농산물 참고 사진`}
+                    priority={index === 0}
+                    className="absolute inset-0 size-full object-cover"
+                  />
+                  <span className="absolute bottom-3 left-3 rounded-full bg-surface/95 px-3 py-1 text-xs font-bold text-brand-dark">
+                    {product.vegetableName}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <SafeImage
+                alt="농산물 이야기"
+                className="col-span-3 row-span-2 size-full"
+              />
+            )}
+          </div>
+          <div className="flex flex-col justify-center p-5 sm:p-8 md:order-1 md:p-10">
+            <p className="text-xs font-bold tracking-widest text-brand-dark">
+              FARM TO TABLE · 농가 이야기
+            </p>
+            <h1 className="mt-3 text-3xl font-black leading-tight md:text-4xl">
+              모양은 달라도,
+              <br />
+              정성은 똑같아요.
+            </h1>
+            <p className="mt-3 max-w-md text-sm text-ink-muted md:text-base">
+              조금 휜 당근도, 작은 사과도.
+              <br />
+              농산물에 담긴 이야기를 만나보세요.
+            </p>
+            <a href="#farms" className="btn btn-primary mt-5 self-start">
+              농가 만나보기 <ArrowRightIcon width={18} height={18} />
+            </a>
+          </div>
         </div>
+        <p className="mt-2 text-xs text-ink-muted">
+          사진은 농산물 참고 이미지이며 해당 농가를 직접 촬영한 사진은 아니에요.
+        </p>
       </section>
 
       <div className="container-page pt-6">
         <MockDataNotice subject="농가 이야기와 농산물 정보" />
       </div>
+
+      <section
+        id="farms"
+        aria-labelledby="farms-title"
+        className="container-page scroll-mt-24 py-8 md:py-12"
+      >
+        <h2 id="farms-title" className="section-title">
+          이 농산물을 키우는 이야기
+        </h2>
+        <p className="mt-2 text-sm text-ink-muted">
+          지역과 농산물을 둘러보고, 상품과 레시피까지 이어 가세요.
+        </p>
+        {farms.length > 0 ? (
+          <>
+            <ul className="mt-5 grid gap-5 md:grid-cols-2">
+              {farms.slice(0, VISIBLE_FARMS).map((farm) => (
+                <li key={farm.farmName}>
+                  <FarmCard farm={farm} />
+                </li>
+              ))}
+            </ul>
+            {farms.length > VISIBLE_FARMS && (
+              // 농가가 많아져도 페이지가 끝없이 길어지지 않도록 나머지는 접어 둬요. (자바스크립트 없이 동작)
+              <details className="group mt-6">
+                <summary className="btn btn-secondary mx-auto cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                  <span className="group-open:hidden">
+                    농가 {farms.length - VISIBLE_FARMS}곳 더 보기
+                  </span>
+                  <span className="hidden group-open:inline">접기</span>
+                </summary>
+                <ul className="mt-5 grid gap-5 md:grid-cols-2">
+                  {farms.slice(VISIBLE_FARMS).map((farm) => (
+                    <li key={farm.farmName}>
+                      <FarmCard farm={farm} />
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
+          </>
+        ) : (
+          <p className="card mt-6 px-6 py-10 text-center text-ink-muted">
+            소개할 농가 정보를 준비하고 있어요.
+          </p>
+        )}
+      </section>
 
       <section
         id="about"
@@ -150,56 +239,32 @@ export default async function StoryPage() {
         </h2>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
           {REASONS.map(({ reason, description }) => (
-            <li key={reason} className="card p-5">
-              <h3 className="text-lg font-extrabold">
-                {UGLY_REASON_LABELS[reason]}
-              </h3>
-              <p className="mt-2 text-ink-muted">{description}</p>
+            <li
+              key={reason}
+              className="card grid grid-cols-[5rem_1fr] overflow-hidden sm:grid-cols-[7rem_1fr]"
+            >
+              <SafeImage
+                src={
+                  products.find((product) => product.uglyReason === reason)
+                    ?.imageUrl
+                }
+                alt="농산물 참고 이미지"
+                className="size-full object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-lg font-extrabold">
+                  {UGLY_REASON_LABELS[reason]}
+                </h3>
+                <details className="mt-2 text-sm text-ink-muted">
+                  <summary className="min-h-10 cursor-pointer py-2">
+                    왜 이런 모양일까요?
+                  </summary>
+                  <p>{description}</p>
+                </details>
+              </div>
             </li>
           ))}
         </ul>
-      </section>
-
-      <section
-        aria-labelledby="farms-title"
-        className="container-page pb-10 md:pb-16"
-      >
-        <h2 id="farms-title" className="section-title">
-          농가를 만나보세요
-        </h2>
-        {farms.length > 0 ? (
-          <>
-            <ul className="mt-6 space-y-6">
-              {farms.slice(0, VISIBLE_FARMS).map((farm) => (
-                <li key={farm.farmName}>
-                  <FarmCard farm={farm} />
-                </li>
-              ))}
-            </ul>
-            {farms.length > VISIBLE_FARMS && (
-              // 농가가 많아져도 페이지가 끝없이 길어지지 않도록 나머지는 접어 둬요. (자바스크립트 없이 동작)
-              <details className="group mt-6">
-                <summary className="btn btn-secondary mx-auto cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                  <span className="group-open:hidden">
-                    농가 {farms.length - VISIBLE_FARMS}곳 더 보기
-                  </span>
-                  <span className="hidden group-open:inline">접기</span>
-                </summary>
-                <ul className="mt-6 space-y-6">
-                  {farms.slice(VISIBLE_FARMS).map((farm) => (
-                    <li key={farm.farmName}>
-                      <FarmCard farm={farm} />
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            )}
-          </>
-        ) : (
-          <p className="card mt-6 px-6 py-10 text-center text-ink-muted">
-            소개할 농가 정보를 준비하고 있어요.
-          </p>
-        )}
       </section>
 
       <section className="bg-brand-dark text-white">
@@ -248,13 +313,13 @@ async function FarmCard({ farm }: { farm: FarmStory }) {
   ];
 
   return (
-    <article className="card grid overflow-hidden md:grid-cols-[2fr_3fr]">
+    <article className="card h-full overflow-hidden">
       <SafeImage
         src={lead.imageUrl}
-        alt={`${farm.farmName}에서 기른 ${lead.name} 사진`}
-        className="aspect-[4/3] size-full object-cover md:aspect-auto"
+        alt={`${lead.name} 농산물 참고 사진`}
+        className="h-52 w-full object-cover sm:h-60"
       />
-      <div className="space-y-4 p-5 sm:p-7">
+      <div className="space-y-4 p-5 sm:p-6">
         <header>
           <h3 className="text-xl font-extrabold">{farm.farmName}</h3>
           {farm.farmRegion && (
@@ -268,7 +333,7 @@ async function FarmCard({ farm }: { farm: FarmStory }) {
             이 농가의 못난이 농산물
           </h4>
           <ul className="mt-2 flex flex-wrap gap-2">
-            {farm.products.map((product) => {
+            {farm.products.slice(0, 3).map((product) => {
               const href = routes.product(product.id);
               return (
                 <li key={product.id}>
@@ -288,6 +353,25 @@ async function FarmCard({ farm }: { farm: FarmStory }) {
               );
             })}
           </ul>
+          {farm.products.length > 3 && (
+            <details className="mt-3 text-sm">
+              <summary className="min-h-11 cursor-pointer py-2 font-bold text-brand-dark">
+                농산물 {farm.products.length - 3}개 더 보기
+              </summary>
+              <ul className="mt-2 flex flex-wrap gap-2">
+                {farm.products.slice(3).map((product) => (
+                  <li key={product.id}>
+                    <Link
+                      href={routes.product(product.id)!}
+                      className="chip min-h-12 bg-brand-soft px-4 text-brand-dark"
+                    >
+                      {product.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
         </div>
 
         {recipes.length > 0 && (
@@ -296,7 +380,7 @@ async function FarmCard({ farm }: { farm: FarmStory }) {
               이 채소로 만드는 요리
             </h4>
             <ul className="mt-2 flex flex-wrap gap-2">
-              {recipes.map((recipe) => (
+              {recipes.slice(0, 3).map((recipe) => (
                 <li key={recipe.id}>
                   <Link
                     href={routes.recipe(recipe.id)}
@@ -307,6 +391,25 @@ async function FarmCard({ farm }: { farm: FarmStory }) {
                 </li>
               ))}
             </ul>
+            {recipes.length > 3 && (
+              <details className="mt-3 text-sm">
+                <summary className="min-h-11 cursor-pointer py-2 font-bold text-brand-dark">
+                  레시피 {recipes.length - 3}개 더 보기
+                </summary>
+                <ul className="mt-2 flex flex-wrap gap-2">
+                  {recipes.slice(3).map((recipe) => (
+                    <li key={recipe.id}>
+                      <Link
+                        href={routes.recipe(recipe.id)}
+                        className="inline-flex min-h-12 items-center rounded-full border border-line bg-surface px-4 font-bold hover:bg-brand-soft"
+                      >
+                        {recipe.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
           </div>
         )}
       </div>
