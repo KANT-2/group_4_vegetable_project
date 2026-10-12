@@ -73,9 +73,12 @@ export default async function ProductsPage({
   return (
     <div className="container-page py-6">
       <h1 className="sr-only">{collection ? collection.title : "상품 목록"}</h1>
-      <ProductSearch q={filters.q} />
-      <div className="mt-4">
-        <CollectionNav active={filters.collection} />
+      {/* 검색창과 코너 아이콘: 큰 화면에서는 가운데에 같은 폭으로 */}
+      <div className="mx-auto max-w-md">
+        <ProductSearch q={filters.q} />
+        <div className="mt-4">
+          <CollectionNav active={filters.collection} />
+        </div>
       </div>
 
       {filters.q && (

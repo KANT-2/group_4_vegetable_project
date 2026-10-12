@@ -15,7 +15,7 @@ export default function CollectionNav({ active }: { active?: CollectionKey }) {
 
   return (
     <nav aria-label="상품 코너">
-      <ul className="grid grid-cols-5 gap-1 sm:flex sm:gap-3">
+      <ul className="grid grid-cols-5 gap-1">
         {items.map((item) => {
           const isActive = (active ?? "all") === item.key;
           return (
@@ -23,7 +23,7 @@ export default function CollectionNav({ active }: { active?: CollectionKey }) {
               <Link
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
-                className="group flex min-h-12 flex-col items-center gap-1 rounded-card py-1 sm:w-20"
+                className="group flex min-h-12 flex-col items-center gap-1 rounded-card py-1"
               >
                 <span
                   aria-hidden
