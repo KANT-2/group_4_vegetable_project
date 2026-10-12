@@ -2,8 +2,11 @@ import Link from "next/link";
 import { SafeImage } from "@/components/common/SafeImage";
 import { notFound } from "next/navigation";
 import MockDataNotice from "@/components/products/MockDataNotice";
+import { AddToCartButton } from "@/components/shopping/AddToCartButton";
+import { WishlistButton } from "@/components/shopping/WishlistButton";
 import { formatPrice, getDiscountRate } from "@/lib/format";
 import { isMockCatalog } from "@/services/catalog-source";
+import { getSavedState } from "@/services/cart";
 import { getProductById } from "@/services/products";
 import { UGLY_REASON_LABELS } from "@/types/product";
 
@@ -29,6 +32,7 @@ export default async function ProductDetailPage({
   if (!product) notFound();
 
   const discountRate = getDiscountRate(product.price, product.originalPrice);
+  const saved = await getSavedState(product.id);
 
   return (
     <div className="container-page pb-32 pt-4 md:pb-12">
@@ -126,14 +130,22 @@ export default async function ProductDetailPage({
             이 채소 보관법·손질법 보기 →
           </Link>
 
-          {/* TODO: C의 수량 선택·AddToCartButton·WishlistButton으로 교체 */}
-          <button
-            type="button"
-            disabled
-            className="btn btn-primary hidden w-full md:inline-flex"
-          >
-            장바구니 담기 (준비 중)
-          </button>
+          {/* 넓은 화면: 수량·담기·찜 (모바일은 하단 고정 바) */}
+          <div className="hidden items-start gap-3 md:flex">
+            <div className="flex-1">
+              <AddToCartButton
+                productId={product.id}
+                productName={product.name}
+                price={product.price}
+              />
+            </div>
+            <WishlistButton
+              productId={product.id}
+              productName={product.name}
+              initialWished={saved.wished}
+              compact
+            />
+          </div>
 
           <MockDataNotice usingMock={isMockCatalog()} />
         </div>
@@ -141,9 +153,22 @@ export default async function ProductDetailPage({
 
       {/* 모바일 하단 고정 바: 아이폰 홈 바 영역(safe-area)만큼 띄워요 */}
       <div className="fixed inset-x-0 bottom-0 border-t border-line bg-surface px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] md:hidden">
-        <button type="button" disabled className="btn btn-primary w-full">
-          장바구니 담기 · {formatPrice(product.price)} (준비 중)
-        </button>
+        <div className="flex items-start gap-2">
+          <WishlistButton
+            productId={product.id}
+            productName={product.name}
+            initialWished={saved.wished}
+            compact
+          />
+          <div className="flex-1">
+            <AddToCartButton
+              productId={product.id}
+              productName={product.name}
+              price={product.price}
+              layout="bar"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

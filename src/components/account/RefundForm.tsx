@@ -12,6 +12,8 @@ export function RefundForm({ orderId }: { orderId: string }) {
   const [pending, startTransition] = useTransition();
   return (
     <form
+      // 브라우저 기본 검사 대신 Zod 검사 결과를 안내 문구로 보여 줍니다.
+      noValidate
       className="mt-6"
       aria-busy={pending}
       onSubmit={(event) => {

@@ -63,3 +63,18 @@ test("환불 Action은 주문 소유자·결제 상태를 확인하고 재시도
   insertError = { code: "42501" };
   assert.equal((await exports.requestRefund(input)).ok, false);
 });
+
+test("계정 폼은 브라우저 기본 검사 대신 Zod 안내 문구를 보여 준다", () => {
+  for (const name of ["ProfileForm", "ShippingAddressForm", "RefundForm"]) {
+    const source = readFileSync(
+      new URL(`../src/components/account/${name}.tsx`, import.meta.url),
+      "utf8",
+    );
+    assert.match(
+      source,
+      /<form[^>]*\bnoValidate\b/s,
+      `${name}에 noValidate 필요`,
+    );
+    assert.match(source, /safeParse\(/, `${name}은 제출 시 Zod로 검사해야 함`);
+  }
+});
