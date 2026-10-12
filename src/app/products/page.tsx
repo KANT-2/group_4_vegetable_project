@@ -79,7 +79,7 @@ export default async function ProductsPage({
   return (
     <div className="container-page py-4">
       {showSections && (
-        <div className="mb-6">
+        <div className="mb-6 md:relative md:left-1/2 md:w-[min(90rem,calc(100vw-3rem))] md:-translate-x-1/2">
           <ProductSpotlight products={selectSeasonalFruit(all)} />
         </div>
       )}

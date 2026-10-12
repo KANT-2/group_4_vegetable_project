@@ -25,22 +25,11 @@ export function RecipeImage({
     <div className="relative">
       <SafeImage
         src={dishUrl ?? substituteUrl}
-        alt={
-          recipe.photoReference
-            ? `${recipe.name}의 유사 요리 참고 사진 (실제 조리 결과 아님)`
-            : isSubstitute
-              ? `${recipe.name}에 쓰는 재료 사진`
-              : `${recipe.name} 사진`
-        }
+        alt={isSubstitute ? `${recipe.name} 재료 사진` : `${recipe.name} 사진`}
         className={className}
         priority={priority}
         placeholderText="요리 사진 준비 중"
       />
-      {recipe.photoReference && (
-        <span className="absolute bottom-3 left-3 rounded-full bg-surface/95 px-3 py-1 text-xs text-bark">
-          유사 요리 참고 사진 · {recipe.photoReference.license}
-        </span>
-      )}
       {isSubstitute && (
         <span className="chip absolute bottom-3 left-3 bg-surface/95 text-bark">
           재료 사진 · 요리 사진 준비 중

@@ -108,5 +108,27 @@
     "imageUrl": "/images/recipes/japchae.jpg",
     "usage": "similar-dish-reference",
     "transform": "display crop; Wikimedia-supplied thumbnail where available"
+  },
+  "tomato-duck": {
+    "title": "토마토오리볶음 AI 요리 참고 이미지",
+    "source": "https://github.com/KANT-2/group_6_vegetable_project/blob/feat/a-work/docs/recipe-photo-sources.md",
+    "author": "OpenAI 이미지 생성 · 2026-10-12",
+    "license": "AI 생성 이미지",
+    "licenseUrl": "",
+    "imageUrl": "/images/recipes/tomato-duck.png",
+    "usage": "generated-dish-reference",
+    "transform": "AI 생성 원본 / 화면 크롭",
+    "generated": true
+  },
+  "chicken-vegetables": {
+    "title": "닭가슴살 채소 요리 AI 참고 이미지",
+    "source": "https://github.com/KANT-2/group_6_vegetable_project/blob/feat/a-work/docs/recipe-photo-sources.md",
+    "author": "OpenAI 이미지 생성 · 2026-10-12",
+    "license": "AI 생성 이미지",
+    "licenseUrl": "",
+    "imageUrl": "/images/recipes/chicken-vegetables.png",
+    "usage": "generated-dish-reference",
+    "transform": "AI 생성 원본 / 화면 크롭",
+    "generated": true
   }
 }
