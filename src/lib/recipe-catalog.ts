@@ -4,6 +4,7 @@ import type { Product } from "../types/product.ts";
 import type { Vegetable } from "../types/vegetable.ts";
 
 export interface CatalogRecipe {
+  replacesRecipeId?: string;
   id: string;
   name: string;
   description: string;
