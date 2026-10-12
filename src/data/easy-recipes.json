@@ -39,7 +39,8 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "potato",
-    "imageUrl": "/images/recipes/easy-potato-1.webp"
+    "imageUrl": "/images/recipes/easy-potato-1/01.png",
+    "additionalImageUrl": "/images/recipes/easy-potato-1/02.png"
   },
   {
     "id": "easy-potato-2",
@@ -89,16 +90,8 @@
     "sourceUrl": "",
     "sourceName": "못난이마켓",
     "primaryVegetableId": "potato",
-    "imageUrl": "/images/recipes/easy-potato-2-internet.webp",
-    "photoReference": {
-      "title": "File:Gamja jorim Korean.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Gamja_jorim_Korean.jpg",
-      "author": "P1898",
-      "license": "CC BY 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-      "imageUrl": "/images/recipes/easy-potato-2-internet.webp",
-      "transform": "WebP encoding / display crop"
-    }
+    "imageUrl": "/images/recipes/easy-potato-2/01.png",
+    "additionalImageUrl": "/images/recipes/easy-potato-2/02.png"
   },
   {
     "id": "easy-carrot-1",
