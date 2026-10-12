@@ -1,0 +1,56 @@
+[
+  {
+    "recipe": "easy-potato-pancake",
+    "number": "01",
+    "path": "/images/recipes/easy-potato-pancake/01.jpg",
+    "source": "https://www.koreanbapsang.com/gamjajeon-potato-pancakes/",
+    "originalImage": "https://www.koreanbapsang.com/wp-content/uploads/2015/04/DSC9730.jpg",
+    "author": "Korean Bapsang · Hyosun",
+    "license": "원작자 저작권 보유, 별도 재사용 허가 확인 안 됨"
+  },
+  {
+    "recipe": "easy-potato-pancake",
+    "number": "02",
+    "path": "/images/recipes/easy-potato-pancake/02.jpg",
+    "source": "https://www.koreanbapsang.com/gamjajeon-potato-pancakes/",
+    "originalImage": "https://www.koreanbapsang.com/wp-content/uploads/2020/04/DSC9910.jpg",
+    "author": "Korean Bapsang · Hyosun",
+    "license": "원작자 저작권 보유, 별도 재사용 허가 확인 안 됨"
+  },
+  {
+    "recipe": "easy-potato-pancake",
+    "number": "03",
+    "path": "/images/recipes/easy-potato-pancake/03.jpg",
+    "source": "https://www.koreanbapsang.com/gamjajeon-potato-pancakes/",
+    "originalImage": "https://www.koreanbapsang.com/wp-content/uploads/2015/04/DSC_0882-e1429498820293.jpg",
+    "author": "Korean Bapsang · Hyosun",
+    "license": "원작자 저작권 보유, 별도 재사용 허가 확인 안 됨"
+  },
+  {
+    "recipe": "easy-tornado-potato",
+    "number": "01",
+    "path": "/images/recipes/easy-tornado-potato/01.jpg",
+    "source": "https://tasty.co/recipe/tornado-potato",
+    "originalImage": "https://img.buzzfeed.com/video-api-prod/assets/a1f17189a78c4004acb92bdf092dc711/BFV12958_TornadoPotato-ThumbTextless1080.jpg?output-format=auto&output-quality=auto&resize=600%3A%2A",
+    "author": "Tasty · Merle O’Neal",
+    "license": "원작자 저작권 보유, 별도 재사용 허가 확인 안 됨"
+  },
+  {
+    "recipe": "easy-tornado-potato",
+    "number": "02",
+    "path": "/images/recipes/easy-tornado-potato/02.jpg",
+    "source": "https://www.thekitchn.com/spiral-potatoes-recipe-23246018",
+    "originalImage": "https://cdn.apartmenttherapy.info/image/upload/f_auto%2Cq_auto%3Aeco%2Cc_fill%2Cg_center%2Cw_730%2Ch_913/k%2FPhoto%2FRecipe%20Ramp%20Up%2F2021-11-Spiral-Potatoes%2Fspiral-potato",
+    "author": "Photo: Eric Kleinberg · Food Stylist: Kristina Vanni",
+    "license": "원작자 저작권 보유, 별도 재사용 허가 확인 안 됨"
+  },
+  {
+    "recipe": "easy-tornado-potato",
+    "number": "03",
+    "path": "/images/recipes/easy-tornado-potato/03.jpg",
+    "source": "https://www.thekitchn.com/spiral-potatoes-recipe-23246018",
+    "originalImage": "https://cdn.apartmenttherapy.info/image/upload/f_auto%2Cq_auto%3Aeco%2Cw_730/k%2FPhoto%2FRecipe%20Ramp%20Up%2F2021-11-Spiral-Potatoes%2Fspiral-potato-2",
+    "author": "Photo: Eric Kleinberg · Food Stylist: Kristina Vanni",
+    "license": "원작자 저작권 보유, 별도 재사용 허가 확인 안 됨"
+  }
+]

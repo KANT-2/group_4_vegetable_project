@@ -63,12 +63,9 @@ export function RecipeFilters({
 
       <nav
         aria-label="채소로 레시피 거르기"
-        className="-mx-4 border-b border-line md:mx-0 md:border-0"
+        className="-mx-4 border-b border-line md:mx-0"
       >
-        <ScrollRow
-          label="채소"
-          className="gap-1 px-2 md:flex-wrap md:gap-2 md:px-0"
-        >
+        <ScrollRow label="채소" className="gap-1 px-2 md:gap-2 md:px-0">
           <FilterChip
             href={listHref({ q: filters.q })}
             active={!filters.vegetable}
@@ -111,10 +108,10 @@ function FilterChip({
       href={href}
       aria-current={active ? "true" : undefined}
       scroll={false}
-      className={`inline-flex min-h-12 shrink-0 items-center whitespace-nowrap border-b-2 px-3 text-sm font-bold transition-colors md:rounded-full md:border md:px-5 md:text-base ${
+      className={`inline-flex min-h-12 shrink-0 items-center whitespace-nowrap border-b-2 px-3 text-sm font-bold transition-colors md:px-4 md:text-base ${
         active
-          ? "border-brand text-brand-dark md:bg-brand md:text-white"
-          : "border-transparent text-ink-muted hover:text-brand-dark md:border-line md:bg-surface md:text-ink md:hover:bg-brand-soft"
+          ? "border-brand text-brand-dark"
+          : "border-transparent text-ink-muted hover:text-brand-dark"
       }`}
     >
       {label}

@@ -100,334 +100,1185 @@
     ]
   },
   {
-    "id": "easy-carrot-1",
-    "name": "당근라페",
-    "description": "당근가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
+    "id": "easy-potato-pancake",
+    "name": "감자전",
+    "description": "감자를 갈아 노릇하게 부친 바삭하고 쫀득한 감자전",
+    "cookTimeMin": 20,
     "difficulty": "easy",
     "servings": 2,
     "ingredients": [
       {
+        "name": "감자",
+        "amount": "큰 것 2개 (약 680g)"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "부추",
+        "amount": "약 56g (선택)"
+      },
+      {
+        "name": "식용유",
+        "amount": "부칠 만큼 (팬당 약 2큰술)"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술 (양념장)"
+      },
+      {
+        "name": "식초",
+        "amount": "1작은술 (양념장)"
+      },
+      {
+        "name": "물",
+        "amount": "1큰술 (양념장)"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2작은술 (양념장)"
+      },
+      {
+        "name": "후추",
+        "amount": "약간 (양념장)"
+      }
+    ],
+    "steps": [
+      "감자는 껍질을 벗겨 강판에 갈고, 체에 걸러 감자 건더기와 물을 분리해요.",
+      "받아 둔 물을 약 10분 두어 전분을 가라앉힌 뒤 윗물만 버려요. 남은 전분을 감자 건더기·소금과 섞어요. 부추를 넣는다면 잘게 썰어 함께 섞어요.",
+      "중불로 달군 팬에 기름을 두르고 반죽을 나누어 얇게 펴요. 중약불에서 한 면당 2~3분씩 노릇하게 부쳐요.",
+      "간장·식초·물·설탕·후추를 섞어 양념장을 만들고 따뜻한 감자전과 함께 내요."
+    ],
+    "vegetables": [
+      {
+        "id": "potato",
+        "name": "감자"
+      }
+    ],
+    "productVegetableIds": ["potato"],
+    "sourceUrl": "https://www.koreanbapsang.com/gamjajeon-potato-pancakes/",
+    "sourceName": "Korean Bapsang · Hyosun",
+    "primaryVegetableId": "potato",
+    "replacesRecipeId": "official-98711",
+    "imageUrl": "/images/recipes/easy-potato-pancake/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/easy-potato-pancake/02.jpg",
+      "/images/recipes/easy-potato-pancake/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-tornado-potato",
+    "name": "회오리 감자",
+    "description": "나선 모양 감자에 버터와 치즈 양념을 입혀 오븐에 구운 간식",
+    "cookTimeMin": 45,
+    "difficulty": "normal",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "감자",
+        "amount": "중간 크기 2개"
+      },
+      {
+        "name": "버터",
+        "amount": "60g (녹인 것)"
+      },
+      {
+        "name": "파르메산 치즈",
+        "amount": "100g (갈아 놓은 것)"
+      },
+      {
+        "name": "후추",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "마늘가루",
+        "amount": "1큰술"
+      },
+      {
+        "name": "파프리카 가루",
+        "amount": "1큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1작은술"
+      },
+      {
+        "name": "파슬리",
+        "amount": "약간 (마무리)"
+      }
+    ],
+    "steps": [
+      "오븐을 160°C로 예열해요. 감자는 씻어 전자레인지에 1~1분 30초 데우고 잠시 식혀 살짝 부드럽게 만들어요.",
+      "감자 가운데로 나무 꼬치를 꽂아요. 칼을 비스듬히 대고 감자를 천천히 돌리며 꼬치에 닿을 때까지만 연속으로 잘라 나선을 만들어요.",
+      "잘린 감자를 꼬치 길이 방향으로 살살 벌려 간격을 만들고 녹인 버터를 골고루 발라요.",
+      "치즈·후추·마늘가루·파프리카 가루·소금을 섞어 감자마다 절반씩 묻혀요. 꼬치 양 끝을 팬 가장자리에 걸쳐 감자가 바닥에 닿지 않게 놓아요.",
+      "160°C 오븐에서 25~30분 노릇하게 구워요. 파슬리와 치즈를 조금 더 뿌리고 5분 식힌 뒤 내요."
+    ],
+    "vegetables": [
+      {
+        "id": "potato",
+        "name": "감자"
+      }
+    ],
+    "productVegetableIds": ["potato"],
+    "sourceUrl": "https://tasty.co/recipe/tornado-potato",
+    "sourceName": "Tasty · Merle O’Neal",
+    "primaryVegetableId": "potato",
+    "replacesRecipeId": "official-211734",
+    "imageUrl": "/images/recipes/easy-tornado-potato/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/easy-tornado-potato/02.jpg",
+      "/images/recipes/easy-tornado-potato/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-carrot-1",
+    "name": "당근 라페",
+    "description": "아삭한 당근에 꿀·디종 머스터드 드레싱을 버무리는 샐러드.",
+    "cookTimeMin": 10,
+    "difficulty": "easy",
+    "servings": 5,
+    "ingredients": [
+      {
         "name": "당근",
+        "amount": "4개"
+      },
+      {
+        "name": "쪽파",
+        "amount": "2줄기"
+      },
+      {
+        "name": "파슬리",
+        "amount": "1/4컵 (선택)"
+      },
+      {
+        "name": "디종 머스터드",
+        "amount": "1.5작은술"
+      },
+      {
+        "name": "꿀",
+        "amount": "1큰술"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "2큰술"
+      },
+      {
+        "name": "올리브유",
+        "amount": "4큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      }
+    ],
+    "steps": [
+      "당근은 길이 4cm 정도로 가늘게 채 썰고 쪽파와 파슬리를 잘게 썰어요.",
+      "머스터드·꿀·레몬즙·올리브유·소금·후추를 섞어요.",
+      "채소에 드레싱을 넣고 골고루 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "carrot",
+        "name": "당근"
+      }
+    ],
+    "productVegetableIds": ["carrot"],
+    "sourceUrl": "https://www.recipetineats.com/carrot-salad-with-honey-dijon-dressing/",
+    "sourceName": "Incredible, Simple French Carrot Salad",
+    "primaryVegetableId": "carrot",
+    "imageAlt": "당근 라페 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-carrot-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-carrot-1/02.jpg",
+      "/images/recipes/curated/easy-carrot-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-carrot-2",
+    "name": "당근 수프",
+    "description": "당근의 단맛을 살리고 바삭한 베이컨을 곁들이는 부드러운 수프.",
+    "cookTimeMin": 40,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "당근",
+        "amount": "큰 것 5개"
+      },
+      {
+        "name": "베이컨",
+        "amount": "120g"
+      },
+      {
+        "name": "양파",
         "amount": "1개"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "채소 육수",
+        "amount": "1L"
+      },
+      {
+        "name": "생크림",
+        "amount": "125ml"
+      },
+      {
+        "name": "우유",
+        "amount": "185ml"
+      },
+      {
+        "name": "소금",
+        "amount": "취향에 맞게"
+      },
+      {
+        "name": "후추",
+        "amount": "취향에 맞게"
+      }
+    ],
+    "steps": [
+      "당근과 양파를 썰고 마늘을 다져요. 냄비에 기름을 두르고 베이컨을 볶아 따로 덜어요.",
+      "같은 냄비에 양파와 마늘을 2분 볶고 당근과 육수를 넣어요.",
+      "당근이 부드러워질 때까지 20~25분 끓인 뒤 불을 끄고 핸드블렌더로 갈아요.",
+      "생크림과 우유를 섞어 데우고 소금·후추로 간해요. 베이컨을 올려요."
+    ],
+    "vegetables": [
+      {
+        "id": "carrot",
+        "name": "당근"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["carrot", "onion"],
+    "sourceUrl": "https://www.recipetineats.com/carrot-soup/",
+    "sourceName": "Creamy Carrot Soup",
+    "primaryVegetableId": "carrot",
+    "imageAlt": "당근 수프 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-carrot-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-carrot-2/02.jpg",
+      "/images/recipes/curated/easy-carrot-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-carrot-3",
+    "name": "오븐 당근구이",
+    "description": "겉은 노릇하고 속은 달콤한 마늘 향 당근구이.",
+    "cookTimeMin": 35,
+    "difficulty": "easy",
+    "servings": 5,
+    "ingredients": [
+      {
+        "name": "당근",
+        "amount": "1kg"
+      },
+      {
+        "name": "올리브유",
+        "amount": "2큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "3/4작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "파슬리",
+        "amount": "조금 (선택)"
+      }
+    ],
+    "steps": [
+      "오븐을 220℃로 예열하고 당근을 길이 5cm 정도로 잘라요.",
+      "당근에 기름·소금·후추를 묻혀 겹치지 않게 펼치고 20분 구워요.",
+      "다진 마늘을 섞고 10분 더 구워 부드럽고 노릇해지면 꺼내요."
+    ],
+    "vegetables": [
+      {
+        "id": "carrot",
+        "name": "당근"
+      }
+    ],
+    "productVegetableIds": ["carrot"],
+    "sourceUrl": "https://www.recipetineats.com/great-roasted-carrots/",
+    "sourceName": "Great Roasted Carrots",
+    "primaryVegetableId": "carrot",
+    "imageAlt": "오븐 당근구이 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-carrot-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-carrot-3/02.jpg",
+      "/images/recipes/curated/easy-carrot-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-carrot-4",
+    "name": "버터 당근조림",
+    "description": "당근을 버터와 소량의 설탕으로 부드럽게 졸이는 프랑스식 반찬.",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 6,
+    "ingredients": [
+      {
+        "name": "당근",
+        "amount": "800g"
+      },
+      {
+        "name": "물",
+        "amount": "180ml"
+      },
+      {
+        "name": "무염 버터",
+        "amount": "30g"
+      },
+      {
+        "name": "설탕",
+        "amount": "4작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "3/4작은술"
+      },
+      {
+        "name": "파슬리",
+        "amount": "2작은술"
+      }
+    ],
+    "steps": [
+      "당근을 6mm 두께로 썰고 넓은 팬에 물·버터·설탕·소금을 끓여요.",
+      "당근을 넣고 표면에 닿도록 둥글게 자른 종이호일을 덮어요. 중불로 약 15분 익혀요.",
+      "물이 거의 졸고 당근이 부드러워지면 호일을 걷고 파슬리를 넣어 살살 섞어요."
+    ],
+    "vegetables": [
+      {
+        "id": "carrot",
+        "name": "당근"
+      }
+    ],
+    "productVegetableIds": ["carrot"],
+    "sourceUrl": "https://www.recipetineats.com/french-glazed-carrots-carottes-vichy-recipe/",
+    "sourceName": "Nagi and JB",
+    "primaryVegetableId": "carrot",
+    "imageAlt": "버터 당근조림 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-carrot-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-carrot-4/02.jpg",
+      "/images/recipes/curated/easy-carrot-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-aehobak-1",
+    "name": "애호박전",
+    "description": "애호박을 달걀옷에 부쳐 만드는 담백한 반찬. 절이는 시간을 포함해요.",
+    "cookTimeMin": 35,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "애호박",
+        "amount": "2개 (약 560g)"
+      },
+      {
+        "name": "소금",
+        "amount": "조금"
+      },
+      {
+        "name": "달걀",
+        "amount": "2개"
+      },
+      {
+        "name": "밀가루",
+        "amount": "1/4컵"
+      },
+      {
+        "name": "식용유",
+        "amount": "부침용"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "물",
+        "amount": "1큰술"
+      },
+      {
+        "name": "식초",
+        "amount": "1작은술"
+      }
+    ],
+    "steps": [
+      "애호박을 약 5mm 두께로 썰어 소금을 뿌리고 15~20분 두었다가 물기를 닦아요.",
+      "달걀을 풀고 애호박에 밀가루를 얇게 묻힌 뒤 달걀물을 입혀요.",
+      "기름을 두른 팬에서 양면을 각각 약 1분씩 노릇하게 부쳐요. 간장·물·식초를 섞어 곁들여요."
+    ],
+    "vegetables": [
+      {
+        "id": "aehobak",
+        "name": "애호박"
+      }
+    ],
+    "productVegetableIds": ["aehobak"],
+    "sourceUrl": "https://www.koreanbapsang.com/hobak-jeon-pan-fried-zucchini-in-egg-batter/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "aehobak",
+    "imageAlt": "애호박전 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-aehobak-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-aehobak-1/02.jpg",
+      "/images/recipes/curated/easy-aehobak-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-aehobak-2",
+    "name": "애호박볶음",
+    "description": "새우젓으로 감칠맛을 더하는 부드러운 애호박 반찬.",
+    "cookTimeMin": 10,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "애호박",
+        "amount": "1개 (280~340g)"
+      },
+      {
+        "name": "새우젓",
+        "amount": "2작은술"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1작은술"
+      },
+      {
+        "name": "쪽파",
+        "amount": "1줄기"
+      },
+      {
+        "name": "참기름",
+        "amount": "1작은술"
+      },
+      {
+        "name": "깨",
+        "amount": "1작은술"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "물",
+        "amount": "2큰술"
+      }
+    ],
+    "steps": [
+      "애호박을 반달 모양으로 얇게 썰고 쪽파를 다져요.",
+      "기름을 두른 팬에 애호박·새우젓·마늘을 넣고 중불에서 2~3분 볶아요.",
+      "물·쪽파·참기름·깨를 넣고 2~3분 더 익혀요. 새우젓이 없으면 소금으로 간해요."
+    ],
+    "vegetables": [
+      {
+        "id": "aehobak",
+        "name": "애호박"
+      }
+    ],
+    "productVegetableIds": ["aehobak"],
+    "sourceUrl": "https://www.koreanbapsang.com/hobak-bokkeum-stir-fried-zucchini/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "aehobak",
+    "imageAlt": "애호박볶음 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-aehobak-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-aehobak-2/02.jpg",
+      "/images/recipes/curated/easy-aehobak-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-aehobak-3",
+    "name": "애호박 채전",
+    "description": "가늘게 채 썬 애호박을 바삭하게 부치는 전. 소금에 절이는 시간을 포함해요.",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "애호박",
+        "amount": "225g"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "양파",
+        "amount": "1/4개"
+      },
+      {
+        "name": "고추",
+        "amount": "2개 (선택)"
+      },
+      {
+        "name": "부침가루",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "달걀",
+        "amount": "1개 (선택)"
+      },
+      {
+        "name": "식용유",
+        "amount": "2큰술"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "식초",
+        "amount": "1작은술"
+      },
+      {
+        "name": "물",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "애호박을 채 썰어 소금을 넣고 10분 두어요. 양파와 고추도 가늘게 썰어요.",
+      "애호박 물기를 짜되 나온 물은 남겨요. 채소·부침가루·달걀에 남긴 물을 조금씩 넣어 되직하게 섞어요.",
+      "팬에 기름을 두르고 반죽을 얇게 펼쳐 양면을 약 2분씩 부쳐요. 간장·식초·물·설탕을 섞어 곁들여요."
+    ],
+    "vegetables": [
+      {
+        "id": "aehobak",
+        "name": "애호박"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["aehobak", "onion"],
+    "sourceUrl": "https://www.koreanbapsang.com/hobak-buchim-zucchini-pancakes/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "aehobak",
+    "imageAlt": "애호박 채전 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-aehobak-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-aehobak-3/02.jpg",
+      "/images/recipes/curated/easy-aehobak-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-aehobak-4",
+    "name": "애호박 고추장찌개",
+    "description": "애호박과 감자에 바지락을 넣은 칼칼한 찌개.",
+    "cookTimeMin": 25,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "애호박",
+        "amount": "280g"
+      },
+      {
+        "name": "감자",
+        "amount": "225g"
+      },
+      {
+        "name": "쪽파",
+        "amount": "1~2줄기"
+      },
+      {
+        "name": "고추",
+        "amount": "1~2개"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1작은술"
+      },
+      {
+        "name": "바지락살 또는 돼지고기",
+        "amount": "85g"
+      },
+      {
+        "name": "고추장",
+        "amount": "1.5큰술"
+      },
+      {
+        "name": "된장",
+        "amount": "1/2큰술"
+      },
+      {
+        "name": "물",
+        "amount": "500ml"
+      }
+    ],
+    "steps": [
+      "애호박과 감자를 한입 크기로 썰고 쪽파와 고추를 썰어요.",
+      "냄비에 물·고추장·된장을 풀어 끓이고 감자를 먼저 넣어요.",
+      "애호박·바지락살(또는 한입 크기 돼지고기)·마늘·고추를 넣고 재료가 충분히 익을 때까지 끓인 뒤 쪽파를 넣어요."
+    ],
+    "vegetables": [
+      {
+        "id": "aehobak",
+        "name": "애호박"
+      },
+      {
+        "id": "potato",
+        "name": "감자"
+      }
+    ],
+    "productVegetableIds": ["aehobak", "potato"],
+    "sourceUrl": "https://www.koreanbapsang.com/hobak-gochujang-jjigae-korean-spicy/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "aehobak",
+    "imageAlt": "애호박 고추장찌개 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-aehobak-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-aehobak-4/02.jpg",
+      "/images/recipes/curated/easy-aehobak-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-eggplant-1",
+    "name": "가지나물",
+    "description": "가지를 짧게 찐 뒤 간장과 참기름에 무치는 반찬.",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "가지",
+        "amount": "2개"
+      },
+      {
+        "name": "쪽파",
+        "amount": "1줄기"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1작은술"
+      },
+      {
+        "name": "간장",
+        "amount": "1.5큰술"
+      },
+      {
+        "name": "참기름",
+        "amount": "2작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "깨",
+        "amount": "1작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "조금"
+      }
+    ],
+    "steps": [
+      "가지를 길이 5cm로 자르고 굵기에 따라 2~4등분해요.",
+      "끓는 찜기에 넣어 약 3분 찐 뒤 한 김 식혀요. 너무 무르게 익히지 않아요.",
+      "쪽파·마늘·간장·참기름·설탕·고춧가루·깨·후추를 섞어 가지와 조심스럽게 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "eggplant",
+        "name": "가지"
+      }
+    ],
+    "productVegetableIds": ["eggplant"],
+    "sourceUrl": "https://www.koreanbapsang.com/gaji-namul-steamed-eggplant-side-dish/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "eggplant",
+    "imageAlt": "가지나물 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-eggplant-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-eggplant-1/02.jpg",
+      "/images/recipes/curated/easy-eggplant-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-eggplant-2",
+    "name": "매콤 가지볶음",
+    "description": "가지와 양파를 간장 양념으로 빠르게 볶는 반찬.",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "가지",
+        "amount": "225g"
+      },
+      {
+        "name": "양파",
+        "amount": "1/2개"
+      },
+      {
+        "name": "고추",
+        "amount": "2개"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "생강",
+        "amount": "작은 조각"
+      },
+      {
+        "name": "식용유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "맛술",
+        "amount": "1큰술"
+      },
+      {
+        "name": "올리고당",
+        "amount": "1큰술"
+      },
+      {
+        "name": "참기름",
+        "amount": "1/2큰술"
+      },
+      {
+        "name": "깨",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "조금"
+      },
+      {
+        "name": "후추",
+        "amount": "조금"
+      }
+    ],
+    "steps": [
+      "가지와 고추를 어슷하게 썰고 양파를 채 썰어요. 마늘과 생강을 다져요.",
+      "팬에 기름을 두르고 양파·마늘·생강을 볶다가 가지를 넣어 1~2분 볶아요.",
+      "간장·맛술·올리고당·고추를 넣어 익히고 참기름·깨를 섞어요. 소금·후추로 간을 맞춰요."
+    ],
+    "vegetables": [
+      {
+        "id": "eggplant",
+        "name": "가지"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["eggplant", "onion"],
+    "sourceUrl": "https://www.koreanbapsang.com/gaji-bokkeum-stir-fried-eggplant-side-dish/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "eggplant",
+    "imageAlt": "매콤 가지볶음 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-eggplant-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-eggplant-2/02.jpg",
+      "/images/recipes/curated/easy-eggplant-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-eggplant-3",
+    "name": "오븐 가지구이",
+    "description": "높은 온도에서 구워 겉을 노릇하게 만드는 가지 요리.",
+    "cookTimeMin": 35,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "가지",
+        "amount": "700g"
+      },
+      {
+        "name": "올리브유",
+        "amount": "3큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "오븐을 240℃로 예열하고 가지를 3cm 크기로 잘라요.",
+      "기름·소금·후추를 섞어 가지를 코팅하고 팬에 한 겹으로 펼쳐요.",
+      "20분 굽고 뒤집어 약 10분 더 구워 겉이 노릇하고 속이 부드러워지면 꺼내요."
+    ],
+    "vegetables": [
+      {
+        "id": "eggplant",
+        "name": "가지"
+      }
+    ],
+    "productVegetableIds": ["eggplant"],
+    "sourceUrl": "https://www.recipetineats.com/roasted-eggplant/",
+    "sourceName": "Oven roasted eggplant (aubergine)",
+    "primaryVegetableId": "eggplant",
+    "imageAlt": "오븐 가지구이 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-eggplant-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-eggplant-3/02.jpg",
+      "/images/recipes/curated/easy-eggplant-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-eggplant-4",
+    "name": "요거트소스 가지구이",
+    "description": "두툼하게 구운 가지에 요거트·레몬 소스를 올리는 요리.",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 3,
+    "ingredients": [
+      {
+        "name": "가지",
+        "amount": "큰 것 3개"
+      },
+      {
+        "name": "올리브유",
+        "amount": "60ml"
+      },
+      {
+        "name": "소금",
+        "amount": "조금"
+      },
+      {
+        "name": "후추",
+        "amount": "조금"
+      },
+      {
+        "name": "플레인 요거트",
+        "amount": "250ml"
+      },
+      {
+        "name": "마늘",
+        "amount": "1쪽"
+      },
+      {
+        "name": "커민 가루",
+        "amount": "1작은술"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "1~2큰술"
+      },
+      {
+        "name": "타히니",
+        "amount": "2큰술 (선택)"
+      },
+      {
+        "name": "석류알",
+        "amount": "1/2컵 (선택)"
+      },
+      {
+        "name": "민트",
+        "amount": "2큰술"
+      },
+      {
+        "name": "고수",
+        "amount": "2큰술"
+      }
+    ],
+    "steps": [
+      "가지를 1.5cm 두께로 썰고 기름·소금·후추를 발라요.",
+      "달군 그릴팬에서 양면을 각각 2~3분 구워 부드럽게 익혀요.",
+      "요거트·다진 마늘·커민·레몬즙·타히니를 섞어 가지 위에 올려요. 민트·고수·석류알로 마무리해요."
+    ],
+    "vegetables": [
+      {
+        "id": "eggplant",
+        "name": "가지"
+      }
+    ],
+    "productVegetableIds": ["eggplant"],
+    "sourceUrl": "https://www.recipetineats.com/grilled-eggplant-with-yoghurt-sauce/",
+    "sourceName": "Nagi | RecipeTin Eats",
+    "primaryVegetableId": "eggplant",
+    "imageAlt": "요거트소스 가지구이 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-eggplant-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-eggplant-4/02.jpg",
+      "/images/recipes/curated/easy-eggplant-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-onion-1",
+    "name": "양파김치",
+    "description": "달큰한 양파를 고춧가루 양념에 버무린 김치. 절이기 포함, 하루 숙성은 별도예요.",
+    "cookTimeMin": 85,
+    "difficulty": "normal",
+    "servings": 16,
+    "ingredients": [
+      {
+        "name": "양파",
+        "amount": "1.36kg"
+      },
+      {
+        "name": "소금",
+        "amount": "3큰술"
+      },
+      {
+        "name": "쪽파",
+        "amount": "2줄기 (선택)"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "1/3컵"
+      },
+      {
+        "name": "액젓",
+        "amount": "2큰술"
+      },
+      {
+        "name": "새우젓",
+        "amount": "2큰술"
+      },
+      {
+        "name": "쌀가루",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1큰술 (선택)"
+      },
+      {
+        "name": "물",
+        "amount": "600ml"
+      }
+    ],
+    "steps": [
+      "양파를 조각내고 물 480ml와 소금에 1시간 절여요.",
+      "물 120ml에 쌀가루를 풀어 끓인 뒤 식혀요. 고춧가루·액젓·새우젓·설탕을 섞어요.",
+      "양파를 헹궈 물기를 빼고 양념과 쪽파에 버무려 용기에 담아요. 실온에서 하루 숙성한 뒤 냉장 보관해요."
+    ],
+    "vegetables": [
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["onion"],
+    "sourceUrl": "https://www.koreanbapsang.com/yangpa-kimchi-onion-kimchi/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "onion",
+    "imageAlt": "양파김치 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-onion-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-onion-1/02.jpg",
+      "/images/recipes/curated/easy-onion-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-onion-2",
+    "name": "프렌치 양파수프",
+    "description": "천천히 볶은 양파의 깊은 맛에 치즈 토스트를 곁들이는 수프.",
+    "cookTimeMin": 110,
+    "difficulty": "normal",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "양파",
+        "amount": "1.25kg"
+      },
+      {
+        "name": "버터",
+        "amount": "100g"
+      },
+      {
+        "name": "화이트와인",
+        "amount": "185ml (선택)"
+      },
+      {
+        "name": "밀가루",
+        "amount": "2큰술"
+      },
+      {
+        "name": "소고기 육수",
+        "amount": "1.5L"
+      },
+      {
+        "name": "월계수잎",
+        "amount": "2장"
+      },
+      {
+        "name": "타임",
+        "amount": "3줄기"
+      },
+      {
+        "name": "소금",
+        "amount": "조금"
+      },
+      {
+        "name": "후추",
+        "amount": "조금"
+      },
+      {
+        "name": "바게트",
+        "amount": "6~8조각"
+      },
+      {
+        "name": "치즈",
+        "amount": "100g"
+      }
+    ],
+    "steps": [
+      "양파를 얇게 썰고 버터에 약불로 30분 볶아요. 소금을 넣고 20~30분 더 볶아 갈색으로 만들어요.",
+      "와인을 넣어 2분 졸이고 밀가루를 1분 볶아요. 육수·월계수잎·타임을 넣고 30분 끓여요.",
+      "허브를 건지고 소금·후추로 간해요. 바게트에 치즈를 올려 구운 뒤 수프에 곁들여요."
+    ],
+    "vegetables": [
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["onion"],
+    "sourceUrl": "https://www.recipetineats.com/french-onion-soup/",
+    "sourceName": "Nagi | RecipeTin Eats",
+    "primaryVegetableId": "onion",
+    "imageAlt": "프렌치 양파수프 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-onion-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-onion-2/02.jpg",
+      "/images/recipes/curated/easy-onion-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-onion-3",
+    "name": "캐러멜 양파볶음",
+    "description": "양파를 약불에서 오래 볶아 단맛과 갈색빛을 살리는 기본 요리.",
+    "cookTimeMin": 60,
+    "difficulty": "normal",
+    "servings": 8,
+    "ingredients": [
+      {
+        "name": "양파",
+        "amount": "큰 것 6개"
+      },
+      {
+        "name": "버터",
+        "amount": "3큰술"
       },
       {
         "name": "올리브유",
         "amount": "1큰술"
       },
       {
-        "name": "레몬즙",
-        "amount": "1큰술"
-      },
-      {
-        "name": "설탕",
-        "amount": "1작은술"
-      },
-      {
         "name": "소금",
-        "amount": "1/4작은술"
+        "amount": "조금"
       }
     ],
     "steps": [
-      "당근을 깨끗이 씻어 가늘게 채 썰어요.",
-      "소금을 섞고 5분 둔 뒤 나온 물을 가볍게 짜요.",
-      "올리브유·레몬즙·설탕을 넣고 골고루 버무려요."
+      "양파 껍질을 벗기고 고르게 얇게 썰어요.",
+      "넓은 팬에 버터와 기름을 녹이고 양파와 소금을 넣어요.",
+      "약불에서 45~60분 가끔 저어가며 볶아요. 너무 빨리 타면 불을 더 낮추고, 전체가 부드러운 갈색이 되면 꺼내요."
     ],
     "vegetables": [
       {
-        "id": "carrot",
-        "name": "당근"
+        "id": "onion",
+        "name": "양파"
       }
     ],
-    "productVegetableIds": ["carrot"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "carrot",
-    "imageUrl": "/images/recipes/easy-carrot-1.webp"
+    "productVegetableIds": ["onion"],
+    "sourceUrl": "https://www.spendwithpennies.com/caramelized-onions/",
+    "sourceName": "How to Make Caramelized Onions",
+    "primaryVegetableId": "onion",
+    "imageAlt": "캐러멜 양파볶음 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-onion-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-onion-3/02.jpg",
+      "/images/recipes/curated/easy-onion-3/03.jpg"
+    ]
   },
   {
-    "id": "easy-carrot-2",
-    "name": "당근 달걀볶음",
-    "description": "당근가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 10,
-    "difficulty": "easy",
-    "servings": 2,
+    "id": "easy-onion-4",
+    "name": "프렌치 양파딥",
+    "description": "볶은 양파와 크림치즈를 섞는 딥. 약 2.25컵 분량이며 냉장 2시간을 포함해요.",
+    "cookTimeMin": 155,
+    "difficulty": "normal",
+    "servings": 8,
     "ingredients": [
       {
-        "name": "당근",
-        "amount": "1개"
+        "name": "양파",
+        "amount": "2~3개 (다진 것 2.5컵)"
       },
       {
-        "name": "달걀",
-        "amount": "2개"
-      },
-      {
-        "name": "식용유",
-        "amount": "1큰술"
-      },
-      {
-        "name": "소금",
-        "amount": "1/4작은술"
-      }
-    ],
-    "steps": [
-      "당근은 가늘게 채 썰고 달걀은 소금 절반을 넣어 풀어요.",
-      "기름을 두른 팬에서 당근을 중불로 3~4분 볶아요.",
-      "남은 소금을 넣고 당근을 옆으로 밀어 달걀을 부어요. 달걀이 완전히 익으면 당근과 섞어요."
-    ],
-    "vegetables": [
-      {
-        "id": "carrot",
-        "name": "당근"
-      }
-    ],
-    "productVegetableIds": ["carrot"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "carrot",
-    "imageUrl": "/images/carrot.jpg",
-    "imageAlt": "당근 — 당근 달걀볶음의 주재료"
-  },
-  {
-    "id": "easy-aehobak-1",
-    "name": "애호박전",
-    "description": "애호박가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 20,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
-      {
-        "name": "애호박",
-        "amount": "1개"
-      },
-      {
-        "name": "달걀",
-        "amount": "1개"
-      },
-      {
-        "name": "밀가루",
+        "name": "버터",
         "amount": "3큰술"
       },
       {
         "name": "소금",
+        "amount": "3/4작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "양파 가루",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "카옌페퍼",
         "amount": "1/4작은술"
       },
       {
-        "name": "식용유",
-        "amount": "1큰술"
+        "name": "크림치즈",
+        "amount": "120g"
+      },
+      {
+        "name": "마요네즈",
+        "amount": "1/4컵"
+      },
+      {
+        "name": "사워크림",
+        "amount": "1/2컵"
       }
     ],
     "steps": [
-      "애호박을 5mm 두께로 썰고 소금을 살짝 뿌려 5분 둔 뒤 물기를 닦아요.",
-      "양면에 밀가루를 얇게 묻히고 풀어 둔 달걀을 입혀요.",
-      "팬에 기름을 두르고 중약불에서 앞뒤 각각 2~3분 노릇하게 익혀요. 속까지 익었는지 확인해요."
-    ],
-    "vegetables": [
-      {
-        "id": "aehobak",
-        "name": "애호박"
-      }
-    ],
-    "productVegetableIds": ["aehobak"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "aehobak",
-    "imageUrl": "/images/recipes/easy-aehobak-1.webp"
-  },
-  {
-    "id": "easy-aehobak-2",
-    "name": "애호박 새우젓볶음",
-    "description": "애호박가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
-      {
-        "name": "애호박",
-        "amount": "1개"
-      },
-      {
-        "name": "새우젓",
-        "amount": "1작은술"
-      },
-      {
-        "name": "식용유",
-        "amount": "1큰술"
-      },
-      {
-        "name": "물",
-        "amount": "2큰술"
-      },
-      {
-        "name": "참깨",
-        "amount": "1/2작은술"
-      }
-    ],
-    "steps": [
-      "애호박을 반달 모양으로 5mm 두께로 썰어요.",
-      "팬에 기름을 두르고 애호박을 중불에서 2분 볶아요.",
-      "새우젓과 물을 넣고 약불에서 3~4분 더 익힌 뒤 깨를 뿌려요."
-    ],
-    "vegetables": [
-      {
-        "id": "aehobak",
-        "name": "애호박"
-      }
-    ],
-    "productVegetableIds": ["aehobak"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "aehobak",
-    "imageUrl": "/images/recipes/easy-aehobak-2-internet.webp",
-    "photoReference": {
-      "title": "File:Aehobak-bokkeum.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Aehobak-bokkeum.jpg",
-      "author": "행복한 초록개구리",
-      "license": "CC BY 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-      "imageUrl": "/images/recipes/easy-aehobak-2-internet.webp",
-      "transform": "WebP encoding / display crop"
-    }
-  },
-  {
-    "id": "easy-eggplant-1",
-    "name": "가지무침",
-    "description": "가지가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
-      {
-        "name": "가지",
-        "amount": "2개"
-      },
-      {
-        "name": "간장",
-        "amount": "1큰술"
-      },
-      {
-        "name": "참기름",
-        "amount": "1작은술"
-      },
-      {
-        "name": "다진",
-        "amount": "마늘 1/2작은술"
-      },
-      {
-        "name": "참깨",
-        "amount": "1/2작은술"
-      }
-    ],
-    "steps": [
-      "가지는 꼭지를 떼고 길게 반으로 잘라요.",
-      "김이 오른 찜기에 넣고 6~8분 쪄요. 젓가락이 쉽게 들어가면 꺼내 한김 식혀요.",
-      "먹기 좋게 찢고 간장·참기름·다진 마늘·깨를 넣어 가볍게 버무려요."
-    ],
-    "vegetables": [
-      {
-        "id": "eggplant",
-        "name": "가지"
-      }
-    ],
-    "productVegetableIds": ["eggplant"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "eggplant",
-    "imageUrl": "/images/eggplant-small.jpg",
-    "imageAlt": "가지 — 가지무침의 주재료"
-  },
-  {
-    "id": "easy-eggplant-2",
-    "name": "가지 간장구이",
-    "description": "가지가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
-      {
-        "name": "가지",
-        "amount": "2개"
-      },
-      {
-        "name": "간장",
-        "amount": "1큰술"
-      },
-      {
-        "name": "설탕",
-        "amount": "1작은술"
-      },
-      {
-        "name": "물",
-        "amount": "1큰술"
-      },
-      {
-        "name": "식용유",
-        "amount": "1큰술"
-      }
-    ],
-    "steps": [
-      "가지를 길게 1cm 두께로 썰고 간장·설탕·물을 섞어요.",
-      "기름을 두른 팬에서 가지를 중불로 앞뒤 각각 2~3분 익혀요.",
-      "약불로 줄여 양념을 넣고 뒤집어 가며 1~2분 졸여요."
-    ],
-    "vegetables": [
-      {
-        "id": "eggplant",
-        "name": "가지"
-      }
-    ],
-    "productVegetableIds": ["eggplant"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "eggplant",
-    "imageUrl": "/images/recipes/easy-eggplant-2-internet.webp",
-    "photoReference": {
-      "title": "File:Gaji-bokkeum.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Gaji-bokkeum.jpg",
-      "author": "Hyeon-Jeong Suk",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-      "imageUrl": "/images/recipes/easy-eggplant-2-internet.webp",
-      "transform": "WebP encoding / display crop"
-    }
-  },
-  {
-    "id": "easy-onion-1",
-    "name": "양파 달걀덮밥",
-    "description": "양파가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
-      {
-        "name": "양파",
-        "amount": "1개"
-      },
-      {
-        "name": "달걀",
-        "amount": "2개"
-      },
-      {
-        "name": "밥",
-        "amount": "2공기"
-      },
-      {
-        "name": "간장",
-        "amount": "1큰술"
-      },
-      {
-        "name": "설탕",
-        "amount": "1작은술"
-      },
-      {
-        "name": "물",
-        "amount": "100ml"
-      }
-    ],
-    "steps": [
-      "양파를 얇게 채 썰고 달걀을 풀어요.",
-      "작은 팬에 양파·간장·설탕·물을 넣고 중불에서 5분 끓여요.",
-      "달걀을 둘러 넣고 약불에서 완전히 익힌 뒤 따뜻한 밥 위에 올려요."
+      "다진 양파를 버터·소금·후추·양파 가루·카옌페퍼와 함께 약 25분 볶아 갈색이 되면 식혀요.",
+      "크림치즈를 부드럽게 풀고 마요네즈·사워크림·볶은 양파를 섞어요.",
+      "냉장고에 2시간 두었다가 채소 스틱이나 크래커에 곁들여요. 인분은 소량씩 나눠 먹는 기준이에요."
     ],
     "vegetables": [
       {
@@ -436,147 +1287,128 @@
       }
     ],
     "productVegetableIds": ["onion"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
+    "sourceUrl": "https://www.recipetineats.com/homemade-french-onion-dip/",
+    "sourceName": "Nagi | RecipeTin Eats",
     "primaryVegetableId": "onion",
-    "imageUrl": "/images/recipes/easy-onion-1-internet.webp",
-    "photoReference": {
-      "title": "File:Tamagodon.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Tamagodon.jpg",
-      "author": "sheepman",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-      "imageUrl": "/images/recipes/easy-onion-1-internet.webp",
-      "transform": "WebP encoding / display crop"
-    }
-  },
-  {
-    "id": "easy-onion-2",
-    "name": "양파 간장볶음",
-    "description": "양파가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
-      {
-        "name": "양파",
-        "amount": "2개"
-      },
-      {
-        "name": "간장",
-        "amount": "1큰술"
-      },
-      {
-        "name": "식용유",
-        "amount": "1큰술"
-      },
-      {
-        "name": "참깨",
-        "amount": "1/2작은술"
-      }
-    ],
-    "steps": [
-      "양파를 1cm 굵기로 썰어요.",
-      "팬에 기름을 두르고 중불에서 6~8분 볶아 가장자리가 갈색이 되게 해요.",
-      "약불로 줄여 간장을 넣고 1분 더 볶은 뒤 깨를 뿌려요."
-    ],
-    "vegetables": [
-      {
-        "id": "onion",
-        "name": "양파"
-      }
-    ],
-    "productVegetableIds": ["onion"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "onion",
-    "imageUrl": "/images/onion-irregular.jpg",
-    "imageAlt": "양파 — 양파 간장볶음의 주재료"
+    "imageAlt": "프렌치 양파딥 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-onion-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-onion-4/02.jpg",
+      "/images/recipes/curated/easy-onion-4/03.jpg"
+    ]
   },
   {
     "id": "easy-cabbage-1",
-    "name": "양배추 달걀전",
-    "description": "양배추가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 20,
+    "name": "양배추 샐러드",
+    "description": "양배추와 당근에 새콤한 식초 드레싱을 넣는 기본 샐러드.",
+    "cookTimeMin": 30,
     "difficulty": "easy",
-    "servings": 2,
+    "servings": 4,
     "ingredients": [
       {
         "name": "양배추",
-        "amount": "200g"
+        "amount": "잘게 썬 것 7컵"
       },
       {
-        "name": "달걀",
-        "amount": "2개"
+        "name": "당근",
+        "amount": "채 썬 것 1컵"
       },
       {
-        "name": "밀가루",
+        "name": "식초",
+        "amount": "1/4컵"
+      },
+      {
+        "name": "올리브유",
         "amount": "2큰술"
       },
       {
-        "name": "소금",
-        "amount": "1/4작은술"
+        "name": "설탕",
+        "amount": "1.5~2큰술"
       },
       {
-        "name": "식용유",
-        "amount": "1큰술"
+        "name": "디종 머스터드",
+        "amount": "1작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
       }
     ],
     "steps": [
-      "양배추를 씻어 물기를 빼고 가늘게 채 썰어요.",
-      "달걀·밀가루·소금을 섞은 뒤 양배추를 넣어 버무려요.",
-      "팬에 기름을 두르고 반죽을 얇게 펴요. 중약불에서 앞뒤 각각 4~5분 속까지 익혀요."
+      "양배추와 당근을 가늘게 채 썰어요. 양배추 일부를 적양배추로 바꿔도 좋아요.",
+      "식초·기름·설탕·머스터드·소금을 섞고 채소에 버무려요.",
+      "20분 두어 채소가 살짝 부드러워지면 다시 섞어 내요."
     ],
     "vegetables": [
       {
         "id": "cabbage",
         "name": "양배추"
+      },
+      {
+        "id": "carrot",
+        "name": "당근"
       }
     ],
-    "productVegetableIds": ["cabbage"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
+    "productVegetableIds": ["cabbage", "carrot"],
+    "sourceUrl": "https://www.recipetineats.com/everyday-cabbage-salad/",
+    "sourceName": "Everyday Cabbage Salad",
     "primaryVegetableId": "cabbage",
-    "imageUrl": "/images/recipes/easy-cabbage-1-internet.webp",
-    "photoReference": {
-      "title": "File:Okonomiyaki on a plate in a restaurant in Osaka, Japan - September 2015.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Okonomiyaki_on_a_plate_in_a_restaurant_in_Osaka,_Japan_-_September_2015.jpg",
-      "author": "Rickard Törnblad",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "imageUrl": "/images/recipes/easy-cabbage-1-internet.webp",
-      "transform": "WebP encoding / display crop"
-    }
+    "imageAlt": "양배추 샐러드 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-cabbage-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-cabbage-1/02.jpg",
+      "/images/recipes/curated/easy-cabbage-1/03.jpg"
+    ]
   },
   {
     "id": "easy-cabbage-2",
-    "name": "양배추 간장볶음",
-    "description": "양배추가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 10,
-    "difficulty": "easy",
-    "servings": 2,
+    "name": "양배추김치",
+    "description": "아삭한 양배추로 만드는 김치. 최대 2시간 절이기를 포함하고 숙성은 별도예요.",
+    "cookTimeMin": 140,
+    "difficulty": "normal",
+    "servings": 24,
     "ingredients": [
       {
         "name": "양배추",
-        "amount": "250g"
+        "amount": "1통 (약 1.13kg)"
       },
       {
-        "name": "간장",
+        "name": "소금",
+        "amount": "4큰술"
+      },
+      {
+        "name": "쪽파",
+        "amount": "3줄기"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "1/4컵"
+      },
+      {
+        "name": "새우젓",
+        "amount": "3큰술"
+      },
+      {
+        "name": "설탕",
         "amount": "1큰술"
       },
       {
-        "name": "식용유",
+        "name": "다진 마늘",
         "amount": "1큰술"
       },
       {
-        "name": "다진",
-        "amount": "마늘 1/2작은술"
+        "name": "다진 생강",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "물",
+        "amount": "840ml"
       }
     ],
     "steps": [
-      "양배추를 씻어 물기를 빼고 한입 크기로 썰어요.",
-      "팬에 기름과 마늘을 넣고 약불에서 30초 볶아요.",
-      "중불로 올려 양배추를 4~5분 볶고 간장을 넣어 1분 더 볶아요."
+      "양배추를 약 5cm 크기로 썰어 물 480ml와 소금에 1~2시간 절여요.",
+      "고춧가루·새우젓·설탕·마늘·생강에 물 120ml를 섞어요. 양배추는 헹궈 물기를 빼요.",
+      "쪽파와 양배추에 양념을 버무리고 남은 물 240ml도 섞어 용기에 담아요. 실온에서 반나절~하루 숙성 후 냉장 보관해요."
     ],
     "vegetables": [
       {
@@ -585,299 +1417,829 @@
       }
     ],
     "productVegetableIds": ["cabbage"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
+    "sourceUrl": "https://www.koreanbapsang.com/yangbaechu-kimchi-green-cabbage-kimchi/",
+    "sourceName": "Hyosun",
     "primaryVegetableId": "cabbage",
-    "imageUrl": "/images/cabbage.jpg",
-    "imageAlt": "양배추 — 양배추 간장볶음의 주재료"
+    "imageAlt": "양배추김치 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-cabbage-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-cabbage-2/02.jpg",
+      "/images/recipes/curated/easy-cabbage-2/03.jpg"
+    ]
   },
   {
-    "id": "easy-cucumber-1",
-    "name": "오이무침",
-    "description": "오이가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 10,
+    "id": "easy-cabbage-3",
+    "name": "양배추 코울슬로",
+    "description": "양배추와 당근을 부드러운 마요네즈 드레싱에 버무리는 샐러드.",
+    "cookTimeMin": 30,
     "difficulty": "easy",
-    "servings": 2,
+    "servings": 6,
     "ingredients": [
       {
-        "name": "오이",
-        "amount": "1개"
+        "name": "양배추",
+        "amount": "잘게 썬 것 7컵"
       },
       {
-        "name": "고춧가루",
-        "amount": "1작은술"
+        "name": "당근",
+        "amount": "채 썬 것 1.5컵"
+      },
+      {
+        "name": "마요네즈",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "플레인 요거트",
+        "amount": "1/2컵"
       },
       {
         "name": "식초",
-        "amount": "1큰술"
+        "amount": "1.5큰술"
+      },
+      {
+        "name": "디종 머스터드",
+        "amount": "2작은술"
       },
       {
         "name": "설탕",
-        "amount": "1작은술"
+        "amount": "2큰술"
       },
       {
-        "name": "소금",
+        "name": "셀러리 소금",
+        "amount": "3/4작은술"
+      },
+      {
+        "name": "후추",
         "amount": "1/4작은술"
-      },
-      {
-        "name": "참깨",
-        "amount": "1/2작은술"
       }
     ],
     "steps": [
-      "오이를 씻어 5mm 두께로 썰어요.",
-      "고춧가루·식초·설탕·소금을 섞어 양념을 만들어요.",
-      "오이에 양념을 넣고 가볍게 버무린 뒤 깨를 뿌려 바로 먹어요."
+      "양배추와 당근을 얇게 채 썰어요.",
+      "마요네즈·요거트·식초·머스터드·설탕·셀러리 소금·후추를 섞어요.",
+      "채소와 드레싱을 버무리고 20분 둔 뒤 다시 섞어 내요."
     ],
     "vegetables": [
       {
-        "id": "cucumber",
-        "name": "오이"
+        "id": "cabbage",
+        "name": "양배추"
+      },
+      {
+        "id": "carrot",
+        "name": "당근"
       }
     ],
-    "productVegetableIds": ["cucumber"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "cucumber",
-    "imageUrl": "/images/recipes/easy-cucumber-1.webp"
+    "productVegetableIds": ["cabbage", "carrot"],
+    "sourceUrl": "https://www.recipetineats.com/coleslaw/",
+    "sourceName": "Nagi | RecipeTin Eats",
+    "primaryVegetableId": "cabbage",
+    "imageAlt": "양배추 코울슬로 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-cabbage-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-cabbage-3/02.jpg",
+      "/images/recipes/curated/easy-cabbage-3/03.jpg"
+    ]
   },
   {
-    "id": "easy-cucumber-2",
-    "name": "오이 참깨샐러드",
-    "description": "오이가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 10,
+    "id": "easy-cabbage-4",
+    "name": "양배추 당근 코코넛샐러드",
+    "description": "생채소에 따뜻한 코코넛·향신료 양념을 섞는 인도식 샐러드.",
+    "cookTimeMin": 25,
     "difficulty": "easy",
-    "servings": 2,
+    "servings": 5,
     "ingredients": [
       {
-        "name": "오이",
-        "amount": "1개"
+        "name": "양배추",
+        "amount": "잘게 썬 것 6컵"
       },
       {
-        "name": "참깨",
-        "amount": "1큰술"
-      },
-      {
-        "name": "간장",
-        "amount": "1작은술"
-      },
-      {
-        "name": "식초",
-        "amount": "1큰술"
-      },
-      {
-        "name": "참기름",
-        "amount": "1작은술"
-      }
-    ],
-    "steps": [
-      "오이를 씻어 반달 모양으로 얇게 썰어요.",
-      "참깨를 가볍게 으깨고 간장·식초·참기름을 섞어요.",
-      "오이에 양념을 넣고 버무려요."
-    ],
-    "vegetables": [
-      {
-        "id": "cucumber",
-        "name": "오이"
-      }
-    ],
-    "productVegetableIds": ["cucumber"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "cucumber",
-    "imageUrl": "/images/cucumber.jpg",
-    "imageAlt": "오이 — 오이 참깨샐러드의 주재료"
-  },
-  {
-    "id": "easy-spinach-1",
-    "name": "시금치나물",
-    "description": "시금치가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
-      {
-        "name": "시금치",
-        "amount": "200g"
-      },
-      {
-        "name": "소금",
-        "amount": "1/4작은술"
-      },
-      {
-        "name": "참기름",
-        "amount": "1작은술"
-      },
-      {
-        "name": "다진",
-        "amount": "마늘 1/2작은술"
-      },
-      {
-        "name": "참깨",
-        "amount": "1/2작은술"
-      }
-    ],
-    "steps": [
-      "시금치의 뿌리 끝을 다듬고 여러 번 씻어요.",
-      "끓는 물에 넣고 30~60초 데친 뒤 찬물에 헹궈 물기를 짜요.",
-      "먹기 좋게 썰고 소금·참기름·마늘·깨를 넣어 무쳐요."
-    ],
-    "vegetables": [
-      {
-        "id": "spinach",
-        "name": "시금치"
-      }
-    ],
-    "productVegetableIds": ["spinach"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "spinach",
-    "imageUrl": "/images/recipes/easy-spinach-1-internet.webp",
-    "photoReference": {
-      "title": "File:Sigeumchi-namul.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Sigeumchi-namul.jpg",
-      "author": "쑤기언니",
-      "license": "CC BY 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-      "imageUrl": "/images/recipes/easy-spinach-1-internet.webp",
-      "transform": "WebP encoding / display crop"
-    }
-  },
-  {
-    "id": "easy-spinach-2",
-    "name": "시금치 달걀볶음",
-    "description": "시금치가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 10,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
-      {
-        "name": "시금치",
-        "amount": "150g"
-      },
-      {
-        "name": "달걀",
+        "name": "당근",
         "amount": "2개"
       },
       {
-        "name": "식용유",
-        "amount": "1큰술"
+        "name": "코코넛오일",
+        "amount": "2큰술"
       },
       {
-        "name": "소금",
-        "amount": "1/4작은술"
-      }
-    ],
-    "steps": [
-      "시금치를 씻어 물기를 빼고 4cm 길이로 썰어요. 달걀은 소금을 넣고 풀어요.",
-      "팬에 기름을 두르고 달걀을 완전히 익혀 잠시 덜어 놓아요.",
-      "같은 팬에서 시금치를 1~2분 볶고 달걀을 다시 넣어 섞어요."
-    ],
-    "vegetables": [
-      {
-        "id": "spinach",
-        "name": "시금치"
-      }
-    ],
-    "productVegetableIds": ["spinach"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "spinach",
-    "imageUrl": "/images/recipes/easy-spinach-2-internet.webp",
-    "photoReference": {
-      "title": "File:Liat Portal for Foodie Disorder - Scrambled eggs with spinach.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Scrambled_eggs_with_spinach.jpg",
-      "author": "HaJunkiyada",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "imageUrl": "/images/recipes/easy-spinach-2-internet.webp",
-      "transform": "WebP encoding / display crop"
-    }
-  },
-  {
-    "id": "easy-broccoli-1",
-    "name": "브로콜리 참깨무침",
-    "description": "브로콜리가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
-      {
-        "name": "브로콜리",
-        "amount": "1송이"
+        "name": "검은 겨자씨",
+        "amount": "3/4작은술"
       },
       {
-        "name": "참깨",
-        "amount": "1큰술"
+        "name": "커민씨",
+        "amount": "3/4작은술"
       },
       {
-        "name": "간장",
-        "amount": "1작은술"
+        "name": "샬롯",
+        "amount": "3개"
       },
       {
-        "name": "참기름",
-        "amount": "1작은술"
-      }
-    ],
-    "steps": [
-      "브로콜리를 한입 크기로 나누고 줄기는 겉껍질을 얇게 벗겨 썰어요. 흐르는 물에 씻어요.",
-      "끓는 물에서 2~3분 데친 뒤 건져 물기를 충분히 빼요.",
-      "으깬 참깨·간장·참기름을 넣고 버무려요."
-    ],
-    "vegetables": [
-      {
-        "id": "broccoli",
-        "name": "브로콜리"
-      }
-    ],
-    "productVegetableIds": ["broccoli"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "broccoli",
-    "imageUrl": "/images/recipes/easy-broccoli-1-internet.webp",
-    "photoReference": {
-      "title": "File:Tenderstem broccoli dressed with sesame sauce 001.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Tenderstem_broccoli_dressed_with_sesame_sauce_001.jpg",
-      "author": "Flickr user yoppy",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-      "imageUrl": "/images/recipes/easy-broccoli-1-internet.webp",
-      "transform": "WebP encoding / display crop"
-    }
-  },
-  {
-    "id": "easy-broccoli-2",
-    "name": "브로콜리 마늘볶음",
-    "description": "브로콜리가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
-      {
-        "name": "브로콜리",
-        "amount": "1송이"
+        "name": "양파",
+        "amount": "1/2개"
       },
       {
         "name": "마늘",
         "amount": "3쪽"
       },
       {
-        "name": "식용유",
-        "amount": "1큰술"
+        "name": "고추",
+        "amount": "1개"
       },
       {
-        "name": "소금",
-        "amount": "1/4작은술"
+        "name": "커리잎",
+        "amount": "12장"
+      },
+      {
+        "name": "강황 가루",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "건조 코코넛",
+        "amount": "1/2컵"
       },
       {
         "name": "물",
-        "amount": "3큰술"
+        "amount": "1/2컵"
+      },
+      {
+        "name": "소금",
+        "amount": "3/4작은술"
+      },
+      {
+        "name": "고수",
+        "amount": "1/4컵"
       }
     ],
     "steps": [
-      "브로콜리를 씻어 한입 크기로 나누고 마늘을 얇게 썰어요.",
-      "팬에 기름과 마늘을 넣고 약불에서 1분 볶아요.",
-      "브로콜리와 물을 넣고 뚜껑을 덮어 중약불에서 3분 익혀요. 소금을 넣고 뚜껑을 열어 1분 볶아요."
+      "양배추와 당근을 채 썰고 샬롯·양파·마늘·고추를 다져요.",
+      "팬에 코코넛오일을 달궈 겨자씨·커민씨를 볶고 샬롯·양파·마늘·고추·커리잎·강황을 볶아요.",
+      "코코넛·물·소금을 넣어 약 3분 익혀요. 이 따뜻한 양념을 생 양배추·당근·고수에 넣고 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "cabbage",
+        "name": "양배추"
+      },
+      {
+        "id": "carrot",
+        "name": "당근"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["cabbage", "carrot", "onion"],
+    "sourceUrl": "https://www.recipetineats.com/cabbage-carrot-thoran-style-indian-salad/",
+    "sourceName": "Cabbage and Carrot Thoran-style Salad (Indian Salad)",
+    "primaryVegetableId": "cabbage",
+    "imageAlt": "양배추 당근 코코넛샐러드 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-cabbage-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-cabbage-4/02.jpg",
+      "/images/recipes/curated/easy-cabbage-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-cucumber-1",
+    "name": "매콤 오이무침",
+    "description": "얇게 썬 오이에 고춧가루와 참기름을 버무리는 반찬. 절이는 시간을 포함해요.",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "오이",
+        "amount": "1개"
+      },
+      {
+        "name": "소금",
+        "amount": "1작은술"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "1큰술"
+      },
+      {
+        "name": "다진 쪽파",
+        "amount": "1큰술"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "식초",
+        "amount": "1작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "깨",
+        "amount": "1작은술"
+      },
+      {
+        "name": "참기름",
+        "amount": "1작은술"
+      }
+    ],
+    "steps": [
+      "오이를 얇게 썰어 소금과 섞고 15분 두어요.",
+      "나온 물을 따라 버리되 오이를 세게 짜지는 않아요.",
+      "고춧가루·쪽파·마늘·식초·설탕·깨·참기름을 넣고 골고루 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "cucumber",
+        "name": "오이"
+      }
+    ],
+    "productVegetableIds": ["cucumber"],
+    "sourceUrl": "https://www.koreanbapsang.com/oi-muchim-korean-style-cucumber-salad/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "cucumber",
+    "imageAlt": "매콤 오이무침 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-cucumber-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-cucumber-1/02.jpg",
+      "/images/recipes/curated/easy-cucumber-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-cucumber-2",
+    "name": "오이소박이",
+    "description": "부추·무 양념을 오이에 채우는 김치. 절이기 포함, 하루 숙성은 별도예요.",
+    "cookTimeMin": 150,
+    "difficulty": "normal",
+    "servings": 5,
+    "ingredients": [
+      {
+        "name": "오이",
+        "amount": "5개"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "물",
+        "amount": "1.5L"
+      },
+      {
+        "name": "부추",
+        "amount": "85g"
+      },
+      {
+        "name": "무",
+        "amount": "85g"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "5큰술"
+      },
+      {
+        "name": "새우젓",
+        "amount": "2큰술"
+      },
+      {
+        "name": "액젓",
+        "amount": "1큰술"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1큰술"
+      },
+      {
+        "name": "다진 생강",
+        "amount": "1작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "2작은술 (선택)"
+      },
+      {
+        "name": "양념용 물",
+        "amount": "60ml"
+      }
+    ],
+    "steps": [
+      "오이를 반으로 잘라 끝을 남긴 채 십자로 칼집 내요. 뜨거운 소금물에 1~2시간 절여 물기를 빼요.",
+      "부추와 무를 잘게 썰고 고춧가루·새우젓·액젓·마늘·생강·설탕·양념용 물을 섞어요.",
+      "오이 칼집 안에 양념을 채워 용기에 담아요. 실온에서 하루 익힌 뒤 냉장 보관해요. 5인분은 오이 1개씩 나누는 기준이에요."
+    ],
+    "vegetables": [
+      {
+        "id": "cucumber",
+        "name": "오이"
+      },
+      {
+        "id": "radish",
+        "name": "무"
+      }
+    ],
+    "productVegetableIds": ["cucumber", "radish"],
+    "sourceUrl": "https://www.koreanbapsang.com/oi-sobagi-stuffed-cucumber-kimchi/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "cucumber",
+    "imageAlt": "오이소박이 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-cucumber-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-cucumber-2/02.jpg",
+      "/images/recipes/curated/easy-cucumber-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-cucumber-3",
+    "name": "중국식 두드린 오이무침",
+    "description": "오이를 두드려 양념이 잘 스며들게 만드는 새콤한 샐러드.",
+    "cookTimeMin": 30,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "오이",
+        "amount": "500g"
+      },
+      {
+        "name": "소금",
+        "amount": "3/4작은술"
+      },
+      {
+        "name": "고수",
+        "amount": "2큰술"
+      },
+      {
+        "name": "쪽파",
+        "amount": "1/4컵"
+      },
+      {
+        "name": "쌀식초",
+        "amount": "1.5큰술"
+      },
+      {
+        "name": "참기름",
+        "amount": "2작은술"
+      },
+      {
+        "name": "다진 생강",
+        "amount": "1.5작은술"
+      },
+      {
+        "name": "간장",
+        "amount": "2작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "오이를 칼의 넓은 면으로 두드린 뒤 2.5cm 크기로 잘라요.",
+      "소금과 섞어 20분 두고 나온 물을 따라 버려요.",
+      "쌀식초·참기름·생강·간장·설탕을 섞고 오이·쪽파·고수와 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "cucumber",
+        "name": "오이"
+      }
+    ],
+    "productVegetableIds": ["cucumber"],
+    "sourceUrl": "https://www.recipetineats.com/smashed-cucumber-salad/",
+    "sourceName": "Smashed Cucumber Salad",
+    "primaryVegetableId": "cucumber",
+    "imageAlt": "중국식 두드린 오이무침 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-cucumber-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-cucumber-3/02.jpg",
+      "/images/recipes/curated/easy-cucumber-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-cucumber-4",
+    "name": "오이 요거트샐러드",
+    "description": "오이와 적양파에 민트·레몬 요거트 드레싱을 더하는 샐러드.",
+    "cookTimeMin": 30,
+    "difficulty": "easy",
+    "servings": 5,
+    "ingredients": [
+      {
+        "name": "오이",
+        "amount": "긴 것 3개"
+      },
+      {
+        "name": "적양파",
+        "amount": "1/2개"
+      },
+      {
+        "name": "민트",
+        "amount": "1/4컵"
+      },
+      {
+        "name": "플레인 요거트",
+        "amount": "1컵"
+      },
+      {
+        "name": "올리브유",
+        "amount": "2큰술"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "2큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "1쪽"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "요거트·올리브유·레몬즙·다진 마늘·소금·후추를 섞어 20분 두어요.",
+      "오이와 적양파를 얇게 썰고 민트를 잘게 썰어요.",
+      "채소와 민트에 드레싱을 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "cucumber",
+        "name": "오이"
+      }
+    ],
+    "productVegetableIds": ["cucumber"],
+    "sourceUrl": "https://www.recipetineats.com/creamy-cucumber-salad-lemon-yogurt-dressing/",
+    "sourceName": "Creamy Cucumber Salad with Lemon Yogurt Dressing",
+    "primaryVegetableId": "cucumber",
+    "imageAlt": "오이 요거트샐러드 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-cucumber-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-cucumber-4/02.jpg",
+      "/images/recipes/curated/easy-cucumber-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-spinach-1",
+    "name": "시금치나물",
+    "description": "짧게 데친 시금치에 국간장·참기름을 넣는 기본 나물.",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "시금치",
+        "amount": "280g"
+      },
+      {
+        "name": "쪽파",
+        "amount": "1줄기"
+      },
+      {
+        "name": "국간장",
+        "amount": "2작은술"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "참기름",
+        "amount": "1작은술"
+      },
+      {
+        "name": "깨",
+        "amount": "1작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "조금"
+      },
+      {
+        "name": "후추",
+        "amount": "조금"
+      }
+    ],
+    "steps": [
+      "시금치를 손질하고 끓는 물에 20~30초 데친 뒤 찬물에 식혀요.",
+      "물기를 꼭 짜고 길이 약 7cm로 썰어요.",
+      "쪽파·국간장·마늘·설탕·참기름·깨를 넣고 버무려요. 소금·후추로 간하고 잠시 두었다가 내요."
+    ],
+    "vegetables": [
+      {
+        "id": "spinach",
+        "name": "시금치"
+      }
+    ],
+    "productVegetableIds": ["spinach"],
+    "sourceUrl": "https://www.koreanbapsang.com/sigeumchi-namul-korean-spinach-side/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "spinach",
+    "imageAlt": "시금치나물 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-spinach-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-spinach-1/02.jpg",
+      "/images/recipes/curated/easy-spinach-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-spinach-2",
+    "name": "마늘 시금치볶음",
+    "description": "마늘 향을 입혀 짧게 볶아내는 시금치 요리.",
+    "cookTimeMin": 9,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "시금치",
+        "amount": "2단"
+      },
+      {
+        "name": "올리브유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "소금",
+        "amount": "조금"
+      },
+      {
+        "name": "후추",
+        "amount": "조금"
+      }
+    ],
+    "steps": [
+      "시금치를 씻고 잎에 물기가 약간 남도록 털어요. 마늘을 다져요.",
+      "팬에 기름을 두르고 마늘을 약 20초 볶아요.",
+      "시금치를 넣어 약 2분 볶고 숨이 죽으면 소금·후추로 간해 바로 덜어요."
+    ],
+    "vegetables": [
+      {
+        "id": "spinach",
+        "name": "시금치"
+      }
+    ],
+    "productVegetableIds": ["spinach"],
+    "sourceUrl": "https://www.recipetineats.com/garlic-sauteed-spinach/",
+    "sourceName": "Garlic Sautéed Spinach",
+    "primaryVegetableId": "spinach",
+    "imageAlt": "마늘 시금치볶음 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-spinach-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-spinach-2/02.jpg",
+      "/images/recipes/curated/easy-spinach-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-spinach-3",
+    "name": "시금치 치즈커리",
+    "description": "시금치를 갈아 만든 인도식 팔락 파니르. 파니르 치즈는 미리 준비해요.",
+    "cookTimeMin": 70,
+    "difficulty": "normal",
+    "servings": 6,
+    "ingredients": [
+      {
+        "name": "시금치",
+        "amount": "700g"
+      },
+      {
+        "name": "파니르 치즈",
+        "amount": "전지우유 2L·레몬즙 4큰술로 만든 1배치 (미리 준비)"
+      },
+      {
+        "name": "버터",
+        "amount": "60g"
+      },
+      {
+        "name": "양파",
+        "amount": "1.5개"
+      },
+      {
+        "name": "페뉴그릭 잎",
+        "amount": "1작은술"
+      },
+      {
+        "name": "커민 가루",
+        "amount": "1작은술"
+      },
+      {
+        "name": "고수 가루",
+        "amount": "1작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "3/4작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "다진 생강",
+        "amount": "2작은술"
+      },
+      {
+        "name": "토마토",
+        "amount": "2개"
+      },
+      {
+        "name": "고추",
+        "amount": "1개"
+      },
+      {
+        "name": "물",
+        "amount": "60ml"
+      },
+      {
+        "name": "생크림",
+        "amount": "1/3컵 + 1큰술"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "1큰술"
+      }
+    ],
+    "steps": [
+      "버터 30g에 한입 크기 파니르를 노릇하게 굽고 덜어요. 시금치와 토마토·양파를 잘게 썰어요.",
+      "나머지 버터에 양파·향신료를 약 3분 볶고 마늘·생강을 2분, 토마토·고추를 3분 더 볶아요.",
+      "시금치와 물을 넣어 10분 익히고 생크림·레몬즙을 넣어 3분 끓여요.",
+      "커리의 절반을 갈아 다시 합친 뒤 치즈를 넣고 데워요. 치즈 준비 시간은 별도예요."
+    ],
+    "vegetables": [
+      {
+        "id": "spinach",
+        "name": "시금치"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      },
+      {
+        "id": "tomato",
+        "name": "토마토"
+      }
+    ],
+    "productVegetableIds": ["spinach", "onion", "tomato"],
+    "sourceUrl": "https://www.recipetineats.com/palak-paneer-indian-spinach-curry-with-cheese/",
+    "sourceName": "Palak Paneer – Indian Spinach Curry with Homemade Fresh Cheese",
+    "primaryVegetableId": "spinach",
+    "imageAlt": "시금치 치즈커리 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-spinach-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-spinach-3/02.jpg",
+      "/images/recipes/curated/easy-spinach-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-spinach-4",
+    "name": "시금치 리코타 파스타",
+    "description": "시금치·리코타 치즈를 섞은 파스타에 토마토 소스와 치즈를 올려 굽는 요리.",
+    "cookTimeMin": 55,
+    "difficulty": "normal",
+    "servings": 6,
+    "ingredients": [
+      {
+        "name": "시금치",
+        "amount": "냉동 다진 것 350g"
+      },
+      {
+        "name": "짧은 파스타",
+        "amount": "300g"
+      },
+      {
+        "name": "리코타 치즈",
+        "amount": "500g"
+      },
+      {
+        "name": "파르메산 치즈",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "모차렐라 치즈",
+        "amount": "총 2.5컵"
+      },
+      {
+        "name": "마늘",
+        "amount": "4쪽"
+      },
+      {
+        "name": "소금",
+        "amount": "1.75작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "취향에 맞게"
+      },
+      {
+        "name": "올리브유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "토마토 파사타",
+        "amount": "700g"
+      },
+      {
+        "name": "양파 가루",
+        "amount": "1작은술"
+      },
+      {
+        "name": "마늘 가루",
+        "amount": "1작은술"
+      },
+      {
+        "name": "이탈리안 허브",
+        "amount": "2작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1작은술"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "1/2작은술 (선택)"
+      }
+    ],
+    "steps": [
+      "오븐을 180℃로 예열해요. 시금치를 해동하고 물기를 짜요. 파스타는 포장 시간보다 1분 짧게 삶고 면수를 남겨요.",
+      "리코타·시금치·파르메산·다진 마늘 2쪽·모차렐라 1컵·소금 3/4작은술·후추를 섞어요. 되직하면 면수를 조금 넣고 파스타와 합쳐요.",
+      "파사타에 기름·나머지 마늘·양파 가루·마늘 가루·허브·설탕·소금 1작은술·고춧가루를 섞어요.",
+      "파스타를 내열 그릇에 담아 소스와 남은 모차렐라를 올려요. 호일을 느슨하게 덮어 25분, 호일을 걷고 10분 더 구워요."
+    ],
+    "vegetables": [
+      {
+        "id": "spinach",
+        "name": "시금치"
+      }
+    ],
+    "productVegetableIds": ["spinach"],
+    "sourceUrl": "https://www.recipetineats.com/spinach-ricotta-pasta-bake/",
+    "sourceName": "Nagi | RecipeTin Eats",
+    "primaryVegetableId": "spinach",
+    "imageAlt": "시금치 리코타 파스타 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-spinach-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-spinach-4/02.jpg",
+      "/images/recipes/curated/easy-spinach-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-broccoli-1",
+    "name": "마늘 브로콜리구이",
+    "description": "바삭한 가장자리와 레몬 향을 살리는 오븐 브로콜리 요리.",
+    "cookTimeMin": 35,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "브로콜리",
+        "amount": "1kg"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "올리브유",
+        "amount": "2.5큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "조금"
+      },
+      {
+        "name": "레몬 껍질",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "1큰술"
+      },
+      {
+        "name": "파르메산 치즈",
+        "amount": "2큰술"
+      }
+    ],
+    "steps": [
+      "오븐을 220℃로 예열하고 브로콜리를 작은 송이로 나눠요.",
+      "다진 마늘·기름·소금·후추를 섞어 브로콜리에 버무리고 한 겹으로 펼쳐요.",
+      "20~25분 구워 가장자리가 노릇해지면 레몬 껍질·레몬즙·치즈를 섞어요."
     ],
     "vegetables": [
       {
@@ -886,214 +2248,538 @@
       }
     ],
     "productVegetableIds": ["broccoli"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
+    "sourceUrl": "https://www.recipetineats.com/magic-broccoli/",
+    "sourceName": "Nagi | RecipeTin Eats",
     "primaryVegetableId": "broccoli",
-    "imageUrl": "/images/recipes/easy-broccoli-2-internet.webp",
-    "photoReference": {
-      "title": "File:Cooked broccoli florets in a textured glass bowl.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Cooked_broccoli_florets_in_a_textured_glass_bowl.jpg",
-      "author": "Horacio Cambeiro",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "imageUrl": "/images/recipes/easy-broccoli-2-internet.webp",
-      "transform": "WebP encoding / display crop"
-    }
+    "imageAlt": "마늘 브로콜리구이 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-broccoli-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-broccoli-1/02.jpg",
+      "/images/recipes/curated/easy-broccoli-1/03.jpg"
+    ]
   },
   {
-    "id": "easy-radish-1",
-    "name": "무생채",
-    "description": "무가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
+    "id": "easy-broccoli-2",
+    "name": "브로콜리 치즈수프",
+    "description": "브로콜리와 감자를 갈아 체더 치즈로 마무리하는 수프.",
+    "cookTimeMin": 30,
     "difficulty": "easy",
-    "servings": 2,
+    "servings": 5,
     "ingredients": [
       {
-        "name": "무",
-        "amount": "300g"
+        "name": "브로콜리",
+        "amount": "700g"
       },
       {
-        "name": "고춧가루",
-        "amount": "1작은술"
+        "name": "감자",
+        "amount": "2개"
       },
       {
-        "name": "식초",
-        "amount": "1큰술"
+        "name": "버터",
+        "amount": "15g"
       },
       {
-        "name": "설탕",
-        "amount": "1작은술"
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "양파",
+        "amount": "1개"
+      },
+      {
+        "name": "채소 육수",
+        "amount": "1L"
+      },
+      {
+        "name": "물",
+        "amount": "360ml"
       },
       {
         "name": "소금",
+        "amount": "3/4작은술"
+      },
+      {
+        "name": "후추",
         "amount": "1/4작은술"
       },
       {
-        "name": "다진",
-        "amount": "마늘 1/2작은술"
+        "name": "체더 치즈",
+        "amount": "1.5컵"
+      },
+      {
+        "name": "생크림",
+        "amount": "180ml"
       }
     ],
     "steps": [
-      "무를 씻고 껍질을 얇게 벗겨 가늘게 채 썰어요.",
-      "고춧가루를 먼저 넣어 골고루 버무려 색을 입혀요.",
-      "식초·설탕·소금·마늘을 넣고 버무려요. 5분 두었다가 먹어요."
+      "양파·마늘을 다지고 브로콜리를 나눠요. 감자를 껍질 벗겨 1.5cm 크기로 잘라요.",
+      "버터에 양파·마늘을 2분 볶고 육수·물·채소·소금·후추를 넣어 약 20분 끓여요.",
+      "불을 끄고 핸드블렌더로 부드럽게 갈아요. 생크림을 섞고 치즈를 조금씩 넣어 녹여요."
     ],
     "vegetables": [
       {
-        "id": "radish",
-        "name": "무"
+        "id": "broccoli",
+        "name": "브로콜리"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      },
+      {
+        "id": "potato",
+        "name": "감자"
       }
     ],
-    "productVegetableIds": ["radish"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "radish",
-    "imageUrl": "/images/recipes/easy-radish-1-internet.webp",
-    "photoReference": {
-      "title": "File:Mu-saengchae.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Mu-saengchae.jpg",
-      "author": "chomjong",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-      "imageUrl": "/images/recipes/easy-radish-1-internet.webp",
-      "transform": "WebP encoding / display crop"
-    }
+    "productVegetableIds": ["broccoli", "onion", "potato"],
+    "sourceUrl": "https://www.recipetineats.com/easy-broccoli-cheese-soup/",
+    "sourceName": "Nagi | RecipeTin Eats",
+    "primaryVegetableId": "broccoli",
+    "imageAlt": "브로콜리 치즈수프 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-broccoli-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-broccoli-2/02.jpg",
+      "/images/recipes/curated/easy-broccoli-2/03.jpg"
+    ]
   },
   {
-    "id": "easy-radish-2",
-    "name": "들깨 무나물",
-    "description": "무가 주재료인 간단한 집밥 요리",
+    "id": "easy-broccoli-3",
+    "name": "브로콜리전",
+    "description": "브로콜리와 파르메산을 넣어 부치는 전 6개 분량. 1인당 3개 기준이에요.",
     "cookTimeMin": 20,
     "difficulty": "easy",
     "servings": 2,
     "ingredients": [
       {
-        "name": "무",
-        "amount": "300g"
+        "name": "브로콜리",
+        "amount": "3컵 (약 1송이)"
       },
       {
-        "name": "들깨가루",
-        "amount": "1큰술"
-      },
-      {
-        "name": "식용유",
-        "amount": "1작은술"
-      },
-      {
-        "name": "소금",
-        "amount": "1/4작은술"
-      },
-      {
-        "name": "물",
-        "amount": "100ml"
-      }
-    ],
-    "steps": [
-      "무를 씻어 껍질을 얇게 벗기고 5mm 굵기로 채 썰어요.",
-      "냄비에 기름과 무를 넣고 2분 볶은 뒤 물과 소금을 넣어요.",
-      "뚜껑을 덮고 중약불에서 8~10분 익혀요. 무가 부드러워지면 들깨가루를 넣어 1분 더 익혀요."
-    ],
-    "vegetables": [
-      {
-        "id": "radish",
-        "name": "무"
-      }
-    ],
-    "productVegetableIds": ["radish"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "radish",
-    "imageUrl": "/images/recipes/easy-radish-2-internet.webp",
-    "photoReference": {
-      "title": "File:Mu-namul.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Mu-namul.jpg",
-      "author": "초롱",
-      "license": "CC BY 2.0 kr",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/kr/deed.en",
-      "imageUrl": "/images/recipes/easy-radish-2-internet.webp",
-      "transform": "WebP encoding / display crop"
-    }
-  },
-  {
-    "id": "easy-shiitake-1",
-    "name": "표고버섯 간장볶음",
-    "description": "표고버섯가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
-      {
-        "name": "표고버섯",
-        "amount": "6개"
-      },
-      {
-        "name": "간장",
-        "amount": "1큰술"
-      },
-      {
-        "name": "식용유",
-        "amount": "1큰술"
-      },
-      {
-        "name": "다진",
-        "amount": "마늘 1/2작은술"
-      },
-      {
-        "name": "물",
+        "name": "올리브유",
         "amount": "2큰술"
-      }
-    ],
-    "steps": [
-      "표고버섯을 가볍게 씻고 단단한 밑동을 잘라 5mm 두께로 썰어요.",
-      "팬에 기름과 마늘을 넣고 약불에서 30초 볶아요.",
-      "버섯·간장·물을 넣고 중불에서 5~7분 충분히 익혀요."
-    ],
-    "vegetables": [
+      },
       {
-        "id": "shiitake",
-        "name": "표고버섯"
-      }
-    ],
-    "productVegetableIds": ["shiitake"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
-    "primaryVegetableId": "shiitake",
-    "imageUrl": "/images/shiitake-scratched.jpg",
-    "imageAlt": "표고버섯 간장볶음의 주재료 표고버섯"
-  },
-  {
-    "id": "easy-shiitake-2",
-    "name": "표고버섯 달걀국",
-    "description": "표고버섯가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
-    "difficulty": "easy",
-    "servings": 2,
-    "ingredients": [
+        "name": "마늘",
+        "amount": "1쪽"
+      },
       {
-        "name": "표고버섯",
-        "amount": "4개"
+        "name": "밀가루",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "파르메산 치즈",
+        "amount": "1/4컵"
       },
       {
         "name": "달걀",
         "amount": "1개"
       },
       {
-        "name": "물",
-        "amount": "500ml"
+        "name": "우유",
+        "amount": "2큰술"
       },
       {
-        "name": "국간장",
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "조금"
+      },
+      {
+        "name": "플레인 요거트",
+        "amount": "곁들일 만큼"
+      }
+    ],
+    "steps": [
+      "브로콜리를 약 3분 쪄서 익히고 포크로 굵게 으깨요.",
+      "다진 마늘·밀가루·치즈·달걀·우유·소금·후추를 섞어 반죽해요.",
+      "팬에 기름을 두르고 반죽을 6개로 나눠 납작하게 부쳐요. 양면을 2~3분씩 익히고 요거트를 곁들여요."
+    ],
+    "vegetables": [
+      {
+        "id": "broccoli",
+        "name": "브로콜리"
+      }
+    ],
+    "productVegetableIds": ["broccoli"],
+    "sourceUrl": "https://www.recipetineats.com/broccoli-fritters/",
+    "sourceName": "Nagi | RecipeTin Eats",
+    "primaryVegetableId": "broccoli",
+    "imageAlt": "브로콜리전 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-broccoli-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-broccoli-3/02.jpg",
+      "/images/recipes/curated/easy-broccoli-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-broccoli-4",
+    "name": "마늘·커민 브로콜리샐러드",
+    "description": "생 브로콜리에 뜨거운 마늘·커민 오일을 부어 재우는 샐러드. 1시간 재우기를 포함해요.",
+    "cookTimeMin": 71,
+    "difficulty": "normal",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "브로콜리",
+        "amount": "500g"
+      },
+      {
+        "name": "레드와인 식초",
         "amount": "1큰술"
       },
       {
         "name": "소금",
-        "amount": "1/8작은술"
+        "amount": "3/4작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "올리브유",
+        "amount": "1/3컵"
+      },
+      {
+        "name": "마늘",
+        "amount": "4쪽"
+      },
+      {
+        "name": "커민씨",
+        "amount": "2작은술"
+      },
+      {
+        "name": "참기름",
+        "amount": "2작은술"
+      },
+      {
+        "name": "칠리 플레이크",
+        "amount": "1/4작은술 (선택)"
       }
     ],
     "steps": [
-      "표고버섯을 가볍게 씻고 단단한 밑동을 잘라 얇게 썰어요. 달걀을 풀어요.",
-      "냄비에 물과 버섯을 넣고 끓기 시작하면 중불에서 5분 끓여요.",
-      "국간장과 소금을 넣고 달걀을 가늘게 부어요. 달걀이 완전히 익도록 1~2분 더 끓여요."
+      "브로콜리를 작은 송이로 나누고 식초·소금·후추와 섞어 10분 두어요.",
+      "팬에 올리브유를 달궈 다진 마늘·커민씨를 약 1분 볶고 참기름·칠리를 섞어요.",
+      "뜨거운 기름을 브로콜리에 부어 골고루 버무리고 1시간 재운 뒤 내요."
+    ],
+    "vegetables": [
+      {
+        "id": "broccoli",
+        "name": "브로콜리"
+      }
+    ],
+    "productVegetableIds": ["broccoli"],
+    "sourceUrl": "https://www.recipetineats.com/ny-times-famous-broccoli-salad-with-sesame-cumin-garlic/",
+    "sourceName": "New York Times Famous Broccoli Salad - with Cumin, Garlic and Sesame",
+    "primaryVegetableId": "broccoli",
+    "imageAlt": "마늘·커민 브로콜리샐러드 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-broccoli-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-broccoli-4/02.jpg",
+      "/images/recipes/curated/easy-broccoli-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-radish-1",
+    "name": "무생채",
+    "description": "채 썬 무를 절여 고춧가루 양념에 버무리는 반찬.",
+    "cookTimeMin": 35,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "무",
+        "amount": "450g"
+      },
+      {
+        "name": "소금",
+        "amount": "1작은술"
+      },
+      {
+        "name": "쪽파",
+        "amount": "1~2줄기"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "2큰술"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "2작은술"
+      },
+      {
+        "name": "다진 생강",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "액젓",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1작은술"
+      },
+      {
+        "name": "깨",
+        "amount": "1작은술 (선택)"
+      }
+    ],
+    "steps": [
+      "무를 가늘게 채 썰어 소금과 섞고 20분 두어요.",
+      "나온 물을 따라 버려요. 절인 무는 다시 헹구지 않아요.",
+      "쪽파를 썰어 넣고 고춧가루·마늘·생강·액젓·설탕·깨에 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "radish",
+        "name": "무"
+      }
+    ],
+    "productVegetableIds": ["radish"],
+    "sourceUrl": "https://www.koreanbapsang.com/mu-saengchae-spicy-korean-radish-salad/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "radish",
+    "imageAlt": "무생채 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-radish-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-radish-1/02.jpg",
+      "/images/recipes/curated/easy-radish-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-radish-2",
+    "name": "무나물",
+    "description": "도톰하게 썬 무를 생강즙과 참기름으로 담백하게 익히는 반찬.",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 3,
+    "ingredients": [
+      {
+        "name": "무",
+        "amount": "680g"
+      },
+      {
+        "name": "물",
+        "amount": "120ml"
+      },
+      {
+        "name": "생강즙",
+        "amount": "1작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4~1/2작은술"
+      },
+      {
+        "name": "참기름",
+        "amount": "1작은술"
+      },
+      {
+        "name": "식용유",
+        "amount": "1작은술"
+      },
+      {
+        "name": "깨",
+        "amount": "조금"
+      }
+    ],
+    "steps": [
+      "무를 손질하고 길이 5cm, 두께 약 1cm의 막대 모양으로 썰어요.",
+      "팬에 식용유를 두르고 무를 중불로 3분 볶아요. 물을 넣고 뚜껑을 덮어 약불에서 5~6분 익혀요.",
+      "소금과 생강즙을 넣고 무가 반투명해지며 물이 줄 때까지 볶아요. 참기름과 깨를 넣어요."
+    ],
+    "vegetables": [
+      {
+        "id": "radish",
+        "name": "무"
+      }
+    ],
+    "productVegetableIds": ["radish"],
+    "sourceUrl": "https://kimchimari.com/three-color-vegetables-white/",
+    "sourceName": "Three Color Vegetables (Samsaek Namul) – White",
+    "primaryVegetableId": "radish",
+    "imageAlt": "무나물 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-radish-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-radish-2/02.jpg",
+      "/images/recipes/curated/easy-radish-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-radish-3",
+    "name": "소고기 뭇국",
+    "description": "무와 소고기를 함께 끓여 맑고 시원한 국물을 만드는 국.",
+    "cookTimeMin": 40,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "무",
+        "amount": "340g"
+      },
+      {
+        "name": "소고기",
+        "amount": "170g"
+      },
+      {
+        "name": "쪽파",
+        "amount": "2줄기"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "2작은술"
+      },
+      {
+        "name": "참기름",
+        "amount": "1작은술"
+      },
+      {
+        "name": "국간장",
+        "amount": "2큰술"
+      },
+      {
+        "name": "물",
+        "amount": "2L"
+      },
+      {
+        "name": "소금",
+        "amount": "조금"
+      },
+      {
+        "name": "후추",
+        "amount": "조금"
+      }
+    ],
+    "steps": [
+      "무를 나박하게 썰고 소고기를 한입 크기로 잘라 국간장과 마늘 일부에 버무려요.",
+      "냄비에 참기름을 두르고 소고기를 볶아요. 물을 넣어 약 10분 끓여요.",
+      "무를 넣어 10~15분 더 끓이고 쪽파·남은 마늘·국간장을 넣어요. 5분 더 끓이고 소금·후추로 간해요."
+    ],
+    "vegetables": [
+      {
+        "id": "radish",
+        "name": "무"
+      }
+    ],
+    "productVegetableIds": ["radish"],
+    "sourceUrl": "https://www.koreanbapsang.com/korean-radish-soup-mu-gukmoo-guk/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "radish",
+    "imageAlt": "소고기 뭇국 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-radish-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-radish-3/02.jpg",
+      "/images/recipes/curated/easy-radish-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-radish-4",
+    "name": "깍두기",
+    "description": "무를 네모나게 썰어 만드는 김치. 절이기 포함, 2~3일 숙성은 별도예요.",
+    "cookTimeMin": 100,
+    "difficulty": "normal",
+    "servings": 48,
+    "ingredients": [
+      {
+        "name": "무",
+        "amount": "2.5kg"
+      },
+      {
+        "name": "소금",
+        "amount": "3큰술"
+      },
+      {
+        "name": "쪽파",
+        "amount": "3~4줄기"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "액젓",
+        "amount": "2큰술"
+      },
+      {
+        "name": "새우젓",
+        "amount": "3큰술"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "3큰술"
+      },
+      {
+        "name": "다진 생강",
+        "amount": "1작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1큰술"
+      },
+      {
+        "name": "배",
+        "amount": "1/2개 (선택)"
+      },
+      {
+        "name": "익힌 쌀밥",
+        "amount": "2큰술 (선택)"
+      }
+    ],
+    "steps": [
+      "무를 약 2cm 크기로 썰어 소금과 섞고 1시간 절여요. 나온 물을 따라 버리되 헹구지 않아요.",
+      "배와 쌀밥을 사용한다면 갈아요. 고춧가루·액젓·새우젓·마늘·생강·설탕을 섞어요.",
+      "무·쪽파를 양념과 버무려 용기에 담아요. 실온에서 2~3일 익힌 뒤 냉장 보관해요. 인분은 소량 반찬 기준이에요."
+    ],
+    "vegetables": [
+      {
+        "id": "radish",
+        "name": "무"
+      }
+    ],
+    "productVegetableIds": ["radish"],
+    "sourceUrl": "https://www.koreanbapsang.com/kkakdugi-cubed-radish-kimchi/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "radish",
+    "imageAlt": "깍두기 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-radish-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-radish-4/02.jpg",
+      "/images/recipes/curated/easy-radish-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-shiitake-1",
+    "name": "표고버섯구이",
+    "description": "표고버섯 갓을 오븐에 구워 깊은 향과 쫄깃함을 살리는 요리.",
+    "cookTimeMin": 28,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "표고버섯",
+        "amount": "450g"
+      },
+      {
+        "name": "올리브유",
+        "amount": "3큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "파슬리",
+        "amount": "1큰술 (선택)"
+      }
+    ],
+    "steps": [
+      "오븐을 200℃로 예열해요. 표고버섯을 닦고 단단한 줄기를 잘라내요.",
+      "갓에 올리브유·소금·후추를 버무리고 팬에 펼쳐요.",
+      "10분 굽고 뒤집어 8~10분 더 구워요. 파슬리를 뿌려 내요."
     ],
     "vegetables": [
       {
@@ -1102,45 +2788,254 @@
       }
     ],
     "productVegetableIds": ["shiitake"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
+    "sourceUrl": "https://foolproofliving.com/roasted-shiitake-mushrooms/",
+    "sourceName": "Roasted Shiitake Mushrooms Recipe",
     "primaryVegetableId": "shiitake",
-    "imageUrl": "/images/shiitake-small.jpg",
-    "imageAlt": "표고버섯 — 표고버섯 달걀국의 주재료"
+    "imageAlt": "표고버섯구이 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-shiitake-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-shiitake-1/02.jpg",
+      "/images/recipes/curated/easy-shiitake-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-shiitake-2",
+    "name": "표고버섯볶음",
+    "description": "버터와 마늘로 표고버섯의 풍미를 살리는 볶음.",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "표고버섯",
+        "amount": "450g"
+      },
+      {
+        "name": "버터",
+        "amount": "3큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "파슬리",
+        "amount": "1큰술"
+      }
+    ],
+    "steps": [
+      "표고버섯을 닦아 단단한 줄기를 제거하고 두툼하게 썰어요.",
+      "버터를 녹인 팬에 버섯을 넣어 약 6~7분 볶아요.",
+      "다진 마늘을 넣어 30초 더 볶고 소금·후추·파슬리로 마무리해요."
+    ],
+    "vegetables": [
+      {
+        "id": "shiitake",
+        "name": "표고버섯"
+      }
+    ],
+    "productVegetableIds": ["shiitake"],
+    "sourceUrl": "https://foolproofliving.com/shiitake-mushrooms-recipe/",
+    "sourceName": "Shiitake Mushrooms Recipe",
+    "primaryVegetableId": "shiitake",
+    "imageAlt": "표고버섯볶음 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-shiitake-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-shiitake-2/02.jpg",
+      "/images/recipes/curated/easy-shiitake-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-shiitake-3",
+    "name": "표고버섯 크림수프",
+    "description": "표고버섯과 양파를 갈아 만드는 부드러운 수프.",
+    "cookTimeMin": 30,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "표고버섯",
+        "amount": "450g"
+      },
+      {
+        "name": "버터",
+        "amount": "3큰술"
+      },
+      {
+        "name": "양파",
+        "amount": "잘게 썬 것 3/4컵"
+      },
+      {
+        "name": "타임",
+        "amount": "1작은술"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "채소 육수",
+        "amount": "500ml"
+      },
+      {
+        "name": "물",
+        "amount": "375ml"
+      },
+      {
+        "name": "넛메그",
+        "amount": "한 꼬집"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "하프앤하프",
+        "amount": "125ml (선택)"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "1큰술"
+      }
+    ],
+    "steps": [
+      "표고버섯을 손질해 썰어요. 냄비에 버터와 양파를 넣어 6~7분 볶아요.",
+      "버섯을 5분 볶고 마늘·타임을 넣어 30초 더 볶아요. 육수·물·넛메그·소금·후추를 넣어 15분 끓여요.",
+      "불을 끄고 핸드블렌더로 갈아요. 하프앤하프와 레몬즙을 섞어 데워요."
+    ],
+    "vegetables": [
+      {
+        "id": "shiitake",
+        "name": "표고버섯"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["shiitake", "onion"],
+    "sourceUrl": "https://foolproofliving.com/shiitake-mushroom-soup/",
+    "sourceName": "Shiitake Mushroom Soup Recipe",
+    "primaryVegetableId": "shiitake",
+    "imageAlt": "표고버섯 크림수프 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-shiitake-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-shiitake-3/02.jpg",
+      "/images/recipes/curated/easy-shiitake-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-shiitake-4",
+    "name": "바삭한 표고버섯 베이컨",
+    "description": "표고버섯을 훈연 향 양념에 구워 바삭하게 만드는 식물성 베이컨.",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "표고버섯",
+        "amount": "썬 것 2컵"
+      },
+      {
+        "name": "식용유",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "타마리 간장",
+        "amount": "2~3작은술"
+      },
+      {
+        "name": "메이플 시럽",
+        "amount": "1.5작은술"
+      },
+      {
+        "name": "리퀴드 스모크",
+        "amount": "1작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "훈연 파프리카 가루",
+        "amount": "1작은술"
+      }
+    ],
+    "steps": [
+      "오븐을 204℃로 예열하고 표고버섯을 손질해 6mm 정도로 썰어요.",
+      "오븐 사용 가능한 팬에 기름을 두르고 버섯과 나머지 양념을 섞어 2~3분 볶아요.",
+      "팬을 오븐으로 옮겨 10~12분 구워 갈색이 나며 바삭해지면 꺼내요. 오븐용 팬이 없으면 베이킹 팬에 펼쳐 구워요."
+    ],
+    "vegetables": [
+      {
+        "id": "shiitake",
+        "name": "표고버섯"
+      }
+    ],
+    "productVegetableIds": ["shiitake"],
+    "sourceUrl": "https://minimalistbaker.com/quick-crispy-shiitake-bacon/comment-page-1/",
+    "sourceName": "Minimalist Baker",
+    "primaryVegetableId": "shiitake",
+    "imageAlt": "바삭한 표고버섯 베이컨 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-shiitake-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-shiitake-4/02.jpg",
+      "/images/recipes/curated/easy-shiitake-4/03.jpg"
+    ]
   },
   {
     "id": "easy-tomato-1",
     "name": "토마토 달걀볶음",
-    "description": "토마토가 주재료인 간단한 집밥 요리",
-    "cookTimeMin": 15,
+    "description": "토마토의 즙과 부드러운 달걀을 함께 볶는 중국식 집밥.",
+    "cookTimeMin": 10,
     "difficulty": "easy",
     "servings": 2,
     "ingredients": [
       {
         "name": "토마토",
-        "amount": "2개"
+        "amount": "450g"
       },
       {
         "name": "달걀",
-        "amount": "2개"
+        "amount": "4개"
       },
       {
         "name": "식용유",
-        "amount": "1큰술"
+        "amount": "1.5큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
       },
       {
         "name": "소금",
-        "amount": "1/4작은술"
+        "amount": "3/4작은술"
       },
       {
         "name": "설탕",
-        "amount": "1/2작은술"
+        "amount": "1작은술"
+      },
+      {
+        "name": "쪽파",
+        "amount": "조금 (선택)"
       }
     ],
     "steps": [
-      "토마토를 씻어 꼭지를 떼고 한입 크기로 썰어요. 달걀에 소금 절반을 넣어 풀어요.",
-      "팬에 기름 절반을 두르고 달걀을 완전히 익혀 덜어 놓아요.",
-      "남은 기름에 토마토·설탕·남은 소금을 넣고 3~4분 볶아요. 달걀을 다시 넣어 가볍게 섞어요."
+      "토마토를 잘라요. 달걀을 풀어 식용유 1큰술을 두른 팬에서 빠르게 볶고 덜어요.",
+      "남은 기름에 다진 마늘과 토마토를 넣고 1~2분 볶아 즙이 나오게 해요.",
+      "달걀을 다시 넣고 소금·설탕을 섞어요. 쪽파를 올려 내요."
     ],
     "vegetables": [
       {
@@ -1149,48 +3044,140 @@
       }
     ],
     "productVegetableIds": ["tomato"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
+    "sourceUrl": "https://omnivorescookbook.com/classic-tomato-and-egg-stir-fry/comment-page-1/",
+    "sourceName": "Maggie Zhu",
     "primaryVegetableId": "tomato",
-    "imageUrl": "/images/recipes/easy-tomato-1.webp"
+    "imageAlt": "토마토 달걀볶음 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-tomato-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-tomato-1/02.jpg",
+      "/images/recipes/curated/easy-tomato-1/03.jpg"
+    ]
   },
   {
     "id": "easy-tomato-2",
-    "name": "토마토 양파샐러드",
-    "description": "토마토가 주재료인 간단한 집밥 요리",
+    "name": "토마토 바질샐러드",
+    "description": "잘 익은 토마토에 바질과 와인 식초를 곁들이는 샐러드.",
     "cookTimeMin": 10,
     "difficulty": "easy",
-    "servings": 2,
+    "servings": 4,
     "ingredients": [
       {
         "name": "토마토",
-        "amount": "2개"
+        "amount": "4개 (약 720g)"
       },
       {
-        "name": "양파",
-        "amount": "1/4개"
+        "name": "다진 샬롯",
+        "amount": "1.5작은술"
       },
       {
-        "name": "올리브유",
-        "amount": "1큰술"
-      },
-      {
-        "name": "식초",
-        "amount": "1큰술"
-      },
-      {
-        "name": "설탕",
+        "name": "다진 마늘",
         "amount": "1/2작은술"
       },
       {
+        "name": "화이트와인 식초",
+        "amount": "1큰술"
+      },
+      {
+        "name": "올리브유",
+        "amount": "3큰술"
+      },
+      {
         "name": "소금",
-        "amount": "1/8작은술"
+        "amount": "3/4작은술"
+      },
+      {
+        "name": "흰 후추",
+        "amount": "두 꼬집"
+      },
+      {
+        "name": "바질",
+        "amount": "1.5큰술"
       }
     ],
     "steps": [
-      "토마토를 씻어 꼭지를 떼고 한입 크기로 썰어요. 양파는 얇게 썰어요.",
-      "양파를 찬물에 5분 담갔다가 물기를 빼요.",
-      "올리브유·식초·설탕·소금을 섞어 토마토와 양파에 가볍게 버무려요."
+      "토마토를 8~10등분하고 바질을 썰어요.",
+      "샬롯·마늘·식초·올리브유·소금·후추를 섞어요.",
+      "토마토와 바질에 드레싱을 버무려 내요."
+    ],
+    "vegetables": [
+      {
+        "id": "tomato",
+        "name": "토마토"
+      }
+    ],
+    "productVegetableIds": ["tomato"],
+    "sourceUrl": "https://www.recipetineats.com/my-favourite-tomato-salad/",
+    "sourceName": "My favourite Tomato Salad",
+    "primaryVegetableId": "tomato",
+    "imageAlt": "토마토 바질샐러드 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-tomato-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-tomato-2/02.jpg",
+      "/images/recipes/curated/easy-tomato-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-tomato-3",
+    "name": "오븐 토마토수프",
+    "description": "토마토와 마늘을 구워 단맛을 끌어낸 수프.",
+    "cookTimeMin": 60,
+    "difficulty": "normal",
+    "servings": 5,
+    "ingredients": [
+      {
+        "name": "토마토",
+        "amount": "1.5kg"
+      },
+      {
+        "name": "통마늘",
+        "amount": "5쪽"
+      },
+      {
+        "name": "올리브유",
+        "amount": "총 3큰술"
+      },
+      {
+        "name": "훈연 파프리카 가루",
+        "amount": "1.5작은술 (선택)"
+      },
+      {
+        "name": "소금",
+        "amount": "1작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "양파",
+        "amount": "1개"
+      },
+      {
+        "name": "채소 육수",
+        "amount": "1L"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2작은술 (선택)"
+      },
+      {
+        "name": "생크림",
+        "amount": "1/2컵 (선택)"
+      },
+      {
+        "name": "바질",
+        "amount": "1/4컵"
+      }
+    ],
+    "steps": [
+      "오븐을 220℃로 예열해요. 자른 토마토·껍질째 마늘에 기름 2큰술·파프리카 가루·소금·후추를 넣어 40~45분 구워요.",
+      "냄비에 남은 기름으로 양파·다진 마늘을 3분 볶아요. 구운 토마토와 껍질 벗긴 마늘·육수를 넣어요.",
+      "핸드블렌더로 갈고 약 10분 끓여요. 필요하면 설탕을 넣고 생크림·바질로 마무리해요."
     ],
     "vegetables": [
       {
@@ -1203,10 +3190,426 @@
       }
     ],
     "productVegetableIds": ["tomato", "onion"],
-    "sourceUrl": "",
-    "sourceName": "못난이마켓",
+    "sourceUrl": "https://www.recipetineats.com/smoky-roasted-tomato-soup/",
+    "sourceName": "Smoky Roasted Tomato Soup",
     "primaryVegetableId": "tomato",
-    "imageUrl": "/images/tomato.jpg",
-    "imageAlt": "토마토 — 토마토 양파샐러드의 주재료"
+    "imageAlt": "오븐 토마토수프 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-tomato-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-tomato-3/02.jpg",
+      "/images/recipes/curated/easy-tomato-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-tomato-4",
+    "name": "토마토 바질 브루스케타",
+    "description": "토마토·바질 토핑을 마늘 향 토스트에 올리는 요리. 토스트 12조각을 2개씩 나누는 기준이에요.",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 6,
+    "ingredients": [
+      {
+        "name": "토마토",
+        "amount": "740g"
+      },
+      {
+        "name": "올리브유",
+        "amount": "1/4컵"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1.5큰술"
+      },
+      {
+        "name": "파르메산 치즈",
+        "amount": "1/4컵"
+      },
+      {
+        "name": "발사믹 식초",
+        "amount": "1큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "3/4작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "바질",
+        "amount": "1/4컵"
+      },
+      {
+        "name": "프렌치 브레드",
+        "amount": "410g (12조각)"
+      }
+    ],
+    "steps": [
+      "기름에 마늘을 약 1분 볶고 큰 볼에 옮겨 식혀요. 토마토를 잘게 썰고 바질을 채 썰어요.",
+      "마늘 기름에 토마토·치즈·발사믹 식초·소금·후추·바질을 넣어 섞어요.",
+      "빵을 1cm 정도로 썰어 오븐 그릴에서 양면을 각각 약 1분 구워요. 타지 않도록 지켜보며 구운 빵에 토핑을 올려요."
+    ],
+    "vegetables": [
+      {
+        "id": "tomato",
+        "name": "토마토"
+      }
+    ],
+    "productVegetableIds": ["tomato"],
+    "sourceUrl": "https://www.cookingclassy.com/bruschetta-recipe/",
+    "sourceName": "Bruschetta",
+    "primaryVegetableId": "tomato",
+    "imageAlt": "토마토 바질 브루스케타 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-tomato-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-tomato-4/02.jpg",
+      "/images/recipes/curated/easy-tomato-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-paprika-1",
+    "name": "파프리카 양파볶음",
+    "description": "파프리카와 양파를 부드럽고 달큰하게 볶는 요리.",
+    "cookTimeMin": 28,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "파프리카",
+        "amount": "4개"
+      },
+      {
+        "name": "적양파",
+        "amount": "1개"
+      },
+      {
+        "name": "양파",
+        "amount": "1개"
+      },
+      {
+        "name": "올리브유",
+        "amount": "2큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1작은술"
+      },
+      {
+        "name": "칠리 가루",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "오레가노",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "식초",
+        "amount": "1큰술"
+      },
+      {
+        "name": "다진 마늘",
+        "amount": "1작은술"
+      }
+    ],
+    "steps": [
+      "파프리카의 씨를 제거해 채 썰고 양파도 채 썰어요.",
+      "팬에 기름을 두르고 채소·소금·칠리·후추·오레가노를 넣어 약 15~17분 볶아요.",
+      "부드럽고 가장자리가 갈색이 되면 식초·마늘을 넣어 1분 더 볶아요."
+    ],
+    "vegetables": [
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["paprika", "onion"],
+    "sourceUrl": "https://www.isabeleats.com/sauteed-peppers-and-onions/",
+    "sourceName": "Sauteed Peppers and Onions",
+    "primaryVegetableId": "paprika",
+    "imageAlt": "파프리카 양파볶음 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-paprika-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-paprika-1/02.jpg",
+      "/images/recipes/curated/easy-paprika-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-paprika-2",
+    "name": "파프리카 샐러드",
+    "description": "달콤한 미니 파프리카와 토마토를 레몬·딜 드레싱에 버무리는 샐러드.",
+    "cookTimeMin": 10,
+    "difficulty": "easy",
+    "servings": 6,
+    "ingredients": [
+      {
+        "name": "파프리카",
+        "amount": "미니 스위트 450g"
+      },
+      {
+        "name": "토마토",
+        "amount": "작은 것 6개"
+      },
+      {
+        "name": "쪽파",
+        "amount": "2줄기"
+      },
+      {
+        "name": "딜",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "마늘",
+        "amount": "1쪽"
+      },
+      {
+        "name": "올리브",
+        "amount": "6~8개"
+      },
+      {
+        "name": "수막 가루",
+        "amount": "1작은술 (선택)"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "레몬",
+        "amount": "1개"
+      },
+      {
+        "name": "올리브유",
+        "amount": "3큰술"
+      }
+    ],
+    "steps": [
+      "미니 파프리카를 링 모양으로 썰고 씨를 제거해요. 토마토·쪽파·딜·올리브도 썰어요.",
+      "레몬즙·기름·다진 마늘·수막·소금·후추를 섞어요.",
+      "채소에 드레싱을 버무려요. 시간이 있으면 20분 재워 맛이 스며들게 해도 좋아요."
+    ],
+    "vegetables": [
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      },
+      {
+        "id": "tomato",
+        "name": "토마토"
+      }
+    ],
+    "productVegetableIds": ["paprika", "tomato"],
+    "sourceUrl": "https://www.themediterraneandish.com/bell-pepper-salad-with-mini-sweet-peppers/",
+    "sourceName": "Bell Pepper Salad",
+    "primaryVegetableId": "paprika",
+    "imageAlt": "파프리카 샐러드 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-paprika-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-paprika-2/02.jpg",
+      "/images/recipes/curated/easy-paprika-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-paprika-3",
+    "name": "멕시칸 파프리카 라이스구이",
+    "description": "파프리카에 소고기·밥·옥수수를 채우고 치즈를 올려 굽는 요리.",
+    "cookTimeMin": 110,
+    "difficulty": "normal",
+    "servings": 5,
+    "ingredients": [
+      {
+        "name": "파프리카",
+        "amount": "큰 것 5개"
+      },
+      {
+        "name": "올리브유",
+        "amount": "1큰술"
+      },
+      {
+        "name": "양파",
+        "amount": "1개"
+      },
+      {
+        "name": "마늘",
+        "amount": "3쪽"
+      },
+      {
+        "name": "소고기 다짐육",
+        "amount": "350g"
+      },
+      {
+        "name": "토마토 페이스트",
+        "amount": "1/4컵"
+      },
+      {
+        "name": "육수",
+        "amount": "315ml"
+      },
+      {
+        "name": "쌀",
+        "amount": "생쌀 1/2컵"
+      },
+      {
+        "name": "옥수수알",
+        "amount": "1컵"
+      },
+      {
+        "name": "쪽파",
+        "amount": "1컵"
+      },
+      {
+        "name": "모차렐라 치즈",
+        "amount": "150g"
+      },
+      {
+        "name": "물",
+        "amount": "125ml"
+      },
+      {
+        "name": "카옌페퍼",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "오레가노",
+        "amount": "1큰술"
+      },
+      {
+        "name": "커민 가루",
+        "amount": "2작은술"
+      },
+      {
+        "name": "고수 가루",
+        "amount": "2작은술"
+      },
+      {
+        "name": "양파 가루",
+        "amount": "1.5작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "3/4작은술"
+      }
+    ],
+    "steps": [
+      "오븐을 180℃로 예열해요. 파프리카 윗부분을 잘라 씨를 비워요.",
+      "팬에 기름을 두르고 양파·마늘을 볶다가 소고기를 익혀요. 향신료·토마토 페이스트를 볶고 쌀·육수를 넣어 13~15분 익혀요.",
+      "옥수수·쪽파를 섞은 속을 파프리카에 채워요. 내열 팬 바닥에 물을 붓고 호일을 덮어 45분 구워요.",
+      "호일을 걷고 치즈를 올려 5~10분 더 구워요."
+    ],
+    "vegetables": [
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      },
+      {
+        "id": "onion",
+        "name": "양파"
+      }
+    ],
+    "productVegetableIds": ["paprika", "onion"],
+    "sourceUrl": "https://www.recipetineats.com/mexican-stuffed-peppers/",
+    "sourceName": "Mexican Stuffed Peppers",
+    "primaryVegetableId": "paprika",
+    "imageAlt": "멕시칸 파프리카 라이스구이 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-paprika-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-paprika-3/02.jpg",
+      "/images/recipes/curated/easy-paprika-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-paprika-4",
+    "name": "구운 파프리카 크림파스타",
+    "description": "구운 파프리카와 염소 치즈를 넣은 오르조 파스타. 원문은 병에 든 구운 파프리카를 사용해요.",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "파프리카",
+        "amount": "구운 것 310g"
+      },
+      {
+        "name": "오르조 파스타",
+        "amount": "250g"
+      },
+      {
+        "name": "파스타 삶는 소금",
+        "amount": "2작은술"
+      },
+      {
+        "name": "올리브유",
+        "amount": "2큰술"
+      },
+      {
+        "name": "적양파",
+        "amount": "1개"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "토마토 파사타",
+        "amount": "500ml"
+      },
+      {
+        "name": "올리브",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "염소 치즈",
+        "amount": "120g"
+      },
+      {
+        "name": "바질",
+        "amount": "1컵"
+      },
+      {
+        "name": "파슬리",
+        "amount": "1큰술"
+      }
+    ],
+    "steps": [
+      "소금물에 오르조를 약 8분 삶고 면수 1/2컵을 남겨요. 구운 파프리카와 양파를 썰어요.",
+      "팬에 기름을 두르고 양파·마늘을 2분, 파프리카를 넣어 2분 더 볶아요.",
+      "파사타·올리브·소금·후추를 넣어 5분 끓이고 파스타·면수·치즈를 섞어요. 치즈가 녹으면 바질·파슬리를 넣어요."
+    ],
+    "vegetables": [
+      {
+        "id": "paprika",
+        "name": "파프리카"
+      }
+    ],
+    "productVegetableIds": ["paprika"],
+    "sourceUrl": "https://www.recipetineats.com/creamy-goat-cheese-roasted-red-pepper-risoni-orzo/",
+    "sourceName": "Creamy Goat Cheese & Roasted Red Pepper Risoni (Orzo)",
+    "primaryVegetableId": "paprika",
+    "imageAlt": "구운 파프리카 크림파스타 완성 요리",
+    "imageUrl": "/images/recipes/curated/easy-paprika-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-paprika-4/02.jpg",
+      "/images/recipes/curated/easy-paprika-4/03.jpg"
+    ]
   }
 ]

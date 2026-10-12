@@ -15,7 +15,8 @@ export function ProductImageRotator({
   priority?: boolean;
 }) {
   const [index, setIndex] = useState(0);
-  const [interacting, setInteracting] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
   const [visible, setVisible] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const current = index % (images.length || 1);
@@ -29,8 +30,8 @@ export function ProductImageRotator({
     );
     observer.observe(element);
     const link = element.closest("a");
-    const focus = () => setInteracting(true);
-    const blur = () => setInteracting(false);
+    const focus = () => setFocused(true);
+    const blur = () => setFocused(false);
     link?.addEventListener("focus", focus);
     link?.addEventListener("blur", blur);
     return () => {
@@ -41,7 +42,7 @@ export function ProductImageRotator({
   }, []);
 
   useEffect(() => {
-    if (images.length < 2 || interacting || !visible) return;
+    if (images.length < 2 || hovered || focused || !visible) return;
     const timer = window.setInterval(() => {
       if (
         document.hidden ||
@@ -51,19 +52,19 @@ export function ProductImageRotator({
       setIndex((previous) => (previous + 1) % images.length);
     }, 4000);
     return () => window.clearInterval(timer);
-  }, [images.length, interacting, visible]);
+  }, [images.length, hovered, focused, visible]);
 
   return (
     <div
       ref={root}
       className="relative"
       data-product-image-index={current + 1}
-      onMouseEnter={() => setInteracting(true)}
-      onMouseLeave={() => setInteracting(false)}
-      onFocusCapture={() => setInteracting(true)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setFocused(true)}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget))
-          setInteracting(false);
+          setFocused(false);
       }}
     >
       <SafeImage

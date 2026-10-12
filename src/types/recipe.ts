@@ -40,6 +40,7 @@ export type RecipeProduct = Pick<
 >;
 
 export interface Recipe {
+  replacesRecipeId?: string; // 편집 레시피가 대체하여 화면에서 제외할 기존 레시피
   photoReference?: {
     generated?: boolean;
     source: string;

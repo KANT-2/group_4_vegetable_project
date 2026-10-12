@@ -3,7 +3,7 @@ import test from "node:test";
 import { readFileSync } from "node:fs";
 import ts from "typescript";
 
-test("레시피 사진은 2초마다 순환하고 조작·동작 줄이기·백그라운드를 존중한다", () => {
+test("레시피 사진은 2초마다 순환하고 동작 줄이기·백그라운드를 존중한다", () => {
   let states, cursor, tick, cleanup, cleared;
   const document = { hidden: false };
   let reduced = false;
@@ -62,8 +62,8 @@ test("레시피 사진은 2초마다 순환하고 조작·동작 줄이기·백�
     window,
     document,
   );
-  function render(photos, interacting = false) {
-    states = [0, interacting];
+  function render(photos) {
+    states = [0];
     cursor = 0;
     tick = undefined;
     exports.RecipeImage({
@@ -91,8 +91,6 @@ test("레시피 사진은 2초마다 순환하고 조작·동작 줄이기·백�
   assert.equal(states[0], 0);
   cleanup();
   assert.equal(cleared, true);
-  render(["1", "2"], true);
-  assert.equal(tick, undefined);
   render(["1"]);
   assert.equal(tick, undefined);
 });

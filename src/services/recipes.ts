@@ -23,7 +23,7 @@ import {
 } from "@/lib/recipe-catalog";
 const easyCatalog = easyRecipes.map((recipe): CatalogRecipe => ({
   ...recipe,
-  difficulty: "easy",
+  difficulty: recipe.difficulty as CatalogRecipe["difficulty"],
 }));
 import { withRecipePhoto } from "@/lib/recipe-photos";
 import { products as mockProducts } from "@/data/mock/products";

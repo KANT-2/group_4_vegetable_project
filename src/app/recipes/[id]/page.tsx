@@ -6,6 +6,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon } from "@/components/common/Icons";
 import { ProductPreviewCard } from "@/components/common/ProductPreviewCard";
+import { ZoomableRecipePhoto } from "@/components/recipes/ZoomableRecipePhoto";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { RecipeImage } from "@/components/recipes/RecipeImage";
 import { RecipeIngredients } from "@/components/recipes/RecipeIngredients";
@@ -47,6 +48,13 @@ export default async function RecipeDetailPage({
 }) {
   const recipe = await loadRecipe(params);
   if (!recipe) notFound();
+  const photos = [
+    ...new Set(
+      [recipe.imageUrl, ...(recipe.additionalImageUrls ?? [])].filter(
+        (src): src is string => Boolean(src),
+      ),
+    ),
+  ];
 
   return (
     <div className="container-page py-6 md:py-10">
@@ -76,14 +84,34 @@ export default async function RecipeDetailPage({
         </ol>
       </nav>
 
-      <div className="mt-4 grid gap-6 md:grid-cols-2 md:items-center md:gap-10">
-        <RecipeImage
-          recipe={recipe}
-          priority
-          className="aspect-[4/3] w-full rounded-card object-cover"
-        />
-        <div className="space-y-5">
-          <h1 className="page-title">{recipe.name}</h1>
+      <section aria-labelledby="recipe-title" className="mt-4">
+        <h1
+          id="recipe-title"
+          className="page-title mb-6 text-center md:mb-8 md:text-4xl"
+        >
+          {recipe.name}
+        </h1>
+        {photos.length > 1 ? (
+          <div className="grid grid-cols-3 gap-2 md:gap-4">
+            {photos.map((src, index) => (
+              <ZoomableRecipePhoto
+                key={src}
+                src={src}
+                alt={`${recipe.name} 사진 ${index + 1}`}
+              />
+            ))}
+          </div>
+        ) : (
+          <RecipeImage
+            recipe={recipe}
+            priority
+            className="aspect-[4/3] max-h-[32rem] w-full rounded-card object-cover"
+          />
+        )}
+        <p className="mt-6 leading-relaxed text-ink-muted">
+          {recipe.description}
+        </p>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-line pb-6">
           <RecipeMeta recipe={recipe} size="lg" />
           {recipe.sourceUrl && (
             <a
@@ -100,7 +128,7 @@ export default async function RecipeDetailPage({
             목록으로 돌아가기
           </Link>
         </div>
-      </div>
+      </section>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[22rem_1fr] lg:gap-14">
         <section
