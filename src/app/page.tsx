@@ -1,4 +1,3 @@
-import { RecipePhotoCredits } from "@/components/recipes/RecipePhotoCredits";
 // 메인 화면 / (A 담당)
 // 구성: 짧은 소개 → 추천 농산물(첫 화면에 보이도록) → 채소로 찾기 → 추천 레시피 → 농가 이야기 → 우리 이야기 안내
 // 서비스 가치·이용 흐름 같은 긴 소개는 /story 의 "우리 이야기"로 옮겼어요. 휴대폰 첫 화면에서 상품이 먼저 보이게 하기 위해서예요.
@@ -18,8 +17,17 @@ import { ProductPreviewCard } from "@/components/common/ProductPreviewCard";
 import { SafeImage } from "@/components/common/SafeImage";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { routes } from "@/lib/routes";
-import { getRecipes, getRecipeVegetableOptions } from "@/services/recipes";
+import { getRecipes } from "@/services/recipes";
 import { getFarmStories } from "@/services/showcase";
+
+const HOME_VEGETABLE_LINKS = [
+  { id: "carrot", name: "당근", emoji: "🥕" },
+  { id: "aehobak", name: "애호박", emoji: "🥒" },
+  { id: "onion", name: "양파", emoji: "🧅" },
+  { id: "paprika", name: "파프리카", emoji: "🫑" },
+  { id: "potato", name: "감자", emoji: "🥔" },
+  { id: "other", name: "기타", emoji: "🧺" },
+];
 
 const HOME_RECIPE_COUNT = 3;
 const HOME_FARM_COUNT = 3;
@@ -28,14 +36,13 @@ const HOME_FARM_COUNT = 3;
 export const revalidate = 300;
 
 export default async function HomePage() {
-  const [catalogProducts, farms, recipes, vegetables] = await Promise.all([
+  const [catalogProducts, farms, recipes] = await Promise.all([
     getProductList({ sort: "recommended" }),
     getFarmStories(),
     getRecipes(),
-    getRecipeVegetableOptions(),
   ]);
 
-  const hasVegetablePage = vegetables.some((vegetable) =>
+  const hasVegetablePage = HOME_VEGETABLE_LINKS.some((vegetable) =>
     routes.vegetable(vegetable.id),
   );
 
@@ -95,7 +102,7 @@ export default async function HomePage() {
       )}
 
       {/* 4. 채소로 찾기 */}
-      {vegetables.length > 0 && (
+      {HOME_VEGETABLE_LINKS.length > 0 && (
         <section aria-labelledby="vegetables-title" className="bg-sand/50">
           <div className="container-page section">
             <h2 id="vegetables-title" className="section-title">
@@ -104,28 +111,32 @@ export default async function HomePage() {
                 : "채소로 레시피 찾기"}
             </h2>
             <ul className="mt-6 grid grid-cols-3 gap-x-3 gap-y-6 sm:grid-cols-6">
-              {vegetables.map((vegetable) => (
+              {HOME_VEGETABLE_LINKS.map((vegetable) => (
                 <li key={vegetable.id}>
                   <Link
                     href={
-                      routes.vegetable(vegetable.id) ??
-                      routes.recipesByVegetable(vegetable.id)
+                      vegetable.id === "other"
+                        ? (routes.productList ?? routes.recipes)
+                        : (routes.vegetable(vegetable.id) ??
+                          routes.recipesByVegetable(vegetable.id))
                     }
                     className="group flex min-h-12 flex-col items-center gap-2 text-center"
                   >
-                    <SafeImage
-                      src={vegetable.imageUrl}
-                      alt=""
-                      placeholderText=""
-                      className="size-20 rounded-full border border-line object-cover sm:size-24"
-                    />
+                    <span
+                      aria-hidden="true"
+                      className="flex size-20 items-center justify-center rounded-full border border-line bg-sand text-4xl transition-colors group-hover:bg-brand-soft group-focus-visible:bg-brand-soft sm:size-24 sm:text-5xl"
+                    >
+                      {vegetable.emoji}
+                    </span>
                     <span className="font-bold group-hover:text-brand">
                       {vegetable.name}
                     </span>
                     <span className="sr-only">
-                      {routes.vegetable(vegetable.id)
-                        ? "채소 정보 보기"
-                        : "레시피 보기"}
+                      {vegetable.id === "other"
+                        ? "전체 농산물 보기"
+                        : routes.vegetable(vegetable.id)
+                          ? "채소 정보 보기"
+                          : "레시피 보기"}
                     </span>
                   </Link>
                 </li>
@@ -157,7 +168,6 @@ export default async function HomePage() {
                 </li>
               ))}
             </ul>
-            <RecipePhotoCredits recipes={recipes.slice(0, HOME_RECIPE_COUNT)} />
             <div className="mt-8 text-center">
               <Link href={routes.recipes} className="btn btn-primary">
                 전체 레시피 보기

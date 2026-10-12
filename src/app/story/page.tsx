@@ -1,4 +1,5 @@
 import farmPhotos from "@/data/farm-photo-assets.json";
+import { getFarmPhoto } from "@/lib/farm-photo";
 // 농가 이야기 /story (A 담당)
 // 농가·농산물 정보는 상품 데이터(B)에서 가져와 농가별로 묶어 보여줘요. (services/showcase.ts)
 // 실제 농가 자료가 아닌 개발용 예시일 때는 화면에 그렇게 표시돼요.
@@ -139,12 +140,9 @@ export default async function StoryPage() {
         {farms.length > 0 ? (
           <>
             <ul className="mt-5 grid gap-5 md:grid-cols-2">
-              {farms.slice(0, VISIBLE_FARMS).map((farm, index) => (
+              {farms.slice(0, VISIBLE_FARMS).map((farm) => (
                 <li key={farm.farmName}>
-                  <FarmCard
-                    farm={farm}
-                    photo={farmPhotos[index % farmPhotos.length]}
-                  />
+                  <FarmCard farm={farm} />
                 </li>
               ))}
             </ul>
@@ -158,16 +156,9 @@ export default async function StoryPage() {
                   <span className="hidden group-open:inline">접기</span>
                 </summary>
                 <ul className="mt-5 grid gap-5 md:grid-cols-2">
-                  {farms.slice(VISIBLE_FARMS).map((farm, index) => (
+                  {farms.slice(VISIBLE_FARMS).map((farm) => (
                     <li key={farm.farmName}>
-                      <FarmCard
-                        farm={farm}
-                        photo={
-                          farmPhotos[
-                            (index + VISIBLE_FARMS) % farmPhotos.length
-                          ]
-                        }
-                      />
+                      <FarmCard farm={farm} />
                     </li>
                   ))}
                 </ul>
@@ -180,40 +171,6 @@ export default async function StoryPage() {
           </p>
         )}
       </section>
-
-      <div className="container-page">
-        <details className="rounded-card border border-line bg-surface p-4 text-xs text-ink-muted">
-          <summary className="cursor-pointer py-1 font-bold">사진 출처</summary>
-          <p className="mt-3">
-            실제 한국 농촌·농작업 사진을 사용했습니다. 소개된 시연 농가의
-            인물이나 현장을 촬영한 사진은 아닙니다.
-          </p>
-          <ul className="mt-3 space-y-2">
-            {farmPhotos.map((photo) => (
-              <li key={photo.source}>
-                <a
-                  href={photo.source}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  {photo.title}
-                </a>{" "}
-                · {photo.author} ·{" "}
-                <a
-                  href={photo.licenseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  {photo.license}
-                </a>{" "}
-                · WebP 축소 / 화면 크롭
-              </li>
-            ))}
-          </ul>
-        </details>
-      </div>
 
       <section
         id="about"
@@ -322,14 +279,9 @@ export default async function StoryPage() {
   );
 }
 
-async function FarmCard({
-  farm,
-  photo,
-}: {
-  farm: FarmStory;
-  photo: (typeof farmPhotos)[number];
-}) {
+async function FarmCard({ farm }: { farm: FarmStory }) {
   const lead = farm.products[0];
+  const photo = getFarmPhoto(farm);
   // 이 농가의 채소로 만들 수 있는 레시피 (같은 레시피는 한 번만)
   const recipeLists = await Promise.all(
     [...new Set(farm.products.map((product) => product.vegetableId))].map(
@@ -346,7 +298,7 @@ async function FarmCard({
     <article className="card h-full overflow-hidden">
       <SafeImage
         src={photo.imageUrl}
-        alt="한국 농촌의 농작업 또는 농장 풍경"
+        alt={photo.alt}
         className="h-60 w-full object-cover sm:h-72"
       />
       <div className="space-y-4 p-5 sm:p-6">

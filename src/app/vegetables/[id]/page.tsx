@@ -1,4 +1,3 @@
-import { RecipePhotoCredits } from "@/components/recipes/RecipePhotoCredits";
 import BackLink from "@/components/products/BackLink";
 import Link from "next/link";
 import { SafeImage } from "@/components/common/SafeImage";
@@ -114,7 +113,6 @@ export default async function VegetablePage({
               </li>
             ))}
           </ul>
-          <RecipePhotoCredits recipes={recipes.slice(0, 3)} />
         </section>
       )}
 

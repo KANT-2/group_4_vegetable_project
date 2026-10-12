@@ -16,6 +16,10 @@ export interface CatalogRecipe {
   productVegetableIds: string[];
   sourceUrl: string;
   sourceName: string;
+  primaryVegetableId?: string;
+  imageAlt?: string;
+  imageUrl?: string;
+  photoReference?: Recipe["photoReference"];
 }
 
 export function connectCatalogRecipes(

@@ -25,6 +25,7 @@ function formatValue(row: Row, profile: NutritionProfile) {
   const value = row.value(profile);
   if (value !== null) return `${value}${row.unit}`;
   if (row.label === "지방" && profile.fatIsTrace) return "미량";
+  if (row.label === "비타민 C" && profile.vitaminCIsTrace) return "미량";
   return "-";
 }
 
@@ -44,7 +45,13 @@ export default function NutritionCard({
         <p className="mt-2 text-sm text-ink-muted">영양 정보 준비 중이에요.</p>
       ) : (
         <>
-          <p className="mt-1 text-xs text-ink-muted">100g당</p>
+          <p className="mt-1 text-xs text-ink-muted">
+            100g당
+            {/* 한 종류뿐이면 머리글 대신 어떤 품종 기준인지 한 줄로 */}
+            {!showHeader && varietyLabel(profiles[0].variety) && (
+              <> · {varietyLabel(profiles[0].variety)} 기준</>
+            )}
+          </p>
           <div className="mt-3 overflow-x-auto">
             <table className="w-full text-sm">
               {showHeader && (

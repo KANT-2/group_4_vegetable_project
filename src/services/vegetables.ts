@@ -1,5 +1,6 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
+import { createPublicSupabaseClient } from "@/lib/supabase/public";
 import { vegetables as mockVegetables } from "@/data/mock/vegetables";
 import { vegetableCategorySchema } from "@/schemas/vegetable";
 import type { Database } from "@/types/database";
@@ -22,10 +23,12 @@ export function toVegetable(row: VegetableRow): Vegetable {
   };
 }
 
-export async function getVegetables(): Promise<Vegetable[]> {
+async function loadVegetables(publicOnly = false): Promise<Vegetable[]> {
   if (isMockCatalog()) return mockVegetables;
 
-  const supabase = await createClient();
+  const supabase = publicOnly
+    ? createPublicSupabaseClient()
+    : await createClient();
   const { data, error } = await supabase.from("vegetables").select("*");
   if (error) throw new Error("채소 정보를 불러오지 못했어요.");
   return data.map(toVegetable);
@@ -42,4 +45,12 @@ export async function getVegetableById(id: string): Promise<Vegetable | null> {
     .maybeSingle();
   if (error) throw new Error("채소 정보를 불러오지 못했어요.");
   return data ? toVegetable(data) : null;
+}
+
+export async function getVegetables(): Promise<Vegetable[]> {
+  return loadVegetables();
+}
+
+export async function getPublicVegetables(): Promise<Vegetable[]> {
+  return loadVegetables(true);
 }
