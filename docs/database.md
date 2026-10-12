@@ -22,6 +22,10 @@ DB 생성 담당은 C 이상재입니다. 하나의 Supabase 프로젝트에서 
 
 **2026-10-08 적용 완료:** `.env.local`과 일치하는 `vegetable` 프로젝트에 로그인된 Dashboard의 SQL Editor로 프로필·공통 테이블·B의 catalog seed를 한 트랜잭션으로 적용했습니다. 적용 전 public 테이블이 없는 것을 확인했고 적용 후 테이블 9개·RLS 활성화 9개·채소 12개·상품 16개·레시피 0개를 확인했습니다. 공개 키의 상품·채소 조회도 성공했으며 개인 테이블 5개는 비로그인 접근이 거부됐습니다. [검증 화면](screenshots/supabase-db-setup.png)을 참고합니다.
 
+**2026-10-08 B 적용:** B 심우섭이 SQL Editor로 catalog seed를 다시 적용해 채소 21종·상품 67개를 확인했습니다. 구조 변경은 없습니다.
+
+**2026-10-11 B 적용:** B 심우섭이 SQL Editor로 `202610110002_product_display_fields.sql`과 catalog seed를 순서대로 적용했습니다. 적용 전 `products.tagline`은 이미 있었고(값 없음, 출처 migration 없음) `rating`·`review_count`는 없었습니다. migration은 이미 있는 컬럼을 건너뛰도록 작성했습니다. 적용 후 상품 67개 모두 tagline·rating이 채워졌고 CHECK 제약 3개가 추가된 것을 확인했습니다. 별점·리뷰 수는 시연용 가상 데이터입니다.
+
 아래 초기 생성 SQL은 이미 적용했으므로 현재 공유 DB에서 다시 실행하지 않습니다. 이후 구조 변경은 새 migration으로 작성하며 공유 DB를 reset하지 않습니다. Supabase CLI는 아직 연결하지 않았고 SQL Editor 실행은 CLI migration 이력에 자동 등록되지 않으므로, 향후 CLI 도입 시 원격 스키마와 적용 이력을 먼저 맞춘 뒤 db push를 사용합니다.
 
 Supabase Dashboard의 프로젝트 → SQL Editor에서 아래 순서로 파일 내용을 각각 실행합니다.

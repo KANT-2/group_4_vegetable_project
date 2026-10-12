@@ -38,6 +38,8 @@ export interface Product {
   isSeasonal: boolean; // 제철 상품인가요?
   isFeatured: boolean; // 메인 "추천 상품"에 보여줄까요?
   isActive: boolean; // 지금 판매 중인가요?
+  rating?: number; // 시연용 가상 평균 별점 0~5 (없어도 됨)
+  reviewCount: number; // 시연용 가상 리뷰 수
 }
 
 // 상품 목록 화면에서 쓰는 모양: 상품 + 채소 분류(필터용)

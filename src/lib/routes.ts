@@ -3,9 +3,9 @@
 // B가 해당 화면을 main에 합치면 아래 값을 true 로 바꿔 주세요. (docs/handoff-A.md 참고)
 
 const PAGE_READY = {
-  productList: false, // /products
-  productDetail: false, // /products/[id]
-  vegetableDetail: false, // /vegetables/[id]
+  productList: true, // /products
+  productDetail: true, // /products/[id]
+  vegetableDetail: true, // /vegetables/[id]
 };
 
 // C의 개인 화면이 연결되면 해당 값을 true로 바꿉니다.
