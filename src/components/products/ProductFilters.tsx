@@ -70,7 +70,7 @@ export default function ProductFilters({
 
   return (
     <div className="flex flex-col gap-2">
-      {/* 분류 + 못난이 이유: 모바일에서는 한 줄로 옆으로 밀어서 봐요 */}
+      {/* 분류 + 못난이 이유를 한 줄로: 모바일은 옆으로 밀어서, 큰 화면은 넘치면 다음 줄로 */}
       <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
         <Chip
           href={catalogHref(filters, { category: undefined })}
