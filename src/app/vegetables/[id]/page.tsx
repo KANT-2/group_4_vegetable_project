@@ -1,3 +1,4 @@
+import BackLink from "@/components/products/BackLink";
 import Link from "next/link";
 import { SafeImage } from "@/components/common/SafeImage";
 import { notFound } from "next/navigation";
@@ -40,12 +41,7 @@ export default async function VegetablePage({
 
   return (
     <div className="container-page pb-12 pt-4">
-      <Link
-        href="/products"
-        className="inline-flex h-12 items-center text-sm text-ink-muted hover:text-ink"
-      >
-        ← 상품 목록
-      </Link>
+      <BackLink fallbackHref="/products" />
 
       {/* 채소 소개 */}
       <section className="flex flex-col gap-5 rounded-card bg-surface p-5 ring-1 ring-line sm:flex-row sm:items-center sm:p-6">
