@@ -225,10 +225,10 @@ export default async function FarmDetailPage({
           </h2>
           <dl className="mt-5 divide-y divide-line border-y border-line">
             {[
-              ["🌍 땅과 날씨", detail.land],
-              ["🌱 이렇게 키워요", detail.growing],
-              ["🥕 모양이 제각각인 이유", detail.ugly],
-              ["🍳 맛있게 먹는 법", detail.eat],
+              ["땅과 날씨", detail.land],
+              ["이렇게 키워요", detail.growing],
+              ["모양이 제각각인 이유", detail.ugly],
+              ["맛있게 먹는 법", detail.eat],
             ].map(([term, body]) => (
               <div
                 key={term}
@@ -313,7 +313,8 @@ export default async function FarmDetailPage({
       {others.length > 0 && (
         <HomeShelf
           id="other-farms"
-          title="🌾 다른 농가 이야기"
+          eyebrow="MORE FARMS"
+          title="다른 농가 이야기"
           sub="다른 지역 농가도 만나보세요"
           href={routes.story}
         >

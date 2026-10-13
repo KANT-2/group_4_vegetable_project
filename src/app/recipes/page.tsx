@@ -26,7 +26,7 @@ export default function RecipesPage({
     <div className="container-page pb-10 pt-6 md:py-16">
       <header>
         <PageHeading
-          emoji="🥕"
+          eyebrow="RECIPE"
           title="못난이 채소 레시피"
           description="못난이 농산물로 만드는 간단한 집밥 레시피예요."
         />

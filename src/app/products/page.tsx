@@ -85,7 +85,7 @@ export default async function ProductsPage({
 
       {collection && (
         <PageHeading
-          emoji={collection.emoji}
+          eyebrow={collection.eyebrow}
           title={collection.title}
           description={collection.description}
           className="mt-6 md:mt-8"
@@ -97,7 +97,7 @@ export default async function ProductsPage({
           {sections.map((s, i) => (
             <ProductSection
               key={s.key}
-              emoji={s.emoji}
+              eyebrow={s.eyebrow}
               title={s.title}
               description={s.description}
               products={s.products}
@@ -105,7 +105,9 @@ export default async function ProductsPage({
               preloadFirst={i === 0}
             />
           ))}
-          <h2 className="mt-12 text-xl font-bold text-ink">전체 상품</h2>
+          <h2 className="mt-12 text-xl font-extrabold tracking-[-0.02em] text-ink">
+            전체 상품
+          </h2>
         </div>
       )}
 
