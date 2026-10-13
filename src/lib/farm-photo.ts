@@ -143,8 +143,8 @@ const FARM_PHOTOS: Record<string, FarmPhoto> = {
     alt: "줄지어 자라는 배추 포기",
   },
   "김제 유리온실": {
-    imageUrl: "/images/farms/paprika-hydroponic.webp",
-    alt: "온실에서 수경재배로 키우는 파프리카",
+    imageUrl: "/images/farms/paprika-red-greenhouse.webp",
+    alt: "온실에서 빨갛게 익어 가는 파프리카",
   },
   "경주 단호박농장": {
     imageUrl: "/images/farms/pumpkin-field.webp",
