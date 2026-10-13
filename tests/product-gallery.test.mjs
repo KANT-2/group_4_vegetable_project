@@ -7,10 +7,11 @@ import { products } from "../src/data/mock/products.ts";
 import selected from "../src/data/product-photo-overrides.json" with { type: "json" };
 import sources from "../docs/product-photo-sources-20261013.json" with { type: "json" };
 
-test("67개 판매 상품은 서로 다른 대표사진과 상품별 사진 구성을 갖는다", async () => {
+test("67개 상품은 대표사진·구성이 다르고 서로 다른 농가는 보조사진도 공유하지 않는다", async () => {
   const hashes = new Map();
   const primaryHashes = new Set();
   const combinations = new Set();
+  const photoFarms = new Map();
   const active = products.filter((p) => p.isActive);
   assert.deepEqual(
     Object.keys(selected).sort(),
@@ -46,6 +47,15 @@ test("67개 판매 상품은 서로 다른 대표사진과 상품별 사진 구�
       product.id,
     );
     primaryHashes.add(hashes.get(photos[0]));
+    for (const path of photos) {
+      const hash = hashes.get(path);
+      const farm = photoFarms.get(hash);
+      assert.ok(
+        !farm || farm === product.farmName,
+        `${product.id}: ${farm}와 ${product.farmName}이 같은 사진을 사용합니다 (${path})`,
+      );
+      photoFarms.set(hash, product.farmName);
+    }
     combinations.add(
       photos
         .map((path) => hashes.get(path))
@@ -80,6 +90,17 @@ test("상품 사진 출처 기록은 품목·파일 해시·연결 상품과 일
         source.vegetableId,
       );
     }
+    assert.deepEqual(
+      source.farmNames,
+      [
+        ...new Set(
+          source.productIds.map(
+            (id) => products.find((p) => p.id === id).farmName,
+          ),
+        ),
+      ].sort(),
+    );
+    assert.equal(source.farmNames.length, 1);
     if (source.sourceKind === "pinterest") {
       assert.match(source.pinUrl, /^https:\/\/[a-z.]*pinterest\.com\/pin\//);
       assert.match(source.pinterestImageUrl, /^https:\/\/i\.pinimg\.com\//);
@@ -87,8 +108,13 @@ test("상품 사진 출처 기록은 품목·파일 해시·연결 상품과 일
       assert.ok(Math.max(source.width, source.height) >= 400);
     }
   }
-  for (const row of sources.products)
+  for (const row of sources.products) {
     assert.deepEqual(row.images, selected[row.productId]);
+    assert.equal(
+      row.farmName,
+      products.find((p) => p.id === row.productId).farmName,
+    );
+  }
 });
 
 test("Supabase 사진과 로컬 사진의 파일명이 같으면 같은 장을 중복 추가하지 않는다", () => {

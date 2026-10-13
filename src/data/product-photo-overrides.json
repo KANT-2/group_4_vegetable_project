@@ -1,52 +1,52 @@
 {
   "carrot-bent-1kg": [
     "/images/products/curated/carrot/10227c95bcc0.jpg",
-    "/images/products/curated/carrot/c895193ee3f7.jpg",
+    "/images/carrot-bulk.jpg",
     "/images/carrot.jpg"
   ],
   "carrot-irregular-3kg": [
     "/images/products/curated/carrot/ad7d057dce8e.jpg",
-    "/images/products/curated/carrot/10227c95bcc0.jpg",
+    "/images/products/curated/carrot/c895193ee3f7.jpg",
     "/images/products/curated/carrot/2273c0fef582.jpg"
   ],
   "carrot-scratched-2kg": [
     "/images/carrot-scratched.jpg",
     "/images/carrot-bulk.jpg",
-    "/images/products/curated/carrot/dbfee2ede1e9.jpg"
+    "/images/carrot.jpg"
   ],
   "apple-scratched-2kg": [
     "/images/apple-irregular.jpg",
     "/images/products/curated/apple/18539ff5c719.jpg",
-    "/images/products/curated/apple/ec1b2d140b49.jpg"
+    "/images/products/curated/apple/2d191fdad108.jpg"
   ],
   "apple-small-3kg": [
     "/images/apple-small.jpg",
     "/images/apple.jpg",
-    "/images/apple-irregular.jpg"
+    "/images/products/curated/apple/7dfc1c25c871.jpg"
   ],
   "apple-irregular-2kg": [
     "/images/products/curated/apple/ec1b2d140b49.jpg",
-    "/images/apple-irregular.jpg",
+    "/images/apple-small.jpg",
     "/images/apple.jpg"
   ],
   "shiitake-irregular-500g": [
     "/images/products/curated/shiitake/975a61d3b0e8.jpg",
-    "/images/shiitake-scratched.jpg",
+    "/images/products/curated/shiitake/3685f5f4cedc.jpg",
     "/images/shiitake.jpg"
   ],
   "shiitake-small-300g": [
     "/images/shiitake-small.jpg",
     "/images/products/curated/shiitake/975a61d3b0e8.jpg",
-    "/images/shiitake-scratched.jpg"
+    "/images/products/curated/shiitake/3685f5f4cedc.jpg"
   ],
   "shiitake-scratched-1kg": [
     "/images/shiitake-scratched.jpg",
     "/images/products/curated/shiitake/5a4074a57aa4.jpg",
-    "/images/shiitake-small.jpg"
+    "/images/products/curated/shiitake/887ffb00b02d.jpg"
   ],
   "cabbage-small-1ea": [
     "/images/products/curated/cabbage/2a00d282d40f.jpg",
-    "/images/products/curated/cabbage/8d64d5a8c26d.jpg",
+    "/images/cabbage-scratched.jpg",
     "/images/products/curated/cabbage/cd446b091035.jpg"
   ],
   "cabbage-scratched-1ea": [
@@ -57,7 +57,7 @@
   "cabbage-irregular-2ea": [
     "/images/cabbage-irregular.jpg",
     "/images/products/curated/cabbage/8d64d5a8c26d.jpg",
-    "/images/cabbage.jpg"
+    "/images/products/curated/cabbage/41fb4888a543.jpg"
   ],
   "paprika-irregular-4ea": [
     "/images/products/curated/paprika/52c6606c33d3.jpg",
@@ -77,12 +77,12 @@
   "onion-small-2kg": [
     "/images/products/curated/onion/33dc28bd84f7.jpg",
     "/images/products/curated/onion/3dc98193b653.jpg",
-    "/images/products/curated/onion/ab9361e179db.jpg"
+    "/images/onion-scratched.jpg"
   ],
   "onion-scratched-3kg": [
     "/images/onion-scratched.jpg",
     "/images/products/curated/onion/e660fc9a79a2.jpg",
-    "/images/onion-irregular.jpg"
+    "/images/products/curated/onion/33dc28bd84f7.jpg"
   ],
   "onion-irregular-5kg": [
     "/images/onion.jpg",
@@ -107,17 +107,17 @@
   "sweet-potato-bent-2kg": [
     "/images/products/curated/sweet-potato/4b394edbd556.jpg",
     "/images/products/curated/sweet-potato/ac2cf884c1b5.jpg",
-    "/images/sweet-potato-small.jpg"
+    "/images/products/curated/sweet-potato/43a7ffce57e7.jpg"
   ],
   "sweet-potato-small-1-5kg": [
     "/images/sweet-potato-small.jpg",
-    "/images/products/curated/sweet-potato/4b394edbd556.jpg",
+    "/images/products/curated/sweet-potato/b0f632df5cf4.jpg",
     "/images/sweet-potato-scratched.jpg"
   ],
   "sweet-potato-scratched-3kg": [
     "/images/products/curated/sweet-potato/ac2cf884c1b5.jpg",
     "/images/sweet-potato.jpg",
-    "/images/sweet-potato-scratched.jpg"
+    "/images/products/curated/sweet-potato/43a7ffce57e7.jpg"
   ],
   "tomato-irregular-1kg": [
     "/images/products/curated/tomato/515151093852.jpg",
@@ -127,21 +127,21 @@
   "tomato-scratched-2kg": [
     "/images/tomato-scratched.jpg",
     "/images/products/curated/tomato/24faa81b2219.jpg",
-    "/images/products/curated/tomato/8ae6d4b2dc22.jpg"
+    "/images/products/curated/tomato/0d35dec9216d.jpg"
   ],
   "tomato-small-1-5kg": [
     "/images/tomato-small.jpg",
-    "/images/products/curated/tomato/515151093852.jpg",
+    "/images/products/curated/tomato/4031d4a521e0.jpg",
     "/images/products/curated/tomato/8ae6d4b2dc22.jpg"
   ],
   "cucumber-bent-5ea": [
     "/images/products/curated/cucumber/bccc07268a02.jpg",
     "/images/products/curated/cucumber/94894a9920ff.jpg",
-    "/images/cucumber.jpg"
+    "/images/cucumber-scratched.jpg"
   ],
   "cucumber-scratched-10ea": [
     "/images/products/curated/cucumber/d1952996e6fb.jpg",
-    "/images/products/curated/cucumber/a9532f9717a5.jpg",
+    "/images/products/curated/cucumber/94894a9920ff.jpg",
     "/images/cucumber-scratched.jpg"
   ],
   "cucumber-small-7ea": [
@@ -187,22 +187,22 @@
   "radish-scratched-2ea": [
     "/images/products/curated/radish/ec7b10852e01.jpg",
     "/images/products/curated/radish/ee661593b1aa.jpg",
-    "/images/products/curated/radish/dc2c58d6dcb6.jpg"
+    "/images/products/curated/radish/a63c9141903b.jpg"
   ],
   "radish-irregular-1ea": [
     "/images/products/curated/radish/dc2c58d6dcb6.jpg",
     "/images/products/curated/radish/e9c0e3c93629.jpg",
-    "/images/radish-irregular.jpg"
+    "/images/products/curated/radish/d5d8e5426e0e.jpg"
   ],
   "radish-small-2ea": [
     "/images/radish-irregular.jpg",
-    "/images/products/curated/radish/ec7b10852e01.jpg",
+    "/images/products/curated/radish/ef98938efa39.jpg",
     "/images/products/curated/radish/f89d922ff13e.jpg"
   ],
   "broccoli-small-3ea": [
     "/images/products/curated/broccoli/e3f217edbabb.jpg",
-    "/images/products/curated/broccoli/1eda16cf931c.jpg",
-    "/images/products/curated/broccoli/0d0a0dd99848.jpg"
+    "/images/broccoli-irregular.jpg",
+    "/images/broccoli-scratched.jpg"
   ],
   "broccoli-irregular-2ea": [
     "/images/products/curated/broccoli/9fe22b6d97ab.jpg",
@@ -217,12 +217,12 @@
   "napa-cabbage-small-2ea": [
     "/images/products/curated/napa-cabbage/da0a3aa10121.jpg",
     "/images/products/curated/napa-cabbage/9d8f7844a978.jpg",
-    "/images/products/curated/napa-cabbage/f17fa29bdfa5.jpg"
+    "/images/napa-cabbage-small.jpg"
   ],
   "napa-cabbage-scratched-1ea": [
     "/images/napa-cabbage-irregular.jpg",
-    "/images/products/curated/napa-cabbage/da0a3aa10121.jpg",
-    "/images/napa-cabbage-small.jpg"
+    "/images/napa-cabbage-scratched.jpg",
+    "/images/products/curated/napa-cabbage/f17fa29bdfa5.jpg"
   ],
   "napa-cabbage-irregular-1ea": [
     "/images/napa-cabbage-small.jpg",
@@ -232,7 +232,7 @@
   "aehobak-small-3ea": [
     "/images/products/curated/aehobak/b4afccfb1321.jpg",
     "/images/products/curated/aehobak/b91fdb884656.jpg",
-    "/images/aehobak-small.jpg"
+    "/images/aehobak-scratched.jpg"
   ],
   "aehobak-bent-2ea": [
     "/images/products/curated/aehobak/b91fdb884656.jpg",
@@ -241,13 +241,13 @@
   ],
   "aehobak-scratched-3ea": [
     "/images/aehobak-small.jpg",
-    "/images/products/curated/aehobak/b4afccfb1321.jpg",
-    "/images/products/curated/aehobak/32dd0bc403a0.jpg"
+    "/images/products/curated/aehobak/9ec77135687c.jpg",
+    "/images/products/curated/aehobak/d2eb84de4b3b.jpg"
   ],
   "eggplant-scratched-4ea": [
     "/images/products/curated/eggplant/baf58aac25c6.jpg",
     "/images/products/curated/eggplant/f674d7edf9c9.jpg",
-    "/images/products/curated/eggplant/2423e0441077.jpg"
+    "/images/products/curated/eggplant/ec8e9d7c9f58.jpg"
   ],
   "eggplant-small-7ea": [
     "/images/products/curated/eggplant/ef06b134f21e.jpg",
@@ -256,43 +256,43 @@
   ],
   "eggplant-irregular-5ea": [
     "/images/eggplant-irregular.jpg",
-    "/images/products/curated/eggplant/ef06b134f21e.jpg",
+    "/images/eggplant-bent.jpg",
     "/images/products/curated/eggplant/2423e0441077.jpg"
   ],
   "sweet-pumpkin-small-3ea": [
     "/images/products/curated/sweet-pumpkin/a804fe551ec1.jpg",
-    "/images/products/curated/sweet-pumpkin/94bec147ff49.jpg",
+    "/images/danhobak-scratched.jpg",
     "/images/danhobak-small.jpg"
   ],
   "sweet-pumpkin-scratched-2ea": [
     "/images/danhobak-small.jpg",
-    "/images/products/curated/sweet-pumpkin/a804fe551ec1.jpg",
+    "/images/products/curated/sweet-pumpkin/345f81cfacbe.jpg",
     "/images/danhobak-scratched.jpg"
   ],
   "sweet-pumpkin-irregular-2ea": [
     "/images/danhobak-irregular.jpg",
     "/images/products/curated/sweet-pumpkin/94bec147ff49.jpg",
-    "/images/danhobak-scratched.jpg"
+    "/images/products/curated/sweet-pumpkin/5960defb3329.jpg"
   ],
   "king-oyster-small-500g": [
     "/images/products/curated/king-oyster/6901f6e69f32.jpg",
-    "/images/products/curated/king-oyster/7686b2a5dd3d.jpg",
+    "/images/king-oyster-irregular-500g.jpg",
     "/images/king-oyster-small.jpg"
   ],
   "king-oyster-scratched-500g": [
     "/images/products/curated/king-oyster/f0f825897908.jpg",
-    "/images/king-oyster-scratched.jpg",
+    "/images/king-oyster-irregular-500g.jpg",
     "/images/products/curated/king-oyster/6901f6e69f32.jpg"
   ],
   "king-oyster-irregular-1kg": [
     "/images/products/curated/king-oyster/d045c0bd7897.jpg",
     "/images/king-oyster-irregular.jpg",
-    "/images/products/curated/king-oyster/f0f825897908.jpg"
+    "/images/king-oyster-scratched.jpg"
   ],
   "king-oyster-irregular-500g": [
     "/images/king-oyster-small.jpg",
     "/images/king-oyster-irregular-500g.jpg",
-    "/images/products/curated/king-oyster/d045c0bd7897.jpg"
+    "/images/products/curated/king-oyster/f0f825897908.jpg"
   ],
   "king-oyster-scratched-1kg": [
     "/images/products/curated/king-oyster/7686b2a5dd3d.jpg",
@@ -310,9 +310,9 @@
     "/images/products/curated/mandarin/98758cfa889e.jpg"
   ],
   "mandarin-irregular-3kg": [
-    "/images/products/curated/mandarin/252857a263d8.jpg",
-    "/images/mandarin-scratched.jpg",
-    "/images/products/curated/mandarin/fd648c3ca3e7.jpg"
+    "/images/products/curated/mandarin/5d31841c214b.jpg",
+    "/images/products/curated/mandarin/3be8638096ad.jpg",
+    "/images/products/curated/mandarin/acc288b4cddf.jpg"
   ],
   "chili-small-300g": [
     "/images/products/curated/chili/f49a52652578.jpg",
