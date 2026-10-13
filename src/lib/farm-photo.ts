@@ -90,6 +90,80 @@ const CROP_PHOTOS: Record<string, FarmPhoto> = {
   onion: FIELD.village,
 };
 
+// 같은 작물을 키워도 농가가 다르면 다른 사진을 보여 줘요. (출처는 src/data/farm-photo-assets.json)
+// 여기 없는 농가는 아래 CROP_PHOTOS(작물별 대표 사진)를 써요.
+const FARM_PHOTOS: Record<string, FarmPhoto> = {
+  "담양 햇살농장": FIELD.tomatoRipe,
+  "영주 사과마을": {
+    imageUrl: "/images/farms/youngju-orchard.webp",
+    alt: "붉은 사과가 달린 사과 과수원 풍경",
+  },
+  "제주 구좌당근": {
+    imageUrl: "/images/farms/jeju-gujwa-field.webp",
+    alt: "돌담 사이로 고랑이 이어진 제주 구좌 채소밭",
+  },
+  "여주 고구마농원": {
+    imageUrl: "/images/farms/sweet-potato-rows.webp",
+    alt: "산 아래 이랑마다 고구마 덩굴이 자란 고구마밭",
+  },
+  "고창 황토무밭": {
+    imageUrl: "/images/farms/radish-field.webp",
+    alt: "초록 무청이 무성한 무밭",
+  },
+  "춘천 호박농원": {
+    imageUrl: "/images/farms/zucchini-harvest.webp",
+    alt: "밭에서 애호박을 따는 농부의 손",
+  },
+  "진주 들판농장": {
+    imageUrl: "/images/farms/zucchini-plants.webp",
+    alt: "넓은 잎 사이로 애호박이 자라는 호박밭",
+  },
+  "청양 고추농가": {
+    imageUrl: "/images/farms/chili-field.webp",
+    alt: "비닐을 깐 고랑에 풋고추가 주렁주렁 달린 고추밭",
+  },
+  "상주 백오이농원": {
+    imageUrl: "/images/farms/cucumber-trellis.webp",
+    alt: "지주대를 타고 오이 덩굴이 자라는 오이밭",
+  },
+  "하동 섬진강농장": {
+    imageUrl: "/images/farms/eggplant-field.webp",
+    alt: "잎이 무성한 가지밭",
+  },
+  "제주 한림밭": {
+    imageUrl: "/images/farms/jeju-hallim-field.webp",
+    alt: "현무암 돌담으로 둘러싼 제주 채소밭과 농가",
+  },
+  "해남 땅끝배추": {
+    imageUrl: "/images/farms/napa-cabbage-harvest.webp",
+    alt: "배추를 수확해 상자에 담는 배추밭",
+  },
+  "괴산 배추마을": {
+    imageUrl: "/images/farms/napa-cabbage-rows.webp",
+    alt: "줄지어 자라는 배추 포기",
+  },
+  "김제 유리온실": {
+    imageUrl: "/images/farms/paprika-hydroponic.webp",
+    alt: "온실에서 수경재배로 키우는 파프리카",
+  },
+  "경주 단호박농장": {
+    imageUrl: "/images/farms/pumpkin-field.webp",
+    alt: "넝쿨 사이로 호박이 익어 가는 호박밭",
+  },
+  "화성 버섯하우스": {
+    imageUrl: "/images/farms/mushroom-shelves.webp",
+    alt: "재배사 선반에 줄지어 놓인 버섯 배지",
+  },
+  "무안 양파밭": {
+    imageUrl: "/images/farms/onion-field.webp",
+    alt: "파란 하늘 아래 넓게 펼쳐진 양파밭",
+  },
+  "창녕 양파마을": {
+    imageUrl: "/images/farms/onion-field-close.webp",
+    alt: "양파 줄기가 곧게 자란 양파밭",
+  },
+};
+
 // 같은 풍경을 쓰는 농가끼리 똑같아 보이지 않게, 농가 이름으로 사진의 다른 부분을 보여 줘요.
 const POSITIONS = ["object-center", "object-left", "object-right"] as const;
 
@@ -104,17 +178,9 @@ function positionFor(farmName: string): (typeof POSITIONS)[number] {
 export function getFarmPhoto(
   farm: FarmStory,
 ): FarmPhoto & { position: string } {
-  // 같은 작물 농가끼리 겹치지 않게 따로 고른 사진
-  if (farm.farmName === "담양 햇살농장") {
-    return { ...FIELD.tomatoRipe, position: "object-center" };
-  }
-  if (farm.farmName === "영주 사과마을") {
-    return {
-      imageUrl: "/images/farms/youngju-orchard.webp",
-      alt: "붉은 사과가 달린 사과 과수원 풍경",
-      position: "object-center",
-    };
-  }
+  // 농가마다 따로 고른 사진
+  const own = FARM_PHOTOS[farm.farmName];
+  if (own) return { ...own, position: "object-center" };
   const lead = farm.products[0];
   const photo = CROP_PHOTOS[lead?.vegetableId];
   if (photo) return { ...photo, position: positionFor(farm.farmName) };
