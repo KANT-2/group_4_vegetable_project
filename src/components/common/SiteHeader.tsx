@@ -130,7 +130,7 @@ export function SiteHeader() {
           <NavLinks links={links} />
         </Suspense>
         <Link
-          href={`${routes.story}#about`}
+          href={`${routes.story}#reasons`}
           className="ml-4 inline-flex min-h-8 shrink-0 items-center rounded-full border border-line px-4 text-[0.8125rem] text-ink-muted hover:text-brand"
         >
           <span className="font-bold text-brand">못난이</span>&nbsp;선별 기준
