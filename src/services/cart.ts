@@ -3,6 +3,7 @@ import { getCurrentUser, requireUser } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 import type { CartLine, WishlistLine } from "@/lib/cart";
 import { toImageSrc } from "./catalog-source";
+import { getProductImages } from "@/lib/product-gallery";
 
 const PRODUCT_FIELDS =
   "products(id, name, unit, price, original_price, image_path, is_active)";
@@ -34,7 +35,10 @@ function toProductInfo(productId: string, product: ProductRow) {
     unit: product.unit,
     price: product.price,
     originalPrice: product.original_price,
-    imageUrl: toImageSrc(product.image_path),
+    imageUrl: getProductImages({
+      id: productId,
+      imageUrl: toImageSrc(product.image_path),
+    })[0],
   };
 }
 

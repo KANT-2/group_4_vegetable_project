@@ -1,0 +1,2605 @@
+{
+  "checkedAt": "2026-10-13",
+  "productCount": 67,
+  "productPhotoSlots": 201,
+  "uniquePhotos": 135,
+  "pinterestPhotos": 83,
+  "rights": "Pinterest는 이미지 발견 경로입니다. 이용 허락이나 무료 라이선스를 확인한 사진으로 표기하지 않습니다. 원문·핀 URL을 보존합니다.",
+  "usage": "가상 상품의 참고 사진이며 해당 농가·포장·손상 상태를 직접 촬영한 증빙이 아닙니다. 일부 같은 품목의 보조 사진은 공유하지만 대표 사진과 전체 구성은 상품별로 다릅니다.",
+  "products": [
+    {
+      "productId": "carrot-bent-1kg",
+      "vegetableId": "carrot",
+      "name": "해남 흙당근 1kg",
+      "images": [
+        "/images/products/curated/carrot/10227c95bcc0.jpg",
+        "/images/products/curated/carrot/c895193ee3f7.jpg",
+        "/images/carrot.jpg"
+      ]
+    },
+    {
+      "productId": "carrot-irregular-3kg",
+      "vegetableId": "carrot",
+      "name": "제주 구좌 당근 실속 3kg",
+      "images": [
+        "/images/products/curated/carrot/ad7d057dce8e.jpg",
+        "/images/products/curated/carrot/10227c95bcc0.jpg",
+        "/images/products/curated/carrot/2273c0fef582.jpg"
+      ]
+    },
+    {
+      "productId": "carrot-scratched-2kg",
+      "vegetableId": "carrot",
+      "name": "해남 흙당근 가정용 2kg",
+      "images": [
+        "/images/carrot-scratched.jpg",
+        "/images/carrot-bulk.jpg",
+        "/images/products/curated/carrot/dbfee2ede1e9.jpg"
+      ]
+    },
+    {
+      "productId": "apple-scratched-2kg",
+      "vegetableId": "apple",
+      "name": "청송 꿀사과 가정용 2kg",
+      "images": [
+        "/images/apple-irregular.jpg",
+        "/images/products/curated/apple/18539ff5c719.jpg",
+        "/images/products/curated/apple/ec1b2d140b49.jpg"
+      ]
+    },
+    {
+      "productId": "apple-small-3kg",
+      "vegetableId": "apple",
+      "name": "영주 부사 소과 3kg",
+      "images": [
+        "/images/apple-small.jpg",
+        "/images/apple.jpg",
+        "/images/apple-irregular.jpg"
+      ]
+    },
+    {
+      "productId": "apple-irregular-2kg",
+      "vegetableId": "apple",
+      "name": "영주 부사 가정용 2kg",
+      "images": [
+        "/images/products/curated/apple/ec1b2d140b49.jpg",
+        "/images/apple-irregular.jpg",
+        "/images/apple.jpg"
+      ]
+    },
+    {
+      "productId": "shiitake-irregular-500g",
+      "vegetableId": "shiitake",
+      "name": "무농약 원목 표고버섯 500g",
+      "images": [
+        "/images/products/curated/shiitake/975a61d3b0e8.jpg",
+        "/images/shiitake-scratched.jpg",
+        "/images/shiitake.jpg"
+      ]
+    },
+    {
+      "productId": "shiitake-small-300g",
+      "vegetableId": "shiitake",
+      "name": "장흥 미니 표고버섯 300g",
+      "images": [
+        "/images/shiitake-small.jpg",
+        "/images/products/curated/shiitake/975a61d3b0e8.jpg",
+        "/images/shiitake-scratched.jpg"
+      ]
+    },
+    {
+      "productId": "shiitake-scratched-1kg",
+      "vegetableId": "shiitake",
+      "name": "청양 원목 화고 표고 1kg",
+      "images": [
+        "/images/shiitake-scratched.jpg",
+        "/images/products/curated/shiitake/5a4074a57aa4.jpg",
+        "/images/shiitake-small.jpg"
+      ]
+    },
+    {
+      "productId": "cabbage-small-1ea",
+      "vegetableId": "cabbage",
+      "name": "평창 고랭지 미니 양배추 1통",
+      "images": [
+        "/images/products/curated/cabbage/2a00d282d40f.jpg",
+        "/images/products/curated/cabbage/8d64d5a8c26d.jpg",
+        "/images/products/curated/cabbage/cd446b091035.jpg"
+      ]
+    },
+    {
+      "productId": "cabbage-scratched-1ea",
+      "vegetableId": "cabbage",
+      "name": "평창 고랭지 양배추 1통",
+      "images": [
+        "/images/cabbage.jpg",
+        "/images/products/curated/cabbage/2a00d282d40f.jpg",
+        "/images/cabbage-scratched.jpg"
+      ]
+    },
+    {
+      "productId": "cabbage-irregular-2ea",
+      "vegetableId": "cabbage",
+      "name": "제주 한림 양배추 2통",
+      "images": [
+        "/images/cabbage-irregular.jpg",
+        "/images/products/curated/cabbage/8d64d5a8c26d.jpg",
+        "/images/cabbage.jpg"
+      ]
+    },
+    {
+      "productId": "paprika-irregular-4ea",
+      "vegetableId": "paprika",
+      "name": "무농약 컬러 파프리카 4입",
+      "images": [
+        "/images/products/curated/paprika/52c6606c33d3.jpg",
+        "/images/products/curated/paprika/0a74809894c7.jpg",
+        "/images/paprika.jpg"
+      ]
+    },
+    {
+      "productId": "paprika-small-1kg",
+      "vegetableId": "paprika",
+      "name": "영양 미니 파프리카 1kg",
+      "images": [
+        "/images/products/curated/paprika/75509701ac0d.jpg",
+        "/images/products/curated/paprika/7d7f4242ce4d.jpg",
+        "/images/paprika.jpg"
+      ]
+    },
+    {
+      "productId": "paprika-scratched-3ea",
+      "vegetableId": "paprika",
+      "name": "김제 빨강 파프리카 실속 3입",
+      "images": [
+        "/images/paprika-scratched.jpg",
+        "/images/products/curated/paprika/4643a89b2827.jpg",
+        "/images/paprika-small.jpg"
+      ]
+    },
+    {
+      "productId": "onion-small-2kg",
+      "vegetableId": "onion",
+      "name": "무안 황토 햇양파 2kg",
+      "images": [
+        "/images/products/curated/onion/33dc28bd84f7.jpg",
+        "/images/products/curated/onion/3dc98193b653.jpg",
+        "/images/products/curated/onion/ab9361e179db.jpg"
+      ]
+    },
+    {
+      "productId": "onion-scratched-3kg",
+      "vegetableId": "onion",
+      "name": "무안 햇양파 실속 3kg",
+      "images": [
+        "/images/onion-scratched.jpg",
+        "/images/products/curated/onion/e660fc9a79a2.jpg",
+        "/images/onion-irregular.jpg"
+      ]
+    },
+    {
+      "productId": "onion-irregular-5kg",
+      "vegetableId": "onion",
+      "name": "창녕 양파 대용량 5kg",
+      "images": [
+        "/images/onion.jpg",
+        "/images/products/curated/onion/ab9361e179db.jpg",
+        "/images/onion-irregular.jpg"
+      ]
+    },
+    {
+      "productId": "potato-small-3kg",
+      "vegetableId": "potato",
+      "name": "강릉 고랭지 알감자 3kg",
+      "images": [
+        "/images/products/curated/potato/23045424cc74.jpg",
+        "/images/products/curated/potato/dc73404b3ddb.jpg",
+        "/images/products/curated/potato/d05ad95aa965.jpg"
+      ]
+    },
+    {
+      "productId": "potato-scratched-2kg",
+      "vegetableId": "potato",
+      "name": "평창 수미감자 가정용 2kg",
+      "images": [
+        "/images/products/curated/potato/5a549a3b2138.jpg",
+        "/images/products/curated/potato/aef2cfb5d3ea.jpg",
+        "/images/products/curated/potato/2e86b4ed1152.jpg"
+      ]
+    },
+    {
+      "productId": "potato-irregular-5kg",
+      "vegetableId": "potato",
+      "name": "강릉 수미감자 대용량 5kg",
+      "images": [
+        "/images/potato-small.jpg",
+        "/images/products/curated/potato/ed3deda97613.jpg",
+        "/images/products/curated/potato/23045424cc74.jpg"
+      ]
+    },
+    {
+      "productId": "sweet-potato-bent-2kg",
+      "vegetableId": "sweet-potato",
+      "name": "해남 황토 꿀고구마 2kg",
+      "images": [
+        "/images/products/curated/sweet-potato/4b394edbd556.jpg",
+        "/images/products/curated/sweet-potato/ac2cf884c1b5.jpg",
+        "/images/sweet-potato-small.jpg"
+      ]
+    },
+    {
+      "productId": "sweet-potato-small-1-5kg",
+      "vegetableId": "sweet-potato",
+      "name": "여주 한입 꿀고구마 1.5kg",
+      "images": [
+        "/images/sweet-potato-small.jpg",
+        "/images/products/curated/sweet-potato/4b394edbd556.jpg",
+        "/images/sweet-potato-scratched.jpg"
+      ]
+    },
+    {
+      "productId": "sweet-potato-scratched-3kg",
+      "vegetableId": "sweet-potato",
+      "name": "해남 꿀고구마 실속 3kg",
+      "images": [
+        "/images/products/curated/sweet-potato/ac2cf884c1b5.jpg",
+        "/images/sweet-potato.jpg",
+        "/images/sweet-potato-scratched.jpg"
+      ]
+    },
+    {
+      "productId": "tomato-irregular-1kg",
+      "vegetableId": "tomato",
+      "name": "부여 완숙 찰토마토 1kg",
+      "images": [
+        "/images/products/curated/tomato/515151093852.jpg",
+        "/images/products/curated/tomato/0d35dec9216d.jpg",
+        "/images/tomato-scratched.jpg"
+      ]
+    },
+    {
+      "productId": "tomato-scratched-2kg",
+      "vegetableId": "tomato",
+      "name": "부여 완숙토마토 주스용 2kg",
+      "images": [
+        "/images/tomato-scratched.jpg",
+        "/images/products/curated/tomato/24faa81b2219.jpg",
+        "/images/products/curated/tomato/8ae6d4b2dc22.jpg"
+      ]
+    },
+    {
+      "productId": "tomato-small-1-5kg",
+      "vegetableId": "tomato",
+      "name": "담양 대추방울토마토 1.5kg",
+      "images": [
+        "/images/tomato-small.jpg",
+        "/images/products/curated/tomato/515151093852.jpg",
+        "/images/products/curated/tomato/8ae6d4b2dc22.jpg"
+      ]
+    },
+    {
+      "productId": "cucumber-bent-5ea",
+      "vegetableId": "cucumber",
+      "name": "무농약 백다다기 오이 5입",
+      "images": [
+        "/images/products/curated/cucumber/bccc07268a02.jpg",
+        "/images/products/curated/cucumber/94894a9920ff.jpg",
+        "/images/cucumber.jpg"
+      ]
+    },
+    {
+      "productId": "cucumber-scratched-10ea",
+      "vegetableId": "cucumber",
+      "name": "천안 백다다기 오이 실속 10입",
+      "images": [
+        "/images/products/curated/cucumber/d1952996e6fb.jpg",
+        "/images/products/curated/cucumber/a9532f9717a5.jpg",
+        "/images/cucumber-scratched.jpg"
+      ]
+    },
+    {
+      "productId": "cucumber-small-7ea",
+      "vegetableId": "cucumber",
+      "name": "상주 미니 백오이 7입",
+      "images": [
+        "/images/products/curated/cucumber/a9532f9717a5.jpg",
+        "/images/cucumber.jpg",
+        "/images/cucumber-small.jpg"
+      ]
+    },
+    {
+      "productId": "green-onion-small-1bunch",
+      "vegetableId": "green-onion",
+      "name": "진도 겨울 대파 1단",
+      "images": [
+        "/images/products/curated/green-onion/dcbae479e5e6.jpg",
+        "/images/products/curated/green-onion/04bc6a48871a.jpg",
+        "/images/products/curated/green-onion/6613228a3bc9.jpg"
+      ]
+    },
+    {
+      "productId": "green-onion-bent-1bunch",
+      "vegetableId": "green-onion",
+      "name": "진도 대파 1단",
+      "images": [
+        "/images/green-onion.jpg",
+        "/images/products/curated/green-onion/dcbae479e5e6.jpg",
+        "/images/green-onion-irregular.jpg"
+      ]
+    },
+    {
+      "productId": "green-onion-irregular-2bunch",
+      "vegetableId": "green-onion",
+      "name": "진도 대파 실속 2단",
+      "images": [
+        "/images/green-onion-irregular.jpg",
+        "/images/products/curated/green-onion/04bc6a48871a.jpg",
+        "/images/green-onion-scratched.jpg"
+      ]
+    },
+    {
+      "productId": "green-onion-scratched-1bunch",
+      "vegetableId": "green-onion",
+      "name": "진도 흙대파 1단",
+      "images": [
+        "/images/green-onion-scratched.jpg",
+        "/images/products/curated/green-onion/6613228a3bc9.jpg",
+        "/images/green-onion.jpg"
+      ]
+    },
+    {
+      "productId": "spinach-small-500g",
+      "vegetableId": "spinach",
+      "name": "남해 섬초 시금치 500g",
+      "images": [
+        "/images/products/curated/spinach/43d20ffcc1b6.jpg",
+        "/images/products/curated/spinach/84db290e43fa.jpg",
+        "/images/products/curated/spinach/07a24171c8da.jpg"
+      ]
+    },
+    {
+      "productId": "spinach-irregular-1kg",
+      "vegetableId": "spinach",
+      "name": "남해 섬초 시금치 대용량 1kg",
+      "images": [
+        "/images/products/curated/spinach/8d215d70bc17.jpg",
+        "/images/products/curated/spinach/43d20ffcc1b6.jpg",
+        "/images/spinach.jpg"
+      ]
+    },
+    {
+      "productId": "spinach-scratched-500g",
+      "vegetableId": "spinach",
+      "name": "포항 섬초 시금치 500g",
+      "images": [
+        "/images/spinach-irregular.jpg",
+        "/images/products/curated/spinach/84db290e43fa.jpg",
+        "/images/products/curated/spinach/8d215d70bc17.jpg"
+      ]
+    },
+    {
+      "productId": "radish-scratched-2ea",
+      "vegetableId": "radish",
+      "name": "평창 고랭지 무 2개",
+      "images": [
+        "/images/products/curated/radish/ec7b10852e01.jpg",
+        "/images/products/curated/radish/ee661593b1aa.jpg",
+        "/images/products/curated/radish/dc2c58d6dcb6.jpg"
+      ]
+    },
+    {
+      "productId": "radish-irregular-1ea",
+      "vegetableId": "radish",
+      "name": "제주 월동무 1개",
+      "images": [
+        "/images/products/curated/radish/dc2c58d6dcb6.jpg",
+        "/images/products/curated/radish/e9c0e3c93629.jpg",
+        "/images/radish-irregular.jpg"
+      ]
+    },
+    {
+      "productId": "radish-small-2ea",
+      "vegetableId": "radish",
+      "name": "고창 황토 꼬마무 2개",
+      "images": [
+        "/images/radish-irregular.jpg",
+        "/images/products/curated/radish/ec7b10852e01.jpg",
+        "/images/products/curated/radish/f89d922ff13e.jpg"
+      ]
+    },
+    {
+      "productId": "broccoli-small-3ea",
+      "vegetableId": "broccoli",
+      "name": "제주 미니 브로콜리 3송이",
+      "images": [
+        "/images/products/curated/broccoli/e3f217edbabb.jpg",
+        "/images/products/curated/broccoli/1eda16cf931c.jpg",
+        "/images/products/curated/broccoli/0d0a0dd99848.jpg"
+      ]
+    },
+    {
+      "productId": "broccoli-irregular-2ea",
+      "vegetableId": "broccoli",
+      "name": "무농약 고랭지 브로콜리 2송이",
+      "images": [
+        "/images/products/curated/broccoli/9fe22b6d97ab.jpg",
+        "/images/products/curated/broccoli/1c4816d9a646.jpg",
+        "/images/products/curated/broccoli/0d0a0dd99848.jpg"
+      ]
+    },
+    {
+      "productId": "broccoli-scratched-2ea",
+      "vegetableId": "broccoli",
+      "name": "제주 브로콜리 실속 2송이",
+      "images": [
+        "/images/broccoli-irregular.jpg",
+        "/images/broccoli-small.jpg",
+        "/images/broccoli-scratched.jpg"
+      ]
+    },
+    {
+      "productId": "napa-cabbage-small-2ea",
+      "vegetableId": "napa-cabbage",
+      "name": "해남 알배기 배추 2통",
+      "images": [
+        "/images/products/curated/napa-cabbage/da0a3aa10121.jpg",
+        "/images/products/curated/napa-cabbage/9d8f7844a978.jpg",
+        "/images/products/curated/napa-cabbage/f17fa29bdfa5.jpg"
+      ]
+    },
+    {
+      "productId": "napa-cabbage-scratched-1ea",
+      "vegetableId": "napa-cabbage",
+      "name": "괴산 김장배추 1통",
+      "images": [
+        "/images/napa-cabbage-irregular.jpg",
+        "/images/products/curated/napa-cabbage/da0a3aa10121.jpg",
+        "/images/napa-cabbage-small.jpg"
+      ]
+    },
+    {
+      "productId": "napa-cabbage-irregular-1ea",
+      "vegetableId": "napa-cabbage",
+      "name": "해남 겨울배추 1통",
+      "images": [
+        "/images/napa-cabbage-small.jpg",
+        "/images/products/curated/napa-cabbage/9d8f7844a978.jpg",
+        "/images/products/curated/napa-cabbage/211309fe1de6.jpg"
+      ]
+    },
+    {
+      "productId": "aehobak-small-3ea",
+      "vegetableId": "aehobak",
+      "name": "무농약 미니 애호박 3입",
+      "images": [
+        "/images/products/curated/aehobak/b4afccfb1321.jpg",
+        "/images/products/curated/aehobak/b91fdb884656.jpg",
+        "/images/aehobak-small.jpg"
+      ]
+    },
+    {
+      "productId": "aehobak-bent-2ea",
+      "vegetableId": "aehobak",
+      "name": "춘천 애호박 2입",
+      "images": [
+        "/images/products/curated/aehobak/b91fdb884656.jpg",
+        "/images/products/curated/aehobak/32dd0bc403a0.jpg",
+        "/images/products/curated/aehobak/b4afccfb1321.jpg"
+      ]
+    },
+    {
+      "productId": "aehobak-scratched-3ea",
+      "vegetableId": "aehobak",
+      "name": "진주 애호박 실속 3입",
+      "images": [
+        "/images/aehobak-small.jpg",
+        "/images/products/curated/aehobak/b4afccfb1321.jpg",
+        "/images/products/curated/aehobak/32dd0bc403a0.jpg"
+      ]
+    },
+    {
+      "productId": "eggplant-scratched-4ea",
+      "vegetableId": "eggplant",
+      "name": "하동 섬진강 가지 4입",
+      "images": [
+        "/images/products/curated/eggplant/baf58aac25c6.jpg",
+        "/images/products/curated/eggplant/f674d7edf9c9.jpg",
+        "/images/products/curated/eggplant/2423e0441077.jpg"
+      ]
+    },
+    {
+      "productId": "eggplant-small-7ea",
+      "vegetableId": "eggplant",
+      "name": "하동 미니 가지 7입",
+      "images": [
+        "/images/products/curated/eggplant/ef06b134f21e.jpg",
+        "/images/products/curated/eggplant/baf58aac25c6.jpg",
+        "/images/products/curated/eggplant/ec8e9d7c9f58.jpg"
+      ]
+    },
+    {
+      "productId": "eggplant-irregular-5ea",
+      "vegetableId": "eggplant",
+      "name": "진주 햇가지 5입",
+      "images": [
+        "/images/eggplant-irregular.jpg",
+        "/images/products/curated/eggplant/ef06b134f21e.jpg",
+        "/images/products/curated/eggplant/2423e0441077.jpg"
+      ]
+    },
+    {
+      "productId": "sweet-pumpkin-small-3ea",
+      "vegetableId": "sweet-pumpkin",
+      "name": "유기농 미니 단호박 3통",
+      "images": [
+        "/images/products/curated/sweet-pumpkin/a804fe551ec1.jpg",
+        "/images/products/curated/sweet-pumpkin/94bec147ff49.jpg",
+        "/images/danhobak-small.jpg"
+      ]
+    },
+    {
+      "productId": "sweet-pumpkin-scratched-2ea",
+      "vegetableId": "sweet-pumpkin",
+      "name": "경주 밤단호박 2통",
+      "images": [
+        "/images/danhobak-small.jpg",
+        "/images/products/curated/sweet-pumpkin/a804fe551ec1.jpg",
+        "/images/danhobak-scratched.jpg"
+      ]
+    },
+    {
+      "productId": "sweet-pumpkin-irregular-2ea",
+      "vegetableId": "sweet-pumpkin",
+      "name": "춘천 단호박 실속 2통",
+      "images": [
+        "/images/danhobak-irregular.jpg",
+        "/images/products/curated/sweet-pumpkin/94bec147ff49.jpg",
+        "/images/danhobak-scratched.jpg"
+      ]
+    },
+    {
+      "productId": "king-oyster-small-500g",
+      "vegetableId": "king-oyster",
+      "name": "화성 미니 새송이 500g",
+      "images": [
+        "/images/products/curated/king-oyster/6901f6e69f32.jpg",
+        "/images/products/curated/king-oyster/7686b2a5dd3d.jpg",
+        "/images/king-oyster-small.jpg"
+      ]
+    },
+    {
+      "productId": "king-oyster-scratched-500g",
+      "vegetableId": "king-oyster",
+      "name": "화성 새송이버섯 500g",
+      "images": [
+        "/images/products/curated/king-oyster/f0f825897908.jpg",
+        "/images/king-oyster-scratched.jpg",
+        "/images/products/curated/king-oyster/6901f6e69f32.jpg"
+      ]
+    },
+    {
+      "productId": "king-oyster-irregular-1kg",
+      "vegetableId": "king-oyster",
+      "name": "청양 새송이버섯 1kg",
+      "images": [
+        "/images/products/curated/king-oyster/d045c0bd7897.jpg",
+        "/images/king-oyster-irregular.jpg",
+        "/images/products/curated/king-oyster/f0f825897908.jpg"
+      ]
+    },
+    {
+      "productId": "king-oyster-irregular-500g",
+      "vegetableId": "king-oyster",
+      "name": "화성 새송이버섯 실속 500g",
+      "images": [
+        "/images/king-oyster-small.jpg",
+        "/images/king-oyster-irregular-500g.jpg",
+        "/images/products/curated/king-oyster/d045c0bd7897.jpg"
+      ]
+    },
+    {
+      "productId": "king-oyster-scratched-1kg",
+      "vegetableId": "king-oyster",
+      "name": "새송이버섯 대용량 1kg",
+      "images": [
+        "/images/products/curated/king-oyster/7686b2a5dd3d.jpg",
+        "/images/king-oyster-scratched.jpg",
+        "/images/king-oyster-irregular.jpg"
+      ]
+    },
+    {
+      "productId": "mandarin-small-3kg",
+      "vegetableId": "mandarin",
+      "name": "서귀포 노지 소과 감귤 3kg",
+      "images": [
+        "/images/products/curated/mandarin/98758cfa889e.jpg",
+        "/images/products/curated/mandarin/fd648c3ca3e7.jpg",
+        "/images/mandarin-scratched.jpg"
+      ]
+    },
+    {
+      "productId": "mandarin-scratched-5kg",
+      "vegetableId": "mandarin",
+      "name": "서귀포 노지 감귤 가정용 5kg",
+      "images": [
+        "/images/products/curated/mandarin/fd648c3ca3e7.jpg",
+        "/images/products/curated/mandarin/252857a263d8.jpg",
+        "/images/products/curated/mandarin/98758cfa889e.jpg"
+      ]
+    },
+    {
+      "productId": "mandarin-irregular-3kg",
+      "vegetableId": "mandarin",
+      "name": "제주 한림 감귤 3kg",
+      "images": [
+        "/images/products/curated/mandarin/252857a263d8.jpg",
+        "/images/mandarin-scratched.jpg",
+        "/images/products/curated/mandarin/fd648c3ca3e7.jpg"
+      ]
+    },
+    {
+      "productId": "chili-small-300g",
+      "vegetableId": "chili",
+      "name": "무농약 풋고추 300g",
+      "images": [
+        "/images/products/curated/chili/f49a52652578.jpg",
+        "/images/products/curated/chili/4106aaaf21e6.jpg",
+        "/images/chili-small.jpg"
+      ]
+    },
+    {
+      "productId": "chili-bent-500g",
+      "vegetableId": "chili",
+      "name": "청양 홍고추 500g",
+      "images": [
+        "/images/products/curated/chili/9f5c87d68e6e.jpg",
+        "/images/products/curated/chili/9839019bdcfa.jpg",
+        "/images/chili-bent.jpg"
+      ]
+    },
+    {
+      "productId": "chili-scratched-500g",
+      "vegetableId": "chili",
+      "name": "청양 토종 청양고추 500g",
+      "images": [
+        "/images/chili-scratched.jpg",
+        "/images/products/curated/chili/6b39b2b56648.jpg",
+        "/images/products/curated/chili/9b6a00d071da.jpg"
+      ]
+    },
+    {
+      "productId": "chili-irregular-500g",
+      "vegetableId": "chili",
+      "name": "청양 모둠 고추 500g",
+      "images": [
+        "/images/products/curated/chili/133b550f2de3.jpg",
+        "/images/products/curated/chili/9839019bdcfa.jpg",
+        "/images/chili-irregular.jpg"
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "imageUrl": "/images/products/curated/carrot/c895193ee3f7.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://it.pinterest.com/pin/food-carote-carrots-nikon-nital-love-instagood-instafood-raw-foodlyfe-chefsofinstagram-orange--368098969528163343/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/4a/f8/97/4af897a0b34608f8832c7b7b752b528b.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/4a/f8/97/4af897a0b34608f8832c7b7b752b528b.jpg",
+      "originalPageUrl": "https://www.instagram.com/p/BMt4HmKjAGi/",
+      "title": "Carote #food Photography: Fresh Carrots on Wooden Table | Instagram",
+      "pinner": "Andrea Bassi",
+      "width": 640,
+      "height": 640,
+      "format": "JPEG",
+      "sha256": "c895193ee3f720771597d48d8d5980d9bf06e24608c5f8f11ea5cd2ef52a4ca1",
+      "vegetableId": "carrot",
+      "productIds": ["carrot-bent-1kg"]
+    },
+    {
+      "imageUrl": "/images/carrot.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "4b1257b06874932eaa2ff857d7674440c3080eea6cebf8938bf284a4116ca31f",
+      "vegetableId": "carrot",
+      "productIds": ["carrot-bent-1kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/carrot/ad7d057dce8e.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://ar.pinterest.com/pin/free-photo--765541636660339805/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/17/57/1a/17571a4d0b2b49f40c0c0eed34c28013.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/17/57/1a/17571a4d0b2b49f40c0c0eed34c28013.jpg",
+      "originalPageUrl": "https://pl.freepik.com/darmowe-zdjecie/marchew-swieze-marchewki-organiczne-marchew-swiezego-ogrodu-bukiet-swiezych-organicznych-marchwi-na-rynku_1190054.htm",
+      "title": "Carrots. fresh organic carrots. fresh garden carrots. bunch of fresh organic carrots at market. | Free Photo | Güzellik, Sağlık ipuçları, Recetas",
+      "pinner": "Małgorzata Płoskonka",
+      "width": 624,
+      "height": 417,
+      "format": "JPEG",
+      "sha256": "ad7d057dce8e267bce9e6d08ace879e7bcb07fdd0d84d959ec2870428260f6c7",
+      "vegetableId": "carrot",
+      "productIds": ["carrot-irregular-3kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/carrot/10227c95bcc0.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://au.pinterest.com/pin/your-local-market-is-the-perfect-place-to-visit-for-delicious-fresh-produce-carrots-freshproduce-foodphot--847099011137788813/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/8b/bc/ea/8bbcea9ed614317a69a03270add1bfac.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/8b/bc/ea/8bbcea9ed614317a69a03270add1bfac.jpg",
+      "originalPageUrl": "https://www.instagram.com/p/BnSPJvXAoO6/",
+      "title": "Your local market is the perfect place to visit for delicious, fresh produce! #Carrots #FreshProduce #FoodPhotography #F… | Fresh food market, Fall harvest, Fresh vegetables",
+      "pinner": "FreshPaper",
+      "width": 640,
+      "height": 640,
+      "format": "JPEG",
+      "sha256": "10227c95bcc07e08002deeba803259fc79c8e288f476cda1a754fb09c08ec1d9",
+      "vegetableId": "carrot",
+      "productIds": ["carrot-bent-1kg", "carrot-irregular-3kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/carrot/2273c0fef582.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://uk.pinterest.com/pin/105-likes-5-comments-foodwriting-foodwriting-on-instagram-mucky-carrots-fresh-from-the-ground-carrots--184788390944526216/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/b6/e4/99/b6e499b55bab9ee47532cf6d9762b5a7.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/b6/e4/99/b6e499b55bab9ee47532cf6d9762b5a7.jpg",
+      "originalPageUrl": "https://www.instagram.com/p/BZqKvyrg1hT/",
+      "title": "Harvesting Homegrown Carrots for a Fresh Sunday Lunch | Organic carrots harvest, Yorkshire food, Carrots fresh",
+      "pinner": "Elaine Lemm",
+      "width": 736,
+      "height": 798,
+      "format": "JPEG",
+      "sha256": "2273c0fef5828b39b37bf337a073666a1cc21df1a4b487a2adc2247925c54e57",
+      "vegetableId": "carrot",
+      "productIds": ["carrot-irregular-3kg"]
+    },
+    {
+      "imageUrl": "/images/carrot-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "9bb32912c94c3670e7b00b76a11ac81c95f6700a8e58ef2f5a0464b08e1fd8ea",
+      "vegetableId": "carrot",
+      "productIds": ["carrot-scratched-2kg"]
+    },
+    {
+      "imageUrl": "/images/carrot-bulk.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "f8c3594d66b6c25dc23c81bcadc78997f382fb0683279ac9065bc9a44665464f",
+      "vegetableId": "carrot",
+      "productIds": ["carrot-scratched-2kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/carrot/dbfee2ede1e9.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://uk.pinterest.com/pin/fresh-carrots-at-the-market--368521181982724117/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/55/59/47/5559471e7cd9b82475b29d3694e5881c.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/55/59/47/5559471e7cd9b82475b29d3694e5881c.jpg",
+      "originalPageUrl": "https://creativemarket.com/johntrax/83557-Fresh-carrots-at-the-market?u=fullwidth",
+      "title": "Fresh Carrots at the Market | Carrot stock photo, Assorted colorful carrots at market, Asparagus bunches close-up",
+      "pinner": "Patrick Edwards",
+      "width": 680,
+      "height": 451,
+      "format": "JPEG",
+      "sha256": "dbfee2ede1e9f7abfd7d0dcb5acb1ee6dfcf672a4a305c34d7b0f6546ee12c4d",
+      "vegetableId": "carrot",
+      "productIds": ["carrot-scratched-2kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/apple/18539ff5c719.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://dk.pinterest.com/pin/fresh-red-apples-in-a-basket--445997169340006858/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/a4/1e/e2/a41ee20ddfc5c58b9b7a654556c714d2.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/a4/1e/e2/a41ee20ddfc5c58b9b7a654556c714d2.jpg",
+      "originalPageUrl": "https://dk.pinterest.com/pin/fresh-red-apples-in-a-basket--445997169340006858/",
+      "title": "Fresh Red Apples in a Basket | Frugt",
+      "pinner": "Galiya Assan",
+      "width": 736,
+      "height": 488,
+      "format": "JPEG",
+      "sha256": "18539ff5c7190bd8ab7fbfd9d6772f629708a1bc36e00e21f1386bb8ee629522",
+      "vegetableId": "apple",
+      "productIds": ["apple-scratched-2kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/apple/ec1b2d140b49.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://au.pinterest.com/pin/basket-of-fresh-red-apples--483855553685860209/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/81/6b/c0/816bc09610c4491a742029c0e4579e70.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/81/6b/c0/816bc09610c4491a742029c0e4579e70.jpg",
+      "originalPageUrl": "http://sphotos-d.ak.fbcdn.net/hphotos-ak-snc6/248039_228145340545926_2601280_n.jpg",
+      "title": "Basket of Fresh Red Apples | Tips for storing fresh apples, Fresh apples harvest season, Fresh mountain apples",
+      "pinner": "Granite Belt",
+      "width": 545,
+      "height": 366,
+      "format": "JPEG",
+      "sha256": "ec1b2d140b49105e3a739981a5471718a57a35f7d78a1ba43778f0fdd1512c60",
+      "vegetableId": "apple",
+      "productIds": ["apple-scratched-2kg", "apple-irregular-2kg"]
+    },
+    {
+      "imageUrl": "/images/apple-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "3c92878bf7a7dcefe997267e344326ab111c9e05d329cf2fb0dc05cd52c6fa12",
+      "vegetableId": "apple",
+      "productIds": ["apple-small-3kg"]
+    },
+    {
+      "imageUrl": "/images/apple.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "ae867b0e15d4e12ab4615e616f09d82b8e8583d24086b4d3c56de16c99627b32",
+      "vegetableId": "apple",
+      "productIds": ["apple-small-3kg", "apple-irregular-2kg"]
+    },
+    {
+      "imageUrl": "/images/apple-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "9864c506b3792aa9fc4f2df9474fb9ba77d1f1c447bcf7d961634896890bff3a",
+      "vegetableId": "apple",
+      "productIds": [
+        "apple-scratched-2kg",
+        "apple-small-3kg",
+        "apple-irregular-2kg"
+      ]
+    },
+    {
+      "imageUrl": "/images/products/curated/shiitake/975a61d3b0e8.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://www.pinterest.com/pin/shiitake--423760646200571271/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/a9/4c/da/a94cdab3e46b31a79bdbed80995c231e.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/a9/4c/da/a94cdab3e46b31a79bdbed80995c231e.jpg",
+      "originalPageUrl": "http://www.flickr.com/photos/sarkab/12438273045/in/photostream/",
+      "title": "Cook Your Dream: Shiitake Mushroom Recipe | Fungi food, Shiitake mushroom photo, Shiitake mushroom macro",
+      "pinner": "Jacinta Rocha",
+      "width": 534,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "975a61d3b0e8b234a0a8a8a449933d76c23f91f7dc5d9c051a6111c5a007d069",
+      "vegetableId": "shiitake",
+      "productIds": ["shiitake-irregular-500g", "shiitake-small-300g"]
+    },
+    {
+      "imageUrl": "/images/shiitake.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "6b2245759698b3c54fbded0b630edf444a4a65afcd2f265ceff92aa484b7e86d",
+      "vegetableId": "shiitake",
+      "productIds": ["shiitake-irregular-500g"]
+    },
+    {
+      "imageUrl": "/images/shiitake-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "2f7cd33f3625f2d11b6f5aed08d8b6e481c5cbad9f270aa9693266b5b5054abb",
+      "vegetableId": "shiitake",
+      "productIds": ["shiitake-small-300g", "shiitake-scratched-1kg"]
+    },
+    {
+      "imageUrl": "/images/shiitake-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "727390e40fe10948bb6b9265078163e601b41a36afa41b5b5ae1ceae35c97252",
+      "vegetableId": "shiitake",
+      "productIds": [
+        "shiitake-irregular-500g",
+        "shiitake-small-300g",
+        "shiitake-scratched-1kg"
+      ]
+    },
+    {
+      "imageUrl": "/images/products/curated/shiitake/5a4074a57aa4.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://ca.pinterest.com/pin/shiitake-mushrooms-as-far-as-the-eyes-can-see-can-you-guess-how-many-there-are-real_mushrooms--529806343657284303/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/16/8c/72/168c7250a4667b3bfacd0b9e51cbacb9.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/16/8c/72/168c7250a4667b3bfacd0b9e51cbacb9.jpg",
+      "originalPageUrl": "https://www.instagram.com/p/Bex5qPAFqyv/",
+      "title": "Shiitake mushrooms  as far as the eyes can see! Can you guess how many there are?! - @real_mushrooms | Bay bolete mushroom identification, Largest mushroom in the world, Two mushrooms growing in forest",
+      "pinner": "Real Mushrooms - Real Ingredients. Real Results.",
+      "width": 640,
+      "height": 640,
+      "format": "JPEG",
+      "sha256": "5a4074a57aa45979b6cb486c298711961228c1dabc17bd2157792a0aa9074dc1",
+      "vegetableId": "shiitake",
+      "productIds": ["shiitake-scratched-1kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/cabbage/2a00d282d40f.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/green-fresh-cabbage-head-on-wooden-surface-by-yakov_oskanov-photos-ad-sponsored-cabbage-fresh-green-surfa--841117667891178770/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/de/d3/a9/ded3a924facb494295ac5b2f87283797.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/de/d3/a9/ded3a924facb494295ac5b2f87283797.jpg",
+      "originalPageUrl": "https://1.envato.market/c/1259333/298927/4662?u=https://elements.envato.com/green-fresh-cabbage-head-on-wooden-surface-MAJUWTP",
+      "title": "Green fresh cabbage head on wooden surface | Lettuce stock image, Organic cabbage leaves, Organic green lettuce close-up",
+      "pinner": "Takoyarujp",
+      "width": 735,
+      "height": 491,
+      "format": "JPEG",
+      "sha256": "2a00d282d40f4fd923313440023f461cff1ba8b45a99548f62cb6d33d903c6fc",
+      "vegetableId": "cabbage",
+      "productIds": ["cabbage-small-1ea", "cabbage-scratched-1ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/cabbage/8d64d5a8c26d.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://www.pinterest.com/pin/food-and-drink-photos--368521181982788261/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/a0/0d/31/a00d315303986fc015daba558e89f1ef.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/a0/0d/31/a00d315303986fc015daba558e89f1ef.jpg",
+      "originalPageUrl": "https://creativemarket.com/johntrax/103104-Green-cabbage-in-a-display?u=fullwidth",
+      "title": "Green cabbage in a display | Recette chou pomme, Salade de chou vert, Legumes",
+      "pinner": "Patrick Edwards",
+      "width": 680,
+      "height": 452,
+      "format": "JPEG",
+      "sha256": "8d64d5a8c26dbe5685982f6baa768d2a2f5f395d16b10bdb88c83dd647c15000",
+      "vegetableId": "cabbage",
+      "productIds": ["cabbage-small-1ea", "cabbage-irregular-2ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/cabbage/cd446b091035.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/large-green-cabbage-lies-on-the-ground-in-an-open-field--888546201527529541/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/64/1a/a5/641aa59b59663b05dc02346ac1003c00.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/64/1a/a5/641aa59b59663b05dc02346ac1003c00.jpg",
+      "originalPageUrl": "https://zwin.io/listing/large-green-cabbage-lies-on-the-ground-in-an-open-field/",
+      "title": "Large green cabbage lies on the ground in an open field | グリーン",
+      "pinner": "Ramadevi",
+      "width": 735,
+      "height": 976,
+      "format": "JPEG",
+      "sha256": "cd446b0910358b973e2189c27ac1ed2d50c9abfe694032bfc43f8a6607ed0d86",
+      "vegetableId": "cabbage",
+      "productIds": ["cabbage-small-1ea"]
+    },
+    {
+      "imageUrl": "/images/cabbage.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "ee3469304e09e20b54a8845c323ef3a980625c274ce86f244dc2429da5844b35",
+      "vegetableId": "cabbage",
+      "productIds": ["cabbage-scratched-1ea", "cabbage-irregular-2ea"]
+    },
+    {
+      "imageUrl": "/images/cabbage-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "1b03d7041b1d5857bc35e766540f60930d76028b8382738cd600259cd80e7348",
+      "vegetableId": "cabbage",
+      "productIds": ["cabbage-scratched-1ea"]
+    },
+    {
+      "imageUrl": "/images/cabbage-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "dad6ab5516bdc894879dc5e2d28b409ae9dec6d051c4974ff72bf37309a6a96c",
+      "vegetableId": "cabbage",
+      "productIds": ["cabbage-irregular-2ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/paprika/52c6606c33d3.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/download-premium-image-of-fresh-sweet-bell-peppers-about-bell-pepper-peppers-vegetable-food-and-na--210191507598913643/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/11/e9/b3/11e9b3fb3f5c109db8f920fa458fd97d.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/11/e9/b3/11e9b3fb3f5c109db8f920fa458fd97d.jpg",
+      "originalPageUrl": "https://www.rawpixel.com/image/105086/free-photo-image-food-pepper-bell-pepper",
+      "title": "Fresh and Colorful Bell Peppers | Colorful bell peppers on table, Fresh green bell pepper photography, Fresh bell peppers on table",
+      "pinner": "Carolyn Stevens",
+      "width": 736,
+      "height": 552,
+      "format": "JPEG",
+      "sha256": "52c6606c33d3e43cd925a370c0fcd89efee6e16b80268a9804ceb9a52a9b66e3",
+      "vegetableId": "paprika",
+      "productIds": ["paprika-irregular-4ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/paprika/0a74809894c7.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://nl.pinterest.com/pin/orange-bell-pepper-each--137289488808278813/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/91/0a/a8/910aa876e3fb07d17c3c0a4e764177e8.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/91/0a/a8/910aa876e3fb07d17c3c0a4e764177e8.jpg",
+      "originalPageUrl": "https://www.target.com/p/orange-bell-pepper-each/-/A-14919579",
+      "title": "Organic Orange Bell Pepper - Fresh and Flavorful | Kwarktaart aardbeien, Pannenkoek recepten, Groente",
+      "pinner": "Target",
+      "width": 736,
+      "height": 736,
+      "format": "JPEG",
+      "sha256": "0a74809894c703a281a16ab3d5f283dbcc2ae8168de364d8f99deb52ce710ca6",
+      "vegetableId": "paprika",
+      "productIds": ["paprika-irregular-4ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/paprika/75509701ac0d.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://co.pinterest.com/pin/still-life-with-paprika-and-bell-peppers--1116470563860189415/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/8c/c7/eb/8cc7ebb8b0a70dbe5899c228141a66d7.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/8c/c7/eb/8cc7ebb8b0a70dbe5899c228141a66d7.jpg",
+      "originalPageUrl": "https://creativemarket.com/Alexander62/925138-Still-life-with-paprika",
+      "title": "Still life with Paprika and Bell Peppers | Pimientos rellenos, Naturaleza muerta, Verde",
+      "pinner": "Nahla Fouad",
+      "width": 736,
+      "height": 490,
+      "format": "JPEG",
+      "sha256": "75509701ac0d18f9c75a68dea5a635a55d008383df9d566e30f30624feeeceb8",
+      "vegetableId": "paprika",
+      "productIds": ["paprika-small-1kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/paprika/7d7f4242ce4d.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://uk.pinterest.com/pin/colorful-bell-peppers-on-table--470344754823820639/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/ef/e6/62/efe662b4020b41f295c4166a6b752d23.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/ef/e6/62/efe662b4020b41f295c4166a6b752d23.jpg",
+      "originalPageUrl": "https://www.booking.com/hotel/hu/home-on-the-way.en-gb.html?label=gen173bo-1DCAsoZ0IPaG9tZS1vbi10aGUtd2F5SDNYA2ipAYgBAZgBLsIBA2FibsgBDNgBA-gBAZICAXmYAgWoAgQ;sid=0b63fcdaa45e0c0f8ef904334cbaa2f5;dist=0&group_adults=2&sb_price_type=total&type=total&",
+      "title": "Colorful Bell Peppers on Table | Assorted bell peppers, Budapest budget accommodation, Stuffed capsicum recipe in kannada",
+      "pinner": "Emese Nagy",
+      "width": 736,
+      "height": 490,
+      "format": "JPEG",
+      "sha256": "7d7f4242ce4d27a76fa0cb9218effbab0482d42923b32c8aae7fd3dc5507f265",
+      "vegetableId": "paprika",
+      "productIds": ["paprika-small-1kg"]
+    },
+    {
+      "imageUrl": "/images/paprika.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "39ae2f52b860b02c9e1d86f1c7409f1d0ded281bcb45026e66542f82b5c95d20",
+      "vegetableId": "paprika",
+      "productIds": ["paprika-irregular-4ea", "paprika-small-1kg"]
+    },
+    {
+      "imageUrl": "/images/paprika-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "26bbc369dba1b2dfe4189c9f912f58ce9e35b8bd43ac594b8811bd5ef0cab71b",
+      "vegetableId": "paprika",
+      "productIds": ["paprika-scratched-3ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/paprika/4643a89b2827.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://uk.pinterest.com/pin/379076493653955813/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/b3/ce/f3/b3cef3f59e8d41b98783dba932cfc8b4.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/b3/ce/f3/b3cef3f59e8d41b98783dba932cfc8b4.jpg",
+      "originalPageUrl": "https://adaptalux.com/bell-pepper-macro-photography/",
+      "title": "Bell Pepper macro photography - Cavernous Capsicum | Macro photography vegetables, Pepper seed macro, How to photograph fruit macro",
+      "pinner": "Jazmin Solis",
+      "width": 735,
+      "height": 484,
+      "format": "JPEG",
+      "sha256": "4643a89b2827f09aa0b2e92d1f3ffb53b517cc40fc877927e7ddab067180f1bb",
+      "vegetableId": "paprika",
+      "productIds": ["paprika-scratched-3ea"]
+    },
+    {
+      "imageUrl": "/images/paprika-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "3b4b5bbfd972a0eb32daf10a84b194fabf9fe8cc53f51779f63aa58d8b550409",
+      "vegetableId": "paprika",
+      "productIds": ["paprika-scratched-3ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/onion/33dc28bd84f7.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/yellow-onions-are-mild-in-taste-and-super-versatile-they-are-great-raw-in-salads-cooked-until-caramelized-or-in-soups--469711436148012163/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/84/b8/35/84b8356c8726ae8261cc2340df42affa.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/84/b8/35/84b8356c8726ae8261cc2340df42affa.jpg",
+      "originalPageUrl": "https://umamicart.com/products/sweet-onion",
+      "title": "Yellow Onions (2 lb) | Turkey pie recipe, Italian spaghetti and meatballs, Spaghetti meatball recipes",
+      "pinner": "Emily Purdy",
+      "width": 736,
+      "height": 736,
+      "format": "JPEG",
+      "sha256": "33dc28bd84f78c09863f89833a09f3c7210bee07de1170dd5c00d446ad06efbc",
+      "vegetableId": "onion",
+      "productIds": ["onion-small-2kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/onion/3dc98193b653.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/fresh-yellow-onion-each-in-2025--749849406743469302/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/b7/53/c7/b753c718ede146658a5757a663fd172c.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/b7/53/c7/b753c718ede146658a5757a663fd172c.webp",
+      "originalPageUrl": "https://www.target.com/p/yellow-onion-each/-/A-13474244",
+      "title": "Fresh Yellow Onion - each | Lipton recipe secrets onion, 5 tastes, Ear health",
+      "pinner": "Larry O'Brien",
+      "width": 736,
+      "height": 736,
+      "format": "JPEG",
+      "sha256": "3dc98193b65394fde1ed6a8cf3443a2329ddbeb67731f8b40080500786dff0ae",
+      "vegetableId": "onion",
+      "productIds": ["onion-small-2kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/onion/ab9361e179db.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/fresh-golden-onions-isolated-on-white--147492956541724835/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/57/45/93/5745934ae1fcf11af897fbcb3d04e517.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/57/45/93/5745934ae1fcf11af897fbcb3d04e517.jpg",
+      "originalPageUrl": "https://www.freepik.com/premium-photo/fresh-golden-onions-isolated-white_9544383.htm",
+      "title": "Najlakši način za seckanje luka | Golden onions on white background, Two onions on white background, Fresh onion isolated on white",
+      "pinner": "Catarina Clara",
+      "width": 626,
+      "height": 549,
+      "format": "JPEG",
+      "sha256": "ab9361e179db104ac93fd7a691b5c173ebca59ea8829638a584e3d92716d105b",
+      "vegetableId": "onion",
+      "productIds": ["onion-small-2kg", "onion-irregular-5kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/onion/e660fc9a79a2.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/new-fresh-yellow-onion-with-great-quality--709176272547324287/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/80/45/b7/8045b729639fd1a1d9a663f417a0ad3a.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/80/45/b7/8045b729639fd1a1d9a663f417a0ad3a.jpg",
+      "originalPageUrl": "https://qdcamel.en.made-in-china.com/productimage/VBvnSUPAhrYF-2f1j00HjZQcTRsZJgv/China-New-Fresh-Yellow-Onion-with-Great-Quality.html",
+      "title": "Naike Foodstuffs Manufacturer, Garlic, Ginger Supplier - Shandong Zhifeng Foodstuffs Co., Ltd. | Chinese garlic, Water chestnut, Broad bean",
+      "pinner": "Anup Mukherjee",
+      "width": 400,
+      "height": 300,
+      "format": "JPEG",
+      "sha256": "e660fc9a79a2952395fae9b054b123077ea1569b555faad4eed5e05d075dacb8",
+      "vegetableId": "onion",
+      "productIds": ["onion-scratched-3kg"]
+    },
+    {
+      "imageUrl": "/images/onion-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "01921add85f9da83b73928767f8d70395790848669f725a8df5c76d15b69e08b",
+      "vegetableId": "onion",
+      "productIds": ["onion-scratched-3kg"]
+    },
+    {
+      "imageUrl": "/images/onion.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "4e3cf202d517828add1fcd84b6e65806cb31f633bad485a2bf6a0608cc72c00b",
+      "vegetableId": "onion",
+      "productIds": ["onion-irregular-5kg"]
+    },
+    {
+      "imageUrl": "/images/onion-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "117c2c9f746b2b61ab445abde2459974c335bdbe50b0e78af48f1db2b667752c",
+      "vegetableId": "onion",
+      "productIds": ["onion-scratched-3kg", "onion-irregular-5kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/potato/23045424cc74.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/organic-fresh-raw-potatoes-by-dream79s-photos-ad-ad-fresh-organic-potatoes-raw--821695894496075430/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/95/68/f4/9568f4f0e8fc1de65959ae60b2393db3.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/95/68/f4/9568f4f0e8fc1de65959ae60b2393db3.jpg",
+      "originalPageUrl": "https://1.envato.market/c/1259333/298927/4662?u=https://elements.envato.com/organic-fresh-raw-potatoes-RNLBGAW",
+      "title": "Organic Fresh Raw Potatoes | Fresh potatoes in a basket, How to store potatoes, Organic farm fresh potatoes",
+      "pinner": "Too Like",
+      "width": 736,
+      "height": 1104,
+      "format": "JPEG",
+      "sha256": "23045424cc7495dd6cfa1c4c877d50ff961255496e1bba2cc63b0e38ee5512e5",
+      "vegetableId": "potato",
+      "productIds": ["potato-small-3kg", "potato-irregular-5kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/potato/dc73404b3ddb.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://www.pinterest.com/pin/483925922429389738/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/c2/c0/e7/c2c0e7b37ff8ac1ae4724b02d1d8553a.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/c2/c0/e7/c2c0e7b37ff8ac1ae4724b02d1d8553a.tiff",
+      "originalPageUrl": "https://uk.pinterest.com/pin/42221315227318044/",
+      "title": "Butterball Potatoes: Fresh from Mountain Berry Sweet Farms | Potato people, Recipe drawing, Cute potato",
+      "pinner": "Colin Campbell",
+      "width": 736,
+      "height": 1009,
+      "format": "JPEG",
+      "sha256": "dc73404b3ddbebb2ef3bd08ead6ed92cc2956c85baa131f62a5acf8b5f454ae6",
+      "vegetableId": "potato",
+      "productIds": ["potato-small-3kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/potato/d05ad95aa965.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/organic-fresh-raw-potatoes-on-a-crate-close-up-shot--617837642655394726/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/48/da/52/48da52379023c1ae74ce868d52534f66.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/48/da/52/48da52379023c1ae74ce868d52534f66.jpg",
+      "originalPageUrl": "https://www.freepik.com/premium-photo/organic-fresh-raw-potatoes-crate-close-up-shot_25549627.htm",
+      "title": "Organic fresh raw potatoes on a crate close up shot | Close-up of fresh potatoes, Green agricultural equipment close-up, Vegetables",
+      "pinner": "XooKits",
+      "width": 626,
+      "height": 417,
+      "format": "JPEG",
+      "sha256": "d05ad95aa965c1d5abe4b1a116c6a0820f085c8a5fb8172cd816d66cffd63782",
+      "vegetableId": "potato",
+      "productIds": ["potato-small-3kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/potato/5a549a3b2138.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/647040671445271391/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/49/b3/5f/49b35f4d343bc27394402ff04eda9ea0.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/49/b3/5f/49b35f4d343bc27394402ff04eda9ea0.jpg",
+      "originalPageUrl": "https://1.envato.market/c/1259333/298927/4662?u=https://elements.envato.com/raw-potatoes-with-a-vegetable-peeler-PLR4AC3",
+      "title": "Raw Potatoes with Vegetable Peeler | Raw potatoes on wooden surface, Two raw potatoes on white background, Raw peeled potatoes",
+      "pinner": "flybutter3754",
+      "width": 736,
+      "height": 1052,
+      "format": "JPEG",
+      "sha256": "5a549a3b2138a91b752186973366388e5eeff5cf6b8432ec4237af6c0dcd1b81",
+      "vegetableId": "potato",
+      "productIds": ["potato-scratched-2kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/potato/aef2cfb5d3ea.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/potatoes-isolated-on-white-background--379709812342761504/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/89/16/2f/89162f2055a79d16fb5aaefa8290d491.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/89/16/2f/89162f2055a79d16fb5aaefa8290d491.png",
+      "originalPageUrl": "https://www.istockphoto.com/photo/potatoes-isolated-on-white-background-gm1322302698-408305756",
+      "title": "Potatoes Isolated on White Background | Potato images, Raw potato, File free",
+      "pinner": "Floortje",
+      "width": 408,
+      "height": 612,
+      "format": "JPEG",
+      "sha256": "aef2cfb5d3eaf91c157c819fbe094bb190315733f1ae2aae32e5b6eac86b95f2",
+      "vegetableId": "potato",
+      "productIds": ["potato-scratched-2kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/potato/2e86b4ed1152.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://uk.pinterest.com/pin/fresh-picked-raw-diamant-potatoes-by-picturepartnerss-photos-ad-ad-picked-fresh-raw-potatoes--862439397372642645/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/2e/d0/fe/2ed0fe27823b17bafba1902af5d0d079.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/2e/d0/fe/2ed0fe27823b17bafba1902af5d0d079.jpg",
+      "originalPageUrl": "https://1.envato.market/c/1259333/298927/4662?u=https://elements.envato.com/fresh-picked-raw-diamant-potatoes-PYJ9GCL",
+      "title": "Fresh picked raw Diamant potatoes | Fresh potatoes on white background, Potato white background stock photo, Cut potato on white background",
+      "pinner": "webdesign30",
+      "width": 735,
+      "height": 494,
+      "format": "JPEG",
+      "sha256": "2e86b4ed1152d4cd86e2a8d166b006bf01780cb0174136863e10e78245f67782",
+      "vegetableId": "potato",
+      "productIds": ["potato-scratched-2kg"]
+    },
+    {
+      "imageUrl": "/images/potato-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "88e2a5b8c160fcb9b527b6469f917178121c4c58efec181dc9e836b631542935",
+      "vegetableId": "potato",
+      "productIds": ["potato-irregular-5kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/potato/ed3deda97613.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/raw-potatoes-fresh-and-nutritious--417779302936611005/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/b0/31/4b/b0314be9232bb5eac6316d9112d2b555.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/b0/31/4b/b0314be9232bb5eac6316d9112d2b555.jpg",
+      "originalPageUrl": "https://www.freepik.com/premium-photo/potatoes-raw_5004387.htm",
+      "title": "Raw Potatoes: Fresh and Nutritious | Potato varieties chart, Potato varieties list, Bangladesh",
+      "pinner": "richa fertilizer & chemicals",
+      "width": 626,
+      "height": 417,
+      "format": "JPEG",
+      "sha256": "ed3deda97613241f41d9c9b9908f63455d34614a930b6ecd8d2f076f51316b7b",
+      "vegetableId": "potato",
+      "productIds": ["potato-irregular-5kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/sweet-potato/4b394edbd556.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://uk.pinterest.com/pin/4599019746943260672/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/b6/d3/ea/b6d3ea19f6d62a5a4e2347ec1462a06f.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/b6/d3/ea/b6d3ea19f6d62a5a4e2347ec1462a06f.jpg",
+      "originalPageUrl": "https://www.amazon.co.uk/Japanese-Purple-Sweet-Potatoes-Tuber/dp/B0BVN9BNFL?ref_=pinterest_fplfs",
+      "title": "Japanese Purple Skin Sweet Potatoes Tuber Seed 1 Bulbs Ready to Grow | Murasaki sweet potato recipe, Sweet potato plant, Sweet potato slips",
+      "pinner": "Amazon UK",
+      "width": 736,
+      "height": 552,
+      "format": "JPEG",
+      "sha256": "4b394edbd556ccea8dde578a5ab6f2e20f384d9d95a8ae010450fbf92f0051d2",
+      "vegetableId": "sweet-potato",
+      "productIds": ["sweet-potato-bent-2kg", "sweet-potato-small-1-5kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/sweet-potato/ac2cf884c1b5.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/purple-sweet-potatoes-on-a-plate--856950635375388101/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/4a/21/1a/4a211ab5e60d01d85f7fc3800ee8e0fb.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/4a/21/1a/4a211ab5e60d01d85f7fc3800ee8e0fb.jpg",
+      "originalPageUrl": "https://in.pinterest.com/pin/purple-sweet-potatoes-on-a-plate--856950635375388101/",
+      "title": "Purple Sweet Potatoes on a Plate | Garden",
+      "pinner": "SURYACHANDRAN",
+      "width": 736,
+      "height": 552,
+      "format": "JPEG",
+      "sha256": "ac2cf884c1b58b2ac18aa702d41b63c874520ae8732168d71a9f94acdf768295",
+      "vegetableId": "sweet-potato",
+      "productIds": ["sweet-potato-bent-2kg", "sweet-potato-scratched-3kg"]
+    },
+    {
+      "imageUrl": "/images/sweet-potato-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "ef51e4f2036133f46290cad05aaeef1608c7ae9b774a8d03407bd17530cd6de4",
+      "vegetableId": "sweet-potato",
+      "productIds": ["sweet-potato-bent-2kg", "sweet-potato-small-1-5kg"]
+    },
+    {
+      "imageUrl": "/images/sweet-potato-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "6af85d5b56140d09b7906b089cccea10fe9c1410b4fc08a9634528898ff8207f",
+      "vegetableId": "sweet-potato",
+      "productIds": ["sweet-potato-small-1-5kg", "sweet-potato-scratched-3kg"]
+    },
+    {
+      "imageUrl": "/images/sweet-potato.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "1325e44928b872f982812ff48eaf000b03823a41e6b68050add86f659a4bb0a8",
+      "vegetableId": "sweet-potato",
+      "productIds": ["sweet-potato-scratched-3kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/tomato/515151093852.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://id.pinterest.com/pin/still-life-photography-basket-of-red-tomatoes--92323861101324031/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/7a/c7/6e/7ac76efd14eb58e011128aebdab07b4b.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/7a/c7/6e/7ac76efd14eb58e011128aebdab07b4b.jpg",
+      "originalPageUrl": "https://id.pinterest.com/pin/still-life-photography-basket-of-red-tomatoes--92323861101324031/",
+      "title": "Still Life Photography: Basket of Red Tomatoes",
+      "pinner": "Aries Photography",
+      "width": 736,
+      "height": 1101,
+      "format": "JPEG",
+      "sha256": "5151510938523f2232331d9c7e616d195f10585c4bfd604e92d3c0e35e6c7f61",
+      "vegetableId": "tomato",
+      "productIds": ["tomato-irregular-1kg", "tomato-small-1-5kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/tomato/0d35dec9216d.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/red-tomatoes-on-a-branch-with-drops-of-water-on-a-white-backgrou-oleghz-hz-kostroma-russia-canon-eos1d-mark-iv--472737292126210174/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/8f/f0/a7/8ff0a767a3943965a756448fc4ef6d1d.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/8f/f0/a7/8ff0a767a3943965a756448fc4ef6d1d.jpg",
+      "originalPageUrl": "https://500px.com/photo/219803133/red-tomatoes-on-a-branch-with-drops-of-water-on-a-white-backgrou-by-oleghz-hz",
+      "title": "Kako ukloniti pesticide sa voća i povrća | Tomato splash vector design, Tomato juice splash illustration, Tomato splash effect",
+      "pinner": "Games for Windows",
+      "width": 736,
+      "height": 490,
+      "format": "JPEG",
+      "sha256": "0d35dec9216d7f50cded13422f0515abc26e99b10e0ca2afe412f16d31fc88bb",
+      "vegetableId": "tomato",
+      "productIds": ["tomato-irregular-1kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/tomato/24faa81b2219.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://ca.pinterest.com/pin/bright-red-vine-tomatoes-in-a-cobalt-blue-glass-bowl-create-a-stunning-piece-of-photo-art-that-would-look-terrific-in-a--19069998408781230/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/ce/01/78/ce0178519a6ac0abba3982ec0aeb55a0.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/ce/01/78/ce0178519a6ac0abba3982ec0aeb55a0.jpg",
+      "originalPageUrl": "https://fineartamerica.com/featured/vine-tomatoes-still-life-will-borden.html",
+      "title": "Vine Tomatoes Still Life by Will Borden | Blue background tomato art, Cobalt blue glass appetizer dishes, Fresh tomatoes in blue bowls",
+      "pinner": "Will",
+      "width": 600,
+      "height": 561,
+      "format": "JPEG",
+      "sha256": "24faa81b22196716f69c7964f65ad5f01f791bd50237217255a8f939d45d1e50",
+      "vegetableId": "tomato",
+      "productIds": ["tomato-scratched-2kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/tomato/8ae6d4b2dc22.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://www.pinterest.com/pin/fresh-red-tomatoes-on-the-vine--500392208597205591/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/12/34/16/123416b859477185ab404eb799ecd1c7.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/12/34/16/123416b859477185ab404eb799ecd1c7.gif",
+      "originalPageUrl": "https://in.pinterest.com/pin/tomato--726909196107849281/",
+      "title": "Fresh Red Tomatoes on the Vine | Ripe tomatoes on black background, Throwing tomatoes gif, Tomatoes with water droplets",
+      "pinner": "Kathy Steenbuck",
+      "width": 425,
+      "height": 622,
+      "format": "JPEG",
+      "sha256": "8ae6d4b2dc2273c0b0d4c71d2408eb32d284c15444c931b4b2e9617f4ebd151c",
+      "vegetableId": "tomato",
+      "productIds": ["tomato-scratched-2kg", "tomato-small-1-5kg"]
+    },
+    {
+      "imageUrl": "/images/tomato-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "47d713d7d42f29c38e06b7da2e3112774b3335ca5d28067ebc0ad2e9a9ba4e07",
+      "vegetableId": "tomato",
+      "productIds": ["tomato-small-1-5kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/cucumber/bccc07268a02.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/fresh-cucumbers-on-concrete-background-by-furmanphotos-photos-ad-aff-cucumbers-fresh-back--588493876291278648/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/a5/88/e1/a588e1aba229225c3821ca93824eeee0.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/a5/88/e1/a588e1aba229225c3821ca93824eeee0.jpg",
+      "originalPageUrl": "https://1.envato.market/c/1259333/298927/4662?u=https://elements.envato.com/fresh-cucumbers-on-concrete-background-VUWKH8L",
+      "title": "Fresh cucumbers on concrete background | Zucchini close-up photography, Graphic design photography, Fresh background",
+      "pinner": "Callusplease",
+      "width": 736,
+      "height": 1102,
+      "format": "JPEG",
+      "sha256": "bccc07268a02e024aa36c24b0145b1cfabc8e73eafeb3d3c2553481841bb17ef",
+      "vegetableId": "cucumber",
+      "productIds": ["cucumber-bent-5ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/cucumber/94894a9920ff.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://ph.pinterest.com/pin/closeup-whole-cucumbers-fresh-green-isolated-foto-stok-1930268942--709950328758787332/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/8d/2f/99/8d2f99c0524ce8591989946d859fa422.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/8d/2f/99/8d2f99c0524ce8591989946d859fa422.jpg",
+      "originalPageUrl": "https://www.shutterstock.com/id/image-photo/close-whole-cucumbers-fresh-green-isolated-1930268942",
+      "title": "Close-up of Whole Cucumbers Fresh Green Isolated on White Background | Objek, Ilustrasi, Gambar",
+      "pinner": "hendralook",
+      "width": 736,
+      "height": 981,
+      "format": "JPEG",
+      "sha256": "94894a9920ffe79fcc9916339083ee54f6e5672b2447f7442e25cca8b2dc7b20",
+      "vegetableId": "cucumber",
+      "productIds": ["cucumber-bent-5ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/cucumber/d1952996e6fb.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/fresh-organic-cucumbers-stock-photo-containing-cucumber-and-fresh--547046685976490945/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/7d/c5/e4/7dc5e4d4dcdfdf76d91c7d5226905890.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/7d/c5/e4/7dc5e4d4dcdfdf76d91c7d5226905890.jpg",
+      "originalPageUrl": "https://creativemarket.com/grafvision/1603097-Fresh-organic-cucumbers/?u=conflutech",
+      "title": "Fresh Organic Cucumbers on Vintage Background | Fresh green cucumbers on cloth, Fresh cucumbers on wooden table, Fresh green cucumber on table",
+      "pinner": "Rahul Dogra",
+      "width": 680,
+      "height": 1020,
+      "format": "JPEG",
+      "sha256": "d1952996e6fb76ba6286992722eb3b7e47b71c3c2f5baa0aa9a63b57844da61d",
+      "vegetableId": "cucumber",
+      "productIds": ["cucumber-scratched-10ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/cucumber/a9532f9717a5.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/freshly-picked-cucumber-from-the-garden--590253094951278957/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/23/1e/81/231e81666e7d22a624d28039382895d6.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/23/1e/81/231e81666e7d22a624d28039382895d6.jpg",
+      "originalPageUrl": "https://in.pinterest.com/pin/freshly-picked-cucumber-from-the-garden--917960336544089186/",
+      "title": "Freshly picked cucumber from the garden | Bottle gourd kootu, Bottle gourd pickle in telugu, Kongunadu bottle gourd fry",
+      "pinner": "Jihan Octaviani",
+      "width": 736,
+      "height": 981,
+      "format": "JPEG",
+      "sha256": "a9532f9717a5ea39a8d5346caff682be30b89d7506831990cb29c6f4ce8a889e",
+      "vegetableId": "cucumber",
+      "productIds": ["cucumber-scratched-10ea", "cucumber-small-7ea"]
+    },
+    {
+      "imageUrl": "/images/cucumber-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "6a45aaedd8093bdfdf2b7c479e2e6797dde67897a91565acd906116764913dc5",
+      "vegetableId": "cucumber",
+      "productIds": ["cucumber-scratched-10ea"]
+    },
+    {
+      "imageUrl": "/images/cucumber.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "7c03dbd2c1e8552a7c88361906df98d03a21dd1a21a25d5977f8f15138359827",
+      "vegetableId": "cucumber",
+      "productIds": ["cucumber-bent-5ea", "cucumber-small-7ea"]
+    },
+    {
+      "imageUrl": "/images/cucumber-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "f868a38139012135ff965cb22468ffe8d82441745f9ad56b40c762c142305325",
+      "vegetableId": "cucumber",
+      "productIds": ["cucumber-small-7ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/green-onion/dcbae479e5e6.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://au.pinterest.com/pin/the-difference-between-shallots-green-onions-scallions-and-spring-onions--215891375878672153/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/fa/69/57/fa695721a14dfa5b1798d3df4a46e644.jpg",
+      "originalImageUrl": null,
+      "originalPageUrl": null,
+      "title": "The difference between shallots, green onions, scallions and spring onions | Recipe | Moist green onions close-up, Green onion png, Difference between scallions and green onions",
+      "pinner": null,
+      "width": 600,
+      "height": 300,
+      "format": "JPEG",
+      "sha256": "dcbae479e5e6f656f6e6e0ac004bbef606d307d55528f7baaa4e8c59c4590c37",
+      "vegetableId": "green-onion",
+      "productIds": ["green-onion-small-1bunch", "green-onion-bent-1bunch"]
+    },
+    {
+      "imageUrl": "/images/products/curated/green-onion/04bc6a48871a.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://jp.pinterest.com/pin/the-difference-between-green-onions-scallions-spring-onions-garlic-scapes-leeks-and-ramps-in-2023--380272762299775105/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/e0/75/7d/e0757d84f1beb4061260a4ea1b3b7a8f.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/e0/75/7d/e0757d84f1beb4061260a4ea1b3b7a8f.jpg",
+      "originalPageUrl": "https://www.foodandwine.com/seasonings/alliums/the-difference-between-green-onions-spring-onions-scallions-leeks-and-ramps?utm_campaign=foodandwine&utm_content=bestof_360days&utm_medium=social&utm_source=facebook.com&utm_term=642acec5f30e380001d83455",
+      "title": "How to Keep Green Onions Fresh in the Fridge | Wild onions, Garlic scapes, Green garlic",
+      "pinner": "Kathy Melton",
+      "width": 736,
+      "height": 491,
+      "format": "JPEG",
+      "sha256": "04bc6a48871a992230cca6620b29f9f746ca3d938e869333d14c64e3d7c56362",
+      "vegetableId": "green-onion",
+      "productIds": ["green-onion-small-1bunch", "green-onion-irregular-2bunch"]
+    },
+    {
+      "imageUrl": "/images/products/curated/green-onion/6613228a3bc9.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://dk.pinterest.com/pin/roasted-green-onions-and-scallions--205969382945668733/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/01/83/51/018351a0c6408d997fe4f26154c043bd.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/01/83/51/018351a0c6408d997fe4f26154c043bd.jpg",
+      "originalPageUrl": "https://dk.pinterest.com/pin/615093261579663275/",
+      "title": "Roasted Green Onions and Scallions | Fyldte peberfrugter, Quinoa, Recetas",
+      "pinner": "Kay Cessna",
+      "width": 700,
+      "height": 907,
+      "format": "JPEG",
+      "sha256": "6613228a3bc98224558248c705e9ff97226ca06bd794c73de6296b89a9cb6a4e",
+      "vegetableId": "green-onion",
+      "productIds": ["green-onion-small-1bunch", "green-onion-scratched-1bunch"]
+    },
+    {
+      "imageUrl": "/images/green-onion.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "64acc5c54e23238a37a86fb52cecb6a7bdc888cb53026c39125b8ebab0bc6950",
+      "vegetableId": "green-onion",
+      "productIds": ["green-onion-bent-1bunch", "green-onion-scratched-1bunch"]
+    },
+    {
+      "imageUrl": "/images/green-onion-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "2730e151801c79bc0ba029e182f7621bddb4400645b935c3d864e56556e7a2f9",
+      "vegetableId": "green-onion",
+      "productIds": ["green-onion-bent-1bunch", "green-onion-irregular-2bunch"]
+    },
+    {
+      "imageUrl": "/images/green-onion-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "7e9a229901bb5243c25bff9c711191d5904eb324db7bbecacc46a9d9ba3b4735",
+      "vegetableId": "green-onion",
+      "productIds": [
+        "green-onion-irregular-2bunch",
+        "green-onion-scratched-1bunch"
+      ]
+    },
+    {
+      "imageUrl": "/images/products/curated/spinach/43d20ffcc1b6.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/fresh-spinach-leaves-isolated-on-white--707557791432341435/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/1f/80/ad/1f80adea6a7be7306bb92796c00080c5.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/1f/80/ad/1f80adea6a7be7306bb92796c00080c5.jpg",
+      "originalPageUrl": "https://www.rawpixel.com/image/105202/fresh-spinach-leaves-isolated-white?referral=133026",
+      "title": "Fresh Spinach Leaves Isolated on White | Organic recipes, Fruit vegetable, Organic food",
+      "pinner": "Free Design Resources",
+      "width": 736,
+      "height": 537,
+      "format": "JPEG",
+      "sha256": "43d20ffcc1b60cd133374732e8c394182a27050fe0203aca82de92148491f731",
+      "vegetableId": "spinach",
+      "productIds": ["spinach-small-500g", "spinach-irregular-1kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/spinach/84db290e43fa.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/fresh-spinach-leaves-on-a-plate--412431278392883242/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/cc/90/dd/cc90dd73f3d0abfd5f17de67154d3014.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/cc/90/dd/cc90dd73f3d0abfd5f17de67154d3014.jpg",
+      "originalPageUrl": "https://www.freepik.com/premium-photo/_176467573.htm",
+      "title": "Fresh Spinach Leaves on a Plate | Spinach background, Fresh green spinach, Spinach photography",
+      "pinner": "Axel Snell",
+      "width": 626,
+      "height": 626,
+      "format": "JPEG",
+      "sha256": "84db290e43faa820cdcabdfb705718fdc2655847f758ce25baf11d1750c014fa",
+      "vegetableId": "spinach",
+      "productIds": ["spinach-small-500g", "spinach-scratched-500g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/spinach/07a24171c8da.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://www.pinterest.com/pin/fresh-spinach-leaves-in-bowl--890023945093130826/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/46/23/75/4623754e668849818be2cf24c25fbd35.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/46/23/75/4623754e668849818be2cf24c25fbd35.jpg",
+      "originalPageUrl": "https://www.freepik.com/free-photo/fresh-spinach-leaves-bowl-isolated_8759385.htm",
+      "title": "Fresh Spinach Leaves in Bowl | Spinat gerichte, Spinat kochen, Vitamine für frauen",
+      "pinner": "Armahsco",
+      "width": 626,
+      "height": 416,
+      "format": "JPEG",
+      "sha256": "07a24171c8dafe916d9b92f9a0ebae46feb95a3167643a051ab389f95d0e0204",
+      "vegetableId": "spinach",
+      "productIds": ["spinach-small-500g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/spinach/8d215d70bc17.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/531424824792678997/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/51/bc/93/51bc93f972b0d5457b8bd138510345eb.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/51/bc/93/51bc93f972b0d5457b8bd138510345eb.png",
+      "originalPageUrl": "https://www.freepik.com/premium-photo/fresh-spinach-white-wooden-background-green-spinach-leaves-top-view-copy-space_26522712.htm#page=2&position=40&from_view=author",
+      "title": "Fresh Spinach on White Wooden Background | Fresh spinach leaves on wooden board, Fresh spinach leaves on wooden table, Spinach background",
+      "pinner": "M.art",
+      "width": 626,
+      "height": 432,
+      "format": "JPEG",
+      "sha256": "8d215d70bc179620aab90b76eaca467f4c8b815a5e3aee70251b7c29264f0a92",
+      "vegetableId": "spinach",
+      "productIds": ["spinach-irregular-1kg", "spinach-scratched-500g"]
+    },
+    {
+      "imageUrl": "/images/spinach.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "9e88b4a6d93a3df9c0badc898070faa85a818bb8f9790f0b4995918fdd12f412",
+      "vegetableId": "spinach",
+      "productIds": ["spinach-irregular-1kg"]
+    },
+    {
+      "imageUrl": "/images/spinach-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "61044be23980e3b02cde27ac50e575cedb5d212923d1b76030b773ab28604f39",
+      "vegetableId": "spinach",
+      "productIds": ["spinach-scratched-500g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/radish/ec7b10852e01.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/398498267043412666/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/de/8a/b1/de8ab1cdde24e15ac9ff692c1064b856.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/de/8a/b1/de8ab1cdde24e15ac9ff692c1064b856.jpg",
+      "originalPageUrl": "https://www.etsy.com/ca/listing/1128274628/korean-radish-or-mu-fresh-korean-radish",
+      "title": "Korean Radish or Mu, Fresh Korean Radish, Fresh Mu, Bulk Produce [4 lbs] | Traditional korean radish recipe, Korean purple radish, Yellow radish kimchi",
+      "pinner": "shin jamie",
+      "width": 736,
+      "height": 736,
+      "format": "JPEG",
+      "sha256": "ec7b10852e01bd050961cdf8308ad5fcd8959ad536bfffcf6a2b6ae546c63e92",
+      "vegetableId": "radish",
+      "productIds": ["radish-scratched-2ea", "radish-small-2ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/radish/ee661593b1aa.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/mu-radish--860328335100578614/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/b5/95/7b/b5957b6f8f83020484441713de06dbbe.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/b5/95/7b/b5957b6f8f83020484441713de06dbbe.jpg",
+      "originalPageUrl": "https://kr.pinterest.com/pin/mu-radish--860328335100578614/",
+      "title": "무 [ Mu ] Radish | 한식, 한국음식",
+      "pinner": "JIN",
+      "width": 735,
+      "height": 718,
+      "format": "JPEG",
+      "sha256": "ee661593b1aa351a4908bce3056b4602f7189ff67935b5d8223d582c3646cc8d",
+      "vegetableId": "radish",
+      "productIds": ["radish-scratched-2ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/radish/dc2c58d6dcb6.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/141722719517385129/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/db/51/ee/db51ee33816af096879c1a5ce588acbe.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/db/51/ee/db51ee33816af096879c1a5ce588acbe.jpg",
+      "originalPageUrl": "https://youtube.com/watch?v=CHgtPSXPZVE&si=WbUnhyv2qba-nNXA",
+      "title": "Super Simple Radish Salad | 간단한 조리법, 반찬, 요리",
+      "pinner": "장 문섭",
+      "width": 736,
+      "height": 414,
+      "format": "JPEG",
+      "sha256": "dc2c58d6dcb6d5821544cca3138478ee89ae1cbbe8953e28727ff13111e0dddb",
+      "vegetableId": "radish",
+      "productIds": ["radish-scratched-2ea", "radish-irregular-1ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/radish/e9c0e3c93629.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/jul-in-mu-salted-radish--860328335099398996/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/69/7d/e3/697de315dcb02ac00710bf1a3ccfd0c8.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/69/7d/e3/697de315dcb02ac00710bf1a3ccfd0c8.jpg",
+      "originalPageUrl": "https://kr.pinterest.com/pin/jul-in-mu-salted-radish--860328335099398996/",
+      "title": "절인 무 [ JuL in Mu ] Salted Radish | 한식, 한국음식",
+      "pinner": "JIN",
+      "width": 736,
+      "height": 641,
+      "format": "JPEG",
+      "sha256": "e9c0e3c936294d4b8fbf855300398f8e0726ba20047851ecaadf179e3175df4d",
+      "vegetableId": "radish",
+      "productIds": ["radish-irregular-1ea"]
+    },
+    {
+      "imageUrl": "/images/radish-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "1e464bed8b902facd06c11882941814f769a6628e68a976a04c39577b1594434",
+      "vegetableId": "radish",
+      "productIds": ["radish-irregular-1ea", "radish-small-2ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/radish/f89d922ff13e.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/mu-salted-radish--860328335097131258/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/0c/ba/59/0cba59d3b61ba7300c8abbcfe2830a3c.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/0c/ba/59/0cba59d3b61ba7300c8abbcfe2830a3c.jpg",
+      "originalPageUrl": "https://kr.pinterest.com/pin/mu-salted-radish--860328335097131258/",
+      "title": "무 [ Mu ] Salted Radish | 깍두기 만들기, 한식, 한국음식",
+      "pinner": "JIN",
+      "width": 735,
+      "height": 702,
+      "format": "JPEG",
+      "sha256": "f89d922ff13e4939a712c189787ca857482c6c909da292474d47b5db00fa5e77",
+      "vegetableId": "radish",
+      "productIds": ["radish-small-2ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/broccoli/e3f217edbabb.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://cl.pinterest.com/pin/32088216097900648/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/5f/3b/7a/5f3b7a34584c0b6d7ac4c07ec0fcd1a9.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/5f/3b/7a/5f3b7a34584c0b6d7ac4c07ec0fcd1a9.jpg",
+      "originalPageUrl": "https://kr.pinterest.com/pin/broccoli-rich-in-vitamin-k-for-strong-bones--32088216097900648/",
+      "title": "Broccoli: Rich in Vitamin K for Strong Bones | 식물 드로잉, 과일과 채소, 브로콜리",
+      "pinner": "雄二 朝生",
+      "width": 600,
+      "height": 600,
+      "format": "JPEG",
+      "sha256": "e3f217edbabb7a45b0aeff824341005cd4b9456a45347e81597a60bffcdb02f3",
+      "vegetableId": "broccoli",
+      "productIds": ["broccoli-small-3ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/broccoli/1eda16cf931c.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/download-premium-image-of-closeup-of-fresh-real-broccoli-isolated-on-white-about-broccoli-green-vegetable-cauliflo--43558321386518532/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/7f/e4/52/7fe452f39206cc982db511568252e760.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/7f/e4/52/7fe452f39206cc982db511568252e760.jpg",
+      "originalPageUrl": "https://www.rawpixel.com/image/105332/fresh-broccoli-vegetable?referral=133026",
+      "title": "Fresh Broccoli Isolated on White Background | Closeup broccoli image, Broccoli white background hd, Close-up of broccoli texture",
+      "pinner": "Panpan Nita",
+      "width": 736,
+      "height": 739,
+      "format": "JPEG",
+      "sha256": "1eda16cf931c1012bc3694e3442ea23694011eacd83ebb57986b11b48f618654",
+      "vegetableId": "broccoli",
+      "productIds": ["broccoli-small-3ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/broccoli/0d0a0dd99848.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://co.pinterest.com/pin/fresh-broccoli-isolated-on-white-containing-broccoli-isolated-and-food-a-food-drink-photo-by-nataphoto--852376666985467914/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/97/a4/db/97a4dbf4f9ce467ee372b1f9c8aec0ec.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/97/a4/db/97a4dbf4f9ce467ee372b1f9c8aec0ec.jpg",
+      "originalPageUrl": "https://creativemarket.com/kolesnikovserg/3547120-Fresh-broccoli-isolated-on-white-containing-broccoli-isolated-and-food",
+      "title": "Fresh broccoli isolated on white containing broccoli, isolated, and food | Bebidas",
+      "pinner": "Ilonafavlav",
+      "width": 736,
+      "height": 490,
+      "format": "JPEG",
+      "sha256": "0d0a0dd998485d367b09a20efbe43366af422e7b30b4a335d62c152982340039",
+      "vegetableId": "broccoli",
+      "productIds": ["broccoli-small-3ea", "broccoli-irregular-2ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/broccoli/9fe22b6d97ab.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/fresh-broccoli-in-wooden-box-on-wooden-surface-by-yakov_oskanov-photos-ad-ad-broccoli-fresh-wooden-surface--841117667891232236/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/b9/49/a8/b949a805dcd835b2500f607bcaceb5c1.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/b9/49/a8/b949a805dcd835b2500f607bcaceb5c1.jpg",
+      "originalPageUrl": "https://1.envato.market/c/1259333/298927/4662?u=https://elements.envato.com/fresh-broccoli-in-wooden-box-on-wooden-surface-WT4H6UQ",
+      "title": "Fresh broccoli in wooden box on wooden surface | Fresh broccoli texture, Fresh broccoli on white background, Broccoli no background",
+      "pinner": "Takoyarujp",
+      "width": 735,
+      "height": 491,
+      "format": "JPEG",
+      "sha256": "9fe22b6d97ab06ab24725b6de0fe3603000cc7b3c98a3fdf75cf55b5bd2997ff",
+      "vegetableId": "broccoli",
+      "productIds": ["broccoli-irregular-2ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/broccoli/1c4816d9a646.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/682436149772549405/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/e6/b5/d4/e6b5d479d792979bf11d01dd066e34ed.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/e6/b5/d4/e6b5d479d792979bf11d01dd066e34ed.jpg",
+      "originalPageUrl": "https://i.pinimg.com/736x/a1/4f/2b/a14f2be3bf62836b8ed0f5c462663a6e.jpg",
+      "title": "Broccoli and Cilantro Food Photography | Vegetables dark background, Fresh vegetables on dark surface, Vegetables black background",
+      "pinner": "Aromadiphoto",
+      "width": 540,
+      "height": 673,
+      "format": "JPEG",
+      "sha256": "1c4816d9a64633de6250c2d7bee557a51f80e70c566877093eda9e346b7d95c5",
+      "vegetableId": "broccoli",
+      "productIds": ["broccoli-irregular-2ea"]
+    },
+    {
+      "imageUrl": "/images/broccoli-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "82b85680829ff2ea5edb3e91cdeb2a2c931d7a791c3c79af2483a3a5063862bf",
+      "vegetableId": "broccoli",
+      "productIds": ["broccoli-scratched-2ea"]
+    },
+    {
+      "imageUrl": "/images/broccoli-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "0931baf07900b8d6fa0a3a2d768e75facd2fa1c2e4c3e6edef25fc7158619e83",
+      "vegetableId": "broccoli",
+      "productIds": ["broccoli-scratched-2ea"]
+    },
+    {
+      "imageUrl": "/images/broccoli-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "0df4f6a0210aa14fe57f35b6f24ce27d43da5e1f7145f65550f95128ef4b4ab3",
+      "vegetableId": "broccoli",
+      "productIds": ["broccoli-scratched-2ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/napa-cabbage/da0a3aa10121.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/117797346497863569/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/eb/f5/70/ebf5704fe4472401148faf66cd5dc898.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/eb/f5/70/ebf5704fe4472401148faf66cd5dc898.jpg",
+      "originalPageUrl": "http://www.harvesttotable.com/wp-content/uploads/2007/03/Cabbage-Napa1.jpg",
+      "title": "NAPA Cabbage for Fresh and Healthy Cooking | Growing bok choy, Chinese leaves, Mustard cabbage",
+      "pinner": "Anaísa",
+      "width": 675,
+      "height": 900,
+      "format": "JPEG",
+      "sha256": "da0a3aa10121ced161005475ebd5514403cb64d9a43dfb16dd895206a5b2b487",
+      "vegetableId": "napa-cabbage",
+      "productIds": ["napa-cabbage-small-2ea", "napa-cabbage-scratched-1ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/napa-cabbage/9d8f7844a978.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://jp.pinterest.com/pin/838725130600891865/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/4c/39/59/4c3959d3e13d6663edd42329dcda5b12.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/4c/39/59/4c3959d3e13d6663edd42329dcda5b12.png",
+      "originalPageUrl": "https://ixintu.com/sucai/fiiJPqakU.html",
+      "title": "页面找不到了_海量素材免费下载-新图网 | Chinese cabbage white background, Cabbage vegetable images, Lettuce plant leaves close-up",
+      "pinner": "新图网",
+      "width": 610,
+      "height": 610,
+      "format": "JPEG",
+      "sha256": "9d8f7844a9788722ee6d079afa9965a0957bda4b1a7440eedc35d3233dc10184",
+      "vegetableId": "napa-cabbage",
+      "productIds": ["napa-cabbage-small-2ea", "napa-cabbage-irregular-1ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/napa-cabbage/f17fa29bdfa5.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://uk.pinterest.com/pin/napa-cabbage-versatile-ingredient-for-soups-stir-fries-and-kimchi--168322104808695628/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/aa/d6/d2/aad6d25237f2bfb1e919fe3396964fc4.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/aa/d6/d2/aad6d25237f2bfb1e919fe3396964fc4.jpg",
+      "originalPageUrl": "https://www.instagram.com/p/Bsp5g1FjX39/",
+      "title": "Napa Cabbage: Versatile Ingredient for Soups, Stir Fries, and Kimchi | Cabbage white butterfly, Kimchi with regular cabbage, Traditional napa cabbage kimchi",
+      "pinner": "World Food and Wine",
+      "width": 640,
+      "height": 640,
+      "format": "JPEG",
+      "sha256": "f17fa29bdfa5f22187e33f568c48d97b42ef3f9a86712b9cfee5fe82e2ae495c",
+      "vegetableId": "napa-cabbage",
+      "productIds": ["napa-cabbage-small-2ea"]
+    },
+    {
+      "imageUrl": "/images/napa-cabbage-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "7ace640898620e14166bd75b57710839654478c666413cd60aee759288028011",
+      "vegetableId": "napa-cabbage",
+      "productIds": ["napa-cabbage-scratched-1ea"]
+    },
+    {
+      "imageUrl": "/images/napa-cabbage-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "e07e3c1582e59e44e66f124e0b73ee31c9b2f165a3b98ff5f430a6f54a9d8b3c",
+      "vegetableId": "napa-cabbage",
+      "productIds": ["napa-cabbage-scratched-1ea", "napa-cabbage-irregular-1ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/napa-cabbage/211309fe1de6.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://www.pinterest.com/pin/michihili-cabbage-napa-cabbage-brassica-rapa-ssp-pekinensis--272045633726330275/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/02/6a/e0/026ae01b0116bac0036bd5dd97181674.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/02/6a/e0/026ae01b0116bac0036bd5dd97181674.jpg",
+      "originalPageUrl": "http://www.harvesttotable.com/2007/03/michihili_michihili_is_a_semih/",
+      "title": "How to Plant, Grow, Harvest Chinese Cabbage | Calla lily bulbs, Cabbage seeds, Lilac plant",
+      "pinner": "Ginger Jackson",
+      "width": 474,
+      "height": 637,
+      "format": "JPEG",
+      "sha256": "211309fe1de63a27986e314d456fe9b9d026d8967f2474120328b6421f852b59",
+      "vegetableId": "napa-cabbage",
+      "productIds": ["napa-cabbage-irregular-1ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/aehobak/b4afccfb1321.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/381820874635784463/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/a7/4a/a6/a74aa68b6f6dceb3a2e33c76a1280649.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/a7/4a/a6/a74aa68b6f6dceb3a2e33c76a1280649.jpg",
+      "originalPageUrl": "http://emart.ssg.com/item/itemDtl.ssg?itemId=0000006821911&ckwhere=emart_pinterest",
+      "title": "[국내산] 애호박 (1개) | 조롱박, 유통기한, 채소",
+      "pinner": "Jamie Han",
+      "width": 500,
+      "height": 500,
+      "format": "JPEG",
+      "sha256": "b4afccfb132180fb55f25fd96f588e39f1dc119037e72693f611e9401456fa27",
+      "vegetableId": "aehobak",
+      "productIds": [
+        "aehobak-small-3ea",
+        "aehobak-bent-2ea",
+        "aehobak-scratched-3ea"
+      ]
+    },
+    {
+      "imageUrl": "/images/products/curated/aehobak/b91fdb884656.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://se.pinterest.com/pin/860328335104434807/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/56/58/2c/56582c0c4ccccc542413b09ba6d6033f.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/56/58/2c/56582c0c4ccccc542413b09ba6d6033f.jpg",
+      "originalPageUrl": "https://www.pinterest.com/pin/860328335104434807/",
+      "title": "애호박 [ Ae HoBak ] Korean Zucchini | 한식, 한국음식",
+      "pinner": "JIN",
+      "width": 735,
+      "height": 651,
+      "format": "JPEG",
+      "sha256": "b91fdb8846567412ff553c241110dbdf2ce004a4383d5acb59d8c1dc505cbeaa",
+      "vegetableId": "aehobak",
+      "productIds": ["aehobak-small-3ea", "aehobak-bent-2ea"]
+    },
+    {
+      "imageUrl": "/images/aehobak-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "ea7f095031f24a143dd92de572e42dadb53d3aaf7cbbd22588d37895c1d5789d",
+      "vegetableId": "aehobak",
+      "productIds": ["aehobak-small-3ea", "aehobak-scratched-3ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/aehobak/32dd0bc403a0.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/pin-oleh-suji-di--699395017145362494/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/b7/37/d7/b737d727bd35f500f87c012c79731fd5.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/b7/37/d7/b737d727bd35f500f87c012c79731fd5.jpg",
+      "originalPageUrl": "https://kr.pinterest.com/pin/745064332108014567/",
+      "title": "애호박 | 유기농, 직접, 사진 자료",
+      "pinner": "Suji",
+      "width": 736,
+      "height": 552,
+      "format": "JPEG",
+      "sha256": "32dd0bc403a0229aef3919f4305ba1960457abcb817fb0c2f2e07a48b02e8964",
+      "vegetableId": "aehobak",
+      "productIds": ["aehobak-bent-2ea", "aehobak-scratched-3ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/eggplant/baf58aac25c6.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://ph.pinterest.com/pin/freshly-picked-purple-eggplant--678284393872414444/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/eb/02/30/eb0230bb96beef0c88c01f413e5a5004.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/eb/02/30/eb0230bb96beef0c88c01f413e5a5004.jpg",
+      "originalPageUrl": "https://ph.pinterest.com/pin/freshly-picked-purple-eggplant--678284393872414444/",
+      "title": "Freshly picked purple eggplant | Morning harvest, Hylan",
+      "pinner": "Chris Hipolito",
+      "width": 736,
+      "height": 981,
+      "format": "JPEG",
+      "sha256": "baf58aac25c6eb0fd45b03a679e9a48fa90c24c85c8c0f72957ba109007a18e3",
+      "vegetableId": "eggplant",
+      "productIds": ["eggplant-scratched-4ea", "eggplant-small-7ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/eggplant/f674d7edf9c9.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://co.pinterest.com/pin/fresh-purple-eggplant-from-the-farm--799459371341207328/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/d4/fd/eb/d4fdebfc8dcf08d5c8eafd89b4fc555f.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/d4/fd/eb/d4fdebfc8dcf08d5c8eafd89b4fc555f.jpg",
+      "originalPageUrl": "https://co.pinterest.com/pin/fresh-purple-eggplant-from-the-farm--799459371341207328/",
+      "title": "Fresh Purple Eggplant from the Farm",
+      "pinner": "velibot154",
+      "width": 736,
+      "height": 552,
+      "format": "JPEG",
+      "sha256": "f674d7edf9c94c6de3c021850fe70c6753cbaaa01693283bcaf768a94b8f73e0",
+      "vegetableId": "eggplant",
+      "productIds": ["eggplant-scratched-4ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/eggplant/2423e0441077.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://uk.pinterest.com/pin/mini-eggplant-does-have-the-most-vibrant-colours-miniaubergine-har-verkligen-den-vackraste--112660428164688817/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/27/d0/1e/27d01ec50cc5dc923056608d097b683b.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/27/d0/1e/27d01ec50cc5dc923056608d097b683b.jpg",
+      "originalPageUrl": "https://www.instagram.com/p/BwxQxFzhmk_/?igshid=gx1aoj70fynf",
+      "title": "Mini eggplant does have the most vibrant colours. . Mini-aubergine har verkligen den vackraste färgen. . . #kriiskitchen… | Eggplant photo ideas, Purple eggplant photography, Food fruits",
+      "pinner": "Magnus Bohlin",
+      "width": 736,
+      "height": 920,
+      "format": "JPEG",
+      "sha256": "2423e0441077d66612d657a0900a0d4553967a62620e2eb6d1f2eb8e75dddbfa",
+      "vegetableId": "eggplant",
+      "productIds": ["eggplant-scratched-4ea", "eggplant-irregular-5ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/eggplant/ef06b134f21e.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://uk.pinterest.com/pin/343399540349719057/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/a4/ce/10/a4ce107c46e2409b621956236dede698.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/a4/ce/10/a4ce107c46e2409b621956236dede698.jpg",
+      "originalPageUrl": "https://www.lynnkarlinphoto.com/fine-art-the-pedestal-series",
+      "title": "Purple Vegetable Still Life Art | Eggplant photography, Still life vegetables photography, Three fresh eggplants",
+      "pinner": "Carolyn Murdoch",
+      "width": 736,
+      "height": 1102,
+      "format": "JPEG",
+      "sha256": "ef06b134f21e9813e62aa6e623a43256a6f99905ff2c25dec85e977de6b459a3",
+      "vegetableId": "eggplant",
+      "productIds": ["eggplant-small-7ea", "eggplant-irregular-5ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/eggplant/ec8e9d7c9f58.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://id.pinterest.com/pin/4603030776075330048/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/bc/da/73/bcda735a3e9563ee26ffa9daae695142.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/bc/da/73/bcda735a3e9563ee26ffa9daae695142.jpg",
+      "originalPageUrl": "https://shopee.ph/product/1504708622/29133587423?channel_type=pinterest",
+      "title": "➠ ➻ ❗️ 100% Original High Yield Purple Long Eggplant Seeds Fresh 250pcs Easy To Grow  Organic Talon | Eggplant growing pictures, Egg plant growing pictures, Planting",
+      "pinner": "Shopee",
+      "width": 736,
+      "height": 736,
+      "format": "JPEG",
+      "sha256": "ec8e9d7c9f58d4f021b3fc788f9cc1479183a4bcb58f8dea670d2ab9e8959bc0",
+      "vegetableId": "eggplant",
+      "productIds": ["eggplant-small-7ea"]
+    },
+    {
+      "imageUrl": "/images/eggplant-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "5be3cc1e3da9bdb4ffae32a7c9e7e44128b1ab2b0ffd1e286b03b9b816f28c15",
+      "vegetableId": "eggplant",
+      "productIds": ["eggplant-irregular-5ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/sweet-pumpkin/a804fe551ec1.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/527836018829558725/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/e8/08/a0/e808a0ac7451ed15dc750b494b4bb1d8.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/e8/08/a0/e808a0ac7451ed15dc750b494b4bb1d8.jpg",
+      "originalPageUrl": "https://www.marysheirloomseeds.com/products/kabocha-squash?variant=39735427085",
+      "title": "Whole Roasted Kabocha Squash with Chipotle Butter Recipe | How to cook kabocha squash, Kabocha squash recipes easy, Japanese squash",
+      "pinner": "garden of dreams",
+      "width": 700,
+      "height": 467,
+      "format": "JPEG",
+      "sha256": "a804fe551ec104ae48d5ef5e1e730405f2ff1a7496bbab687858e1bcdaabb11c",
+      "vegetableId": "sweet-pumpkin",
+      "productIds": ["sweet-pumpkin-small-3ea", "sweet-pumpkin-scratched-2ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/sweet-pumpkin/94bec147ff49.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://jp.pinterest.com/pin/by--555279829047807265/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/4e/cc/6f/4ecc6f5b29a124d2b27e27f7c45a80f4.jpg",
+      "originalImageUrl": null,
+      "originalPageUrl": null,
+      "title": "How to Keep Kabocha Squash Fresh in the Vegetable Compartment | レシピ | 野菜室, 冷凍野菜, かぼちゃの種",
+      "pinner": null,
+      "width": 640,
+      "height": 480,
+      "format": "JPEG",
+      "sha256": "94bec147ff49e0497a8c8d2692530ad404c551972e9daa7a5835e9ad99e92c3f",
+      "vegetableId": "sweet-pumpkin",
+      "productIds": ["sweet-pumpkin-small-3ea", "sweet-pumpkin-irregular-2ea"]
+    },
+    {
+      "imageUrl": "/images/danhobak-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "f8a673ed18f754eaa93a9ba89f384a7720eb45c8da941934f67339df2b32170c",
+      "vegetableId": "sweet-pumpkin",
+      "productIds": ["sweet-pumpkin-small-3ea", "sweet-pumpkin-scratched-2ea"]
+    },
+    {
+      "imageUrl": "/images/danhobak-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "5df3f9a42bcd9b3bfcedf137b7f63c267656baf674b0a8461609190043addc38",
+      "vegetableId": "sweet-pumpkin",
+      "productIds": [
+        "sweet-pumpkin-scratched-2ea",
+        "sweet-pumpkin-irregular-2ea"
+      ]
+    },
+    {
+      "imageUrl": "/images/danhobak-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "98f77fbc083fab95e37f879412fc679d428caa900a256493fb33b81c9e0d0ed0",
+      "vegetableId": "sweet-pumpkin",
+      "productIds": ["sweet-pumpkin-irregular-2ea"]
+    },
+    {
+      "imageUrl": "/images/products/curated/king-oyster/6901f6e69f32.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://co.pinterest.com/pin/782922716507894998/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/35/21/7d/35217d0358977c07dd295d286cf61dbb.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/35/21/7d/35217d0358977c07dd295d286cf61dbb.jpg",
+      "originalPageUrl": "https://www.freepik.com/premium-photo/king-oyster-mushroom-pleurotus-eryngii-isolated-white-background-clipping-path_12846756.htm",
+      "title": "Premium Photo: King Oyster Mushroom (Pleurotus Eryngii) Isolated on White Background | Oyster mushroom white background, White oyster mushroom texture, Oyster mushroom images hd",
+      "pinner": "",
+      "width": 626,
+      "height": 417,
+      "format": "JPEG",
+      "sha256": "6901f6e69f32c0a5ab0b596a49d82d17dc7894a27c9e7377427243203607fe65",
+      "vegetableId": "king-oyster",
+      "productIds": ["king-oyster-small-500g", "king-oyster-scratched-500g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/king-oyster/7686b2a5dd3d.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://au.pinterest.com/pin/king-oyster-mushrooms-a-food-photography-journey--509680882838489545/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/ca/af/4f/caaf4fb85ae3837279a5ea2c69c17e31.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/ca/af/4f/caaf4fb85ae3837279a5ea2c69c17e31.jpg",
+      "originalPageUrl": "https://l8r.it/Q9hx",
+      "title": "King Oyster Mushrooms: A Food Photography Journey | King oyster mushroom images, King oyster mushroom photo, Stack of fresh oyster mushrooms",
+      "pinner": "Nelly le Comte Artist and Photographer",
+      "width": 736,
+      "height": 1104,
+      "format": "JPEG",
+      "sha256": "7686b2a5dd3d17b27e000f6442028157930bdb767f11596da1a804904d71a619",
+      "vegetableId": "king-oyster",
+      "productIds": ["king-oyster-small-500g", "king-oyster-scratched-1kg"]
+    },
+    {
+      "imageUrl": "/images/king-oyster-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "0e9a8d01f97d13cdc01cc18b4db366e37c5a37128a0c24c5033f4fb8174dd3cc",
+      "vegetableId": "king-oyster",
+      "productIds": ["king-oyster-small-500g", "king-oyster-irregular-500g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/king-oyster/f0f825897908.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://se.pinterest.com/pin/781796816602286171/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/8b/17/bb/8b17bb88d23b18c8a175d25697a2be12.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/8b/17/bb/8b17bb88d23b18c8a175d25697a2be12.jpg",
+      "originalPageUrl": "https://foragerchef.com/king-trumpet-mushroom/",
+      "title": "King Trumpet Mushroom / King Oyster (Pleurotus eryngii) | King oyster mushroom cluster, Grey oyster mushroom, King oyster mushroom images",
+      "pinner": "MamaJo",
+      "width": 736,
+      "height": 952,
+      "format": "JPEG",
+      "sha256": "f0f8258979088f32e05f053a35dfdaeaed4040ff5d7b5e02c5ea7b7bfcb433f9",
+      "vegetableId": "king-oyster",
+      "productIds": ["king-oyster-scratched-500g", "king-oyster-irregular-1kg"]
+    },
+    {
+      "imageUrl": "/images/king-oyster-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "e30a3d41eae799182d02c0bdb5f41eddd1ba93caa39812c1ec094dbb365ccf7e",
+      "vegetableId": "king-oyster",
+      "productIds": ["king-oyster-scratched-500g", "king-oyster-scratched-1kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/king-oyster/d045c0bd7897.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://uk.pinterest.com/pin/362469470031592856/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/70/f7/31/70f731095f7a1a45ab79d286968609d3.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/70/f7/31/70f731095f7a1a45ab79d286968609d3.jpg",
+      "originalPageUrl": "https://www.pinterest.com/pin/stiridye-mantar-ailesi--362469470031592856/",
+      "title": "İstiridye Mantarı Ailesi | Mushroom seeds, Mushroom vegetable, Garden nursery",
+      "pinner": "Gabby Dexter",
+      "width": 700,
+      "height": 525,
+      "format": "JPEG",
+      "sha256": "d045c0bd78971a710898a8e71e8ee174275f65050da6ef6f6c07b2080ca42b14",
+      "vegetableId": "king-oyster",
+      "productIds": ["king-oyster-irregular-1kg", "king-oyster-irregular-500g"]
+    },
+    {
+      "imageUrl": "/images/king-oyster-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "18d40919e18d7429236304369aeae7d696b3a5297be765c34d578cf5e46484dc",
+      "vegetableId": "king-oyster",
+      "productIds": ["king-oyster-irregular-1kg", "king-oyster-scratched-1kg"]
+    },
+    {
+      "imageUrl": "/images/king-oyster-irregular-500g.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "ec4a95fe4c3deb4c58e007471c6ca01afe52607c9f11204968e44c9b1928a602",
+      "vegetableId": "king-oyster",
+      "productIds": ["king-oyster-irregular-500g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/mandarin/98758cfa889e.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://au.pinterest.com/pin/mandarin-satsuma-okitsu--300544975146899074/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/d5/22/0b/d5220bb67d0fc71801c64903eaf6737d.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/d5/22/0b/d5220bb67d0fc71801c64903eaf6737d.jpg",
+      "originalPageUrl": "https://www.diggers.com.au/products/mandarin-satsuma-okitsu-g?variant=41084162703522",
+      "title": "Ripe Organic Oranges on Dark Wooden Background | Sardinas a la plancha, Alimentos ricos en potasio, Hidratos de carbono complejos",
+      "pinner": "The Diggers Club",
+      "width": 736,
+      "height": 736,
+      "format": "JPEG",
+      "sha256": "98758cfa889e6762ee783e111efae2a160d1cabca3fdc5017520579faf01e254",
+      "vegetableId": "mandarin",
+      "productIds": ["mandarin-small-3kg", "mandarin-scratched-5kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/mandarin/fd648c3ca3e7.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://co.pinterest.com/pin/104919866314553165/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/83/b3/b3/83b3b3a821f6f16055f40f422502b1ce.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/83/b3/b3/83b3b3a821f6f16055f40f422502b1ce.jpg",
+      "originalPageUrl": "https://creativemarket.com/product/7714763-Ripe-tangerine-fruits-with-leaf-and-mandarin-slices-on-white-background.?utm_source=Pinterest&utm_medium=product_feed",
+      "title": "Fresh Tangerine Fruits with Mandarin Slices | Fruit art drawings, Art de crayon de couleur, Flyers créatifs",
+      "pinner": "Regiane",
+      "width": 736,
+      "height": 490,
+      "format": "JPEG",
+      "sha256": "fd648c3ca3e737f4b5644acb66397ab3dd925554541c68acd4ddff6e33f926fa",
+      "vegetableId": "mandarin",
+      "productIds": [
+        "mandarin-small-3kg",
+        "mandarin-scratched-5kg",
+        "mandarin-irregular-3kg"
+      ]
+    },
+    {
+      "imageUrl": "/images/products/curated/mandarin/252857a263d8.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/mandarins-in-a-white-bowl-still-life-photography--392939136237078099/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/c9/7b/c3/c97bc3e22597b628e39179a1c74f147b.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/c9/7b/c3/c97bc3e22597b628e39179a1c74f147b.jpg",
+      "originalPageUrl": "http://instagram.com/p/irKi2AwEJ4/?modal=true",
+      "title": "Mandarins in a White Bowl Still Life Photography | Simple fruit photography inspiration, Fruit still life photography simple, Simple fruit still life inspiration",
+      "pinner": "R40",
+      "width": 640,
+      "height": 640,
+      "format": "JPEG",
+      "sha256": "252857a263d87ba0e13584a57c17bafd0c199108d5feb11a73182bc992f84722",
+      "vegetableId": "mandarin",
+      "productIds": ["mandarin-scratched-5kg", "mandarin-irregular-3kg"]
+    },
+    {
+      "imageUrl": "/images/products/curated/chili/f49a52652578.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/672584525638085001/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/5b/33/2c/5b332c254b21bb8948a1d4ac90cc5e0c.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/5b/33/2c/5b332c254b21bb8948a1d4ac90cc5e0c.jpg",
+      "originalPageUrl": "https://www.freepik.com/premium-photo/green-hot-chili-peppers-isolated-white_8255452.htm",
+      "title": "Premium Photo | Red and Green Chili Peppers on Grey Table | Green chilly, Green chili pepper images, Green chilli background",
+      "pinner": "Patience Mawuli",
+      "width": 626,
+      "height": 418,
+      "format": "JPEG",
+      "sha256": "f49a526525782911883d3583e8670f1b76ba7d2c77d032af6130631db34aca07",
+      "vegetableId": "chili",
+      "productIds": ["chili-small-300g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/chili/4106aaaf21e6.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/green-chilli--769341548878332287/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/fd/b6/f4/fdb6f4a7ccb180fff9f4f9255f223e9e.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/fd/b6/f4/fdb6f4a7ccb180fff9f4f9255f223e9e.jpg",
+      "originalPageUrl": "https://in.pinterest.com/pin/green-chilli--769341548878332287/",
+      "title": "Green Chilli | Photographing food, Food photography",
+      "pinner": "𝐑𝐀𝐉-𝐡𝐞𝐫𝐬𝐞𝐥𝐟",
+      "width": 736,
+      "height": 972,
+      "format": "JPEG",
+      "sha256": "4106aaaf21e69a25c673b85a54d92af8d8ebf0ad57950174255e622ffa106eaa",
+      "vegetableId": "chili",
+      "productIds": ["chili-small-300g"]
+    },
+    {
+      "imageUrl": "/images/chili-small.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "158a4e0146144f169141422d1310c0054bb5bdb2e60299f5af39d4688cb6cf57",
+      "vegetableId": "chili",
+      "productIds": ["chili-small-300g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/chili/9f5c87d68e6e.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/red-and-green-chili-peppers-close-up-on-wooden-background-by-ruslan117-from-http500pxcomphoto203029301-red-and-green-chili-peppers-close-up-on-wooden-b--124904589646607158/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/80/45/01/804501c1e608445b7810545fb5d56323.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/80/45/01/804501c1e608445b7810545fb5d56323.jpg",
+      "originalPageUrl": "http://500px.com/photo/203029301",
+      "title": "Green and red chili close-up | Fresh chili peppers on table, Fresh red chili close-up, Pepper photos",
+      "pinner": "Buy Dianabol UK",
+      "width": 736,
+      "height": 490,
+      "format": "JPEG",
+      "sha256": "9f5c87d68e6e2c959cb3022db88c1f55ca06e0026d50e181c805bfbd59a7d35b",
+      "vegetableId": "chili",
+      "productIds": ["chili-bent-500g"]
+    },
+    {
+      "imageUrl": "/images/chili-bent.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "a2bebe37a810bf3150ed5cac226fc9f656a21a31ba6551e6dfb245e481caa1be",
+      "vegetableId": "chili",
+      "productIds": ["chili-bent-500g"]
+    },
+    {
+      "imageUrl": "/images/chili-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "34e61ef0337b80dd3fdcfc82696fc3a785fadd5b4f82330f2be027942e566d41",
+      "vegetableId": "chili",
+      "productIds": ["chili-scratched-500g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/chili/6b39b2b56648.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://es.pinterest.com/pin/fresh-green-peppers-growing-on-the-plant--662169951459676214/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/7e/82/ae/7e82ae251378a4b43bcb6c3760a55ac0.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/7e/82/ae/7e82ae251378a4b43bcb6c3760a55ac0.jpg",
+      "originalPageUrl": "https://es.pinterest.com/pin/fresh-green-peppers-growing-on-the-plant--662169951459676214/",
+      "title": "Fresh Green Peppers Growing on the Plant | Cueva del gato, Huerto ecologico, Verduras y hortalizas",
+      "pinner": "Rustic Experience Andalucia",
+      "width": 736,
+      "height": 1104,
+      "format": "JPEG",
+      "sha256": "6b39b2b5664872e7f99b508b75b4329a2c011f9c34586194145932be91d5f3c7",
+      "vegetableId": "chili",
+      "productIds": ["chili-scratched-500g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/chili/9b6a00d071da.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/fresh-green-peppers-hanging-from-a-plant--607774912219615936/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/d4/57/80/d45780d85d17d7a8db50b7ef7afe93d4.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/d4/57/80/d45780d85d17d7a8db50b7ef7afe93d4.jpg",
+      "originalPageUrl": "https://in.pinterest.com/pin/fresh-green-peppers-hanging-from-a-plant--607774912219615936/",
+      "title": "Fresh Green Peppers Hanging From a Plant | Stuffed peppers",
+      "pinner": "أمل في الحياة",
+      "width": 736,
+      "height": 981,
+      "format": "JPEG",
+      "sha256": "9b6a00d071da7eb6d2efbd4ec4ccdd61b05a20c85a8a02d037079a11eceab5f9",
+      "vegetableId": "chili",
+      "productIds": ["chili-scratched-500g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/chili/133b550f2de3.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://au.pinterest.com/pin/freshly-picked-red-and-green-chilis--310607705563984156/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/8e/29/2c/8e292cae5ca3574ae3c0022277972091.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/8e/29/2c/8e292cae5ca3574ae3c0022277972091.jpg",
+      "originalPageUrl": "https://au.pinterest.com/pin/freshly-picked-red-and-green-chilis--310607705563984156/",
+      "title": "Freshly Picked Red and Green Chilis | Homemade chili pepper harvest, Fresh homegrown chili peppers, Fresh chili peppers harvest",
+      "pinner": "Jane M.",
+      "width": 720,
+      "height": 960,
+      "format": "JPEG",
+      "sha256": "133b550f2de3058a23f044605f8dcdee26b229526f63125c0222487c32f036b3",
+      "vegetableId": "chili",
+      "productIds": ["chili-irregular-500g"]
+    },
+    {
+      "imageUrl": "/images/products/curated/chili/9839019bdcfa.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://ca.pinterest.com/pin/food-photography-colorful-new-mexico-chili-peppers-red-green-yellow-peppers-giclee-print-wall-hanging-ph--33495590966720668/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/bb/e8/17/bbe817911001bbe1a8a1cb6442866589.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/bb/e8/17/bbe817911001bbe1a8a1cb6442866589.jpg",
+      "originalPageUrl": "https://www.etsy.com/listing/188338934/food-photography-colorful-new-mexico?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=chili%20pepper%20home%20decor&ref=sr_gallery_42",
+      "title": "Food photography, Colorful New Mexico Chili Peppers, Red, Green, Yellow Peppers, Giclee print wall hanging Photo on Canv… | Stuffed anaheim peppers, Ceramic tile backsplash, Chili peppers red",
+      "pinner": "Maria Locricchio",
+      "width": 570,
+      "height": 860,
+      "format": "JPEG",
+      "sha256": "9839019bdcfa060cda33701a1ffa4fe3eaa7c369e495fbcd02f94ebad6e4fd20",
+      "vegetableId": "chili",
+      "productIds": ["chili-bent-500g", "chili-irregular-500g"]
+    },
+    {
+      "imageUrl": "/images/chili-irregular.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "f11f00abcbfdacbb339e1a72763955b5ef62172770bc840108b5d9ffbea808a5",
+      "vegetableId": "chili",
+      "productIds": ["chili-irregular-500g"]
+    },
+    {
+      "imageUrl": "/images/tomato-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "fc5c89ad762a956132f80aefffd24920e5dcb97521a5a6523c12e92dd2775549",
+      "vegetableId": "tomato",
+      "productIds": ["tomato-irregular-1kg", "tomato-scratched-2kg"]
+    },
+    {
+      "imageUrl": "/images/mandarin-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "5e9c92e5e4312718a03744161d6c92ed1e8a84886efc243732715fc0a70ad36b",
+      "vegetableId": "mandarin",
+      "productIds": ["mandarin-small-3kg", "mandarin-irregular-3kg"]
+    }
+  ]
+}
