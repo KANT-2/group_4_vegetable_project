@@ -1,6 +1,6 @@
 export const orderStatusLabels: Record<string, string> = {
   pending: "결제 대기",
-  paid: "모의 결제 완료",
+  paid: "결제 완료",
   payment_failed: "결제 실패",
   cancelled: "주문 취소",
 };
