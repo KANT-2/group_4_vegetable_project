@@ -4,7 +4,6 @@
 // 가운데 제목(28px) + 회색 설명 → 4개씩 보이는 가로 줄 → 오른쪽(넘긴 뒤엔 왼쪽) 동그란 화살표
 // 휴대폰에서는 손가락으로 밀어서 넘겨요. 화살표는 넓은 화면에서만 보여요.
 
-import Link from "next/link";
 import {
   useCallback,
   useEffect,
@@ -12,15 +11,18 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { SectionHeading } from "./SectionHeading";
 
 export function HomeShelf({
   id,
+  eyebrow,
   title,
   sub,
   href,
   children,
 }: {
   id: string;
+  eyebrow?: string;
   title: string;
   sub?: string;
   href?: string | null;
@@ -62,32 +64,13 @@ export function HomeShelf({
 
   return (
     <section aria-labelledby={id} className="container-page pt-10 md:pt-14">
-      <div className="mb-5 text-center md:mb-7">
-        <h2
-          id={id}
-          className="text-[1.375rem] font-medium leading-snug text-ink md:text-[1.75rem]"
-        >
-          {href ? (
-            <Link
-              href={href}
-              className="inline-flex items-center gap-1 hover:text-brand"
-            >
-              {title}
-              <span
-                aria-hidden="true"
-                className="text-[1.6em] font-light leading-none"
-              >
-                ›
-              </span>
-            </Link>
-          ) : (
-            title
-          )}
-        </h2>
-        {sub && (
-          <p className="mt-1 text-sm text-ink-muted md:text-base">{sub}</p>
-        )}
-      </div>
+      <SectionHeading
+        id={id}
+        eyebrow={eyebrow}
+        title={title}
+        sub={sub}
+        href={href}
+      />
 
       <div className="relative">
         <ul

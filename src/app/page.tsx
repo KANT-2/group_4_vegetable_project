@@ -1,6 +1,6 @@
 // 메인 화면 / (A 담당)
 // v2 시안(마켓컬리 기준):
-//   화면 너비 사진 배너 → 채소 바로가기 → [진열 줄 × 여러 개, 사이사이 띠 배너] → 레시피 → 농가 이야기
+//   화면 너비 사진 배너 → [진열 줄 × 여러 개, 사이사이 띠 배너] → 레시피 → 농가 이야기
 // 진열 줄은 가운데 제목 + 4개씩 옆으로 넘기는 상품 카드예요. (src/components/common/HomeShelf.tsx)
 // 서비스 가치·이용 흐름 같은 긴 소개는 /story 의 "우리 이야기"에 있어요.
 // 상품·채소 화면(B)이 아직 없으면 그쪽으로 가는 링크는 그리지 않아요. (src/lib/routes.ts)
@@ -27,15 +27,6 @@ import { getProductList } from "@/services/products";
 import { getRecipes } from "@/services/recipes";
 import { getFarmStories } from "@/services/showcase";
 import type { Product } from "@/types/product";
-
-const HOME_VEGETABLE_LINKS = [
-  { id: "carrot", name: "당근", emoji: "🥕" },
-  { id: "aehobak", name: "애호박", emoji: "🥒" },
-  { id: "onion", name: "양파", emoji: "🧅" },
-  { id: "paprika", name: "파프리카", emoji: "🫑" },
-  { id: "potato", name: "감자", emoji: "🥔" },
-  { id: "other", name: "기타", emoji: "🧺" },
-];
 
 const SHELF_SIZE = 8; // 한 줄에 4개씩 보이고, 넘기면 4개 더
 
@@ -158,7 +149,7 @@ export default async function HomePage() {
           href,
           layout: wide ? ("photo" as const) : ("split" as const),
           imageUrl: wide ?? product.imageUrl,
-          eyebrow: "🍂 지금 맛있는 제철 과일",
+          eyebrow: "지금 맛있는 제철 과일",
           title: product.name,
           sub: product.tagline,
           highlight: `${discount > 0 ? `${discount}% ` : ""}${product.price.toLocaleString("ko-KR")}원`,
@@ -172,7 +163,7 @@ export default async function HomePage() {
             href: `${list}?collection=bigsale`,
             layout: "photo" as const,
             imageUrl: "/images/hero.jpg", // 채소 바구니 가로 사진 (1600×600)
-            eyebrow: `${COLLECTIONS.bigsale.emoji} 못난이 특가`,
+            eyebrow: "못난이 특가",
             title: COLLECTIONS.bigsale.title,
             sub: COLLECTIONS.bigsale.description,
           },
@@ -183,15 +174,11 @@ export default async function HomePage() {
       href: routes.recipes,
       layout: "split",
       imageUrl: recipeImage,
-      eyebrow: "🍳 못난이 채소 레시피",
+      eyebrow: "못난이 채소 레시피",
       title: "오늘 저녁은 쉬운 집밥 어때요?",
       sub: `채소 하나로 만드는 레시피 ${recipes.length}가지`,
     },
   ];
-
-  const hasVegetablePage = HOME_VEGETABLE_LINKS.some((vegetable) =>
-    routes.vegetable(vegetable.id),
-  );
 
   return (
     <>
@@ -200,50 +187,16 @@ export default async function HomePage() {
       {/* 1. 화면 너비 사진 배너 */}
       <HomeBanner slides={slides} />
 
-      {/* 2. 채소 바로가기 */}
-      <nav
-        aria-labelledby="vegetables-title"
-        className="container-page pt-6 md:pt-9"
-      >
-        <h2 id="vegetables-title" className="sr-only">
-          {hasVegetablePage ? "채소로 바로 찾기" : "채소로 레시피 찾기"}
-        </h2>
-        <ul className="grid grid-cols-6 gap-1 sm:gap-4 md:mx-auto md:max-w-2xl">
-          {HOME_VEGETABLE_LINKS.map((vegetable) => (
-            <li key={vegetable.id}>
-              <Link
-                href={
-                  vegetable.id === "other"
-                    ? (list ?? routes.recipes)
-                    : (routes.vegetable(vegetable.id) ??
-                      routes.recipesByVegetable(vegetable.id))
-                }
-                className="group flex min-h-12 flex-col items-center gap-1.5 text-center"
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex size-13 items-center justify-center rounded-full bg-sand text-2xl transition-colors group-hover:bg-brand-soft sm:size-16 sm:text-3xl"
-                >
-                  {vegetable.emoji}
-                </span>
-                <span className="text-[0.8125rem] group-hover:text-brand sm:text-sm">
-                  {vegetable.name}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <div className="container-page mt-6">
+      <div className="container-page [&:not(:empty)]:mt-6">
         <MockDataNotice subject="상품·농가" />
       </div>
 
-      {/* 3. 진열 줄 */}
+      {/* 2. 진열 줄 */}
       {discounted.length > 0 && (
         <HomeShelf
           id="shelf-discount"
-          title="💸 지금 가장 많이 할인해요"
+          eyebrow="BEST PRICE"
+          title="지금 가장 많이 할인해요"
           sub="모양만 다를 뿐, 맛은 그대로예요"
           href={list ? `${list}?sort=discount_desc` : null}
         >
@@ -254,7 +207,8 @@ export default async function HomePage() {
       {seasonal.length > 0 && (
         <HomeShelf
           id="shelf-seasonal"
-          title={`${COLLECTIONS.seasonal.emoji} ${COLLECTIONS.seasonal.title}`}
+          eyebrow={COLLECTIONS.seasonal.eyebrow}
+          title={COLLECTIONS.seasonal.title}
           sub={COLLECTIONS.seasonal.description}
           href={collectionHref("seasonal")}
         >
@@ -272,7 +226,8 @@ export default async function HomePage() {
       {popular.length > 0 && (
         <HomeShelf
           id="shelf-popular"
-          title="🏆 후기가 많은 인기 상품"
+          eyebrow="BEST REVIEW"
+          title="후기가 많은 인기 상품"
           sub="먼저 산 분들이 많이 고른 못난이"
           href={list ? `${list}?sort=reviews` : null}
         >
@@ -283,7 +238,8 @@ export default async function HomePage() {
       {single.length > 0 && (
         <HomeShelf
           id="shelf-single"
-          title={`${COLLECTIONS.single.emoji} ${COLLECTIONS.single.title}`}
+          eyebrow={COLLECTIONS.single.eyebrow}
+          title={COLLECTIONS.single.title}
           sub={COLLECTIONS.single.description}
           href={collectionHref("single")}
         >
@@ -294,7 +250,8 @@ export default async function HomePage() {
       {bulk.length > 0 && (
         <HomeShelf
           id="shelf-bulk"
-          title={`${COLLECTIONS.bulk.emoji} ${COLLECTIONS.bulk.title}`}
+          eyebrow={COLLECTIONS.bulk.eyebrow}
+          title={COLLECTIONS.bulk.title}
           sub={COLLECTIONS.bulk.description}
           href={collectionHref("bulk")}
         >
@@ -312,7 +269,8 @@ export default async function HomePage() {
       {recipes.length > 0 && (
         <HomeShelf
           id="shelf-recipes"
-          title="🍳 오늘은 뭘 해 먹을까요?"
+          eyebrow="RECIPE"
+          title="오늘은 뭘 해 먹을까요?"
           sub="장바구니에 담은 채소로 바로 만들어요"
           href={routes.recipes}
         >
@@ -328,7 +286,8 @@ export default async function HomePage() {
       {farms.length > 0 && (
         <HomeShelf
           id="shelf-farms"
-          title="🌾 농가 이야기"
+          eyebrow="FARM STORY"
+          title="농가 이야기"
           sub="농산물을 키우는 사람들의 하루"
           href={routes.story}
         >

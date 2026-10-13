@@ -11,6 +11,7 @@ import { MockDataNotice } from "@/components/common/MockDataNotice";
 import { ProductPreviewCard } from "@/components/common/ProductPreviewCard";
 import { SafeImage } from "@/components/common/SafeImage";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
+import { getFarmStoryDetail } from "@/data/farm-stories";
 import { getFarmPhoto } from "@/lib/farm-photo";
 import { routes } from "@/lib/routes";
 import { getProductList } from "@/services/products";
@@ -35,12 +36,16 @@ export async function generateMetadata({
   if (!farm) return { title: "농가를 찾을 수 없어요" };
   return {
     title: `${farm.farmName} · 농가 이야기`,
-    description: farm.story ?? `${farm.farmName}의 못난이 농산물을 만나보세요.`,
+    description:
+      getFarmStoryDetail(farm.farmName)?.headline ??
+      farm.story ??
+      `${farm.farmName}의 못난이 농산물을 만나보세요.`,
   };
 }
 
 const TABS = [
   { id: "products", label: "판매 상품" },
+  { id: "story", label: "농가 이야기" },
   { id: "location", label: "농가 위치" },
   { id: "recipes", label: "이 채소로 만드는 요리" },
 ];
@@ -68,6 +73,7 @@ export default async function FarmDetailPage({
     ...new Map(recipeLists.flat().map((r) => [r.id, r])).values(),
   ];
   const photo = getFarmPhoto(farm);
+  const detail = getFarmStoryDetail(farm.farmName);
   const crops = [...new Set(farm.products.map((p) => p.vegetableName))];
   const reviewTotal = products.reduce((sum, p) => sum + p.reviewCount, 0);
   const others = farms.filter((f) => f.farmName !== farm.farmName);
@@ -107,7 +113,7 @@ export default async function FarmDetailPage({
             src={photo.imageUrl}
             alt={photo.alt}
             priority
-            className="aspect-[4/5] w-full object-cover"
+            className={`aspect-[4/5] w-full object-cover ${photo.position}`}
           />
         </div>
         <div className="flex flex-col">
@@ -117,9 +123,9 @@ export default async function FarmDetailPage({
           <h1 className="mt-1 text-[1.75rem] font-bold leading-tight md:text-[2rem]">
             {farm.farmName}
           </h1>
-          {farm.story && (
+          {(detail?.headline ?? farm.story) && (
             <p className="mt-3 text-base leading-relaxed text-ink-muted md:text-lg">
-              {farm.story}
+              {detail?.headline ?? farm.story}
             </p>
           )}
 
@@ -157,7 +163,7 @@ export default async function FarmDetailPage({
         aria-label="농가 정보 바로가기"
         className="sticky top-0 z-20 mt-10 border-b border-line bg-surface"
       >
-        <ul className="container-page grid grid-cols-3">
+        <ul className="container-page grid grid-cols-4">
           {TABS.map((tab) => (
             <li key={tab.id}>
               <a
@@ -207,7 +213,45 @@ export default async function FarmDetailPage({
         )}
       </section>
 
-      {/* 4. 농가 위치 (구글 지도) */}
+      {/* 4. 농가 이야기: 땅 · 키우는 방식 · 모양이 다른 이유 · 먹는 법 */}
+      {detail && (
+        <section
+          id="story"
+          aria-labelledby="story-title"
+          className="container-page scroll-mt-16 pt-14"
+        >
+          <h2 id="story-title" className="text-xl font-bold md:text-2xl">
+            {farm.farmName} 이야기
+          </h2>
+          <dl className="mt-5 divide-y divide-line border-y border-line">
+            {[
+              ["땅과 날씨", detail.land],
+              ["이렇게 키워요", detail.growing],
+              ["모양이 제각각인 이유", detail.ugly],
+              ["맛있게 먹는 법", detail.eat],
+            ].map(([term, body]) => (
+              <div
+                key={term}
+                className="grid gap-1 py-4 md:grid-cols-[12rem_1fr] md:gap-6"
+              >
+                <dt className="font-bold text-brand-dark">{term}</dt>
+                <dd className="leading-relaxed text-ink-muted">{body}</dd>
+              </div>
+            ))}
+          </dl>
+          <blockquote className="mt-5 bg-sand px-5 py-4 text-lg font-bold text-brand-dark">
+            “{detail.quote}”
+            <span className="mt-1 block text-sm font-normal text-ink-muted">
+              — {farm.farmName} 농장지기
+            </span>
+          </blockquote>
+          <p className="mt-2 text-xs text-ink-muted">
+            ※ 서비스 시연을 위한 예시 농가 이야기예요.
+          </p>
+        </section>
+      )}
+
+      {/* 5. 농가 위치 (구글 지도) */}
       <section
         id="location"
         aria-labelledby="location-title"
@@ -241,7 +285,7 @@ export default async function FarmDetailPage({
         </div>
       </section>
 
-      {/* 5. 이 채소로 만드는 요리 */}
+      {/* 6. 이 채소로 만드는 요리 */}
       <section
         id="recipes"
         aria-labelledby="recipes-title"
@@ -265,11 +309,12 @@ export default async function FarmDetailPage({
         )}
       </section>
 
-      {/* 6. 다른 농가 이야기 */}
+      {/* 7. 다른 농가 이야기 */}
       {others.length > 0 && (
         <HomeShelf
           id="other-farms"
-          title="🌾 다른 농가 이야기"
+          eyebrow="MORE FARMS"
+          title="다른 농가 이야기"
           sub="다른 지역 농가도 만나보세요"
           href={routes.story}
         >
@@ -285,7 +330,7 @@ export default async function FarmDetailPage({
                     <SafeImage
                       src={otherPhoto.imageUrl}
                       alt={otherPhoto.alt}
-                      className="aspect-[249/320] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className={`aspect-[249/320] w-full object-cover transition-transform duration-300 group-hover:scale-105 ${otherPhoto.position}`}
                     />
                   </span>
                   <span className="mt-3 block font-bold group-hover:text-brand">

@@ -111,7 +111,8 @@
 
   .page-title {
     font-size: 1.75rem;
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
   @media (min-width: 48rem) {
     .page-title {
@@ -121,7 +122,8 @@
 
   .section-title {
     font-size: 1.375rem;
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
   @media (min-width: 48rem) {
     .section-title {

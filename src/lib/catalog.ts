@@ -43,7 +43,7 @@ export type CollectionKey = NonNullable<CatalogFilters["collection"]>;
 export const COLLECTIONS: Record<
   CollectionKey,
   {
-    emoji: string;
+    eyebrow: string; // 제목 위 작은 영문 라벨
     short: string; // 상단 코너 버튼에 쓰는 짧은 이름
     title: string;
     description: string;
@@ -51,28 +51,28 @@ export const COLLECTIONS: Record<
   }
 > = {
   seasonal: {
-    emoji: "🍂",
+    eyebrow: "SEASONAL",
     short: "제철",
     title: "지금이 제철이에요",
     description: "가장 맛있을 때 밭에서 바로 왔어요.",
     match: (p) => p.isSeasonal,
   },
   bigsale: {
-    emoji: "💸",
+    eyebrow: "BIG SALE",
     short: "특가",
     title: "40% 넘게 아껴요",
     description: "모양만 다르고 맛은 같은데, 가격은 훨씬 가벼워요.",
     match: (p) => getDiscountRate(p.price, p.originalPrice) >= 40,
   },
   bulk: {
-    emoji: "🧺",
+    eyebrow: "BULK",
     short: "대용량",
     title: "넉넉하게 담았어요",
     description: "자주 요리하는 집을 위한 3kg 이상 실속 상품이에요.",
     match: (p) => weightKg(p.unit) >= 3,
   },
   single: {
-    emoji: "🙋",
+    eyebrow: "FOR ONE",
     short: "1인 가구",
     title: "혼자 먹기 딱 좋아요",
     description: "작아서 한 번에 다 쓰기 좋은 1인 가구용이에요.",

@@ -4,7 +4,7 @@ import { requireUser } from "@/lib/auth";
 import { getProfile } from "@/services/profile";
 import { ProfileForm } from "@/components/account/ProfileForm";
 import { ProfileRetry } from "@/components/account/ProfileRetry";
-import { AccountNav } from "@/components/account/AccountNav";
+import { AccountLayout } from "@/components/account/AccountLayout";
 
 export const metadata: Metadata = { title: "마이페이지" };
 
@@ -35,17 +35,20 @@ async function ProfileContent() {
 
 export default function MyPage() {
   return (
-    <section className="container-page section">
-      <AccountNav active="profile" />
-      <div className="card mx-auto max-w-3xl p-6 sm:p-8">
-        <h1 className="page-title">마이페이지</h1>
-        <p className="mb-8 mt-3 text-ink-muted">
-          내 계정 정보와 주문에 사용할 기본 배송지를 관리하세요.
-        </p>
-        <Suspense fallback={<p role="status">프로필을 불러오고 있어요.</p>}>
-          <ProfileContent />
-        </Suspense>
-      </div>
-    </section>
+    <AccountLayout
+      active="profile"
+      title="회원 정보·배송지"
+      description="내 정보와 다음 장보기를 위한 기본 배송지를 관리하세요."
+    >
+      <Suspense
+        fallback={
+          <p role="status" className="rounded-xl bg-surface p-6">
+            프로필을 불러오고 있어요.
+          </p>
+        }
+      >
+        <ProfileContent />
+      </Suspense>
+    </AccountLayout>
   );
 }
