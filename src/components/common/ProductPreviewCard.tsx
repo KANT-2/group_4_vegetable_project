@@ -1,7 +1,7 @@
 // 메인·레시피 상세에서 판매 상품을 간단히 보여주는 카드 (A 담당)
 // v2 시안(마켓컬리 기준): 249×320 비율 사진 → [담기] → [농가] 상품명 → 정가(취소선) → 할인율·판매가 → 후기 수
 // 상품 상세 페이지(B)가 아직 없으면 href 가 null 이고, 링크 없는 카드로만 보여줘요.
-// productId 를 넘기면 사진 아래에 [담기] 버튼이 생겨요. (버튼은 링크 밖에 둬야 해서 사진·글자를 따로 감싸요.)
+// productId로 상품별 사진을 고르고, showQuickAdd가 true이면 [담기] 버튼을 보여줘요.
 
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -21,7 +21,8 @@ interface ProductPreviewCardProps {
   uglyReason: UglyReason;
   eyebrow?: string; // 이름 앞 [ ] 안에 보여줄 말 (예: 농가 이름)
   href: string | null;
-  productId?: string; // 있으면 [담기] 버튼을 보여줘요
+  productId: string;
+  showQuickAdd?: boolean;
   reviewCount?: number;
   description?: string; // 이름 아래 회색 한 줄 (예: 홍보 문구)
   priority?: boolean; // 첫 화면 사진은 먼저 불러와요
@@ -40,6 +41,7 @@ export function ProductPreviewCard({
   eyebrow,
   href,
   productId,
+  showQuickAdd = true,
   reviewCount,
   description,
   priority = false,
@@ -71,7 +73,9 @@ export function ProductPreviewCard({
         </div>,
         "block",
       )}
-      {productId && <QuickAddButton productId={productId} productName={name} />}
+      {productId && showQuickAdd && (
+        <QuickAddButton productId={productId} productName={name} />
+      )}
       {wrap(
         <>
           <h3 className="line-clamp-2 text-base leading-[1.45] text-ink">
