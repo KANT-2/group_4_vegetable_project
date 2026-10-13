@@ -78,7 +78,7 @@ function setup() {
   }
   const window = {
     setInterval: (callback, delay) => {
-      assert.equal(delay, 4000);
+      assert.equal(delay, 2000); // 레시피 사진과 같은 간격
       timers.set(++timerId, callback);
       return timerId;
     },
@@ -180,5 +180,25 @@ test("상품 사진은 화면 밖·백그라운드·동작 줄이기에서 넘�
   ui.render();
   ui.tick();
   assert.equal(ui.render().props["data-product-image-index"], 2);
+  ui.unmount();
+});
+
+test("상품 사진은 레시피처럼 겹쳐 두고 페이드로 바뀌며 점 표시는 없다", () => {
+  const ui = setup();
+  const layers = () => ui.render().props.children;
+  let current = layers();
+  assert.equal(current.length, 3);
+  const visibleLayers = (list) =>
+    list.filter((layer) => layer.props.className.includes("opacity-100"));
+  assert.equal(visibleLayers(current).length, 1);
+  assert.match(current[0].props.className, /transition-opacity duration-700/);
+  assert.equal(current[0].props["aria-hidden"], false);
+  ui.tick();
+  current = layers();
+  assert.equal(current[1].props["aria-hidden"], false);
+  assert.match(current[1].props.className, /opacity-100/);
+  assert.match(current[0].props.className, /opacity-0/);
+  // 점 표시(인디케이터)는 그리지 않아요.
+  assert.ok(current.every((layer) => layer.type === "div"));
   ui.unmount();
 });

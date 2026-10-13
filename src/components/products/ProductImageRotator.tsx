@@ -50,7 +50,7 @@ export function ProductImageRotator({
       )
         return;
       setIndex((previous) => (previous + 1) % images.length);
-    }, 4000);
+    }, 2000);
     return () => window.clearInterval(timer);
   }, [images.length, hovered, focused, visible]);
 
@@ -67,24 +67,30 @@ export function ProductImageRotator({
           setFocused(false);
       }}
     >
-      <SafeImage
-        src={images[current]}
-        alt={`${name} 사진 ${current + 1}`}
-        className={className}
-        priority={priority}
-      />
-      {images.length > 1 && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5 rounded-full bg-black/20 px-2 py-1.5"
-        >
-          {images.map((image, i) => (
-            <span
-              key={image}
-              className={`h-1.5 rounded-full ${i === current ? "w-4 bg-white" : "w-1.5 bg-white/60"}`}
+      {images.length > 1 ? (
+        // 레시피 사진(RecipeImage)과 같은 방식: 사진을 겹쳐 두고 0.7초 동안 서서히 바꿔요.
+        // 모든 사진을 미리 불러 두어 바뀔 때 빈 화면이 보이지 않아요.
+        images.map((src, photoIndex) => (
+          <div
+            key={src}
+            aria-hidden={photoIndex !== current}
+            className={`transition-opacity duration-700 ease-in-out ${photoIndex === 0 ? "relative" : "absolute inset-0"} ${photoIndex === current ? "opacity-100" : "opacity-0"}`}
+          >
+            <SafeImage
+              src={src}
+              alt={`${name} 사진 ${photoIndex + 1}`}
+              className={`${className ?? ""} ${photoIndex === 0 ? "" : "h-full"}`}
+              priority={priority && photoIndex === 0}
             />
-          ))}
-        </div>
+          </div>
+        ))
+      ) : (
+        <SafeImage
+          src={images[0]}
+          alt={`${name} 사진`}
+          className={className}
+          priority={priority}
+        />
       )}
     </div>
   );
