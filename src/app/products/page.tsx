@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { VisitMark } from "@/components/products/BackLink";
-import CollectionNav from "@/components/products/CollectionNav";
 import MockDataNotice from "@/components/products/MockDataNotice";
 import { rankProducts } from "@/lib/product-ranking";
 import ProductCard from "@/components/products/ProductCard";
@@ -75,10 +74,7 @@ export default async function ProductsPage({
     <div className="container-page py-4">
       <VisitMark />
       <h1 className="sr-only">{collection ? collection.title : "상품 목록"}</h1>
-      {/* 코너 아이콘 (검색창은 v2 시안에서 헤더 가운데로 옮겼어요) */}
-      <div className="mx-auto max-w-md pt-2">
-        <CollectionNav active={filters.collection} />
-      </div>
+      {/* 코너 이동은 헤더 메뉴(제철·특가·대용량·1인 가구)에서 해요. */}
 
       {filters.q && (
         <p className="mt-6 text-xl font-bold text-ink">
