@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { DeliveryBannerCopy } from "./DeliveryBannerCopy";
 import Link from "next/link";
 import type { homeCampaigns } from "@/data/home-campaigns";
 
@@ -16,7 +17,7 @@ export function CampaignHero({
       <Link
         href="#benefit"
         aria-label={`${campaign.eyebrow}: ${campaign.title}. 혜택 및 안내 보기`}
-        className="block size-full"
+        className="relative block size-full"
       >
         <Image
           src={campaign.imageUrl}
@@ -26,12 +27,17 @@ export function CampaignHero({
           preload
           className="object-cover object-right sm:object-center"
         />
+        {campaign.copyOverride ? (
+          <DeliveryBannerCopy />
+        ) : (
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-transparent sm:hidden"
+          />
+        )}
         <span
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-transparent sm:hidden"
-        />
-        <span
-          aria-hidden="true"
+          style={campaign.copyOverride ? { display: "none" } : undefined}
           className="container-page absolute inset-x-0 inset-y-0 flex flex-col justify-center text-white sm:hidden"
         >
           <span className="text-sm font-medium opacity-90 md:text-base">
