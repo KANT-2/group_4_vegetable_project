@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CampaignHero } from "@/components/promotions/CampaignHero";
 import { homeCampaigns } from "@/data/home-campaigns";
 import { notFound } from "next/navigation";
+import { CouponClaimButton } from "@/components/promotions/CouponClaimButton";
 import ProductCard from "@/components/products/ProductCard";
 import { promotions } from "@/data/promotions";
 import { COLLECTIONS } from "@/lib/catalog";
@@ -51,16 +52,6 @@ export default async function PromotionPage({ params }: Props) {
         {promo.label} · {campaign.title}
       </h1>
       <CampaignHero campaign={campaign} />
-      <div className="container-page flex justify-center py-5">
-        <Link href="#benefit" className="btn btn-primary">
-          {promo.kind === "delivery"
-            ? "배송 안내 보기"
-            : promo.kind === "experience"
-              ? "체험 안내 보기"
-              : "혜택 보기"}
-          <span aria-hidden="true">↓</span>
-        </Link>
-      </div>
       <nav
         aria-label="행사 페이지 메뉴"
         className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur"
@@ -102,10 +93,13 @@ export default async function PromotionPage({ params }: Props) {
                 {promo.benefit}
               </strong>
               <span className="mt-3 text-sm">{promo.benefitLabel}</span>
+              {promo.kind === "coupon" && (
+                <CouponClaimButton campaignId={promo.slug} />
+              )}
               {promo.kind !== "delivery" && (
                 <span className="mt-5 text-xs text-ink-muted">
                   {promo.kind === "coupon"
-                    ? "쿠폰 발급 준비 중"
+                    ? "쿠폰을 받아 내 쿠폰함에 보관하세요"
                     : "예약 접수 준비 중"}
                 </span>
               )}
@@ -181,8 +175,8 @@ export default async function PromotionPage({ params }: Props) {
           </ul>
           {promo.kind === "coupon" && (
             <p className="mt-4 border-t border-line pt-4 text-sm leading-6 text-ink-muted">
-              쿠폰 조건을 미리 안내하고 있어요. 현재 쿠폰 발급과 결제 할인
-              적용은 시작되지 않았어요.
+              받은 쿠폰은 장바구니의 내 쿠폰 탭에서 확인할 수 있어요. 결제
+              화면에서 쿠폰을 선택해 할인받는 기능은 준비 중이에요.
             </p>
           )}
         </section>

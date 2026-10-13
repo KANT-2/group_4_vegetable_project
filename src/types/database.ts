@@ -39,6 +39,62 @@ export type Database = {
   };
   public: {
     Tables: {
+      coupon_campaigns: {
+        Row: {
+          id: string;
+          name: string;
+          discount_type: string;
+          discount_value: number;
+          minimum_amount: number;
+          maximum_discount: number;
+          starts_at: string;
+          ends_at: string;
+          valid_days: number;
+          eligible_vegetables: string[];
+          first_purchase_only: boolean;
+          daily: boolean;
+          is_active: boolean;
+        };
+        Insert: {
+          id: string;
+          name: string;
+          discount_type: string;
+          discount_value: number;
+          minimum_amount: number;
+          maximum_discount: number;
+          starts_at: string;
+          ends_at: string;
+          valid_days: number;
+          eligible_vegetables?: string[];
+          first_purchase_only?: boolean;
+          daily?: boolean;
+          is_active?: boolean;
+        };
+        Update: { name?: string; is_active?: boolean };
+        Relationships: [];
+      };
+      user_coupons: {
+        Row: {
+          id: string;
+          user_id: string;
+          campaign_id: string;
+          issuance_day: string;
+          issued_at: string;
+          expires_at: string;
+          used_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          campaign_id: string;
+          issuance_day: string;
+          issued_at?: string;
+          expires_at: string;
+          used_at?: string | null;
+        };
+        Update: { used_at?: string | null };
+        Relationships: [];
+      };
       cart_items: {
         Row: {
           created_at: string;
@@ -466,6 +522,7 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
+      claim_coupon: { Args: { p_campaign_id: string }; Returns: string };
       mock_checkout: {
         Args: {
           p_request_key: string;

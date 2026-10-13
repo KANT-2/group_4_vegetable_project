@@ -70,11 +70,13 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
     ]);
   }
 
-  await t.test("10개 테이블에 RLS가 활성화된다", async () => {
+  await t.test("공개·개인 테이블에 RLS가 활성화된다", async () => {
     const { rows } = await db.query(
       "select relname from pg_class where relnamespace = 'public'::regnamespace and relkind = 'r' and relrowsecurity",
     );
-    assert.equal(rows.length, 10);
+    assert.equal(rows.length, 12);
+    assert.ok(rows.some((row) => row.relname === "user_coupons"));
+    assert.ok(rows.some((row) => row.relname === "coupon_campaigns"));
   });
 
   await t.test(

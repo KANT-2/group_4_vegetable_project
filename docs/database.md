@@ -120,3 +120,9 @@ npm test
 **2026-10-12 결제 상세주소 필수 적용 완료:** `202610120005_required_checkout_address_detail.sql`로 기존 mock_checkout 함수의 새 주문 검증을 강화했습니다. 상세주소를 공백 제거 후 1~100자로 제한합니다. 기존 주문·프로필 데이터와 함수 실행 권한은 유지합니다. 결제 화면에서 빈 상세주소 제출 시 안내가 뜨고 주문이 저장되지 않는 것을 확인했습니다.
 
 **2026-10-12 배송비 정책 공용 DB 적용 완료:** `202610120006_order_shipping_fee.sql` 적용 후 상품 13,800원 + 배송비 3,500원 = 총 17,300원 주문 저장을 실제 화면에서 확인했습니다. 20,700원 장바구니는 무료배송 표시를 확인했습니다. DB와 화면 경계값 19,999/20,000/20,001원 테스트 통과. 기존 주문 총액은 수정하지 않았습니다.
+
+## 2026-10-13 쿠폰 발급·개인 쿠폰함
+
+`202610130001_coupon_wallet.sql`을 공유 vegetable DB에 적용했습니다. 사전 조회에서 coupon_campaigns·user_coupons·claim_coupon(text)가 없는 것을 확인했습니다. 기존 사용자·상품·주문·장바구니는 변경하지 않았습니다.
+
+행사 정의와 개인 발급 테이블에 RLS를 적용했습니다. authenticated는 claim_coupon(text)를 실행하고 본인 쿠폰만 읽을 수 있습니다. anon EXECUTE=false, authenticated user_coupons INSERT/UPDATE=false를 확인했습니다. 실제 사용자 계정의 발급·중복 재요청·본인 조회·다른 계정 조회 차단을 트랜잭션에서 검증하고 rollback하여 테스트 쿠폰은 보존하지 않았습니다. SQL Editor 적용이므로 CLI migration 이력에는 자동 등록되지 않습니다. [구현·조건·검증](coupons.md).
