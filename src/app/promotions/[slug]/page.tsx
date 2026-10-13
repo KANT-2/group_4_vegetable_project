@@ -81,7 +81,7 @@ export default async function PromotionPage({ params }: Props) {
             {promo.kind === "coupon"
               ? "장보기가 더 즐거워지는 혜택"
               : promo.kind === "delivery"
-                ? "배송비, 미리 확인하세요"
+                ? "수도권 당일 배송, 미리 확인하세요"
                 : "우리 가족의 특별한 토요일"}
           </h2>
           <div className="mt-8 overflow-hidden rounded-2xl border border-line bg-surface md:grid md:grid-cols-[.8fr_1.2fr]">
