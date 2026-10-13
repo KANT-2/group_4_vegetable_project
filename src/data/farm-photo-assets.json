@@ -213,7 +213,7 @@
     "author": "Toshihiro Matsui",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "transform": "WebP encoding / maximum width 1600px / display crop"
+    "transform": "WebP encoding / cropped to the center rows (box labels removed)"
   },
   {
     "title": "Chinakohl_Bestand_mit_Tropfbewässerung,_Josef_Schlaghecken.jpg",
@@ -222,15 +222,6 @@
     "author": "Schlaghecken Josef",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "transform": "WebP encoding / maximum width 1600px / display crop"
-  },
-  {
-    "title": "Starr-150326-0870-Capsicum_annuum-Bell_in_Hydroponics_greenhouse-Town_Sand_Island-Midway_Atoll_(25148787802).jpg",
-    "source": "https://commons.wikimedia.org/wiki/File:Starr-150326-0870-Capsicum_annuum-Bell_in_Hydroponics_greenhouse-Town_Sand_Island-Midway_Atoll_(25148787802).jpg",
-    "imageUrl": "/images/farms/paprika-hydroponic.webp",
-    "author": "Forest and Kim Starr",
-    "license": "CC BY 3.0 us",
-    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/us/deed.en",
     "transform": "WebP encoding / maximum width 1600px / display crop"
   },
   {
@@ -267,6 +258,15 @@
     "author": "RockyMasum",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "transform": "WebP encoding / maximum width 1600px / display crop"
+  },
+  {
+    "title": "Paprika_Pflanzen_im_Gewächshaus_(45951079474).jpeg",
+    "source": "https://commons.wikimedia.org/wiki/File:Paprika_Pflanzen_im_Gew%C3%A4chshaus_(45951079474).jpeg",
+    "imageUrl": "/images/farms/paprika-red-greenhouse.webp",
+    "author": "DLR_de",
+    "license": "CC BY 3.0 de",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/de/deed.en",
     "transform": "WebP encoding / maximum width 1600px / display crop"
   }
 ]
