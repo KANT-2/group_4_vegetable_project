@@ -16,12 +16,7 @@ import { ProductPreviewCard } from "@/components/common/ProductPreviewCard";
 import { SafeImage } from "@/components/common/SafeImage";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { COLLECTIONS, type CollectionKey } from "@/lib/catalog";
-import { getDiscountRate } from "@/lib/format";
-import {
-  pickRecommended,
-  rankProducts,
-  selectSeasonalFruit,
-} from "@/lib/product-ranking";
+import { pickRecommended, rankProducts } from "@/lib/product-ranking";
 import { routes } from "@/lib/routes";
 import { getProductList } from "@/services/products";
 import { getRecipes } from "@/services/recipes";
@@ -30,11 +25,6 @@ import type { Product } from "@/types/product";
 
 const SHELF_SIZE = 8; // 한 줄에 4개씩 보이고, 넘기면 4개 더
 
-// 배너는 가로로 긴 사진이 있어야 흐리지 않아요. 작물별 가로 사진 (없으면 split 배너)
-const WIDE_PHOTOS: Record<string, string> = {
-  apple: "/images/farms/apple-orchard.webp",
-  tomato: "/images/farms/tomato-greenhouse.webp",
-};
 const HOME_RECIPE_COUNT = 8;
 
 // 상품·농가 정보는 5분마다 새로 확인해요.
@@ -127,56 +117,57 @@ export default async function HomePage() {
     pickRecommended(active.filter(COLLECTIONS.bulk.match), active.length),
   );
 
-  // 배너: 제철 과일 상품 + 특가 기획전 + 레시피
   const recipeImage = recipes.find((recipe) => recipe.imageUrl)?.imageUrl;
-  const usedWide = new Set<string>();
   const slides: HomeBannerSlide[] = [
-    ...selectSeasonalFruit(catalogProducts, 3).flatMap((product) => {
-      const href = routes.product(product.id);
-      if (!href) return [];
-      const discount = getDiscountRate(product.price, product.originalPrice);
-      // 같은 가로 사진은 한 번만 써요. 영주 사과는 영주 과수원 사진을 먼저 써요.
-      const wide = [
-        product.farmName.includes("영주") && product.vegetableId === "apple"
-          ? "/images/farms/youngju-orchard.webp"
-          : undefined,
-        WIDE_PHOTOS[product.vegetableId],
-      ].find((url) => url && !usedWide.has(url));
-      if (wide) usedWide.add(wide);
-      return [
-        {
-          id: product.id,
-          href,
-          layout: wide ? ("photo" as const) : ("split" as const),
-          imageUrl: wide ?? product.imageUrl,
-          eyebrow: "지금 맛있는 제철 과일",
-          title: product.name,
-          sub: product.tagline,
-          highlight: `${discount > 0 ? `${discount}% ` : ""}${product.price.toLocaleString("ko-KR")}원`,
-        },
-      ];
-    }),
-    ...(list && discounted[0]
-      ? [
-          {
-            id: "bigsale",
-            href: `${list}?collection=bigsale`,
-            layout: "photo" as const,
-            imageUrl: "/images/hero.jpg", // 채소 바구니 가로 사진 (1600×600)
-            eyebrow: "못난이 특가",
-            title: COLLECTIONS.bigsale.title,
-            sub: COLLECTIONS.bigsale.description,
-          },
-        ]
-      : []),
     {
-      id: "recipes",
-      href: routes.recipes,
-      layout: "split",
-      imageUrl: recipeImage,
-      eyebrow: "못난이 채소 레시피",
-      title: "오늘 저녁은 쉬운 집밥 어때요?",
-      sub: `채소 하나로 만드는 레시피 ${recipes.length}가지`,
+      id: "openrun-coupon",
+      href: "/products?collection=bigsale",
+      layout: "artwork",
+      imageUrl: "/images/home-banners/01-openrun.png",
+      eyebrow: "오픈런 쿠폰",
+      title: "하루의 시작을\n알뜰하게!",
+      sub: "오늘의 장보기에 작은 혜택을 더해요",
+      cta: "쿠폰 받기",
+    },
+    {
+      id: "first-box",
+      href: "/products?collection=single",
+      layout: "artwork",
+      imageUrl: "/images/home-banners/02-firstbox.png",
+      eyebrow: "첫 채소박스 혜택",
+      title: "제철의 맛을\n가볍게 시작해요",
+      sub: "처음 만나는 못난이 채소, 더 반가운 혜택",
+      cta: "첫 구매 혜택 보기",
+    },
+    {
+      id: "fresh-delivery",
+      href: "/story#about",
+      layout: "artwork",
+      imageUrl: "/images/home-banners/03-freshdelivery.png",
+      eyebrow: "신선 배송",
+      title: "농장에서 식탁까지\n신선함을 빠르게",
+      sub: "제철 채소의 좋은 맛을 그대로 전해요",
+      cta: "배송 안내 보기",
+    },
+    {
+      id: "kimjang-coupon",
+      href: "/products?q=%EB%B0%B0%EC%B6%94",
+      layout: "artwork",
+      imageUrl: "/images/home-banners/04-kimjangcoupon.png",
+      eyebrow: "김장철 추가 할인",
+      title: "김장 준비는 넉넉하게\n추가 할인 쿠폰으로",
+      sub: "배추부터 무까지, 김장 재료를 알뜰하게",
+      cta: "김장 쿠폰 받기",
+    },
+    {
+      id: "family-kimjang",
+      href: "/story#farms",
+      layout: "artwork",
+      imageUrl: "/images/home-banners/05-familykimjang.png",
+      eyebrow: "가족과 함께하는 농가 체험",
+      title: "아이와 함께하는\n우리 가족 첫 김장",
+      sub: "함께 버무리고, 함께 웃는 특별한 하루",
+      cta: "김장 체험 알아보기",
     },
   ];
 
@@ -185,7 +176,7 @@ export default async function HomePage() {
       <h1 className="sr-only">못난이마켓 · 모양만 다른 맛있는 농산물</h1>
 
       {/* 1. 화면 너비 사진 배너 */}
-      <HomeBanner slides={slides} />
+      <HomeBanner slides={slides} intervalMs={2000} />
 
       <div className="container-page [&:not(:empty)]:mt-6">
         <MockDataNotice subject="상품·농가" />
