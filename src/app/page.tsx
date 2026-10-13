@@ -33,7 +33,7 @@ const SHELF_SIZE = 8; // 한 줄에 4개씩 보이고, 넘기면 4개 더
 // 배너는 가로로 긴 사진이 있어야 흐리지 않아요. 작물별 가로 사진 (없으면 split 배너)
 const WIDE_PHOTOS: Record<string, string> = {
   apple: "/images/farms/apple-orchard.webp",
-  tomato: "/images/farms/greenhouse.webp",
+  tomato: "/images/farms/tomato-greenhouse.webp",
 };
 const HOME_RECIPE_COUNT = 8;
 
@@ -217,7 +217,7 @@ export default async function HomePage() {
       )}
 
       <StripBanner
-        href={`${routes.story}#about`}
+        href={`${routes.story}#reasons`}
         eyebrow="못난이마켓 선별 기준"
         title="맛과 신선도는 그대로, 모양만 달라요"
         imageUrl={seasonal[0]?.imageUrl ?? discounted[0]?.imageUrl}

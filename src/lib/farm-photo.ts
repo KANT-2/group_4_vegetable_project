@@ -12,8 +12,16 @@ const FIELD = {
     alt: "사과나무에 사과가 열린 과수원 풍경",
   },
   tomato: {
-    imageUrl: "/images/farms/greenhouse.webp",
-    alt: "토마토를 재배하는 온실 풍경",
+    imageUrl: "/images/farms/tomato-greenhouse.webp",
+    alt: "빨간 토마토가 줄지어 달린 온실 풍경",
+  },
+  tomatoRipe: {
+    imageUrl: "/images/farms/tomato-ripe.webp",
+    alt: "하우스 안에서 빨갛게 익은 토마토",
+  },
+  spinach: {
+    imageUrl: "/images/farms/spinach-field.webp",
+    alt: "이랑을 따라 자란 시금치밭 풍경",
   },
   potato: {
     imageUrl: "/images/farms/potato-field.webp",
@@ -69,7 +77,7 @@ const CROP_PHOTOS: Record<string, FarmPhoto> = {
   "napa-cabbage": FIELD.leafField,
   broccoli: FIELD.leafField,
   "green-onion": FIELD.greenOnion,
-  spinach: FIELD.greenOnion,
+  spinach: FIELD.spinach,
   cucumber: FIELD.vineHouse,
   aehobak: FIELD.vineHouse,
   eggplant: FIELD.vineHouse,
@@ -96,6 +104,10 @@ function positionFor(farmName: string): (typeof POSITIONS)[number] {
 export function getFarmPhoto(
   farm: FarmStory,
 ): FarmPhoto & { position: string } {
+  // 같은 작물 농가끼리 겹치지 않게 따로 고른 사진
+  if (farm.farmName === "담양 햇살농장") {
+    return { ...FIELD.tomatoRipe, position: "object-center" };
+  }
   if (farm.farmName === "영주 사과마을") {
     return {
       imageUrl: "/images/farms/youngju-orchard.webp",
