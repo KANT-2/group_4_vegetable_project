@@ -83,7 +83,7 @@ export const promotions: Promotion[] = [
     slug: "fresh-delivery",
     label: "배송 안내",
     kind: "delivery",
-    title: "오늘 고른 신선함, 오늘 밤 우리 집으로.",
+    title: "15시 전에 주문하면 오늘 자정 전 도착!",
     description:
       "수도권 당일 배송의 주문 시간과 대상 지역, 배송비를 확인해 주세요.",
     image: "/images/home-banners/03-freshdelivery-v2.png",

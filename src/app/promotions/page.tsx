@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { promotions } from "@/data/promotions";
-import { homeCampaigns } from "@/data/home-campaigns";
-import { DeliveryBannerCopy } from "@/components/promotions/DeliveryBannerCopy";
 export const metadata = { title: "혜택과 이야기" };
 export default function PromotionsPage() {
   return (
@@ -29,14 +27,6 @@ export default function PromotionsPage() {
                   sizes="(max-width: 768px) 100vw, 525px"
                   className="object-cover"
                 />
-                {promo.slug === "fresh-delivery" && (
-                  <DeliveryBannerCopy
-                    {...homeCampaigns.find(
-                      (campaign) => campaign.id === promo.slug,
-                    )!}
-                    compact
-                  />
-                )}
               </div>
               <div className="p-5">
                 <p className="text-xs font-semibold text-brand">
