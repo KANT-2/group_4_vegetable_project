@@ -1,3 +1,4 @@
+import { PageHeading } from "@/components/common/PageHeading";
 import Link from "next/link";
 import { VisitMark } from "@/components/products/BackLink";
 import MockDataNotice from "@/components/products/MockDataNotice";
@@ -73,7 +74,7 @@ export default async function ProductsPage({
   return (
     <div className="container-page py-4">
       <VisitMark />
-      <h1 className="sr-only">{collection ? collection.title : "상품 목록"}</h1>
+      {!collection && <h1 className="sr-only">상품 목록</h1>}
       {/* 코너 이동은 헤더 메뉴(제철·특가·대용량·1인 가구)에서 해요. */}
 
       {filters.q && (
@@ -83,14 +84,12 @@ export default async function ProductsPage({
       )}
 
       {collection && (
-        <div className="mt-6">
-          <p className="text-xl font-bold text-ink" aria-hidden>
-            {collection.emoji} {collection.title}
-          </p>
-          <p className="mt-1 text-sm text-ink-muted">
-            {collection.description}
-          </p>
-        </div>
+        <PageHeading
+          emoji={collection.emoji}
+          title={collection.title}
+          description={collection.description}
+          className="mt-6 md:mt-8"
+        />
       )}
 
       {sections.length > 0 && (
