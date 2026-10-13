@@ -9,7 +9,7 @@ import {
   refundStatusLabels,
 } from "@/lib/orders";
 import { AccountGuard } from "@/components/account/AccountGuard";
-import { AccountNav } from "@/components/account/AccountNav";
+import { AccountLayout } from "@/components/account/AccountLayout";
 
 export const metadata: Metadata = { title: "주문내역" };
 type SearchParams = Promise<{ page?: string | string[] }>;
@@ -25,7 +25,7 @@ async function OrderList({ searchParams }: { searchParams: SearchParams }) {
   return (
     <AccountGuard userId={result.userId}>
       {!result.orders.length ? (
-        <div className="card p-6">
+        <div className="rounded-xl border border-line/60 bg-surface p-6 sm:p-7">
           <h2 className="text-xl font-bold">
             {page === 1
               ? "아직 주문내역이 없어요"
@@ -44,7 +44,10 @@ async function OrderList({ searchParams }: { searchParams: SearchParams }) {
       ) : (
         <ul className="space-y-4">
           {result.orders.map((order) => (
-            <li key={order.id} className="card p-6">
+            <li
+              key={order.id}
+              className="rounded-xl border border-line/60 bg-surface p-6 sm:p-7"
+            >
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <time dateTime={order.created_at} className="text-ink-muted">
                   {formatOrderDate(order.created_at)}
@@ -116,16 +119,17 @@ export default function OrdersPage({
   searchParams: SearchParams;
 }) {
   return (
-    <section className="container-page section">
-      <AccountNav active="orders" />
-      <h1 className="page-title">주문내역</h1>
-      <p className="mb-8 mt-3 text-ink-muted">
-        내 주문의 상품·배송 정보와 환불 신청 상태를 확인하세요. 모의 결제
-        주문이며 실제 금액은 청구되지 않아요.
+    <AccountLayout
+      active="orders"
+      title="주문내역"
+      description="내 주문과 배송 정보, 환불 신청 상태를 한눈에 확인하세요."
+    >
+      <p className="mb-5 text-xs text-ink-muted">
+        모의 결제 주문이며 실제 금액은 청구되지 않아요.
       </p>
       <Suspense fallback={<p role="status">주문내역을 불러오고 있어요.</p>}>
         <OrderList searchParams={searchParams} />
       </Suspense>
-    </section>
+    </AccountLayout>
   );
 }

@@ -56,13 +56,16 @@ export function ShippingAddressForm({
   const [pending, startTransition] = useTransition();
   return (
     <section
-      className="border-t border-line pt-6"
+      className="rounded-xl border border-line/60 bg-surface p-5 sm:p-7"
       aria-labelledby="shipping-title"
     >
-      <h2 id="shipping-title" className="text-xl font-bold">
+      <h2
+        id="shipping-title"
+        className="border-b border-line pb-4 text-lg font-bold"
+      >
         기본 배송지
       </h2>
-      <p className="mt-3 text-ink-muted">
+      <p className="mt-3 text-sm leading-relaxed text-ink-muted">
         주문할 때 사용할 배송지를 저장해 두세요. 변경해도 이미 접수된 주문의
         배송지는 바뀌지 않아요.
       </p>

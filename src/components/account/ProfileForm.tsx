@@ -21,12 +21,6 @@ export function ProfileForm({
 }) {
   const router = useRouter();
   const { state, error: navigationError, refresh } = useNavigation();
-  const [nickname, setNickname] = useState(initialNickname);
-  const [savedNickname, setSavedNickname] = useState(initialNickname);
-  const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
-  const [pending, startTransition] = useTransition();
-
   // 계정 확인이 끝나기 전에는 이전 계정의 개인 정보를 보여주지 않습니다.
   if (!state && !navigationError)
     return <p role="status">계정을 확인하고 있어요.</p>;
@@ -50,10 +44,39 @@ export function ProfileForm({
   }
 
   return (
-    <div className="space-y-8">
+    <ProfileEditor
+      userId={userId}
+      email={email}
+      initialNickname={initialNickname}
+      initialShipping={initialShipping}
+    />
+  );
+}
+
+export function ProfileEditor({
+  userId,
+  email,
+  initialNickname,
+  initialShipping,
+}: {
+  userId: string;
+  email: string;
+  initialNickname: string;
+  initialShipping: ShippingAddress;
+}) {
+  const { refresh } = useNavigation();
+  const [nickname, setNickname] = useState(initialNickname);
+  const [savedNickname, setSavedNickname] = useState(initialNickname);
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+  const [pending, startTransition] = useTransition();
+
+  return (
+    <div className="space-y-5">
       <form
         // 브라우저 기본 검사 대신 Zod 검사 결과를 안내 문구로 보여 줍니다.
         noValidate
+        className="rounded-xl border border-line/60 bg-surface p-5 sm:p-7"
         aria-busy={pending}
         onSubmit={(event) => {
           event.preventDefault();
@@ -84,10 +107,15 @@ export function ProfileForm({
           });
         }}
       >
-        <h2 className="mb-4 text-xl font-bold">회원 정보</h2>
-        <dl className="mb-6">
-          <dt className="font-bold">로그인 이메일</dt>
-          <dd className="mt-1 break-all text-ink-muted">{email}</dd>
+        <div className="mb-6 flex items-center justify-between border-b border-line pb-4">
+          <h2 className="text-lg font-bold">회원 정보</h2>
+          <span className="rounded-full bg-brand-soft px-3 py-1 text-xs font-semibold text-brand-dark">
+            Google 계정
+          </span>
+        </div>
+        <dl className="mb-6 grid gap-2 border-b border-line/60 pb-5 sm:grid-cols-[7rem_minmax(0,1fr)]">
+          <dt className="text-sm font-semibold">로그인 이메일</dt>
+          <dd className="break-all text-sm text-ink-muted">{email}</dd>
         </dl>
         <label htmlFor="nickname" className="field-label">
           닉네임
@@ -95,7 +123,7 @@ export function ProfileForm({
         <input
           id="nickname"
           name="nickname"
-          className="field"
+          className="field max-w-md"
           type="text"
           inputMode="text"
           autoComplete="nickname"
@@ -136,14 +164,15 @@ export function ProfileForm({
           {pending ? "저장 중…" : "닉네임 저장"}
         </button>
       </form>
+      <ShippingAddressForm userId={userId} initialAddress={initialShipping} />
       <section
-        className="border-t border-line pt-6"
+        className="rounded-xl border border-line/60 bg-surface p-5 sm:p-7"
         aria-labelledby="account-security"
       >
-        <h2 id="account-security" className="text-xl font-bold">
+        <h2 id="account-security" className="text-lg font-bold">
           로그인·비밀번호
         </h2>
-        <p className="mt-3 text-ink-muted">
+        <p className="mt-3 text-sm leading-relaxed text-ink-muted">
           Google 계정으로 로그인하고 있어요. 비밀번호 변경과 계정 보안 설정은
           Google에서 관리할 수 있어요.
         </p>
@@ -156,7 +185,6 @@ export function ProfileForm({
           Google 계정 보안 관리 ↗
         </a>
       </section>
-      <ShippingAddressForm userId={userId} initialAddress={initialShipping} />
     </div>
   );
 }

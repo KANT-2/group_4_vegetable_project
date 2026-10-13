@@ -32,8 +32,26 @@ async function CheckoutContent() {
 
 export default function CheckoutPage() {
   return (
-    <section className="container-page section">
-      <h1 className="page-title mb-6">결제</h1>
+    <section className="container-page py-8 md:py-12">
+      <header className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b-2 border-ink pb-5">
+        <h1 className="text-2xl font-bold md:text-3xl">주문 / 결제</h1>
+        <ol
+          aria-label="주문 진행 단계"
+          className="flex items-center gap-3 text-xs sm:text-sm"
+        >
+          <li className="text-ink-muted">01 장바구니</li>
+          <li aria-hidden="true" className="text-ink-muted">
+            ›
+          </li>
+          <li aria-current="step" className="font-bold text-brand">
+            02 주문 / 결제
+          </li>
+          <li aria-hidden="true" className="text-ink-muted">
+            ›
+          </li>
+          <li className="text-ink-muted">03 주문 완료</li>
+        </ol>
+      </header>
       <Suspense fallback={<p role="status">주문 정보를 불러오고 있어요.</p>}>
         <CheckoutContent />
       </Suspense>
