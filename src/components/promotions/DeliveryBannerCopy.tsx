@@ -1,25 +1,39 @@
-// 기존 배너 사진은 유지하고 이미지에 박힌 이전 문구만 HTML로 교체합니다.
-export function DeliveryBannerCopy() {
+type Props = { eyebrow: string; title: string; sub?: string; cta?: string };
+
+// 홈과 상세에서 같은 문구·레이아웃을 사용하고 기존 사진은 유지합니다.
+export function DeliveryBannerCopy({ eyebrow, title, sub, cta }: Props) {
   return (
     <>
       <span
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-transparent sm:bg-[linear-gradient(90deg,#1b3c2b_0%,#1b3c2b_50%,transparent_64%)]"
+        className="absolute inset-0 bg-gradient-to-r from-[#163728]/95 via-[#163728]/65 to-transparent sm:bg-[linear-gradient(90deg,#1b3c2b_0%,#1b3c2b_50%,transparent_65%)]"
       />
       <span
         aria-hidden="true"
-        className="absolute inset-y-0 left-0 flex w-full flex-col justify-center px-5 text-[#fffbe6] sm:w-[56%] sm:px-[5.5vw]"
+        className="absolute inset-y-0 left-0 flex w-full flex-col justify-center px-6 text-[#fffbe6] sm:w-[56%] sm:px-[5.5vw]"
       >
-        <span className="text-sm font-medium tracking-widest sm:text-[clamp(.75rem,1.3vw,1.5rem)]">
-          신선 배송
+        <span className="flex items-center gap-3 text-[.6875rem] font-medium tracking-[.2em] text-[#fffbe6]/75 sm:text-[clamp(.625rem,.9vw,1rem)]">
+          <span className="h-px w-6 bg-[#fffbe6]/50" />
+          {eyebrow}
         </span>
-        <span className="mt-3 whitespace-pre-line text-[1.75rem] leading-tight tracking-tight sm:text-[clamp(1.25rem,3.2vw,3.75rem)]">
-          <span>15시 전에 주문하면</span>
-          <br />
-          <strong className="font-bold">오늘 자정 전 도착!</strong>
+        <span className="mt-4 text-[1.875rem] font-semibold leading-[1.2] tracking-[-.04em] sm:mt-[1.3vw] sm:text-[clamp(1.35rem,3.6vw,4.25rem)]">
+          {title.split("\n").map((line, index) => (
+            <span
+              key={line}
+              className={`block ${index > 0 ? "font-bold" : ""}`}
+            >
+              {line}
+            </span>
+          ))}
         </span>
-        <span className="mt-5 inline-flex w-fit rounded-full bg-[#fffbe6] px-4 py-2 text-xs font-bold text-[#1b3c2b] sm:mt-[2vw] sm:text-[clamp(.7rem,1.2vw,1.25rem)]">
-          대상 지역 확인하러 가기 (수도권) →
+        {sub && (
+          <span className="mt-3 max-w-[30ch] text-xs leading-relaxed text-[#fffbe6]/80 sm:mt-[1.2vw] sm:text-[clamp(.65rem,1.1vw,1.2rem)]">
+            {sub}
+          </span>
+        )}
+        <span className="mt-5 inline-flex w-fit items-center gap-3 border-b border-[#fffbe6]/45 pb-1 text-xs font-medium sm:mt-[1.8vw] sm:text-[clamp(.65rem,1vw,1.1rem)]">
+          {cta}
+          <span className="text-base">↗</span>
         </span>
       </span>
     </>
