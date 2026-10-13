@@ -121,7 +121,7 @@ export default async function HomePage() {
   const slides: HomeBannerSlide[] = [
     {
       id: "openrun-coupon",
-      href: "/products?collection=bigsale",
+      href: "/promotions/openrun-coupon",
       layout: "artwork",
       imageUrl: "/images/home-banners/01-openrun.png",
       eyebrow: "오픈런 쿠폰",
@@ -131,7 +131,7 @@ export default async function HomePage() {
     },
     {
       id: "first-box",
-      href: "/products?collection=single",
+      href: "/promotions/first-box",
       layout: "artwork",
       imageUrl: "/images/home-banners/02-firstbox.png",
       eyebrow: "첫 채소박스 혜택",
@@ -141,7 +141,7 @@ export default async function HomePage() {
     },
     {
       id: "fresh-delivery",
-      href: "/story#about",
+      href: "/promotions/fresh-delivery",
       layout: "artwork",
       imageUrl: "/images/home-banners/03-freshdelivery.png",
       eyebrow: "신선 배송",
@@ -151,7 +151,7 @@ export default async function HomePage() {
     },
     {
       id: "kimjang-coupon",
-      href: "/products?q=%EB%B0%B0%EC%B6%94",
+      href: "/promotions/kimjang-coupon",
       layout: "artwork",
       imageUrl: "/images/home-banners/04-kimjangcoupon.png",
       eyebrow: "김장철 추가 할인",
@@ -161,7 +161,7 @@ export default async function HomePage() {
     },
     {
       id: "family-kimjang",
-      href: "/story#farms",
+      href: "/promotions/family-kimjang",
       layout: "artwork",
       imageUrl: "/images/home-banners/05-familykimjang.png",
       eyebrow: "가족과 함께하는 농가 체험",
@@ -176,7 +176,7 @@ export default async function HomePage() {
       <h1 className="sr-only">못난이마켓 · 모양만 다른 맛있는 농산물</h1>
 
       {/* 1. 화면 너비 사진 배너 */}
-      <HomeBanner slides={slides} intervalMs={2000} />
+      <HomeBanner slides={slides} intervalMs={3000} />
 
       <div className="container-page [&:not(:empty)]:mt-6">
         <MockDataNotice subject="상품·농가" />
