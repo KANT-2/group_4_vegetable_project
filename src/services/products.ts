@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createPublicSupabaseClient } from "@/lib/supabase/public";
 import { products as mockProducts } from "@/data/mock/products";
 import { rankProducts } from "@/lib/product-ranking";
+import { getProductImages } from "@/lib/product-gallery";
 import { uglyReasonSchema, type CatalogFilters } from "@/schemas/product";
 import type { Database } from "@/types/database";
 import type { Product, ProductListItem, UglyReason } from "@/types/product";
@@ -25,7 +26,12 @@ function toProduct(row: ProductRow): Product {
     farmName: row.farm_name,
     farmRegion: row.farm_region ?? undefined,
     farmStory: row.farm_story ?? undefined,
-    imageUrl: toImageSrc(row.image_path) ?? "",
+    imageUrl:
+      getProductImages({
+        id: row.id,
+        imageUrl: toImageSrc(row.image_path),
+        vegetableId: row.vegetable_id,
+      })[0] ?? "",
     description: row.description,
     isSeasonal: row.is_seasonal,
     isFeatured: row.is_featured,
@@ -38,7 +44,10 @@ function toProduct(row: ProductRow): Product {
 
 // 판매 중인 상품 전체 (RLS가 is_active = true인 상품만 돌려줘요)
 async function getActiveProducts(publicOnly = false): Promise<Product[]> {
-  if (isMockCatalog()) return mockProducts.filter((p) => p.isActive);
+  if (isMockCatalog())
+    return mockProducts
+      .filter((p) => p.isActive)
+      .map((p) => ({ ...p, imageUrl: getProductImages(p)[0] ?? p.imageUrl }));
 
   const supabase = publicOnly
     ? createPublicSupabaseClient()
@@ -93,8 +102,15 @@ export function countByReason(list: Product[]): Record<UglyReason, number> {
 }
 
 export async function getProductById(id: string): Promise<Product | null> {
-  if (isMockCatalog())
-    return mockProducts.find((p) => p.id === id && p.isActive) ?? null;
+  if (isMockCatalog()) {
+    const product = mockProducts.find((p) => p.id === id && p.isActive);
+    return product
+      ? {
+          ...product,
+          imageUrl: getProductImages(product)[0] ?? product.imageUrl,
+        }
+      : null;
+  }
 
   const supabase = await createClient();
   const { data, error } = await supabase

@@ -1,12 +1,17 @@
 import gallery from "../data/product-gallery.json" with { type: "json" };
+import productPhotos from "../data/product-photo-overrides.json" with { type: "json" };
 
 const photosByVegetable: Record<string, string[]> = gallery;
+const photosByProduct: Record<string, string[]> = productPhotos;
 const fileName = (url: string) => url.split("?")[0].split("/").pop();
 
 export function getProductImages(product: {
+  id?: string;
   imageUrl?: string;
   vegetableId?: string;
 }): string[] {
+  const selected = photosByProduct[product.id ?? ""];
+  if (Array.isArray(selected)) return [...selected];
   const candidates = photosByVegetable[product.vegetableId ?? ""] ?? [];
   const result: string[] = [];
   const seen = new Set<string>();
