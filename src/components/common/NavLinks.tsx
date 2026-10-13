@@ -5,6 +5,7 @@
 // 지금 보고 있는 메뉴에 aria-current 를 표시해요. ?collection= 같은 주소 조건까지 비교해요.
 
 import Link from "next/link";
+import ScrollRow from "@/components/products/ScrollRow";
 import { usePathname, useSearchParams } from "next/navigation";
 import type { NavLink } from "./MobileMenu";
 
@@ -33,21 +34,23 @@ export function NavLinks({
   if (variant === "mobile") {
     return (
       <nav aria-label="주요 메뉴" className="lg:hidden">
-        <ul className="flex overflow-x-auto px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {links.map((link) => (
-            <li key={link.href} className="shrink-0">
-              <Link
-                href={link.href}
-                aria-current={
-                  isActive(pathname, search, link.href) ? "page" : undefined
-                }
-                className="inline-flex min-h-11 items-center border-b-[3px] border-transparent px-3 text-[0.9375rem] font-medium text-ink-muted aria-[current=page]:border-brand aria-[current=page]:font-bold aria-[current=page]:text-brand"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <ScrollRow label="메뉴" className="px-2">
+          <ul className="flex w-max shrink-0">
+            {links.map((link) => (
+              <li key={link.href} className="shrink-0">
+                <Link
+                  href={link.href}
+                  aria-current={
+                    isActive(pathname, search, link.href) ? "page" : undefined
+                  }
+                  className="inline-flex min-h-12 items-center border-b-[3px] border-transparent px-3 text-[0.9375rem] font-medium text-ink-muted aria-[current=page]:border-brand aria-[current=page]:font-bold aria-[current=page]:text-brand"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </ScrollRow>
       </nav>
     );
   }
