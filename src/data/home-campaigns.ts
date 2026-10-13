@@ -25,9 +25,10 @@ export const homeCampaigns = [
     layout: "artwork" as const,
     imageUrl: "/images/home-banners/03-freshdelivery.png",
     eyebrow: "신선 배송",
-    title: "농장에서 식탁까지\n신선함을 빠르게",
-    sub: "제철 채소의 좋은 맛을 그대로 전해요",
-    cta: "배송 안내 보기",
+    title: "15시 전에 주문하면\n오늘 자정 전 도착!",
+    copyOverride: true,
+    sub: "",
+    cta: "대상 지역 확인하러 가기 (수도권)",
   },
   {
     id: "kimjang-coupon",

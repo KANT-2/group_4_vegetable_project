@@ -6,6 +6,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { DeliveryBannerCopy } from "@/components/promotions/DeliveryBannerCopy";
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { SafeImage } from "./SafeImage";
 
@@ -27,6 +28,7 @@ export interface HomeBannerSlide {
   // photo: 가로로 긴 사진을 화면 가득 / split: 연한 배경 + 오른쪽 정사각형 사진 (상품 사진처럼 가로 사진이 없을 때)
   layout?: "photo" | "split" | "artwork";
   cta?: string;
+  copyOverride?: boolean;
 }
 
 export function HomeBanner({
@@ -111,10 +113,14 @@ export function HomeBanner({
                     loading={i === 0 ? undefined : "eager"}
                     className="object-cover object-right sm:object-center"
                   />
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-transparent sm:hidden"
-                  />
+                  {slide.copyOverride ? (
+                    <DeliveryBannerCopy />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-transparent sm:hidden"
+                    />
+                  )}
                 </>
               ) : slide.layout === "split" ? (
                 // 오른쪽 정사각형 사진: 본문 폭(1050px) 오른쪽 끝에 맞춰요.
@@ -142,6 +148,7 @@ export function HomeBanner({
                 </>
               )}
               <span
+                style={slide.copyOverride ? { display: "none" } : undefined}
                 aria-hidden={slide.layout === "artwork" ? true : undefined}
                 className={`container-page absolute inset-x-0 inset-y-0 flex flex-col justify-center ${slide.layout === "artwork" ? "text-white sm:hidden" : slide.layout === "split" ? "pr-[52%] text-ink sm:pr-[24rem]" : "text-white"}`}
               >
