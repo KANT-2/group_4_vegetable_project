@@ -1,10 +1,10 @@
 # 채소별 레시피 카탈로그
 
-2026-10-12, C 이상재. 현재 표시되는 카탈로그 기준입니다.
+2026-10-13, C 이상재. 현재 표시되는 카탈로그 기준입니다.
 
 ## 구성
 
-레시피 필터에 있는 13종(감자·당근·애호박·가지·양파·양배추·오이·시금치·브로콜리·무·표고버섯·토마토·파프리카)에 각각 4개, 총 52개를 제공합니다. 감자 4개와 사용자 제공 사진은 유지했습니다. 나머지 48개는 원작자 레시피에서 재료·분량·조리 과정을 대조하고 한국어로 편집했습니다.
+전체 판매 품목 21종에 각각 4개, 총 84개를 제공합니다. 기존 메뉴 13종만 기준으로 삼아 빠졌던 새송이버섯·고구마·대파·배추·단호박·고추·사과·귤에도 4개씩 추가했습니다. 감자 4개와 사용자 제공 사진은 유지했습니다. 나머지 80개는 원작자 레시피에서 재료·분량·조리 과정을 대조하고 한국어로 편집했습니다.
 
 원본은 `src/data/easy-recipes.json`입니다. 기존 공식 레시피 16개는 DB·시드·원본 JSON을 보존하고 `src/data/retired-recipe-ids.json`으로 목록·검색·상세에서 제외합니다. 그 밖의 새 DB 레시피는 유지합니다. 현재 데이터는 배포 파일에 포함되므로 공용 DB에 SQL을 추가 적용할 필요가 없습니다.
 
@@ -20,9 +20,9 @@
 
 ## 사진과 표시
 
-각 레시피에 사진 3장을 연결했습니다. 기존 감자 12장과 나머지 144장입니다. 원작자 본문의 같은 요리 사진을 선정하고 12종의 사진 검수표로 시각 확인했습니다. 일부는 조리 중 사진이나 같은 구도의 근접 사진입니다. 음식과 관계없는 생채소·다른 요리·조리 콜라주는 제외했습니다.
+각 레시피에 사진 3장을 연결했습니다. 기존 감자 12장과 나머지 240장입니다. 원작자 본문의 같은 요리 사진을 선정하고 20종의 사진 검수표로 시각 확인했습니다. 일부는 조리 중 사진이나 같은 구도의 근접 사진입니다. 음식과 관계없는 생채소·다른 요리·조리 콜라주는 제외했습니다.
 
-Pinterest 직접 접속이 연결 오류로 막혀 이전에 사용자가 허용한 원작자 사이트 방식으로 가져왔습니다. Pinterest에서 직접 내려받았다고 표시하지 않습니다. 원본 URL·작가·규격·SHA-256·원문 시간/분량은 `docs/recipe-catalog-sources-20261012.json`에 기록했습니다. 원작자 사진을 CC 또는 허가 확인 이미지로 표기하지 않습니다.
+Pinterest 직접 접속이 연결 오류로 막혀 이전에 사용자가 허용한 원작자 사이트 방식으로 가져왔습니다. Pinterest에서 직접 내려받았다고 표시하지 않습니다. 원본 URL·작가·규격·SHA-256·원문 시간/분량은 `docs/recipe-catalog-sources-20261012.json`(48개)과 `docs/recipe-catalog-sources-20261013.json`(추가 32개)에 기록했습니다. 원작자 사진을 CC 또는 허가 확인 이미지로 표기하지 않습니다.
 
 목록은 사진만 2초 간격·0.7초 페이드로 전환합니다. 동작 줄이기 설정과 백그라운드 탭에서는 자동 전환을 멈춥니다. 상세는 제목과 고정 사진 3장을 표시하고 마우스 올리기·모바일 탭으로 확대합니다. 화면 밖 카드 사진은 지연 로딩합니다.
 
@@ -85,6 +85,53 @@ Pinterest 직접 접속이 연결 오류로 막혀 이전에 사용자가 허용
 
 ## 검증
 
-채소별 4개·총 52개, 주재료 분량, 사진 3장 파일, 대표 사진 중복, 비활성 상품 제외, 양념 채소 필터 제외, DB/Mock 통합과 이전 목록 제외를 테스트합니다. 실제 조리 검수는 포함하지 않습니다.
+전체 판매 품목별 4개·총 84개, 주재료 분량, 사진 3장 파일, 대표 사진 중복, 비활성 상품 제외, 양념 채소 필터 제외, DB/Mock 통합과 이전 목록 제외를 테스트합니다. 실제 조리 검수는 포함하지 않습니다.
 
-최종 확인(2026-10-12): 테스트 52개·lint·typecheck·format:check·build 통과. Supabase 연결 로컬 화면에서 13개 채소 탭 각각 4개, 전체 52개를 확인했습니다. 애호박 목록 사진 12장 로딩·2초 페이드와 상세 고정 사진 3장·클릭 확대·재료/조리법/예상 시간 안내를 확인했습니다.
+이전 확인(2026-10-12): 테스트 52개·lint·typecheck·format:check·build 통과. Supabase 연결 로컬 화면에서 13개 채소 탭 각각 4개, 전체 52개를 확인했습니다. 애호박 목록 사진 12장 로딩·2초 페이드와 상세 고정 사진 3장·클릭 확대·재료/조리법/예상 시간 안내를 확인했습니다.
+
+## 2026-10-13 전체 품목 확장
+
+판매 품목과 주재료 필터의 ID 집합을 비교하여 누락을 검사합니다. 84개 ID·대표 사진 중복, 품목별 4개, 판매 상품 연결, 각 사진 파일과 출처 SHA-256도 검사합니다. 기존 52개와 감자 사진은 유지합니다.
+
+대파는 쪽파김치 대신 잘게 썬 대파를 사용하는 중국식 파전을 선정했습니다. 가는 파를 쓰는 원문의 파전·국수는 굵은 대파를 가늘게 써는 방법을 안내합니다. 고추구이 원문 사진은 순한 애너하임 고추이며 품종 차이를 설명했습니다. 귤 원문의 클레멘타인도 설명에 표시했습니다.
+
+단호박 샐러드는 냉장 1시간을 포함해 95분, 단호박죽은 찹쌀 불리기를 포함해 120분으로 편집했습니다. 귤 소르베는 두 차례 냉동 약 8시간을 포함한 490분 추정치입니다. 고추 절임의 3일~1주일 숙성은 준비 시간과 분리해서 설명합니다. 배추 겉절이는 절이기 40~60분을 포함한 80분·반찬 8인분 편집 기준입니다. 배추전 12장은 4인분, 고구마 스택 12개는 6인분, 고추전 약 20조각은 5인분, 중국식 파전 6장은 12인분으로 나누는 기준입니다.
+
+### 추가 원문
+
+| 품목       | 요리                 | 원문                                                                                                                                    |
+| ---------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| 새송이버섯 | 새송이 마늘버터구이  | [Zestful Kitchen · Lauren Grant](https://zestfulkitchen.com/pan-fried-king-oyster-mushrooms-recipe/)                                    |
+| 새송이버섯 | 새송이 매콤 간장볶음 | [Maggie Zhu](https://omnivorescookbook.com/king-oyster-mushroom-stir-fry/)                                                              |
+| 새송이버섯 | 새송이 버섯 스캘럽   | [Sweet Potato Soul · Jenne Claiborne](https://sweetpotatosoul.com/king-oyster-mushroom-vegan-scallops/)                                 |
+| 새송이버섯 | 새송이 마늘파스타    | [The Vegan Larder · Louise-Claire Cayzer](https://theveganlarder.com/vegan-scallops-with-garlic-pasta-king-oyster-mushroom/)            |
+| 고구마     | 고구마 수프          | [RecipeTin Eats · Nagi Maehashi](https://www.recipetineats.com/sweet-potato-soup/)                                                      |
+| 고구마     | 구운 고구마샐러드    | [Nagi                                                                                                                                   | RecipeTin Eats](https://www.recipetineats.com/roasted-sweet-potato-salad-honey-lemon-dressing/) |
+| 고구마     | 고구마 스테이크      | [RecipeTin Eats · Nagi Maehashi](https://www.recipetineats.com/sweet-potato-steaks/)                                                    |
+| 고구마     | 고구마 오븐스택      | [RecipeTin Eats · Nagi Maehashi](https://www.recipetineats.com/roasted-sweet-potato-stacks/)                                            |
+| 대파       | 파무침               | [Hyosun](https://www.koreanbapsang.com/pa-muchim-scallion-salad/)                                                                       |
+| 대파       | 해물파전             | [Hyosun](https://www.koreanbapsang.com/haemul-pajeon/)                                                                                  |
+| 대파       | 대파 중국식 전       | [Maggie Zhu](https://omnivorescookbook.com/chinese-scallion-pancakes/)                                                                  |
+| 대파       | 파기름 국수          | [Maggie Zhu](https://omnivorescookbook.com/scallion-oil-noodle/)                                                                        |
+| 배추       | 배추 겉절이          | [Hyosun](https://www.koreanbapsang.com/baechu-geotjeori-fresh-kimchi/)                                                                  |
+| 배추       | 배추 된장국          | [Hyosun](https://www.koreanbapsang.com/baechu-doenjang-guk/)                                                                            |
+| 배추       | 배추전               | [Sue Pressey](https://mykoreankitchen.com/baechujeon/)                                                                                  |
+| 배추       | 밀푀유나베           | [Just One Cookbook · Namiko Hirasawa Chen](https://www.justonecookbook.com/mille-feuille-nabe/)                                         |
+| 단호박     | 단호박 샐러드        | [Just One Cookbook · Namiko Hirasawa Chen](https://www.justonecookbook.com/kabocha-salad/)                                              |
+| 단호박     | 단호박죽             | [Hyosun](https://www.koreanbapsang.com/hobakjuk-kabocha-porridge-and-winners/)                                                          |
+| 단호박     | 구운 단호박          | [Just One Cookbook · Namiko Hirasawa Chen](https://www.justonecookbook.com/japanese-roasted-kabocha-squash/)                            |
+| 단호박     | 단호박 수프          | [Just One Cookbook · Namiko Hirasawa Chen](https://www.justonecookbook.com/kabocha-squash-soup/)                                        |
+| 고추       | 고추 된장무침        | [Hyosun](https://www.koreanbapsang.com/gochu-doenjang-muchim/)                                                                          |
+| 고추       | 고추 간장절임        | [Sue Pressey](https://mykoreankitchen.com/korean-style-green-chilli-pickles/)                                                           |
+| 고추       | 고추전               | [Sue Pressey](https://mykoreankitchen.com/korean-stuffed-chili-peppers/)                                                                |
+| 고추       | 중국식 고추구이      | [Maggie Zhu](https://omnivorescookbook.com/szechuan-pan-fried-peppers/)                                                                 |
+| 사과       | 사과 크럼블          | [Nagi                                                                                                                                   | RecipeTin Eats](https://www.recipetineats.com/apple-crumble/)                                   |
+| 사과       | 사과 소스            | [RecipeTin Eats · Nagi Maehashi](https://www.recipetineats.com/apple-sauce/)                                                            |
+| 사과       | 오븐 사과구이        | [RecipeTin Eats · Nagi Maehashi](https://www.recipetineats.com/baked-apples/)                                                           |
+| 사과       | 사과 호두샐러드      | [RecipeTin Eats · Nagi Maehashi](https://www.recipetineats.com/apple-salad-candied-walnuts-cranberries/)                                |
+| 귤         | 귤 아몬드케이크      | [The View from Great Island · Sue Moran](https://theviewfromgreatisland.com/minimal-monday-flourless-whole-tangerine-cake-gluten-free/) |
+| 귤         | 귤 소르베            | [The View from Great Island · Sue Moran](https://theviewfromgreatisland.com/day-5-of-all-citrus-week-tangerine-sorbet/)                 |
+| 귤         | 귤 요거트스무디      | [Cookie and Kate](https://cookieandkate.com/clementine-sunshine-smoothie/)                                                              |
+| 귤         | 귤 퀴노아샐러드      | [It’s Not Complicated Recipes · Alexandra Cook](https://itsnotcomplicatedrecipes.com/quinoa-mandarin-and-spinach-salad/)                |
+
+최종 확인(2026-10-13): 테스트 59개·lint·typecheck·수정 파일 Prettier 검사·build 통과. Supabase 연결 로컬 목록에서 84개와 새 8종 필터 각각 4개를 확인했습니다. 귤 목록의 사진 12장과 새송이 파스타 상세의 고정 사진 3장(JPG/WebP) 로딩·실제 새송이 판매 상품 연결을 확인했습니다.

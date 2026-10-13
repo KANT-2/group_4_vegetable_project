@@ -3611,5 +3611,2253 @@
       "/images/recipes/curated/easy-paprika-4/02.jpg",
       "/images/recipes/curated/easy-paprika-4/03.jpg"
     ]
+  },
+  {
+    "id": "easy-king-oyster-1",
+    "name": "새송이 마늘버터구이",
+    "description": "길게 자른 새송이를 바삭하게 굽고 마늘버터와 레몬 향을 더하는 반찬이에요.",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 3,
+    "ingredients": [
+      {
+        "name": "새송이버섯",
+        "amount": "227~340g"
+      },
+      {
+        "name": "올리브유",
+        "amount": "2큰술"
+      },
+      {
+        "name": "버터",
+        "amount": "2큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽, 얇게 썰기"
+      },
+      {
+        "name": "넛메그",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "파슬리",
+        "amount": "다진 것 1/2컵"
+      },
+      {
+        "name": "레몬 제스트",
+        "amount": "레몬 1개 분량"
+      },
+      {
+        "name": "소금·후추",
+        "amount": "각 1/4작은술"
+      }
+    ],
+    "steps": [
+      "새송이는 단단한 밑동을 다듬고 길게 반으로 썰어요. 두꺼우면 다시 길게 나눠 주세요.",
+      "예열한 두꺼운 팬에 기름을 두르고 자른 면을 아래로 놓아 중강불에서 약 3분 구워요.",
+      "소금·후추를 뿌려 뒤집고 노릇해지도록 약 5분 더 익혀요.",
+      "불을 낮추고 버터·마늘·넛메그를 넣어 2~3분 볶은 뒤 파슬리와 레몬 제스트로 마무리해요."
+    ],
+    "vegetables": [
+      {
+        "id": "king-oyster",
+        "name": "새송이버섯"
+      }
+    ],
+    "productVegetableIds": ["king-oyster"],
+    "sourceUrl": "https://zestfulkitchen.com/pan-fried-king-oyster-mushrooms-recipe/",
+    "sourceName": "Zestful Kitchen · Lauren Grant",
+    "primaryVegetableId": "king-oyster",
+    "imageAlt": "새송이 마늘버터구이 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-king-oyster-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-king-oyster-1/02.jpg",
+      "/images/recipes/curated/easy-king-oyster-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-king-oyster-2",
+    "name": "새송이 매콤 간장볶음",
+    "description": "손으로 찢은 새송이에 간장·굴소스·고추기름을 입히는 볶음이에요. 사진처럼 풋고추를 함께 넣어요.",
+    "cookTimeMin": 25,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "새송이버섯",
+        "amount": "450g"
+      },
+      {
+        "name": "고추",
+        "amount": "순한 풋고추 1개"
+      },
+      {
+        "name": "대파",
+        "amount": "가는 것 1대"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "채소 육수",
+        "amount": "60ml"
+      },
+      {
+        "name": "굴소스",
+        "amount": "1큰술"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1작은술"
+      },
+      {
+        "name": "고추기름",
+        "amount": "2작은술"
+      },
+      {
+        "name": "전분",
+        "amount": "1작은술"
+      },
+      {
+        "name": "식용유",
+        "amount": "2큰술"
+      }
+    ],
+    "steps": [
+      "새송이를 길이 약 7cm, 두께 약 1cm로 찢고 고추는 씨를 빼서 채 썰어요. 대파의 흰 부분과 잎을 나눠 썰어요.",
+      "육수·굴소스·간장·설탕·고추기름·전분을 잘 섞어요.",
+      "팬에 기름을 두르고 대파 흰 부분과 마늘을 약 1분 볶은 뒤 새송이가 부드러워질 때까지 볶아요.",
+      "고추를 넣어 약 1분 볶고 양념을 다시 저어 부어요. 걸쭉해지면 대파 잎을 넣고 마무리해요."
+    ],
+    "vegetables": [
+      {
+        "id": "king-oyster",
+        "name": "새송이버섯"
+      }
+    ],
+    "productVegetableIds": ["king-oyster"],
+    "sourceUrl": "https://omnivorescookbook.com/king-oyster-mushroom-stir-fry/",
+    "sourceName": "Maggie Zhu",
+    "primaryVegetableId": "king-oyster",
+    "imageAlt": "새송이 매콤 간장볶음 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-king-oyster-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-king-oyster-2/02.jpg",
+      "/images/recipes/curated/easy-king-oyster-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-king-oyster-3",
+    "name": "새송이 버섯 스캘럽",
+    "description": "새송이 줄기를 동그랗게 잘라 조개관자처럼 구워요. 해산물을 넣는 요리가 아니에요.",
+    "cookTimeMin": 25,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "새송이버섯",
+        "amount": "450g"
+      },
+      {
+        "name": "식물성 버터",
+        "amount": "2큰술"
+      },
+      {
+        "name": "마늘가루",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "파슬리",
+        "amount": "다진 것, 고명용 약간"
+      },
+      {
+        "name": "레몬",
+        "amount": "즙과 고명용 약간"
+      }
+    ],
+    "steps": [
+      "단단한 밑동을 떼고 줄기를 2.5~4cm 두께의 원형으로 썰어요. 양면에 얕은 격자 칼집을 내요.",
+      "중불 팬에 버터를 녹이고 버섯을 넣어 소금·마늘가루를 뿌려요.",
+      "버섯을 가볍게 눌러 뚜껑을 덮고 약 8분 구운 뒤 뒤집어요. 다진 마늘을 넣고 5~10분 더 익혀요.",
+      "속까지 부드럽게 익으면 파슬리와 레몬즙을 더해 따뜻하게 먹어요."
+    ],
+    "vegetables": [
+      {
+        "id": "king-oyster",
+        "name": "새송이버섯"
+      }
+    ],
+    "productVegetableIds": ["king-oyster"],
+    "sourceUrl": "https://sweetpotatosoul.com/king-oyster-mushroom-vegan-scallops/",
+    "sourceName": "Sweet Potato Soul · Jenne Claiborne",
+    "primaryVegetableId": "king-oyster",
+    "imageAlt": "새송이 버섯 스캘럽 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-king-oyster-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-king-oyster-3/02.jpg",
+      "/images/recipes/curated/easy-king-oyster-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-king-oyster-4",
+    "name": "새송이 마늘파스타",
+    "description": "김·다시마 향으로 익힌 새송이에 마늘파스타를 곁들여요. 사진의 붉은 고명은 선택 재료인 식물성 초리소예요.",
+    "cookTimeMin": 35,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "새송이버섯",
+        "amount": "줄기 200g"
+      },
+      {
+        "name": "파스타",
+        "amount": "200g"
+      },
+      {
+        "name": "김",
+        "amount": "1장"
+      },
+      {
+        "name": "다시마 육수 가루",
+        "amount": "1큰술"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "버섯용 25ml, 마무리용 20ml"
+      },
+      {
+        "name": "올리브유",
+        "amount": "버섯용 1큰술, 파스타용 1큰술"
+      },
+      {
+        "name": "미림 또는 화이트와인",
+        "amount": "100ml"
+      },
+      {
+        "name": "물",
+        "amount": "100ml, 버섯이 잠길 정도"
+      },
+      {
+        "name": "마늘",
+        "amount": "4쪽"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "굵은 것 1작은술"
+      },
+      {
+        "name": "파슬리",
+        "amount": "20g"
+      },
+      {
+        "name": "식물성 초리소",
+        "amount": "150g, 선택"
+      },
+      {
+        "name": "소금·후추",
+        "amount": "기호에 맞게"
+      }
+    ],
+    "steps": [
+      "새송이 줄기를 2~3cm 두께로 썰어요. 냄비에 잘게 부순 김·다시마 가루·레몬즙 25ml·미림·물·기름 1큰술을 넣어요.",
+      "버섯을 넣어 약불에서 10~15분 끓이는 동안 파스타를 포장에 적힌 시간대로 삶아요. 초리소를 쓰면 잘게 썰어 따로 볶아요.",
+      "버섯을 건져 기름 1큰술·다진 마늘·고춧가루와 노릇하게 구워요. 끓였던 국물은 버리지 않아요.",
+      "팬에 국물과 삶은 파스타를 넣어 버무려요. 파슬리·레몬즙 20ml를 더하고 초리소를 곁들여요."
+    ],
+    "vegetables": [
+      {
+        "id": "king-oyster",
+        "name": "새송이버섯"
+      }
+    ],
+    "productVegetableIds": ["king-oyster"],
+    "sourceUrl": "https://theveganlarder.com/vegan-scallops-with-garlic-pasta-king-oyster-mushroom/",
+    "sourceName": "The Vegan Larder · Louise-Claire Cayzer",
+    "primaryVegetableId": "king-oyster",
+    "imageAlt": "새송이 마늘파스타 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-king-oyster-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-king-oyster-4/02.webp",
+      "/images/recipes/curated/easy-king-oyster-4/03.webp"
+    ]
+  },
+  {
+    "id": "easy-sweet-potato-1",
+    "name": "고구마 수프",
+    "description": "고구마의 단맛에 커민 향과 크림을 더한 부드러운 수프예요. 원문은 주황색 속살의 고구마를 사용해요.",
+    "cookTimeMin": 40,
+    "difficulty": "easy",
+    "servings": 6,
+    "ingredients": [
+      {
+        "name": "고구마",
+        "amount": "1kg"
+      },
+      {
+        "name": "양파",
+        "amount": "2개"
+      },
+      {
+        "name": "리크",
+        "amount": "2대, 흰색과 연두색 부분"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "올리브유",
+        "amount": "2큰술"
+      },
+      {
+        "name": "버터",
+        "amount": "30g"
+      },
+      {
+        "name": "커민가루",
+        "amount": "1큰술"
+      },
+      {
+        "name": "저염 채소 육수",
+        "amount": "1.25L"
+      },
+      {
+        "name": "소금",
+        "amount": "1과 1/2작은술, 간 보며 조절"
+      },
+      {
+        "name": "후추",
+        "amount": "1작은술"
+      },
+      {
+        "name": "생크림",
+        "amount": "80ml"
+      },
+      {
+        "name": "피스타치오·바삭한 빵",
+        "amount": "고명용 약간, 선택"
+      }
+    ],
+    "steps": [
+      "고구마는 껍질을 벗겨 2cm 크기로 썰고 양파·리크·마늘도 썰어요.",
+      "냄비에 기름과 버터를 넣고 양파·리크·마늘을 약 5분 볶아요. 고구마와 커민을 넣어 3분 더 볶아요.",
+      "육수·소금·후추를 넣고 끓으면 약불로 줄여 고구마가 푹 익도록 약 20분 끓여요.",
+      "불을 끄고 핸드블렌더로 갈아 크림을 섞어요. 취향에 따라 바삭한 빵과 피스타치오를 올려요."
+    ],
+    "vegetables": [
+      {
+        "id": "sweet-potato",
+        "name": "고구마"
+      }
+    ],
+    "productVegetableIds": ["sweet-potato"],
+    "sourceUrl": "https://www.recipetineats.com/sweet-potato-soup/",
+    "sourceName": "RecipeTin Eats · Nagi Maehashi",
+    "primaryVegetableId": "sweet-potato",
+    "imageAlt": "고구마 수프 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-sweet-potato-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-sweet-potato-1/02.jpg",
+      "/images/recipes/curated/easy-sweet-potato-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-sweet-potato-2",
+    "name": "구운 고구마샐러드",
+    "description": "구운 고구마를 루콜라·베이컨·피칸과 섞고 꿀레몬 드레싱을 더해요. 식사 2인분 또는 곁들임 4인분이에요.",
+    "cookTimeMin": 45,
+    "difficulty": "easy",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "고구마",
+        "amount": "600~700g"
+      },
+      {
+        "name": "올리브유",
+        "amount": "굽기용 1과 1/2큰술, 드레싱용 2큰술"
+      },
+      {
+        "name": "루콜라",
+        "amount": "100g"
+      },
+      {
+        "name": "피칸",
+        "amount": "70g"
+      },
+      {
+        "name": "베이컨",
+        "amount": "100g"
+      },
+      {
+        "name": "식용유",
+        "amount": "1작은술"
+      },
+      {
+        "name": "페타치즈",
+        "amount": "60g"
+      },
+      {
+        "name": "꿀",
+        "amount": "1큰술"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "2큰술"
+      },
+      {
+        "name": "디종 머스터드",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "소금·후추",
+        "amount": "기호에 맞게"
+      }
+    ],
+    "steps": [
+      "고구마를 1.5cm 두께로 썰어 기름·소금·후추와 섞어요. 220℃ 오븐에서 20분 굽고 뒤집어 약 10분 더 구워요.",
+      "꿀·레몬즙·드레싱용 기름·머스터드를 섞어요. 마른 팬에 피칸을 약 3분 볶아 덜어요.",
+      "팬에 기름 1작은술을 두르고 잘게 썬 베이컨을 노릇하게 볶아요.",
+      "루콜라·고구마·베이컨·피칸·치즈를 드레싱과 가볍게 버무려요. 일부 고명을 남겼다가 위에 올려요."
+    ],
+    "vegetables": [
+      {
+        "id": "sweet-potato",
+        "name": "고구마"
+      }
+    ],
+    "productVegetableIds": ["sweet-potato"],
+    "sourceUrl": "https://www.recipetineats.com/roasted-sweet-potato-salad-honey-lemon-dressing/",
+    "sourceName": "Nagi | RecipeTin Eats",
+    "primaryVegetableId": "sweet-potato",
+    "imageAlt": "구운 고구마샐러드 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-sweet-potato-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-sweet-potato-2/02.jpg",
+      "/images/recipes/curated/easy-sweet-potato-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-sweet-potato-3",
+    "name": "고구마 스테이크",
+    "description": "두툼하게 썬 고구마를 구워 타히니 요거트와 마늘 고명을 올려요. 큰 고구마를 사용하며 오븐 조리 약 45~50분이 포함돼요.",
+    "cookTimeMin": 60,
+    "difficulty": "normal",
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "고구마",
+        "amount": "큰 것 1개, 1.8cm 두께의 긴 조각 2개"
+      },
+      {
+        "name": "올리브유",
+        "amount": "굽기용 2~3작은술, 고명용 2큰술"
+      },
+      {
+        "name": "훈제 파프리카가루",
+        "amount": "1과 1/2작은술"
+      },
+      {
+        "name": "양파가루",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "마늘가루",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "커민가루",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "고구마용 1/2작은술, 소스용 1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "플레인 요거트",
+        "amount": "250g"
+      },
+      {
+        "name": "타히니",
+        "amount": "2와 1/2큰술"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "1과 1/2큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "소스용 1쪽, 고명용 3쪽"
+      },
+      {
+        "name": "샬롯",
+        "amount": "다진 것 1과 1/2큰술"
+      },
+      {
+        "name": "고추",
+        "amount": "순한 빨간색·초록색 각 다진 것 1큰술"
+      },
+      {
+        "name": "깨",
+        "amount": "1큰술"
+      },
+      {
+        "name": "잣",
+        "amount": "2큰술"
+      },
+      {
+        "name": "고수",
+        "amount": "다진 것 2큰술"
+      },
+      {
+        "name": "구운 피타빵",
+        "amount": "곁들임용, 선택"
+      }
+    ],
+    "steps": [
+      "고구마 조각에 기름을 바르고 파프리카·양파·마늘·커민가루와 소금·후추를 뿌려요. 200℃ 오븐에서 45~50분 구워요.",
+      "요거트·타히니·레몬즙·다진 마늘 1쪽·소금을 섞고 전자레인지로 약 20초 데워 다시 저어요.",
+      "마른 팬에 잣을 볶아 덜고, 기름을 넣어 나머지 마늘·샬롯·고추·깨를 마늘이 노릇해질 때까지 볶아요.",
+      "접시에 요거트 소스를 펴고 고구마를 올려요. 볶은 고명·잣·고수를 더하고 피타빵을 곁들여요."
+    ],
+    "vegetables": [
+      {
+        "id": "sweet-potato",
+        "name": "고구마"
+      }
+    ],
+    "productVegetableIds": ["sweet-potato"],
+    "sourceUrl": "https://www.recipetineats.com/sweet-potato-steaks/",
+    "sourceName": "RecipeTin Eats · Nagi Maehashi",
+    "primaryVegetableId": "sweet-potato",
+    "imageAlt": "고구마 스테이크 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-sweet-potato-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-sweet-potato-3/02.jpg",
+      "/images/recipes/curated/easy-sweet-potato-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-sweet-potato-4",
+    "name": "고구마 오븐스택",
+    "description": "얇은 고구마를 머핀틀에 층층이 쌓아 구워요. 12개를 만들어 한 사람당 2개씩 나누는 기준이에요.",
+    "cookTimeMin": 60,
+    "difficulty": "easy",
+    "servings": 6,
+    "ingredients": [
+      {
+        "name": "고구마",
+        "amount": "껍질 포함 1.2kg"
+      },
+      {
+        "name": "버터",
+        "amount": "50g, 녹이기"
+      },
+      {
+        "name": "올리브유",
+        "amount": "1과 1/2큰술"
+      },
+      {
+        "name": "로즈메리",
+        "amount": "다진 생잎 2큰술 또는 말린 것 1큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1과 1/4작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "오븐을 190℃로 예열해요. 고구마는 껍질을 벗겨 약 2mm 두께로 썰어요.",
+      "버터·기름·로즈메리·소금·후추와 고구마를 잘 섞어요.",
+      "머핀틀 12칸에 고구마를 쌓고 남은 버터 양념을 조금씩 얹어요.",
+      "약 45분 구워 속까지 익었는지 확인해요. 포크로 조심히 꺼내 따뜻할 때 먹어요."
+    ],
+    "vegetables": [
+      {
+        "id": "sweet-potato",
+        "name": "고구마"
+      }
+    ],
+    "productVegetableIds": ["sweet-potato"],
+    "sourceUrl": "https://www.recipetineats.com/roasted-sweet-potato-stacks/",
+    "sourceName": "RecipeTin Eats · Nagi Maehashi",
+    "primaryVegetableId": "sweet-potato",
+    "imageAlt": "고구마 오븐스택 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-sweet-potato-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-sweet-potato-4/02.jpg",
+      "/images/recipes/curated/easy-sweet-potato-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-green-onion-1",
+    "name": "파무침",
+    "description": "대파를 가늘게 썰어 무치는 파절이예요. 찬물에 담그는 10분을 포함했고, 먹기 직전에 양념해요.",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "대파",
+        "amount": "중간 크기 3~4대"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "2작은술"
+      },
+      {
+        "name": "참기름",
+        "amount": "2작은술"
+      },
+      {
+        "name": "깨",
+        "amount": "1작은술"
+      },
+      {
+        "name": "간장",
+        "amount": "2작은술"
+      },
+      {
+        "name": "식초",
+        "amount": "2작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1작은술"
+      }
+    ],
+    "steps": [
+      "대파를 약 10cm 길이로 자르고 길게 아주 가늘게 채 썰어요.",
+      "찬물에 약 10분 담갔다가 물기를 충분히 빼요.",
+      "고춧가루·참기름·깨를 넣고 가볍게 버무려요.",
+      "먹기 직전에 간장·식초·설탕을 더해 한 번 더 섞어요."
+    ],
+    "vegetables": [
+      {
+        "id": "green-onion",
+        "name": "대파"
+      }
+    ],
+    "productVegetableIds": ["green-onion"],
+    "sourceUrl": "https://www.koreanbapsang.com/pa-muchim-scallion-salad/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "green-onion",
+    "imageAlt": "파무침 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-green-onion-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-green-onion-1/02.jpg",
+      "/images/recipes/curated/easy-green-onion-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-green-onion-2",
+    "name": "해물파전",
+    "description": "대파와 여러 해물을 얹어 바삭하게 부치는 파전이에요. 원문은 가는 파를 쓰므로 굵은 대파의 흰 부분은 길게 가늘게 나눠 주세요.",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "대파",
+        "amount": "가는 것 1~2묶음"
+      },
+      {
+        "name": "모둠 해물",
+        "amount": "손질한 오징어·새우·조개 등 1과 1/2~2컵"
+      },
+      {
+        "name": "참기름",
+        "amount": "1큰술"
+      },
+      {
+        "name": "부침가루",
+        "amount": "1컵"
+      },
+      {
+        "name": "찬물",
+        "amount": "180ml, 필요하면 1큰술씩 추가"
+      },
+      {
+        "name": "고추",
+        "amount": "홍고추 1개, 선택"
+      },
+      {
+        "name": "달걀",
+        "amount": "1개, 선택"
+      },
+      {
+        "name": "식용유",
+        "amount": "전 1장당 처음 3~4큰술, 뒤집을 때 2~3큰술"
+      },
+      {
+        "name": "간장",
+        "amount": "찍는 소스용 1큰술"
+      },
+      {
+        "name": "식초",
+        "amount": "2~3작은술"
+      },
+      {
+        "name": "물",
+        "amount": "찍는 소스용 1큰술"
+      },
+      {
+        "name": "후추·고춧가루",
+        "amount": "찍는 소스용 한 꼬집씩"
+      }
+    ],
+    "steps": [
+      "대파를 반으로 자르고 굵은 흰 부분은 가늘게 갈라요. 해물은 한입 크기로 썰어 물기를 빼고 참기름과 섞어요.",
+      "부침가루와 찬물을 섞고 해물 절반을 넣어요. 간장·식초·물·후추·고춧가루로 찍는 소스를 만들어요.",
+      "기름을 두른 중강불 팬에 반죽 절반을 얇게 펴요. 대파와 남긴 해물 절반을 얹고 달걀을 쓰면 절반을 끼얹어요.",
+      "약 3~4분 부치고 뒤집어 기름을 보충해 3~4분 더 익혀요. 남은 재료로 한 장 더 부쳐요."
+    ],
+    "vegetables": [
+      {
+        "id": "green-onion",
+        "name": "대파"
+      }
+    ],
+    "productVegetableIds": ["green-onion"],
+    "sourceUrl": "https://www.koreanbapsang.com/haemul-pajeon/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "green-onion",
+    "imageAlt": "해물파전 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-green-onion-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-green-onion-2/02.jpg",
+      "/images/recipes/curated/easy-green-onion-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-green-onion-3",
+    "name": "대파 중국식 전",
+    "description": "대파를 다져 반죽 안에 넣고 돌돌 말아 구워요. 반죽 휴지 20분 포함, 6장을 만들어 반 장씩 나누는 기준이에요.",
+    "cookTimeMin": 60,
+    "difficulty": "normal",
+    "servings": 12,
+    "ingredients": [
+      {
+        "name": "대파",
+        "amount": "잘게 썬 것 1컵, 가는 파 약 8대 분량"
+      },
+      {
+        "name": "밀가루",
+        "amount": "반죽용 2컵, 속용 1/3컵"
+      },
+      {
+        "name": "소금",
+        "amount": "반죽용 1/2작은술, 속용 3/4작은술"
+      },
+      {
+        "name": "뜨거운 물",
+        "amount": "120ml"
+      },
+      {
+        "name": "찬물",
+        "amount": "60ml"
+      },
+      {
+        "name": "땅콩유 또는 식용유",
+        "amount": "속용 60ml, 팬에 두를 것 적당량"
+      },
+      {
+        "name": "간장",
+        "amount": "찍는 소스용 1과 1/2큰술"
+      },
+      {
+        "name": "흑식초 또는 쌀식초",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "물",
+        "amount": "찍는 소스용 1큰술"
+      }
+    ],
+    "steps": [
+      "밀가루 2컵과 소금을 섞고 뜨거운 물, 찬물 순으로 넣어요. 약 5분 반죽한 뒤 덮어 20분 쉬게 해요.",
+      "속용 밀가루·기름·소금을 섞어요. 소스용 간장·식초·설탕·물도 따로 섞어요.",
+      "반죽을 6등분해 약 15×25cm로 밀어요. 밀가루 기름 페이스트와 대파를 나눠 펴고 길게 말아요.",
+      "긴 반죽을 달팽이 모양으로 감아 끝을 넣고 지름 17~20cm로 다시 밀어요.",
+      "기름 두른 팬에서 뚜껑을 덮어 양면 각 1분, 뚜껑을 열고 약 3분 더 뒤집으며 바삭하게 구워요. 소스와 먹어요."
+    ],
+    "vegetables": [
+      {
+        "id": "green-onion",
+        "name": "대파"
+      }
+    ],
+    "productVegetableIds": ["green-onion"],
+    "sourceUrl": "https://omnivorescookbook.com/chinese-scallion-pancakes/",
+    "sourceName": "Maggie Zhu",
+    "primaryVegetableId": "green-onion",
+    "imageAlt": "대파 중국식 전 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-green-onion-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-green-onion-3/02.jpg",
+      "/images/recipes/curated/easy-green-onion-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-green-onion-4",
+    "name": "파기름 국수",
+    "description": "대파를 천천히 튀기듯 볶아 낸 향긋한 기름에 국수를 비벼요. 굵은 대파는 길게 가늘게 썰어 사용해요.",
+    "cookTimeMin": 25,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "대파",
+        "amount": "가는 것 6~8대"
+      },
+      {
+        "name": "식용유",
+        "amount": "60ml"
+      },
+      {
+        "name": "간장",
+        "amount": "3큰술"
+      },
+      {
+        "name": "노두유",
+        "amount": "2와 1/2큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "2쪽"
+      },
+      {
+        "name": "설탕",
+        "amount": "2작은술"
+      },
+      {
+        "name": "밀국수",
+        "amount": "생면 450g 또는 건면 340g"
+      }
+    ],
+    "steps": [
+      "대파를 5cm 길이로 자른 뒤 가늘게 썰고 물기를 완전히 닦아요.",
+      "중불 팬에 기름과 대파를 넣고 노릇해진 조각부터 건져요. 타지 않게 불을 조절해요.",
+      "남은 기름에 다진 마늘을 볶고 간장·노두유·설탕을 넣어 약 1분 끓인 뒤 불을 꺼요.",
+      "국수를 포장에 적힌 시간대로 삶아 물기를 빼요. 파기름 양념을 나눠 섞고 볶은 대파를 올려요."
+    ],
+    "vegetables": [
+      {
+        "id": "green-onion",
+        "name": "대파"
+      }
+    ],
+    "productVegetableIds": ["green-onion"],
+    "sourceUrl": "https://omnivorescookbook.com/scallion-oil-noodle/",
+    "sourceName": "Maggie Zhu",
+    "primaryVegetableId": "green-onion",
+    "imageAlt": "파기름 국수 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-green-onion-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-green-onion-4/02.jpg",
+      "/images/recipes/curated/easy-green-onion-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-napa-cabbage-1",
+    "name": "배추 겉절이",
+    "description": "배추를 절여 바로 무쳐 먹는 겉절이예요. 절이기 40~60분을 포함한 예상 시간이며 반찬 8인분으로 편집했어요.",
+    "cookTimeMin": 80,
+    "difficulty": "easy",
+    "servings": 8,
+    "ingredients": [
+      {
+        "name": "배추",
+        "amount": "작은 것 1포기, 약 1.1kg"
+      },
+      {
+        "name": "굵은 소금",
+        "amount": "3큰술"
+      },
+      {
+        "name": "대파",
+        "amount": "가는 것 2대"
+      },
+      {
+        "name": "부추",
+        "amount": "약 55g, 선택"
+      },
+      {
+        "name": "미나리",
+        "amount": "몇 줄기, 선택"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "4큰술"
+      },
+      {
+        "name": "멸치액젓",
+        "amount": "3큰술"
+      },
+      {
+        "name": "물엿",
+        "amount": "1큰술"
+      },
+      {
+        "name": "매실청",
+        "amount": "1큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "다진 것 1큰술"
+      },
+      {
+        "name": "생강",
+        "amount": "간 것 1작은술"
+      },
+      {
+        "name": "깨",
+        "amount": "1작은술"
+      },
+      {
+        "name": "물",
+        "amount": "양념용 2큰술"
+      }
+    ],
+    "steps": [
+      "배추 잎을 떼어 길게 나누고 한입 크기로 잘라 씻어요.",
+      "굵은 소금을 골고루 섞어 40~60분 절이고 중간에 한 번 뒤집어요.",
+      "대파·부추·미나리를 썰고 고춧가루·액젓·물엿·매실청·마늘·생강·깨·물을 섞어요.",
+      "절인 배추를 두 번 헹궈 물기를 빼요. 양념과 버무린 뒤 대파와 선택 채소를 넣어 섞어요."
+    ],
+    "vegetables": [
+      {
+        "id": "napa-cabbage",
+        "name": "배추"
+      }
+    ],
+    "productVegetableIds": ["napa-cabbage"],
+    "sourceUrl": "https://www.koreanbapsang.com/baechu-geotjeori-fresh-kimchi/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "napa-cabbage",
+    "imageAlt": "배추 겉절이 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-napa-cabbage-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-napa-cabbage-1/02.jpg",
+      "/images/recipes/curated/easy-napa-cabbage-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-napa-cabbage-2",
+    "name": "배추 된장국",
+    "description": "멸치 육수에 배추를 푹 익히는 된장국이에요. 육수 끓이기와 배추 익히기를 포함해 시간을 보정했어요.",
+    "cookTimeMin": 35,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "배추",
+        "amount": "450g"
+      },
+      {
+        "name": "멸치 육수",
+        "amount": "960ml"
+      },
+      {
+        "name": "된장",
+        "amount": "2큰술"
+      },
+      {
+        "name": "고추장",
+        "amount": "1작은술"
+      },
+      {
+        "name": "국간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "다진 것 1작은술"
+      },
+      {
+        "name": "대파",
+        "amount": "가는 것 2대"
+      },
+      {
+        "name": "소금·후추",
+        "amount": "간을 보며 약간"
+      }
+    ],
+    "steps": [
+      "배추를 5~7cm 크기로 썰어요. 육수가 없으면 중간 크기 마른 멸치 약 12마리를 물 1.4L에 10분 끓여 건져요.",
+      "육수 960ml에 된장·고추장을 풀고 국간장을 넣어요.",
+      "배추를 넣어 끓으면 중불로 줄이고 덮어서 10~15분 익혀요.",
+      "대파와 마늘을 넣어 약 5분 더 끓여요. 소금·후추로 마무리해요."
+    ],
+    "vegetables": [
+      {
+        "id": "napa-cabbage",
+        "name": "배추"
+      }
+    ],
+    "productVegetableIds": ["napa-cabbage"],
+    "sourceUrl": "https://www.koreanbapsang.com/baechu-doenjang-guk/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "napa-cabbage",
+    "imageAlt": "배추 된장국 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-napa-cabbage-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-napa-cabbage-2/02.jpg",
+      "/images/recipes/curated/easy-napa-cabbage-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-napa-cabbage-3",
+    "name": "배추전",
+    "description": "배추 잎에 얇은 반죽을 입혀 부치는 배추전이에요. 12장을 만들어 한 사람당 3장씩 나누는 기준이에요.",
+    "cookTimeMin": 30,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "배추",
+        "amount": "잎 12장, 350~450g"
+      },
+      {
+        "name": "소금",
+        "amount": "1큰술"
+      },
+      {
+        "name": "따뜻한 물",
+        "amount": "500ml"
+      },
+      {
+        "name": "부침가루",
+        "amount": "70g"
+      },
+      {
+        "name": "튀김가루",
+        "amount": "70g"
+      },
+      {
+        "name": "찬물",
+        "amount": "약 210ml"
+      },
+      {
+        "name": "새우젓 국물 또는 멸치액젓",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "들기름",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "식용유",
+        "amount": "잎 1장당 1~2큰술"
+      }
+    ],
+    "steps": [
+      "배추 잎을 씻고 두꺼운 줄기에 얕게 칼집을 내요. 소금을 푼 따뜻한 물에 약 5분 담가요.",
+      "부침가루·튀김가루·찬물·새우젓 국물·들기름을 섞어 묽은 반죽을 만들어요.",
+      "배추를 가볍게 헹궈 물기를 털고 반죽을 얇게 입혀요.",
+      "중불 팬에 기름을 두르고 겹치지 않게 놓아 양면을 1~2분씩 부쳐요. 가장자리가 바삭해지면 꺼내요."
+    ],
+    "vegetables": [
+      {
+        "id": "napa-cabbage",
+        "name": "배추"
+      }
+    ],
+    "productVegetableIds": ["napa-cabbage"],
+    "sourceUrl": "https://mykoreankitchen.com/baechujeon/",
+    "sourceName": "Sue Pressey",
+    "primaryVegetableId": "napa-cabbage",
+    "imageAlt": "배추전 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-napa-cabbage-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-napa-cabbage-3/02.jpg",
+      "/images/recipes/curated/easy-napa-cabbage-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-napa-cabbage-4",
+    "name": "밀푀유나베",
+    "description": "배추와 얇은 돼지고기를 층층이 쌓아 끓이는 전골이에요. 사진과 원문은 소고기가 아닌 삼겹살을 사용해요.",
+    "cookTimeMin": 30,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "배추",
+        "amount": "1포기, 약 1.8kg"
+      },
+      {
+        "name": "얇게 썬 삼겹살",
+        "amount": "680g"
+      },
+      {
+        "name": "생강",
+        "amount": "2.5cm 조각, 얇게 8~10장"
+      },
+      {
+        "name": "다시 육수",
+        "amount": "1.2L"
+      },
+      {
+        "name": "청주",
+        "amount": "2큰술"
+      },
+      {
+        "name": "간장",
+        "amount": "1큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술, 간 보며 조절"
+      },
+      {
+        "name": "대파",
+        "amount": "가는 것 1대"
+      },
+      {
+        "name": "폰즈",
+        "amount": "찍어 먹을 만큼"
+      },
+      {
+        "name": "시치미",
+        "amount": "찍는 소스용 약간, 선택"
+      }
+    ],
+    "steps": [
+      "배추를 4등분해 씻어요. 잎 사이사이에 삼겹살을 끼우고 단단한 밑동을 잘라요.",
+      "층이 풀리지 않게 5~6cm 길이로 잘라 냄비 가장자리부터 촘촘하게 세워 넣어요. 빈 곳은 배추 잎으로 채워요.",
+      "생강을 끼우고 육수·청주·간장·소금을 섞어 부어요.",
+      "덮어 끓이다 거품을 걷고 중약불에서 약 8~10분 익혀요. 돼지고기가 완전히 익으면 대파를 넣은 폰즈와 먹어요."
+    ],
+    "vegetables": [
+      {
+        "id": "napa-cabbage",
+        "name": "배추"
+      }
+    ],
+    "productVegetableIds": ["napa-cabbage"],
+    "sourceUrl": "https://www.justonecookbook.com/mille-feuille-nabe/",
+    "sourceName": "Just One Cookbook · Namiko Hirasawa Chen",
+    "primaryVegetableId": "napa-cabbage",
+    "imageAlt": "밀푀유나베 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-napa-cabbage-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-napa-cabbage-4/02.jpg",
+      "/images/recipes/curated/easy-napa-cabbage-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-sweet-pumpkin-1",
+    "name": "단호박 샐러드",
+    "description": "찐 단호박에 마요네즈·크림치즈를 섞는 샐러드예요. 냉장 1시간을 포함하며 햄은 선택 재료예요.",
+    "cookTimeMin": 95,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "단호박",
+        "amount": "씨 포함 약 1kg"
+      },
+      {
+        "name": "양파",
+        "amount": "적양파 1/2개, 약 160g"
+      },
+      {
+        "name": "햄",
+        "amount": "90g, 선택"
+      },
+      {
+        "name": "마요네즈",
+        "amount": "2큰술"
+      },
+      {
+        "name": "크림치즈",
+        "amount": "2큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/4작은술과 양파 절임용 한 꼬집"
+      },
+      {
+        "name": "후추",
+        "amount": "1/8작은술"
+      }
+    ],
+    "steps": [
+      "단호박 씨와 껍질을 제거하고 약 5cm 크기로 썰어요. 찜기에 물을 붓고 약 15분 쪄서 속까지 익혀요.",
+      "적양파를 얇게 썰어 소금 한 꼬집으로 주무르고 물기를 짜요. 햄을 쓰면 가늘게 썰어요.",
+      "단호박을 덩어리가 조금 남도록 으깨고 소금·후추·양파·마요네즈·크림치즈와 섞어요. 햄도 넣어요.",
+      "덮어 냉장고에서 최소 1시간 차게 두었다가 먹어요."
+    ],
+    "vegetables": [
+      {
+        "id": "sweet-pumpkin",
+        "name": "단호박"
+      }
+    ],
+    "productVegetableIds": ["sweet-pumpkin"],
+    "sourceUrl": "https://www.justonecookbook.com/kabocha-salad/",
+    "sourceName": "Just One Cookbook · Namiko Hirasawa Chen",
+    "primaryVegetableId": "sweet-pumpkin",
+    "imageAlt": "단호박 샐러드 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-sweet-pumpkin-1/02.jpg",
+      "/images/recipes/curated/easy-sweet-pumpkin-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-sweet-pumpkin-2",
+    "name": "단호박죽",
+    "description": "찹쌀을 갈아 넣은 단호박죽이에요. 찹쌀 불리기 1시간을 포함한 예상 시간이며 사진의 새알심과 팥은 선택 고명이에요.",
+    "cookTimeMin": 120,
+    "difficulty": "easy",
+    "servings": 8,
+    "ingredients": [
+      {
+        "name": "단호박",
+        "amount": "약 900g"
+      },
+      {
+        "name": "찹쌀",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "물",
+        "amount": "단호박 삶기용 약 1.4L, 죽용 약 960ml"
+      },
+      {
+        "name": "소금",
+        "amount": "죽용 1/2작은술"
+      },
+      {
+        "name": "황설탕",
+        "amount": "1~2큰술, 기호에 따라 생략"
+      },
+      {
+        "name": "찹쌀가루",
+        "amount": "새알심용 1/2컵, 선택"
+      },
+      {
+        "name": "설탕",
+        "amount": "새알심용 2작은술, 선택"
+      },
+      {
+        "name": "소금",
+        "amount": "새알심용 1/4작은술, 선택"
+      },
+      {
+        "name": "뜨거운 물",
+        "amount": "새알심용 4큰술, 선택"
+      },
+      {
+        "name": "삶은 팥",
+        "amount": "1/4컵, 선택"
+      },
+      {
+        "name": "잣·호박씨",
+        "amount": "고명용 1큰술, 선택"
+      }
+    ],
+    "steps": [
+      "찹쌀을 최소 1시간 물에 불려요. 단호박을 나눠 씨를 빼고 냄비에 물 약 1.4L와 넣어 덮은 뒤 25~30분 삶아요.",
+      "단호박을 식혀 껍질을 벗기고 으깨요. 불린 찹쌀을 물 240ml와 곱게 갈아요.",
+      "냄비에 단호박·간 찹쌀·물 720ml를 넣고 저어 끓여요. 약불로 줄여 약 20분 더 끓이고 농도에 따라 물을 보충해요.",
+      "소금·설탕과 선택한 삶은 팥을 넣어 3~4분 더 끓여요.",
+      "새알심을 쓰면 찹쌀가루·설탕·소금에 뜨거운 물을 섞어 반죽해요. 작게 빚어 끓는 물에 떠오를 때까지 익혀 찬물에 식히고 죽에 올려요."
+    ],
+    "vegetables": [
+      {
+        "id": "sweet-pumpkin",
+        "name": "단호박"
+      }
+    ],
+    "productVegetableIds": ["sweet-pumpkin"],
+    "sourceUrl": "https://www.koreanbapsang.com/hobakjuk-kabocha-porridge-and-winners/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "sweet-pumpkin",
+    "imageAlt": "단호박죽 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-sweet-pumpkin-2/02.jpg",
+      "/images/recipes/curated/easy-sweet-pumpkin-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-sweet-pumpkin-3",
+    "name": "구운 단호박",
+    "description": "껍질째 얇게 썬 단호박을 오븐에 구워요. 절반은 시치미, 절반은 간장설탕으로 맛내는 두 가지 양념이에요.",
+    "cookTimeMin": 30,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "단호박",
+        "amount": "약 800g"
+      },
+      {
+        "name": "식용유",
+        "amount": "2큰술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술, 간 보며 조절"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      },
+      {
+        "name": "시치미",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "간장",
+        "amount": "2작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2작은술"
+      }
+    ],
+    "steps": [
+      "오븐을 230℃로 예열해요. 단호박을 씻어 씨를 제거하고 껍질째 3~5mm 두께로 썰어요.",
+      "기름·소금·후추를 골고루 섞고 반씩 나눠요. 한쪽에는 시치미, 다른 쪽에는 간장·설탕을 넣어요.",
+      "두 팬에 겹치지 않게 펼쳐 10분 구워요. 뒤집고 팬 위치도 바꿔 약 5분 더 구워요.",
+      "속이 부드러워졌는지 확인하고, 더 바삭하게 원하면 윗불로 짧게 마무리하되 타지 않게 지켜봐요."
+    ],
+    "vegetables": [
+      {
+        "id": "sweet-pumpkin",
+        "name": "단호박"
+      }
+    ],
+    "productVegetableIds": ["sweet-pumpkin"],
+    "sourceUrl": "https://www.justonecookbook.com/japanese-roasted-kabocha-squash/",
+    "sourceName": "Just One Cookbook · Namiko Hirasawa Chen",
+    "primaryVegetableId": "sweet-pumpkin",
+    "imageAlt": "구운 단호박 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-sweet-pumpkin-3/02.jpg",
+      "/images/recipes/curated/easy-sweet-pumpkin-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-sweet-pumpkin-4",
+    "name": "단호박 수프",
+    "description": "단호박을 양파·우유·크림과 갈아 만드는 수프예요. 우유를 넣은 뒤에는 팔팔 끓이지 않아요.",
+    "cookTimeMin": 45,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "단호박",
+        "amount": "약 635g"
+      },
+      {
+        "name": "양파",
+        "amount": "1/2개"
+      },
+      {
+        "name": "버터",
+        "amount": "1큰술"
+      },
+      {
+        "name": "채소 또는 닭 육수",
+        "amount": "480ml"
+      },
+      {
+        "name": "우유",
+        "amount": "360ml"
+      },
+      {
+        "name": "생크림",
+        "amount": "120ml"
+      },
+      {
+        "name": "소금",
+        "amount": "간을 보며 조절, 원문은 가벼운 코셔 소금 2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/8작은술"
+      },
+      {
+        "name": "파슬리",
+        "amount": "고명용 약간"
+      }
+    ],
+    "steps": [
+      "단호박 씨와 껍질을 제거하고 고르게 썰어요. 양파는 얇게 썰어요.",
+      "냄비에 버터를 녹여 양파가 부드럽고 노릇해지도록 볶고 단호박을 넣어 섞어요.",
+      "육수를 넣어 끓으면 약불로 줄여 12~15분 익혀요. 불을 끄고 핸드블렌더로 곱게 갈아요.",
+      "우유·크림·소금·후추를 섞고 약불로 데워요. 끓이지 않고 따뜻해지면 파슬리를 올려요."
+    ],
+    "vegetables": [
+      {
+        "id": "sweet-pumpkin",
+        "name": "단호박"
+      }
+    ],
+    "productVegetableIds": ["sweet-pumpkin"],
+    "sourceUrl": "https://www.justonecookbook.com/kabocha-squash-soup/",
+    "sourceName": "Just One Cookbook · Namiko Hirasawa Chen",
+    "primaryVegetableId": "sweet-pumpkin",
+    "imageAlt": "단호박 수프 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-sweet-pumpkin-4/02.jpg",
+      "/images/recipes/curated/easy-sweet-pumpkin-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-chili-1",
+    "name": "고추 된장무침",
+    "description": "순한 풋고추를 된장 양념에 바로 무쳐 아삭하게 먹어요. 맵지 않은 고추를 고르면 좋아요.",
+    "cookTimeMin": 3,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "고추",
+        "amount": "순한 풋고추 140g, 약 6~8개"
+      },
+      {
+        "name": "된장",
+        "amount": "1과 1/2큰술"
+      },
+      {
+        "name": "고추장",
+        "amount": "1/2큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "다진 것 1작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "참기름",
+        "amount": "2작은술"
+      },
+      {
+        "name": "깨",
+        "amount": "2작은술"
+      }
+    ],
+    "steps": [
+      "고추를 씻어 물기를 닦고 꼭지를 떼어 약 2.5cm 길이로 썰어요.",
+      "된장·고추장·마늘·설탕·참기름·깨를 고르게 섞어요.",
+      "고추에 양념을 넣고 가볍게 버무린 뒤 간을 확인해 바로 먹어요."
+    ],
+    "vegetables": [
+      {
+        "id": "chili",
+        "name": "고추"
+      }
+    ],
+    "productVegetableIds": ["chili"],
+    "sourceUrl": "https://www.koreanbapsang.com/gochu-doenjang-muchim/",
+    "sourceName": "Hyosun",
+    "primaryVegetableId": "chili",
+    "imageAlt": "고추 된장무침 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-chili-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-chili-1/02.jpg",
+      "/images/recipes/curated/easy-chili-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-chili-2",
+    "name": "고추 간장절임",
+    "description": "고추를 간장 절임물에 담그는 반찬이에요. 준비 약 25분 외에 작은 고추는 3일, 큰 것은 약 1주일 숙성이 필요해요. 사진의 양념무침은 선택 버전이에요.",
+    "cookTimeMin": 25,
+    "difficulty": "easy",
+    "servings": 20,
+    "ingredients": [
+      {
+        "name": "고추",
+        "amount": "순한 풋고추 350~450g"
+      },
+      {
+        "name": "간장",
+        "amount": "240ml"
+      },
+      {
+        "name": "물",
+        "amount": "240ml"
+      },
+      {
+        "name": "사과식초",
+        "amount": "180ml"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "고춧가루",
+        "amount": "무침용 1큰술, 선택"
+      },
+      {
+        "name": "고추장",
+        "amount": "무침용 1작은술, 선택"
+      },
+      {
+        "name": "마늘",
+        "amount": "무침용 다진 것 1작은술, 선택"
+      },
+      {
+        "name": "설탕",
+        "amount": "무침용 1큰술, 선택"
+      },
+      {
+        "name": "참기름",
+        "amount": "무침용 1큰술, 선택"
+      },
+      {
+        "name": "대파",
+        "amount": "무침용 다진 것 1큰술, 선택"
+      },
+      {
+        "name": "깨",
+        "amount": "무침용 1작은술, 선택"
+      }
+    ],
+    "steps": [
+      "고추를 씻어 꼭지를 자르고 이쑤시개로 6~8군데 구멍을 내요. 작은 조각으로 잘라 써도 돼요.",
+      "간장·물·식초·설탕을 냄비에 넣고 설탕이 녹도록 약 5분 끓인 뒤 10분 정도 식혀요.",
+      "깨끗한 절임용 유리병에 고추를 넣고 미지근한 절임물을 부어요. 닫아 실온에 24시간 두었다가 냉장해요.",
+      "작은 고추는 담근 뒤 72시간, 큰 고추는 약 1주일 뒤 먹어요. 원하면 선택한 무침 양념을 섞어 먹기 직전에 버무려요."
+    ],
+    "vegetables": [
+      {
+        "id": "chili",
+        "name": "고추"
+      }
+    ],
+    "productVegetableIds": ["chili"],
+    "sourceUrl": "https://mykoreankitchen.com/korean-style-green-chilli-pickles/",
+    "sourceName": "Sue Pressey",
+    "primaryVegetableId": "chili",
+    "imageAlt": "고추 간장절임 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-chili-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-chili-2/02.jpg",
+      "/images/recipes/curated/easy-chili-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-chili-3",
+    "name": "고추전",
+    "description": "고추 속에 다진 고기와 채소를 채워 달걀옷으로 부쳐요. 약 20조각을 만들어 한 사람당 4조각씩 나누는 기준이에요.",
+    "cookTimeMin": 40,
+    "difficulty": "normal",
+    "servings": 5,
+    "ingredients": [
+      {
+        "name": "고추",
+        "amount": "순한 풋고추 180g, 약 10~12개"
+      },
+      {
+        "name": "다진 소고기",
+        "amount": "75g"
+      },
+      {
+        "name": "다진 돼지고기",
+        "amount": "75g"
+      },
+      {
+        "name": "당근",
+        "amount": "30g"
+      },
+      {
+        "name": "양파",
+        "amount": "60g"
+      },
+      {
+        "name": "대파",
+        "amount": "10g"
+      },
+      {
+        "name": "부침가루",
+        "amount": "1/2큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "다진 것 1큰술"
+      },
+      {
+        "name": "굴소스",
+        "amount": "1/2큰술"
+      },
+      {
+        "name": "미림",
+        "amount": "1/2큰술"
+      },
+      {
+        "name": "참기름",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/8작은술"
+      },
+      {
+        "name": "밀가루",
+        "amount": "겉옷용 1/4컵"
+      },
+      {
+        "name": "달걀",
+        "amount": "2개"
+      },
+      {
+        "name": "식용유",
+        "amount": "팬에 얇게 두를 만큼"
+      }
+    ],
+    "steps": [
+      "고추를 길게 반으로 갈라 씨를 제거해요. 당근·양파·대파는 잘게 다져요.",
+      "고기에 마늘·굴소스·미림·참기름·설탕·소금·후추를 섞어요. 다진 채소와 부침가루를 넣고 찰기가 나게 섞어요.",
+      "고추 안쪽에 밀가루를 살짝 묻히고 고기 속을 채워요. 채운 면에 밀가루를 얇게 묻혀 푼 달걀에 담가요.",
+      "기름 두른 중약불 팬에 속이 있는 면부터 약 3분 구워요. 뒤집고 다진 고기 속까지 완전히 익혀요."
+    ],
+    "vegetables": [
+      {
+        "id": "chili",
+        "name": "고추"
+      }
+    ],
+    "productVegetableIds": ["chili"],
+    "sourceUrl": "https://mykoreankitchen.com/korean-stuffed-chili-peppers/",
+    "sourceName": "Sue Pressey",
+    "primaryVegetableId": "chili",
+    "imageAlt": "고추전 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-chili-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-chili-3/02.jpg",
+      "/images/recipes/curated/easy-chili-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-chili-4",
+    "name": "중국식 고추구이",
+    "description": "고추 껍질을 노릇하게 구워 간장·식초 양념을 입혀요. 원문 사진은 크고 순한 애너하임 고추이며 순한 풋고추로 만들 수 있어요.",
+    "cookTimeMin": 30,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "고추",
+        "amount": "크고 순한 풋고추 500g, 약 10개"
+      },
+      {
+        "name": "간장",
+        "amount": "3큰술"
+      },
+      {
+        "name": "흑식초",
+        "amount": "3큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "1큰술"
+      },
+      {
+        "name": "식용유",
+        "amount": "1과 1/2큰술"
+      },
+      {
+        "name": "마늘",
+        "amount": "4쪽"
+      }
+    ],
+    "steps": [
+      "고추를 길게 갈라 씨와 안쪽 줄기를 제거해요. 간장·흑식초·설탕을 섞어요.",
+      "팬에 기름 1큰술을 두르고 고추를 넣어 약 15분 돌려 가며 구워요. 껍질이 군데군데 갈색이 되고 부드러워지면 덜어요.",
+      "남은 기름 1/2큰술과 다진 마늘을 팬에 넣어 향을 내요.",
+      "고추와 양념을 다시 넣고 약 1분 볶아 양념이 살짝 걸쭉해지면 꺼내요."
+    ],
+    "vegetables": [
+      {
+        "id": "chili",
+        "name": "고추"
+      }
+    ],
+    "productVegetableIds": ["chili"],
+    "sourceUrl": "https://omnivorescookbook.com/szechuan-pan-fried-peppers/",
+    "sourceName": "Maggie Zhu",
+    "primaryVegetableId": "chili",
+    "imageAlt": "중국식 고추구이 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-chili-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-chili-4/02.jpg",
+      "/images/recipes/curated/easy-chili-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-apple-1",
+    "name": "사과 크럼블",
+    "description": "잘게 썬 사과에 오트밀 크럼블을 덮어 구워요. 따뜻한 사과와 바삭한 토핑을 함께 떠먹어요.",
+    "cookTimeMin": 55,
+    "difficulty": "easy",
+    "servings": 6,
+    "ingredients": [
+      {
+        "name": "사과",
+        "amount": "1kg"
+      },
+      {
+        "name": "밀가루",
+        "amount": "사과용 1큰술, 토핑용 1컵"
+      },
+      {
+        "name": "설탕",
+        "amount": "사과용 1/2컵"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "2큰술"
+      },
+      {
+        "name": "계피가루",
+        "amount": "사과용 1/2작은술, 토핑용 1작은술"
+      },
+      {
+        "name": "오트밀",
+        "amount": "1컵"
+      },
+      {
+        "name": "황설탕",
+        "amount": "토핑용 1컵"
+      },
+      {
+        "name": "베이킹파우더",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "버터",
+        "amount": "125g, 녹이기"
+      },
+      {
+        "name": "소금",
+        "amount": "한 꼬집"
+      },
+      {
+        "name": "바닐라 아이스크림",
+        "amount": "곁들임용, 선택"
+      }
+    ],
+    "steps": [
+      "오븐을 180℃로 예열해요. 사과 껍질과 씨를 제거하고 1.5cm 크기로 썰어요.",
+      "사과에 밀가루 1큰술·설탕·레몬즙·계피가루 1/2작은술을 섞어 약 1.5L 용량의 오븐 용기에 담아요.",
+      "오트밀·토핑용 밀가루·황설탕·베이킹파우더·계피·버터·소금을 섞어 작은 덩어리가 생기는 토핑을 만들어요.",
+      "사과 위에 토핑을 고르게 덮고 30~40분 구워요. 약 10분 쉬게 한 뒤 아이스크림을 곁들여요."
+    ],
+    "vegetables": [
+      {
+        "id": "apple",
+        "name": "사과"
+      }
+    ],
+    "productVegetableIds": ["apple"],
+    "sourceUrl": "https://www.recipetineats.com/apple-crumble/",
+    "sourceName": "Nagi | RecipeTin Eats",
+    "primaryVegetableId": "apple",
+    "imageAlt": "사과 크럼블 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-apple-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-apple-1/02.jpg",
+      "/images/recipes/curated/easy-apple-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-apple-2",
+    "name": "사과 소스",
+    "description": "사과를 캐러멜 설탕·식초와 익혀 갈아 만든 곁들임 소스예요. 사진 중 한 장은 완성 소스를 돼지고기와 먹는 예시예요.",
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "servings": 8,
+    "ingredients": [
+      {
+        "name": "사과",
+        "amount": "3개"
+      },
+      {
+        "name": "설탕",
+        "amount": "1/4컵"
+      },
+      {
+        "name": "셰리 식초",
+        "amount": "2큰술"
+      },
+      {
+        "name": "버터",
+        "amount": "50g"
+      },
+      {
+        "name": "소금",
+        "amount": "한 꼬집"
+      }
+    ],
+    "steps": [
+      "사과 껍질과 씨를 제거하고 얇게 썰어요.",
+      "냄비에 설탕을 약불로 녹여 캐러멜색이 나게 해요. 녹는 동안 많이 젓지 않아요.",
+      "사과와 식초를 넣어 약 8~10분, 사과가 부드러워질 때까지 익혀요.",
+      "불을 끄고 버터·소금을 넣어 핸드블렌더로 곱게 갈아요. 곁들임 소스로 나눠 먹어요."
+    ],
+    "vegetables": [
+      {
+        "id": "apple",
+        "name": "사과"
+      }
+    ],
+    "productVegetableIds": ["apple"],
+    "sourceUrl": "https://www.recipetineats.com/apple-sauce/",
+    "sourceName": "RecipeTin Eats · Nagi Maehashi",
+    "primaryVegetableId": "apple",
+    "imageAlt": "사과 소스 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-apple-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-apple-2/02.jpg",
+      "/images/recipes/curated/easy-apple-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-apple-3",
+    "name": "오븐 사과구이",
+    "description": "반으로 자른 사과에 호두와 계피를 채워 구우면 달콤한 소스도 함께 생겨요. 사과 반쪽 2개씩 나누는 기준이에요.",
+    "cookTimeMin": 55,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "사과",
+        "amount": "4개"
+      },
+      {
+        "name": "물",
+        "amount": "180ml"
+      },
+      {
+        "name": "전분",
+        "amount": "2작은술"
+      },
+      {
+        "name": "호두",
+        "amount": "1컵"
+      },
+      {
+        "name": "메이플시럽",
+        "amount": "2큰술"
+      },
+      {
+        "name": "계피가루",
+        "amount": "1작은술"
+      },
+      {
+        "name": "클로브가루",
+        "amount": "1/8작은술"
+      },
+      {
+        "name": "황설탕",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "버터",
+        "amount": "75g"
+      },
+      {
+        "name": "소금",
+        "amount": "한 꼬집"
+      },
+      {
+        "name": "바닐라 아이스크림",
+        "amount": "곁들임용, 선택"
+      }
+    ],
+    "steps": [
+      "오븐을 180℃로 예열해요. 사과를 반으로 자르고 씨를 파내요.",
+      "다진 호두·메이플시럽·계피·클로브·황설탕·버터·소금을 섞어 사과 위에 나눠 올려요.",
+      "물과 전분을 섞어 오븐 용기 바닥에 부어요. 사과를 놓고 덮어서 약 20분 구워요.",
+      "덮개를 벗겨 약 20분 더 구워 사과 속을 익혀요. 바닥의 소스를 끼얹고 아이스크림을 곁들여요."
+    ],
+    "vegetables": [
+      {
+        "id": "apple",
+        "name": "사과"
+      }
+    ],
+    "productVegetableIds": ["apple"],
+    "sourceUrl": "https://www.recipetineats.com/baked-apples/",
+    "sourceName": "RecipeTin Eats · Nagi Maehashi",
+    "primaryVegetableId": "apple",
+    "imageAlt": "오븐 사과구이 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-apple-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-apple-3/02.jpg",
+      "/images/recipes/curated/easy-apple-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-apple-4",
+    "name": "사과 호두샐러드",
+    "description": "얇게 썬 사과에 달콤하게 코팅한 호두·크랜베리를 더한 샐러드예요.",
+    "cookTimeMin": 20,
+    "difficulty": "easy",
+    "servings": 5,
+    "ingredients": [
+      {
+        "name": "사과",
+        "amount": "1개"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "사과에 묻힐 만큼"
+      },
+      {
+        "name": "샐러드 잎",
+        "amount": "120g"
+      },
+      {
+        "name": "양파",
+        "amount": "적양파 1/2개"
+      },
+      {
+        "name": "말린 크랜베리",
+        "amount": "3/4컵"
+      },
+      {
+        "name": "페타치즈",
+        "amount": "2큰술, 선택"
+      },
+      {
+        "name": "호두",
+        "amount": "1컵"
+      },
+      {
+        "name": "버터",
+        "amount": "1큰술"
+      },
+      {
+        "name": "설탕",
+        "amount": "호두용 1/4컵, 드레싱용 1과 1/2작은술"
+      },
+      {
+        "name": "식초",
+        "amount": "2큰술"
+      },
+      {
+        "name": "올리브유",
+        "amount": "4큰술"
+      },
+      {
+        "name": "디종 머스터드",
+        "amount": "1과 1/2작은술"
+      },
+      {
+        "name": "소금",
+        "amount": "1/2작은술"
+      },
+      {
+        "name": "후추",
+        "amount": "1/4작은술"
+      }
+    ],
+    "steps": [
+      "버터와 호두용 설탕을 팬에 녹이고 호두를 넣어 약 2분 볶아 덜어 식혀요. 크랜베리는 뜨거운 물에 약 10분 불려 물기를 빼요.",
+      "사과를 얇게 썰어 레몬즙을 묻혀요. 양파도 얇게 썰어요.",
+      "식초·기름·머스터드·드레싱용 설탕·소금·후추를 섞어요.",
+      "샐러드 잎과 사과·양파를 드레싱에 버무리고 호두·크랜베리·선택한 치즈를 올려요."
+    ],
+    "vegetables": [
+      {
+        "id": "apple",
+        "name": "사과"
+      }
+    ],
+    "productVegetableIds": ["apple"],
+    "sourceUrl": "https://www.recipetineats.com/apple-salad-candied-walnuts-cranberries/",
+    "sourceName": "RecipeTin Eats · Nagi Maehashi",
+    "primaryVegetableId": "apple",
+    "imageAlt": "사과 호두샐러드 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-apple-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-apple-4/02.jpg",
+      "/images/recipes/curated/easy-apple-4/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-mandarin-1",
+    "name": "귤 아몬드케이크",
+    "description": "귤을 껍질째 삶아 갈고 아몬드가루로 굽는 케이크예요. 귤 퓌레는 반드시 326g만 사용해요. 12조각 기준이에요.",
+    "cookTimeMin": 90,
+    "difficulty": "normal",
+    "servings": 12,
+    "ingredients": [
+      {
+        "name": "귤",
+        "amount": "약 450g, 삶아 간 퓌레 326g 사용"
+      },
+      {
+        "name": "달걀",
+        "amount": "3개"
+      },
+      {
+        "name": "설탕",
+        "amount": "1컵"
+      },
+      {
+        "name": "아몬드가루",
+        "amount": "3컵"
+      },
+      {
+        "name": "베이킹파우더",
+        "amount": "1작은술"
+      },
+      {
+        "name": "아마레토",
+        "amount": "2큰술, 선택"
+      },
+      {
+        "name": "슈가파우더",
+        "amount": "고명용 약간"
+      },
+      {
+        "name": "버터",
+        "amount": "틀에 바를 만큼"
+      }
+    ],
+    "steps": [
+      "귤을 깨끗이 씻어 물에 넣고 끓기 시작하면 15분 삶아요. 식혀 자르고 씨를 제거한 뒤 껍질째 곱게 갈아요.",
+      "귤 퓌레 326g을 정확히 덜어요. 180℃ 오븐을 예열하고 지름 약 23cm 분리형 틀에 버터를 발라요.",
+      "달걀과 설탕을 가볍고 크림 같은 상태로 휘핑해요. 아몬드가루·귤 퓌레·베이킹파우더와 선택한 아마레토를 섞어요.",
+      "틀에 담아 50~60분 구워요. 가운데를 찔러 묻어나지 않으면 꺼내 10분 쉬게 하고 틀에서 꺼내 식혀요. 슈가파우더를 뿌려요."
+    ],
+    "vegetables": [
+      {
+        "id": "mandarin",
+        "name": "귤"
+      }
+    ],
+    "productVegetableIds": ["mandarin"],
+    "sourceUrl": "https://theviewfromgreatisland.com/minimal-monday-flourless-whole-tangerine-cake-gluten-free/",
+    "sourceName": "The View from Great Island · Sue Moran",
+    "primaryVegetableId": "mandarin",
+    "imageAlt": "귤 아몬드케이크 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-mandarin-1/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-mandarin-1/02.jpg",
+      "/images/recipes/curated/easy-mandarin-1/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-mandarin-2",
+    "name": "귤 소르베",
+    "description": "귤즙만 얼려 만드는 소르베예요. 준비 약 10분과 두 차례 냉동 약 8시간을 잡은 예상 시간이에요. 용기·냉동고에 따라 달라질 수 있어요.",
+    "cookTimeMin": 490,
+    "difficulty": "easy",
+    "servings": 6,
+    "ingredients": [
+      {
+        "name": "귤",
+        "amount": "짜서 거른 생귤즙 720ml 분량"
+      },
+      {
+        "name": "민트",
+        "amount": "고명용 약간, 선택"
+      }
+    ],
+    "steps": [
+      "귤즙을 짜고 씨와 과육을 걸러요. 냉동용 밀폐 지퍼백에 담아 쟁반 위에 평평하게 놓아요.",
+      "냉동고에서 단단하게 얼 때까지 몇 시간 두어요.",
+      "얼린 귤즙을 조각내 강력한 블렌더나 푸드프로세서로 곱게 갈아요. 덩어리는 중간에 풀고 녹지 않게 빠르게 작업해요.",
+      "금속 용기에 옮겨 덮고 다시 몇 시간 얼려 스쿱으로 뜰 수 있게 굳혀요. 원하면 민트를 올려요."
+    ],
+    "vegetables": [
+      {
+        "id": "mandarin",
+        "name": "귤"
+      }
+    ],
+    "productVegetableIds": ["mandarin"],
+    "sourceUrl": "https://theviewfromgreatisland.com/day-5-of-all-citrus-week-tangerine-sorbet/",
+    "sourceName": "The View from Great Island · Sue Moran",
+    "primaryVegetableId": "mandarin",
+    "imageAlt": "귤 소르베 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-mandarin-2/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-mandarin-2/02.jpg",
+      "/images/recipes/curated/easy-mandarin-2/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-mandarin-3",
+    "name": "귤 요거트스무디",
+    "description": "귤과 요거트를 얼음에 갈아 만드는 스무디예요. 원문은 귤의 한 품종인 클레멘타인을 사용해요.",
+    "cookTimeMin": 5,
+    "difficulty": "easy",
+    "servings": 1,
+    "ingredients": [
+      {
+        "name": "귤",
+        "amount": "4개"
+      },
+      {
+        "name": "얼음",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "플레인 요거트",
+        "amount": "60ml"
+      },
+      {
+        "name": "소금",
+        "amount": "아주 작은 한 꼬집"
+      },
+      {
+        "name": "꿀",
+        "amount": "기호에 맞게 약간, 선택"
+      },
+      {
+        "name": "얼린 바나나",
+        "amount": "크리미하게 원하면 몇 조각, 선택"
+      }
+    ],
+    "steps": [
+      "귤 껍질을 벗기고 가운데 두꺼운 흰 심을 제거해요. 씨가 있으면 빼요.",
+      "블렌더에 요거트·귤·얼음·소금을 넣고 곱게 갈아요. 원하면 꿀이나 얼린 바나나를 조금 더해요.",
+      "컵에 부어 바로 마셔요. 더 매끈하게 원하면 체에 한 번 내려요."
+    ],
+    "vegetables": [
+      {
+        "id": "mandarin",
+        "name": "귤"
+      }
+    ],
+    "productVegetableIds": ["mandarin"],
+    "sourceUrl": "https://cookieandkate.com/clementine-sunshine-smoothie/",
+    "sourceName": "Cookie and Kate",
+    "primaryVegetableId": "mandarin",
+    "imageAlt": "귤 요거트스무디 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-mandarin-3/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-mandarin-3/02.jpg",
+      "/images/recipes/curated/easy-mandarin-3/03.jpg"
+    ]
+  },
+  {
+    "id": "easy-mandarin-4",
+    "name": "귤 퀴노아샐러드",
+    "description": "귤·퀴노아·시금치에 레몬 드레싱을 더해요. 퀴노아를 익힌 뒤 식히는 시간이 포함돼요.",
+    "cookTimeMin": 50,
+    "difficulty": "easy",
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "귤",
+        "amount": "4개"
+      },
+      {
+        "name": "퀴노아",
+        "amount": "175g"
+      },
+      {
+        "name": "물",
+        "amount": "500ml"
+      },
+      {
+        "name": "대파",
+        "amount": "가는 것 5대, 흰 부분과 연두색 부분"
+      },
+      {
+        "name": "시금치",
+        "amount": "어린잎 1과 1/2컵"
+      },
+      {
+        "name": "아몬드 슬라이스",
+        "amount": "1/2컵"
+      },
+      {
+        "name": "석류",
+        "amount": "1/2개 분량의 알"
+      },
+      {
+        "name": "올리브유",
+        "amount": "4큰술"
+      },
+      {
+        "name": "레몬즙",
+        "amount": "2큰술"
+      },
+      {
+        "name": "메이플시럽",
+        "amount": "3작은술"
+      },
+      {
+        "name": "소금·후추",
+        "amount": "기호에 맞게"
+      }
+    ],
+    "steps": [
+      "퀴노아를 촘촘한 체에서 여러 번 씻어 물기를 빼요. 냄비에 물 500ml와 넣고 끓으면 덮어 약불에서 8~10분 익혀요.",
+      "불을 끄고 뚜껑 아래 깨끗한 키친타월을 깔아 5분 뜸 들여요. 그릇에 펼쳐 식혀요.",
+      "귤은 껍질과 두꺼운 막·씨를 제거해 조각을 반으로 잘라요. 대파를 잘게 썰고 아몬드는 마른 팬에 살짝 볶아요.",
+      "기름·레몬즙·메이플시럽·소금·후추를 섞어요. 퀴노아·귤·대파·시금치를 버무리고 아몬드·석류를 올려요."
+    ],
+    "vegetables": [
+      {
+        "id": "mandarin",
+        "name": "귤"
+      }
+    ],
+    "productVegetableIds": ["mandarin"],
+    "sourceUrl": "https://itsnotcomplicatedrecipes.com/quinoa-mandarin-and-spinach-salad/",
+    "sourceName": "It’s Not Complicated Recipes · Alexandra Cook",
+    "primaryVegetableId": "mandarin",
+    "imageAlt": "귤 퀴노아샐러드 조리 사진",
+    "imageUrl": "/images/recipes/curated/easy-mandarin-4/01.jpg",
+    "additionalImageUrls": [
+      "/images/recipes/curated/easy-mandarin-4/02.jpg",
+      "/images/recipes/curated/easy-mandarin-4/03.jpg"
+    ]
   }
 ]

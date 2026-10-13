@@ -1,0 +1,1442 @@
+[
+  {
+    "recipeId": "easy-king-oyster-1",
+    "name": "새송이 마늘버터구이",
+    "sourceUrl": "https://zestfulkitchen.com/pan-fried-king-oyster-mushrooms-recipe/",
+    "author": "Zestful Kitchen · Lauren Grant",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "15-Minute Pan-Fried King Oyster Mushrooms",
+    "originalPrepTime": "PT5M",
+    "originalCookTime": "PT10M",
+    "originalTotalTime": "PT15M",
+    "originalYield": ["2", "2 cups (3 servings)"],
+    "displayCookTimeMin": 15,
+    "displayServings": 3,
+    "editorialNote": "길게 자른 새송이를 바삭하게 굽고 마늘버터와 레몬 향을 더하는 반찬이에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-1/01.jpg",
+        "originalUrl": "https://zestfulkitchen.com/wp-content/uploads/2022/03/trumpet-mushroom-side-dish_hero_for-web-2.jpg",
+        "originalAlt": "15-Minute Pan-Fried King Oyster Mushrooms",
+        "width": 800,
+        "height": 1200,
+        "format": "JPEG",
+        "sha256": "a89158bb0c0ad8b03ab387269c8b2e604f14a5c0a18cc0fab241a4f0847e86b3"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-1/02.jpg",
+        "originalUrl": "https://zestfulkitchen.com/wp-content/uploads/2022/03/trumpet-mushroom-side-dish_steps_for-web-3.jpg",
+        "originalAlt": "Sliced king oyster mushrooms in a cast-iron skillet with parsley and lemon zest.",
+        "width": 1200,
+        "height": 800,
+        "format": "JPEG",
+        "sha256": "8b5f99978ceaeeffed3eeac4293f208a96fad7632229a3a994ff2f639da30eb2"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-1/03.jpg",
+        "originalUrl": "https://zestfulkitchen.com/wp-content/uploads/2022/03/trumpet-mushroom-side-dish_steps_for-web-5.jpg",
+        "originalAlt": "Seared king oyster mushrooms in a cast-iron skillet with parsley, garlic and lemon zest.",
+        "width": 1200,
+        "height": 800,
+        "format": "JPEG",
+        "sha256": "982cc0b092e4fbe54be201361092d4ce35e7f8eac9cc564e6775f2cba1aea9f6"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-king-oyster-2",
+    "name": "새송이 매콤 간장볶음",
+    "sourceUrl": "https://omnivorescookbook.com/king-oyster-mushroom-stir-fry/",
+    "author": "Maggie Zhu",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "King Oyster Mushroom Stir Fry (手撕杏鲍菇)",
+    "originalPrepTime": "PT15M",
+    "originalCookTime": "PT10M",
+    "originalTotalTime": "PT25M",
+    "originalYield": ["2", "2 to 3 servings"],
+    "displayCookTimeMin": 25,
+    "displayServings": 2,
+    "editorialNote": "손으로 찢은 새송이에 간장·굴소스·고추기름을 입히는 볶음이에요. 사진처럼 풋고추를 함께 넣어요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-2/01.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2024/11/240912_King-Oyster-Mushroom-Stir-Fry_4.jpg",
+        "originalAlt": "Shou Si Xing Bao Gu",
+        "width": 1200,
+        "height": 1800,
+        "format": "JPEG",
+        "sha256": "60c7334788334d2d06aeff1ddb0916f62b9c19bc0cc0420b0eef0cdec32cd546"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-2/02.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2024/11/240912_King-Oyster-Mushroom-Stir-Fry_2.jpg",
+        "originalAlt": "King oyster mushroom stir fry close up",
+        "width": 1200,
+        "height": 1800,
+        "format": "JPEG",
+        "sha256": "30324bd94df1b0feadac53d65d872c2cdd75a73112461ec11fce654712024ecc"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-2/03.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2024/11/240912_King-Oyster-Mushroom-Stir-Fry_1.jpg",
+        "originalAlt": "Homemade king oyster mushroom stir fry in a plate",
+        "width": 1200,
+        "height": 1800,
+        "format": "JPEG",
+        "sha256": "dc368811343ae2ce6d70cdd436fc505bcc97758a20fc9dcd511f98158d528703"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-king-oyster-3",
+    "name": "새송이 버섯 스캘럽",
+    "sourceUrl": "https://sweetpotatosoul.com/king-oyster-mushroom-vegan-scallops/",
+    "author": "Sweet Potato Soul · Jenne Claiborne",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "King Oyster Mushroom Vegan Scallops",
+    "originalPrepTime": "PT5M",
+    "originalCookTime": "PT20M",
+    "originalTotalTime": "PT25M",
+    "originalYield": ["4", "4 servings"],
+    "displayCookTimeMin": 25,
+    "displayServings": 4,
+    "editorialNote": "새송이 줄기를 동그랗게 잘라 조개관자처럼 구워요. 해산물을 넣는 요리가 아니에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-3/01.jpg",
+        "originalUrl": "https://sweetpotatosoul.com/wp-content/uploads/2024/04/King-oyster-mushroom-scallops.jpg",
+        "originalAlt": "King Oyster Mushroom Vegan Scallops",
+        "width": 1200,
+        "height": 1500,
+        "format": "JPEG",
+        "sha256": "77433c23f017d5a2f0c1896ce7247028172adcee8f0f8e645127c1cc296e75e3"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-3/02.jpg",
+        "originalUrl": "https://sweetpotatosoul.com/wp-content/uploads/2024/04/King-oyster-mushroom-scallops-sliced.jpeg",
+        "originalAlt": "fork holding a slice of king oyster mushroom vegan scallop",
+        "width": 1200,
+        "height": 1500,
+        "format": "JPEG",
+        "sha256": "621bd605c18b46187698a244f7cb3bf81d493bb58768382bbe9d12ec1cf205fe"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-3/03.jpg",
+        "originalUrl": "https://sweetpotatosoul.com/wp-content/uploads/2023/02/King-oyster-mushroom-vegan-scallops-3.jpeg",
+        "originalAlt": "An angled close-up shot of vegan scallops on on a black platte, garnished with chopped parsley.",
+        "width": 600,
+        "height": 769,
+        "format": "JPEG",
+        "sha256": "adafa11b67e89c74c406c9de874704921485025da703761d67d977806cd026ea"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-king-oyster-4",
+    "name": "새송이 마늘파스타",
+    "sourceUrl": "https://theveganlarder.com/vegan-scallops-with-garlic-pasta-king-oyster-mushroom/",
+    "author": "The Vegan Larder · Louise-Claire Cayzer",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Vegan Scallops with Garlic Pasta (King Oyster Mushroom)",
+    "originalPrepTime": "PT20M",
+    "originalCookTime": "PT15M",
+    "originalTotalTime": "PT35M",
+    "originalYield": ["2"],
+    "displayCookTimeMin": 35,
+    "displayServings": 2,
+    "editorialNote": "김·다시마 향으로 익힌 새송이에 마늘파스타를 곁들여요. 사진의 붉은 고명은 선택 재료인 식물성 초리소예요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-4/01.jpg",
+        "originalUrl": "https://theveganlarder.com/wp-content/uploads/2025/02/Vegan-Scallops-pasta-1x1-1-of-1.jpg",
+        "originalAlt": "Vegan Scallops with Garlic Pasta (King Oyster Mushroom)",
+        "width": 1200,
+        "height": 1200,
+        "format": "JPEG",
+        "sha256": "b8801c73784eb26f8e6c1eccc95607ca15d85a6f8d7b987d2165e935576747ee"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-4/02.webp",
+        "originalUrl": "https://theveganlarder.com/wp-content/uploads/2025/02/Vegan-Scallops-pasta-8-of-10.jpg.webp",
+        "originalAlt": "A plate of spaghetti with vegan mushroom scallops on top. Next to the plate is a glass of white wine and half a lemon.",
+        "width": 1200,
+        "height": 1500,
+        "format": "WEBP",
+        "sha256": "86815fa186567d58300da600def948ff46543f4b4a2c460f28cb0381b49e67d4"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-king-oyster-4/03.webp",
+        "originalUrl": "https://theveganlarder.com/wp-content/uploads/2025/02/how-to-mushrooms-scallop-pasta-6.jpg.webp",
+        "originalAlt": "How the vegan scallops look once pan fried in garlic lemon butter. ",
+        "width": 1200,
+        "height": 1500,
+        "format": "WEBP",
+        "sha256": "256c2999637b03b043de8a6b93afde37e1b51c9dcf273e675ee960e52e21fb62"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-sweet-potato-1",
+    "name": "고구마 수프",
+    "sourceUrl": "https://www.recipetineats.com/sweet-potato-soup/",
+    "author": "RecipeTin Eats · Nagi Maehashi",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "The Sweet Potato Soup",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": "PT30M",
+    "originalTotalTime": "PT40M",
+    "originalYield": ["6"],
+    "displayCookTimeMin": 40,
+    "displayServings": 6,
+    "editorialNote": "고구마의 단맛에 커민 향과 크림을 더한 부드러운 수프예요. 원문은 주황색 속살의 고구마를 사용해요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-1/01.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2023/04/Sweet-Potato-Soup_0.jpg",
+        "originalAlt": "Pot of Sweet potato soup ready to serve",
+        "width": 900,
+        "height": 1125,
+        "format": "JPEG",
+        "sha256": "68cfa3efecad387eadf481a50c6f5d71d62b5b88653b381a3ac4976be5fb6b23"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-1/02.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2023/04/Sweet-Potato-Soup_8.jpg",
+        "originalAlt": "Spoon eating sweet potato soup",
+        "width": 900,
+        "height": 1125,
+        "format": "JPEG",
+        "sha256": "da475887bf340670d622ad68eb2964037dec3d0801344b7f43aa0676caea04ad"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-1/03.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2023/04/Sweet-Potato-Soup_7.jpg",
+        "originalAlt": "Bowl of Sweet potato soup",
+        "width": 900,
+        "height": 1125,
+        "format": "JPEG",
+        "sha256": "2a8c651555c06b9a39cf7f349f5e8256107d710edada4138205bd32000f67634"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-sweet-potato-2",
+    "name": "구운 고구마샐러드",
+    "sourceUrl": "https://www.recipetineats.com/roasted-sweet-potato-salad-honey-lemon-dressing/",
+    "author": "Nagi | RecipeTin Eats",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Roasted Sweet Potato Salad",
+    "originalPrepTime": "PT15M",
+    "originalCookTime": "PT30M",
+    "originalTotalTime": "PT45M",
+    "originalYield": ["2", "2 as a meal, 4 as a side"],
+    "displayCookTimeMin": 45,
+    "displayServings": 2,
+    "editorialNote": "구운 고구마를 루콜라·베이컨·피칸과 섞고 꿀레몬 드레싱을 더해요. 식사 2인분 또는 곁들임 4인분이에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-2/01.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2016/11/Roasted-Sweet-Potato-Salad-3.jpg",
+        "originalAlt": "Roasted Sweet Potato Salad",
+        "width": 964,
+        "height": 1350,
+        "format": "JPEG",
+        "sha256": "686f8abac92998f22d9013dc64e62e92e0e75682de8c2e85d8de1810294f2f5d"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-2/02.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2016/11/Roasted-Sweet-Potato-Salad-2.jpg",
+        "originalAlt": "Roasted Sweet Potato Salad - with arugula/rocket, pecans, goats cheese or feta, a sprinkle of bacon and a beautiful Honey Lemon dressing. www.recipetineats.com",
+        "width": 964,
+        "height": 1350,
+        "format": "JPEG",
+        "sha256": "c6d0fad5bbe5742253f5a320d768514342cfbd5042eb46e426428c0e37df262b"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-2/03.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2016/11/Roasted-Sweet-Potato-Salad-4.jpg",
+        "originalAlt": "Roasted Sweet Potato Salad - with arugula/rocket, pecans, goats cheese or feta, a sprinkle of bacon and a beautiful Honey Lemon dressing. www.recipetineats.com",
+        "width": 1200,
+        "height": 857,
+        "format": "JPEG",
+        "sha256": "e7f54effc906cd0adb87d418566e6208b6c44ee398096982f9f938ee3712d367"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-sweet-potato-3",
+    "name": "고구마 스테이크",
+    "sourceUrl": "https://www.recipetineats.com/sweet-potato-steaks/",
+    "author": "RecipeTin Eats · Nagi Maehashi",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Sweet potato steaks",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": "PT60M",
+    "originalTotalTime": "PT60M",
+    "originalYield": ["2"],
+    "displayCookTimeMin": 60,
+    "displayServings": 2,
+    "editorialNote": "두툼하게 썬 고구마를 구워 타히니 요거트와 마늘 고명을 올려요. 큰 고구마를 사용하며 오븐 조리 약 45~50분이 포함돼요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-3/01.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2023/08/Roasted-Sweet-Potato-Steaks_7.jpg",
+        "originalAlt": "Sweet potato steaks",
+        "width": 900,
+        "height": 1125,
+        "format": "JPEG",
+        "sha256": "c1c0e535c73df86c22c8178c9baeffd9bd7b6465c7cb47aaf5b527c648a84af3"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-3/02.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2023/08/Roasted-Sweet-Potato-Steaks_6a.jpg",
+        "originalAlt": "Roasted sweet potato steaks on a plate with whipped tahini yogurt sauce",
+        "width": 900,
+        "height": 1125,
+        "format": "JPEG",
+        "sha256": "1c3d264d60a6576d86eeaed1a8946ef35a6b3641c82e5c8e06a81bb9be1f3cdd"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-3/03.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2023/08/Roasted-Sweet-Potato-Steaks_8.jpg",
+        "originalAlt": "Eating Roasted sweet potato steaks",
+        "width": 900,
+        "height": 1125,
+        "format": "JPEG",
+        "sha256": "8cfd4cc1ed3f6abd5320363a69143884a725ce71ca4c97d0d0e2ac149d4af545"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-sweet-potato-4",
+    "name": "고구마 오븐스택",
+    "sourceUrl": "https://www.recipetineats.com/roasted-sweet-potato-stacks/",
+    "author": "RecipeTin Eats · Nagi Maehashi",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Roasted Sweet Potato Stacks",
+    "originalPrepTime": "PT15M",
+    "originalCookTime": "PT45M",
+    "originalTotalTime": "PT60M",
+    "originalYield": ["12", "12 stacks"],
+    "displayCookTimeMin": 60,
+    "displayServings": 6,
+    "editorialNote": "얇은 고구마를 머핀틀에 층층이 쌓아 구워요. 12개를 만들어 한 사람당 2개씩 나누는 기준이에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-4/01.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2017/10/Sweet-Potato-Stacks.jpg",
+        "originalAlt": "Roasted Sweet Potato Stacks",
+        "width": 964,
+        "height": 1350,
+        "format": "JPEG",
+        "sha256": "32f81b0ac7193c61bb888ec0bfb823066b78bc1e17cc8c611d80b1c9ad8fcb8b"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-4/02.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2017/10/Roasted-Sweet-Potato-Stacks-4.jpg",
+        "originalAlt": "These Roasted Sweet Potato Stacks have crispy edges, are buttery, salty and sweet with a hint of rosemary. Terrific Sweet Potato side dish! recipetineats.com",
+        "width": 964,
+        "height": 1350,
+        "format": "JPEG",
+        "sha256": "3f82f1dd735eca7c36241db515dddb46333282209453c425b28b2ef40e3a7a65"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-potato-4/03.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2017/10/Sweet-Potato-Stacks-1.jpg",
+        "originalAlt": "These Roasted Sweet Potato Stacks have crispy edges, are buttery, salty and sweet with a hint of rosemary. Terrific Sweet Potato side dish! recipetineats.com",
+        "width": 964,
+        "height": 1350,
+        "format": "JPEG",
+        "sha256": "08efbc43e27ed583c313d395129415a7154a75901527841eaf13a3d4c799d419"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-green-onion-1",
+    "name": "파무침",
+    "sourceUrl": "https://www.koreanbapsang.com/pa-muchim-scallion-salad/",
+    "author": "Hyosun",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Pa muchim (Scallion Salad)",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": "PT5M",
+    "originalTotalTime": "PT5M",
+    "originalYield": ["4"],
+    "displayCookTimeMin": 15,
+    "displayServings": 4,
+    "editorialNote": "대파를 가늘게 썰어 무치는 파절이예요. 찬물에 담그는 10분을 포함했고, 먹기 직전에 양념해요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-1/01.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2016/05/DSC_0805-1-e1463403850352.jpg",
+        "originalAlt": "Pa muchim (Scallion Salad)",
+        "width": 650,
+        "height": 435,
+        "format": "JPEG",
+        "sha256": "f198da5a1b92296da03e45e9eca1aff0a5871ca567bda6ce7cb828b2fcd536ed"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-1/02.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2016/05/DSC_0817-1-e1463404061799.jpg",
+        "originalAlt": "DSC 0817 1 e1463404061799 - Pa Muchim (Scallion Salad)",
+        "width": 650,
+        "height": 435,
+        "format": "JPEG",
+        "sha256": "0a249e5cc6a050220d01ab71b0b23d529865408f8360cdb52e0a7bd85bb4cf56"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-1/03.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2016/05/DSC_0831-e1463370862891.jpg",
+        "originalAlt": "DSC 0831 e1463370862891 - Pa Muchim (Scallion Salad)",
+        "width": 650,
+        "height": 435,
+        "format": "JPEG",
+        "sha256": "f807aeed295cf9030fcc8b260ab07d6dd310cbd0d1f1cfa222e4dd97896130ce"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-green-onion-2",
+    "name": "해물파전",
+    "sourceUrl": "https://www.koreanbapsang.com/haemul-pajeon/",
+    "author": "Hyosun",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Haemul Pajeon (Seafood Scallion Pancake)",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": "PT20M",
+    "originalTotalTime": "PT20M",
+    "originalYield": ["4"],
+    "displayCookTimeMin": 20,
+    "displayServings": 4,
+    "editorialNote": "대파와 여러 해물을 얹어 바삭하게 부치는 파전이에요. 원문은 가는 파를 쓰므로 굵은 대파의 흰 부분은 길게 가늘게 나눠 주세요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-2/01.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2019/12/DSC3273-e1613669537769.jpg",
+        "originalAlt": "Haemul Pajeon (Seafood Scallion Pancake)",
+        "width": 1080,
+        "height": 1618,
+        "format": "JPEG",
+        "sha256": "03a2e4fa2f6fe2ed830fadbc7f7ba92a307835b9e8c78ed6c41496a2a60ef3b9"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-2/02.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2019/12/DSC3431-4.jpg",
+        "originalAlt": "DSC3431 4 - Haemul Pajeon (Seafood Scallion Pancake)",
+        "width": 1367,
+        "height": 2048,
+        "format": "JPEG",
+        "sha256": "8fd0e606f98bc98bb6c98a85d4f90f67b5d58849d82d2c8a19bf6788d118bd35"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-2/03.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2019/12/DSC3289.jpg",
+        "originalAlt": "DSC3289 - Haemul Pajeon (Seafood Scallion Pancake)",
+        "width": 1367,
+        "height": 2048,
+        "format": "JPEG",
+        "sha256": "e15bcb1ee75e009b09786b65e9bff9479724d4f87669611b83153ff302ba1904"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-green-onion-3",
+    "name": "대파 중국식 전",
+    "sourceUrl": "https://omnivorescookbook.com/chinese-scallion-pancakes/",
+    "author": "Maggie Zhu",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Chinese Scallion Pancakes (葱油饼)",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": "PT30M",
+    "originalTotalTime": "PT60M",
+    "originalYield": ["12", "12 servings (6 pancakes)"],
+    "displayCookTimeMin": 60,
+    "displayServings": 12,
+    "editorialNote": "대파를 다져 반죽 안에 넣고 돌돌 말아 구워요. 반죽 휴지 20분 포함, 6장을 만들어 반 장씩 나누는 기준이에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-3/01.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2020/08/200730_Scallion-Pancakes_3.jpg",
+        "originalAlt": "Cong You Bing close up",
+        "width": 800,
+        "height": 1200,
+        "format": "JPEG",
+        "sha256": "06a5a413e9c6a69fa5cc955330d2c386ceceb5be48f97792639446fc2bd3f657"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-3/02.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2020/08/200730_Scallion-Pancakes_4.jpg",
+        "originalAlt": "Layered Cong You Bing",
+        "width": 800,
+        "height": 1200,
+        "format": "JPEG",
+        "sha256": "96e423f6a530b2eb143aabad450a19f0fb5be5d3fc45bcafe97efd0adf748a3b"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-3/03.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2020/08/200730_Scallion-Pancakes_1.jpg",
+        "originalAlt": "Restaurant-style scallion pancakes",
+        "width": 800,
+        "height": 1200,
+        "format": "JPEG",
+        "sha256": "a25fbc4be5fa815b8732f69846ae449ead1a71bfe1fb57742fdf11f18b6eb211"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-green-onion-4",
+    "name": "파기름 국수",
+    "sourceUrl": "https://omnivorescookbook.com/scallion-oil-noodle/",
+    "author": "Maggie Zhu",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Shanghai Scallion Oil Noodle (葱油拌面)",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": "PT15M",
+    "originalTotalTime": "PT25M",
+    "originalYield": ["4", "4 to 6"],
+    "displayCookTimeMin": 25,
+    "displayServings": 4,
+    "editorialNote": "대파를 천천히 튀기듯 볶아 낸 향긋한 기름에 국수를 비벼요. 굵은 대파는 길게 가늘게 썰어 사용해요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-4/01.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2026/04/240402_Scallion-Oil-Noodle_2.jpg",
+        "originalAlt": "Scallion noodles close up",
+        "width": 1200,
+        "height": 1800,
+        "format": "JPEG",
+        "sha256": "fca0c93d4d5bb9ba3e1b9708d4631e3e0ecce988227b803c445843cebb6e5061"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-4/02.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2026/04/240402_Scallion-Oil-Noodle_1.jpg",
+        "originalAlt": "Homemade scallion noodles in bowls",
+        "width": 1200,
+        "height": 1800,
+        "format": "JPEG",
+        "sha256": "47ab8f27b9418db2dd09b33ab18908152d34fd71d414122c4adce17a2c6dce63"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-green-onion-4/03.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2026/04/240402_Scallion-Oil-Noodle_3.jpg",
+        "originalAlt": "Scallion Oil Noodle (葱油拌面)\n\n",
+        "width": 1200,
+        "height": 800,
+        "format": "JPEG",
+        "sha256": "0ad0b4127ae706682149f0649522677a0a442320e63ce717362b1a5b0a216973"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-napa-cabbage-1",
+    "name": "배추 겉절이",
+    "sourceUrl": "https://www.koreanbapsang.com/baechu-geotjeori-fresh-kimchi/",
+    "author": "Hyosun",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Baechu Geotjeori (Fresh Kimchi)",
+    "originalPrepTime": null,
+    "originalCookTime": null,
+    "originalTotalTime": null,
+    "originalYield": null,
+    "displayCookTimeMin": 80,
+    "displayServings": 8,
+    "editorialNote": "배추를 절여 바로 무쳐 먹는 겉절이예요. 절이기 40~60분을 포함한 예상 시간이며 반찬 8인분으로 편집했어요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-1/01.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2015/06/DSC_09491-e1433218997811.jpg",
+        "originalAlt": "Baechu Geotjeori (Fresh Kimchi)",
+        "width": 650,
+        "height": 971,
+        "format": "JPEG",
+        "sha256": "809d72f26778a8f7161218c2d9213bb9aa25c6f47b9315f80222565495d77819"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-1/02.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2015/06/DSC_10321-e1433218871920.jpg",
+        "originalAlt": "DSC 10321 e1433218871920 - Baechu Geotjeori (Fresh Kimchi)",
+        "width": 650,
+        "height": 962,
+        "format": "JPEG",
+        "sha256": "635ff5c62059efd29dcf789ed4d744d38ed360eaab4ceed0183b1f8f8518ed72"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-1/03.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2015/06/DSC_0927-e1433217854143.jpg",
+        "originalAlt": "DSC 0927 e1433217854143 - Baechu Geotjeori (Fresh Kimchi)",
+        "width": 400,
+        "height": 268,
+        "format": "JPEG",
+        "sha256": "f67b5f5a3fd2fb126bb5a0a9473be71e6dba355eac56ab550620e81df117ea23"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-napa-cabbage-2",
+    "name": "배추 된장국",
+    "sourceUrl": "https://www.koreanbapsang.com/baechu-doenjang-guk/",
+    "author": "Hyosun",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Baechu Doenjang Guk (Soybean Paste Soup with Napa Cabbage)",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": null,
+    "originalTotalTime": "PT10M",
+    "originalYield": ["4"],
+    "displayCookTimeMin": 35,
+    "displayServings": 4,
+    "editorialNote": "멸치 육수에 배추를 푹 익히는 된장국이에요. 육수 끓이기와 배추 익히기를 포함해 시간을 보정했어요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-2/01.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2011/02/DSC_1853-1-e1638594739321.jpg",
+        "originalAlt": "Baechu Doenjang Guk (Soybean Paste Soup with Napa Cabbage)",
+        "width": 1080,
+        "height": 1613,
+        "format": "JPEG",
+        "sha256": "329f2381da2a4de3d2c9371e063894cdd75cd61ea8810095510112c9af801163"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-2/02.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2011/02/DSC_1833.jpg",
+        "originalAlt": "DSC 1833 - Baechu Doenjang Guk (Soybean Paste Soup)",
+        "width": 1936,
+        "height": 1296,
+        "format": "JPEG",
+        "sha256": "846c4a7b578bab9a29a554247f77e73998e939e5da827bb6f6ec0a558e497cce"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-2/03.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2011/02/Baechu-2BDoenjang-2BGuk3-e1505616066831.jpg",
+        "originalAlt": "Baechu 2BDoenjang 2BGuk3 e1505616066831 - Baechu Doenjang Guk (Soybean Paste Soup)",
+        "width": 400,
+        "height": 268,
+        "format": "JPEG",
+        "sha256": "5f604b2666ba2d2b052040f585b102d5b550656a02f3f32e479be937b60c9d22"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-napa-cabbage-3",
+    "name": "배추전",
+    "sourceUrl": "https://mykoreankitchen.com/baechujeon/",
+    "author": "Sue Pressey",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Baechujeon (Korean Cabbage Pancakes)",
+    "originalPrepTime": "PT15M",
+    "originalCookTime": "PT15M",
+    "originalTotalTime": "PT30M",
+    "originalYield": ["12", "12 leaves"],
+    "displayCookTimeMin": 30,
+    "displayServings": 4,
+    "editorialNote": "배추 잎에 얇은 반죽을 입혀 부치는 배추전이에요. 12장을 만들어 한 사람당 3장씩 나누는 기준이에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-3/01.jpg",
+        "originalUrl": "https://mykoreankitchen.com/wp-content/uploads/2026/07/1.-baechujeon-korean-cabbage-pancake-1.jpg",
+        "originalAlt": "Baechujeon (Korean Cabbage Pancakes)",
+        "width": 650,
+        "height": 975,
+        "format": "JPEG",
+        "sha256": "31460befc634260212348b7f3cfb62e814ccb7d8d4e66bc775f86eddee769b6e"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-3/02.jpg",
+        "originalUrl": "https://mykoreankitchen.com/wp-content/uploads/2026/07/2.-korean-cabbage-pancakes.jpg",
+        "originalAlt": "Holding a wooden plate of Korean cabbage pancakes.",
+        "width": 650,
+        "height": 975,
+        "format": "JPEG",
+        "sha256": "9c193e91f0d97acbc21cc34e0f8429b47f77c50e36dff301db8f6697be597090"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-3/03.jpg",
+        "originalUrl": "https://mykoreankitchen.com/wp-content/uploads/2026/07/4.-baechujeon-served-on-a-plate.jpg",
+        "originalAlt": "Korean cabbage pancakes served on a plate with soy dipping sauce in a small bowl.",
+        "width": 650,
+        "height": 975,
+        "format": "JPEG",
+        "sha256": "80ee75a4034f63f9013d315a64cd67b233791e4afe743eefe03694fffd8c09fc"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-napa-cabbage-4",
+    "name": "밀푀유나베",
+    "sourceUrl": "https://www.justonecookbook.com/mille-feuille-nabe/",
+    "author": "Just One Cookbook · Namiko Hirasawa Chen",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Mille-Feuille Nabe",
+    "originalPrepTime": "PT15M",
+    "originalCookTime": "PT15M",
+    "originalTotalTime": "PT30M",
+    "originalYield": ["4"],
+    "displayCookTimeMin": 30,
+    "displayServings": 4,
+    "editorialNote": "배추와 얇은 돼지고기를 층층이 쌓아 끓이는 전골이에요. 사진과 원문은 소고기가 아닌 삼겹살을 사용해요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-4/01.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2023/09/Mille-Feuille-Nabe-2919-I-1.jpg",
+        "originalAlt": "Mille-Feuille Nabe",
+        "width": 1200,
+        "height": 800,
+        "format": "JPEG",
+        "sha256": "2267d4d99d70b997521b42ed79549aad5d3dc9569094c98077f55400cb1da2d0"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-4/02.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2023/09/Mille-Feuille-Nabe-2985-II.jpg",
+        "originalAlt": "A Le Creuset pot containing Mille-Feuille Nabe, which is a hot pot dish with layers of pork belly slices and napa cabbage slices in a dashi broth.",
+        "width": 1200,
+        "height": 1800,
+        "format": "JPEG",
+        "sha256": "3542d2b2e5b9845c1a69902955209747dcbcfca71df908fe158e00d4f65e83d1"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-napa-cabbage-4/03.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2023/09/Mille-Feuille-Nabe-3011-VI-800x1200.jpg",
+        "originalAlt": "Dipping pork belly slice and napa cabbage in ponzu sauce.",
+        "width": 800,
+        "height": 1200,
+        "format": "JPEG",
+        "sha256": "f9f9df98b0ab1b8073aa42c691050b03bfc00716b336e7a77b040461ddb9915c"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-sweet-pumpkin-1",
+    "name": "단호박 샐러드",
+    "sourceUrl": "https://www.justonecookbook.com/kabocha-salad/",
+    "author": "Just One Cookbook · Namiko Hirasawa Chen",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Kabocha Salad",
+    "originalPrepTime": "PT20M",
+    "originalCookTime": "PT15M",
+    "originalTotalTime": "PT35M",
+    "originalYield": ["4"],
+    "displayCookTimeMin": 95,
+    "displayServings": 4,
+    "editorialNote": "찐 단호박에 마요네즈·크림치즈를 섞는 샐러드예요. 냉장 1시간을 포함하며 햄은 선택 재료예요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-1/01.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2024/10/Kabocha-Salad-1183-I-1.jpg",
+        "originalAlt": "Kabocha Salad",
+        "width": 1200,
+        "height": 800,
+        "format": "JPEG",
+        "sha256": "b019dc90ff9e33c2bf17a454d96c40a239ed01ddb1bc80adc1f351e3db3e5458"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-1/02.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2024/10/Kabocha-Salad-1164-II.jpg",
+        "originalAlt": "A Japanese round plate containing velvety and rich Kabocha Salad with crisp and refreshing red onion slices and ham, mixed with cream cheese and tangy Japanese mayo.",
+        "width": 1200,
+        "height": 1800,
+        "format": "JPEG",
+        "sha256": "7b7c7e2bcbc5cf9eba23dda73fe4f4284766f5bd0ee2d8e1937caf3534e64046"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-1/03.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2024/10/Kabocha-Salad-1173-III.jpg",
+        "originalAlt": "A Japanese round plate containing velvety and rich Kabocha Salad with crisp and refreshing red onion slices and ham, mixed with cream cheese and tangy Japanese mayo.",
+        "width": 1200,
+        "height": 1800,
+        "format": "JPEG",
+        "sha256": "baade63f15193742731752b95c81f5afc9aec656f8be6d0daead37a5cd28ff56"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-sweet-pumpkin-2",
+    "name": "단호박죽",
+    "sourceUrl": "https://www.koreanbapsang.com/hobakjuk-kabocha-porridge-and-winners/",
+    "author": "Hyosun",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Hobakjuk (Pumpkin Porridge)",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": "PT50M",
+    "originalTotalTime": "PT60M",
+    "originalYield": ["8"],
+    "displayCookTimeMin": 120,
+    "displayServings": 8,
+    "editorialNote": "찹쌀을 갈아 넣은 단호박죽이에요. 찹쌀 불리기 1시간을 포함한 예상 시간이며 사진의 새알심과 팥은 선택 고명이에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-2/01.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2011/10/DSC4547-3.jpg",
+        "originalAlt": "Hobakjuk (Pumpkin Porridge)",
+        "width": 1367,
+        "height": 2048,
+        "format": "JPEG",
+        "sha256": "6eaf69c58093bd6aeff487f5b569f004c5250e720b08a916c7831a9e865205a3"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-2/02.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2011/10/DSC4523-2.jpg",
+        "originalAlt": "DSC4523 2 - Hobakjuk (Pumpkin Porridge)",
+        "width": 1367,
+        "height": 2048,
+        "format": "JPEG",
+        "sha256": "05311511ba2ae5d593a0686086376eab12d2be713c59d635e62211911e41ae2a"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-2/03.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2011/10/DSC4519.jpg",
+        "originalAlt": "DSC4519 - Hobakjuk (Pumpkin Porridge)",
+        "width": 1367,
+        "height": 2048,
+        "format": "JPEG",
+        "sha256": "35709031b13668ca9c197634a7846de290895e2f4f22fd052c0206ff0e22d62b"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-sweet-pumpkin-3",
+    "name": "구운 단호박",
+    "sourceUrl": "https://www.justonecookbook.com/japanese-roasted-kabocha-squash/",
+    "author": "Just One Cookbook · Namiko Hirasawa Chen",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Japanese Roasted Kabocha Squash",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": "PT20M",
+    "originalTotalTime": "PT30M",
+    "originalYield": ["4"],
+    "displayCookTimeMin": 30,
+    "displayServings": 4,
+    "editorialNote": "껍질째 얇게 썬 단호박을 오븐에 구워요. 절반은 시치미, 절반은 간장설탕으로 맛내는 두 가지 양념이에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-3/01.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2022/11/Roasted-Kabocha-1122-I-2.jpg",
+        "originalAlt": "Japanese Roasted Kabocha Squash",
+        "width": 1200,
+        "height": 800,
+        "format": "JPEG",
+        "sha256": "729249fd4fd1ac4731e01f66cb723b85daf2a41da1d6517c21666c7c263c2fbe"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-3/02.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2022/11/Roasted-Kabocha-1129-I-1.jpg",
+        "originalAlt": "A white round ceramic plate containing roasted kabocha slices.",
+        "width": 1200,
+        "height": 800,
+        "format": "JPEG",
+        "sha256": "ba94d583c67e7277815257ace340b73517d92ea6f35fe4e0aa3fe2d098244ed1"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-3/03.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2022/11/Roasted-Kabocha-1158-V.jpg",
+        "originalAlt": "Black and white round ceramic plates containing roasted kabocha slices.",
+        "width": 1200,
+        "height": 1800,
+        "format": "JPEG",
+        "sha256": "36400a3a635c74f3b880ed20d11b618c8c8dc26c51800cebda3d43f7f0b4fb8c"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-sweet-pumpkin-4",
+    "name": "단호박 수프",
+    "sourceUrl": "https://www.justonecookbook.com/kabocha-squash-soup/",
+    "author": "Just One Cookbook · Namiko Hirasawa Chen",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Kabocha Soup",
+    "originalPrepTime": "PT15M",
+    "originalCookTime": "PT30M",
+    "originalTotalTime": "PT45M",
+    "originalYield": ["4"],
+    "displayCookTimeMin": 45,
+    "displayServings": 4,
+    "editorialNote": "단호박을 양파·우유·크림과 갈아 만드는 수프예요. 우유를 넣은 뒤에는 팔팔 끓이지 않아요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-4/01.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2019/11/Kabocha-Soup-0088-I.jpg",
+        "originalAlt": "Kabocha Soup",
+        "width": 800,
+        "height": 533,
+        "format": "JPEG",
+        "sha256": "8f6eb126904c570feceab716a2718f73da442dfedb01775e1e71afbfb27d73d9"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-4/02.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2019/11/Kabocha-Soup-0086-II.jpg",
+        "originalAlt": "Mug cups containing kabocha soup served on a wooden tray.",
+        "width": 800,
+        "height": 1200,
+        "format": "JPEG",
+        "sha256": "5c423d8fd841ea48a3e0522e238475e4e2313d64a1acf820848abf40a5e6d44a"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-sweet-pumpkin-4/03.jpg",
+        "originalUrl": "https://www.justonecookbook.com/wp-content/uploads/2019/11/Kabocha-Soup-0100-IV.jpg",
+        "originalAlt": "Mug cups containing kabocha soup served on a wooden tray.",
+        "width": 800,
+        "height": 1200,
+        "format": "JPEG",
+        "sha256": "40cb1f79c5d5a3a493669835afede5bbecd1da0ac23ac770b94e717ddd8f8ed0"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-chili-1",
+    "name": "고추 된장무침",
+    "sourceUrl": "https://www.koreanbapsang.com/gochu-doenjang-muchim/",
+    "author": "Hyosun",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Gochu doenjang muchim (green chili peppers seasoned with doenjang)",
+    "originalPrepTime": "PT7M",
+    "originalCookTime": "PT3M",
+    "originalTotalTime": "PT3M",
+    "originalYield": ["4"],
+    "displayCookTimeMin": 3,
+    "displayServings": 4,
+    "editorialNote": "순한 풋고추를 된장 양념에 바로 무쳐 아삭하게 먹어요. 맵지 않은 고추를 고르면 좋아요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-1/01.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2023/07/DSC6976-e1688600997977.jpg",
+        "originalAlt": "Gochu doenjang muchim (green chili peppers seasoned with doenjang)",
+        "width": 1200,
+        "height": 1797,
+        "format": "JPEG",
+        "sha256": "f70bc1245f358a49b6120371ebc98bb7f4e0ac31a370a5d67afbf6986b9d36c7"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-1/02.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2023/07/DSC6999.jpg",
+        "originalAlt": "DSC6999 - Gochu Doenjang Muchim (Green Chili Peppers Seasoned with Doenjang)",
+        "width": 1200,
+        "height": 801,
+        "format": "JPEG",
+        "sha256": "bd3f52df75ffc8d0b22acddd8097ee79e97856088f4a22c2174388ae464362b8"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-1/03.jpg",
+        "originalUrl": "https://www.koreanbapsang.com/wp-content/uploads/2023/07/DSC6957-768x513.jpg",
+        "originalAlt": "DSC6957 768x513 - Gochu Doenjang Muchim (Green Chili Peppers Seasoned with Doenjang)",
+        "width": 768,
+        "height": 513,
+        "format": "JPEG",
+        "sha256": "f32dfcb59e2264992a956f8a04da7aee4a0be509a846448cf769e324faa72742"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-chili-2",
+    "name": "고추 간장절임",
+    "sourceUrl": "https://mykoreankitchen.com/korean-style-green-chilli-pickles/",
+    "author": "Sue Pressey",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Korean Green Chili Pickles",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": null,
+    "originalTotalTime": "PT10M",
+    "originalYield": ["20", "20 +"],
+    "displayCookTimeMin": 25,
+    "displayServings": 20,
+    "editorialNote": "고추를 간장 절임물에 담그는 반찬이에요. 준비 약 25분 외에 작은 고추는 3일, 큰 것은 약 1주일 숙성이 필요해요. 사진의 양념무침은 선택 버전이에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-2/01.jpg",
+        "originalUrl": "https://mykoreankitchen.com/wp-content/uploads/2016/10/1.-Korean-Style-Green-Chilli-Pickles.jpg",
+        "originalAlt": "Korean Green Chili Pickles",
+        "width": 650,
+        "height": 975,
+        "format": "JPEG",
+        "sha256": "ef2132b400e58fbd01519a68942314766f0ace534af0904b5cc9d9c5dc77fc11"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-2/02.jpg",
+        "originalUrl": "https://mykoreankitchen.com/wp-content/uploads/2016/10/3.-Korean-Style-Green-Chilli-Pickles.jpg",
+        "originalAlt": "Korean Style Pickled Chillies. These are super addictive! | MyKoreanKitchen.com",
+        "width": 650,
+        "height": 975,
+        "format": "JPEG",
+        "sha256": "8f1b7c6badebda5b43fa19e46f8e7b0e0b9f6ba9f26b1cf912dc7d154ff2ec60"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-2/03.jpg",
+        "originalUrl": "https://mykoreankitchen.com/wp-content/uploads/2016/10/2.-Korean-Style-Green-Chilli-Pickles.jpg",
+        "originalAlt": "Korean Style Green Chilli Pickles | MyKoreanKitchen.com",
+        "width": 650,
+        "height": 975,
+        "format": "JPEG",
+        "sha256": "edfb6dde4320d182b7b60e7085364e5238db786414ac3a59e54790f652011660"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-chili-3",
+    "name": "고추전",
+    "sourceUrl": "https://mykoreankitchen.com/korean-stuffed-chili-peppers/",
+    "author": "Sue Pressey",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Korean Stuffed Chili Peppers (Gochujeon)",
+    "originalPrepTime": "PT25M",
+    "originalCookTime": "PT15M",
+    "originalTotalTime": "PT40M",
+    "originalYield": ["20", "20 pieces"],
+    "displayCookTimeMin": 40,
+    "displayServings": 5,
+    "editorialNote": "고추 속에 다진 고기와 채소를 채워 달걀옷으로 부쳐요. 약 20조각을 만들어 한 사람당 4조각씩 나누는 기준이에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-3/01.jpg",
+        "originalUrl": "https://mykoreankitchen.com/wp-content/uploads/2026/05/1.-gochujeon.jpg",
+        "originalAlt": "Korean Stuffed Chili Peppers (Gochujeon)",
+        "width": 650,
+        "height": 975,
+        "format": "JPEG",
+        "sha256": "9319a903e8724d325551b64d3e8339aaca50b72a27b14a86805550c652276301"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-3/02.jpg",
+        "originalUrl": "https://mykoreankitchen.com/wp-content/uploads/2026/05/2.-gochujeon-recipe.jpg",
+        "originalAlt": "Korean stuffed chili peppers served on an oval plate with dipping sauce in the top right corner",
+        "width": 650,
+        "height": 975,
+        "format": "JPEG",
+        "sha256": "0a4c7b011abe028aa7f1cdd3fdaad0f172948ade7ad4de522e1c9708b3758aff"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-3/03.jpg",
+        "originalUrl": "https://mykoreankitchen.com/wp-content/uploads/2026/05/3.-korean-stuffed-peppers.jpg",
+        "originalAlt": "Holding a plate filled with golden Korean stuffed chili peppers with both hands.",
+        "width": 650,
+        "height": 975,
+        "format": "JPEG",
+        "sha256": "f834dd6379d550edb7d063e5b8f0dcce2c0d26aa5643ad5e78c1d92ccfb58bc2"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-chili-4",
+    "name": "중국식 고추구이",
+    "sourceUrl": "https://omnivorescookbook.com/szechuan-pan-fried-peppers/",
+    "author": "Maggie Zhu",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Szechuan Pan Fried Peppers (Tiger Skin Peppers, 虎皮尖椒)",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": "PT20M",
+    "originalTotalTime": "PT30M",
+    "originalYield": ["4"],
+    "displayCookTimeMin": 30,
+    "displayServings": 4,
+    "editorialNote": "고추 껍질을 노릇하게 구워 간장·식초 양념을 입혀요. 원문 사진은 크고 순한 애너하임 고추이며 순한 풋고추로 만들 수 있어요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-4/01.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2015/08/1508_Szechuan-Pan-Fried-Peppers_001.jpg",
+        "originalAlt": "Szechuan Pan Fried Peppers (Tiger Skin Peppers, 虎皮尖椒) - These peppers are pan fried until blistered and tender, then cooked in a sour, savory sauce. A great vegan dish that is hot, flavorful, and appetizing! | omnivorescookbook.com",
+        "width": 600,
+        "height": 899,
+        "format": "JPEG",
+        "sha256": "6aa08a5d1e20fcdf65323cb78627ba8748e3595b18469f0d195bca8d995b3420"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-4/02.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2015/08/1508_Szechuan-Pan-Fried-Peppers_003.jpg",
+        "originalAlt": "Szechuan Pan Fried Peppers (Tiger Skin Peppers, 虎皮尖椒) - These peppers are pan fried until blistered and tender, then cooked in a sour, savory sauce. A great vegan dish that is hot, flavorful, and appetizing! | omnivorescookbook.com",
+        "width": 600,
+        "height": 899,
+        "format": "JPEG",
+        "sha256": "5cb494208fa5076b95283d5c18261c2021c6ef2831efe4176e684e78a1bdad44"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-chili-4/03.jpg",
+        "originalUrl": "https://omnivorescookbook.com/wp-content/uploads/2015/08/1508_Szechuan-Pan-Fried-Peppers_004.jpg",
+        "originalAlt": "Szechuan Pan Fried Peppers (Tiger Skin Peppers, 虎皮尖椒) - These peppers are pan fried until blistered and tender, then cooked in a sour, savory sauce. A great vegan dish that is hot, flavorful, and appetizing! | omnivorescookbook.com",
+        "width": 600,
+        "height": 899,
+        "format": "JPEG",
+        "sha256": "2ae1243b78a349c478473c707162dbd6bb6fe1181ba7ddddd413d9d960e8ac3e"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-apple-1",
+    "name": "사과 크럼블",
+    "sourceUrl": "https://www.recipetineats.com/apple-crumble/",
+    "author": "Nagi | RecipeTin Eats",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Apple Crumble",
+    "originalPrepTime": "PT15M",
+    "originalCookTime": "PT40M",
+    "originalTotalTime": "PT55M",
+    "originalYield": ["6", "6 -8"],
+    "displayCookTimeMin": 55,
+    "displayServings": 6,
+    "editorialNote": "잘게 썬 사과에 오트밀 크럼블을 덮어 구워요. 따뜻한 사과와 바삭한 토핑을 함께 떠먹어요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-1/01.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2016/05/Apple-Crumble_1a-1.jpg",
+        "originalAlt": "Apple Crumble",
+        "width": 850,
+        "height": 1190,
+        "format": "JPEG",
+        "sha256": "906868cfce1cb238ac1d333be4cf5a79e0988276dc032c25605b9b10f34fc59e"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-1/02.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2016/05/Apple-Crumble_0-1.jpg",
+        "originalAlt": "A dish of Apple Crumble, fresh out of the oven, ready to be served",
+        "width": 900,
+        "height": 1260,
+        "format": "JPEG",
+        "sha256": "34752652b4cf5ff8f87f00b1d141b689d6362bfcdc0523196b5b1d6c53a9e96b"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-1/03.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2016/05/Apple-Crumble_8-1.jpg",
+        "originalAlt": "Close up of Apple Crumble in a rustic white bowl with a scoop of vanilla ice cream, ready to be eaten",
+        "width": 900,
+        "height": 1260,
+        "format": "JPEG",
+        "sha256": "e00cfae9dbbee30d95da39842b580117b1a812d0ec9651683a346200794a0ebb"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-apple-2",
+    "name": "사과 소스",
+    "sourceUrl": "https://www.recipetineats.com/apple-sauce/",
+    "author": "RecipeTin Eats · Nagi Maehashi",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Apple Sauce",
+    "originalPrepTime": "PT10M",
+    "originalCookTime": "PT15M",
+    "originalTotalTime": "PT15M",
+    "originalYield": ["8"],
+    "displayCookTimeMin": 15,
+    "displayServings": 8,
+    "editorialNote": "사과를 캐러멜 설탕·식초와 익혀 갈아 만든 곁들임 소스예요. 사진 중 한 장은 완성 소스를 돼지고기와 먹는 예시예요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-2/01.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2021/04/Apple-Sauce_1.jpg",
+        "originalAlt": "Apple Sauce",
+        "width": 900,
+        "height": 1260,
+        "format": "JPEG",
+        "sha256": "e5fb6c7740f117e3416737dd98ffdd5e65efb169e5e113ddfb9baf6cc7e92232"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-2/02.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2021/04/Apple-Sauce_0.jpg",
+        "originalAlt": "Freshly made Apple Sauce in a saucepan",
+        "width": 900,
+        "height": 1260,
+        "format": "JPEG",
+        "sha256": "77549d77023f8a25e0862e7d0c2c23d4014463967be0a84e147d0a4d2c3732ba"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-2/03.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2021/04/Apple-Sauce-with-pork-belly-eating-shot.jpg",
+        "originalAlt": "Eating Apple Sauce with Crispy Slow Cooked Pork Belly",
+        "width": 900,
+        "height": 1125,
+        "format": "JPEG",
+        "sha256": "a6f8e3674206c3b6037e81904b96603872c4cc41d111522ef324a3ed2305666d"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-apple-3",
+    "name": "오븐 사과구이",
+    "sourceUrl": "https://www.recipetineats.com/baked-apples/",
+    "author": "RecipeTin Eats · Nagi Maehashi",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Caramel Self Saucing Baked Apples",
+    "originalPrepTime": "PT15M",
+    "originalCookTime": "PT40M",
+    "originalTotalTime": "PT55M",
+    "originalYield": ["4", "4 - 8"],
+    "displayCookTimeMin": 55,
+    "displayServings": 4,
+    "editorialNote": "반으로 자른 사과에 호두와 계피를 채워 구우면 달콤한 소스도 함께 생겨요. 사과 반쪽 2개씩 나누는 기준이에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-3/01.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2018/06/Baked-Apples_2.jpg",
+        "originalAlt": "Caramel Self Saucing Baked Apples",
+        "width": 900,
+        "height": 1260,
+        "format": "JPEG",
+        "sha256": "68386a4654cd38fec6f1db5be37217e6496ad482cbf6fba38e3c2f7f9d6c3f6f"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-3/02.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2018/06/Caramel-Sauce-and-inside-of-Baked-Apples.jpg",
+        "originalAlt": "Close up of caramel sauce in a baking dish with Baked Apples",
+        "width": 900,
+        "height": 643,
+        "format": "JPEG",
+        "sha256": "ca026566df886dc3e2f711f20f633058eceeaf449605d3fd23c751ef1d94bd30"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-3/03.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2018/06/Baked-Apples_1.jpg",
+        "originalAlt": "Close up of Caramel Self Saucing Baked Apples with ice cream on top in a baking dish, fresh out of the oven.",
+        "width": 900,
+        "height": 1260,
+        "format": "JPEG",
+        "sha256": "32200b34934e9feaac60f9d05fe97812458d831cbfff7064e91acd720e306f7e"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-apple-4",
+    "name": "사과 호두샐러드",
+    "sourceUrl": "https://www.recipetineats.com/apple-salad-candied-walnuts-cranberries/",
+    "author": "RecipeTin Eats · Nagi Maehashi",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Apple Salad with Candied Walnuts and Cranberries",
+    "originalPrepTime": "PT15M",
+    "originalCookTime": "PT5M",
+    "originalTotalTime": "PT20M",
+    "originalYield": ["5", "5 - 6 people"],
+    "displayCookTimeMin": 20,
+    "displayServings": 5,
+    "editorialNote": "얇게 썬 사과에 달콤하게 코팅한 호두·크랜베리를 더한 샐러드예요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-4/01.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2018/10/Apple-Salad-with-Candied-Walnuts-Cranberries_3-2.jpg",
+        "originalAlt": "Apple Salad with Candied Walnuts and Cranberries",
+        "width": 900,
+        "height": 1125,
+        "format": "JPEG",
+        "sha256": "8f3b37d41f6dac9065e9dd9a3066c50c9a10796597f749e07ddbdb027231c148"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-4/02.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2018/10/Apple-Salad-with-Candied-Walnuts-Cranberries_2-2.jpg",
+        "originalAlt": "Overhead photo of Apple Salad with Candied Walnuts and Cranberries with vinaigrette dressing on the side",
+        "width": 900,
+        "height": 1260,
+        "format": "JPEG",
+        "sha256": "f383781f52e27a775f53079a2a8c571a95f5444f502718bb5b09d672db8be84f"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-apple-4/03.jpg",
+        "originalUrl": "https://www.recipetineats.com/tachyon/2018/10/Apple-Salad-with-Candied-Walnuts-Cranberries_4-2.jpg",
+        "originalAlt": "Tossing Apple Salad with Candied Walnuts and Cranberries",
+        "width": 900,
+        "height": 1125,
+        "format": "JPEG",
+        "sha256": "b61be9bf3a1718f1fabab9f8cd04bc296df55ab3731cbe31631f96f987f80677"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-mandarin-1",
+    "name": "귤 아몬드케이크",
+    "sourceUrl": "https://theviewfromgreatisland.com/minimal-monday-flourless-whole-tangerine-cake-gluten-free/",
+    "author": "The View from Great Island · Sue Moran",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Flourless Tangerine Cake",
+    "originalPrepTime": "PT25M",
+    "originalCookTime": "PT55M",
+    "originalTotalTime": "PT80M",
+    "originalYield": ["12"],
+    "displayCookTimeMin": 90,
+    "displayServings": 12,
+    "editorialNote": "귤을 껍질째 삶아 갈고 아몬드가루로 굽는 케이크예요. 귤 퓌레는 반드시 326g만 사용해요. 12조각 기준이에요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-1/01.jpg",
+        "originalUrl": "https://theviewfromgreatisland.com/wp-content/uploads/2017/12/whole-tangerine-cake-8605-December-22-2017.jpg",
+        "originalAlt": "Flourless Tangerine Cake",
+        "width": 1520,
+        "height": 1013,
+        "format": "JPEG",
+        "sha256": "961eee3e3bd336f3d9d5d560c61f5321a057a065d2221ef7f4c582f24a122fd6"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-1/02.jpg",
+        "originalUrl": "https://theviewfromgreatisland.com/wp-content/uploads/2017/12/whole-tangerine-cake-8607-December-22-2017.jpg",
+        "originalAlt": "Slicing a Gluten Free Tangerine Cake",
+        "width": 1520,
+        "height": 2280,
+        "format": "JPEG",
+        "sha256": "7369ae74fdbeccf109a59a1ae3c4d82c2e470acae4714fc510af234f2b315df5"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-1/03.jpg",
+        "originalUrl": "https://theviewfromgreatisland.com/wp-content/uploads/2017/12/gluten-free-whole-tangerine-cake-8656-December-23-2017-2.jpg",
+        "originalAlt": "A slice of Gluten Free Tangerine Cake ",
+        "width": 1519,
+        "height": 1013,
+        "format": "JPEG",
+        "sha256": "51fb1ece40fda29320d063161fc7a4a14dace49833800e0af6f5433163fff7ca"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-mandarin-2",
+    "name": "귤 소르베",
+    "sourceUrl": "https://theviewfromgreatisland.com/day-5-of-all-citrus-week-tangerine-sorbet/",
+    "author": "The View from Great Island · Sue Moran",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Tangerine Sorbet",
+    "originalPrepTime": null,
+    "originalCookTime": null,
+    "originalTotalTime": null,
+    "originalYield": null,
+    "displayCookTimeMin": 490,
+    "displayServings": 6,
+    "editorialNote": "귤즙만 얼려 만드는 소르베예요. 준비 약 10분과 두 차례 냉동 약 8시간을 잡은 예상 시간이에요. 용기·냉동고에 따라 달라질 수 있어요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-2/01.jpg",
+        "originalUrl": "https://theviewfromgreatisland.com/wp-content/uploads/2013/02/HEALTHY-ONE-INGREDIENT-TANGERINE-SORBET-image.jpg",
+        "originalAlt": "Tangerine sorbet",
+        "width": 700,
+        "height": 701,
+        "format": "JPEG",
+        "sha256": "6ead51e12ff2db21ce040416d7be467c269975d5d8f48b1f26ffa1f56f4f72ec"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-2/02.jpg",
+        "originalUrl": "https://theviewfromgreatisland.com/wp-content/uploads/2013/02/HEALTHY-ONE-INGREDIENT-TANGERINE-SORBET-image-3.jpg",
+        "originalAlt": "Tangerine sorbet",
+        "width": 700,
+        "height": 466,
+        "format": "JPEG",
+        "sha256": "5b8604a964970febeab54735894a9305fdc93a00d03bb72bfadf7a797346052d"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-2/03.jpg",
+        "originalUrl": "https://theviewfromgreatisland.com/wp-content/uploads/2013/02/HEALTHY-ONE-INGREDIENT-TANGERINE-SORBET-image-4.jpg",
+        "originalAlt": "Tangerine sorbet",
+        "width": 653,
+        "height": 980,
+        "format": "JPEG",
+        "sha256": "8af481c710aad0af8b6882153512b7475c34f4a44057c33129984b96820d8755"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-mandarin-3",
+    "name": "귤 요거트스무디",
+    "sourceUrl": "https://cookieandkate.com/clementine-sunshine-smoothie/",
+    "author": "Cookie and Kate",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Clementine Sunshine Smoothie",
+    "originalPrepTime": "PT5M",
+    "originalCookTime": null,
+    "originalTotalTime": "PT5M",
+    "originalYield": ["1", "1 smoothie"],
+    "displayCookTimeMin": 5,
+    "displayServings": 1,
+    "editorialNote": "귤과 요거트를 얼음에 갈아 만드는 스무디예요. 원문은 귤의 한 품종인 클레멘타인을 사용해요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-3/01.jpg",
+        "originalUrl": "https://cookieandkate.com/images/2015/01/healthy-clementine-smoothie-recipe.jpg",
+        "originalAlt": "Super simple and healthy clementine smoothie recipe - cookieandkate.com",
+        "width": 550,
+        "height": 756,
+        "format": "JPEG",
+        "sha256": "229bf28c1f3e154a2fc678d68672e68c9f7da7b4c2c3a9151c7a5a54d87ed972"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-3/02.jpg",
+        "originalUrl": "https://cookieandkate.com/images/2015/01/clementine-dreamsicle-smoothie-recipe.jpg",
+        "originalAlt": "Simple and delightful clementine smoothie recipe - cookieandkate.com",
+        "width": 550,
+        "height": 756,
+        "format": "JPEG",
+        "sha256": "c1cbfee304f9bfbe871280cbf506a38c00baa88f2765b1e805be1cf65c2332b2"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-3/03.jpg",
+        "originalUrl": "https://cookieandkate.com/images/2015/01/clementine-sunshine-smoothie.jpg",
+        "originalAlt": "Super simple, vitamin C-packed clementine smoothie! cookieandkate.com",
+        "width": 550,
+        "height": 756,
+        "format": "JPEG",
+        "sha256": "6f616614c95f10f11bcaa07a216526e9f8be3b241892b6707c1ed467b5063703"
+      }
+    ]
+  },
+  {
+    "recipeId": "easy-mandarin-4",
+    "name": "귤 퀴노아샐러드",
+    "sourceUrl": "https://itsnotcomplicatedrecipes.com/quinoa-mandarin-and-spinach-salad/",
+    "author": "It’s Not Complicated Recipes · Alexandra Cook",
+    "checkedAt": "2026-10-13",
+    "originalTitle": "Quinoa and Spinach Salad",
+    "originalPrepTime": "PT15M",
+    "originalCookTime": "PT15M",
+    "originalTotalTime": "PT50M",
+    "originalYield": ["4", "4 people"],
+    "displayCookTimeMin": 50,
+    "displayServings": 4,
+    "editorialNote": "귤·퀴노아·시금치에 레몬 드레싱을 더해요. 퀴노아를 익힌 뒤 식히는 시간이 포함돼요.",
+    "rights": "원작자 사진. CC 라이선스나 이용 허락을 확인한 이미지로 표기하지 않습니다.",
+    "photos": [
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-4/01.jpg",
+        "originalUrl": "https://itsnotcomplicatedrecipes.com/wp-content/uploads/2023/09/Quinoa-and-Spinach-Salad-Feature.jpg",
+        "originalAlt": "Quinoa and Spinach Salad",
+        "width": 1200,
+        "height": 1200,
+        "format": "JPEG",
+        "sha256": "66e7e34113f54409da8459b08ab0f3b3b44126e474276a6785eb003096ef0fda"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-4/02.jpg",
+        "originalUrl": "https://itsnotcomplicatedrecipes.com/wp-content/uploads/2023/09/Quinoa-and-Spinach-Salad-4.jpg",
+        "originalAlt": "Round cream dish of Quinoa and Spinach Salad, with a wooden serving holding up a scoop of the salad.",
+        "width": 1200,
+        "height": 1800,
+        "format": "JPEG",
+        "sha256": "c84c79567b8673ebcac743af955531b94d421d39103c286a09ec2b64683f9cf8"
+      },
+      {
+        "imageUrl": "/images/recipes/curated/easy-mandarin-4/03.jpg",
+        "originalUrl": "https://itsnotcomplicatedrecipes.com/wp-content/uploads/2023/09/Quinoa-and-Spinach-Salad-5.jpg",
+        "originalAlt": "Round grey plate with a serving of Quinoa and Spinach Salad, with a bronze fork sitting on the edge of the plate.",
+        "width": 1200,
+        "height": 1800,
+        "format": "JPEG",
+        "sha256": "1fd7406eabf06811a02c78c6740b25eae6bb6aa3e5c71ee11fe375612e2c5dcc"
+      }
+    ]
+  }
+]
