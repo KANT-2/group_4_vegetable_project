@@ -2,7 +2,8 @@
 
 // 메인 상품 진열 줄 (A 담당, v2 시안 · 마켓컬리 기준)
 // 가운데 제목(28px) + 회색 설명 → 4개씩 보이는 가로 줄 → 오른쪽(넘긴 뒤엔 왼쪽) 동그란 화살표
-// 휴대폰에서는 손가락으로 밀어서 넘겨요. 화살표는 넓은 화면에서만 보여요.
+// 카드가 잘려 보이지 않게 휴대폰 2장·태블릿 3장·데스크톱 4장이 딱 맞게 보여요.
+// 손가락으로 밀어서 넘기고, 넘길 게 있으면 모든 화면에서 ‹ › 화살표가 보여요.
 
 import {
   useCallback,
@@ -59,8 +60,9 @@ export function HomeShelf({
     });
   };
 
+  // 휴대폰·태블릿은 카드 안쪽 가장자리에 작게, 넓은 화면은 바깥에 크게
   const arrow =
-    "absolute top-[8.125rem] z-10 hidden size-15 items-center justify-center rounded-full bg-surface text-3xl text-ink shadow-[0_0_6px_rgb(0_0_0_/_0.12)] hover:text-brand lg:flex";
+    "absolute top-[5rem] z-10 flex size-10 items-center justify-center rounded-full bg-surface text-2xl text-ink shadow-[0_0_6px_rgb(0_0_0_/_0.12)] hover:text-brand sm:top-[6.5rem] lg:top-[8.125rem] lg:size-15 lg:text-3xl";
 
   return (
     <section aria-labelledby={id} className="container-page pt-10 md:pt-14">
@@ -75,7 +77,7 @@ export function HomeShelf({
       <div className="relative">
         <ul
           ref={rowRef}
-          className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 [scrollbar-width:none] sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:mx-0 lg:gap-[18px] lg:overflow-x-hidden lg:px-0 [&::-webkit-scrollbar]:hidden [&>li]:w-[42%] [&>li]:shrink-0 [&>li]:snap-start sm:[&>li]:w-[30%] lg:[&>li]:w-[calc((100%-54px)/4)]"
+          className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 [scrollbar-width:none] sm:-mx-6 sm:gap-6 sm:scroll-px-6 sm:px-6 lg:mx-0 lg:gap-[18px] lg:overflow-x-hidden lg:px-0 [&::-webkit-scrollbar]:hidden [&>li]:w-[calc((100%-16px)/2)] [&>li]:shrink-0 [&>li]:snap-start sm:[&>li]:w-[calc((100%-48px)/3)] lg:[&>li]:w-[calc((100%-54px)/4)]"
         >
           {children}
         </ul>
@@ -84,7 +86,7 @@ export function HomeShelf({
             type="button"
             aria-label={`${title} 앞쪽 보기`}
             onClick={() => move(-1)}
-            className={`${arrow} -left-7.5`}
+            className={`${arrow} -left-2 lg:-left-7.5`}
           >
             ‹
           </button>
@@ -94,7 +96,7 @@ export function HomeShelf({
             type="button"
             aria-label={`${title} 더 보기`}
             onClick={() => move(1)}
-            className={`${arrow} -right-7.5`}
+            className={`${arrow} -right-2 lg:-right-7.5`}
           >
             ›
           </button>
