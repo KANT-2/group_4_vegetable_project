@@ -2,9 +2,10 @@
 
 // 메인 맨 위 화면 너비 사진 배너 (A 담당, v2 시안 · 마켓컬리 기준)
 // 사진 위에 글자를 얹고, 오른쪽 아래에 "1 / 5" 와 멈춤 버튼, 마우스를 올리면 좌우 화살표가 보여요.
-// 5초마다 넘어가고, 마우스·키보드가 배너 안에 있거나 '동작 줄이기' 설정이면 멈춰요.
+// 홈은 2초, 기본은 5초마다 넘어가고, 호버·포커스·동작 줄이기에서는 멈춰요.
 
 import Link from "next/link";
+import Image from "next/image";
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { SafeImage } from "./SafeImage";
 
@@ -24,15 +25,21 @@ export interface HomeBannerSlide {
   sub?: string;
   highlight?: string; // 예: "38% 15,900원"
   // photo: 가로로 긴 사진을 화면 가득 / split: 연한 배경 + 오른쪽 정사각형 사진 (상품 사진처럼 가로 사진이 없을 때)
-  layout?: "photo" | "split";
+  layout?: "photo" | "split" | "artwork";
+  cta?: string;
 }
 
-const INTERVAL_MS = 5000;
-
-export function HomeBanner({ slides }: { slides: HomeBannerSlide[] }) {
+export function HomeBanner({
+  slides,
+  intervalMs = 5000,
+}: {
+  slides: HomeBannerSlide[];
+  intervalMs?: number;
+}) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [interacting, setInteracting] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     () => window.matchMedia(REDUCED_MOTION).matches,
@@ -45,14 +52,17 @@ export function HomeBanner({ slides }: { slides: HomeBannerSlide[] }) {
     [slides.length],
   );
 
-  const moving = !paused && !interacting && !reducedMotion && slides.length > 1;
+  const moving =
+    !paused && !hovered && !focused && !reducedMotion && slides.length > 1;
   useEffect(() => {
     if (!moving) return;
-    const timer = window.setInterval(() => go(1), INTERVAL_MS);
+    const timer = window.setInterval(() => go(1), intervalMs);
     return () => window.clearInterval(timer);
-  }, [moving, go]);
+  }, [moving, go, intervalMs]);
 
   if (slides.length === 0) return null;
+
+  const artwork = slides.every((slide) => slide.layout === "artwork");
 
   const arrow =
     "absolute top-1/2 z-10 hidden size-13 -translate-y-1/2 items-center justify-center rounded-full bg-ink/25 text-3xl text-white transition-opacity hover:bg-ink/40 focus-visible:flex group-hover:flex lg:flex lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100";
@@ -61,12 +71,12 @@ export function HomeBanner({ slides }: { slides: HomeBannerSlide[] }) {
     <section
       aria-label="기획전 배너"
       aria-roledescription="캐러셀"
-      className="group relative h-[clamp(15rem,52vw,23.125rem)] overflow-hidden bg-sand"
-      onMouseEnter={() => setInteracting(true)}
-      onMouseLeave={() => setInteracting(false)}
-      onFocusCapture={() => setInteracting(true)}
+      className={`group relative w-full overflow-hidden bg-sand ${artwork ? "h-72 sm:aspect-[3/1] sm:h-auto" : "h-[clamp(15rem,52vw,23.125rem)]"}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setFocused(true)}
       onBlurCapture={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget)) setInteracting(false);
+        if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false);
       }}
     >
       {slides.map((slide, i) => {
@@ -83,9 +93,30 @@ export function HomeBanner({ slides }: { slides: HomeBannerSlide[] }) {
           >
             <Link
               href={slide.href}
+              aria-label={
+                slide.layout === "artwork"
+                  ? `${slide.eyebrow}: ${slide.title}. ${slide.sub ?? ""} ${slide.cta ?? ""}`
+                  : undefined
+              }
               className={`block size-full ${slide.layout === "split" ? "bg-brand-soft" : ""}`}
             >
-              {slide.layout === "split" ? (
+              {slide.layout === "artwork" ? (
+                <>
+                  <Image
+                    src={slide.imageUrl ?? "/images/hero.jpg"}
+                    alt=""
+                    fill
+                    sizes="100vw"
+                    preload={i === 0}
+                    loading={i === 0 ? undefined : "eager"}
+                    className="object-cover object-right sm:object-center"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-transparent sm:hidden"
+                  />
+                </>
+              ) : slide.layout === "split" ? (
                 // 오른쪽 정사각형 사진: 본문 폭(1050px) 오른쪽 끝에 맞춰요.
                 <span className="container-page relative flex h-full justify-end">
                   <SafeImage
@@ -111,17 +142,23 @@ export function HomeBanner({ slides }: { slides: HomeBannerSlide[] }) {
                 </>
               )}
               <span
-                className={`container-page absolute inset-x-0 inset-y-0 flex flex-col justify-center ${slide.layout === "split" ? "pr-[52%] text-ink sm:pr-[24rem]" : "text-white"}`}
+                aria-hidden={slide.layout === "artwork" ? true : undefined}
+                className={`container-page absolute inset-x-0 inset-y-0 flex flex-col justify-center ${slide.layout === "artwork" ? "text-white sm:hidden" : slide.layout === "split" ? "pr-[52%] text-ink sm:pr-[24rem]" : "text-white"}`}
               >
                 <span className="text-sm font-medium opacity-90 md:text-base">
                   {slide.eyebrow}
                 </span>
-                <span className="mt-2 max-w-[18ch] text-[1.75rem] font-bold leading-tight md:text-[2.5rem]">
+                <span className="mt-2 max-w-[18ch] whitespace-pre-line text-[1.75rem] font-bold leading-tight md:text-[2.5rem]">
                   {slide.title}
                 </span>
                 {slide.sub && (
                   <span className="mt-2 text-sm opacity-90 md:text-lg">
                     {slide.sub}
+                  </span>
+                )}
+                {slide.cta && (
+                  <span className="mt-4 inline-flex w-fit rounded-full bg-surface px-4 py-1.5 text-sm font-bold text-ink">
+                    {slide.cta} ›
                   </span>
                 )}
                 {slide.highlight && (
