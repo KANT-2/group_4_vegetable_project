@@ -1,5 +1,3 @@
-import farmPhotos from "@/data/farm-photo-assets.json";
-import { getFarmPhoto } from "@/lib/farm-photo";
 // 농가 이야기 /story (A 담당)
 // 농가·농산물 정보는 상품 데이터(B)에서 가져와 농가별로 묶어 보여줘요. (services/showcase.ts)
 // 실제 농가 자료가 아닌 개발용 예시일 때는 화면에 그렇게 표시돼요.
@@ -13,9 +11,18 @@ import {
 import { ArrowRightIcon } from "@/components/common/Icons";
 import { MockDataNotice } from "@/components/common/MockDataNotice";
 import { SafeImage } from "@/components/common/SafeImage";
+import farmPhotos from "@/data/farm-photo-assets.json";
+import { FARM_STORIES, getFarmStoryDetail } from "@/data/farm-stories";
+import { FARM_SCENES, getFarmPhotos } from "@/lib/farm-photo";
+import {
+  averageDiscount,
+  farmsInSeason,
+  groupFarmsByProvince,
+} from "@/lib/farm-story";
 import { routes } from "@/lib/routes";
 import { getProductList } from "@/services/products";
 import { getFarmStories } from "@/services/showcase";
+import { getPublicVegetables } from "@/services/vegetables";
 import { UGLY_REASON_LABELS, type UglyReason } from "@/types/product";
 import type { FarmStory } from "@/types/showcase";
 
@@ -80,14 +87,77 @@ const STEPS = [
   },
 ];
 
+// 배너 첫 장: 논이 아닌 밭 풍경 (출처는 farm-photo-assets.json)
+const INTRO_BANNER = "/images/farms/jeju-field-banner.webp";
+
+// "농장지기 한마디"에 먼저 보여 줄 농가
+const QUOTE_FARMS = [
+  "춘천 호박농원",
+  "해남 황토고구마",
+  "장흥 버섯농가",
+  "진도 대파밭",
+  "부여 토마토하우스",
+  "제주 구좌당근",
+];
+
+// 한국 시간 기준 이번 달 (1~12)
+function currentMonth(): number {
+  return Number(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Seoul",
+      month: "numeric",
+    }).format(new Date()),
+  );
+}
+
 // 상품·농가 정보는 5분마다 새로 확인해요.
 export const revalidate = 300;
 
-export default async function StoryPage() {
-  const [farms, products] = await Promise.all([
+// 지역 칩 주소: /story?region=전남#farms (전체는 region 없이)
+function regionHref(province?: string) {
+  const query = province ? `?region=${encodeURIComponent(province)}` : "";
+  return `${routes.story}${query}#farms`;
+}
+
+export default async function StoryPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const { region } = await searchParams;
+  const [farms, products, vegetables] = await Promise.all([
     getFarmStories(),
     getProductList({ sort: "recommended" }),
+    getPublicVegetables(),
   ]);
+  const month = currentMonth();
+  const seasonal = farmsInSeason(
+    farms,
+    new Map(
+      vegetables
+        .filter((vegetable) => vegetable.season)
+        .map((vegetable) => [vegetable.id, vegetable.season!]),
+    ),
+    month,
+  );
+  const provinces = groupFarmsByProvince(farms);
+  // 목록에 있는 지역만 받아요. 모르는 값이면 전체를 보여 줘요.
+  const selected = provinces.find(
+    (group) => group.province === (Array.isArray(region) ? region[0] : region),
+  );
+  const shownFarms = selected?.farms ?? farms;
+  const farmPhotoMap = getFarmPhotos(farms);
+  const quotes = QUOTE_FARMS.map((name) =>
+    farms.find((f) => f.farmName === name),
+  ).filter(
+    (farm): farm is FarmStory => !!farm && !!FARM_STORIES[farm.farmName],
+  );
+  const stats = [
+    { value: `${farms.length}곳`, label: "함께하는 농가" },
+    { value: `${provinces.length}개 시·도`, label: "전국 산지" },
+    { value: `${products.length}개`, label: "판매 중인 못난이 농산물" },
+    { value: `${averageDiscount(products)}%`, label: "평균 할인율" },
+  ];
 
   // 배너: 메인처럼 여러 장이 넘어가요. 가로로 긴 농장 사진만 쓰고, 사진마다 맞는 농가 상세로 이어져요.
   const farmSlide = (
@@ -104,7 +174,7 @@ export default async function StoryPage() {
         imageUrl,
         eyebrow: `📍 ${farm.farmRegion ?? "농가 이야기"} · ${farmName}`,
         title,
-        sub: farm.story,
+        sub: getFarmStoryDetail(farmName)?.headline ?? farm.story,
         highlight: `농산물 ${farm.products.length}개 보러 가기 ›`,
       },
     ];
@@ -113,7 +183,7 @@ export default async function StoryPage() {
     {
       id: "intro",
       href: "#farms",
-      imageUrl: farmPhotos[0].imageUrl,
+      imageUrl: INTRO_BANNER,
       eyebrow: "FARM TO TABLE · 농가 이야기",
       title: "한 끼의 시작은, 농가의 하루에서.",
       sub: "밭을 돌보고, 계절을 기다리는 사람들을 만나보세요.",
@@ -160,36 +230,21 @@ export default async function StoryPage() {
         <MockDataNotice subject="농가 이야기와 농산물 정보" />
       </div>
 
-      {/* 2. 농가 목록: 누르면 농가 상세(/story/농가이름)로 가요 */}
+      {/* 2. 숫자로 보는 못난이마켓: 지금 데이터로 계산해요 */}
       <section
-        id="farms"
-        aria-labelledby="farms-title"
-        className="container-page scroll-mt-24 pt-10 md:pt-14"
+        aria-label="숫자로 보는 못난이마켓"
+        className="container-page pt-8"
       >
-        <div className="mb-6 text-center md:mb-8">
-          <h2
-            id="farms-title"
-            className="text-[1.375rem] font-medium md:text-[1.75rem]"
-          >
-            🌾 이 농산물을 키우는 농가 {farms.length}곳
-          </h2>
-          <p className="mt-1 text-sm text-ink-muted md:text-base">
-            농가를 누르면 판매 상품과 위치, 요리까지 한 번에 볼 수 있어요
-          </p>
-        </div>
-        {farms.length > 0 ? (
-          <ul className="grid grid-cols-2 gap-x-3 gap-y-9 sm:gap-x-[18px] lg:grid-cols-4">
-            {farms.map((farm) => (
-              <li key={farm.farmName}>
-                <FarmCard farm={farm} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="bg-sand px-6 py-10 text-center text-ink-muted">
-            소개할 농가 정보를 준비하고 있어요.
-          </p>
-        )}
+        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-[0.25rem] border border-line bg-line md:grid-cols-4">
+          {stats.map((stat) => (
+            <div key={stat.label} className="bg-surface px-4 py-5 text-center">
+              <dt className="text-sm text-ink-muted">{stat.label}</dt>
+              <dd className="mt-1 text-2xl font-bold text-brand md:text-3xl">
+                {stat.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       {/* 3. 우리 이야기 */}
@@ -198,18 +253,11 @@ export default async function StoryPage() {
         aria-labelledby="about-title"
         className="container-page scroll-mt-24 pt-16 md:pt-20"
       >
-        <div className="mb-6 text-center md:mb-8">
-          <h2
-            id="about-title"
-            className="text-[1.375rem] font-medium md:text-[1.75rem]"
-          >
-            못난이마켓은 이런 서비스예요
-          </h2>
-          <p className="mt-1 text-sm text-ink-muted md:text-base">
-            모양이나 크기 때문에 팔기 어려운 농산물을 소개하고, 무엇을 해
-            먹을지까지 이어 줘요
-          </p>
-        </div>
+        <SectionTitle
+          id="about-title"
+          title="못난이마켓은 이런 서비스예요"
+          sub="모양이나 크기 때문에 팔기 어려운 농산물을 소개하고, 무엇을 해 먹을지까지 이어 줘요"
+        />
         <ul className="grid gap-3 md:grid-cols-3 md:gap-[18px]">
           {VALUES.map((value) => (
             <li key={value.title} className="bg-sand p-6">
@@ -238,19 +286,106 @@ export default async function StoryPage() {
         </ol>
       </section>
 
-      {/* 4. 왜 모양이 제각각일까요? */}
+      {/* 4. 밭에서 식탁까지: 작물별 농장 풍경 */}
+      <section
+        aria-labelledby="scenes-title"
+        className="container-page pt-16 md:pt-20"
+      >
+        <SectionTitle
+          id="scenes-title"
+          title="🌱 밭에서 식탁까지"
+          sub="못난이 농산물이 자라는 곳을 둘러보세요. 사진을 누르면 그 채소 이야기로 가요"
+        />
+        <ul className="grid auto-rows-[9rem] grid-cols-2 gap-2 sm:auto-rows-[11rem] md:grid-cols-4 md:gap-3">
+          {FARM_SCENES.map((scene, index) => {
+            const href = routes.vegetable(scene.vegetableId);
+            const big = index === 0 || index === 5;
+            const body = (
+              <>
+                <SafeImage
+                  src={scene.imageUrl}
+                  alt={scene.alt}
+                  className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+                />
+                <span className="absolute bottom-2.5 left-3 text-base font-bold text-white drop-shadow md:text-lg">
+                  {scene.label}
+                </span>
+              </>
+            );
+            return (
+              <li
+                key={scene.label}
+                className={`group relative overflow-hidden rounded-[0.25rem] bg-sand ${big ? "col-span-2 row-span-2" : ""}`}
+              >
+                {href ? (
+                  <Link href={href} className="block size-full">
+                    {body}
+                  </Link>
+                ) : (
+                  body
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      {/* 5. 이번 달 제철 농가 */}
+      {seasonal.length > 0 && (
+        <section
+          aria-labelledby="season-title"
+          className="mt-16 bg-sand py-12 md:mt-20 md:py-14"
+        >
+          <div className="container-page">
+            <SectionTitle
+              id="season-title"
+              title={`🧺 ${month}월, 지금 수확 중인 농가`}
+              sub="제철에 거둔 농산물은 모양이 달라도 맛이 가장 좋을 때예요"
+            />
+            <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-[18px]">
+              {seasonal.slice(0, 8).map(({ farm, crops }) => {
+                const photo = farmPhotoMap.get(farm.farmName)!;
+                return (
+                  <li key={farm.farmName}>
+                    <Link
+                      href={routes.farm(farm.farmName)}
+                      className="group flex h-full flex-col overflow-hidden rounded-[0.25rem] bg-surface"
+                    >
+                      <SafeImage
+                        src={photo.imageUrl}
+                        alt={photo.alt}
+                        className={`aspect-[4/3] w-full object-cover ${photo.position}`}
+                      />
+                      <span className="flex flex-1 flex-col p-3">
+                        <span className="text-sm font-bold text-accent">
+                          지금 제철 · {crops.join(" · ")}
+                        </span>
+                        <span className="mt-1 font-bold group-hover:text-brand">
+                          {farm.farmName}
+                        </span>
+                        <span className="text-sm text-ink-muted">
+                          📍 {farm.farmRegion}
+                        </span>
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* 6. 왜 모양이 제각각일까요? */}
       <section
         aria-labelledby="reasons-title"
         className="container-page pt-16 md:pt-20"
       >
-        <div className="mb-6 text-center md:mb-8">
-          <h2
-            id="reasons-title"
-            className="text-[1.375rem] font-medium md:text-[1.75rem]"
-          >
-            왜 모양이 제각각일까요?
-          </h2>
-        </div>
+        <SectionTitle id="reasons-title" title="왜 모양이 제각각일까요?" />
         <ul className="grid gap-3 sm:grid-cols-2 md:gap-[18px]">
           {REASONS.map(({ reason, description }) => (
             <li
@@ -278,7 +413,114 @@ export default async function StoryPage() {
         </ul>
       </section>
 
-      {/* 5. 마무리 띠 */}
+      {/* 7. 농가 목록: 누르면 농가 상세(/story/농가이름)로 가요 */}
+      <section
+        id="farms"
+        aria-labelledby="farms-title"
+        className="container-page scroll-mt-24 pt-16 md:pt-20"
+      >
+        <SectionTitle
+          id="farms-title"
+          title={`🌾 이 농산물을 키우는 농가 ${farms.length}곳`}
+          sub="농가를 누르면 농가 이야기와 판매 상품, 위치, 요리까지 한 번에 볼 수 있어요"
+        />
+        {provinces.length > 0 && (
+          <nav aria-label="지역별 농가 보기" className="mb-6 md:mb-8">
+            <ul className="flex flex-wrap justify-center gap-2">
+              {[{ province: "전체", farms }, ...provinces].map(
+                ({ province, farms: list }) => {
+                  const isAll = province === "전체";
+                  const active = isAll
+                    ? !selected
+                    : selected?.province === province;
+                  return (
+                    <li key={province}>
+                      <Link
+                        href={regionHref(isAll ? undefined : province)}
+                        scroll={false}
+                        aria-current={active ? "true" : undefined}
+                        className={`inline-flex min-h-9 items-center gap-1 rounded-full border px-3 text-sm transition-colors ${active ? "border-brand bg-brand text-white" : "border-line hover:border-brand hover:text-brand"}`}
+                      >
+                        {province}
+                        <span
+                          className={`font-bold ${active ? "text-white" : "text-brand"}`}
+                        >
+                          {list.length}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                },
+              )}
+            </ul>
+          </nav>
+        )}
+        {selected && (
+          <p role="status" className="mb-4 text-center text-sm text-ink-muted">
+            {selected.province} 지역 농가 {shownFarms.length}곳을 보고 있어요.{" "}
+            <Link
+              href={regionHref()}
+              scroll={false}
+              className="font-bold text-brand underline underline-offset-4"
+            >
+              전체 보기
+            </Link>
+          </p>
+        )}
+        {shownFarms.length > 0 ? (
+          <ul className="grid grid-cols-2 gap-x-3 gap-y-9 sm:gap-x-[18px] lg:grid-cols-4">
+            {shownFarms.map((farm) => (
+              <li key={farm.farmName}>
+                <FarmCard
+                  farm={farm}
+                  photo={farmPhotoMap.get(farm.farmName)!}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="bg-sand px-6 py-10 text-center text-ink-muted">
+            소개할 농가 정보를 준비하고 있어요.
+          </p>
+        )}
+        <p className="mt-6 text-center text-xs text-ink-muted">
+          ※ 농가 이야기는 서비스 시연을 위한 예시예요. 풍경 사진은 작물에 맞춰
+          고른 실제 농장 사진이며, 소개된 농가의 현장은 아니에요.
+        </p>
+      </section>
+
+      {/* 8. 농장지기 한마디 */}
+      {quotes.length > 0 && (
+        <section
+          aria-labelledby="quotes-title"
+          className="container-page pt-16 md:pt-20"
+        >
+          <SectionTitle id="quotes-title" title="💬 농장지기 한마디" />
+          <ul className="grid gap-3 md:grid-cols-3 md:gap-[18px]">
+            {quotes.map((farm) => {
+              const detail = FARM_STORIES[farm.farmName];
+              return (
+                <li key={farm.farmName}>
+                  <Link
+                    href={routes.farm(farm.farmName)}
+                    className="group flex h-full flex-col justify-between gap-4 border border-line p-6 transition-colors hover:border-brand"
+                  >
+                    <blockquote className="text-lg font-bold leading-snug text-brand-dark">
+                      “{detail.quote}”
+                    </blockquote>
+                    <p className="text-sm text-ink-muted">{detail.headline}</p>
+                    <span className="text-sm font-bold group-hover:text-brand">
+                      — {farm.farmName} ›
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+
+      {/* 9. 마무리 띠 */}
       <section className="mt-16 bg-brand-soft md:mt-20">
         <div className="container-page flex flex-col items-center gap-4 py-12 text-center">
           <h2 className="text-[1.375rem] font-bold text-brand-dark md:text-[1.75rem]">
@@ -307,21 +549,79 @@ export default async function StoryPage() {
           </div>
         </div>
       </section>
+
+      {/* 10. 사진 출처 (CC BY·CC BY-SA 표기) */}
+      <div className="container-page">
+        <details className="my-8 rounded-[0.25rem] border border-line p-4 text-sm text-ink-muted">
+          <summary className="cursor-pointer font-bold text-ink">
+            농장 사진 출처
+          </summary>
+          <ul className="mt-3 space-y-2">
+            {farmPhotos.map((photo) => (
+              <li key={photo.imageUrl}>
+                <a
+                  href={photo.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  {photo.title}
+                </a>{" "}
+                · {photo.author} ·{" "}
+                <a
+                  href={photo.licenseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  {photo.license}
+                </a>{" "}
+                · Wikimedia Commons 축소본 / 화면 크롭
+              </li>
+            ))}
+          </ul>
+        </details>
+      </div>
     </>
   );
 }
 
+function SectionTitle({
+  id,
+  title,
+  sub,
+}: {
+  id: string;
+  title: string;
+  sub?: string;
+}) {
+  return (
+    <div className="mb-6 text-center md:mb-8">
+      <h2 id={id} className="text-[1.375rem] font-medium md:text-[1.75rem]">
+        {title}
+      </h2>
+      {sub && <p className="mt-1 text-sm text-ink-muted md:text-base">{sub}</p>}
+    </div>
+  );
+}
+
 // 농가 카드 (마켓컬리 상품 카드 비율): 사진 → 농가 이름 → 지역 → 주요 농산물 → 소개 두 줄
-function FarmCard({ farm }: { farm: FarmStory }) {
-  const photo = getFarmPhoto(farm);
+function FarmCard({
+  farm,
+  photo,
+}: {
+  farm: FarmStory;
+  photo: { imageUrl: string; alt: string; position: string };
+}) {
   const crops = [...new Set(farm.products.map((p) => p.vegetableName))];
+  const headline = getFarmStoryDetail(farm.farmName)?.headline;
   return (
     <Link href={routes.farm(farm.farmName)} className="group block">
       <span className="relative block overflow-hidden rounded-[0.25rem] bg-sand">
         <SafeImage
           src={photo.imageUrl}
           alt={photo.alt}
-          className="aspect-[249/320] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className={`aspect-[249/320] w-full object-cover transition-transform duration-300 group-hover:scale-105 ${photo.position}`}
         />
         <span className="absolute left-2.5 top-2.5 rounded-[0.25rem] bg-brand px-2 py-0.5 text-sm font-medium text-white">
           상품 {farm.products.length}개
@@ -338,9 +638,9 @@ function FarmCard({ farm }: { farm: FarmStory }) {
       <span className="mt-1 block text-sm text-brand-dark">
         {crops.join(" · ")}
       </span>
-      {farm.story && (
+      {(headline ?? farm.story) && (
         <span className="mt-1 line-clamp-2 block text-sm leading-normal text-ink-muted">
-          {farm.story}
+          {headline ?? farm.story}
         </span>
       )}
       <span className="mt-2 inline-flex items-center gap-1 text-sm font-bold text-brand">
