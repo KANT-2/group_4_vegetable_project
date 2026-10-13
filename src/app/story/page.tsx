@@ -197,7 +197,7 @@ export default async function StoryPage({
     ),
     ...farmSlide(
       "부여 토마토하우스",
-      "/images/farms/greenhouse.webp",
+      "/images/farms/tomato-greenhouse.webp",
       "햇살 가득한 온실에서 익은 토마토",
     ),
     ...farmSlide(
@@ -212,7 +212,7 @@ export default async function StoryPage({
     ),
     {
       id: "about",
-      href: "#about",
+      href: "#reasons",
       imageUrl: "/images/hero.jpg",
       eyebrow: "못난이마켓 선별 기준",
       title: "모양만 다를 뿐, 맛과 신선도는 그대로",
@@ -386,8 +386,9 @@ export default async function StoryPage({
 
       {/* 6. 왜 모양이 제각각일까요? */}
       <section
+        id="reasons"
         aria-labelledby="reasons-title"
-        className="container-page pt-16 md:pt-20"
+        className="container-page scroll-mt-24 pt-16 md:pt-20"
       >
         <SectionHeading
           id="reasons-title"
