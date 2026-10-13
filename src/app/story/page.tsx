@@ -113,7 +113,18 @@ function currentMonth(): number {
 // 상품·농가 정보는 5분마다 새로 확인해요.
 export const revalidate = 300;
 
-export default async function StoryPage() {
+// 지역 칩 주소: /story?region=전남#farms (전체는 region 없이)
+function regionHref(province?: string) {
+  const query = province ? `?region=${encodeURIComponent(province)}` : "";
+  return `${routes.story}${query}#farms`;
+}
+
+export default async function StoryPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const { region } = await searchParams;
   const [farms, products, vegetables] = await Promise.all([
     getFarmStories(),
     getProductList({ sort: "recommended" }),
@@ -130,6 +141,11 @@ export default async function StoryPage() {
     month,
   );
   const provinces = groupFarmsByProvince(farms);
+  // 목록에 있는 지역만 받아요. 모르는 값이면 전체를 보여 줘요.
+  const selected = provinces.find(
+    (group) => group.province === (Array.isArray(region) ? region[0] : region),
+  );
+  const shownFarms = selected?.farms ?? farms;
   const farmPhotoMap = getFarmPhotos(farms);
   const quotes = QUOTE_FARMS.map((name) =>
     farms.find((f) => f.farmName === name),
@@ -409,24 +425,51 @@ export default async function StoryPage() {
           sub="농가를 누르면 농가 이야기와 판매 상품, 위치, 요리까지 한 번에 볼 수 있어요"
         />
         {provinces.length > 0 && (
-          <ul
-            aria-label="지역별 농가 수"
-            className="mb-6 flex flex-wrap justify-center gap-2 md:mb-8"
-          >
-            {provinces.map(({ province, farms: list }) => (
-              <li
-                key={province}
-                className="rounded-full border border-line px-3 py-1 text-sm"
-              >
-                {province}{" "}
-                <span className="font-bold text-brand">{list.length}</span>
-              </li>
-            ))}
-          </ul>
+          <nav aria-label="지역별 농가 보기" className="mb-6 md:mb-8">
+            <ul className="flex flex-wrap justify-center gap-2">
+              {[{ province: "전체", farms }, ...provinces].map(
+                ({ province, farms: list }) => {
+                  const isAll = province === "전체";
+                  const active = isAll
+                    ? !selected
+                    : selected?.province === province;
+                  return (
+                    <li key={province}>
+                      <Link
+                        href={regionHref(isAll ? undefined : province)}
+                        scroll={false}
+                        aria-current={active ? "true" : undefined}
+                        className={`inline-flex min-h-9 items-center gap-1 rounded-full border px-3 text-sm transition-colors ${active ? "border-brand bg-brand text-white" : "border-line hover:border-brand hover:text-brand"}`}
+                      >
+                        {province}
+                        <span
+                          className={`font-bold ${active ? "text-white" : "text-brand"}`}
+                        >
+                          {list.length}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                },
+              )}
+            </ul>
+          </nav>
         )}
-        {farms.length > 0 ? (
+        {selected && (
+          <p role="status" className="mb-4 text-center text-sm text-ink-muted">
+            {selected.province} 지역 농가 {shownFarms.length}곳을 보고 있어요.{" "}
+            <Link
+              href={regionHref()}
+              scroll={false}
+              className="font-bold text-brand underline underline-offset-4"
+            >
+              전체 보기
+            </Link>
+          </p>
+        )}
+        {shownFarms.length > 0 ? (
           <ul className="grid grid-cols-2 gap-x-3 gap-y-9 sm:gap-x-[18px] lg:grid-cols-4">
-            {farms.map((farm) => (
+            {shownFarms.map((farm) => (
               <li key={farm.farmName}>
                 <FarmCard
                   farm={farm}
