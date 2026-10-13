@@ -2,10 +2,10 @@
   "checkedAt": "2026-10-13",
   "productCount": 67,
   "productPhotoSlots": 201,
-  "uniquePhotos": 135,
-  "pinterestPhotos": 83,
+  "uniquePhotos": 154,
+  "pinterestPhotos": 99,
   "rights": "Pinterest는 이미지 발견 경로입니다. 이용 허락이나 무료 라이선스를 확인한 사진으로 표기하지 않습니다. 원문·핀 URL을 보존합니다.",
-  "usage": "가상 상품의 참고 사진이며 해당 농가·포장·손상 상태를 직접 촬영한 증빙이 아닙니다. 일부 같은 품목의 보조 사진은 공유하지만 대표 사진과 전체 구성은 상품별로 다릅니다.",
+  "usage": "가상 상품의 참고 사진이며 농가·포장·손상 상태를 직접 촬영한 증빙이 아닙니다. 서로 다른 농가는 보조 사진까지 공유하지 않습니다. 같은 농가의 같은 품목 안에서만 일부 보조 사진을 공유합니다. 대표사진과 전체 구성은 상품별로 다릅니다.",
   "products": [
     {
       "productId": "carrot-bent-1kg",
@@ -13,9 +13,10 @@
       "name": "해남 흙당근 1kg",
       "images": [
         "/images/products/curated/carrot/10227c95bcc0.jpg",
-        "/images/products/curated/carrot/c895193ee3f7.jpg",
+        "/images/carrot-bulk.jpg",
         "/images/carrot.jpg"
-      ]
+      ],
+      "farmName": "해남 김씨농장"
     },
     {
       "productId": "carrot-irregular-3kg",
@@ -23,9 +24,10 @@
       "name": "제주 구좌 당근 실속 3kg",
       "images": [
         "/images/products/curated/carrot/ad7d057dce8e.jpg",
-        "/images/products/curated/carrot/10227c95bcc0.jpg",
+        "/images/products/curated/carrot/c895193ee3f7.jpg",
         "/images/products/curated/carrot/2273c0fef582.jpg"
-      ]
+      ],
+      "farmName": "제주 구좌당근"
     },
     {
       "productId": "carrot-scratched-2kg",
@@ -34,8 +36,9 @@
       "images": [
         "/images/carrot-scratched.jpg",
         "/images/carrot-bulk.jpg",
-        "/images/products/curated/carrot/dbfee2ede1e9.jpg"
-      ]
+        "/images/carrot.jpg"
+      ],
+      "farmName": "해남 김씨농장"
     },
     {
       "productId": "apple-scratched-2kg",
@@ -44,8 +47,9 @@
       "images": [
         "/images/apple-irregular.jpg",
         "/images/products/curated/apple/18539ff5c719.jpg",
-        "/images/products/curated/apple/ec1b2d140b49.jpg"
-      ]
+        "/images/products/curated/apple/2d191fdad108.jpg"
+      ],
+      "farmName": "청송 사과농원"
     },
     {
       "productId": "apple-small-3kg",
@@ -54,8 +58,9 @@
       "images": [
         "/images/apple-small.jpg",
         "/images/apple.jpg",
-        "/images/apple-irregular.jpg"
-      ]
+        "/images/products/curated/apple/7dfc1c25c871.jpg"
+      ],
+      "farmName": "영주 사과마을"
     },
     {
       "productId": "apple-irregular-2kg",
@@ -63,9 +68,10 @@
       "name": "영주 부사 가정용 2kg",
       "images": [
         "/images/products/curated/apple/ec1b2d140b49.jpg",
-        "/images/apple-irregular.jpg",
+        "/images/apple-small.jpg",
         "/images/apple.jpg"
-      ]
+      ],
+      "farmName": "영주 사과마을"
     },
     {
       "productId": "shiitake-irregular-500g",
@@ -73,9 +79,10 @@
       "name": "무농약 원목 표고버섯 500g",
       "images": [
         "/images/products/curated/shiitake/975a61d3b0e8.jpg",
-        "/images/shiitake-scratched.jpg",
+        "/images/products/curated/shiitake/3685f5f4cedc.jpg",
         "/images/shiitake.jpg"
-      ]
+      ],
+      "farmName": "장흥 버섯농가"
     },
     {
       "productId": "shiitake-small-300g",
@@ -84,8 +91,9 @@
       "images": [
         "/images/shiitake-small.jpg",
         "/images/products/curated/shiitake/975a61d3b0e8.jpg",
-        "/images/shiitake-scratched.jpg"
-      ]
+        "/images/products/curated/shiitake/3685f5f4cedc.jpg"
+      ],
+      "farmName": "장흥 버섯농가"
     },
     {
       "productId": "shiitake-scratched-1kg",
@@ -94,8 +102,9 @@
       "images": [
         "/images/shiitake-scratched.jpg",
         "/images/products/curated/shiitake/5a4074a57aa4.jpg",
-        "/images/shiitake-small.jpg"
-      ]
+        "/images/products/curated/shiitake/887ffb00b02d.jpg"
+      ],
+      "farmName": "청양 고추농가"
     },
     {
       "productId": "cabbage-small-1ea",
@@ -103,9 +112,10 @@
       "name": "평창 고랭지 미니 양배추 1통",
       "images": [
         "/images/products/curated/cabbage/2a00d282d40f.jpg",
-        "/images/products/curated/cabbage/8d64d5a8c26d.jpg",
+        "/images/cabbage-scratched.jpg",
         "/images/products/curated/cabbage/cd446b091035.jpg"
-      ]
+      ],
+      "farmName": "평창 고랭지농장"
     },
     {
       "productId": "cabbage-scratched-1ea",
@@ -115,7 +125,8 @@
         "/images/cabbage.jpg",
         "/images/products/curated/cabbage/2a00d282d40f.jpg",
         "/images/cabbage-scratched.jpg"
-      ]
+      ],
+      "farmName": "평창 고랭지농장"
     },
     {
       "productId": "cabbage-irregular-2ea",
@@ -124,8 +135,9 @@
       "images": [
         "/images/cabbage-irregular.jpg",
         "/images/products/curated/cabbage/8d64d5a8c26d.jpg",
-        "/images/cabbage.jpg"
-      ]
+        "/images/products/curated/cabbage/41fb4888a543.jpg"
+      ],
+      "farmName": "제주 한림밭"
     },
     {
       "productId": "paprika-irregular-4ea",
@@ -135,7 +147,8 @@
         "/images/products/curated/paprika/52c6606c33d3.jpg",
         "/images/products/curated/paprika/0a74809894c7.jpg",
         "/images/paprika.jpg"
-      ]
+      ],
+      "farmName": "영양 파프리카농장"
     },
     {
       "productId": "paprika-small-1kg",
@@ -145,7 +158,8 @@
         "/images/products/curated/paprika/75509701ac0d.jpg",
         "/images/products/curated/paprika/7d7f4242ce4d.jpg",
         "/images/paprika.jpg"
-      ]
+      ],
+      "farmName": "영양 파프리카농장"
     },
     {
       "productId": "paprika-scratched-3ea",
@@ -155,7 +169,8 @@
         "/images/paprika-scratched.jpg",
         "/images/products/curated/paprika/4643a89b2827.jpg",
         "/images/paprika-small.jpg"
-      ]
+      ],
+      "farmName": "김제 유리온실"
     },
     {
       "productId": "onion-small-2kg",
@@ -164,8 +179,9 @@
       "images": [
         "/images/products/curated/onion/33dc28bd84f7.jpg",
         "/images/products/curated/onion/3dc98193b653.jpg",
-        "/images/products/curated/onion/ab9361e179db.jpg"
-      ]
+        "/images/onion-scratched.jpg"
+      ],
+      "farmName": "무안 양파밭"
     },
     {
       "productId": "onion-scratched-3kg",
@@ -174,8 +190,9 @@
       "images": [
         "/images/onion-scratched.jpg",
         "/images/products/curated/onion/e660fc9a79a2.jpg",
-        "/images/onion-irregular.jpg"
-      ]
+        "/images/products/curated/onion/33dc28bd84f7.jpg"
+      ],
+      "farmName": "무안 양파밭"
     },
     {
       "productId": "onion-irregular-5kg",
@@ -185,7 +202,8 @@
         "/images/onion.jpg",
         "/images/products/curated/onion/ab9361e179db.jpg",
         "/images/onion-irregular.jpg"
-      ]
+      ],
+      "farmName": "창녕 양파마을"
     },
     {
       "productId": "potato-small-3kg",
@@ -195,7 +213,8 @@
         "/images/products/curated/potato/23045424cc74.jpg",
         "/images/products/curated/potato/dc73404b3ddb.jpg",
         "/images/products/curated/potato/d05ad95aa965.jpg"
-      ]
+      ],
+      "farmName": "강릉 감자밭"
     },
     {
       "productId": "potato-scratched-2kg",
@@ -205,7 +224,8 @@
         "/images/products/curated/potato/5a549a3b2138.jpg",
         "/images/products/curated/potato/aef2cfb5d3ea.jpg",
         "/images/products/curated/potato/2e86b4ed1152.jpg"
-      ]
+      ],
+      "farmName": "평창 고랭지농장"
     },
     {
       "productId": "potato-irregular-5kg",
@@ -215,7 +235,8 @@
         "/images/potato-small.jpg",
         "/images/products/curated/potato/ed3deda97613.jpg",
         "/images/products/curated/potato/23045424cc74.jpg"
-      ]
+      ],
+      "farmName": "강릉 감자밭"
     },
     {
       "productId": "sweet-potato-bent-2kg",
@@ -224,8 +245,9 @@
       "images": [
         "/images/products/curated/sweet-potato/4b394edbd556.jpg",
         "/images/products/curated/sweet-potato/ac2cf884c1b5.jpg",
-        "/images/sweet-potato-small.jpg"
-      ]
+        "/images/products/curated/sweet-potato/43a7ffce57e7.jpg"
+      ],
+      "farmName": "해남 황토고구마"
     },
     {
       "productId": "sweet-potato-small-1-5kg",
@@ -233,9 +255,10 @@
       "name": "여주 한입 꿀고구마 1.5kg",
       "images": [
         "/images/sweet-potato-small.jpg",
-        "/images/products/curated/sweet-potato/4b394edbd556.jpg",
+        "/images/products/curated/sweet-potato/b0f632df5cf4.jpg",
         "/images/sweet-potato-scratched.jpg"
-      ]
+      ],
+      "farmName": "여주 고구마농원"
     },
     {
       "productId": "sweet-potato-scratched-3kg",
@@ -244,8 +267,9 @@
       "images": [
         "/images/products/curated/sweet-potato/ac2cf884c1b5.jpg",
         "/images/sweet-potato.jpg",
-        "/images/sweet-potato-scratched.jpg"
-      ]
+        "/images/products/curated/sweet-potato/43a7ffce57e7.jpg"
+      ],
+      "farmName": "해남 황토고구마"
     },
     {
       "productId": "tomato-irregular-1kg",
@@ -255,7 +279,8 @@
         "/images/products/curated/tomato/515151093852.jpg",
         "/images/products/curated/tomato/0d35dec9216d.jpg",
         "/images/tomato-scratched.jpg"
-      ]
+      ],
+      "farmName": "부여 토마토하우스"
     },
     {
       "productId": "tomato-scratched-2kg",
@@ -264,8 +289,9 @@
       "images": [
         "/images/tomato-scratched.jpg",
         "/images/products/curated/tomato/24faa81b2219.jpg",
-        "/images/products/curated/tomato/8ae6d4b2dc22.jpg"
-      ]
+        "/images/products/curated/tomato/0d35dec9216d.jpg"
+      ],
+      "farmName": "부여 토마토하우스"
     },
     {
       "productId": "tomato-small-1-5kg",
@@ -273,9 +299,10 @@
       "name": "담양 대추방울토마토 1.5kg",
       "images": [
         "/images/tomato-small.jpg",
-        "/images/products/curated/tomato/515151093852.jpg",
+        "/images/products/curated/tomato/4031d4a521e0.jpg",
         "/images/products/curated/tomato/8ae6d4b2dc22.jpg"
-      ]
+      ],
+      "farmName": "담양 햇살농장"
     },
     {
       "productId": "cucumber-bent-5ea",
@@ -284,8 +311,9 @@
       "images": [
         "/images/products/curated/cucumber/bccc07268a02.jpg",
         "/images/products/curated/cucumber/94894a9920ff.jpg",
-        "/images/cucumber.jpg"
-      ]
+        "/images/cucumber-scratched.jpg"
+      ],
+      "farmName": "천안 오이농장"
     },
     {
       "productId": "cucumber-scratched-10ea",
@@ -293,9 +321,10 @@
       "name": "천안 백다다기 오이 실속 10입",
       "images": [
         "/images/products/curated/cucumber/d1952996e6fb.jpg",
-        "/images/products/curated/cucumber/a9532f9717a5.jpg",
+        "/images/products/curated/cucumber/94894a9920ff.jpg",
         "/images/cucumber-scratched.jpg"
-      ]
+      ],
+      "farmName": "천안 오이농장"
     },
     {
       "productId": "cucumber-small-7ea",
@@ -305,7 +334,8 @@
         "/images/products/curated/cucumber/a9532f9717a5.jpg",
         "/images/cucumber.jpg",
         "/images/cucumber-small.jpg"
-      ]
+      ],
+      "farmName": "상주 백오이농원"
     },
     {
       "productId": "green-onion-small-1bunch",
@@ -315,7 +345,8 @@
         "/images/products/curated/green-onion/dcbae479e5e6.jpg",
         "/images/products/curated/green-onion/04bc6a48871a.jpg",
         "/images/products/curated/green-onion/6613228a3bc9.jpg"
-      ]
+      ],
+      "farmName": "진도 대파밭"
     },
     {
       "productId": "green-onion-bent-1bunch",
@@ -325,7 +356,8 @@
         "/images/green-onion.jpg",
         "/images/products/curated/green-onion/dcbae479e5e6.jpg",
         "/images/green-onion-irregular.jpg"
-      ]
+      ],
+      "farmName": "진도 대파밭"
     },
     {
       "productId": "green-onion-irregular-2bunch",
@@ -335,7 +367,8 @@
         "/images/green-onion-irregular.jpg",
         "/images/products/curated/green-onion/04bc6a48871a.jpg",
         "/images/green-onion-scratched.jpg"
-      ]
+      ],
+      "farmName": "진도 대파밭"
     },
     {
       "productId": "green-onion-scratched-1bunch",
@@ -345,7 +378,8 @@
         "/images/green-onion-scratched.jpg",
         "/images/products/curated/green-onion/6613228a3bc9.jpg",
         "/images/green-onion.jpg"
-      ]
+      ],
+      "farmName": "진도 대파밭"
     },
     {
       "productId": "spinach-small-500g",
@@ -355,7 +389,8 @@
         "/images/products/curated/spinach/43d20ffcc1b6.jpg",
         "/images/products/curated/spinach/84db290e43fa.jpg",
         "/images/products/curated/spinach/07a24171c8da.jpg"
-      ]
+      ],
+      "farmName": "남해 섬시금치"
     },
     {
       "productId": "spinach-irregular-1kg",
@@ -365,7 +400,8 @@
         "/images/products/curated/spinach/8d215d70bc17.jpg",
         "/images/products/curated/spinach/43d20ffcc1b6.jpg",
         "/images/spinach.jpg"
-      ]
+      ],
+      "farmName": "남해 섬시금치"
     },
     {
       "productId": "spinach-scratched-500g",
@@ -375,7 +411,8 @@
         "/images/spinach-irregular.jpg",
         "/images/products/curated/spinach/84db290e43fa.jpg",
         "/images/products/curated/spinach/8d215d70bc17.jpg"
-      ]
+      ],
+      "farmName": "남해 섬시금치"
     },
     {
       "productId": "radish-scratched-2ea",
@@ -384,8 +421,9 @@
       "images": [
         "/images/products/curated/radish/ec7b10852e01.jpg",
         "/images/products/curated/radish/ee661593b1aa.jpg",
-        "/images/products/curated/radish/dc2c58d6dcb6.jpg"
-      ]
+        "/images/products/curated/radish/a63c9141903b.jpg"
+      ],
+      "farmName": "평창 고랭지농장"
     },
     {
       "productId": "radish-irregular-1ea",
@@ -394,8 +432,9 @@
       "images": [
         "/images/products/curated/radish/dc2c58d6dcb6.jpg",
         "/images/products/curated/radish/e9c0e3c93629.jpg",
-        "/images/radish-irregular.jpg"
-      ]
+        "/images/products/curated/radish/d5d8e5426e0e.jpg"
+      ],
+      "farmName": "제주 구좌당근"
     },
     {
       "productId": "radish-small-2ea",
@@ -403,9 +442,10 @@
       "name": "고창 황토 꼬마무 2개",
       "images": [
         "/images/radish-irregular.jpg",
-        "/images/products/curated/radish/ec7b10852e01.jpg",
+        "/images/products/curated/radish/ef98938efa39.jpg",
         "/images/products/curated/radish/f89d922ff13e.jpg"
-      ]
+      ],
+      "farmName": "고창 황토무밭"
     },
     {
       "productId": "broccoli-small-3ea",
@@ -413,9 +453,10 @@
       "name": "제주 미니 브로콜리 3송이",
       "images": [
         "/images/products/curated/broccoli/e3f217edbabb.jpg",
-        "/images/products/curated/broccoli/1eda16cf931c.jpg",
-        "/images/products/curated/broccoli/0d0a0dd99848.jpg"
-      ]
+        "/images/broccoli-irregular.jpg",
+        "/images/broccoli-scratched.jpg"
+      ],
+      "farmName": "제주 한림밭"
     },
     {
       "productId": "broccoli-irregular-2ea",
@@ -425,7 +466,8 @@
         "/images/products/curated/broccoli/9fe22b6d97ab.jpg",
         "/images/products/curated/broccoli/1c4816d9a646.jpg",
         "/images/products/curated/broccoli/0d0a0dd99848.jpg"
-      ]
+      ],
+      "farmName": "평창 고랭지농장"
     },
     {
       "productId": "broccoli-scratched-2ea",
@@ -435,7 +477,8 @@
         "/images/broccoli-irregular.jpg",
         "/images/broccoli-small.jpg",
         "/images/broccoli-scratched.jpg"
-      ]
+      ],
+      "farmName": "제주 한림밭"
     },
     {
       "productId": "napa-cabbage-small-2ea",
@@ -444,8 +487,9 @@
       "images": [
         "/images/products/curated/napa-cabbage/da0a3aa10121.jpg",
         "/images/products/curated/napa-cabbage/9d8f7844a978.jpg",
-        "/images/products/curated/napa-cabbage/f17fa29bdfa5.jpg"
-      ]
+        "/images/napa-cabbage-small.jpg"
+      ],
+      "farmName": "해남 땅끝배추"
     },
     {
       "productId": "napa-cabbage-scratched-1ea",
@@ -453,9 +497,10 @@
       "name": "괴산 김장배추 1통",
       "images": [
         "/images/napa-cabbage-irregular.jpg",
-        "/images/products/curated/napa-cabbage/da0a3aa10121.jpg",
-        "/images/napa-cabbage-small.jpg"
-      ]
+        "/images/napa-cabbage-scratched.jpg",
+        "/images/products/curated/napa-cabbage/f17fa29bdfa5.jpg"
+      ],
+      "farmName": "괴산 배추마을"
     },
     {
       "productId": "napa-cabbage-irregular-1ea",
@@ -465,7 +510,8 @@
         "/images/napa-cabbage-small.jpg",
         "/images/products/curated/napa-cabbage/9d8f7844a978.jpg",
         "/images/products/curated/napa-cabbage/211309fe1de6.jpg"
-      ]
+      ],
+      "farmName": "해남 땅끝배추"
     },
     {
       "productId": "aehobak-small-3ea",
@@ -474,8 +520,9 @@
       "images": [
         "/images/products/curated/aehobak/b4afccfb1321.jpg",
         "/images/products/curated/aehobak/b91fdb884656.jpg",
-        "/images/aehobak-small.jpg"
-      ]
+        "/images/aehobak-scratched.jpg"
+      ],
+      "farmName": "춘천 호박농원"
     },
     {
       "productId": "aehobak-bent-2ea",
@@ -485,7 +532,8 @@
         "/images/products/curated/aehobak/b91fdb884656.jpg",
         "/images/products/curated/aehobak/32dd0bc403a0.jpg",
         "/images/products/curated/aehobak/b4afccfb1321.jpg"
-      ]
+      ],
+      "farmName": "춘천 호박농원"
     },
     {
       "productId": "aehobak-scratched-3ea",
@@ -493,9 +541,10 @@
       "name": "진주 애호박 실속 3입",
       "images": [
         "/images/aehobak-small.jpg",
-        "/images/products/curated/aehobak/b4afccfb1321.jpg",
-        "/images/products/curated/aehobak/32dd0bc403a0.jpg"
-      ]
+        "/images/products/curated/aehobak/9ec77135687c.jpg",
+        "/images/products/curated/aehobak/d2eb84de4b3b.jpg"
+      ],
+      "farmName": "진주 들판농장"
     },
     {
       "productId": "eggplant-scratched-4ea",
@@ -504,8 +553,9 @@
       "images": [
         "/images/products/curated/eggplant/baf58aac25c6.jpg",
         "/images/products/curated/eggplant/f674d7edf9c9.jpg",
-        "/images/products/curated/eggplant/2423e0441077.jpg"
-      ]
+        "/images/products/curated/eggplant/ec8e9d7c9f58.jpg"
+      ],
+      "farmName": "하동 섬진강농장"
     },
     {
       "productId": "eggplant-small-7ea",
@@ -515,7 +565,8 @@
         "/images/products/curated/eggplant/ef06b134f21e.jpg",
         "/images/products/curated/eggplant/baf58aac25c6.jpg",
         "/images/products/curated/eggplant/ec8e9d7c9f58.jpg"
-      ]
+      ],
+      "farmName": "하동 섬진강농장"
     },
     {
       "productId": "eggplant-irregular-5ea",
@@ -523,9 +574,10 @@
       "name": "진주 햇가지 5입",
       "images": [
         "/images/eggplant-irregular.jpg",
-        "/images/products/curated/eggplant/ef06b134f21e.jpg",
+        "/images/eggplant-bent.jpg",
         "/images/products/curated/eggplant/2423e0441077.jpg"
-      ]
+      ],
+      "farmName": "진주 들판농장"
     },
     {
       "productId": "sweet-pumpkin-small-3ea",
@@ -533,9 +585,10 @@
       "name": "유기농 미니 단호박 3통",
       "images": [
         "/images/products/curated/sweet-pumpkin/a804fe551ec1.jpg",
-        "/images/products/curated/sweet-pumpkin/94bec147ff49.jpg",
+        "/images/danhobak-scratched.jpg",
         "/images/danhobak-small.jpg"
-      ]
+      ],
+      "farmName": "경주 단호박농장"
     },
     {
       "productId": "sweet-pumpkin-scratched-2ea",
@@ -543,9 +596,10 @@
       "name": "경주 밤단호박 2통",
       "images": [
         "/images/danhobak-small.jpg",
-        "/images/products/curated/sweet-pumpkin/a804fe551ec1.jpg",
+        "/images/products/curated/sweet-pumpkin/345f81cfacbe.jpg",
         "/images/danhobak-scratched.jpg"
-      ]
+      ],
+      "farmName": "경주 단호박농장"
     },
     {
       "productId": "sweet-pumpkin-irregular-2ea",
@@ -554,8 +608,9 @@
       "images": [
         "/images/danhobak-irregular.jpg",
         "/images/products/curated/sweet-pumpkin/94bec147ff49.jpg",
-        "/images/danhobak-scratched.jpg"
-      ]
+        "/images/products/curated/sweet-pumpkin/5960defb3329.jpg"
+      ],
+      "farmName": "춘천 호박농원"
     },
     {
       "productId": "king-oyster-small-500g",
@@ -563,9 +618,10 @@
       "name": "화성 미니 새송이 500g",
       "images": [
         "/images/products/curated/king-oyster/6901f6e69f32.jpg",
-        "/images/products/curated/king-oyster/7686b2a5dd3d.jpg",
+        "/images/king-oyster-irregular-500g.jpg",
         "/images/king-oyster-small.jpg"
-      ]
+      ],
+      "farmName": "화성 버섯하우스"
     },
     {
       "productId": "king-oyster-scratched-500g",
@@ -573,9 +629,10 @@
       "name": "화성 새송이버섯 500g",
       "images": [
         "/images/products/curated/king-oyster/f0f825897908.jpg",
-        "/images/king-oyster-scratched.jpg",
+        "/images/king-oyster-irregular-500g.jpg",
         "/images/products/curated/king-oyster/6901f6e69f32.jpg"
-      ]
+      ],
+      "farmName": "화성 버섯하우스"
     },
     {
       "productId": "king-oyster-irregular-1kg",
@@ -584,8 +641,9 @@
       "images": [
         "/images/products/curated/king-oyster/d045c0bd7897.jpg",
         "/images/king-oyster-irregular.jpg",
-        "/images/products/curated/king-oyster/f0f825897908.jpg"
-      ]
+        "/images/king-oyster-scratched.jpg"
+      ],
+      "farmName": "청양 고추농가"
     },
     {
       "productId": "king-oyster-irregular-500g",
@@ -594,8 +652,9 @@
       "images": [
         "/images/king-oyster-small.jpg",
         "/images/king-oyster-irregular-500g.jpg",
-        "/images/products/curated/king-oyster/d045c0bd7897.jpg"
-      ]
+        "/images/products/curated/king-oyster/f0f825897908.jpg"
+      ],
+      "farmName": "화성 버섯하우스"
     },
     {
       "productId": "king-oyster-scratched-1kg",
@@ -605,7 +664,8 @@
         "/images/products/curated/king-oyster/7686b2a5dd3d.jpg",
         "/images/king-oyster-scratched.jpg",
         "/images/king-oyster-irregular.jpg"
-      ]
+      ],
+      "farmName": "청양 고추농가"
     },
     {
       "productId": "mandarin-small-3kg",
@@ -615,7 +675,8 @@
         "/images/products/curated/mandarin/98758cfa889e.jpg",
         "/images/products/curated/mandarin/fd648c3ca3e7.jpg",
         "/images/mandarin-scratched.jpg"
-      ]
+      ],
+      "farmName": "서귀포 감귤원"
     },
     {
       "productId": "mandarin-scratched-5kg",
@@ -625,17 +686,19 @@
         "/images/products/curated/mandarin/fd648c3ca3e7.jpg",
         "/images/products/curated/mandarin/252857a263d8.jpg",
         "/images/products/curated/mandarin/98758cfa889e.jpg"
-      ]
+      ],
+      "farmName": "서귀포 감귤원"
     },
     {
       "productId": "mandarin-irregular-3kg",
       "vegetableId": "mandarin",
       "name": "제주 한림 감귤 3kg",
       "images": [
-        "/images/products/curated/mandarin/252857a263d8.jpg",
-        "/images/mandarin-scratched.jpg",
-        "/images/products/curated/mandarin/fd648c3ca3e7.jpg"
-      ]
+        "/images/products/curated/mandarin/5d31841c214b.jpg",
+        "/images/products/curated/mandarin/3be8638096ad.jpg",
+        "/images/products/curated/mandarin/acc288b4cddf.jpg"
+      ],
+      "farmName": "제주 한림밭"
     },
     {
       "productId": "chili-small-300g",
@@ -645,7 +708,8 @@
         "/images/products/curated/chili/f49a52652578.jpg",
         "/images/products/curated/chili/4106aaaf21e6.jpg",
         "/images/chili-small.jpg"
-      ]
+      ],
+      "farmName": "청양 고추농가"
     },
     {
       "productId": "chili-bent-500g",
@@ -655,7 +719,8 @@
         "/images/products/curated/chili/9f5c87d68e6e.jpg",
         "/images/products/curated/chili/9839019bdcfa.jpg",
         "/images/chili-bent.jpg"
-      ]
+      ],
+      "farmName": "청양 고추농가"
     },
     {
       "productId": "chili-scratched-500g",
@@ -665,7 +730,8 @@
         "/images/chili-scratched.jpg",
         "/images/products/curated/chili/6b39b2b56648.jpg",
         "/images/products/curated/chili/9b6a00d071da.jpg"
-      ]
+      ],
+      "farmName": "청양 고추농가"
     },
     {
       "productId": "chili-irregular-500g",
@@ -675,7 +741,8 @@
         "/images/products/curated/chili/133b550f2de3.jpg",
         "/images/products/curated/chili/9839019bdcfa.jpg",
         "/images/chili-irregular.jpg"
-      ]
+      ],
+      "farmName": "청양 고추농가"
     }
   ],
   "photos": [
@@ -693,7 +760,8 @@
       "format": "JPEG",
       "sha256": "c895193ee3f720771597d48d8d5980d9bf06e24608c5f8f11ea5cd2ef52a4ca1",
       "vegetableId": "carrot",
-      "productIds": ["carrot-bent-1kg"]
+      "productIds": ["carrot-irregular-3kg"],
+      "farmNames": ["제주 구좌당근"]
     },
     {
       "imageUrl": "/images/carrot.jpg",
@@ -704,7 +772,8 @@
       "format": "JPEG",
       "sha256": "4b1257b06874932eaa2ff857d7674440c3080eea6cebf8938bf284a4116ca31f",
       "vegetableId": "carrot",
-      "productIds": ["carrot-bent-1kg"]
+      "productIds": ["carrot-bent-1kg", "carrot-scratched-2kg"],
+      "farmNames": ["해남 김씨농장"]
     },
     {
       "imageUrl": "/images/products/curated/carrot/ad7d057dce8e.jpg",
@@ -720,7 +789,8 @@
       "format": "JPEG",
       "sha256": "ad7d057dce8e267bce9e6d08ace879e7bcb07fdd0d84d959ec2870428260f6c7",
       "vegetableId": "carrot",
-      "productIds": ["carrot-irregular-3kg"]
+      "productIds": ["carrot-irregular-3kg"],
+      "farmNames": ["제주 구좌당근"]
     },
     {
       "imageUrl": "/images/products/curated/carrot/10227c95bcc0.jpg",
@@ -736,7 +806,8 @@
       "format": "JPEG",
       "sha256": "10227c95bcc07e08002deeba803259fc79c8e288f476cda1a754fb09c08ec1d9",
       "vegetableId": "carrot",
-      "productIds": ["carrot-bent-1kg", "carrot-irregular-3kg"]
+      "productIds": ["carrot-bent-1kg"],
+      "farmNames": ["해남 김씨농장"]
     },
     {
       "imageUrl": "/images/products/curated/carrot/2273c0fef582.jpg",
@@ -752,7 +823,8 @@
       "format": "JPEG",
       "sha256": "2273c0fef5828b39b37bf337a073666a1cc21df1a4b487a2adc2247925c54e57",
       "vegetableId": "carrot",
-      "productIds": ["carrot-irregular-3kg"]
+      "productIds": ["carrot-irregular-3kg"],
+      "farmNames": ["제주 구좌당근"]
     },
     {
       "imageUrl": "/images/carrot-scratched.jpg",
@@ -763,7 +835,8 @@
       "format": "JPEG",
       "sha256": "9bb32912c94c3670e7b00b76a11ac81c95f6700a8e58ef2f5a0464b08e1fd8ea",
       "vegetableId": "carrot",
-      "productIds": ["carrot-scratched-2kg"]
+      "productIds": ["carrot-scratched-2kg"],
+      "farmNames": ["해남 김씨농장"]
     },
     {
       "imageUrl": "/images/carrot-bulk.jpg",
@@ -774,23 +847,8 @@
       "format": "JPEG",
       "sha256": "f8c3594d66b6c25dc23c81bcadc78997f382fb0683279ac9065bc9a44665464f",
       "vegetableId": "carrot",
-      "productIds": ["carrot-scratched-2kg"]
-    },
-    {
-      "imageUrl": "/images/products/curated/carrot/dbfee2ede1e9.jpg",
-      "sourceKind": "pinterest",
-      "pinUrl": "https://uk.pinterest.com/pin/fresh-carrots-at-the-market--368521181982724117/",
-      "pinterestImageUrl": "https://i.pinimg.com/736x/55/59/47/5559471e7cd9b82475b29d3694e5881c.jpg",
-      "originalImageUrl": "https://i.pinimg.com/originals/55/59/47/5559471e7cd9b82475b29d3694e5881c.jpg",
-      "originalPageUrl": "https://creativemarket.com/johntrax/83557-Fresh-carrots-at-the-market?u=fullwidth",
-      "title": "Fresh Carrots at the Market | Carrot stock photo, Assorted colorful carrots at market, Asparagus bunches close-up",
-      "pinner": "Patrick Edwards",
-      "width": 680,
-      "height": 451,
-      "format": "JPEG",
-      "sha256": "dbfee2ede1e9f7abfd7d0dcb5acb1ee6dfcf672a4a305c34d7b0f6546ee12c4d",
-      "vegetableId": "carrot",
-      "productIds": ["carrot-scratched-2kg"]
+      "productIds": ["carrot-bent-1kg", "carrot-scratched-2kg"],
+      "farmNames": ["해남 김씨농장"]
     },
     {
       "imageUrl": "/images/products/curated/apple/18539ff5c719.jpg",
@@ -806,7 +864,8 @@
       "format": "JPEG",
       "sha256": "18539ff5c7190bd8ab7fbfd9d6772f629708a1bc36e00e21f1386bb8ee629522",
       "vegetableId": "apple",
-      "productIds": ["apple-scratched-2kg"]
+      "productIds": ["apple-scratched-2kg"],
+      "farmNames": ["청송 사과농원"]
     },
     {
       "imageUrl": "/images/products/curated/apple/ec1b2d140b49.jpg",
@@ -822,7 +881,8 @@
       "format": "JPEG",
       "sha256": "ec1b2d140b49105e3a739981a5471718a57a35f7d78a1ba43778f0fdd1512c60",
       "vegetableId": "apple",
-      "productIds": ["apple-scratched-2kg", "apple-irregular-2kg"]
+      "productIds": ["apple-irregular-2kg"],
+      "farmNames": ["영주 사과마을"]
     },
     {
       "imageUrl": "/images/apple-small.jpg",
@@ -833,7 +893,8 @@
       "format": "JPEG",
       "sha256": "3c92878bf7a7dcefe997267e344326ab111c9e05d329cf2fb0dc05cd52c6fa12",
       "vegetableId": "apple",
-      "productIds": ["apple-small-3kg"]
+      "productIds": ["apple-small-3kg", "apple-irregular-2kg"],
+      "farmNames": ["영주 사과마을"]
     },
     {
       "imageUrl": "/images/apple.jpg",
@@ -844,7 +905,8 @@
       "format": "JPEG",
       "sha256": "ae867b0e15d4e12ab4615e616f09d82b8e8583d24086b4d3c56de16c99627b32",
       "vegetableId": "apple",
-      "productIds": ["apple-small-3kg", "apple-irregular-2kg"]
+      "productIds": ["apple-small-3kg", "apple-irregular-2kg"],
+      "farmNames": ["영주 사과마을"]
     },
     {
       "imageUrl": "/images/apple-irregular.jpg",
@@ -855,11 +917,8 @@
       "format": "JPEG",
       "sha256": "9864c506b3792aa9fc4f2df9474fb9ba77d1f1c447bcf7d961634896890bff3a",
       "vegetableId": "apple",
-      "productIds": [
-        "apple-scratched-2kg",
-        "apple-small-3kg",
-        "apple-irregular-2kg"
-      ]
+      "productIds": ["apple-scratched-2kg"],
+      "farmNames": ["청송 사과농원"]
     },
     {
       "imageUrl": "/images/products/curated/shiitake/975a61d3b0e8.jpg",
@@ -875,7 +934,8 @@
       "format": "JPEG",
       "sha256": "975a61d3b0e8b234a0a8a8a449933d76c23f91f7dc5d9c051a6111c5a007d069",
       "vegetableId": "shiitake",
-      "productIds": ["shiitake-irregular-500g", "shiitake-small-300g"]
+      "productIds": ["shiitake-irregular-500g", "shiitake-small-300g"],
+      "farmNames": ["장흥 버섯농가"]
     },
     {
       "imageUrl": "/images/shiitake.jpg",
@@ -886,7 +946,8 @@
       "format": "JPEG",
       "sha256": "6b2245759698b3c54fbded0b630edf444a4a65afcd2f265ceff92aa484b7e86d",
       "vegetableId": "shiitake",
-      "productIds": ["shiitake-irregular-500g"]
+      "productIds": ["shiitake-irregular-500g"],
+      "farmNames": ["장흥 버섯농가"]
     },
     {
       "imageUrl": "/images/shiitake-small.jpg",
@@ -897,7 +958,8 @@
       "format": "JPEG",
       "sha256": "2f7cd33f3625f2d11b6f5aed08d8b6e481c5cbad9f270aa9693266b5b5054abb",
       "vegetableId": "shiitake",
-      "productIds": ["shiitake-small-300g", "shiitake-scratched-1kg"]
+      "productIds": ["shiitake-small-300g"],
+      "farmNames": ["장흥 버섯농가"]
     },
     {
       "imageUrl": "/images/shiitake-scratched.jpg",
@@ -908,11 +970,8 @@
       "format": "JPEG",
       "sha256": "727390e40fe10948bb6b9265078163e601b41a36afa41b5b5ae1ceae35c97252",
       "vegetableId": "shiitake",
-      "productIds": [
-        "shiitake-irregular-500g",
-        "shiitake-small-300g",
-        "shiitake-scratched-1kg"
-      ]
+      "productIds": ["shiitake-scratched-1kg"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/products/curated/shiitake/5a4074a57aa4.jpg",
@@ -928,7 +987,8 @@
       "format": "JPEG",
       "sha256": "5a4074a57aa45979b6cb486c298711961228c1dabc17bd2157792a0aa9074dc1",
       "vegetableId": "shiitake",
-      "productIds": ["shiitake-scratched-1kg"]
+      "productIds": ["shiitake-scratched-1kg"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/products/curated/cabbage/2a00d282d40f.jpg",
@@ -944,7 +1004,8 @@
       "format": "JPEG",
       "sha256": "2a00d282d40f4fd923313440023f461cff1ba8b45a99548f62cb6d33d903c6fc",
       "vegetableId": "cabbage",
-      "productIds": ["cabbage-small-1ea", "cabbage-scratched-1ea"]
+      "productIds": ["cabbage-small-1ea", "cabbage-scratched-1ea"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/products/curated/cabbage/8d64d5a8c26d.jpg",
@@ -960,7 +1021,8 @@
       "format": "JPEG",
       "sha256": "8d64d5a8c26dbe5685982f6baa768d2a2f5f395d16b10bdb88c83dd647c15000",
       "vegetableId": "cabbage",
-      "productIds": ["cabbage-small-1ea", "cabbage-irregular-2ea"]
+      "productIds": ["cabbage-irregular-2ea"],
+      "farmNames": ["제주 한림밭"]
     },
     {
       "imageUrl": "/images/products/curated/cabbage/cd446b091035.jpg",
@@ -976,7 +1038,8 @@
       "format": "JPEG",
       "sha256": "cd446b0910358b973e2189c27ac1ed2d50c9abfe694032bfc43f8a6607ed0d86",
       "vegetableId": "cabbage",
-      "productIds": ["cabbage-small-1ea"]
+      "productIds": ["cabbage-small-1ea"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/cabbage.jpg",
@@ -987,7 +1050,8 @@
       "format": "JPEG",
       "sha256": "ee3469304e09e20b54a8845c323ef3a980625c274ce86f244dc2429da5844b35",
       "vegetableId": "cabbage",
-      "productIds": ["cabbage-scratched-1ea", "cabbage-irregular-2ea"]
+      "productIds": ["cabbage-scratched-1ea"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/cabbage-scratched.jpg",
@@ -998,7 +1062,8 @@
       "format": "JPEG",
       "sha256": "1b03d7041b1d5857bc35e766540f60930d76028b8382738cd600259cd80e7348",
       "vegetableId": "cabbage",
-      "productIds": ["cabbage-scratched-1ea"]
+      "productIds": ["cabbage-small-1ea", "cabbage-scratched-1ea"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/cabbage-irregular.jpg",
@@ -1009,7 +1074,8 @@
       "format": "JPEG",
       "sha256": "dad6ab5516bdc894879dc5e2d28b409ae9dec6d051c4974ff72bf37309a6a96c",
       "vegetableId": "cabbage",
-      "productIds": ["cabbage-irregular-2ea"]
+      "productIds": ["cabbage-irregular-2ea"],
+      "farmNames": ["제주 한림밭"]
     },
     {
       "imageUrl": "/images/products/curated/paprika/52c6606c33d3.jpg",
@@ -1025,7 +1091,8 @@
       "format": "JPEG",
       "sha256": "52c6606c33d3e43cd925a370c0fcd89efee6e16b80268a9804ceb9a52a9b66e3",
       "vegetableId": "paprika",
-      "productIds": ["paprika-irregular-4ea"]
+      "productIds": ["paprika-irregular-4ea"],
+      "farmNames": ["영양 파프리카농장"]
     },
     {
       "imageUrl": "/images/products/curated/paprika/0a74809894c7.jpg",
@@ -1041,7 +1108,8 @@
       "format": "JPEG",
       "sha256": "0a74809894c703a281a16ab3d5f283dbcc2ae8168de364d8f99deb52ce710ca6",
       "vegetableId": "paprika",
-      "productIds": ["paprika-irregular-4ea"]
+      "productIds": ["paprika-irregular-4ea"],
+      "farmNames": ["영양 파프리카농장"]
     },
     {
       "imageUrl": "/images/products/curated/paprika/75509701ac0d.jpg",
@@ -1057,7 +1125,8 @@
       "format": "JPEG",
       "sha256": "75509701ac0d18f9c75a68dea5a635a55d008383df9d566e30f30624feeeceb8",
       "vegetableId": "paprika",
-      "productIds": ["paprika-small-1kg"]
+      "productIds": ["paprika-small-1kg"],
+      "farmNames": ["영양 파프리카농장"]
     },
     {
       "imageUrl": "/images/products/curated/paprika/7d7f4242ce4d.jpg",
@@ -1073,7 +1142,8 @@
       "format": "JPEG",
       "sha256": "7d7f4242ce4d27a76fa0cb9218effbab0482d42923b32c8aae7fd3dc5507f265",
       "vegetableId": "paprika",
-      "productIds": ["paprika-small-1kg"]
+      "productIds": ["paprika-small-1kg"],
+      "farmNames": ["영양 파프리카농장"]
     },
     {
       "imageUrl": "/images/paprika.jpg",
@@ -1084,7 +1154,8 @@
       "format": "JPEG",
       "sha256": "39ae2f52b860b02c9e1d86f1c7409f1d0ded281bcb45026e66542f82b5c95d20",
       "vegetableId": "paprika",
-      "productIds": ["paprika-irregular-4ea", "paprika-small-1kg"]
+      "productIds": ["paprika-irregular-4ea", "paprika-small-1kg"],
+      "farmNames": ["영양 파프리카농장"]
     },
     {
       "imageUrl": "/images/paprika-scratched.jpg",
@@ -1095,7 +1166,8 @@
       "format": "JPEG",
       "sha256": "26bbc369dba1b2dfe4189c9f912f58ce9e35b8bd43ac594b8811bd5ef0cab71b",
       "vegetableId": "paprika",
-      "productIds": ["paprika-scratched-3ea"]
+      "productIds": ["paprika-scratched-3ea"],
+      "farmNames": ["김제 유리온실"]
     },
     {
       "imageUrl": "/images/products/curated/paprika/4643a89b2827.jpg",
@@ -1111,7 +1183,8 @@
       "format": "JPEG",
       "sha256": "4643a89b2827f09aa0b2e92d1f3ffb53b517cc40fc877927e7ddab067180f1bb",
       "vegetableId": "paprika",
-      "productIds": ["paprika-scratched-3ea"]
+      "productIds": ["paprika-scratched-3ea"],
+      "farmNames": ["김제 유리온실"]
     },
     {
       "imageUrl": "/images/paprika-small.jpg",
@@ -1122,7 +1195,8 @@
       "format": "JPEG",
       "sha256": "3b4b5bbfd972a0eb32daf10a84b194fabf9fe8cc53f51779f63aa58d8b550409",
       "vegetableId": "paprika",
-      "productIds": ["paprika-scratched-3ea"]
+      "productIds": ["paprika-scratched-3ea"],
+      "farmNames": ["김제 유리온실"]
     },
     {
       "imageUrl": "/images/products/curated/onion/33dc28bd84f7.jpg",
@@ -1138,7 +1212,8 @@
       "format": "JPEG",
       "sha256": "33dc28bd84f78c09863f89833a09f3c7210bee07de1170dd5c00d446ad06efbc",
       "vegetableId": "onion",
-      "productIds": ["onion-small-2kg"]
+      "productIds": ["onion-small-2kg", "onion-scratched-3kg"],
+      "farmNames": ["무안 양파밭"]
     },
     {
       "imageUrl": "/images/products/curated/onion/3dc98193b653.jpg",
@@ -1154,7 +1229,8 @@
       "format": "JPEG",
       "sha256": "3dc98193b65394fde1ed6a8cf3443a2329ddbeb67731f8b40080500786dff0ae",
       "vegetableId": "onion",
-      "productIds": ["onion-small-2kg"]
+      "productIds": ["onion-small-2kg"],
+      "farmNames": ["무안 양파밭"]
     },
     {
       "imageUrl": "/images/products/curated/onion/ab9361e179db.jpg",
@@ -1170,7 +1246,8 @@
       "format": "JPEG",
       "sha256": "ab9361e179db104ac93fd7a691b5c173ebca59ea8829638a584e3d92716d105b",
       "vegetableId": "onion",
-      "productIds": ["onion-small-2kg", "onion-irregular-5kg"]
+      "productIds": ["onion-irregular-5kg"],
+      "farmNames": ["창녕 양파마을"]
     },
     {
       "imageUrl": "/images/products/curated/onion/e660fc9a79a2.jpg",
@@ -1186,7 +1263,8 @@
       "format": "JPEG",
       "sha256": "e660fc9a79a2952395fae9b054b123077ea1569b555faad4eed5e05d075dacb8",
       "vegetableId": "onion",
-      "productIds": ["onion-scratched-3kg"]
+      "productIds": ["onion-scratched-3kg"],
+      "farmNames": ["무안 양파밭"]
     },
     {
       "imageUrl": "/images/onion-scratched.jpg",
@@ -1197,7 +1275,8 @@
       "format": "JPEG",
       "sha256": "01921add85f9da83b73928767f8d70395790848669f725a8df5c76d15b69e08b",
       "vegetableId": "onion",
-      "productIds": ["onion-scratched-3kg"]
+      "productIds": ["onion-small-2kg", "onion-scratched-3kg"],
+      "farmNames": ["무안 양파밭"]
     },
     {
       "imageUrl": "/images/onion.jpg",
@@ -1208,7 +1287,8 @@
       "format": "JPEG",
       "sha256": "4e3cf202d517828add1fcd84b6e65806cb31f633bad485a2bf6a0608cc72c00b",
       "vegetableId": "onion",
-      "productIds": ["onion-irregular-5kg"]
+      "productIds": ["onion-irregular-5kg"],
+      "farmNames": ["창녕 양파마을"]
     },
     {
       "imageUrl": "/images/onion-irregular.jpg",
@@ -1219,7 +1299,8 @@
       "format": "JPEG",
       "sha256": "117c2c9f746b2b61ab445abde2459974c335bdbe50b0e78af48f1db2b667752c",
       "vegetableId": "onion",
-      "productIds": ["onion-scratched-3kg", "onion-irregular-5kg"]
+      "productIds": ["onion-irregular-5kg"],
+      "farmNames": ["창녕 양파마을"]
     },
     {
       "imageUrl": "/images/products/curated/potato/23045424cc74.jpg",
@@ -1235,7 +1316,8 @@
       "format": "JPEG",
       "sha256": "23045424cc7495dd6cfa1c4c877d50ff961255496e1bba2cc63b0e38ee5512e5",
       "vegetableId": "potato",
-      "productIds": ["potato-small-3kg", "potato-irregular-5kg"]
+      "productIds": ["potato-small-3kg", "potato-irregular-5kg"],
+      "farmNames": ["강릉 감자밭"]
     },
     {
       "imageUrl": "/images/products/curated/potato/dc73404b3ddb.jpg",
@@ -1251,7 +1333,8 @@
       "format": "JPEG",
       "sha256": "dc73404b3ddbebb2ef3bd08ead6ed92cc2956c85baa131f62a5acf8b5f454ae6",
       "vegetableId": "potato",
-      "productIds": ["potato-small-3kg"]
+      "productIds": ["potato-small-3kg"],
+      "farmNames": ["강릉 감자밭"]
     },
     {
       "imageUrl": "/images/products/curated/potato/d05ad95aa965.jpg",
@@ -1267,7 +1350,8 @@
       "format": "JPEG",
       "sha256": "d05ad95aa965c1d5abe4b1a116c6a0820f085c8a5fb8172cd816d66cffd63782",
       "vegetableId": "potato",
-      "productIds": ["potato-small-3kg"]
+      "productIds": ["potato-small-3kg"],
+      "farmNames": ["강릉 감자밭"]
     },
     {
       "imageUrl": "/images/products/curated/potato/5a549a3b2138.jpg",
@@ -1283,7 +1367,8 @@
       "format": "JPEG",
       "sha256": "5a549a3b2138a91b752186973366388e5eeff5cf6b8432ec4237af6c0dcd1b81",
       "vegetableId": "potato",
-      "productIds": ["potato-scratched-2kg"]
+      "productIds": ["potato-scratched-2kg"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/products/curated/potato/aef2cfb5d3ea.jpg",
@@ -1299,7 +1384,8 @@
       "format": "JPEG",
       "sha256": "aef2cfb5d3eaf91c157c819fbe094bb190315733f1ae2aae32e5b6eac86b95f2",
       "vegetableId": "potato",
-      "productIds": ["potato-scratched-2kg"]
+      "productIds": ["potato-scratched-2kg"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/products/curated/potato/2e86b4ed1152.jpg",
@@ -1315,7 +1401,8 @@
       "format": "JPEG",
       "sha256": "2e86b4ed1152d4cd86e2a8d166b006bf01780cb0174136863e10e78245f67782",
       "vegetableId": "potato",
-      "productIds": ["potato-scratched-2kg"]
+      "productIds": ["potato-scratched-2kg"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/potato-small.jpg",
@@ -1326,7 +1413,8 @@
       "format": "JPEG",
       "sha256": "88e2a5b8c160fcb9b527b6469f917178121c4c58efec181dc9e836b631542935",
       "vegetableId": "potato",
-      "productIds": ["potato-irregular-5kg"]
+      "productIds": ["potato-irregular-5kg"],
+      "farmNames": ["강릉 감자밭"]
     },
     {
       "imageUrl": "/images/products/curated/potato/ed3deda97613.jpg",
@@ -1342,7 +1430,8 @@
       "format": "JPEG",
       "sha256": "ed3deda97613241f41d9c9b9908f63455d34614a930b6ecd8d2f076f51316b7b",
       "vegetableId": "potato",
-      "productIds": ["potato-irregular-5kg"]
+      "productIds": ["potato-irregular-5kg"],
+      "farmNames": ["강릉 감자밭"]
     },
     {
       "imageUrl": "/images/products/curated/sweet-potato/4b394edbd556.jpg",
@@ -1358,7 +1447,8 @@
       "format": "JPEG",
       "sha256": "4b394edbd556ccea8dde578a5ab6f2e20f384d9d95a8ae010450fbf92f0051d2",
       "vegetableId": "sweet-potato",
-      "productIds": ["sweet-potato-bent-2kg", "sweet-potato-small-1-5kg"]
+      "productIds": ["sweet-potato-bent-2kg"],
+      "farmNames": ["해남 황토고구마"]
     },
     {
       "imageUrl": "/images/products/curated/sweet-potato/ac2cf884c1b5.jpg",
@@ -1374,7 +1464,8 @@
       "format": "JPEG",
       "sha256": "ac2cf884c1b58b2ac18aa702d41b63c874520ae8732168d71a9f94acdf768295",
       "vegetableId": "sweet-potato",
-      "productIds": ["sweet-potato-bent-2kg", "sweet-potato-scratched-3kg"]
+      "productIds": ["sweet-potato-bent-2kg", "sweet-potato-scratched-3kg"],
+      "farmNames": ["해남 황토고구마"]
     },
     {
       "imageUrl": "/images/sweet-potato-small.jpg",
@@ -1385,7 +1476,8 @@
       "format": "JPEG",
       "sha256": "ef51e4f2036133f46290cad05aaeef1608c7ae9b774a8d03407bd17530cd6de4",
       "vegetableId": "sweet-potato",
-      "productIds": ["sweet-potato-bent-2kg", "sweet-potato-small-1-5kg"]
+      "productIds": ["sweet-potato-small-1-5kg"],
+      "farmNames": ["여주 고구마농원"]
     },
     {
       "imageUrl": "/images/sweet-potato-scratched.jpg",
@@ -1396,7 +1488,8 @@
       "format": "JPEG",
       "sha256": "6af85d5b56140d09b7906b089cccea10fe9c1410b4fc08a9634528898ff8207f",
       "vegetableId": "sweet-potato",
-      "productIds": ["sweet-potato-small-1-5kg", "sweet-potato-scratched-3kg"]
+      "productIds": ["sweet-potato-small-1-5kg"],
+      "farmNames": ["여주 고구마농원"]
     },
     {
       "imageUrl": "/images/sweet-potato.jpg",
@@ -1407,7 +1500,8 @@
       "format": "JPEG",
       "sha256": "1325e44928b872f982812ff48eaf000b03823a41e6b68050add86f659a4bb0a8",
       "vegetableId": "sweet-potato",
-      "productIds": ["sweet-potato-scratched-3kg"]
+      "productIds": ["sweet-potato-scratched-3kg"],
+      "farmNames": ["해남 황토고구마"]
     },
     {
       "imageUrl": "/images/products/curated/tomato/515151093852.jpg",
@@ -1423,7 +1517,8 @@
       "format": "JPEG",
       "sha256": "5151510938523f2232331d9c7e616d195f10585c4bfd604e92d3c0e35e6c7f61",
       "vegetableId": "tomato",
-      "productIds": ["tomato-irregular-1kg", "tomato-small-1-5kg"]
+      "productIds": ["tomato-irregular-1kg"],
+      "farmNames": ["부여 토마토하우스"]
     },
     {
       "imageUrl": "/images/products/curated/tomato/0d35dec9216d.jpg",
@@ -1439,7 +1534,8 @@
       "format": "JPEG",
       "sha256": "0d35dec9216d7f50cded13422f0515abc26e99b10e0ca2afe412f16d31fc88bb",
       "vegetableId": "tomato",
-      "productIds": ["tomato-irregular-1kg"]
+      "productIds": ["tomato-irregular-1kg", "tomato-scratched-2kg"],
+      "farmNames": ["부여 토마토하우스"]
     },
     {
       "imageUrl": "/images/products/curated/tomato/24faa81b2219.jpg",
@@ -1455,7 +1551,8 @@
       "format": "JPEG",
       "sha256": "24faa81b22196716f69c7964f65ad5f01f791bd50237217255a8f939d45d1e50",
       "vegetableId": "tomato",
-      "productIds": ["tomato-scratched-2kg"]
+      "productIds": ["tomato-scratched-2kg"],
+      "farmNames": ["부여 토마토하우스"]
     },
     {
       "imageUrl": "/images/products/curated/tomato/8ae6d4b2dc22.jpg",
@@ -1471,7 +1568,8 @@
       "format": "JPEG",
       "sha256": "8ae6d4b2dc2273c0b0d4c71d2408eb32d284c15444c931b4b2e9617f4ebd151c",
       "vegetableId": "tomato",
-      "productIds": ["tomato-scratched-2kg", "tomato-small-1-5kg"]
+      "productIds": ["tomato-small-1-5kg"],
+      "farmNames": ["담양 햇살농장"]
     },
     {
       "imageUrl": "/images/tomato-small.jpg",
@@ -1482,7 +1580,8 @@
       "format": "JPEG",
       "sha256": "47d713d7d42f29c38e06b7da2e3112774b3335ca5d28067ebc0ad2e9a9ba4e07",
       "vegetableId": "tomato",
-      "productIds": ["tomato-small-1-5kg"]
+      "productIds": ["tomato-small-1-5kg"],
+      "farmNames": ["담양 햇살농장"]
     },
     {
       "imageUrl": "/images/products/curated/cucumber/bccc07268a02.jpg",
@@ -1498,7 +1597,8 @@
       "format": "JPEG",
       "sha256": "bccc07268a02e024aa36c24b0145b1cfabc8e73eafeb3d3c2553481841bb17ef",
       "vegetableId": "cucumber",
-      "productIds": ["cucumber-bent-5ea"]
+      "productIds": ["cucumber-bent-5ea"],
+      "farmNames": ["천안 오이농장"]
     },
     {
       "imageUrl": "/images/products/curated/cucumber/94894a9920ff.jpg",
@@ -1514,7 +1614,8 @@
       "format": "JPEG",
       "sha256": "94894a9920ffe79fcc9916339083ee54f6e5672b2447f7442e25cca8b2dc7b20",
       "vegetableId": "cucumber",
-      "productIds": ["cucumber-bent-5ea"]
+      "productIds": ["cucumber-bent-5ea", "cucumber-scratched-10ea"],
+      "farmNames": ["천안 오이농장"]
     },
     {
       "imageUrl": "/images/products/curated/cucumber/d1952996e6fb.jpg",
@@ -1530,7 +1631,8 @@
       "format": "JPEG",
       "sha256": "d1952996e6fb76ba6286992722eb3b7e47b71c3c2f5baa0aa9a63b57844da61d",
       "vegetableId": "cucumber",
-      "productIds": ["cucumber-scratched-10ea"]
+      "productIds": ["cucumber-scratched-10ea"],
+      "farmNames": ["천안 오이농장"]
     },
     {
       "imageUrl": "/images/products/curated/cucumber/a9532f9717a5.jpg",
@@ -1546,7 +1648,8 @@
       "format": "JPEG",
       "sha256": "a9532f9717a5ea39a8d5346caff682be30b89d7506831990cb29c6f4ce8a889e",
       "vegetableId": "cucumber",
-      "productIds": ["cucumber-scratched-10ea", "cucumber-small-7ea"]
+      "productIds": ["cucumber-small-7ea"],
+      "farmNames": ["상주 백오이농원"]
     },
     {
       "imageUrl": "/images/cucumber-scratched.jpg",
@@ -1557,7 +1660,8 @@
       "format": "JPEG",
       "sha256": "6a45aaedd8093bdfdf2b7c479e2e6797dde67897a91565acd906116764913dc5",
       "vegetableId": "cucumber",
-      "productIds": ["cucumber-scratched-10ea"]
+      "productIds": ["cucumber-bent-5ea", "cucumber-scratched-10ea"],
+      "farmNames": ["천안 오이농장"]
     },
     {
       "imageUrl": "/images/cucumber.jpg",
@@ -1568,7 +1672,8 @@
       "format": "JPEG",
       "sha256": "7c03dbd2c1e8552a7c88361906df98d03a21dd1a21a25d5977f8f15138359827",
       "vegetableId": "cucumber",
-      "productIds": ["cucumber-bent-5ea", "cucumber-small-7ea"]
+      "productIds": ["cucumber-small-7ea"],
+      "farmNames": ["상주 백오이농원"]
     },
     {
       "imageUrl": "/images/cucumber-small.jpg",
@@ -1579,7 +1684,8 @@
       "format": "JPEG",
       "sha256": "f868a38139012135ff965cb22468ffe8d82441745f9ad56b40c762c142305325",
       "vegetableId": "cucumber",
-      "productIds": ["cucumber-small-7ea"]
+      "productIds": ["cucumber-small-7ea"],
+      "farmNames": ["상주 백오이농원"]
     },
     {
       "imageUrl": "/images/products/curated/green-onion/dcbae479e5e6.jpg",
@@ -1595,7 +1701,8 @@
       "format": "JPEG",
       "sha256": "dcbae479e5e6f656f6e6e0ac004bbef606d307d55528f7baaa4e8c59c4590c37",
       "vegetableId": "green-onion",
-      "productIds": ["green-onion-small-1bunch", "green-onion-bent-1bunch"]
+      "productIds": ["green-onion-small-1bunch", "green-onion-bent-1bunch"],
+      "farmNames": ["진도 대파밭"]
     },
     {
       "imageUrl": "/images/products/curated/green-onion/04bc6a48871a.jpg",
@@ -1611,7 +1718,11 @@
       "format": "JPEG",
       "sha256": "04bc6a48871a992230cca6620b29f9f746ca3d938e869333d14c64e3d7c56362",
       "vegetableId": "green-onion",
-      "productIds": ["green-onion-small-1bunch", "green-onion-irregular-2bunch"]
+      "productIds": [
+        "green-onion-small-1bunch",
+        "green-onion-irregular-2bunch"
+      ],
+      "farmNames": ["진도 대파밭"]
     },
     {
       "imageUrl": "/images/products/curated/green-onion/6613228a3bc9.jpg",
@@ -1627,7 +1738,11 @@
       "format": "JPEG",
       "sha256": "6613228a3bc98224558248c705e9ff97226ca06bd794c73de6296b89a9cb6a4e",
       "vegetableId": "green-onion",
-      "productIds": ["green-onion-small-1bunch", "green-onion-scratched-1bunch"]
+      "productIds": [
+        "green-onion-small-1bunch",
+        "green-onion-scratched-1bunch"
+      ],
+      "farmNames": ["진도 대파밭"]
     },
     {
       "imageUrl": "/images/green-onion.jpg",
@@ -1638,7 +1753,8 @@
       "format": "JPEG",
       "sha256": "64acc5c54e23238a37a86fb52cecb6a7bdc888cb53026c39125b8ebab0bc6950",
       "vegetableId": "green-onion",
-      "productIds": ["green-onion-bent-1bunch", "green-onion-scratched-1bunch"]
+      "productIds": ["green-onion-bent-1bunch", "green-onion-scratched-1bunch"],
+      "farmNames": ["진도 대파밭"]
     },
     {
       "imageUrl": "/images/green-onion-irregular.jpg",
@@ -1649,7 +1765,8 @@
       "format": "JPEG",
       "sha256": "2730e151801c79bc0ba029e182f7621bddb4400645b935c3d864e56556e7a2f9",
       "vegetableId": "green-onion",
-      "productIds": ["green-onion-bent-1bunch", "green-onion-irregular-2bunch"]
+      "productIds": ["green-onion-bent-1bunch", "green-onion-irregular-2bunch"],
+      "farmNames": ["진도 대파밭"]
     },
     {
       "imageUrl": "/images/green-onion-scratched.jpg",
@@ -1663,7 +1780,8 @@
       "productIds": [
         "green-onion-irregular-2bunch",
         "green-onion-scratched-1bunch"
-      ]
+      ],
+      "farmNames": ["진도 대파밭"]
     },
     {
       "imageUrl": "/images/products/curated/spinach/43d20ffcc1b6.jpg",
@@ -1679,7 +1797,8 @@
       "format": "JPEG",
       "sha256": "43d20ffcc1b60cd133374732e8c394182a27050fe0203aca82de92148491f731",
       "vegetableId": "spinach",
-      "productIds": ["spinach-small-500g", "spinach-irregular-1kg"]
+      "productIds": ["spinach-small-500g", "spinach-irregular-1kg"],
+      "farmNames": ["남해 섬시금치"]
     },
     {
       "imageUrl": "/images/products/curated/spinach/84db290e43fa.jpg",
@@ -1695,7 +1814,8 @@
       "format": "JPEG",
       "sha256": "84db290e43faa820cdcabdfb705718fdc2655847f758ce25baf11d1750c014fa",
       "vegetableId": "spinach",
-      "productIds": ["spinach-small-500g", "spinach-scratched-500g"]
+      "productIds": ["spinach-small-500g", "spinach-scratched-500g"],
+      "farmNames": ["남해 섬시금치"]
     },
     {
       "imageUrl": "/images/products/curated/spinach/07a24171c8da.jpg",
@@ -1711,7 +1831,8 @@
       "format": "JPEG",
       "sha256": "07a24171c8dafe916d9b92f9a0ebae46feb95a3167643a051ab389f95d0e0204",
       "vegetableId": "spinach",
-      "productIds": ["spinach-small-500g"]
+      "productIds": ["spinach-small-500g"],
+      "farmNames": ["남해 섬시금치"]
     },
     {
       "imageUrl": "/images/products/curated/spinach/8d215d70bc17.jpg",
@@ -1727,7 +1848,8 @@
       "format": "JPEG",
       "sha256": "8d215d70bc179620aab90b76eaca467f4c8b815a5e3aee70251b7c29264f0a92",
       "vegetableId": "spinach",
-      "productIds": ["spinach-irregular-1kg", "spinach-scratched-500g"]
+      "productIds": ["spinach-irregular-1kg", "spinach-scratched-500g"],
+      "farmNames": ["남해 섬시금치"]
     },
     {
       "imageUrl": "/images/spinach.jpg",
@@ -1738,7 +1860,8 @@
       "format": "JPEG",
       "sha256": "9e88b4a6d93a3df9c0badc898070faa85a818bb8f9790f0b4995918fdd12f412",
       "vegetableId": "spinach",
-      "productIds": ["spinach-irregular-1kg"]
+      "productIds": ["spinach-irregular-1kg"],
+      "farmNames": ["남해 섬시금치"]
     },
     {
       "imageUrl": "/images/spinach-irregular.jpg",
@@ -1749,7 +1872,8 @@
       "format": "JPEG",
       "sha256": "61044be23980e3b02cde27ac50e575cedb5d212923d1b76030b773ab28604f39",
       "vegetableId": "spinach",
-      "productIds": ["spinach-scratched-500g"]
+      "productIds": ["spinach-scratched-500g"],
+      "farmNames": ["남해 섬시금치"]
     },
     {
       "imageUrl": "/images/products/curated/radish/ec7b10852e01.jpg",
@@ -1765,7 +1889,8 @@
       "format": "JPEG",
       "sha256": "ec7b10852e01bd050961cdf8308ad5fcd8959ad536bfffcf6a2b6ae546c63e92",
       "vegetableId": "radish",
-      "productIds": ["radish-scratched-2ea", "radish-small-2ea"]
+      "productIds": ["radish-scratched-2ea"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/products/curated/radish/ee661593b1aa.jpg",
@@ -1781,7 +1906,8 @@
       "format": "JPEG",
       "sha256": "ee661593b1aa351a4908bce3056b4602f7189ff67935b5d8223d582c3646cc8d",
       "vegetableId": "radish",
-      "productIds": ["radish-scratched-2ea"]
+      "productIds": ["radish-scratched-2ea"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/products/curated/radish/dc2c58d6dcb6.jpg",
@@ -1797,7 +1923,8 @@
       "format": "JPEG",
       "sha256": "dc2c58d6dcb6d5821544cca3138478ee89ae1cbbe8953e28727ff13111e0dddb",
       "vegetableId": "radish",
-      "productIds": ["radish-scratched-2ea", "radish-irregular-1ea"]
+      "productIds": ["radish-irregular-1ea"],
+      "farmNames": ["제주 구좌당근"]
     },
     {
       "imageUrl": "/images/products/curated/radish/e9c0e3c93629.jpg",
@@ -1813,7 +1940,8 @@
       "format": "JPEG",
       "sha256": "e9c0e3c936294d4b8fbf855300398f8e0726ba20047851ecaadf179e3175df4d",
       "vegetableId": "radish",
-      "productIds": ["radish-irregular-1ea"]
+      "productIds": ["radish-irregular-1ea"],
+      "farmNames": ["제주 구좌당근"]
     },
     {
       "imageUrl": "/images/radish-irregular.jpg",
@@ -1824,7 +1952,8 @@
       "format": "JPEG",
       "sha256": "1e464bed8b902facd06c11882941814f769a6628e68a976a04c39577b1594434",
       "vegetableId": "radish",
-      "productIds": ["radish-irregular-1ea", "radish-small-2ea"]
+      "productIds": ["radish-small-2ea"],
+      "farmNames": ["고창 황토무밭"]
     },
     {
       "imageUrl": "/images/products/curated/radish/f89d922ff13e.jpg",
@@ -1840,7 +1969,8 @@
       "format": "JPEG",
       "sha256": "f89d922ff13e4939a712c189787ca857482c6c909da292474d47b5db00fa5e77",
       "vegetableId": "radish",
-      "productIds": ["radish-small-2ea"]
+      "productIds": ["radish-small-2ea"],
+      "farmNames": ["고창 황토무밭"]
     },
     {
       "imageUrl": "/images/products/curated/broccoli/e3f217edbabb.jpg",
@@ -1856,23 +1986,8 @@
       "format": "JPEG",
       "sha256": "e3f217edbabb7a45b0aeff824341005cd4b9456a45347e81597a60bffcdb02f3",
       "vegetableId": "broccoli",
-      "productIds": ["broccoli-small-3ea"]
-    },
-    {
-      "imageUrl": "/images/products/curated/broccoli/1eda16cf931c.jpg",
-      "sourceKind": "pinterest",
-      "pinUrl": "https://in.pinterest.com/pin/download-premium-image-of-closeup-of-fresh-real-broccoli-isolated-on-white-about-broccoli-green-vegetable-cauliflo--43558321386518532/",
-      "pinterestImageUrl": "https://i.pinimg.com/736x/7f/e4/52/7fe452f39206cc982db511568252e760.jpg",
-      "originalImageUrl": "https://i.pinimg.com/originals/7f/e4/52/7fe452f39206cc982db511568252e760.jpg",
-      "originalPageUrl": "https://www.rawpixel.com/image/105332/fresh-broccoli-vegetable?referral=133026",
-      "title": "Fresh Broccoli Isolated on White Background | Closeup broccoli image, Broccoli white background hd, Close-up of broccoli texture",
-      "pinner": "Panpan Nita",
-      "width": 736,
-      "height": 739,
-      "format": "JPEG",
-      "sha256": "1eda16cf931c1012bc3694e3442ea23694011eacd83ebb57986b11b48f618654",
-      "vegetableId": "broccoli",
-      "productIds": ["broccoli-small-3ea"]
+      "productIds": ["broccoli-small-3ea"],
+      "farmNames": ["제주 한림밭"]
     },
     {
       "imageUrl": "/images/products/curated/broccoli/0d0a0dd99848.jpg",
@@ -1888,7 +2003,8 @@
       "format": "JPEG",
       "sha256": "0d0a0dd998485d367b09a20efbe43366af422e7b30b4a335d62c152982340039",
       "vegetableId": "broccoli",
-      "productIds": ["broccoli-small-3ea", "broccoli-irregular-2ea"]
+      "productIds": ["broccoli-irregular-2ea"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/products/curated/broccoli/9fe22b6d97ab.jpg",
@@ -1904,7 +2020,8 @@
       "format": "JPEG",
       "sha256": "9fe22b6d97ab06ab24725b6de0fe3603000cc7b3c98a3fdf75cf55b5bd2997ff",
       "vegetableId": "broccoli",
-      "productIds": ["broccoli-irregular-2ea"]
+      "productIds": ["broccoli-irregular-2ea"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/products/curated/broccoli/1c4816d9a646.jpg",
@@ -1920,7 +2037,8 @@
       "format": "JPEG",
       "sha256": "1c4816d9a64633de6250c2d7bee557a51f80e70c566877093eda9e346b7d95c5",
       "vegetableId": "broccoli",
-      "productIds": ["broccoli-irregular-2ea"]
+      "productIds": ["broccoli-irregular-2ea"],
+      "farmNames": ["평창 고랭지농장"]
     },
     {
       "imageUrl": "/images/broccoli-irregular.jpg",
@@ -1931,7 +2049,8 @@
       "format": "JPEG",
       "sha256": "82b85680829ff2ea5edb3e91cdeb2a2c931d7a791c3c79af2483a3a5063862bf",
       "vegetableId": "broccoli",
-      "productIds": ["broccoli-scratched-2ea"]
+      "productIds": ["broccoli-small-3ea", "broccoli-scratched-2ea"],
+      "farmNames": ["제주 한림밭"]
     },
     {
       "imageUrl": "/images/broccoli-small.jpg",
@@ -1942,7 +2061,8 @@
       "format": "JPEG",
       "sha256": "0931baf07900b8d6fa0a3a2d768e75facd2fa1c2e4c3e6edef25fc7158619e83",
       "vegetableId": "broccoli",
-      "productIds": ["broccoli-scratched-2ea"]
+      "productIds": ["broccoli-scratched-2ea"],
+      "farmNames": ["제주 한림밭"]
     },
     {
       "imageUrl": "/images/broccoli-scratched.jpg",
@@ -1953,7 +2073,8 @@
       "format": "JPEG",
       "sha256": "0df4f6a0210aa14fe57f35b6f24ce27d43da5e1f7145f65550f95128ef4b4ab3",
       "vegetableId": "broccoli",
-      "productIds": ["broccoli-scratched-2ea"]
+      "productIds": ["broccoli-small-3ea", "broccoli-scratched-2ea"],
+      "farmNames": ["제주 한림밭"]
     },
     {
       "imageUrl": "/images/products/curated/napa-cabbage/da0a3aa10121.jpg",
@@ -1969,7 +2090,8 @@
       "format": "JPEG",
       "sha256": "da0a3aa10121ced161005475ebd5514403cb64d9a43dfb16dd895206a5b2b487",
       "vegetableId": "napa-cabbage",
-      "productIds": ["napa-cabbage-small-2ea", "napa-cabbage-scratched-1ea"]
+      "productIds": ["napa-cabbage-small-2ea"],
+      "farmNames": ["해남 땅끝배추"]
     },
     {
       "imageUrl": "/images/products/curated/napa-cabbage/9d8f7844a978.jpg",
@@ -1985,7 +2107,8 @@
       "format": "JPEG",
       "sha256": "9d8f7844a9788722ee6d079afa9965a0957bda4b1a7440eedc35d3233dc10184",
       "vegetableId": "napa-cabbage",
-      "productIds": ["napa-cabbage-small-2ea", "napa-cabbage-irregular-1ea"]
+      "productIds": ["napa-cabbage-small-2ea", "napa-cabbage-irregular-1ea"],
+      "farmNames": ["해남 땅끝배추"]
     },
     {
       "imageUrl": "/images/products/curated/napa-cabbage/f17fa29bdfa5.jpg",
@@ -2001,7 +2124,8 @@
       "format": "JPEG",
       "sha256": "f17fa29bdfa5f22187e33f568c48d97b42ef3f9a86712b9cfee5fe82e2ae495c",
       "vegetableId": "napa-cabbage",
-      "productIds": ["napa-cabbage-small-2ea"]
+      "productIds": ["napa-cabbage-scratched-1ea"],
+      "farmNames": ["괴산 배추마을"]
     },
     {
       "imageUrl": "/images/napa-cabbage-irregular.jpg",
@@ -2012,7 +2136,8 @@
       "format": "JPEG",
       "sha256": "7ace640898620e14166bd75b57710839654478c666413cd60aee759288028011",
       "vegetableId": "napa-cabbage",
-      "productIds": ["napa-cabbage-scratched-1ea"]
+      "productIds": ["napa-cabbage-scratched-1ea"],
+      "farmNames": ["괴산 배추마을"]
     },
     {
       "imageUrl": "/images/napa-cabbage-small.jpg",
@@ -2023,7 +2148,8 @@
       "format": "JPEG",
       "sha256": "e07e3c1582e59e44e66f124e0b73ee31c9b2f165a3b98ff5f430a6f54a9d8b3c",
       "vegetableId": "napa-cabbage",
-      "productIds": ["napa-cabbage-scratched-1ea", "napa-cabbage-irregular-1ea"]
+      "productIds": ["napa-cabbage-small-2ea", "napa-cabbage-irregular-1ea"],
+      "farmNames": ["해남 땅끝배추"]
     },
     {
       "imageUrl": "/images/products/curated/napa-cabbage/211309fe1de6.jpg",
@@ -2039,7 +2165,8 @@
       "format": "JPEG",
       "sha256": "211309fe1de63a27986e314d456fe9b9d026d8967f2474120328b6421f852b59",
       "vegetableId": "napa-cabbage",
-      "productIds": ["napa-cabbage-irregular-1ea"]
+      "productIds": ["napa-cabbage-irregular-1ea"],
+      "farmNames": ["해남 땅끝배추"]
     },
     {
       "imageUrl": "/images/products/curated/aehobak/b4afccfb1321.jpg",
@@ -2055,11 +2182,8 @@
       "format": "JPEG",
       "sha256": "b4afccfb132180fb55f25fd96f588e39f1dc119037e72693f611e9401456fa27",
       "vegetableId": "aehobak",
-      "productIds": [
-        "aehobak-small-3ea",
-        "aehobak-bent-2ea",
-        "aehobak-scratched-3ea"
-      ]
+      "productIds": ["aehobak-small-3ea", "aehobak-bent-2ea"],
+      "farmNames": ["춘천 호박농원"]
     },
     {
       "imageUrl": "/images/products/curated/aehobak/b91fdb884656.jpg",
@@ -2075,7 +2199,8 @@
       "format": "JPEG",
       "sha256": "b91fdb8846567412ff553c241110dbdf2ce004a4383d5acb59d8c1dc505cbeaa",
       "vegetableId": "aehobak",
-      "productIds": ["aehobak-small-3ea", "aehobak-bent-2ea"]
+      "productIds": ["aehobak-small-3ea", "aehobak-bent-2ea"],
+      "farmNames": ["춘천 호박농원"]
     },
     {
       "imageUrl": "/images/aehobak-small.jpg",
@@ -2086,7 +2211,8 @@
       "format": "JPEG",
       "sha256": "ea7f095031f24a143dd92de572e42dadb53d3aaf7cbbd22588d37895c1d5789d",
       "vegetableId": "aehobak",
-      "productIds": ["aehobak-small-3ea", "aehobak-scratched-3ea"]
+      "productIds": ["aehobak-scratched-3ea"],
+      "farmNames": ["진주 들판농장"]
     },
     {
       "imageUrl": "/images/products/curated/aehobak/32dd0bc403a0.jpg",
@@ -2102,7 +2228,8 @@
       "format": "JPEG",
       "sha256": "32dd0bc403a0229aef3919f4305ba1960457abcb817fb0c2f2e07a48b02e8964",
       "vegetableId": "aehobak",
-      "productIds": ["aehobak-bent-2ea", "aehobak-scratched-3ea"]
+      "productIds": ["aehobak-bent-2ea"],
+      "farmNames": ["춘천 호박농원"]
     },
     {
       "imageUrl": "/images/products/curated/eggplant/baf58aac25c6.jpg",
@@ -2118,7 +2245,8 @@
       "format": "JPEG",
       "sha256": "baf58aac25c6eb0fd45b03a679e9a48fa90c24c85c8c0f72957ba109007a18e3",
       "vegetableId": "eggplant",
-      "productIds": ["eggplant-scratched-4ea", "eggplant-small-7ea"]
+      "productIds": ["eggplant-scratched-4ea", "eggplant-small-7ea"],
+      "farmNames": ["하동 섬진강농장"]
     },
     {
       "imageUrl": "/images/products/curated/eggplant/f674d7edf9c9.jpg",
@@ -2134,7 +2262,8 @@
       "format": "JPEG",
       "sha256": "f674d7edf9c94c6de3c021850fe70c6753cbaaa01693283bcaf768a94b8f73e0",
       "vegetableId": "eggplant",
-      "productIds": ["eggplant-scratched-4ea"]
+      "productIds": ["eggplant-scratched-4ea"],
+      "farmNames": ["하동 섬진강농장"]
     },
     {
       "imageUrl": "/images/products/curated/eggplant/2423e0441077.jpg",
@@ -2150,7 +2279,8 @@
       "format": "JPEG",
       "sha256": "2423e0441077d66612d657a0900a0d4553967a62620e2eb6d1f2eb8e75dddbfa",
       "vegetableId": "eggplant",
-      "productIds": ["eggplant-scratched-4ea", "eggplant-irregular-5ea"]
+      "productIds": ["eggplant-irregular-5ea"],
+      "farmNames": ["진주 들판농장"]
     },
     {
       "imageUrl": "/images/products/curated/eggplant/ef06b134f21e.jpg",
@@ -2166,7 +2296,8 @@
       "format": "JPEG",
       "sha256": "ef06b134f21e9813e62aa6e623a43256a6f99905ff2c25dec85e977de6b459a3",
       "vegetableId": "eggplant",
-      "productIds": ["eggplant-small-7ea", "eggplant-irregular-5ea"]
+      "productIds": ["eggplant-small-7ea"],
+      "farmNames": ["하동 섬진강농장"]
     },
     {
       "imageUrl": "/images/products/curated/eggplant/ec8e9d7c9f58.jpg",
@@ -2182,7 +2313,8 @@
       "format": "JPEG",
       "sha256": "ec8e9d7c9f58d4f021b3fc788f9cc1479183a4bcb58f8dea670d2ab9e8959bc0",
       "vegetableId": "eggplant",
-      "productIds": ["eggplant-small-7ea"]
+      "productIds": ["eggplant-scratched-4ea", "eggplant-small-7ea"],
+      "farmNames": ["하동 섬진강농장"]
     },
     {
       "imageUrl": "/images/eggplant-irregular.jpg",
@@ -2193,7 +2325,8 @@
       "format": "JPEG",
       "sha256": "5be3cc1e3da9bdb4ffae32a7c9e7e44128b1ab2b0ffd1e286b03b9b816f28c15",
       "vegetableId": "eggplant",
-      "productIds": ["eggplant-irregular-5ea"]
+      "productIds": ["eggplant-irregular-5ea"],
+      "farmNames": ["진주 들판농장"]
     },
     {
       "imageUrl": "/images/products/curated/sweet-pumpkin/a804fe551ec1.jpg",
@@ -2209,7 +2342,8 @@
       "format": "JPEG",
       "sha256": "a804fe551ec104ae48d5ef5e1e730405f2ff1a7496bbab687858e1bcdaabb11c",
       "vegetableId": "sweet-pumpkin",
-      "productIds": ["sweet-pumpkin-small-3ea", "sweet-pumpkin-scratched-2ea"]
+      "productIds": ["sweet-pumpkin-small-3ea"],
+      "farmNames": ["경주 단호박농장"]
     },
     {
       "imageUrl": "/images/products/curated/sweet-pumpkin/94bec147ff49.jpg",
@@ -2225,7 +2359,8 @@
       "format": "JPEG",
       "sha256": "94bec147ff49e0497a8c8d2692530ad404c551972e9daa7a5835e9ad99e92c3f",
       "vegetableId": "sweet-pumpkin",
-      "productIds": ["sweet-pumpkin-small-3ea", "sweet-pumpkin-irregular-2ea"]
+      "productIds": ["sweet-pumpkin-irregular-2ea"],
+      "farmNames": ["춘천 호박농원"]
     },
     {
       "imageUrl": "/images/danhobak-small.jpg",
@@ -2236,7 +2371,8 @@
       "format": "JPEG",
       "sha256": "f8a673ed18f754eaa93a9ba89f384a7720eb45c8da941934f67339df2b32170c",
       "vegetableId": "sweet-pumpkin",
-      "productIds": ["sweet-pumpkin-small-3ea", "sweet-pumpkin-scratched-2ea"]
+      "productIds": ["sweet-pumpkin-small-3ea", "sweet-pumpkin-scratched-2ea"],
+      "farmNames": ["경주 단호박농장"]
     },
     {
       "imageUrl": "/images/danhobak-scratched.jpg",
@@ -2247,10 +2383,8 @@
       "format": "JPEG",
       "sha256": "5df3f9a42bcd9b3bfcedf137b7f63c267656baf674b0a8461609190043addc38",
       "vegetableId": "sweet-pumpkin",
-      "productIds": [
-        "sweet-pumpkin-scratched-2ea",
-        "sweet-pumpkin-irregular-2ea"
-      ]
+      "productIds": ["sweet-pumpkin-small-3ea", "sweet-pumpkin-scratched-2ea"],
+      "farmNames": ["경주 단호박농장"]
     },
     {
       "imageUrl": "/images/danhobak-irregular.jpg",
@@ -2261,7 +2395,8 @@
       "format": "JPEG",
       "sha256": "98f77fbc083fab95e37f879412fc679d428caa900a256493fb33b81c9e0d0ed0",
       "vegetableId": "sweet-pumpkin",
-      "productIds": ["sweet-pumpkin-irregular-2ea"]
+      "productIds": ["sweet-pumpkin-irregular-2ea"],
+      "farmNames": ["춘천 호박농원"]
     },
     {
       "imageUrl": "/images/products/curated/king-oyster/6901f6e69f32.jpg",
@@ -2277,7 +2412,8 @@
       "format": "JPEG",
       "sha256": "6901f6e69f32c0a5ab0b596a49d82d17dc7894a27c9e7377427243203607fe65",
       "vegetableId": "king-oyster",
-      "productIds": ["king-oyster-small-500g", "king-oyster-scratched-500g"]
+      "productIds": ["king-oyster-small-500g", "king-oyster-scratched-500g"],
+      "farmNames": ["화성 버섯하우스"]
     },
     {
       "imageUrl": "/images/products/curated/king-oyster/7686b2a5dd3d.jpg",
@@ -2293,7 +2429,8 @@
       "format": "JPEG",
       "sha256": "7686b2a5dd3d17b27e000f6442028157930bdb767f11596da1a804904d71a619",
       "vegetableId": "king-oyster",
-      "productIds": ["king-oyster-small-500g", "king-oyster-scratched-1kg"]
+      "productIds": ["king-oyster-scratched-1kg"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/king-oyster-small.jpg",
@@ -2304,7 +2441,8 @@
       "format": "JPEG",
       "sha256": "0e9a8d01f97d13cdc01cc18b4db366e37c5a37128a0c24c5033f4fb8174dd3cc",
       "vegetableId": "king-oyster",
-      "productIds": ["king-oyster-small-500g", "king-oyster-irregular-500g"]
+      "productIds": ["king-oyster-small-500g", "king-oyster-irregular-500g"],
+      "farmNames": ["화성 버섯하우스"]
     },
     {
       "imageUrl": "/images/products/curated/king-oyster/f0f825897908.jpg",
@@ -2320,7 +2458,11 @@
       "format": "JPEG",
       "sha256": "f0f8258979088f32e05f053a35dfdaeaed4040ff5d7b5e02c5ea7b7bfcb433f9",
       "vegetableId": "king-oyster",
-      "productIds": ["king-oyster-scratched-500g", "king-oyster-irregular-1kg"]
+      "productIds": [
+        "king-oyster-scratched-500g",
+        "king-oyster-irregular-500g"
+      ],
+      "farmNames": ["화성 버섯하우스"]
     },
     {
       "imageUrl": "/images/king-oyster-scratched.jpg",
@@ -2331,7 +2473,8 @@
       "format": "JPEG",
       "sha256": "e30a3d41eae799182d02c0bdb5f41eddd1ba93caa39812c1ec094dbb365ccf7e",
       "vegetableId": "king-oyster",
-      "productIds": ["king-oyster-scratched-500g", "king-oyster-scratched-1kg"]
+      "productIds": ["king-oyster-irregular-1kg", "king-oyster-scratched-1kg"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/products/curated/king-oyster/d045c0bd7897.jpg",
@@ -2347,7 +2490,8 @@
       "format": "JPEG",
       "sha256": "d045c0bd78971a710898a8e71e8ee174275f65050da6ef6f6c07b2080ca42b14",
       "vegetableId": "king-oyster",
-      "productIds": ["king-oyster-irregular-1kg", "king-oyster-irregular-500g"]
+      "productIds": ["king-oyster-irregular-1kg"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/king-oyster-irregular.jpg",
@@ -2358,7 +2502,8 @@
       "format": "JPEG",
       "sha256": "18d40919e18d7429236304369aeae7d696b3a5297be765c34d578cf5e46484dc",
       "vegetableId": "king-oyster",
-      "productIds": ["king-oyster-irregular-1kg", "king-oyster-scratched-1kg"]
+      "productIds": ["king-oyster-irregular-1kg", "king-oyster-scratched-1kg"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/king-oyster-irregular-500g.jpg",
@@ -2369,7 +2514,12 @@
       "format": "JPEG",
       "sha256": "ec4a95fe4c3deb4c58e007471c6ca01afe52607c9f11204968e44c9b1928a602",
       "vegetableId": "king-oyster",
-      "productIds": ["king-oyster-irregular-500g"]
+      "productIds": [
+        "king-oyster-small-500g",
+        "king-oyster-scratched-500g",
+        "king-oyster-irregular-500g"
+      ],
+      "farmNames": ["화성 버섯하우스"]
     },
     {
       "imageUrl": "/images/products/curated/mandarin/98758cfa889e.jpg",
@@ -2385,7 +2535,8 @@
       "format": "JPEG",
       "sha256": "98758cfa889e6762ee783e111efae2a160d1cabca3fdc5017520579faf01e254",
       "vegetableId": "mandarin",
-      "productIds": ["mandarin-small-3kg", "mandarin-scratched-5kg"]
+      "productIds": ["mandarin-small-3kg", "mandarin-scratched-5kg"],
+      "farmNames": ["서귀포 감귤원"]
     },
     {
       "imageUrl": "/images/products/curated/mandarin/fd648c3ca3e7.jpg",
@@ -2401,11 +2552,8 @@
       "format": "JPEG",
       "sha256": "fd648c3ca3e737f4b5644acb66397ab3dd925554541c68acd4ddff6e33f926fa",
       "vegetableId": "mandarin",
-      "productIds": [
-        "mandarin-small-3kg",
-        "mandarin-scratched-5kg",
-        "mandarin-irregular-3kg"
-      ]
+      "productIds": ["mandarin-small-3kg", "mandarin-scratched-5kg"],
+      "farmNames": ["서귀포 감귤원"]
     },
     {
       "imageUrl": "/images/products/curated/mandarin/252857a263d8.jpg",
@@ -2421,7 +2569,8 @@
       "format": "JPEG",
       "sha256": "252857a263d87ba0e13584a57c17bafd0c199108d5feb11a73182bc992f84722",
       "vegetableId": "mandarin",
-      "productIds": ["mandarin-scratched-5kg", "mandarin-irregular-3kg"]
+      "productIds": ["mandarin-scratched-5kg"],
+      "farmNames": ["서귀포 감귤원"]
     },
     {
       "imageUrl": "/images/products/curated/chili/f49a52652578.jpg",
@@ -2437,7 +2586,8 @@
       "format": "JPEG",
       "sha256": "f49a526525782911883d3583e8670f1b76ba7d2c77d032af6130631db34aca07",
       "vegetableId": "chili",
-      "productIds": ["chili-small-300g"]
+      "productIds": ["chili-small-300g"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/products/curated/chili/4106aaaf21e6.jpg",
@@ -2453,7 +2603,8 @@
       "format": "JPEG",
       "sha256": "4106aaaf21e69a25c673b85a54d92af8d8ebf0ad57950174255e622ffa106eaa",
       "vegetableId": "chili",
-      "productIds": ["chili-small-300g"]
+      "productIds": ["chili-small-300g"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/chili-small.jpg",
@@ -2464,7 +2615,8 @@
       "format": "JPEG",
       "sha256": "158a4e0146144f169141422d1310c0054bb5bdb2e60299f5af39d4688cb6cf57",
       "vegetableId": "chili",
-      "productIds": ["chili-small-300g"]
+      "productIds": ["chili-small-300g"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/products/curated/chili/9f5c87d68e6e.jpg",
@@ -2480,7 +2632,8 @@
       "format": "JPEG",
       "sha256": "9f5c87d68e6e2c959cb3022db88c1f55ca06e0026d50e181c805bfbd59a7d35b",
       "vegetableId": "chili",
-      "productIds": ["chili-bent-500g"]
+      "productIds": ["chili-bent-500g"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/chili-bent.jpg",
@@ -2491,7 +2644,8 @@
       "format": "JPEG",
       "sha256": "a2bebe37a810bf3150ed5cac226fc9f656a21a31ba6551e6dfb245e481caa1be",
       "vegetableId": "chili",
-      "productIds": ["chili-bent-500g"]
+      "productIds": ["chili-bent-500g"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/chili-scratched.jpg",
@@ -2502,7 +2656,8 @@
       "format": "JPEG",
       "sha256": "34e61ef0337b80dd3fdcfc82696fc3a785fadd5b4f82330f2be027942e566d41",
       "vegetableId": "chili",
-      "productIds": ["chili-scratched-500g"]
+      "productIds": ["chili-scratched-500g"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/products/curated/chili/6b39b2b56648.jpg",
@@ -2518,7 +2673,8 @@
       "format": "JPEG",
       "sha256": "6b39b2b5664872e7f99b508b75b4329a2c011f9c34586194145932be91d5f3c7",
       "vegetableId": "chili",
-      "productIds": ["chili-scratched-500g"]
+      "productIds": ["chili-scratched-500g"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/products/curated/chili/9b6a00d071da.jpg",
@@ -2534,7 +2690,8 @@
       "format": "JPEG",
       "sha256": "9b6a00d071da7eb6d2efbd4ec4ccdd61b05a20c85a8a02d037079a11eceab5f9",
       "vegetableId": "chili",
-      "productIds": ["chili-scratched-500g"]
+      "productIds": ["chili-scratched-500g"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/products/curated/chili/133b550f2de3.jpg",
@@ -2550,7 +2707,8 @@
       "format": "JPEG",
       "sha256": "133b550f2de3058a23f044605f8dcdee26b229526f63125c0222487c32f036b3",
       "vegetableId": "chili",
-      "productIds": ["chili-irregular-500g"]
+      "productIds": ["chili-irregular-500g"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/products/curated/chili/9839019bdcfa.jpg",
@@ -2566,7 +2724,8 @@
       "format": "JPEG",
       "sha256": "9839019bdcfa060cda33701a1ffa4fe3eaa7c369e495fbcd02f94ebad6e4fd20",
       "vegetableId": "chili",
-      "productIds": ["chili-bent-500g", "chili-irregular-500g"]
+      "productIds": ["chili-bent-500g", "chili-irregular-500g"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/chili-irregular.jpg",
@@ -2577,7 +2736,8 @@
       "format": "JPEG",
       "sha256": "f11f00abcbfdacbb339e1a72763955b5ef62172770bc840108b5d9ffbea808a5",
       "vegetableId": "chili",
-      "productIds": ["chili-irregular-500g"]
+      "productIds": ["chili-irregular-500g"],
+      "farmNames": ["청양 고추농가"]
     },
     {
       "imageUrl": "/images/tomato-scratched.jpg",
@@ -2588,7 +2748,8 @@
       "format": "JPEG",
       "sha256": "fc5c89ad762a956132f80aefffd24920e5dcb97521a5a6523c12e92dd2775549",
       "vegetableId": "tomato",
-      "productIds": ["tomato-irregular-1kg", "tomato-scratched-2kg"]
+      "productIds": ["tomato-irregular-1kg", "tomato-scratched-2kg"],
+      "farmNames": ["부여 토마토하우스"]
     },
     {
       "imageUrl": "/images/mandarin-scratched.jpg",
@@ -2599,7 +2760,350 @@
       "format": "JPEG",
       "sha256": "5e9c92e5e4312718a03744161d6c92ed1e8a84886efc243732715fc0a70ad36b",
       "vegetableId": "mandarin",
-      "productIds": ["mandarin-small-3kg", "mandarin-irregular-3kg"]
+      "productIds": ["mandarin-small-3kg"],
+      "farmNames": ["서귀포 감귤원"]
+    },
+    {
+      "imageUrl": "/images/products/curated/mandarin/5d31841c214b.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/754704850029549599/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/d4/0a/7e/d40a7e178996942706549ab130553140.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/d4/0a/7e/d40a7e178996942706549ab130553140.jpg",
+      "originalPageUrl": "http://funkystock.photoshelter.com/image?_bqG=1&_bqH=eJxzDosqMcs3Kg9N861ycY7PMjEM1i1PL_BPLzGwMjKxMjWwMjQAAivPeJdgZ9vcxLyU1KLMvGI1MD_e0c_FtgTIDg12DYr3dLENBanNLfbNt4zIc7LMzleLd3QOsS1OTSxKzgAA12EhDw--I_IDI00003zRLWsDfBvc",
+      "title": "Fresh manderins fruits with leaves. | Benefits of eating tangerines, Health benefits of tangerine fruit, Fresh fruit",
+      "pinner": "Venkataratnam",
+      "width": 488,
+      "height": 650,
+      "format": "JPEG",
+      "sha256": "5d31841c214b12f52658dfffff4d248c27090eefab111c4bbb1704aac904746e",
+      "vegetableId": "mandarin",
+      "productIds": ["mandarin-irregular-3kg"],
+      "farmNames": ["제주 한림밭"]
+    },
+    {
+      "imageUrl": "/images/products/curated/mandarin/3be8638096ad.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/255720085085670332/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/4a/22/b5/4a22b5337f0acee22b36422222540e1c.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/4a/22/b5/4a22b5337f0acee22b36422222540e1c.jpg",
+      "originalPageUrl": "https://unsplash.com/photos/uiPaZkzjv64",
+      "title": "Delicious and Nutritious Fruits for Healthy Blood Pressure | Rustic orange fungi, Peeled orange on plaid cloth, Mandarin oranges on wooden table",
+      "pinner": "Simone",
+      "width": 736,
+      "height": 490,
+      "format": "JPEG",
+      "sha256": "3be8638096adaee11babdb734450676920a93e3786fb301f3d44118c20874c65",
+      "vegetableId": "mandarin",
+      "productIds": ["mandarin-irregular-3kg"],
+      "farmNames": ["제주 한림밭"]
+    },
+    {
+      "imageUrl": "/images/products/curated/mandarin/acc288b4cddf.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/satsuma-mandarin-orange-each-in-2025--515169644923793356/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/80/0b/78/800b7819d23f533123189fbc43914365.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/80/0b/78/800b7819d23f533123189fbc43914365.jpg",
+      "originalPageUrl": "https://www.doordash.com/search/store/Satsuma%20Mandarin%20Orange%20(each)?event_type=search",
+      "title": "Satsuma Mandarin Orange (each) | Satsuma mandarin tree, What does a satsuma look like, Satsuma oranges",
+      "pinner": "DoorDash",
+      "width": 736,
+      "height": 414,
+      "format": "JPEG",
+      "sha256": "acc288b4cddf37f0138bff362a9b529578a2b09e753f9d6c3afbd1f609c53ec5",
+      "vegetableId": "mandarin",
+      "productIds": ["mandarin-irregular-3kg"],
+      "farmNames": ["제주 한림밭"]
+    },
+    {
+      "imageUrl": "/images/products/curated/aehobak/d2eb84de4b3b.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/860328335104434816/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/ac/1a/f7/ac1af77077d8dfc9482efa0015750f41.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/ac/1a/f7/ac1af77077d8dfc9482efa0015750f41.jpg",
+      "originalPageUrl": "https://www.pinterest.com/pin/860328335104434816/",
+      "title": "애호박 [ Ae HoBak ] Korean Zucchini | 한국음식",
+      "pinner": "JIN",
+      "width": 736,
+      "height": 601,
+      "format": "JPEG",
+      "sha256": "d2eb84de4b3bd502cdd90a69b609a418b745a407e70586ff3d8be5564fce184a",
+      "vegetableId": "aehobak",
+      "productIds": ["aehobak-scratched-3ea"],
+      "farmNames": ["진주 들판농장"]
+    },
+    {
+      "imageUrl": "/images/products/curated/aehobak/9ec77135687c.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/784752303816894187/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/ad/78/6c/ad786c48dd415a5e4538a1feebe6fa12.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/ad/78/6c/ad786c48dd415a5e4538a1feebe6fa12.jpg",
+      "originalPageUrl": "https://coupa.ng/bNmHNN",
+      "title": "Fresh Local Zucchini, 1 piece | 애호박, 멸치, 비빔밥",
+      "pinner": "용돈받는 아빠",
+      "width": 736,
+      "height": 736,
+      "format": "JPEG",
+      "sha256": "9ec77135687cc556a13092e4f2847763dd7befec0fcbd8912b76bd38a90c1c14",
+      "vegetableId": "aehobak",
+      "productIds": ["aehobak-scratched-3ea"],
+      "farmNames": ["진주 들판농장"]
+    },
+    {
+      "imageUrl": "/images/products/curated/radish/ef98938efa39.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://jp.pinterest.com/pin/yahoo--469148486190214009/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/b3/91/b9/b391b983a478642ba95322018f5baa54.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/b3/91/b9/b391b983a478642ba95322018f5baa54.jpg",
+      "originalPageUrl": "https://search.yahoo.co.jp/image/detail?p=%E5%A4%A7%E6%A0%B9&imgurl=https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqG4Cr9ovE0F_VkHZ9CaONWiEzqbBPZEKcGzcBOzSgWO_zYiW14p6s9nkjoPW6PC38GBZsnD1KcCjUbyfXdhbqduNS5ajIPMAZsz1HoVvTx6elBNLpRzuvCdZSCHmhbWlG2kpGYyDjIDCQOw4EfP8DUqckBiIUuzjs3U7Gn8JNBWckeOWKdxz8lXxapIrWsL2dr109WqRoh5k2HMSVmfMKuOUg1Dr1NEA9Fwnffm4SFL8yosgmfMoYPqSEHurZMZ_n88vZwzxL-3pLFLboj6OK9oM2x-aCUfMFxd755wz6Tx4qg2TUWon14TQrPwboFlQOaA%3D%3D/0f0e74ea87fa0ef56775adbdb90d5830_20161101121819.jpg&refurl=https://oceans-nadia.com/cooking_basics/5&title=%E5%A4%A7%E6%A0%B9%E3%81%AE%E9%81%B8%E3%81%B3%E6%96%B9%E3%81%A8%E6%A0%84%E9%A4%8A%E3%83%BB%E6%97%AC%E3%81%AE%E6%99%82%E6%9C%9F%20-%20%E9%87%8E%E8%8F%9C%E3%81%AE%E9%81%B8%E3%81%B3%E6%96%B9/%E6%96%99%E7%90%86%E3%81%AE%E5%9F%BA%E7%A4%8E%20%7C%20%E3%83%AC%E3%82%B7%E3%83%94%20...&domain=oceans-nadia.com&w=1200&h=800&sig=440d882c84c4117afe494df837008e48aa26f0c2e0cb9ae44cd155ff4f4feda3276102e7a47c133792501e2e3d56b54c4bb8f953293311fc7e321c0398ac5297",
+      "title": "Fresh Daikon Radish on White Surface | こんにゃく, きのこ, 豆知識",
+      "pinner": "Megu",
+      "width": 735,
+      "height": 490,
+      "format": "JPEG",
+      "sha256": "ef98938efa3944c96ed640f0aafa7182516b2fce660e7bca980c5bcfc789b0de",
+      "vegetableId": "radish",
+      "productIds": ["radish-small-2ea"],
+      "farmNames": ["고창 황토무밭"]
+    },
+    {
+      "imageUrl": "/images/products/curated/radish/a63c9141903b.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://au.pinterest.com/pin/radish-daikon-white-miyashige-organic--300544975146898330/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/ac/3a/f0/ac3af08172b1103087fec7689ddf1186.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/ac/3a/f0/ac3af08172b1103087fec7689ddf1186.jpg",
+      "originalPageUrl": "https://www.diggers.com.au/products/radish-daikon-white-miyashige-organic?variant=41081836830882",
+      "title": "Radish 'Daikon White Miyashige' (Organic) - Packet of 70 seeds | Organic white radishes, White radish gardening, White radish harvest",
+      "pinner": "The Diggers Club",
+      "width": 736,
+      "height": 736,
+      "format": "JPEG",
+      "sha256": "a63c9141903b615b14b70c1ecdbfef7f5dce9269c796b5776201b03d90fd4930",
+      "vegetableId": "radish",
+      "productIds": ["radish-scratched-2ea"],
+      "farmNames": ["평창 고랭지농장"]
+    },
+    {
+      "imageUrl": "/images/products/curated/sweet-potato/b0f632df5cf4.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://ph.pinterest.com/pin/boniatos--30680841205367062/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/03/38/f6/0338f6072f204627e7e3fb1c79d71705.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/03/38/f6/0338f6072f204627e7e3fb1c79d71705.jpg",
+      "originalPageUrl": "https://it.pinterest.com/pin/756956649850718758/",
+      "title": "Brookdale Cookbook Gallery | Vanessa Lewis | Fresh purple sweet potatoes, Purple yam photo, Organic pink sweet potatoes",
+      "pinner": "지은 김",
+      "width": 736,
+      "height": 1104,
+      "format": "JPEG",
+      "sha256": "b0f632df5cf4b8aa328d9eed12cbb4add00ca4e97a4db4c34faf99fcf79eae1a",
+      "vegetableId": "sweet-potato",
+      "productIds": ["sweet-potato-small-1-5kg"],
+      "farmNames": ["여주 고구마농원"]
+    },
+    {
+      "imageUrl": "/images/products/curated/sweet-potato/43a7ffce57e7.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/860328335103906558/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/20/22/4e/20224e9ff55da972e791f24e81ba1495.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/20/22/4e/20224e9ff55da972e791f24e81ba1495.jpg",
+      "originalPageUrl": "https://www.pinterest.com/pin/860328335103906558/",
+      "title": "고구마 [ GoGuMa ] Sweet Potatoes | 한식",
+      "pinner": "JIN",
+      "width": 735,
+      "height": 602,
+      "format": "JPEG",
+      "sha256": "43a7ffce57e7cb23e94cf6cd73be1651b38cfebd85a8ff04f20618c3eee1bea4",
+      "vegetableId": "sweet-potato",
+      "productIds": ["sweet-potato-bent-2kg", "sweet-potato-scratched-3kg"],
+      "farmNames": ["해남 황토고구마"]
+    },
+    {
+      "imageUrl": "/images/products/curated/shiitake/887ffb00b02d.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://kr.pinterest.com/pin/752382681536170812/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/42/c3/89/42c389312a0fc07f46e826044d944046.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/42/c3/89/42c389312a0fc07f46e826044d944046.jpg",
+      "originalPageUrl": "https://bongja-workroom.tistory.com/372",
+      "title": "표고버섯 모양내기 | 식품 아이디어, 한국 요리, 닭가슴살 | 한식, 볶음, 조림",
+      "pinner": "Sabakat",
+      "width": 500,
+      "height": 374,
+      "format": "JPEG",
+      "sha256": "887ffb00b02d848757b59d6f90306eb162cfbde8ac90eefc3bbe82aa03ebfcef",
+      "vegetableId": "shiitake",
+      "productIds": ["shiitake-scratched-1kg"],
+      "farmNames": ["청양 고추농가"]
+    },
+    {
+      "imageUrl": "/images/products/curated/sweet-pumpkin/345f81cfacbe.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://ca.pinterest.com/pin/kabocha-squash-superstar-of-squashes--752101206494607588/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/cc/2f/b3/cc2fb39a24cc4261ff18514ff7a4ca63.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/cc/2f/b3/cc2fb39a24cc4261ff18514ff7a4ca63.png",
+      "originalPageUrl": "http://www.realfoodforlife.com/kabocha-squash-health-benefits-recipes/",
+      "title": "Benefits of Kabocha Squash. From the week of: May 16-20, 2016 | Kabocha squash benefits, Fresh kabocha squash, Kabocha squash nutrition",
+      "pinner": "New Leaf",
+      "width": 697,
+      "height": 522,
+      "format": "JPEG",
+      "sha256": "345f81cfacbe568c72ddec32102a4b7ff74f86fb5ec54f03e7f7a9af58c6b804",
+      "vegetableId": "sweet-pumpkin",
+      "productIds": ["sweet-pumpkin-scratched-2ea"],
+      "farmNames": ["경주 단호박농장"]
+    },
+    {
+      "imageUrl": "/images/products/curated/sweet-pumpkin/5960defb3329.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://ca.pinterest.com/pin/courge-kabocha-ouverte-vue-1--381469030938356666/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/ca/8c/82/ca8c828dcf6317ba8c657606a05c3849.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/ca/8c/82/ca8c828dcf6317ba8c657606a05c3849.jpg",
+      "originalPageUrl": "https://scally.typepad.com/.a/6a00d8341c676f53ef019b004a6729970b-pi",
+      "title": "Typepad | Network Solutions | Recette santé, Zucchini, Kabocha",
+      "pinner": "Fleurette Lepage",
+      "width": 523,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "5960defb33291ac3a7cb277e38178ba34ff7faae8bd993a242a717d3d497cde9",
+      "vegetableId": "sweet-pumpkin",
+      "productIds": ["sweet-pumpkin-irregular-2ea"],
+      "farmNames": ["춘천 호박농원"]
+    },
+    {
+      "imageUrl": "/images/products/curated/apple/2d191fdad108.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://co.pinterest.com/pin/972355375785404248/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/db/b2/f0/dbb2f056d81d2e87c08bfe1282907962.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/db/b2/f0/dbb2f056d81d2e87c08bfe1282907962.jpg",
+      "originalPageUrl": "https://creativemarket.com/oleghz/906937-Red-apples-in-wooden-wicker-basket-stock-photo-containing-apples-and-fruit",
+      "title": "Fresh Red Apples in a Wooden Basket | Cestas de mimbre, Fruta, Manzana roja",
+      "pinner": "윤서",
+      "width": 736,
+      "height": 490,
+      "format": "JPEG",
+      "sha256": "2d191fdad1081361872d08bad19c3c959ef790d48f666b524f56c164b29c70b0",
+      "vegetableId": "apple",
+      "productIds": ["apple-scratched-2kg"],
+      "farmNames": ["청송 사과농원"]
+    },
+    {
+      "imageUrl": "/images/products/curated/cabbage/41fb4888a543.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/singlevegetableimages--1034702083114158510/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/65/b2/25/65b225741a9924f8d82b2cf8122ec359.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/65/b2/25/65b225741a9924f8d82b2cf8122ec359.jpg",
+      "originalPageUrl": "http://www.colourbox.com/image/photo-of-the-single-green-cabbage-against-the-white-background-image-1712223",
+      "title": "Fresh Green Cabbage on White Background | Green fruits and vegetables, Expired food, Money images",
+      "pinner": "Oluwatosin Samuel",
+      "width": 480,
+      "height": 360,
+      "format": "JPEG",
+      "sha256": "41fb4888a54362aa388b578e4d6c7353e8287b5c95ed85403a4f6ff951bb21d5",
+      "vegetableId": "cabbage",
+      "productIds": ["cabbage-irregular-2ea"],
+      "farmNames": ["제주 한림밭"]
+    },
+    {
+      "imageUrl": "/images/products/curated/apple/7dfc1c25c871.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://dk.pinterest.com/pin/fresh-red-apples-in-a-wicker-basket--536069161885194262/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/58/e7/7a/58e77aae01b967392df579e2198fb343.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/58/e7/7a/58e77aae01b967392df579e2198fb343.jpg",
+      "originalPageUrl": "https://dk.pinterest.com/pin/fresh-red-apples-in-a-wicker-basket--536069161885194262/",
+      "title": "Fresh Red Apples in a Wicker Basket | Frugt",
+      "pinner": "Marta Christensen",
+      "width": 736,
+      "height": 490,
+      "format": "JPEG",
+      "sha256": "7dfc1c25c871ea4e9739bed37954fcf06154af67c7c25c733565fa216d216fd6",
+      "vegetableId": "apple",
+      "productIds": ["apple-small-3kg"],
+      "farmNames": ["영주 사과마을"]
+    },
+    {
+      "imageUrl": "/images/products/curated/shiitake/3685f5f4cedc.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://au.pinterest.com/pin/fresh-shiitake-mushrooms-local-pickup-delivery-kai-kai-farm-in-2025--930204498034714119/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/2a/d4/cd/2ad4cd4c2eb926fb2c8f5eeb944410fb.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/2a/d4/cd/2ad4cd4c2eb926fb2c8f5eeb944410fb.jpg",
+      "originalPageUrl": "https://kaikaifarm.au/products/shiitake-mushrooms?variant=48964590797111",
+      "title": "Shiitake Mushrooms - Large Box (Approx. 640g) | Dried shiitake mushrooms in container, Cluster of shiitake mushrooms, Fresh shiitake mushrooms in bag",
+      "pinner": "Kai Kai Farm",
+      "width": 736,
+      "height": 552,
+      "format": "JPEG",
+      "sha256": "3685f5f4cedc2e1bfb57d227ff44b1b19d9b4a7b765def1792f8e16246128c0e",
+      "vegetableId": "shiitake",
+      "productIds": ["shiitake-irregular-500g", "shiitake-small-300g"],
+      "farmNames": ["장흥 버섯농가"]
+    },
+    {
+      "imageUrl": "/images/products/curated/radish/d5d8e5426e0e.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://au.pinterest.com/pin/daikon-daikonradish-japan-streetphotography-street-leica-leicaphotography-freshproduce-radish--547891110920162962/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/71/7a/76/717a76180ed67d79565357694b69ef84.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/71/7a/76/717a76180ed67d79565357694b69ef84.jpg",
+      "originalPageUrl": "https://instagr.am/p/CBghokZniQK/",
+      "title": "#daikon #daikonradish #japan #streetphotography #street #leica #leicaphotography #freshproduce #radish | How to grill daikon radish, Daikon leaves, Shredded daikon radish",
+      "pinner": "Jeff Hulton",
+      "width": 735,
+      "height": 490,
+      "format": "JPEG",
+      "sha256": "d5d8e5426e0ebfa25c85d02f55fdd93bc6ec363a33bf1a1d320ddbd7aee54884",
+      "vegetableId": "radish",
+      "productIds": ["radish-irregular-1ea"],
+      "farmNames": ["제주 구좌당근"]
+    },
+    {
+      "imageUrl": "/images/products/curated/tomato/4031d4a521e0.jpg",
+      "sourceKind": "pinterest",
+      "pinUrl": "https://in.pinterest.com/pin/fresh-ripe-red-tomato-a-healthy-and-juicy-vegetable-isolated-on-white-in-2025--989736455618683906/",
+      "pinterestImageUrl": "https://i.pinimg.com/736x/53/15/20/5315201d65384543d590bf74efb26235.jpg",
+      "originalImageUrl": "https://i.pinimg.com/originals/53/15/20/5315201d65384543d590bf74efb26235.png",
+      "originalPageUrl": "https://stock.adobe.com/contributor/212632997/NUSRAT?asset_id=1390789662",
+      "title": "Fresh, ripe red tomato, a healthy and juicy vegetable, isolated on white. | Two tomatoes on white background, Fresh red tomato and slice, Two fresh red tomatoes",
+      "pinner": "qtiechim",
+      "width": 735,
+      "height": 588,
+      "format": "JPEG",
+      "sha256": "4031d4a521e08d4d0e2092c1b7c20aab5b77c371ba06c67928208ede3c0e69a9",
+      "vegetableId": "tomato",
+      "productIds": ["tomato-small-1-5kg"],
+      "farmNames": ["담양 햇살농장"]
+    },
+    {
+      "imageUrl": "/images/aehobak-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "9509f2ce5c85262fa62e362e8370b8d7a97b033d36dc3c9533476d7f377ecbc1",
+      "vegetableId": "aehobak",
+      "productIds": ["aehobak-small-3ea"],
+      "farmNames": ["춘천 호박농원"]
+    },
+    {
+      "imageUrl": "/images/napa-cabbage-scratched.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "c658eda4f00d2065e809fa3576658a2ec1008e42757db27ca8768bbcf7be4b97",
+      "vegetableId": "napa-cabbage",
+      "productIds": ["napa-cabbage-scratched-1ea"],
+      "farmNames": ["괴산 배추마을"]
+    },
+    {
+      "imageUrl": "/images/eggplant-bent.jpg",
+      "sourceKind": "existing",
+      "sourceRecord": "docs/image-sources.md",
+      "width": 800,
+      "height": 800,
+      "format": "JPEG",
+      "sha256": "49455b370a5cec4ceae84f634b07624ac337a1612532e3680f6c657b024b4ebd",
+      "vegetableId": "eggplant",
+      "productIds": ["eggplant-irregular-5ea"],
+      "farmNames": ["진주 들판농장"]
     }
   ]
 }
