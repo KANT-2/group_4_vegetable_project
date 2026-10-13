@@ -6,6 +6,7 @@
 // 상품·채소 화면(B)이 아직 없으면 그쪽으로 가는 링크는 그리지 않아요. (src/lib/routes.ts)
 
 import Link from "next/link";
+import { homeCampaigns } from "@/data/home-campaigns";
 import {
   HomeBanner,
   type HomeBannerSlide,
@@ -118,58 +119,7 @@ export default async function HomePage() {
   );
 
   const recipeImage = recipes.find((recipe) => recipe.imageUrl)?.imageUrl;
-  const slides: HomeBannerSlide[] = [
-    {
-      id: "openrun-coupon",
-      href: "/promotions/openrun-coupon",
-      layout: "artwork",
-      imageUrl: "/images/home-banners/01-openrun.png",
-      eyebrow: "오픈런 쿠폰",
-      title: "하루의 시작을\n알뜰하게!",
-      sub: "오늘의 장보기에 작은 혜택을 더해요",
-      cta: "쿠폰 받기",
-    },
-    {
-      id: "first-box",
-      href: "/promotions/first-box",
-      layout: "artwork",
-      imageUrl: "/images/home-banners/02-firstbox.png",
-      eyebrow: "첫 채소박스 혜택",
-      title: "제철의 맛을\n가볍게 시작해요",
-      sub: "처음 만나는 못난이 채소, 더 반가운 혜택",
-      cta: "첫 구매 혜택 보기",
-    },
-    {
-      id: "fresh-delivery",
-      href: "/promotions/fresh-delivery",
-      layout: "artwork",
-      imageUrl: "/images/home-banners/03-freshdelivery.png",
-      eyebrow: "신선 배송",
-      title: "농장에서 식탁까지\n신선함을 빠르게",
-      sub: "제철 채소의 좋은 맛을 그대로 전해요",
-      cta: "배송 안내 보기",
-    },
-    {
-      id: "kimjang-coupon",
-      href: "/promotions/kimjang-coupon",
-      layout: "artwork",
-      imageUrl: "/images/home-banners/04-kimjangcoupon.png",
-      eyebrow: "김장철 추가 할인",
-      title: "김장 준비는 넉넉하게\n추가 할인 쿠폰으로",
-      sub: "배추부터 무까지, 김장 재료를 알뜰하게",
-      cta: "김장 쿠폰 받기",
-    },
-    {
-      id: "family-kimjang",
-      href: "/promotions/family-kimjang",
-      layout: "artwork",
-      imageUrl: "/images/home-banners/05-familykimjang.png",
-      eyebrow: "가족과 함께하는 농가 체험",
-      title: "아이와 함께하는\n우리 가족 첫 김장",
-      sub: "함께 버무리고, 함께 웃는 특별한 하루",
-      cta: "김장 체험 알아보기",
-    },
-  ];
+  const slides: HomeBannerSlide[] = homeCampaigns;
 
   return (
     <>

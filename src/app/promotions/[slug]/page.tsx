@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { CampaignHero } from "@/components/promotions/CampaignHero";
+import { homeCampaigns } from "@/data/home-campaigns";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/products/ProductCard";
 import { promotions } from "@/data/promotions";
@@ -22,7 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PromotionPage({ params }: Props) {
   const { slug } = await params;
   const promo = promotions.find((item) => item.slug === slug);
-  if (!promo) notFound();
+  const campaign = homeCampaigns.find((item) => item.id === slug);
+  if (!promo || !campaign) notFound();
   const products = await getProductList({ sort: "recommended" });
   const selected = products
     .filter((product) => {
@@ -45,39 +47,20 @@ export default async function PromotionPage({ params }: Props) {
         <span aria-hidden="true">/</span>
         <span aria-current="page">{promo.label}</span>
       </nav>
-      <section className="bg-brand-soft">
-        <div className="container-page grid items-center gap-8 py-10 md:grid-cols-2 md:py-16">
-          <div>
-            <p className="text-xs font-bold tracking-[.15em] text-brand">
-              MOTNANI MARKET · {promo.label}
-            </p>
-            <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-              {promo.title}
-            </h1>
-            <p className="mt-5 max-w-md text-sm leading-7 text-ink-muted md:text-base">
-              {promo.description}
-            </p>
-            <Link href="#benefit" className="btn btn-primary mt-7">
-              {promo.kind === "delivery"
-                ? "배송 정보 확인하기"
-                : promo.kind === "experience"
-                  ? "체험 일정 확인하기"
-                  : "혜택 조건 확인하기"}{" "}
-              <span aria-hidden="true">↓</span>
-            </Link>
-          </div>
-          <div className="relative aspect-[3/2] overflow-hidden rounded-2xl bg-sand">
-            <Image
-              src={promo.image}
-              alt=""
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 525px"
-              className="object-cover object-right"
-            />
-          </div>
-        </div>
-      </section>
+      <h1 className="sr-only">
+        {promo.label} · {campaign.title}
+      </h1>
+      <CampaignHero campaign={campaign} />
+      <div className="container-page flex justify-center py-5">
+        <Link href="#benefit" className="btn btn-primary">
+          {promo.kind === "delivery"
+            ? "배송 안내 보기"
+            : promo.kind === "experience"
+              ? "체험 안내 보기"
+              : "혜택 보기"}
+          <span aria-hidden="true">↓</span>
+        </Link>
+      </div>
       <nav
         aria-label="행사 페이지 메뉴"
         className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur"
