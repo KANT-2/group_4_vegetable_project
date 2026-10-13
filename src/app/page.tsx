@@ -149,7 +149,7 @@ export default async function HomePage() {
           href,
           layout: wide ? ("photo" as const) : ("split" as const),
           imageUrl: wide ?? product.imageUrl,
-          eyebrow: "🍂 지금 맛있는 제철 과일",
+          eyebrow: "지금 맛있는 제철 과일",
           title: product.name,
           sub: product.tagline,
           highlight: `${discount > 0 ? `${discount}% ` : ""}${product.price.toLocaleString("ko-KR")}원`,
@@ -163,7 +163,7 @@ export default async function HomePage() {
             href: `${list}?collection=bigsale`,
             layout: "photo" as const,
             imageUrl: "/images/hero.jpg", // 채소 바구니 가로 사진 (1600×600)
-            eyebrow: `${COLLECTIONS.bigsale.emoji} 못난이 특가`,
+            eyebrow: "못난이 특가",
             title: COLLECTIONS.bigsale.title,
             sub: COLLECTIONS.bigsale.description,
           },
@@ -174,7 +174,7 @@ export default async function HomePage() {
       href: routes.recipes,
       layout: "split",
       imageUrl: recipeImage,
-      eyebrow: "🍳 못난이 채소 레시피",
+      eyebrow: "못난이 채소 레시피",
       title: "오늘 저녁은 쉬운 집밥 어때요?",
       sub: `채소 하나로 만드는 레시피 ${recipes.length}가지`,
     },
@@ -191,11 +191,12 @@ export default async function HomePage() {
         <MockDataNotice subject="상품·농가" />
       </div>
 
-      {/* 3. 진열 줄 */}
+      {/* 2. 진열 줄 */}
       {discounted.length > 0 && (
         <HomeShelf
           id="shelf-discount"
-          title="💸 지금 가장 많이 할인해요"
+          eyebrow="BEST PRICE"
+          title="지금 가장 많이 할인해요"
           sub="모양만 다를 뿐, 맛은 그대로예요"
           href={list ? `${list}?sort=discount_desc` : null}
         >
@@ -206,7 +207,8 @@ export default async function HomePage() {
       {seasonal.length > 0 && (
         <HomeShelf
           id="shelf-seasonal"
-          title={`${COLLECTIONS.seasonal.emoji} ${COLLECTIONS.seasonal.title}`}
+          eyebrow={COLLECTIONS.seasonal.eyebrow}
+          title={COLLECTIONS.seasonal.title}
           sub={COLLECTIONS.seasonal.description}
           href={collectionHref("seasonal")}
         >
@@ -224,7 +226,8 @@ export default async function HomePage() {
       {popular.length > 0 && (
         <HomeShelf
           id="shelf-popular"
-          title="🏆 후기가 많은 인기 상품"
+          eyebrow="BEST REVIEW"
+          title="후기가 많은 인기 상품"
           sub="먼저 산 분들이 많이 고른 못난이"
           href={list ? `${list}?sort=reviews` : null}
         >
@@ -235,7 +238,8 @@ export default async function HomePage() {
       {single.length > 0 && (
         <HomeShelf
           id="shelf-single"
-          title={`${COLLECTIONS.single.emoji} ${COLLECTIONS.single.title}`}
+          eyebrow={COLLECTIONS.single.eyebrow}
+          title={COLLECTIONS.single.title}
           sub={COLLECTIONS.single.description}
           href={collectionHref("single")}
         >
@@ -246,7 +250,8 @@ export default async function HomePage() {
       {bulk.length > 0 && (
         <HomeShelf
           id="shelf-bulk"
-          title={`${COLLECTIONS.bulk.emoji} ${COLLECTIONS.bulk.title}`}
+          eyebrow={COLLECTIONS.bulk.eyebrow}
+          title={COLLECTIONS.bulk.title}
           sub={COLLECTIONS.bulk.description}
           href={collectionHref("bulk")}
         >
@@ -264,7 +269,8 @@ export default async function HomePage() {
       {recipes.length > 0 && (
         <HomeShelf
           id="shelf-recipes"
-          title="🍳 오늘은 뭘 해 먹을까요?"
+          eyebrow="RECIPE"
+          title="오늘은 뭘 해 먹을까요?"
           sub="장바구니에 담은 채소로 바로 만들어요"
           href={routes.recipes}
         >
@@ -280,7 +286,8 @@ export default async function HomePage() {
       {farms.length > 0 && (
         <HomeShelf
           id="shelf-farms"
-          title="🌾 농가 이야기"
+          eyebrow="FARM STORY"
+          title="농가 이야기"
           sub="농산물을 키우는 사람들의 하루"
           href={routes.story}
         >

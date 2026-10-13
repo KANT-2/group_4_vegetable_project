@@ -11,6 +11,7 @@ import {
 import { ArrowRightIcon } from "@/components/common/Icons";
 import { MockDataNotice } from "@/components/common/MockDataNotice";
 import { SafeImage } from "@/components/common/SafeImage";
+import { SectionHeading } from "@/components/common/SectionHeading";
 import farmPhotos from "@/data/farm-photo-assets.json";
 import { FARM_STORIES, getFarmStoryDetail } from "@/data/farm-stories";
 import { FARM_SCENES, getFarmPhotos } from "@/lib/farm-photo";
@@ -253,8 +254,9 @@ export default async function StoryPage({
         aria-labelledby="about-title"
         className="container-page scroll-mt-24 pt-16 md:pt-20"
       >
-        <SectionTitle
+        <SectionHeading
           id="about-title"
+          eyebrow="ABOUT US"
           title="못난이마켓은 이런 서비스예요"
           sub="모양이나 크기 때문에 팔기 어려운 농산물을 소개하고, 무엇을 해 먹을지까지 이어 줘요"
         />
@@ -291,9 +293,10 @@ export default async function StoryPage({
         aria-labelledby="scenes-title"
         className="container-page pt-16 md:pt-20"
       >
-        <SectionTitle
+        <SectionHeading
           id="scenes-title"
-          title="🌱 밭에서 식탁까지"
+          eyebrow="FROM THE FIELD"
+          title="밭에서 식탁까지"
           sub="못난이 농산물이 자라는 곳을 둘러보세요. 사진을 누르면 그 채소 이야기로 가요"
         />
         <ul className="grid auto-rows-[9rem] grid-cols-2 gap-2 sm:auto-rows-[11rem] md:grid-cols-4 md:gap-3">
@@ -341,9 +344,10 @@ export default async function StoryPage({
           className="mt-16 bg-sand py-12 md:mt-20 md:py-14"
         >
           <div className="container-page">
-            <SectionTitle
+            <SectionHeading
               id="season-title"
-              title={`🧺 ${month}월, 지금 수확 중인 농가`}
+              eyebrow="IN SEASON"
+              title={`${month}월, 지금 수확 중인 농가`}
               sub="제철에 거둔 농산물은 모양이 달라도 맛이 가장 좋을 때예요"
             />
             <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-[18px]">
@@ -385,7 +389,11 @@ export default async function StoryPage({
         aria-labelledby="reasons-title"
         className="container-page pt-16 md:pt-20"
       >
-        <SectionTitle id="reasons-title" title="왜 모양이 제각각일까요?" />
+        <SectionHeading
+          id="reasons-title"
+          eyebrow="WHY UGLY"
+          title="왜 모양이 제각각일까요?"
+        />
         <ul className="grid gap-3 sm:grid-cols-2 md:gap-[18px]">
           {REASONS.map(({ reason, description }) => (
             <li
@@ -419,9 +427,10 @@ export default async function StoryPage({
         aria-labelledby="farms-title"
         className="container-page scroll-mt-24 pt-16 md:pt-20"
       >
-        <SectionTitle
+        <SectionHeading
           id="farms-title"
-          title={`🌾 이 농산물을 키우는 농가 ${farms.length}곳`}
+          eyebrow="FARM STORY"
+          title={`이 농산물을 키우는 농가 ${farms.length}곳`}
           sub="농가를 누르면 농가 이야기와 판매 상품, 위치, 요리까지 한 번에 볼 수 있어요"
         />
         {provinces.length > 0 && (
@@ -495,7 +504,11 @@ export default async function StoryPage({
           aria-labelledby="quotes-title"
           className="container-page pt-16 md:pt-20"
         >
-          <SectionTitle id="quotes-title" title="💬 농장지기 한마디" />
+          <SectionHeading
+            id="quotes-title"
+            eyebrow="FARMER'S NOTE"
+            title="농장지기 한마디"
+          />
           <ul className="grid gap-3 md:grid-cols-3 md:gap-[18px]">
             {quotes.map((farm) => {
               const detail = FARM_STORIES[farm.farmName];
@@ -583,25 +596,6 @@ export default async function StoryPage({
         </details>
       </div>
     </>
-  );
-}
-
-function SectionTitle({
-  id,
-  title,
-  sub,
-}: {
-  id: string;
-  title: string;
-  sub?: string;
-}) {
-  return (
-    <div className="mb-6 text-center md:mb-8">
-      <h2 id={id} className="text-[1.375rem] font-medium md:text-[1.75rem]">
-        {title}
-      </h2>
-      {sub && <p className="mt-1 text-sm text-ink-muted md:text-base">{sub}</p>}
-    </div>
   );
 }
 
