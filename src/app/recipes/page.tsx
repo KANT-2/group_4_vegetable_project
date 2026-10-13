@@ -2,7 +2,6 @@
 // 검색(q)과 채소 필터(vegetable)는 주소의 검색 매개변수로 유지돼요.
 // 예: /recipes?q=샐러드&vegetable=carrot
 
-import { PageHeading } from "@/components/common/PageHeading";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
@@ -23,14 +22,8 @@ export default function RecipesPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   return (
-    <div className="container-page pb-10 pt-6 md:py-16">
-      <header>
-        <PageHeading
-          eyebrow="RECIPE"
-          title="못난이 채소 레시피"
-          description="못난이 농산물로 만드는 간단한 집밥 레시피예요."
-        />
-      </header>
+    <div className="container-page pb-10 pt-6 md:pb-16 md:pt-10">
+      <h1 className="sr-only">못난이 채소 레시피</h1>
 
       <Suspense fallback={<ResultsSkeleton />}>
         <RecipeResults searchParams={searchParams} />
@@ -60,7 +53,7 @@ async function RecipeResults({
 
   return (
     <>
-      <div className="mt-5 md:mt-8">
+      <div>
         <RecipeFilters filters={filters} vegetables={vegetables} />
       </div>
 

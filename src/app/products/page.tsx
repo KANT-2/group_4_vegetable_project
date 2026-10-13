@@ -1,4 +1,3 @@
-import { PageHeading } from "@/components/common/PageHeading";
 import Link from "next/link";
 import { VisitMark } from "@/components/products/BackLink";
 import MockDataNotice from "@/components/products/MockDataNotice";
@@ -74,22 +73,14 @@ export default async function ProductsPage({
   return (
     <div className="container-page py-4">
       <VisitMark />
-      {!collection && <h1 className="sr-only">상품 목록</h1>}
+      {/* 기획전 이름은 상단 메뉴에 이미 보여서 큰 제목 없이 화면 읽기용으로만 둬요. */}
+      <h1 className="sr-only">{collection?.title ?? "상품 목록"}</h1>
       {/* 코너 이동은 헤더 메뉴(제철·특가·대용량·1인 가구)에서 해요. */}
 
       {filters.q && (
         <p className="mt-6 text-xl font-bold text-ink">
           ‘{filters.q}’ 검색 결과
         </p>
-      )}
-
-      {collection && (
-        <PageHeading
-          eyebrow={collection.eyebrow}
-          title={collection.title}
-          description={collection.description}
-          className="mt-6 md:mt-8"
-        />
       )}
 
       {sections.length > 0 && (
