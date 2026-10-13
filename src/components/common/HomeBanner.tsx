@@ -114,7 +114,7 @@ export function HomeBanner({
                     className="object-cover object-right sm:object-center"
                   />
                   {slide.copyOverride ? (
-                    <DeliveryBannerCopy {...slide} />
+                    <DeliveryBannerCopy />
                   ) : (
                     <span
                       aria-hidden="true"

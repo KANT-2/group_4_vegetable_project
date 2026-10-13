@@ -28,7 +28,7 @@ export function CampaignHero({
           className="object-cover object-right sm:object-center"
         />
         {campaign.copyOverride ? (
-          <DeliveryBannerCopy {...campaign} />
+          <DeliveryBannerCopy />
         ) : (
           <span
             aria-hidden="true"
