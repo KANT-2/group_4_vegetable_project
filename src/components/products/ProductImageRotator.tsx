@@ -50,7 +50,7 @@ export function ProductImageRotator({
       )
         return;
       setIndex((previous) => (previous + 1) % images.length);
-    }, 4000);
+    }, 2000);
     return () => window.clearInterval(timer);
   }, [images.length, hovered, focused, visible]);
 
@@ -73,19 +73,6 @@ export function ProductImageRotator({
         className={className}
         priority={priority}
       />
-      {images.length > 1 && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5 rounded-full bg-black/20 px-2 py-1.5"
-        >
-          {images.map((image, i) => (
-            <span
-              key={image}
-              className={`h-1.5 rounded-full ${i === current ? "w-4 bg-white" : "w-1.5 bg-white/60"}`}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 }
