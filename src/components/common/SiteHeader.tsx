@@ -110,7 +110,7 @@ export function SiteHeader() {
           href={routes.home}
           className="inline-flex min-h-12 shrink-0 items-center gap-2 text-xl font-black tracking-tight text-brand lg:w-72 lg:text-2xl"
         >
-          <BrandLogo withSticker />
+          <BrandLogo withMark />
         </Link>
         <div className="hidden w-[25rem] lg:block">
           <HeaderSearch id="header-search" />
