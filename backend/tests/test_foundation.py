@@ -1,12 +1,15 @@
 import pytest
 from httpx import ASGITransport, AsyncClient
 
-from app.core.config import Settings
+from app.core.config import Settings, get_settings
 from app.main import app, lifespan
 
 
 @pytest.fixture
-async def client():
+async def client(monkeypatch):
+    # 로컬 backend/.env 의 실제 DB 주소와 무관하게 '미설정' 상태로 검증한다.
+    monkeypatch.setenv("DATABASE_URL", "")
+    get_settings.cache_clear()
     async with lifespan(app):
         async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as c:
             yield c
@@ -35,3 +38,9 @@ def test_database_url_must_use_asyncpg():
 def test_cors_wildcard_rejected():
     with pytest.raises(ValueError):
         _ = Settings(cors_allow_origins="*", _env_file=None).cors_origins
+
+
+@pytest.fixture(autouse=True)
+def _reset_settings_cache():
+    yield
+    get_settings.cache_clear()
