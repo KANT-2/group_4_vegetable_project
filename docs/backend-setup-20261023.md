@@ -53,7 +53,10 @@ npm install && npm run dev
 
 과제 요건상 이 Supabase 호출을 FastAPI 직접 구현으로 간주하지 않습니다. 각 담당 기능은 FastAPI·SQLAlchemy로 새로 구현합니다.
 
-## 5. 새 Supabase/DB 준비 순서 (외부 준비 필요, 미완료)
+## 5. 새 Supabase/DB 준비 순서
+
+진행 상태: 1~5 완료(2026-10-23), 6(Google 로그인)만 남음. 적용 명령은 `cd backend && PYTHONPATH=. uv run python scripts/apply_sql.py migrations` 후 `seeds`. 이 스크립트는 public에 테이블이 있거나 products에 데이터가 있으면 중단하며, 삭제·초기화는 하지 않습니다. 이미지는 시드가 참조하는 `products/`·`vegetables/` 경로 92개를 `public/images`에서 모아 대시보드 Storage에 올렸습니다.
+
 
 1. 4조 새 Supabase 프로젝트 존재 여부 확인 및 생성 — 형준
 2. DB 연결 문자열 확보(Session pooler 권장) 후 각자 `backend/.env`에 직접 입력 — 전원
@@ -74,7 +77,11 @@ npm install && npm run dev
 | --- | --- |
 | `uv sync`, `uv run pytest` (5건: health, DB 미설정 응답, CORS 허용/차단, asyncpg 주소 강제, `*` 거부) | 로컬 통과 |
 | uvicorn 실행, `/health`·`/health/db`·CORS 헤더·처리 시간 로그 | 로컬 확인 |
-| PostgreSQL/asyncpg 실제 연결, lifespan 종료 시 풀 정리 | **미검증** (DB 정보 없음) |
+| 4조 새 Supabase(Session pooler)에 asyncpg 연결 (`select 1`) | 로컬 확인 (2026-10-23) |
+| 마이그레이션 13개 적용 (`backend/scripts/apply_sql.py migrations`) → public 테이블 12개, 버킷 `market-images` | 로컬 확인 |
+| 시드 적용 (`apply_sql.py seeds`) → vegetables 21, products 71, recipes 23, recipe_products 115 | 로컬 확인 |
+| Storage 이미지 92개(products 71, vegetables 21) 대시보드 업로드, 공개 URL 200 응답 | 확인 |
+| lifespan 종료 시 풀 정리 | **미검증** |
 | 프론트 ↔ FastAPI 호출, 기존 Next.js 빌드·실행 | **미검증** |
 | 인증·JWT·블랙리스트 등 | 미구현 |
 
