@@ -109,7 +109,7 @@ export function SiteHeader() {
       <div className="container-page flex items-center justify-between gap-3 py-2 lg:pb-5 lg:pt-1">
         <Link
           href={routes.home}
-          className="inline-flex min-h-12 shrink-0 items-center gap-2 text-xl font-black tracking-tight text-brand lg:w-72 lg:text-2xl"
+          className="inline-flex min-h-12 shrink-0 items-center gap-2 text-xl font-black tracking-tight text-brand lg:w-[22rem] lg:text-2xl"
         >
           <BrandLogo withMark />
         </Link>
@@ -117,7 +117,7 @@ export function SiteHeader() {
           <HeaderSearch id="header-search" />
         </div>
         <Suspense fallback={null}>
-          <div className="flex items-center justify-end lg:w-72">
+          <div className="flex items-center justify-end lg:w-[22rem]">
             <HeaderIcons />
             <MobileMenu links={mobileLinks} />
           </div>

@@ -57,3 +57,10 @@ desktop.ini
 var/food-catalog/
 __pycache__/
 *.pyc
+
+# Python 백엔드
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
