@@ -39,7 +39,7 @@ npm install && npm run dev
 - `backend/app/main.py`, `core/config.py`, `core/logging.py`: 형준. 앱 팩토리, lifespan(엔진 생성·종료), CORS, 처리 시간 로깅(경로·상태·시간만 기록), `/health`, `/health/db`.
 - `backend/app/core/database.py`: 비동기 엔진·세션 **초안**. 영우 담당 제안 파일이라 영우가 작업 중이면 영우 버전으로 교체합니다(영우 원격 브랜치에는 아직 변경 없음을 확인했습니다).
 - `backend/app/{presentation,application,domain,infrastructure}/{accounts,catalog,purchases,experiences}/__init__.py`: accounts=지나, catalog=서현, purchases=영우, experiences=형준. 공용 router/service/models 파일은 만들지 않았습니다.
-- 라우터는 `main.py`의 주석 자리에 담당자가 한 줄씩 추가합니다. prefix는 `/api/v1/<기능>`.
+- 라우터 등록은 담당자가 PR 설명에 한 줄로 요청하고, 형준이 `main.py`에 모아 반영합니다(공통 파일 충돌 방지). prefix는 `/api/v1/<기능>`. 구조는 `backend/app/`로 통일하고 `backend/src/`는 만들지 않습니다.
 - JWT·인증 의존성은 지나가 `accounts/`와 공통 인증 모듈로 구현합니다(아직 없음).
 
 ## 4. 기존 Supabase 의존성 목록

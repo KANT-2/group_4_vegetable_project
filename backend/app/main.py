@@ -1,4 +1,4 @@
-"""FastAPI 진입점. 형준(공통 통합) 담당. 기능 라우터는 각 담당자가 아래 include_router 에 한 줄씩 추가합니다."""
+"""FastAPI 진입점. 형준(공통 통합) 담당. 기능 라우터 등록은 담당자가 PR 설명에 한 줄로 요청하면 형준이 아래에 모아 반영합니다."""
 
 from contextlib import asynccontextmanager
 
@@ -45,7 +45,7 @@ def create_app() -> FastAPI:
             return {"db": "error"}
         return {"db": "ok" if connected else "not_configured"}
 
-    # 기능 라우터 등록 자리 (각자 한 줄씩, prefix 는 /api/v1/<기능>)
+    # 기능 라우터 등록 자리 (형준이 모아서 반영, prefix 는 /api/v1/<기능>)
     # app.include_router(accounts_router, prefix="/api/v1")   # 지나
     # app.include_router(catalog_router, prefix="/api/v1")    # 서현
     # app.include_router(purchases_router, prefix="/api/v1")  # 영우
