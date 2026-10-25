@@ -6,6 +6,7 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.application.experiences.read_models import ReservationDetail
 from app.domain.experiences.models import (
     DuplicateReservation,
     Experience,
@@ -124,23 +125,35 @@ class SqlAlchemyExperienceRepository:
         m.status = session.status.value
         await self._s.flush()
 
-    async def list_user_reservations(self, user_id):
-        rows = await self._s.scalars(
-            select(ReservationModel).where(ReservationModel.user_id == user_id).order_by(ReservationModel.created_at.desc())
+    def _detail_query(self):
+        return (
+            select(ReservationModel, SessionModel.experience_id, ExperienceModel.title, SessionModel.starts_at)
+            .join(SessionModel, SessionModel.id == ReservationModel.session_id)
+            .join(ExperienceModel, ExperienceModel.id == SessionModel.experience_id)
         )
-        return [_to_reservation(r) for r in rows]
+
+    @staticmethod
+    def _to_detail(row) -> ReservationDetail:
+        model, experience_id, title, starts_at = row
+        return ReservationDetail(_to_reservation(model), experience_id, title, starts_at)
+
+    async def list_user_reservations(self, user_id):
+        rows = await self._s.execute(
+            self._detail_query().where(ReservationModel.user_id == user_id).order_by(ReservationModel.created_at.desc())
+        )
+        return [self._to_detail(r) for r in rows]
 
     async def list_reservations(self, session_id, status, page, size):
-        stmt = select(ReservationModel)
+        stmt = self._detail_query()
         if session_id:
             stmt = stmt.where(ReservationModel.session_id == session_id)
         if status:
             stmt = stmt.where(ReservationModel.status == status.value)
         total = await self._s.scalar(select(func.count()).select_from(stmt.subquery()))
-        rows = await self._s.scalars(
+        rows = await self._s.execute(
             stmt.order_by(ReservationModel.created_at.desc()).offset((page - 1) * size).limit(size)
         )
-        return [_to_reservation(r) for r in rows], total or 0
+        return [self._to_detail(r) for r in rows], total or 0
 
 
 class SqlAlchemyExperienceUnitOfWork:

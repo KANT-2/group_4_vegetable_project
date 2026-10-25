@@ -3,6 +3,7 @@
 from typing import Protocol
 from uuid import UUID
 
+from app.application.experiences.read_models import ReservationDetail
 from app.domain.experiences.models import Experience, ExperienceSession, Reservation, ReservationStatus
 
 
@@ -27,11 +28,11 @@ class ExperienceRepository(Protocol):
 
     async def update_session_status(self, session: ExperienceSession) -> None: ...
 
-    async def list_user_reservations(self, user_id: UUID) -> list[Reservation]: ...
+    async def list_user_reservations(self, user_id: UUID) -> list[ReservationDetail]: ...
 
     async def list_reservations(
         self, session_id: UUID | None, status: ReservationStatus | None, page: int, size: int
-    ) -> tuple[list[Reservation], int]: ...
+    ) -> tuple[list[ReservationDetail], int]: ...
 
 
 class ExperienceUnitOfWork(Protocol):

@@ -106,6 +106,8 @@ async def test_reserve_my_reservations_cancel_flow(env):
 
     mine = await env.client.get(f"{BASE}/reservations/me", headers=auth(user))
     assert [x["id"] for x in mine.json()] == [created.json()["id"]]
+    assert mine.json()[0]["experience_title"] == "테스트 김장 체험" and mine.json()[0]["experience_id"] == env.exp_id
+    assert mine.json()[0]["starts_at"]
     assert (await env.client.get(f"{BASE}/reservations/me", headers=auth())).json() == []  # 다른 사용자에겐 안 보임
 
     cancelled = await env.client.post(f"{BASE}/reservations/{created.json()['id']}/cancel", headers=auth(user))
@@ -159,6 +161,7 @@ async def test_admin_endpoints_require_admin_role(env):
     admin = auth(role="admin")
     rows = await env.client.get(listing, params={"session_id": str(sid), "status": "reserved"}, headers=admin)
     assert rows.status_code == 200 and rows.json()["total"] == 1 and rows.json()["items"][0]["headcount"] == 2
+    assert rows.json()["items"][0]["experience_title"] == "테스트 김장 체험"
 
     assert (await env.client.post(close, headers=admin)).json()["status"] == "closed"
     assert (await env.client.post(close, headers=admin)).status_code == 409  # 이미 마감
