@@ -33,12 +33,14 @@ class ExperienceService:
         return await self._uow.repo.list_user_reservations(user_id)
 
     # --- 예약·취소 (트랜잭션) ---
-    async def reserve(self, session_id: UUID, user_id: UUID, headcount: int) -> Reservation:
+    async def reserve(
+        self, session_id: UUID, user_id: UUID, headcount: int, experience_id: str | None = None
+    ) -> Reservation:
         repo = self._uow.repo
         try:
             # 회차 행을 잠가 같은 회차의 동시 예약이 정원 검사를 건너뛰지 못하게 한다.
             session = await repo.get_session(session_id, for_update=True)
-            if session is None:
+            if session is None or (experience_id is not None and session.experience_id != experience_id):
                 raise NotFound("회차를 찾을 수 없습니다.")
             duplicate = await repo.has_active_reservation(session_id, user_id)
             reservation = session.reserve(user_id, headcount, self._now(), duplicate)

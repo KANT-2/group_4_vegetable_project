@@ -8,6 +8,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core import database
 from app.core.config import get_settings
 from app.core.logging import RequestTimingMiddleware, setup_logging
+from app.presentation.experiences.errors import register_experience_error_handlers
+from app.presentation.experiences.router import router as experiences_router
 
 
 @asynccontextmanager
@@ -49,7 +51,8 @@ def create_app() -> FastAPI:
     # app.include_router(accounts_router, prefix="/api/v1")   # 지나
     # app.include_router(catalog_router, prefix="/api/v1")    # 서현
     # app.include_router(purchases_router, prefix="/api/v1")  # 영우
-    # app.include_router(experiences_router, prefix="/api/v1")  # 형준
+    app.include_router(experiences_router, prefix="/api/v1")  # 형준
+    register_experience_error_handlers(app)
 
     return app
 
