@@ -98,6 +98,7 @@ create unique index experience_reservations_one_active
 | 응용 서비스(`application/experiences/service.py`)·포트·트랜잭션(회차 행 잠금) | 완료 |
 | Repository·ORM↔도메인 변환·UnitOfWork(`infrastructure/experiences/`) | 완료 |
 | 실제 DB 통합 테스트 7건(예약·내 예약·취소 후 정원 복구, 정원 초과 시 미저장, 중복, 타인 취소 거부, 마감, 없음, 동시 5건 중 1건만 성공) | 통과 |
-| 표현 계층(라우터·Pydantic 스키마·예외→HTTP 변환), 인증 의존성 연동 | **미구현** (지나의 `get_current_user`·`require_admin` 규격 필요) |
+| 표현 계층: 라우터 7개·Pydantic 스키마(인원 1~10 검증, 페이지 size 1~100)·예외→HTTP 변환(404/403/422/409) | 완료, API 테스트 8건 통과(실제 DB) |
+| 인증 연동 | **임시 어댑터**: 합의 중인 토큰 규격(`sub`=UUID, `role`)을 검증(없음·위조·만료 401, 일반 사용자의 관리자 API 403). **블랙리스트(로그아웃 토큰 차단)는 미검사**, 지나의 공통 인증이 들어오면 `presentation/experiences/dependencies.py`의 `get_current_user`·`require_admin`만 교체 |
 | 프론트 화면 연결 | **미구현** |
 | `user_id` 외래키 | **미적용** (사용자 식별 확정 후) |
