@@ -18,14 +18,14 @@ Google 로그인, 회원가입, 비밀번호 변경은 이번 필수 범위에�
 
 ## 2. API 규격
 
-| Method | Path | 인증 | 설명 |
-| --- | --- | --- | --- |
-| POST | `/api/v1/accounts/login` | 없음 | OAuth2 form의 `username`에 이메일, `password`에 비밀번호 전달 |
-| POST | `/api/v1/accounts/logout` | Bearer | 현재 JWT의 `jti`를 차단 목록에 저장 |
-| GET | `/api/v1/accounts/me` | Bearer | 내 계정·프로필·배송지 조회 |
-| PATCH | `/api/v1/accounts/me/profile` | Bearer | `{ "nickname": "새닉네임" }` 수정 |
-| GET | `/api/v1/accounts/me/address` | Bearer | 기본 배송지 조회, 미등록 시 404 |
-| PUT | `/api/v1/accounts/me/address` | Bearer | 기본 배송지 전체 저장 |
+| Method | Path                          | 인증   | 설명                                                          |
+| ------ | ----------------------------- | ------ | ------------------------------------------------------------- |
+| POST   | `/api/v1/accounts/login`      | 없음   | OAuth2 form의 `username`에 이메일, `password`에 비밀번호 전달 |
+| POST   | `/api/v1/accounts/logout`     | Bearer | 현재 JWT의 `jti`를 차단 목록에 저장                           |
+| GET    | `/api/v1/accounts/me`         | Bearer | 내 계정·프로필·배송지 조회                                    |
+| PATCH  | `/api/v1/accounts/me/profile` | Bearer | `{ "nickname": "새닉네임" }` 수정                             |
+| GET    | `/api/v1/accounts/me/address` | Bearer | 기본 배송지 조회, 미등록 시 404                               |
+| PUT    | `/api/v1/accounts/me/address` | Bearer | 기본 배송지 전체 저장                                         |
 
 로그인 성공 응답:
 

@@ -88,11 +88,7 @@ export async function signOut(returnToHome = true): Promise<ActionResult> {
   let blacklistFailed = false;
   try {
     if (token)
-      await fastApi<void>(
-        "/api/v1/accounts/logout",
-        { method: "POST" },
-        token,
-      );
+      await fastApi<void>("/api/v1/accounts/logout", { method: "POST" }, token);
   } catch {
     blacklistFailed = Boolean(token);
   } finally {
@@ -108,7 +104,8 @@ export async function signOut(returnToHome = true): Promise<ActionResult> {
   if (blacklistFailed) {
     return {
       ok: false,
-      error: "서버 로그아웃 확인에 실패했지만 이 브라우저의 로그인은 해제했어요.",
+      error:
+        "서버 로그아웃 확인에 실패했지만 이 브라우저의 로그인은 해제했어요.",
     };
   }
 

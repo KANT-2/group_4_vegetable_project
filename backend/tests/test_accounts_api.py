@@ -221,3 +221,18 @@ async def test_address_delete_clears_only_authenticated_users_address():
 
     assert response.status_code == 204
     assert service.profile.shipping_address is None
+
+
+async def test_openapi_describes_account_flows_for_swagger_users():
+    user = AuthenticatedUser(uuid4(), UserRole.USER)
+    service = FakeProfileService(user.id)
+    async with await profile_client(service, user) as client:
+        response = await client.get("/openapi.json")
+
+    operations = response.json()["paths"]
+    assert operations["/api/v1/accounts/login"]["post"]["summary"] == "이메일 로그인"
+    assert operations["/api/v1/accounts/logout"]["post"]["summary"] == "로그아웃"
+    assert (
+        operations["/api/v1/accounts/me/address"]["put"]["summary"]
+        == "내 기본 배송지 저장"
+    )

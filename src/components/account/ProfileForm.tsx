@@ -173,8 +173,8 @@ export function ProfileEditor({
           로그인·비밀번호
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-          비밀번호는 서버에 해시된 형태로 저장돼요. 비밀번호 변경 기능은
-          이번 필수 범위에서 제외했어요.
+          비밀번호는 서버에 해시된 형태로 저장돼요. 비밀번호 변경 기능은 이번
+          필수 범위에서 제외했어요.
         </p>
       </section>
     </div>

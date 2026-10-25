@@ -25,7 +25,13 @@ from app.presentation.accounts.schemas import (
 router = APIRouter(prefix="/accounts", tags=["accounts"])
 
 
-@router.post("/login", response_model=TokenOut)
+@router.post(
+    "/login",
+    response_model=TokenOut,
+    summary="이메일 로그인",
+    description="이메일과 비밀번호를 검증하고 보호 API에 사용할 JWT를 발급합니다.",
+    responses={401: {"description": "이메일 또는 비밀번호가 올바르지 않음"}},
+)
 async def login(
     form: Annotated[OAuth2PasswordRequestForm, Depends()],
     service: AccountServiceDep,
@@ -45,7 +51,12 @@ async def login(
     )
 
 
-@router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
+@router.post(
+    "/logout",
+    status_code=status.HTTP_204_NO_CONTENT,
+    summary="로그아웃",
+    description="현재 JWT를 블랙리스트에 등록해 만료 전 재사용도 차단합니다.",
+)
 async def logout(
     auth: CurrentAuth,
     service: AccountServiceDep,
@@ -58,7 +69,12 @@ def _not_found(exc: Exception) -> HTTPException:
     return HTTPException(status.HTTP_404_NOT_FOUND, str(exc))
 
 
-@router.get("/me", response_model=MeOut)
+@router.get(
+    "/me",
+    response_model=MeOut,
+    summary="내 계정과 프로필 조회",
+    responses={404: {"description": "계정 또는 프로필을 찾을 수 없음"}},
+)
 async def me(user: CurrentUser, service: ProfileServiceDep) -> MeOut:
     try:
         result = await service.get_me(user.id)
@@ -67,7 +83,12 @@ async def me(user: CurrentUser, service: ProfileServiceDep) -> MeOut:
     return MeOut.from_read_model(result)
 
 
-@router.patch("/me/profile", response_model=ProfileOut)
+@router.patch(
+    "/me/profile",
+    response_model=ProfileOut,
+    summary="내 닉네임 수정",
+    responses={404: {"description": "프로필을 찾을 수 없음"}},
+)
 async def update_profile(
     body: NicknameUpdate,
     user: CurrentUser,
@@ -80,7 +101,12 @@ async def update_profile(
     return ProfileOut.from_domain(profile)
 
 
-@router.get("/me/address", response_model=ShippingAddressOut)
+@router.get(
+    "/me/address",
+    response_model=ShippingAddressOut,
+    summary="내 기본 배송지 조회",
+    responses={404: {"description": "프로필 또는 등록된 배송지를 찾을 수 없음"}},
+)
 async def get_address(
     user: CurrentUser,
     service: ProfileServiceDep,
@@ -94,7 +120,13 @@ async def get_address(
     return ShippingAddressOut.from_domain(result.profile.shipping_address)
 
 
-@router.put("/me/address", response_model=ShippingAddressOut)
+@router.put(
+    "/me/address",
+    response_model=ShippingAddressOut,
+    summary="내 기본 배송지 저장",
+    description="기존 기본 배송지가 있으면 전달한 값으로 전체 교체합니다.",
+    responses={404: {"description": "프로필을 찾을 수 없음"}},
+)
 async def update_address(
     body: ShippingAddressIn,
     user: CurrentUser,
@@ -107,7 +139,12 @@ async def update_address(
     return ShippingAddressOut.from_domain(profile.shipping_address)
 
 
-@router.delete("/me/address", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/me/address",
+    status_code=status.HTTP_204_NO_CONTENT,
+    summary="내 기본 배송지 삭제",
+    responses={404: {"description": "프로필을 찾을 수 없음"}},
+)
 async def delete_address(
     user: CurrentUser,
     service: ProfileServiceDep,

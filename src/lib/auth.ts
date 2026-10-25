@@ -13,11 +13,7 @@ export const getCurrentUser = cache(async () => {
   const token = (await cookies()).get(ACCESS_TOKEN_COOKIE)?.value;
   if (token) {
     try {
-      const user = await fastApi<FastApiUser>(
-        "/api/v1/accounts/me",
-        {},
-        token,
-      );
+      const user = await fastApi<FastApiUser>("/api/v1/accounts/me", {}, token);
       return { id: user.id, email: user.email };
     } catch (error) {
       if (error instanceof FastApiError && error.status === 401) return null;

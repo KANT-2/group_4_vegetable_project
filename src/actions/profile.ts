@@ -35,10 +35,14 @@ export async function updateProfile(
   try {
     const token = await accessToken();
     if (token) {
-      await fastApi("/api/v1/accounts/me/profile", {
-        method: "PATCH",
-        body: JSON.stringify({ nickname: parsed.data.nickname }),
-      }, token);
+      await fastApi(
+        "/api/v1/accounts/me/profile",
+        {
+          method: "PATCH",
+          body: JSON.stringify({ nickname: parsed.data.nickname }),
+        },
+        token,
+      );
       revalidatePath("/", "layout");
       return { ok: true };
     }
@@ -117,11 +121,7 @@ export async function clearShippingAddress(
   try {
     const token = await accessToken();
     if (token) {
-      await fastApi(
-        "/api/v1/accounts/me/address",
-        { method: "DELETE" },
-        token,
-      );
+      await fastApi("/api/v1/accounts/me/address", { method: "DELETE" }, token);
       revalidatePath("/mypage");
       return { ok: true };
     }
