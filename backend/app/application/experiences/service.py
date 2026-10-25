@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from uuid import UUID
 
 from app.application.experiences.ports import ExperienceUnitOfWork
+from app.application.experiences.read_models import ReservationDetail
 from app.domain.experiences.models import Experience, ExperienceSession, Reservation, ReservationStatus
 
 
@@ -29,7 +30,7 @@ class ExperienceService:
             raise NotFound("체험을 찾을 수 없습니다.")
         return experience, await self._uow.repo.list_sessions(experience_id)
 
-    async def list_my_reservations(self, user_id: UUID) -> list[Reservation]:
+    async def list_my_reservations(self, user_id: UUID) -> list[ReservationDetail]:
         return await self._uow.repo.list_user_reservations(user_id)
 
     # --- 예약·취소 (트랜잭션) ---
@@ -72,7 +73,7 @@ class ExperienceService:
     # --- 관리자 ---
     async def list_reservations(
         self, session_id: UUID | None, status: ReservationStatus | None, page: int, size: int
-    ) -> tuple[list[Reservation], int]:
+    ) -> tuple[list[ReservationDetail], int]:
         return await self._uow.repo.list_reservations(session_id, status, page, size)
 
     async def close_session(self, session_id: UUID) -> ExperienceSession:

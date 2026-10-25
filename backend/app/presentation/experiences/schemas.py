@@ -49,6 +49,21 @@ class ReservationOut(BaseModel):
     cancelled_at: datetime | None
 
 
+class ReservationDetailOut(ReservationOut):
+    """목록 화면용: 어느 체험·회차인지 함께 내려준다."""
+
+    experience_id: str
+    experience_title: str
+    starts_at: datetime
+
+    @classmethod
+    def from_detail(cls, d) -> "ReservationDetailOut":
+        return cls(
+            **ReservationOut.model_validate(d.reservation).model_dump(),
+            experience_id=d.experience_id, experience_title=d.experience_title, starts_at=d.starts_at,
+        )
+
+
 class ExperienceList(BaseModel):
     items: list[ExperienceOut]
     total: int
@@ -57,7 +72,7 @@ class ExperienceList(BaseModel):
 
 
 class ReservationList(BaseModel):
-    items: list[ReservationOut]
+    items: list[ReservationDetailOut]
     total: int
     page: int
     size: int

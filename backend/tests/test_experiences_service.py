@@ -83,7 +83,8 @@ async def test_reserve_then_my_reservations_then_cancel_restores_seats(env):
     svc, s = env.service()
     async with s:
         mine = await svc.list_my_reservations(user)
-    assert [r.id for r in mine] == [reservation.id]
+    assert [d.reservation.id for d in mine] == [reservation.id]
+    assert mine[0].experience_id == env.exp_id and mine[0].experience_title == "테스트 체험"
 
     svc, s = env.service()
     async with s:

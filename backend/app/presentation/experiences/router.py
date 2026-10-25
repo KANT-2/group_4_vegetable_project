@@ -13,6 +13,7 @@ from app.presentation.experiences.schemas import (
     ExperienceList,
     ExperienceOut,
     ReservationCreate,
+    ReservationDetailOut,
     ReservationList,
     ReservationOut,
     SessionOut,
@@ -41,9 +42,9 @@ async def list_experiences(
 
 
 # 고정 경로(/reservations/..., /admin/...)는 /{experience_id} 보다 먼저 선언한다.
-@router.get("/reservations/me", response_model=list[ReservationOut], summary="내 예약 목록")
+@router.get("/reservations/me", response_model=list[ReservationDetailOut], summary="내 예약 목록 (체험 이름·시작 시간 포함)")
 async def my_reservations(service: Service, user: Annotated[CurrentUser, Depends(get_current_user)]):
-    return await service.list_my_reservations(user.id)
+    return [ReservationDetailOut.from_detail(d) for d in await service.list_my_reservations(user.id)]
 
 
 @router.post("/reservations/{reservation_id}/cancel", response_model=ReservationOut, summary="예약 취소 (본인만)")
@@ -63,7 +64,7 @@ async def admin_reservations(
     size: Size = 20,
 ):
     items, total = await service.list_reservations(session_id, reservation_status, page, size)
-    return ReservationList(items=[ReservationOut.model_validate(i) for i in items], total=total, page=page, size=size)
+    return ReservationList(items=[ReservationDetailOut.from_detail(i) for i in items], total=total, page=page, size=size)
 
 
 @router.post("/admin/sessions/{session_id}/close", response_model=SessionOut, summary="[관리자] 회차 접수 마감")
