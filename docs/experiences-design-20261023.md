@@ -1,6 +1,6 @@
 # 체험 예약 설계 (형준 담당) — 초안
 
-작성: 2026-10-23. **설계 단계이며 구현·DB 적용 전**입니다. 아래 SQL은 초안이고 새 DB에 적용하지 않았습니다. 사용자 식별(`app_users` 여부)이 확정되기 전이라 `user_id` 외래키는 비워 두었습니다(`docs/api-contract-20261023.md` §0).
+작성: 2026-10-23, 갱신: 2026-10-25. 아래 "구현 상태"를 먼저 보세요. 본문의 SQL은 초안이며 실제 적용본은 `supabase/migrations/202610250001_experiences.sql`입니다. 사용자 식별(`app_users` 여부)이 확정되기 전이라 `user_id` 외래키는 비워 두었습니다(`docs/api-contract-20261023.md` §0).
 
 ## 범위
 
@@ -88,3 +88,16 @@ create unique index experience_reservations_one_active
 - 취소 가능 시점(시작 24시간 전)과 1회 최대 인원(10명)을 팀·수업 기준과 맞출지
 - 사용자 식별 확정 후 `experience_reservations.user_id` 외래키 대상
 - 프론트 화면 신규 구성 범위(목록·상세·예약·내 예약)와 `/experiences` 라우트 추가는 헤더 메뉴(공통 파일, 형준 통합)와 함께 진행
+
+## 구현 상태 (2026-10-25)
+
+| 항목 | 상태 |
+| --- | --- |
+| 테이블 3개 마이그레이션·시드(체험 3, 회차 6) — 새 Supabase에 적용, 시드 재실행해도 중복 없음 | 완료 |
+| 도메인(`domain/experiences/models.py`): 정원·마감·시작 후·중복·인원·소유권·취소 기한 규칙 | 완료, 단위 테스트 13건 통과 |
+| 응용 서비스(`application/experiences/service.py`)·포트·트랜잭션(회차 행 잠금) | 완료 |
+| Repository·ORM↔도메인 변환·UnitOfWork(`infrastructure/experiences/`) | 완료 |
+| 실제 DB 통합 테스트 7건(예약·내 예약·취소 후 정원 복구, 정원 초과 시 미저장, 중복, 타인 취소 거부, 마감, 없음, 동시 5건 중 1건만 성공) | 통과 |
+| 표현 계층(라우터·Pydantic 스키마·예외→HTTP 변환), 인증 의존성 연동 | **미구현** (지나의 `get_current_user`·`require_admin` 규격 필요) |
+| 프론트 화면 연결 | **미구현** |
+| `user_id` 외래키 | **미적용** (사용자 식별 확정 후) |
