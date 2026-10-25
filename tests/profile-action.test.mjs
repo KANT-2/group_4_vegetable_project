@@ -11,6 +11,16 @@ test("프로필 저장은 현재 계정만 쓰며 계정 전환·잘못된 입�
   let revalidated = false;
   const modules = {
     "next/cache": { revalidatePath: () => (revalidated = true) },
+    "next/headers": {
+      cookies: async () => ({ get: () => undefined }),
+    },
+    "@/lib/auth-cookie": { ACCESS_TOKEN_COOKIE: "test-token" },
+    "@/lib/fastapi": {
+      FastApiError: class FastApiError extends Error {},
+      fastApi: async () => {
+        throw new Error("FastAPI should not be called without a token");
+      },
+    },
     "@/lib/auth": { requireUser: async () => ({ id: "current-user" }) },
     "@/schemas/profile": { profileSchema },
     "@/schemas/shipping": { shippingSchema },

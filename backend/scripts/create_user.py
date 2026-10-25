@@ -1,0 +1,104 @@
+"""개발용 FastAPI 사용자와 프로필을 생성한다.
+
+사용 예시:
+    python -m scripts.create_user --email jina@test.com --password "test1234!" \
+        --nickname "지나"
+
+마이그레이션 적용 후에만 실행하며 비밀번호와 DB 주소는 출력하지 않는다.
+"""
+
+import argparse
+import asyncio
+import re
+
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+
+from app.application.accounts.security import hash_password
+from app.core.config import get_settings
+from app.domain.accounts.models import UserRole
+from app.infrastructure.accounts.models import AppUserModel, ProfileModel
+
+
+def normalize_email(value: str) -> str:
+    email = value.strip().lower()
+    if len(email) > 320 or not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", email):
+        raise ValueError("이메일 형식이 올바르지 않습니다.")
+    return email
+
+
+def validate_password(value: str) -> str:
+    if not 8 <= len(value) <= 128:
+        raise ValueError("비밀번호는 8~128자여야 합니다.")
+    return value
+
+
+def normalize_nickname(value: str) -> str:
+    nickname = value.strip()
+    if not 2 <= len(nickname) <= 20:
+        raise ValueError("닉네임은 2~20자여야 합니다.")
+    return nickname
+
+
+async def create_user(
+    session: AsyncSession,
+    email: str,
+    password: str,
+    nickname: str,
+    role: UserRole = UserRole.USER,
+) -> AppUserModel:
+    normalized_email = normalize_email(email)
+    validate_password(password)
+    normalized_nickname = normalize_nickname(nickname)
+    user = AppUserModel(
+        email=normalized_email,
+        password_hash=hash_password(password),
+        role=role.value,
+        is_active=True,
+    )
+    try:
+        session.add(user)
+        await session.flush()
+        session.add(ProfileModel(id=user.id, nickname=normalized_nickname))
+        await session.commit()
+    except Exception:
+        await session.rollback()
+        raise
+    return user
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="개발용 FastAPI 사용자 생성")
+    parser.add_argument("--email", required=True)
+    parser.add_argument("--password", required=True)
+    parser.add_argument("--nickname", required=True)
+    parser.add_argument("--role", choices=[r.value for r in UserRole], default="user")
+    return parser.parse_args()
+
+
+async def main() -> None:
+    args = parse_args()
+    settings = get_settings()
+    if not settings.database_url:
+        raise SystemExit("DATABASE_URL이 설정되지 않았습니다.")
+    engine = create_async_engine(settings.database_url, pool_pre_ping=True)
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    try:
+        async with factory() as session:
+            try:
+                user = await create_user(
+                    session,
+                    args.email,
+                    args.password,
+                    args.nickname,
+                    UserRole(args.role),
+                )
+            except IntegrityError:
+                raise SystemExit("이미 사용 중인 이메일이거나 연결 데이터가 잘못되었습니다.") from None
+            print(f"created user: {user.email} ({user.role})")
+    finally:
+        await engine.dispose()
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
