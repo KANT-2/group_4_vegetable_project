@@ -92,6 +92,7 @@ export function SiteHeader() {
       : []),
     { href: routes.recipes, label: "레시피" },
     { href: routes.story, label: "농가 이야기" },
+    { href: "/experiences", label: "체험 예약" },
     { href: "/promotions", label: "혜택과 이야기" },
   ];
   const mobileLinks: NavLink[] = [{ href: routes.home, label: "홈" }, ...links];
