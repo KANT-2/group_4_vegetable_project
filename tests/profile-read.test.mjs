@@ -12,6 +12,15 @@ test("프로필이 있으면 조회만 하고 없을 때만 준비하며 타인�
   const writes = [];
   const modules = {
     "server-only": {},
+    "next/headers": {
+      cookies: async () => ({ get: () => undefined }),
+    },
+    "@/lib/auth-cookie": { ACCESS_TOKEN_COOKIE: "test-token" },
+    "@/lib/fastapi": {
+      fastApi: async () => {
+        throw new Error("FastAPI should not be called without a token");
+      },
+    },
     "@/lib/auth": { requireUser: async () => ({ id: currentId }) },
     "@/lib/supabase/server": {
       createClient: async () => ({

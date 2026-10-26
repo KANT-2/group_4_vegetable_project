@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getSupabaseConfig } from "./config";
 import type { Database } from "@/types/database";
 import { isPrivatePath } from "@/lib/auth-urls";
+import { ACCESS_TOKEN_COOKIE } from "@/lib/auth-cookie";
 
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
@@ -13,6 +14,12 @@ export async function updateSession(request: NextRequest) {
     "next",
     `${request.nextUrl.pathname}${request.nextUrl.search}`,
   );
+  // FastAPI JWT의 실제 검증은 보호된 페이지의 requireUser에서 수행한다.
+  // 미들웨어에서는 HttpOnly 쿠키 존재 여부만 확인해 Supabase 전용 리디렉션을 건너뛴다.
+  if (privatePath && request.cookies.has(ACCESS_TOKEN_COOKIE)) {
+    response.headers.set("Cache-Control", "private, no-store");
+    return response;
+  }
   if (!config) {
     if (!privatePath) return response;
     const denied = NextResponse.redirect(loginUrl);
