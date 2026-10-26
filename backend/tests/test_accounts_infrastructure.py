@@ -2,9 +2,15 @@ from datetime import UTC, datetime, timedelta
 from unittest.mock import AsyncMock, Mock
 from uuid import uuid4
 
-from app.domain.accounts.models import UserRole
+from app.domain.accounts.models import (
+    Account,
+    AdminRegistration,
+    AdminRegistrationStatus,
+    UserRole,
+)
 from app.infrastructure.accounts.models import (
     AccountBase,
+    AdminRegistrationModel,
     AppUserModel,
     ProfileModel,
     RevokedTokenModel,
@@ -17,6 +23,7 @@ from app.infrastructure.accounts.repositories import (
 
 def test_account_metadata_contains_expected_tables_and_foreign_key():
     assert set(AccountBase.metadata.tables) == {
+        "admin_registrations",
         "app_users",
         "profiles",
         "revoked_tokens",
@@ -25,6 +32,19 @@ def test_account_metadata_contains_expected_tables_and_foreign_key():
         str(fk.column) for fk in RevokedTokenModel.__table__.c.user_id.foreign_keys
     }
     assert foreign_keys == {"app_users.id"}
+    admin_foreign_keys = {
+        str(fk.column)
+        for column in AdminRegistrationModel.__table__.c
+        for fk in column.foreign_keys
+    }
+    # 실제 DB의 id FK는 auth.users(id)를 가리키며, auth 스키마는 이 Base 밖에서 관리한다.
+    assert admin_foreign_keys == set()
+
+
+def test_app_user_id_has_no_independent_uuid_default():
+    assert AppUserModel.__table__.c.id.server_default is None
+    assert not AppUserModel.__table__.c.supabase_user_id.nullable
+    assert AppUserModel.__table__.c.supabase_user_id.unique
 
 
 async def test_profile_round_trip_maps_shipping_address():
@@ -74,6 +94,7 @@ async def test_get_by_email_maps_orm_model_to_domain_account():
     session.scalar = AsyncMock(
         return_value=AppUserModel(
             id=user_id,
+            supabase_user_id=user_id,
             email="jina@test.com",
             password_hash="encoded",
             role="admin",
@@ -85,6 +106,7 @@ async def test_get_by_email_maps_orm_model_to_domain_account():
     account = await repo.get_by_email("jina@test.com")
 
     assert account.id == user_id
+    assert session.scalar.await_args.args[0].whereclause is not None
     assert account.email == "jina@test.com"
     assert account.role is UserRole.ADMIN
     assert account.is_active
@@ -96,6 +118,7 @@ async def test_get_by_id_maps_orm_model_to_domain_account():
     session.get = AsyncMock(
         return_value=AppUserModel(
             id=user_id,
+            supabase_user_id=user_id,
             email="jina@test.com",
             password_hash="encoded",
             role="user",
@@ -113,6 +136,7 @@ async def test_get_by_id_maps_orm_model_to_domain_account():
 async def test_revoke_token_adds_model_and_flushes():
     session = Mock()
     session.add = Mock()
+    session.execute = AsyncMock()
     session.flush = AsyncMock()
     repo = SqlAlchemyAccountRepository(session)
     user_id = uuid4()
@@ -150,3 +174,41 @@ async def test_unit_of_work_delegates_commit_and_rollback():
 
     session.commit.assert_awaited_once()
     session.rollback.assert_awaited_once()
+
+
+async def test_add_admin_registration_saves_inactive_user_and_pending_request():
+    user_id = uuid4()
+    account = Account(
+        user_id,
+        "admin@test.com",
+        "encoded",
+        UserRole.USER,
+        False,
+    )
+    registration = AdminRegistration(user_id, "NewAdmin", "관리자 신청자")
+    session = Mock()
+    session.add = Mock()
+    session.execute = AsyncMock()
+    session.flush = AsyncMock()
+    repo = SqlAlchemyAccountRepository(session)
+
+    await repo.add_admin_registration(account, registration)
+
+    auth_statement, auth_params = session.execute.await_args.args
+    assert "insert into auth.users" in str(auth_statement).lower()
+    assert auth_params == {"id": user_id, "email": "admin@test.com"}
+    account_model, profile_model, registration_model = [
+        call.args[0] for call in session.add.call_args_list
+    ]
+    assert isinstance(account_model, AppUserModel)
+    assert account_model.id == account_model.supabase_user_id == user_id
+    assert not account_model.is_active
+    assert account_model.role == "user"
+    assert isinstance(profile_model, ProfileModel)
+    assert profile_model.id == user_id
+    assert profile_model.nickname == "관리자 신청자"
+    assert isinstance(registration_model, AdminRegistrationModel)
+    assert registration_model.username == "newadmin"
+    assert registration_model.email == "admin@test.com"
+    assert registration_model.status == AdminRegistrationStatus.PENDING.value
+    session.flush.assert_awaited_once()

@@ -65,6 +65,8 @@ async def test_login_normalizes_email_and_returns_bearer_token():
     assert result.token_type == "bearer"
     assert result.expires_in == 3600
     assert result.access_token
+    payload = service._token_codec.decode(result.access_token)
+    assert payload.user_id == account.id
 
 
 @pytest.mark.parametrize("email,password", [("none@test.com", "test1234!"), ("jina@test.com", "wrong")])

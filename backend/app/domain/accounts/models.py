@@ -12,6 +12,12 @@ class UserRole(StrEnum):
     ADMIN = "admin"
 
 
+class AdminRegistrationStatus(StrEnum):
+    PENDING = "pending"
+    APPROVED = "approved"
+    REJECTED = "rejected"
+
+
 @dataclass(frozen=True)
 class Account:
     id: UUID
@@ -30,6 +36,34 @@ class AuthenticatedUser:
     @property
     def is_admin(self) -> bool:
         return self.role is UserRole.ADMIN
+
+
+@dataclass(frozen=True)
+class AdminRegistration:
+    account_id: UUID
+    username: str
+    display_name: str
+    status: AdminRegistrationStatus = AdminRegistrationStatus.PENDING
+    created_at: datetime | None = None
+    reviewed_by: UUID | None = None
+    reviewed_at: datetime | None = None
+
+    def __post_init__(self) -> None:
+        username = self.username.strip().lower()
+        display_name = self.display_name.strip()
+        if not re.fullmatch(r"[!-~]{4,40}", username):
+            raise ValueError("관리자 아이디는 공백 없는 ASCII 문자 4~40자여야 합니다.")
+        if not 1 <= len(display_name) <= 60:
+            raise ValueError("관리자 이름은 1~60자여야 합니다.")
+        reviewed = self.reviewed_by is not None or self.reviewed_at is not None
+        if self.status is AdminRegistrationStatus.PENDING and reviewed:
+            raise ValueError("대기 중인 신청에는 검토 정보를 기록할 수 없습니다.")
+        if self.status is not AdminRegistrationStatus.PENDING and (
+            self.reviewed_by is None or self.reviewed_at is None
+        ):
+            raise ValueError("처리된 신청에는 검토자와 검토 시각이 필요합니다.")
+        object.__setattr__(self, "username", username)
+        object.__setattr__(self, "display_name", display_name)
 
 
 @dataclass(frozen=True)

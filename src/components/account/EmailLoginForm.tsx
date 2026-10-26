@@ -38,6 +38,7 @@ export function EmailLoginForm({ next }: { next: string }) {
           autoComplete="email"
           required
           disabled={pending}
+          placeholder="이메일을 입력해 주세요"
         />
       </div>
       <div>
@@ -52,6 +53,7 @@ export function EmailLoginForm({ next }: { next: string }) {
           autoComplete="current-password"
           required
           disabled={pending}
+          placeholder="비밀번호를 입력해 주세요"
         />
       </div>
       {error && (

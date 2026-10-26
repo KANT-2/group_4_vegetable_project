@@ -17,6 +17,7 @@ class FakeSession:
     def __init__(self, fail_on_flush=False):
         self.added = []
         self.fail_on_flush = fail_on_flush
+        self.execute = AsyncMock()
         self.flush = AsyncMock(side_effect=self._flush)
         self.commit = AsyncMock()
         self.rollback = AsyncMock()
@@ -27,8 +28,6 @@ class FakeSession:
     async def _flush(self):
         if self.fail_on_flush:
             raise RuntimeError("db error")
-        if self.added and isinstance(self.added[0], AppUserModel):
-            self.added[0].id = uuid4()
 
 
 def test_normalize_email_lowercases_and_trims():
@@ -67,6 +66,10 @@ async def test_create_user_hashes_password_and_creates_profile():
     assert user.email == "jina@test.com"
     assert user.password_hash != "test1234!"
     assert user.role == "admin"
+    assert user.id == user.supabase_user_id
+    statement, params = session.execute.await_args.args
+    assert "insert into auth.users" in str(statement).lower()
+    assert params == {"id": user.id, "email": "jina@test.com"}
     assert isinstance(session.added[1], ProfileModel)
     assert session.added[1].id == user.id
     assert session.added[1].nickname == "지나"

@@ -10,6 +10,7 @@ from app.application.accounts.read_models import MyAccount
 from app.domain.accounts.models import (
     AccessTokenPayload,
     Account,
+    AdminRegistration,
     AuthenticatedUser,
     Profile,
     ShippingAddress,
@@ -31,6 +32,7 @@ class FakeAccountService:
         self.reject_login = reject_login
         self.login_args = None
         self.logged_out = None
+        self.registration_args = None
 
     async def login(self, email, password):
         self.login_args = (email, password)
@@ -41,6 +43,10 @@ class FakeAccountService:
 
     async def logout(self, payload):
         self.logged_out = payload
+
+    async def register_admin(self, email, password, username, display_name):
+        self.registration_args = (email, password, username, display_name)
+        return AdminRegistration(uuid4(), username, display_name)
 
 
 class FakeProfileService:
@@ -113,6 +119,29 @@ async def test_login_uses_oauth2_form_and_returns_token():
         "expires_in": 3600,
     }
     assert service.login_args == ("jina@test.com", "test1234!")
+
+
+async def test_admin_registration_returns_pending_without_exposing_password():
+    service = FakeAccountService()
+    async with await request_with(service) as client:
+        response = await client.post(
+            "/api/v1/accounts/admin-registrations",
+            json={
+                "username": "newadmin",
+                "password": "SecurePass123!",
+                "display_name": "관리자 신청자",
+                "email": "admin@example.test",
+            },
+        )
+
+    assert response.status_code == 201
+    assert response.json() == {"status": "pending"}
+    assert service.registration_args == (
+        "admin@example.test",
+        "SecurePass123!",
+        "newadmin",
+        "관리자 신청자",
+    )
 
 
 async def test_login_failure_returns_401_without_account_disclosure():
