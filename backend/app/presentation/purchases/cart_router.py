@@ -8,13 +8,13 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Path, Response, status
 
 from app.application.purchases.cart_service import CartService
-from app.presentation.purchases.dependencies import CurrentUser, get_cart_service, get_current_user
+from app.presentation.purchases.dependencies import CurrentUser, get_cart_service
 from app.presentation.purchases.schemas import CartItemCreate, CartItemUpdate, CartLineOut, CartOut
 
 router = APIRouter(prefix="/purchases/cart", tags=["purchases"])
 
 Service = Annotated[CartService, Depends(get_cart_service)]
-User = Annotated[CurrentUser, Depends(get_current_user)]
+User = CurrentUser  # 지나 님 공통 인증: Annotated[AuthenticatedUser, Depends(get_current_user)]
 ProductId = Annotated[str, Path(min_length=1, max_length=100)]
 
 
