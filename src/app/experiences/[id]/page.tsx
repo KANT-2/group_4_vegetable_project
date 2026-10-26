@@ -1,10 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { SafeImage } from "@/components/common/SafeImage";
 import { SessionReserve } from "@/components/experiences/SessionReserve";
 import { getExperience } from "@/lib/experiences-api";
 import { getExperienceAuth } from "@/lib/experiences-auth";
 import { FastApiError } from "@/lib/fastapi";
 import { formatPrice } from "@/lib/format";
+import {
+  experienceImageFocus,
+  experienceImageSrc,
+} from "@/lib/experiences-image";
 
 export async function generateMetadata({
   params,
@@ -52,7 +57,13 @@ export default async function ExperienceDetailPage({
       >
         ← 체험 목록
       </Link>
-      <header className="mt-3">
+      <SafeImage
+        src={experienceImageSrc(experience.image_path)}
+        alt={experience.title}
+        className={`mt-3 aspect-[16/9] w-full max-w-2xl rounded-card object-cover ${experienceImageFocus(experience.image_path)}`}
+        placeholderText="사진 준비 중"
+      />
+      <header className="mt-4">
         <p className="text-xs font-bold tracking-[0.1em] text-brand">
           {experience.region}
         </p>

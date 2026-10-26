@@ -2,6 +2,11 @@ import Link from "next/link";
 import { PageHeading } from "@/components/common/PageHeading";
 import { listExperiences } from "@/lib/experiences-api";
 import { FastApiError } from "@/lib/fastapi";
+import { SafeImage } from "@/components/common/SafeImage";
+import {
+  experienceImageFocus,
+  experienceImageSrc,
+} from "@/lib/experiences-image";
 import { formatPrice } from "@/lib/format";
 
 export const metadata = { title: "체험 예약" };
@@ -95,24 +100,34 @@ export default async function ExperiencesPage({
                 <li key={e.id}>
                   <Link
                     href={`/experiences/${e.id}`}
-                    className="block h-full rounded-card bg-surface p-5 ring-1 ring-line transition hover:ring-brand"
+                    className="block h-full overflow-hidden rounded-card bg-surface ring-1 ring-line transition hover:ring-brand"
                   >
-                    <p className="text-xs font-bold tracking-[0.1em] text-brand">
-                      {e.region}
-                    </p>
-                    <h2 className="mt-1 text-lg font-extrabold text-ink">
-                      {e.title}
-                    </h2>
-                    <p className="mt-1 text-sm text-ink-muted">{e.farm_name}</p>
-                    <p className="mt-3 line-clamp-2 text-sm text-ink">
-                      {e.description}
-                    </p>
-                    <p className="mt-4 text-base font-bold text-ink">
-                      {e.fee > 0 ? `${formatPrice(e.fee)}` : "무료"}
-                      <span className="ml-1 text-xs font-normal text-ink-muted">
-                        1인 · 현장 안내, 결제 없음
-                      </span>
-                    </p>
+                    <SafeImage
+                      src={experienceImageSrc(e.image_path)}
+                      alt={e.title}
+                      className={`aspect-[4/3] w-full object-cover ${experienceImageFocus(e.image_path)}`}
+                      placeholderText="사진 준비 중"
+                    />
+                    <div className="p-5">
+                      <p className="text-xs font-bold tracking-[0.1em] text-brand">
+                        {e.region}
+                      </p>
+                      <h2 className="mt-1 text-lg font-extrabold text-ink">
+                        {e.title}
+                      </h2>
+                      <p className="mt-1 text-sm text-ink-muted">
+                        {e.farm_name}
+                      </p>
+                      <p className="mt-3 line-clamp-2 text-sm text-ink">
+                        {e.description}
+                      </p>
+                      <p className="mt-4 text-base font-bold text-ink">
+                        {e.fee > 0 ? `${formatPrice(e.fee)}` : "무료"}
+                        <span className="ml-1 text-xs font-normal text-ink-muted">
+                          1인 · 현장 안내, 결제 없음
+                        </span>
+                      </p>
+                    </div>
                   </Link>
                 </li>
               ))}
