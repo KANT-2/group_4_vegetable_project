@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core import database
 from app.core.config import get_settings
+from app.core.error_handlers import register_common_error_handlers
 from app.core.logging import RequestTimingMiddleware, setup_logging
 from app.presentation.accounts.router import router as accounts_router
 from app.presentation.experiences.errors import register_experience_error_handlers
@@ -57,6 +58,7 @@ def create_app() -> FastAPI:
     register_purchase_error_handlers(app)
     app.include_router(experiences_router, prefix="/api/v1")  # 형준
     register_experience_error_handlers(app)
+    register_common_error_handlers(app)
 
     return app
 

@@ -9,7 +9,8 @@ from app.domain.experiences.models import MAX_HEADCOUNT, ReservationStatus, Sess
 
 
 class ReservationCreate(BaseModel):
-    headcount: int = Field(ge=1, le=MAX_HEADCOUNT, description=f"참가 인원 (1~{MAX_HEADCOUNT}명)")
+    # strict: "2"(문자열)나 true 를 1·2명으로 바꿔 받지 않고 정수만 허용한다.
+    headcount: int = Field(ge=1, le=MAX_HEADCOUNT, strict=True, description=f"참가 인원 (1~{MAX_HEADCOUNT}명)")
 
 
 class ExperienceOut(BaseModel):
