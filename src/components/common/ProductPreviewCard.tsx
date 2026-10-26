@@ -10,6 +10,7 @@ import { getDiscountRate } from "@/lib/format";
 import { QuickAddButton } from "./QuickAddButton";
 import { ProductImageRotator } from "@/components/products/ProductImageRotator";
 import { getProductImages } from "@/lib/product-gallery";
+import { WishlistButton } from "@/components/shopping/WishlistButton";
 
 interface ProductPreviewCardProps {
   name: string;
@@ -59,20 +60,36 @@ export function ProductPreviewCard({
 
   return (
     <div className="group">
-      {wrap(
-        <div className="relative overflow-hidden rounded-[0.25rem] bg-sand">
-          <ProductImageRotator
-            images={getProductImages({ id: productId, imageUrl, vegetableId })}
-            name={name}
-            priority={priority}
-            className="aspect-[249/320] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <span className="absolute left-2.5 top-2.5 rounded-[0.25rem] bg-brand px-2 py-0.5 text-sm font-medium text-white">
-            {UGLY_REASON_LABELS[uglyReason]}
-          </span>
-        </div>,
-        "block",
-      )}
+      <div className="relative">
+        {wrap(
+          <div className="relative overflow-hidden rounded-[0.25rem] bg-sand">
+            <ProductImageRotator
+              images={getProductImages({
+                id: productId,
+                imageUrl,
+                vegetableId,
+              })}
+              name={name}
+              priority={priority}
+              className="aspect-[249/320] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <span className="absolute left-2.5 top-2.5 rounded-[0.25rem] bg-brand px-2 py-0.5 text-sm font-medium text-white">
+              {UGLY_REASON_LABELS[uglyReason]}
+            </span>
+          </div>,
+          "block",
+        )}
+        {productId && (
+          <div className="absolute right-2 bottom-2 z-10">
+            <WishlistButton
+              productId={productId}
+              productName={name}
+              initialWished={false}
+              compact
+            />
+          </div>
+        )}
+      </div>
       {productId && showQuickAdd && (
         <QuickAddButton productId={productId} productName={name} />
       )}

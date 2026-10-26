@@ -3,6 +3,10 @@
 import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
+import { getCustomerDemo } from "@/lib/customer-demo";
+import { writeDemoWish } from "@/lib/customer-demo-wishlist";
+import { getProductById } from "@/services/products";
+import { changeDemoCart } from "@/lib/customer-demo-cart";
 import {
   MAX_CART_QUANTITY,
   cartItemSchema,
@@ -43,6 +47,13 @@ export async function addToCart(input: unknown): Promise<CartActionResult> {
     return { ok: false, error: parsed.error.issues[0].message };
   const { product_id, quantity } = parsed.data;
   try {
+    if (await getCustomerDemo()) {
+      if (!(await getProductById(product_id)))
+        return { ok: false, error: "지금 판매 중인 상품이 아니에요." };
+      const saved = changeDemoCart(product_id, "add", quantity);
+      refreshPages(product_id);
+      return { ok: true, quantity: saved };
+    }
     const userId = await currentUserId();
     if (!userId) return LOGIN_REQUIRED;
     const supabase = await createClient();
@@ -102,6 +113,13 @@ export async function updateCartQuantity(
     return { ok: false, error: parsed.error.issues[0].message };
   const { product_id, quantity } = parsed.data;
   try {
+    if (await getCustomerDemo()) {
+      if (!(await getProductById(product_id)))
+        return { ok: false, error: "지금 판매 중인 상품이 아니에요." };
+      const saved = changeDemoCart(product_id, "update", quantity);
+      refreshPages(product_id);
+      return { ok: true, quantity: saved };
+    }
     const userId = await currentUserId();
     if (!userId) return LOGIN_REQUIRED;
     const supabase = await createClient();
@@ -125,6 +143,11 @@ export async function removeFromCart(
   if (!parsed.success)
     return { ok: false, error: parsed.error.issues[0].message };
   try {
+    if (await getCustomerDemo()) {
+      changeDemoCart(parsed.data.product_id, "remove");
+      refreshPages(parsed.data.product_id);
+      return { ok: true };
+    }
     const userId = await currentUserId();
     if (!userId) return LOGIN_REQUIRED;
     const supabase = await createClient();
@@ -148,6 +171,13 @@ export async function setWishlist(input: unknown): Promise<CartActionResult> {
     return { ok: false, error: parsed.error.issues[0].message };
   const { product_id, wished } = parsed.data;
   try {
+    if (await getCustomerDemo()) {
+      if (wished && !(await getProductById(product_id)))
+        return { ok: false, error: "지금 판매 중인 상품이 아니에요." };
+      writeDemoWish(product_id, wished);
+      refreshPages(product_id);
+      return { ok: true };
+    }
     const userId = await currentUserId();
     if (!userId) return LOGIN_REQUIRED;
     const supabase = await createClient();

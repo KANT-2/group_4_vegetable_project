@@ -97,7 +97,7 @@ export function ProfileEditor({
               }
               setNickname(parsed.data.nickname);
               setSavedNickname(parsed.data.nickname);
-              setMessage("닉네임을 저장했어요.");
+              setMessage("이름을 저장했어요.");
               await refresh();
             } catch {
               setError(
@@ -118,7 +118,7 @@ export function ProfileEditor({
           <dd className="break-all text-sm text-ink-muted">{email}</dd>
         </dl>
         <label htmlFor="nickname" className="field-label">
-          닉네임
+          이름
         </label>
         <input
           id="nickname"

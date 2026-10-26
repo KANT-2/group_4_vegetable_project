@@ -100,7 +100,7 @@ export function SiteHeader() {
   return (
     <header className="relative z-30 bg-surface shadow-[0_3px_4px_0_rgb(0_0_0_/_0.07)]">
       {/* 1. 회원 메뉴 줄 (넓은 화면) */}
-      <div className="container-page hidden justify-end text-xs lg:flex">
+      <div className="container-page flex justify-end text-xs">
         <Suspense fallback={null}>
           <HeaderAccount />
         </Suspense>
