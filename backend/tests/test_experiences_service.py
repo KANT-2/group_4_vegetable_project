@@ -9,10 +9,12 @@ from uuid import uuid4
 
 import pytest
 from sqlalchemy import delete, text
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.application.experiences.service import ExperienceService, NotFound
 from app.core.config import Settings
+from app.infrastructure.accounts.models import AppUserModel
 from app.domain.experiences.models import (
     CapacityExceeded,
     DuplicateReservation,
@@ -35,6 +37,7 @@ async def env():
     engine = create_async_engine(DATABASE_URL)
     maker = async_sessionmaker(engine, expire_on_commit=False)
     exp_id = f"test-{uuid4().hex[:8]}"
+    user_ids = []
     async with maker() as s:
         s.add(ExperienceModel(id=exp_id, title="테스트 체험", farm_name="테스트농장", region="테스트", fee=0))
         await s.commit()
@@ -51,17 +54,27 @@ async def env():
             await s.commit()
         return sid
 
+    async def new_user():
+        """예약은 app_users 를 외래키로 참조하므로 저장되는 테스트는 실제 계정 행이 필요하다."""
+        uid = uuid4()
+        user_ids.append(uid)
+        async with maker() as s:
+            s.add(AppUserModel(id=uid, email=f"test-{uid.hex[:10]}@example.test", password_hash="not-used", role="user", is_active=True))
+            await s.commit()
+        return uid
+
     def service():  # 호출마다 새 세션 = 요청 하나
         s = maker()
         return ExperienceService(SqlAlchemyExperienceUnitOfWork(s)), s
 
-    yield type("Env", (), {"new_session": staticmethod(new_session), "service": staticmethod(service), "maker": maker, "exp_id": exp_id})
+    yield type("Env", (), {"new_session": staticmethod(new_session), "new_user": staticmethod(new_user), "service": staticmethod(service), "maker": maker, "exp_id": exp_id})
 
     async with maker() as s:
         sess_ids = (await s.execute(text("select id from experience_sessions where experience_id = :e"), {"e": exp_id})).scalars().all()
         await s.execute(delete(ExperienceReservationModel).where(ExperienceReservationModel.session_id.in_(sess_ids)))
         await s.execute(delete(ExperienceSessionModel).where(ExperienceSessionModel.experience_id == exp_id))
         await s.execute(delete(ExperienceModel).where(ExperienceModel.id == exp_id))
+        await s.execute(delete(AppUserModel).where(AppUserModel.id.in_(user_ids)))
         await s.commit()
     await engine.dispose()
 
@@ -74,7 +87,7 @@ async def remaining(env, session_id):
 
 
 async def test_reserve_then_my_reservations_then_cancel_restores_seats(env):
-    sid, user = await env.new_session(capacity=5), uuid4()
+    sid, user = await env.new_session(capacity=5), await env.new_user()
     svc, s = env.service()
     async with s:
         reservation = await svc.reserve(sid, user, 3)
@@ -103,7 +116,7 @@ async def test_capacity_exceeded_saves_nothing(env):
 
 
 async def test_duplicate_active_reservation_rejected_but_allowed_after_cancel(env):
-    sid, user = await env.new_session(), uuid4()
+    sid, user = await env.new_session(), await env.new_user()
     svc, s = env.service()
     async with s:
         first = await svc.reserve(sid, user, 1)
@@ -120,7 +133,7 @@ async def test_duplicate_active_reservation_rejected_but_allowed_after_cancel(en
 
 
 async def test_other_user_cannot_cancel(env):
-    sid, owner = await env.new_session(), uuid4()
+    sid, owner = await env.new_session(), await env.new_user()
     svc, s = env.service()
     async with s:
         reservation = await svc.reserve(sid, owner, 2)
@@ -154,15 +167,27 @@ async def test_missing_session_and_reservation_not_found(env):
 async def test_concurrent_requests_for_last_seat_only_one_succeeds(env):
     sid = await env.new_session(capacity=1)
 
-    async def attempt():
+    users = [await env.new_user() for _ in range(5)]
+
+    async def attempt(user):
         svc, s = env.service()
         async with s:
             try:
-                await svc.reserve(sid, uuid4(), 1)
+                await svc.reserve(sid, user, 1)
                 return "ok"
             except CapacityExceeded:
                 return "full"
 
-    results = await asyncio.gather(*(attempt() for _ in range(5)))
+    results = await asyncio.gather(*(attempt(u) for u in users))
     assert sorted(results) == ["full"] * 4 + ["ok"]
     assert await remaining(env, sid) == 0
+
+
+async def test_reservation_for_unknown_user_violates_fk_and_is_not_reported_as_duplicate(env):
+    """user_id 는 app_users 를 참조한다. 없는 사용자는 '중복'이 아닌 무결성 오류로 드러나고 아무것도 저장되지 않는다."""
+    sid = await env.new_session(capacity=3)
+    svc, s = env.service()
+    async with s:
+        with pytest.raises(IntegrityError):
+            await svc.reserve(sid, uuid4(), 1)
+    assert await remaining(env, sid) == 3
