@@ -45,11 +45,13 @@ export function SiteHeader() {
   const list = routes.productList;
   // 채소 분류는 상품 목록 화면의 분류 탭에서 골라요.
   const links: NavLink[] = [
-    ...(list ? [{ href: list, label: "전체 상품" }] : []),
-    { href: routes.recipes, label: "레시피" },
-    { href: routes.story, label: "농가 이야기" },
-    { href: "/experiences", label: "체험 예약" },
-    { href: "/promotions", label: "혜택과 이야기" },
+    ...(list
+      ? [{ href: list, label: "전체 상품", icon: "menu" as const }]
+      : []),
+    { href: routes.recipes, label: "레시피", icon: "recipe" },
+    { href: routes.story, label: "농가 이야기", icon: "farm" },
+    { href: "/experiences", label: "체험 예약", icon: "experience" },
+    { href: "/promotions", label: "혜택과 이야기", icon: "gift" },
   ];
   const mobileLinks: NavLink[] = [{ href: routes.home, label: "홈" }, ...links];
 

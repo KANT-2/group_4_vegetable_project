@@ -9,7 +9,9 @@ import { PersonalMenu } from "./PersonalMenu";
 export interface NavLink {
   href: string;
   label: string;
+  icon?: NavIconName; // 메뉴 앞 아이콘 (NavLinks 에서 그려요)
 }
+export type NavIconName = "menu" | "recipe" | "farm" | "experience" | "gift";
 
 export function MobileMenu({ links }: { links: NavLink[] }) {
   const pathname = usePathname();
