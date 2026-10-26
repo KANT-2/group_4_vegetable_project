@@ -219,3 +219,44 @@ async def test_admin_endpoints_require_admin_role(env):
     blocked = await env.client.post(f"{BASE}/{env.exp_id}/sessions/{sid}/reservations", json={"headcount": 1}, headers=user)
     assert blocked.status_code == 409  # 마감 후 신규 예약 차단
     assert (await env.client.post(f"{BASE}/admin/sessions/{uuid4()}/close", headers=admin)).status_code == 404
+
+
+# --- 예외·경계값 회귀 테스트 (탐색에서 500 이 났던 입력들) ---
+
+
+async def test_huge_page_number_is_422_not_500(env):
+    r = await env.client.get(BASE, params={"page": "9" * 40})
+    assert r.status_code == 422
+
+
+async def test_nul_character_in_search_region_and_id_is_422_not_500(env):
+    nul = chr(0)
+    assert (await env.client.get(BASE, params={"q": f"a{nul}b"})).status_code == 422
+    assert (await env.client.get(BASE, params={"region": nul})).status_code == 422
+    assert (await env.client.get(f"{BASE}/%00")).status_code == 422
+    # 너무 긴 검색어도 거부
+    assert (await env.client.get(BASE, params={"q": "a" * 101})).status_code == 422
+
+
+async def test_headcount_must_be_a_real_integer(env):
+    sid = await env.new_session(capacity=10)
+    _, headers = await env.make_user()
+    url = f"{BASE}/{env.exp_id}/sessions/{sid}/reservations"
+    for bad in ("2", True, 2.5, None):
+        assert (await env.client.post(url, json={"headcount": bad}, headers=headers)).status_code == 422, bad
+    assert (await env.client.post(url, json={"headcount": 2}, headers=headers)).status_code == 201
+
+
+async def test_validation_error_is_json_and_does_not_echo_input_or_choke_on_infinity(env):
+    sid = await env.new_session(capacity=10)
+    _, headers = await env.make_user()
+    url = f"{BASE}/{env.exp_id}/sessions/{sid}/reservations"
+    # 무한대로 해석되는 값: 예전에는 오류 응답을 JSON 으로 만들다 500 이 났다.
+    inf = await env.client.post(
+        url, content=b'{"headcount": 1e999}', headers={**headers, "Content-Type": "application/json"}
+    )
+    assert inf.status_code == 422 and "detail" in inf.json()
+    # 사용자가 보낸 값은 응답에 되돌려 주지 않는다.
+    secret = await env.client.post(url, json={"headcount": "SECRET-VALUE-123"}, headers=headers)
+    assert secret.status_code == 422
+    assert "SECRET-VALUE-123" not in secret.text and all("input" not in e for e in secret.json()["detail"])

@@ -3,7 +3,8 @@
 from typing import Annotated
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Query, status
+from fastapi import APIRouter, Depends, Path, Query, status
+from pydantic import AfterValidator
 
 from app.application.experiences.service import ExperienceService
 from app.domain.experiences.models import ReservationStatus
@@ -23,7 +24,19 @@ from app.presentation.experiences.schemas import (
 router = APIRouter(prefix="/experiences", tags=["experiences"])
 
 Service = Annotated[ExperienceService, Depends(get_service)]
-Page = Annotated[int, Query(ge=1)]
+
+
+def _no_nul(value: str) -> str:
+    # PostgreSQL 은 널 문자(\x00)가 든 문자열을 저장·비교하지 못해 500 이 난다. 입력 단계에서 422 로 막는다.
+    if "\x00" in value:
+        raise ValueError("널 문자는 사용할 수 없어요.")
+    return value
+
+
+SafeText = Annotated[str, AfterValidator(_no_nul)]
+ExperienceId = Annotated[SafeText, Path(max_length=100)]
+# page 에 상한이 없으면 아주 큰 값이 DB 오프셋 범위를 넘어 500 이 난다.
+Page = Annotated[int, Query(ge=1, le=10_000)]
 Size = Annotated[int, Query(ge=1, le=100)]
 
 
@@ -36,7 +49,11 @@ def _session_out(s) -> SessionOut:
 
 @router.get("", response_model=ExperienceList, summary="체험 목록 (검색·지역 필터·페이지네이션)")
 async def list_experiences(
-    service: Service, q: str | None = None, region: str | None = None, page: Page = 1, size: Size = 20
+    service: Service,
+    q: Annotated[SafeText | None, Query(max_length=100)] = None,
+    region: Annotated[SafeText | None, Query(max_length=50)] = None,
+    page: Page = 1,
+    size: Size = 20,
 ):
     items, total = await service.list_experiences(q, region, page, size)
     return ExperienceList(items=[ExperienceOut.model_validate(i) for i in items], total=total, page=page, size=size)
@@ -74,7 +91,7 @@ async def close_session(session_id: UUID, service: Service, _: AdminUser):
 
 
 @router.get("/{experience_id}", response_model=ExperienceDetailOut, summary="체험 상세와 회차(잔여 인원)")
-async def get_experience(experience_id: str, service: Service):
+async def get_experience(experience_id: ExperienceId, service: Service):
     experience, sessions = await service.get_experience(experience_id)
     return ExperienceDetailOut(
         **ExperienceOut.model_validate(experience).model_dump(), sessions=[_session_out(s) for s in sessions]
@@ -88,7 +105,7 @@ async def get_experience(experience_id: str, service: Service):
     summary="예약",
 )
 async def reserve(
-    experience_id: str,
+    experience_id: ExperienceId,
     session_id: UUID,
     body: ReservationCreate,
     service: Service,
