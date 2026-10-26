@@ -5,10 +5,15 @@ import { getProfile } from "@/services/profile";
 import { ProfileForm } from "@/components/account/ProfileForm";
 import { ProfileRetry } from "@/components/account/ProfileRetry";
 import { AccountLayout } from "@/components/account/AccountLayout";
+import { getCustomerDemo } from "@/lib/customer-demo";
+import { CustomerDemoMyPage } from "@/components/account/CustomerDemoMyPage";
+import { PasswordChangeForm } from "@/components/account/PasswordChangeForm";
 
 export const metadata: Metadata = { title: "마이페이지" };
 
 async function ProfileContent() {
+  const demo = await getCustomerDemo();
+  if (demo) return <CustomerDemoMyPage profile={demo} />;
   const user = await requireUser();
   let profile;
   try {
@@ -17,19 +22,26 @@ async function ProfileContent() {
     return <ProfileRetry />;
   }
   return (
-    <ProfileForm
-      key={profile.id}
-      userId={profile.id}
-      email={user.email ?? "이메일 정보 없음"}
-      initialNickname={profile.nickname}
-      initialShipping={{
-        recipient_name: profile.recipient_name ?? "",
-        recipient_phone: profile.recipient_phone ?? "",
-        postal_code: profile.postal_code ?? "",
-        address: profile.address ?? "",
-        address_detail: profile.address_detail ?? "",
-      }}
-    />
+    <div className="space-y-6">
+      <ProfileForm
+        key={profile.id}
+        userId={profile.id}
+        email={user.email ?? "이메일 정보 없음"}
+        initialNickname={profile.nickname}
+        initialShipping={{
+          recipient_name: profile.recipient_name ?? "",
+          recipient_phone: profile.recipient_phone ?? "",
+          postal_code: profile.postal_code ?? "",
+          address: profile.address ?? "",
+          address_detail: profile.address_detail ?? "",
+        }}
+      />
+      <PasswordChangeForm
+        googleOnly={
+          "identities" in user && !user.identities?.some((identity) => identity.provider === "email")
+        }
+      />
+    </div>
   );
 }
 

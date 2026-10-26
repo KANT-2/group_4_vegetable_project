@@ -15,7 +15,8 @@ export async function GET(request: Request) {
       { status: 503, headers: { "Cache-Control": "private, no-store" } },
     );
   }
-  const failure = new URL("/login", origin);
+  const adminLogin = next === "/admin" || next.startsWith("/admin/");
+  const failure = new URL(adminLogin ? "/admin/login" : "/login", origin);
   failure.searchParams.set("error", "oauth");
   failure.searchParams.set("next", next);
   try {

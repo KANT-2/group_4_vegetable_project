@@ -4,6 +4,10 @@ import { createClient } from "@/lib/supabase/server";
 import type { CartLine, WishlistLine } from "@/lib/cart";
 import { toImageSrc } from "./catalog-source";
 import { getProductImages } from "@/lib/product-gallery";
+import { getCustomerDemo } from "@/lib/customer-demo";
+import { readDemoWishlist } from "@/lib/customer-demo-wishlist";
+import { getProductById } from "./products";
+import { readDemoCart } from "@/lib/customer-demo-cart";
 
 const PRODUCT_FIELDS =
   "products(id, name, unit, price, original_price, image_path, is_active)";
@@ -46,6 +50,24 @@ export async function getCart(): Promise<{
   userId: string;
   lines: CartLine[];
 }> {
+  if (await getCustomerDemo()) {
+    const lines = await Promise.all(
+      readDemoCart().map(async ({ productId, quantity }) => {
+        const product = await getProductById(productId);
+        return {
+          productId,
+          quantity,
+          available: Boolean(product),
+          name: product?.name ?? "판매가 끝난 상품",
+          unit: product?.unit ?? "",
+          price: product?.price ?? 0,
+          originalPrice: product?.originalPrice ?? 0,
+          imageUrl: product?.imageUrl,
+        };
+      }),
+    );
+    return { userId: "customer-demo-qwer", lines };
+  }
   const user = await requireUser("/cart");
   const supabase = await createClient();
   const { data, error } = await supabase
@@ -68,6 +90,23 @@ export async function getWishlist(): Promise<{
   userId: string;
   lines: WishlistLine[];
 }> {
+  if (await getCustomerDemo()) {
+    const lines = await Promise.all(
+      readDemoWishlist().map(async (productId) => {
+        const product = await getProductById(productId);
+        return {
+          productId,
+          available: Boolean(product),
+          name: product?.name ?? "판매가 끝난 상품",
+          unit: product?.unit ?? "",
+          price: product?.price ?? 0,
+          originalPrice: product?.originalPrice ?? 0,
+          imageUrl: product?.imageUrl,
+        };
+      }),
+    );
+    return { userId: "customer-demo-qwer", lines };
+  }
   const user = await requireUser("/cart?tab=wishlist");
   const supabase = await createClient();
   const { data, error } = await supabase
@@ -88,6 +127,8 @@ export async function getWishlist(): Promise<{
 // 상품 상세의 버튼 초기 상태. 로그인 전이거나 조회에 실패하면 "찜 안 함"으로 보여요.
 export async function getSavedState(productId: string) {
   try {
+    if (await getCustomerDemo())
+      return { loggedIn: true, wished: readDemoWishlist().includes(productId) };
     const user = await getCurrentUser();
     if (!user) return { loggedIn: false, wished: false };
     const supabase = await createClient();

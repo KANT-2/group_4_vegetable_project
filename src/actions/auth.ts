@@ -15,6 +15,7 @@ import {
   accessTokenCookieOptions,
 } from "@/lib/auth-cookie";
 import { fastApi, FastApiError, loginWithPassword } from "@/lib/fastapi";
+import { getCustomerDemo, clearCustomerDemo } from "@/lib/customer-demo";
 
 export async function signInWithGoogle(next: string): Promise<ActionResult> {
   let authorizeUrl: string;
@@ -83,6 +84,12 @@ export async function signIn(input: unknown): Promise<ActionResult> {
 }
 
 export async function signOut(returnToHome = true): Promise<ActionResult> {
+  if (await getCustomerDemo()) {
+    await clearCustomerDemo();
+    revalidatePath("/", "layout");
+    if (returnToHome) redirect("/", "replace");
+    return { ok: true };
+  }
   const cookieStore = await cookies();
   const token = cookieStore.get(ACCESS_TOKEN_COOKIE)?.value;
   let blacklistFailed = false;

@@ -9,8 +9,8 @@ export function AccountNav({
   sidebar?: boolean;
 }) {
   const items = [
-    { key: "orders", href: "/mypage/orders", title: "주문내역·환불" },
     { key: "profile", href: "/mypage", title: "회원 정보·배송지" },
+    { key: "orders", href: "/mypage/orders", title: "주문내역" },
   ];
   return (
     <nav
@@ -44,10 +44,10 @@ export function AccountNav({
         ))}
         {sidebar && (
           <Link
-            href="/cart"
-            className="hidden min-h-14 items-center justify-between px-5 py-4 text-sm hover:bg-sand lg:flex"
+            href="/mypage/orders"
+            className="col-span-2 flex min-h-14 items-center justify-between px-5 py-4 text-sm hover:bg-sand"
           >
-            장바구니·찜 <ArrowRightIcon width={16} height={16} />
+            환불하기 <ArrowRightIcon width={16} height={16} />
           </Link>
         )}
       </div>

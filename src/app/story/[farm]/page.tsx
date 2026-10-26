@@ -1,7 +1,7 @@
 // 농가 상세 /story/[farm] (A 담당, v2 시안 · 마켓컬리 상품 상세 기준)
 // 구성: 사진·소개·한눈에 보기 → 탭(판매 상품 | 농가 위치 | 요리) → 판매 상품 → 구글 지도 → 요리 → 다른 농가
 // 농가·상품 정보는 상품 데이터(B)에서 농가 이름으로 묶어 가져와요. (services/showcase.ts)
-// 시연용 가상 농가라서 지도는 농가의 "지역"을 보여줘요. 실제 농가 주소라고 표시하지 않아요.
+// 등록한 상세 주소·좌표가 있으면 사용하고, 기존 예시 농가는 지역 위치로 구분해 표시해요.
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -10,6 +10,8 @@ import { HomeShelf } from "@/components/common/HomeShelf";
 import { MockDataNotice } from "@/components/common/MockDataNotice";
 import { ProductPreviewCard } from "@/components/common/ProductPreviewCard";
 import { SafeImage } from "@/components/common/SafeImage";
+import { FarmManagedDetails } from "@/components/common/FarmManagedDetails";
+import { FarmManagedGallery } from "@/components/common/FarmManagedGallery";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { getFarmStoryDetail } from "@/data/farm-stories";
 import { getFarmPhoto } from "@/lib/farm-photo";
@@ -79,9 +81,6 @@ export default async function FarmDetailPage({
   const others = farms.filter((f) => f.farmName !== farm.farmName);
 
   const region = farm.farmRegion;
-  const mapQuery = encodeURIComponent(region ?? farm.farmName);
-  const mapEmbed = `https://maps.google.com/maps?q=${mapQuery}&hl=ko&z=10&output=embed`;
-  const mapLink = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
 
   return (
     <>
@@ -109,11 +108,10 @@ export default async function FarmDetailPage({
       {/* 1. 사진 · 소개 · 한눈에 보기 */}
       <section className="container-page grid gap-6 pt-5 md:grid-cols-[minmax(0,26rem)_1fr] md:gap-12 md:pt-8">
         <div className="overflow-hidden rounded-[0.25rem] bg-sand">
-          <SafeImage
-            src={photo.imageUrl}
-            alt={photo.alt}
-            priority
-            className={`aspect-[4/5] w-full object-cover ${photo.position}`}
+          <FarmManagedGallery
+            farmId={farm.farmName}
+            name={farm.farmName}
+            fallback={photo.imageUrl}
           />
         </div>
         <div className="flex flex-col">
@@ -214,76 +212,12 @@ export default async function FarmDetailPage({
       </section>
 
       {/* 4. 농가 이야기: 땅 · 키우는 방식 · 모양이 다른 이유 · 먹는 법 */}
-      {detail && (
-        <section
-          id="story"
-          aria-labelledby="story-title"
-          className="container-page scroll-mt-16 pt-14"
-        >
-          <h2 id="story-title" className="text-xl font-bold md:text-2xl">
-            {farm.farmName} 이야기
-          </h2>
-          <dl className="mt-5 divide-y divide-line border-y border-line">
-            {[
-              ["땅과 날씨", detail.land],
-              ["이렇게 키워요", detail.growing],
-              ["모양이 제각각인 이유", detail.ugly],
-              ["맛있게 먹는 법", detail.eat],
-            ].map(([term, body]) => (
-              <div
-                key={term}
-                className="grid gap-1 py-4 md:grid-cols-[12rem_1fr] md:gap-6"
-              >
-                <dt className="font-bold text-brand-dark">{term}</dt>
-                <dd className="leading-relaxed text-ink-muted">{body}</dd>
-              </div>
-            ))}
-          </dl>
-          <blockquote className="mt-5 bg-sand px-5 py-4 text-lg font-bold text-brand-dark">
-            “{detail.quote}”
-            <span className="mt-1 block text-sm font-normal text-ink-muted">
-              — {farm.farmName} 농장지기
-            </span>
-          </blockquote>
-          <p className="mt-2 text-xs text-ink-muted">
-            ※ 서비스 시연을 위한 예시 농가 이야기예요.
-          </p>
-        </section>
-      )}
-
-      {/* 5. 농가 위치 (구글 지도) */}
-      <section
-        id="location"
-        aria-labelledby="location-title"
-        className="container-page scroll-mt-16 pt-14"
-      >
-        <div className="flex flex-wrap items-end justify-between gap-2">
-          <h2 id="location-title" className="text-xl font-bold md:text-2xl">
-            농가 위치
-          </h2>
-          <a
-            href={mapLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center text-sm font-bold text-brand hover:underline"
-          >
-            Google 지도에서 열기 ↗
-          </a>
-        </div>
-        <p className="mt-1 text-sm text-ink-muted">
-          {region ?? farm.farmName} 일대예요. 시연용 농가라서 정확한 농장 주소
-          대신 지역을 보여줘요.
-        </p>
-        <div className="mt-4 overflow-hidden rounded-[0.25rem] border border-line bg-sand">
-          <iframe
-            title={`${farm.farmName} 위치 지도 (${region ?? farm.farmName})`}
-            src={mapEmbed}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="block h-72 w-full md:h-[26rem]"
-          />
-        </div>
-      </section>
+      <FarmManagedDetails
+        farmId={farm.farmName}
+        name={farm.farmName}
+        region={region}
+        detail={detail}
+      />
 
       {/* 6. 이 채소로 만드는 요리 */}
       <section
