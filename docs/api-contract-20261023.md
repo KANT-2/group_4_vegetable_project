@@ -9,9 +9,9 @@
 - `profiles.id`, `cart_items.user_id`, `wishlist_items.user_id`, `orders.user_id`, `user_coupons.user_id`가 모두 `auth.users(id)`를 **외래키로 참조**합니다(`on delete cascade`).
 - 과제 요건상 비밀번호 해싱·JWT 발급·검증·블랙리스트는 FastAPI가 직접 구현해야 하므로, Supabase Auth 사용자만으로는 요건을 채울 수 없습니다.
 
-| 안 | 내용 | 장점 | 영향 |
-| --- | --- | --- | --- |
-| A | FastAPI가 Supabase `auth.users`를 그대로 사용(Supabase JWT 검증만) | 외래키 변경 없음 | 로그인·해싱·JWT 발급을 직접 구현했다고 볼 수 없음 → **요건 미충족 위험** |
+| 안           | 내용                                                                                                                                                    | 장점                                       | 영향                                                                                                                              |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| A            | FastAPI가 Supabase `auth.users`를 그대로 사용(Supabase JWT 검증만)                                                                                      | 외래키 변경 없음                           | 로그인·해싱·JWT 발급을 직접 구현했다고 볼 수 없음 → **요건 미충족 위험**                                                          |
 | **B (제안)** | `public.app_users`(uuid PK, email, password_hash, role, `supabase_user_id` null 허용) 신설. 위 외래키 5곳을 `app_users(id)`로 교체하는 마이그레이션 1개 | 요건 충족, 사용자 ID·role을 FastAPI가 소유 | 외래키 교체는 영우·서현·지나 테이블에 닿으므로 **합의 후 한 번에 적용**. 기존 Supabase 로그인 화면은 FastAPI 로그인으로 교체 필요 |
 
 기존 Supabase 사용자의 자동 이전은 하지 않습니다(새 프로젝트라 사용자 없음). Google 로그인은 B안에서는 별도 구현이 필요해 이번 필수 범위에서 제외할지 정합니다.
@@ -47,16 +47,16 @@
 
 ## 5. 파일 소유권과 공통 파일
 
-| 경로 | 담당 |
-| --- | --- |
-| `backend/app/{presentation,application,domain,infrastructure}/accounts/` | 지나 |
-| `.../catalog/` | 서현 |
-| `.../purchases/` | 영우 |
-| `.../experiences/` | 형준 |
-| 공통 인증·JWT 코드 | 지나 |
-| `main.py`, `core/config.py`, `core/logging.py`, 의존성 파일(`pyproject.toml`) | 형준 통합 (요청은 PR 설명에 한 줄) |
-| `core/database.py` | 영우 초안 제안(현재 형준이 초안 작성, 영우 버전이 있으면 교체) |
-| DB 마이그레이션 | 자기 테이블만. 파일명 `YYYYMMDDNNNN_<기능>_*.sql`, 타인 테이블 변경은 합의 후 |
+| 경로                                                                          | 담당                                                                          |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `backend/app/{presentation,application,domain,infrastructure}/accounts/`      | 지나                                                                          |
+| `.../catalog/`                                                                | 서현                                                                          |
+| `.../purchases/`                                                              | 영우                                                                          |
+| `.../experiences/`                                                            | 형준                                                                          |
+| 공통 인증·JWT 코드                                                            | 지나                                                                          |
+| `main.py`, `core/config.py`, `core/logging.py`, 의존성 파일(`pyproject.toml`) | 형준 통합 (요청은 PR 설명에 한 줄)                                            |
+| `core/database.py`                                                            | 영우 초안 제안(현재 형준이 초안 작성, 영우 버전이 있으면 교체)                |
+| DB 마이그레이션                                                               | 자기 테이블만. 파일명 `YYYYMMDDNNNN_<기능>_*.sql`, 타인 테이블 변경은 합의 후 |
 
 ## 6. 합의 체크리스트
 
