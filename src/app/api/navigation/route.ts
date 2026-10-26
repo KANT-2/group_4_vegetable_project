@@ -1,4 +1,9 @@
 import { getCurrentUser } from "@/lib/auth";
+import { getCartMode } from "@/lib/cart-mode";
+import { apiGetCart } from "@/lib/cart-api";
+import { fastApi, type FastApiUser } from "@/lib/fastapi";
+import { guestCartCount } from "@/lib/guest-cart-core";
+import { readGuestCart } from "@/lib/guest-cart";
 import { createClient } from "@/lib/supabase/server";
 import type { NavigationState } from "@/types/navigation";
 import { getCustomerDemo } from "@/lib/customer-demo";
@@ -26,13 +31,44 @@ export async function GET() {
         },
         { headers },
       );
+    const mode = await getCartMode();
+    if (mode.kind === "guest") {
+      // 비회원: 로그인 정보 없이, 이 기기(쿠키)에 담아 둔 장바구니 수량만 알려 줘요.
+      return Response.json(
+        {
+          user: null,
+          cartCount: guestCartCount(await readGuestCart()),
+        } satisfies NavigationState,
+        { headers },
+      );
+    }
+    if (mode.kind === "fastapi") {
+      // FastAPI 로그인: 닉네임은 /accounts/me, 장바구니 수량은 FastAPI 장바구니에서 읽어요. (찜은 아직 FastAPI 에 없어요.)
+      const [me, cart] = await Promise.all([
+        fastApi<FastApiUser>("/api/v1/accounts/me", {}, mode.token),
+        apiGetCart(mode.token),
+      ]);
+      return Response.json(
+        {
+          user: {
+            id: me.id,
+            nickname: me.profile.nickname,
+            email: me.email,
+          },
+          cartCount: cart.items.reduce(
+            (total, item) => total + item.quantity,
+            0,
+          ),
+          wishlistIds: [],
+        } satisfies NavigationState,
+        { headers },
+      );
+    }
     const user = await getCurrentUser();
     if (!user) {
       return Response.json(
         { user: null, cartCount: 0 } satisfies NavigationState,
-        {
-          headers,
-        },
+        { headers },
       );
     }
     const supabase = await createClient();
