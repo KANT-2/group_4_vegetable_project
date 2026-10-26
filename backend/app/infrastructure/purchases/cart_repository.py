@@ -10,6 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.application.purchases.read_models import CartLine
 from app.domain.purchases.cart import MAX_QUANTITY, CartItem, InvalidQuantity, ProductInfo
 from app.infrastructure.purchases.models import CartItemModel, ProductReadModel
+from app.infrastructure.purchases.order_repository import SqlAlchemyOrderRepository
 
 
 def _to_product(m: ProductReadModel) -> ProductInfo:
@@ -84,6 +85,7 @@ class SqlAlchemyPurchaseUnitOfWork:
     def __init__(self, session: AsyncSession):
         self._session = session
         self.cart = SqlAlchemyCartRepository(session)
+        self.orders = SqlAlchemyOrderRepository(session)
 
     async def commit(self) -> None:
         await self._session.commit()
