@@ -1,6 +1,7 @@
 """Actual JWT/DB review flow; all fixtures rolled back, no existing reviews changed."""
 import os
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, datetime, timedelta, timezone
+KST = timezone(timedelta(hours=9))  # 한국은 서머타임이 없어 고정 오프셋
 from uuid import uuid4
 import pytest
 from httpx import ASGITransport, AsyncClient
@@ -60,6 +61,15 @@ async def test_review_flow_permissions_filters_images_and_moderation():
                         for kind, count in [("all", 2), ("images", 1), ("text", 1)]:
                             result = (await c.get(base, params={"product_id": product, "kind": kind})).json()
                             assert result["total"] == count
+                        # 관리자: 리뷰 종류·작성 기간(한국 날짜)으로 거르기
+                        today = datetime.now(KST).date()
+                        async def admin_list(**params):
+                            return await c.get(base + "/admin", params={"q": "review fixture", **params}, headers=tokens["admin"])
+                        assert (await admin_list(kind="images")).json()["total"] == 1
+                        assert (await admin_list(kind="text")).json()["total"] == 1
+                        assert (await admin_list(date_from=str(today), date_to=str(today))).json()["total"] == 1  # 사진 리뷰는 어제로 옮김
+                        assert (await admin_list(date_to=str(today - timedelta(days=1)))).json()["total"] == 1
+                        assert (await admin_list(date_from=str(today), date_to=str(today - timedelta(days=1)))).status_code == 422
                         assert (await c.get(base, params={"product_id": product, "sort": "oldest"})).json()["items"][0]["id"] == rid
                         assert (await c.get(base, params={"product_id": product, "sort": "newest"})).json()["items"][0]["id"] != rid
                         assert (await c.get(base, params={"product_id": product, "page": 2})).json()["items"] == []
@@ -76,6 +86,13 @@ async def test_review_flow_permissions_filters_images_and_moderation():
                         assert hidden["total"] == 1 and hidden["items"][0]["deletion_reason"] == "무관한 내용"
                         assert (await c.post(base + f"/admin/{rid}/restore", headers=tokens["admin"])).status_code == 204
                         assert (await c.get(base, params={"product_id": product})).json()["total"] == 2
+                        # 공개 중인 리뷰는 바로 완전 삭제할 수 없다(휴지통을 거쳐야 함)
+                        assert (await c.delete(base + f"/admin/{rid}/permanent", headers=tokens["admin"])).status_code == 404
+                        assert (await c.request("DELETE", base + f"/admin/{rid}", json={"reason": "휴지통 이동"}, headers=tokens["admin"])).status_code == 204
+                        assert (await c.delete(base + f"/admin/{rid}/permanent", headers=tokens["b"])).status_code == 403
+                        assert (await c.delete(base + f"/admin/{rid}/permanent", headers=tokens["admin"])).status_code == 204
+                        assert (await c.get(base, params={"product_id": product})).json()["total"] == 1
+                        assert (await c.get(base + "/admin", params={"status": "deleted", "q": "review fixture"}, headers=tokens["admin"])).json()["total"] == 0
                         await c.post("/api/v1/accounts/logout", headers=tokens["a"])
                         assert (await c.post(base, data=form, headers=tokens["a"])).status_code == 401
             finally:

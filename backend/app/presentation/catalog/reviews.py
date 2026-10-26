@@ -1,5 +1,6 @@
 from io import BytesIO
 import warnings
+from datetime import date
 from typing import Annotated, Literal
 from uuid import UUID
 from fastapi import APIRouter, Depends, File, Form, HTTPException, Query, Response, UploadFile
@@ -89,8 +90,12 @@ async def my_listing(service: Service, user: CurrentUser, page: Page = 1):
 
 
 @router.get("/admin")
-async def admin_listing(service: Service, admin: AdminUser, page: Page = 1, status: Literal["all", "visible", "deleted"] = "visible", q: Annotated[str, Query(max_length=100, pattern=r"^[^\x00]*$")] = ""):
-    return await service.repository.listing(admin=True, status=status, q=q.strip(), page=page)
+async def admin_listing(service: Service, admin: AdminUser, page: Page = 1, status: Literal["all", "visible", "deleted"] = "visible", q: Annotated[str, Query(max_length=100, pattern=r"^[^\x00]*$")] = "",
+                        kind: Kind = "all", date_from: date | None = None, date_to: date | None = None):
+    # 리뷰 종류(사진·글)와 작성 기간(한국 날짜, 양 끝 포함)으로도 거를 수 있다.
+    if date_from and date_to and date_from > date_to:
+        raise HTTPException(422, "시작일이 종료일보다 늦어요. 기간을 다시 골라 주세요.")
+    return await service.repository.listing(admin=True, status=status, q=q.strip(), page=page, kind=kind, date_from=date_from, date_to=date_to)
 
 
 class Moderation(BaseModel):
@@ -112,6 +117,12 @@ async def remove(review_id: UUID, body: Moderation, service: Service, admin: Adm
 async def restore(review_id: UUID, service: Service, admin: AdminUser):
     if not await service.repository.restore(review_id):
         raise HTTPException(404, "삭제된 리뷰를 찾을 수 없어요.")
+
+
+@router.delete("/admin/{review_id}/permanent", status_code=204)
+async def purge(review_id: UUID, service: Service, admin: AdminUser):
+    if not await service.repository.purge(review_id):
+        raise HTTPException(404, "휴지통에서 리뷰를 찾을 수 없어요. 공개 중인 리뷰는 먼저 삭제해 휴지통으로 옮겨 주세요.")
 
 
 @router.get("/{review_id}/images/{index}")

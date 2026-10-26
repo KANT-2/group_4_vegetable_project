@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
 import { getAdminAccess } from "@/lib/admin-auth";
-import { AdminProducts } from "@/components/admin/AdminProducts";
 import { AdminReviews } from "@/components/admin/AdminReviews";
 
 export const metadata = {
@@ -13,9 +12,6 @@ export default async function ReviewsPage() {
     redirect(
       access.signedIn ? "/admin/login?error=permission" : "/admin/login",
     );
-  return (
-    <AdminProducts view="reviews">
-      <AdminReviews />
-    </AdminProducts>
-  );
+  // AdminReviews 가 관리자 화면 틀(AdminProducts)까지 그려요(처리 알림을 제목 위에 두려고).
+  return <AdminReviews />;
 }

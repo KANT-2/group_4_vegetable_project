@@ -3,9 +3,14 @@ import { cookies } from "next/headers";
 import { ACCESS_TOKEN_COOKIE } from "@/lib/auth-cookie";
 
 const MAX_BODY = 16 * 1024 * 1024;
+// 같은 사이트에서 보낸 요청만 허용해요(CSRF 방지).
+// request.url 은 개발 서버가 0.0.0.0 으로 떠 있으면 브라우저 주소와 달라지므로, 브라우저가 보낸 Host 와 비교해요.
 export function reviewOriginAllowed(request: Request) {
   const origin = request.headers.get("origin");
-  return Boolean(origin && origin === new URL(request.url).origin);
+  const host = request.headers.get("host") ?? new URL(request.url).host;
+  return Boolean(
+    origin && URL.canParse(origin) && new URL(origin).host === host,
+  );
 }
 
 export async function reviewProxy(

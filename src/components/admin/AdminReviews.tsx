@@ -4,6 +4,19 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Review, ReviewPage } from "@/types/review";
 import { reviewDate, reviewImage } from "@/components/products/ProductReviews";
+import { AdminProducts } from "./AdminProducts";
+
+// 브라우저(한국) 날짜를 YYYY-MM-DD 로. days 만큼 앞의 날짜도 만들 수 있어요.
+function localDate(daysAgo = 0) {
+  const day = new Date();
+  day.setDate(day.getDate() - daysAgo);
+  return day.toLocaleDateString("sv-SE");
+}
+const PERIODS = [
+  { label: "오늘", days: 0 },
+  { label: "최근 7일", days: 6 },
+  { label: "최근 30일", days: 29 },
+];
 
 export function AdminReviews() {
   const [data, setData] = useState<ReviewPage>({
@@ -15,6 +28,9 @@ export function AdminReviews() {
   const [q, setQ] = useState("");
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState("visible");
+  const [kind, setKind] = useState("all"); // 전체 · 사진 리뷰 · 글 리뷰
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
   const [page, setPage] = useState(1);
   const [version, setVersion] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -28,7 +44,14 @@ export function AdminReviews() {
   useEffect(() => {
     const controller = new AbortController();
     fetch(
-      `/admin/api/reviews?${new URLSearchParams({ q: query, status, page: String(page) })}`,
+      `/admin/api/reviews?${new URLSearchParams({
+        q: query,
+        status,
+        page: String(page),
+        kind,
+        ...(dateFrom && { date_from: dateFrom }),
+        ...(dateTo && { date_to: dateTo }),
+      })}`,
       { cache: "no-store", signal: controller.signal },
     )
       .then(async (response) => {
@@ -55,7 +78,13 @@ export function AdminReviews() {
         }
       });
     return () => controller.abort();
-  }, [query, status, page, version]);
+  }, [query, status, page, version, kind, dateFrom, dateTo]);
+  // 조건을 바꾸면 1쪽부터 다시 불러와요.
+  const changeFilter = (apply: () => void) => {
+    apply();
+    setPage(1);
+    setLoading(true);
+  };
 
   async function moderate(review: Review, action: "delete" | "restore") {
     setBusy(true);
@@ -80,7 +109,7 @@ export function AdminReviews() {
       refresh();
       setNotice(
         action === "delete"
-          ? "리뷰가 삭제되어 고객 화면에서 숨겨졌습니다."
+          ? "리뷰를 휴지통으로 옮겼습니다."
           : "리뷰를 복원했습니다.",
       );
     } catch (e) {
@@ -89,14 +118,26 @@ export function AdminReviews() {
       setBusy(false);
     }
   }
+  // 처리 결과 알림은 휴지통 화면처럼 "리뷰 관리" 제목 위에 보여요.
   return (
-    <>
+    <AdminProducts
+      view="reviews"
+      topNotice={
+        notice && (
+          <p
+            role="status"
+            className="mb-5 rounded-card border border-brand/20 bg-brand-soft p-4 text-sm text-brand-dark"
+          >
+            {notice}
+          </p>
+        )
+      }
+    >
       <p className="mt-3 text-sm text-ink-muted">
-        상품과 관계없는 내용이나 부적절한 후기를 검토하고 관리하세요. 삭제한
-        리뷰는 고객에게 공개되지 않으며 복원할 수 있습니다.
+        상품과 관계없는 내용이나 부적절한 후기를 검토하고 관리하세요.
       </p>
       <form
-        className="my-6 flex flex-wrap gap-3"
+        className="my-6 flex flex-wrap gap-3 md:flex-nowrap"
         role="search"
         onSubmit={(e) => {
           e.preventDefault();
@@ -109,46 +150,114 @@ export function AdminReviews() {
         <label htmlFor="admin-review-search" className="sr-only">
           상품명 또는 리뷰 내용 검색
         </label>
+        {/* 넓은 화면: 검색창 · 리뷰 종류 · 공개 상태 · [검색] · [새로고침] 한 줄 / 휴대폰: 여러 줄 */}
         <input
           id="admin-review-search"
-          className="field min-w-0 flex-1"
+          className="field min-w-0 flex-1 basis-72"
           value={q}
           onChange={(e) => setQ(e.target.value)}
           maxLength={100}
           placeholder="상품명 또는 리뷰 내용 검색"
         />
+        <label className="sr-only" htmlFor="admin-review-kind">
+          리뷰 종류
+        </label>
+        <select
+          id="admin-review-kind"
+          value={kind}
+          onChange={(e) => changeFilter(() => setKind(e.target.value))}
+          className="field shrink-0 sm:w-44"
+        >
+          <option value="all">전체</option>
+          <option value="images">이미지 리뷰</option>
+          <option value="text">글 리뷰</option>
+        </select>
         <label className="sr-only" htmlFor="admin-review-status">
           리뷰 공개 상태
         </label>
         <select
           id="admin-review-status"
           value={status}
-          onChange={(e) => {
-            setStatus(e.target.value);
-            setPage(1);
-            setLoading(true);
-          }}
-          className="field"
+          onChange={(e) => changeFilter(() => setStatus(e.target.value))}
+          className="field shrink-0 sm:w-44"
         >
           <option value="visible">공개 중</option>
-          <option value="deleted">삭제됨</option>
           <option value="all">전체</option>
         </select>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary shrink-0">
           검색
         </button>
-        <button type="button" className="btn btn-secondary" onClick={refresh}>
+        <button
+          type="button"
+          className="btn btn-secondary shrink-0"
+          onClick={refresh}
+        >
           새로고침
         </button>
       </form>
-      {notice && (
-        <p
-          role="status"
-          className="mb-5 rounded-xl border border-brand/20 bg-brand-soft p-4 text-sm text-brand-dark"
+      {/* 작성 기간: 직접 고르거나 빠른 버튼으로. 비우면 전체 기간이에요. */}
+      <fieldset className="-mt-3 mb-6 flex flex-wrap items-center gap-2">
+        <legend className="sr-only">작성 기간</legend>
+        <span className="mr-1 text-sm font-bold text-ink">기간</span>
+        <label className="sr-only" htmlFor="admin-review-from">
+          시작일
+        </label>
+        <input
+          id="admin-review-from"
+          type="date"
+          value={dateFrom}
+          max={dateTo || undefined}
+          onChange={(e) => changeFilter(() => setDateFrom(e.target.value))}
+          className="field min-h-10 w-auto py-1.5 text-sm"
+        />
+        <span aria-hidden className="text-ink-muted">
+          ~
+        </span>
+        <label className="sr-only" htmlFor="admin-review-to">
+          종료일
+        </label>
+        <input
+          id="admin-review-to"
+          type="date"
+          value={dateTo}
+          min={dateFrom || undefined}
+          onChange={(e) => changeFilter(() => setDateTo(e.target.value))}
+          className="field min-h-10 w-auto py-1.5 text-sm"
+        />
+        {PERIODS.map((period) => {
+          const active =
+            dateFrom === localDate(period.days) && dateTo === localDate();
+          return (
+            <button
+              key={period.label}
+              type="button"
+              aria-pressed={active}
+              onClick={() =>
+                changeFilter(() => {
+                  setDateFrom(localDate(period.days));
+                  setDateTo(localDate());
+                })
+              }
+              className={`min-h-10 rounded-full border px-3.5 text-sm font-semibold ${active ? "border-brand bg-brand-soft text-brand-dark" : "border-line bg-white text-ink-muted hover:text-ink"}`}
+            >
+              {period.label}
+            </button>
+          );
+        })}
+        <button
+          type="button"
+          aria-pressed={!dateFrom && !dateTo}
+          onClick={() =>
+            changeFilter(() => {
+              setDateFrom("");
+              setDateTo("");
+            })
+          }
+          className={`min-h-10 rounded-full border px-3.5 text-sm font-semibold ${!dateFrom && !dateTo ? "border-brand bg-brand-soft text-brand-dark" : "border-line bg-white text-ink-muted hover:text-ink"}`}
         >
-          {notice}
-        </p>
-      )}
+          전체 기간
+        </button>
+      </fieldset>
       {error && (
         <p
           role="alert"
@@ -198,7 +307,7 @@ export function AdminReviews() {
                     <span
                       className={`rounded-full px-3 py-1 text-xs font-semibold ${review.deleted_at ? "bg-sand text-ink-muted" : "bg-brand-soft text-brand-dark"}`}
                     >
-                      {review.deleted_at ? "삭제됨" : "공개 중"}
+                      {review.deleted_at ? "휴지통" : "공개 중"}
                     </span>
                     {review.deleted_at ? (
                       <button
@@ -252,7 +361,11 @@ export function AdminReviews() {
                 {review.deleted_at && (
                   <p className="mt-4 rounded-lg bg-sand p-3 text-xs text-ink-muted">
                     삭제 사유: {review.deletion_reason} ·{" "}
-                    {reviewDate(review.deleted_at)}
+                    {reviewDate(review.deleted_at)} · 완전 삭제는{" "}
+                    <Link href="/admin/trash" className="underline">
+                      휴지통
+                    </Link>
+                    에서 할 수 있어요.
                   </p>
                 )}
               </li>
@@ -303,8 +416,6 @@ export function AdminReviews() {
         </h2>
         <p className="mt-3 text-sm text-ink-muted">
           {selected?.product_name} · {selected?.author}
-          <br />
-          삭제하면 리뷰와 사진이 고객 화면에서 숨겨집니다.
         </p>
         <form
           onSubmit={(e) => {
@@ -347,11 +458,11 @@ export function AdminReviews() {
               disabled={busy || !reason.trim()}
               className="btn btn-primary disabled:opacity-50"
             >
-              {busy ? "처리 중…" : "삭제하기"}
+              {busy ? "처리 중…" : "삭제"}
             </button>
           </div>
         </form>
       </dialog>
-    </>
+    </AdminProducts>
   );
 }

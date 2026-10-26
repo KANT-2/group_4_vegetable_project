@@ -2,7 +2,7 @@ import { reviewOriginAllowed, reviewProxy } from "@/lib/review-proxy";
 export function GET(request: Request) {
   const input = new URL(request.url).searchParams;
   const query = new URLSearchParams();
-  for (const key of ["q", "status", "page"])
+  for (const key of ["q", "status", "page", "kind", "date_from", "date_to"])
     if (input.has(key)) query.set(key, input.get(key)!);
   return reviewProxy(`/admin?${query}`, {}, true);
 }
@@ -18,6 +18,13 @@ export async function POST(request: Request) {
       );
     if (body.action === "restore")
       return reviewProxy(`/admin/${body.id}/restore`, { method: "POST" }, true);
+    // 휴지통에서 완전 삭제: 휴지통(삭제됨)에 있는 리뷰만 지워져요.
+    if (body.action === "purge")
+      return reviewProxy(
+        `/admin/${body.id}/permanent`,
+        { method: "DELETE" },
+        true,
+      );
     if (
       body.action !== "delete" ||
       typeof body.reason !== "string" ||

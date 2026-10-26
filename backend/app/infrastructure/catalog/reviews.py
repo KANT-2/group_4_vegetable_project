@@ -29,7 +29,7 @@ class SqlReviewRepository:
             await self.session.rollback()
             raise
 
-    async def listing(self, product_id=None, sort="newest", kind="all", page=1, size=12, admin=False, status="visible", q="", owner_id=None):
+    async def listing(self, product_id=None, sort="newest", kind="all", page=1, size=12, admin=False, status="visible", q="", owner_id=None, date_from=None, date_to=None):
         where = ["r.deleted_at IS NULL"] if not admin or status == "visible" else (["r.deleted_at IS NOT NULL"] if status == "deleted" else [])
         args = {"limit": size, "offset": (page - 1) * size}
         if owner_id is not None:
@@ -42,6 +42,13 @@ class SqlReviewRepository:
             where.append("p.is_active")
         if kind != "all":
             where.append("r.image_count > 0" if kind == "images" else "r.image_count = 0")
+        # 기간은 한국 날짜 기준으로 시작일·종료일을 모두 포함한다.
+        if date_from is not None:
+            where.append("(r.created_at AT TIME ZONE 'Asia/Seoul')::date >= :date_from")
+            args["date_from"] = date_from
+        if date_to is not None:
+            where.append("(r.created_at AT TIME ZONE 'Asia/Seoul')::date <= :date_to")
+            args["date_to"] = date_to
         if q:
             where.append("(r.content ILIKE :q ESCAPE '\\' OR p.name ILIKE :q ESCAPE '\\')")
             args["q"] = "%" + q.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_") + "%"
@@ -79,6 +86,12 @@ class SqlReviewRepository:
 
     async def restore(self, review_id):
         result = await self.session.scalar(text("UPDATE product_reviews SET deleted_at=NULL,deletion_reason=NULL WHERE id=:id AND deleted_at IS NOT NULL RETURNING id"), {"id": review_id})
+        await self.session.commit()
+        return result is not None
+
+    async def purge(self, review_id):
+        # 휴지통(삭제됨)에 있는 리뷰만 완전히 지운다. 사진은 외래키 cascade 로 함께 지워진다.
+        result = await self.session.scalar(text("DELETE FROM product_reviews WHERE id=:id AND deleted_at IS NOT NULL RETURNING id"), {"id": review_id})
         await self.session.commit()
         return result is not None
 
