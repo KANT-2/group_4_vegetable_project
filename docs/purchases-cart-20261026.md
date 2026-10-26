@@ -8,7 +8,7 @@
 
 - 구현: 담기, 내 장바구니 조회, 수량 변경, 삭제 (`backend/app/*/purchases/`).
 - 제외: 서버 배송비 계산, 모의 주문 생성, 주문 목록·상세, 프론트 연결, 쿠폰, 환불.
-- 라우터 등록은 `main.py`(형준 님 통합)에 필요합니다. `app.include_router(cart_router, prefix="/api/v1")`와 `register_purchase_error_handlers(app)` 두 줄을 요청합니다. 이 PR은 `main.py`를 고치지 않았습니다.
+- 라우터 등록: 형준 님 허락으로 이 PR이 `main.py`에 `cart_router` 등록과 `register_purchase_error_handlers(app)` 두 줄(과 필요한 import 두 줄)만 추가했습니다. 다른 줄은 바꾸지 않았습니다.
 
 ## API
 
@@ -48,7 +48,7 @@
 
 ## 인증
 
-로그인 사용자는 지금 체험 예약의 임시 어댑터(`presentation/experiences/dependencies.py`)를 가져다 씁니다. `presentation/purchases/dependencies.py`의 import 한 줄이 지나 님의 공통 `get_current_user`로 바뀌면 교체됩니다. 로그아웃 토큰 차단(블랙리스트)은 그쪽 구현에 달려 있어 여기서는 검증하지 않았습니다.
+로그인 사용자는 지나 님의 공통 인증(`app.presentation.accounts.dependencies`의 `CurrentUser`)을 씁니다. 로그아웃(블랙리스트)된 토큰과 비활성 계정은 그쪽에서 401로 차단됩니다. 사용자 ID는 JWT `sub`(= `auth.users.id`와 같은 UUID)이고, 장바구니는 이 ID로만 소유권을 검사합니다. 형준 님이 남겨 둔 옛 임시 어댑터(`experiences/dependencies.py`)는 더 이상 쓰지 않으므로 삭제해도 됩니다.
 
 ## 검증 기록
 
@@ -58,14 +58,14 @@
 | --- | --- | --- |
 | `tests/test_cart_domain.py` | 수량 경계(0, 1, 99, 100), bool·실수·문자열 거부, 합치기, 상한 초과 거부, 판매 중지 상품 | 통과 |
 | `tests/test_cart_service.py` | 담기·합치기·변경·삭제, 잘못된 수량이면 저장 안 됨, 없는 상품 404, 판매 중지 거부, 사용자 분리, 합계에서 판매 중지 제외, 저장 실패 시 롤백 | 통과 |
-| `tests/test_cart_api.py` | 실제 라우터·JWT 인증·오류 변환. 401, 422(여러 입력), 404, 409, `user_id` 필드 거부, 다른 사용자 접근 차단 | 통과 |
+| `tests/test_cart_api.py` | 라우터·오류 변환. 토큰 없음·잘못됨 401은 지나 님 실제 인증으로, 로그인 사용자 동작·사용자 분리는 인증을 헤더로 대체해 DB 없이 검증. 422(여러 입력), 404, 409, `user_id` 필드 거부 | 통과 |
 
-- 새 테스트 51개 통과. 지나 님(#9)·형준 님(#8)이 합쳐진 최신 `develop`을 합친 상태에서 전체 125개 통과, DB가 필요한 15개는 `DATABASE_URL`이 없어 건너뜀(PR 이전과 같은 건너뜀).
+- 새 테스트 51개와 금액·주문 도메인 테스트 97개를 포함해 최신 `develop`(형준 님 #12까지) 위에서 전체 222개 통과, DB가 필요한 17개는 `DATABASE_URL`이 없어 건너뜀.
 - 테스트가 실제로 잘못된 코드를 잡는지 확인하려고 규칙을 일부러 깨 보았습니다(상한 초과를 자르기, 롤백 호출 빼기, 판매 중지 확인 빼기). 각각 관련 테스트가 실패했고 원래대로 되돌린 뒤 전부 통과했습니다.
 - SQL 저장소(`infrastructure/purchases/cart_repository.py`)는 PostgreSQL 문장으로 만들어지는지(조회·`FOR UPDATE`·`ON CONFLICT DO UPDATE`)만 확인했습니다.
 
 ### 미실행 (이 PR 이후 확인 필요)
 
 - **실제 PostgreSQL에 대한 실행.** 이 PC에 `DATABASE_URL`이 없어 저장소 쿼리, 동시 담기(`ON CONFLICT`), 외래키·제약 동작은 실행해 보지 못했습니다. DB 주소가 있으면 실제 DB 통합 테스트를 추가합니다.
-- 사용자 식별 합의(`api-contract-20261023.md` §0) 전이라 `cart_items.user_id`가 가리키는 사용자 테이블이 바뀌면 외래키 마이그레이션은 별도입니다. 이 PR은 DB를 바꾸지 않습니다.
+- 사용자 식별: 팀 합의(2026-10-26)로 `auth.users.id`를 공통 사용자 UUID로 유지합니다. `cart_items.user_id`·`orders.user_id`의 외래키는 바꾸지 않으며 이 PR도 DB를 바꾸지 않습니다. 테스트 계정은 `auth.users`와 `app_users`를 같은 UUID로 만들어야 합니다.
 - 프론트(`/cart`)는 아직 이 API를 호출하지 않습니다.
