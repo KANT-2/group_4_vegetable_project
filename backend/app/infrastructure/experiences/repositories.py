@@ -104,8 +104,12 @@ class SqlAlchemyExperienceRepository:
         )
         try:
             await self._s.flush()
-        except IntegrityError as e:  # 서비스 검사를 통과한 동시 중복도 부분 유니크 인덱스가 막는다
-            raise DuplicateReservation("이미 이 회차를 예약했습니다.") from e
+        except IntegrityError as e:
+            # 서비스 검사를 통과한 동시 중복은 부분 유니크 인덱스가 막는다. 그 위반만 '중복'으로 알리고,
+            # 다른 무결성 오류(존재하지 않는 사용자 등)는 원인을 숨기지 않도록 그대로 올린다.
+            if "experience_reservations_one_active" in str(e.orig):
+                raise DuplicateReservation("이미 이 회차를 예약했습니다.") from e
+            raise
 
     async def get_reservation(self, reservation_id, for_update=False):
         stmt = select(ReservationModel).where(ReservationModel.id == reservation_id)
