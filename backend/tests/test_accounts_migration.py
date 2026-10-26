@@ -18,6 +18,7 @@ def test_accounts_migration_creates_owned_tables():
 
     assert "create table public.app_users" in sql
     assert "id uuid primary key references auth.users(id)" in sql
+    assert "username text unique" in sql
     assert "create table public.revoked_tokens" in sql
     assert "create table public.admin_registrations" in sql
     assert "id uuid primary key references auth.users(id)" in sql

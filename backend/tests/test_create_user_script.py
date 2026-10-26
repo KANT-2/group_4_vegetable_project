@@ -64,6 +64,7 @@ async def test_create_user_hashes_password_and_creates_profile():
     )
 
     assert user.email == "jina@test.com"
+    assert user.username == "jina"
     assert user.password_hash != "test1234!"
     assert user.role == "admin"
     assert user.id == user.supabase_user_id

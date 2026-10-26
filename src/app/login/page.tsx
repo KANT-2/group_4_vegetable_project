@@ -61,7 +61,7 @@ export default function LoginPage({
         <p className="mb-3 font-bold text-brand">못난이마켓</p>
         <h1 className="page-title">반가워요!</h1>
         <p className="mb-8 mt-3 text-ink-muted">
-          Google 또는 이메일 계정으로 로그인하고
+          아이디·이메일 또는 Google 계정으로 로그인하고
           <br />
           나만의 장바구니와 찜을 이어가세요.
         </p>
@@ -71,7 +71,7 @@ export default function LoginPage({
           <LoginContent searchParams={searchParams} />
         </Suspense>
         <p className="mt-6 text-sm text-ink-muted">
-          이메일 계정은 개발용 사용자 생성 후 이용할 수 있어요.
+          개발용 계정은 아이디 또는 이메일로 이용할 수 있어요.
         </p>
         <Link
           href="/"

@@ -44,20 +44,32 @@ def normalize_nickname(value: str) -> str:
     return nickname
 
 
+def normalize_username(value: str) -> str:
+    username = value.strip().lower()
+    if not re.fullmatch(r"[a-z0-9_.-]{4,40}", username):
+        raise ValueError("아이디는 영문 소문자·숫자·._- 조합의 4~40자여야 합니다.")
+    return username
+
+
 async def create_user(
     session: AsyncSession,
     email: str,
     password: str,
     nickname: str,
     role: UserRole = UserRole.USER,
+    username: str | None = None,
 ) -> AppUserModel:
     normalized_email = normalize_email(email)
     validate_password(password)
     normalized_nickname = normalize_nickname(nickname)
+    normalized_username = normalize_username(
+        username or normalized_email.split("@", 1)[0]
+    )
     user_id = uuid4()
     user = AppUserModel(
         id=user_id,
         email=normalized_email,
+        username=normalized_username,
         password_hash=hash_password(password),
         role=role.value,
         is_active=True,
@@ -84,6 +96,7 @@ def parse_args():
     parser.add_argument("--email", required=True)
     parser.add_argument("--password", required=True)
     parser.add_argument("--nickname", required=True)
+    parser.add_argument("--username")
     parser.add_argument("--role", choices=[r.value for r in UserRole], default="user")
     return parser.parse_args()
 
@@ -107,6 +120,7 @@ async def main() -> None:
                     args.password,
                     args.nickname,
                     UserRole(args.role),
+                    args.username,
                 )
             except IntegrityError:
                 raise SystemExit("이미 사용 중인 이메일이거나 연결 데이터가 잘못되었습니다.") from None

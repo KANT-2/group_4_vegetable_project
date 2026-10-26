@@ -28,17 +28,17 @@ export function EmailLoginForm({ next }: { next: string }) {
     >
       <div>
         <label className="field-label" htmlFor="email">
-          이메일
+          아이디 또는 이메일
         </label>
         <input
           className="field"
           id="email"
           name="email"
-          type="email"
-          autoComplete="email"
+          type="text"
+          autoComplete="username"
           required
           disabled={pending}
-          placeholder="이메일을 입력해 주세요"
+          placeholder="아이디 또는 이메일을 입력해 주세요"
         />
       </div>
       <div>

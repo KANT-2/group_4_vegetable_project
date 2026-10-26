@@ -29,8 +29,8 @@ class AccountService:
         self._uow = uow
         self._token_codec = token_codec
 
-    async def login(self, email: str, password: str) -> LoginResult:
-        account = await self._uow.repo.get_by_email(email.strip().lower())
+    async def login(self, identifier: str, password: str) -> LoginResult:
+        account = await self._uow.repo.get_by_login(identifier.strip().lower())
         if (
             account is None
             or not account.is_active

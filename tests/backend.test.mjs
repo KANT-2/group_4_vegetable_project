@@ -34,6 +34,11 @@ test("로그인 입력을 검증하고 비밀번호 공백은 보존한다", () 
     false,
   );
   assert.equal(
+    signInSchema.safeParse({ email: "member_id", password: "password" })
+      .success,
+    true,
+  );
+  assert.equal(
     signInSchema.safeParse({ ...input, password: "a".repeat(1025) }).success,
     false,
   );

@@ -1,6 +1,6 @@
 """회원 Repository와 요청 단위 트랜잭션 구현."""
 
-from sqlalchemy import select, text
+from sqlalchemy import func, or_, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.accounts.models import (
@@ -62,6 +62,18 @@ class SqlAlchemyAccountRepository:
         )
         return _to_account(model) if model else None
 
+    async def get_by_login(self, identifier: str) -> Account | None:
+        normalized = identifier.strip().lower()
+        model = await self._session.scalar(
+            select(AppUserModel).where(
+                or_(
+                    func.lower(AppUserModel.email) == normalized,
+                    func.lower(AppUserModel.username) == normalized,
+                )
+            )
+        )
+        return _to_account(model) if model else None
+
     async def get_by_id(self, user_id) -> Account | None:
         model = await self._session.get(AppUserModel, user_id)
         return _to_account(model) if model else None
@@ -96,6 +108,7 @@ class SqlAlchemyAccountRepository:
                 id=account.id,
                 supabase_user_id=account.id,
                 email=account.email,
+                username=registration.username,
                 password_hash=account.password_hash,
                 role=account.role.value,
                 is_active=account.is_active,

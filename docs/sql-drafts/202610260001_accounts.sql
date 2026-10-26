@@ -6,6 +6,7 @@ create table public.app_users (
   -- 기존 서비스 테이블과 같은 사용자 UUID를 쓰기 위해 auth.users를 식별 기준으로 유지한다.
   id uuid primary key references auth.users(id) on delete cascade,
   email text not null,
+  username text unique,
   password_hash text not null,
   role text not null default 'user' check (role in ('user', 'admin')),
   is_active boolean not null default true,
@@ -14,6 +15,7 @@ create table public.app_users (
   constraint app_users_email_normalized check (email = lower(btrim(email))),
   constraint app_users_email_not_blank check (char_length(email) between 3 and 320),
   constraint app_users_email_unique unique (email),
+  constraint app_users_username_format check (username is null or username ~ '^[a-z0-9_.-]{4,40}$'),
   constraint app_users_identity_matches check (id = supabase_user_id)
 );
 

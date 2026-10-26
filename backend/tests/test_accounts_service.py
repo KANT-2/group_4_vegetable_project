@@ -18,6 +18,11 @@ class FakeAccountRepository:
             return self.account
         return None
 
+    async def get_by_login(self, identifier: str) -> Account | None:
+        if self.account and identifier in {self.account.email, "jina"}:
+            return self.account
+        return None
+
     async def revoke_token(self, jti, user_id, expires_at) -> None:
         self.revoked[jti] = (user_id, expires_at)
 
@@ -67,6 +72,15 @@ async def test_login_normalizes_email_and_returns_bearer_token():
     assert result.access_token
     payload = service._token_codec.decode(result.access_token)
     assert payload.user_id == account.id
+
+
+async def test_login_accepts_username_identifier():
+    account = make_account()
+    service, _ = make_service(account)
+
+    result = await service.login(" JINA ", "test1234!")
+
+    assert result.account == account
 
 
 @pytest.mark.parametrize("email,password", [("none@test.com", "test1234!"), ("jina@test.com", "wrong")])
