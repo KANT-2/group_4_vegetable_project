@@ -18,6 +18,9 @@ import { FastApiError } from "@/lib/fastapi";
 import { changeGuestCart } from "@/lib/guest-cart-core";
 import { clearGuestCart, readGuestCart, saveGuestCart } from "@/lib/guest-cart";
 import { productUnavailable } from "@/lib/managed-content";
+import { catalogToken } from "@/lib/catalog-api";
+import { changeCatalogWish } from "./catalog-wishlist";
+import { isFastApiCatalog } from "@/lib/catalog-mode";
 import {
   MAX_CART_QUANTITY,
   cartItemSchema,
@@ -299,6 +302,8 @@ export async function setWishlist(input: unknown): Promise<CartActionResult> {
     return { ok: false, error: parsed.error.issues[0].message };
   const { product_id, wished } = parsed.data;
   try {
+    if (isFastApiCatalog() || (await catalogToken()))
+      return changeCatalogWish(parsed.data);
     if (await getCustomerDemo()) {
       if (wished && !(await getProductById(product_id))) return NOT_FOR_SALE;
       writeDemoWish(product_id, wished);

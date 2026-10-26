@@ -11,6 +11,13 @@ import { readDemoCart } from "@/lib/customer-demo-cart";
 import { getCartMode } from "@/lib/cart-mode";
 import { apiGetCart } from "@/lib/cart-api";
 import { readGuestCart } from "@/lib/guest-cart";
+import { isFastApiCatalog } from "@/lib/catalog-mode";
+import {
+  catalogToken,
+  catalogProduct,
+  wishlistPages,
+  wishlistIds,
+} from "@/lib/catalog-api";
 
 const PRODUCT_FIELDS =
   "products(id, name, unit, price, original_price, image_path, is_active)";
@@ -147,6 +154,30 @@ export async function getWishlist(): Promise<{
   userId: string;
   lines: WishlistLine[];
 }> {
+  const token = await catalogToken();
+  if (isFastApiCatalog() && !token) {
+    const { redirect } = await import("next/navigation");
+    redirect("/login?next=%2Fcart%3Ftab%3Dwishlist");
+  }
+  if (token) {
+    const user = await requireUser("/cart?tab=wishlist");
+    const items = await wishlistPages(token);
+    return {
+      userId: user.id,
+      lines: items.map((row) => {
+        const product = catalogProduct(row.product);
+        return {
+          productId: product.id,
+          available: product.isActive,
+          name: product.name,
+          unit: product.unit,
+          price: product.price,
+          originalPrice: product.originalPrice,
+          imageUrl: product.imageUrl,
+        };
+      }),
+    };
+  }
   if (await getCustomerDemo()) {
     const lines = await Promise.all(
       readDemoWishlist().map(async (productId) => {
@@ -184,6 +215,13 @@ export async function getWishlist(): Promise<{
 // 상품 상세의 버튼 초기 상태. 로그인 전이거나 조회에 실패하면 "찜 안 함"으로 보여요.
 export async function getSavedState(productId: string) {
   try {
+    const token = await catalogToken();
+    if (token)
+      return {
+        loggedIn: true,
+        wished: (await wishlistIds(token)).includes(productId),
+      };
+    if (isFastApiCatalog()) return { loggedIn: false, wished: false };
     if (await getCustomerDemo())
       return { loggedIn: true, wished: readDemoWishlist().includes(productId) };
     const user = await getCurrentUser();

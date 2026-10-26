@@ -7,6 +7,7 @@ import * as guestCore from "../src/lib/guest-cart-core.ts";
 // src/app/api/navigation/route.ts 를 가짜 의존성으로 실행해요. (비회원·FastAPI 로그인 경로)
 function loadRoute({ mode, guestItems = [], cart, me }) {
   const modules = {
+    "@/lib/catalog-api": { wishlistIds: async () => [] },
     "@/lib/customer-demo": { getCustomerDemo: async () => null },
     "@/lib/auth": { getCurrentUser: async () => null },
     "@/lib/supabase/server": {

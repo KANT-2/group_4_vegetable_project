@@ -44,6 +44,8 @@ export function loadActions({
   const resolvedMode =
     mode ?? (user ? { kind: "supabase", userId: user.id } : { kind: "guest" });
   const modules = {
+    "@/lib/catalog-mode": { isFastApiCatalog: () => false },
+    "@/lib/catalog-api": { catalogToken: async () => null },
     "@/lib/managed-content": { productUnavailable: () => unavailable },
     "@/lib/customer-demo": { getCustomerDemo: async () => null },
     "next/cache": {

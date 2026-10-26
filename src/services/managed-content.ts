@@ -6,6 +6,7 @@ import type { Recipe } from "@/types/recipe";
 import type { FarmStory } from "@/types/showcase";
 import type { AdminFarm } from "@/lib/admin-store";
 import { managedPromotions } from "@/lib/admin-promotions";
+import { isFastApiCatalog } from "@/lib/catalog-mode";
 
 export function managedProducts(base: Product[]) {
   const { state } = readContent();
@@ -30,7 +31,10 @@ export function managedRecipes(base: Recipe[], catalog: Product[] = seeds) {
   for (const recipe of Object.values(state.recipeChanges))
     byId.set(recipe.id, recipe);
   const products = new Map(
-    managedProducts(catalog).map((product) => [product.id, product]),
+    (isFastApiCatalog()
+      ? catalog.filter((product) => product.isActive)
+      : managedProducts(catalog)
+    ).map((product) => [product.id, product]),
   );
   return [...byId.values()]
     .filter((recipe) => !hiddenContent(state, "recipe", recipe.id))

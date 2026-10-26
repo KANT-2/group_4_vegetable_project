@@ -462,7 +462,7 @@ export function AdminProducts({
                   + 레시피 등록하기
                 </button>
               ))}
-            {productView && (
+            {productView && !children && (
               <RegisterProduct
                 existingIds={[
                   ...products.map((product) => product.id),
@@ -503,7 +503,7 @@ export function AdminProducts({
               />
             )}
           </div>
-          {productView && (
+          {productView && !children && (
             <>
               <form
                 role="search"
@@ -751,7 +751,7 @@ export function AdminProducts({
               </nav>
             </>
           )}
-          {!productView && children}
+          {children}
         </section>
       </div>
       <dialog
