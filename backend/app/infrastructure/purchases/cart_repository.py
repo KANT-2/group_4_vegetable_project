@@ -15,7 +15,13 @@ from app.infrastructure.purchases.order_repository import SqlAlchemyOrderReposit
 
 def _to_product(m: ProductReadModel) -> ProductInfo:
     return ProductInfo(
-        id=m.id, name=m.name, unit=m.unit, price=m.price, is_active=m.is_active, image_path=m.image_path
+        id=m.id,
+        name=m.name,
+        unit=m.unit,
+        price=m.price,
+        is_active=m.is_active,
+        image_path=m.image_path,
+        stock=m.stock,
     )
 
 

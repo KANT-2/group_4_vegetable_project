@@ -12,6 +12,7 @@ export type ApiCartLine = {
   line_total: number;
   is_active: boolean;
   image_path: string | null;
+  stock: number | null;
 };
 export type ApiCart = { items: ApiCartLine[]; subtotal_amount: number };
 

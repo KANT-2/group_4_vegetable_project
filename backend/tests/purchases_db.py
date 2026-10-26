@@ -66,17 +66,17 @@ class PurchaseEnv:
         assert res.status_code == 200, res.text
         return user_id, {"Authorization": f"Bearer {res.json()['access_token']}"}
 
-    async def new_product(self, price=3_000, name="테스트 당근", unit="1kg", active=True) -> str:
+    async def new_product(self, price=3_000, name="테스트 당근", unit="1kg", active=True, stock=20) -> str:
         product_id = f"test-{uuid4().hex[:10]}"
         self.product_ids.append(product_id)
         async with self.maker() as s:
             await s.execute(
                 text(
                     "insert into public.products (id, vegetable_id, name, price, original_price, unit, ugly_reason, "
-                    "description, farm_name, is_active) values (:id, :veg, :name, :price, :price, :unit, 'bent', "
-                    "'테스트 상품', '테스트농장', :active)"
+                    "description, farm_name, is_active, stock) values (:id, :veg, :name, :price, :price, :unit, 'bent', "
+                    "'테스트 상품', '테스트농장', :active, :stock)"
                 ),
-                {"id": product_id, "veg": self.vegetable_id, "name": name, "price": price, "unit": unit, "active": active},
+                {"id": product_id, "veg": self.vegetable_id, "name": name, "price": price, "unit": unit, "active": active, "stock": stock},
             )
             await s.commit()
         return product_id

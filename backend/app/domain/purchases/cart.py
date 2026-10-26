@@ -18,6 +18,21 @@ class ProductNotPurchasable(PurchaseDomainError):
     pass
 
 
+class InsufficientStock(PurchaseDomainError):
+    """원하는 수량이 남은 재고보다 많다. available 은 지금 살 수 있는 최대 수량이다."""
+
+    def __init__(self, product_name: str, available: int, in_cart: int = 0):
+        self.available = available
+        message = (
+            f"'{product_name}' 재고가 {available}개 남아 {available}개까지만 구매할 수 있어요."
+            if available > 0
+            else f"'{product_name}'은(는) 품절됐어요."
+        )
+        if available > 0 and in_cart:
+            message += f" (장바구니에 이미 {in_cart}개가 담겨 있어요.)"
+        super().__init__(message)
+
+
 def validate_quantity(quantity: int) -> int:
     # bool 은 int 의 하위 타입이라 True 가 수량 1 로 통과하지 않게 막는다.
     if isinstance(quantity, bool) or not isinstance(quantity, int) or not 1 <= quantity <= MAX_QUANTITY:
@@ -35,10 +50,24 @@ class ProductInfo:
     price: int
     is_active: bool
     image_path: str | None = None
+    stock: int | None = None  # 남은 재고. None 은 재고를 관리하지 않는 상품(테스트·예전 데이터)
+
+    @property
+    def is_purchasable(self) -> bool:
+        """판매 중이고 품절이 아니다."""
+        return self.is_active and self.stock != 0
 
     def ensure_purchasable(self) -> None:
         if not self.is_active:
             raise ProductNotPurchasable("판매가 끝난 상품은 담을 수 없습니다.")
+        if self.stock == 0:
+            raise InsufficientStock(self.name, 0)
+
+    def ensure_stock(self, quantity: int, in_cart: int = 0) -> None:
+        """이 상품을 quantity 개(장바구니에 이미 담긴 in_cart 개 포함) 살 수 있는지 확인한다. 재고에 맞춰 자르지 않고 거부한다."""
+        self.ensure_purchasable()
+        if self.stock is not None and quantity > self.stock:
+            raise InsufficientStock(self.name, self.stock, in_cart)
 
 
 @dataclass

@@ -153,7 +153,7 @@ async def test_add_change_remove_flow(env):
     assert r.status_code == 201
     assert r.json() == {
         "product_id": CARROT.id, "name": CARROT.name, "unit": CARROT.unit, "unit_price": 3000,
-        "quantity": 2, "line_total": 6000, "is_active": True, "image_path": None,
+        "quantity": 2, "line_total": 6000, "is_active": True, "image_path": None, "stock": None,
     }
 
     r = await env.client.post(f"{BASE}/items", json={"product_id": CARROT.id, "quantity": 3}, headers=h)

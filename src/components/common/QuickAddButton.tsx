@@ -7,6 +7,7 @@ import { useState, useTransition } from "react";
 import { addToCart } from "@/actions/cart";
 import { useNavigation } from "@/components/common/NavigationProvider";
 import { useLoginReturn } from "@/components/shopping/useLoginReturn";
+import { StockAlertDialog } from "@/components/shopping/StockAlertDialog";
 import { CartIcon } from "./Icons";
 
 export function QuickAddButton({
@@ -17,6 +18,7 @@ export function QuickAddButton({
   productName: string;
 }) {
   const [message, setMessage] = useState<string | null>(null);
+  const [stockAlert, setStockAlert] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const { refresh } = useNavigation();
   const goLogin = useLoginReturn();
@@ -29,6 +31,8 @@ export function QuickAddButton({
         const result = await addToCart({ product_id: productId, quantity: 1 });
         if (!result.ok) {
           if (result.needsLogin) return goLogin();
+          if (result.available !== undefined)
+            return setStockAlert(result.error);
           setMessage(result.error);
           return;
         }
@@ -56,6 +60,10 @@ export function QuickAddButton({
       <p role="status" className="min-h-0 text-center text-xs text-brand-dark">
         {message}
       </p>
+      <StockAlertDialog
+        message={stockAlert}
+        onClose={() => setStockAlert(null)}
+      />
     </div>
   );
 }

@@ -146,8 +146,8 @@ class Order:
         """장바구니 줄(상품 정보, 수량)로 모의 결제가 끝난 주문을 만든다. 저장은 응용 서비스가 한다."""
         if not lines:
             raise EmptyCart("장바구니가 비어 있습니다.")
-        for product, _ in lines:
-            product.ensure_purchasable()
+        for product, quantity in lines:
+            product.ensure_stock(quantity)  # 판매 중·품절 아님·수량 ≤ 재고
         # 줄 순서를 상품 ID 순으로 고정해 같은 장바구니는 항상 같은 주문 내용이 되게 한다.
         ordered = sorted(lines, key=lambda line: line[0].id)
         amounts = calculate_amounts([(product.price, quantity) for product, quantity in ordered])
