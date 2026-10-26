@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SessionReserve } from "@/components/experiences/SessionReserve";
-import { ApiError, getExperience } from "@/lib/experiences-api";
+import { getExperience } from "@/lib/experiences-api";
+import { getExperienceAuth } from "@/lib/experiences-auth";
+import { FastApiError } from "@/lib/fastapi";
 import { formatPrice } from "@/lib/format";
 
 export async function generateMetadata({
@@ -27,16 +29,20 @@ export default async function ExperienceDetailPage({
   try {
     experience = await getExperience(id);
   } catch (e) {
-    if (e instanceof ApiError && e.status === 404) notFound();
+    if (e instanceof FastApiError && e.status === 404) notFound();
     return (
       <p
         role="alert"
         className="rounded-card bg-danger-soft p-4 text-center text-danger"
       >
-        {e instanceof ApiError ? e.message : "체험 정보를 불러오지 못했어요."}
+        {e instanceof FastApiError
+          ? e.message
+          : "체험 정보를 불러오지 못했어요."}
       </p>
     );
   }
+
+  const auth = await getExperienceAuth().catch(() => null);
 
   return (
     <article>
@@ -67,6 +73,7 @@ export default async function ExperienceDetailPage({
       <SessionReserve
         experienceId={experience.id}
         sessions={experience.sessions}
+        loggedIn={auth !== null}
       />
     </article>
   );

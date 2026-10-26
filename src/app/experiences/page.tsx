@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PageHeading } from "@/components/common/PageHeading";
-import { ApiError, listExperiences } from "@/lib/experiences-api";
+import { listExperiences } from "@/lib/experiences-api";
+import { FastApiError } from "@/lib/fastapi";
 import { formatPrice } from "@/lib/format";
 
 export const metadata = { title: "체험 예약" };
@@ -27,7 +28,9 @@ export default async function ExperiencesPage({
     data = await listExperiences({ q, region, page, size: SIZE });
   } catch (e) {
     error =
-      e instanceof ApiError ? e.message : "체험 목록을 불러오지 못했어요.";
+      e instanceof FastApiError
+        ? e.message
+        : "체험 목록을 불러오지 못했어요. 백엔드가 켜져 있는지 확인해 주세요.";
   }
 
   const totalPages = data ? Math.max(1, Math.ceil(data.total / SIZE)) : 1;

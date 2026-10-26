@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAuth } from "./useAuth";
 
-export function ExperienceSubNav() {
+export function ExperienceSubNav({ isAdmin }: { isAdmin: boolean }) {
   const pathname = usePathname();
-  const { auth } = useAuth();
   const items = [
     {
       href: "/experiences",
@@ -20,7 +18,7 @@ export function ExperienceSubNav() {
       label: "내 예약",
       match: (p: string) => p.startsWith("/experiences/reservations"),
     },
-    ...(auth?.role === "admin"
+    ...(isAdmin
       ? [
           {
             href: "/experiences/admin",

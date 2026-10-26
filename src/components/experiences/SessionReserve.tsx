@@ -1,68 +1,53 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import {
-  ApiError,
-  formatSessionTime,
-  reserve,
-  type Session,
-} from "@/lib/experiences-api";
-import { useAuth } from "./useAuth";
+import { useState, useTransition } from "react";
+import { reserveAction } from "@/actions/experiences";
+import { formatSessionTime, type Session } from "@/lib/experiences-types";
 
 type Notice = { kind: "ok" | "error"; text: string };
 
 export function SessionReserve({
   experienceId,
   sessions,
+  loggedIn,
 }: {
   experienceId: string;
   sessions: Session[];
+  loggedIn: boolean;
 }) {
-  const { auth } = useAuth();
-  const router = useRouter();
   const [headcounts, setHeadcounts] = useState<Record<string, number>>({});
-  const [busy, setBusy] = useState<string | null>(null);
   const [notices, setNotices] = useState<Record<string, Notice>>({});
+  const [pendingId, setPendingId] = useState<string | null>(null);
+  const [, startTransition] = useTransition();
 
   if (sessions.length === 0) {
     return <p className="mt-3 text-ink-muted">아직 열린 회차가 없어요.</p>;
   }
 
-  async function submit(session: Session) {
-    if (!auth) return;
+  function submit(session: Session) {
     const headcount = headcounts[session.id] ?? 1;
-    setBusy(session.id);
-    try {
-      await reserve(auth.token, experienceId, session.id, headcount);
+    setPendingId(session.id);
+    startTransition(async () => {
+      const result = await reserveAction(experienceId, session.id, headcount);
       setNotices((n) => ({
         ...n,
-        [session.id]: {
-          kind: "ok",
-          text: `${headcount}명 예약했어요. 내 예약에서 확인할 수 있어요.`,
-        },
+        [session.id]: result.ok
+          ? { kind: "ok", text: `${headcount}명 예약했어요.` }
+          : { kind: "error", text: result.error },
       }));
-      router.refresh(); // 잔여 인원을 서버에서 다시 받아와요
-    } catch (e) {
-      setNotices((n) => ({
-        ...n,
-        [session.id]: {
-          kind: "error",
-          text: e instanceof ApiError ? e.message : "예약하지 못했어요.",
-        },
-      }));
-    } finally {
-      setBusy(null);
-    }
+      setPendingId(null);
+    });
   }
+
+  const loginHref = `/login?next=${encodeURIComponent(`/experiences/${experienceId}`)}`;
 
   return (
     <ul className="mt-3 grid gap-3">
       {sessions.map((s) => {
         const closed = s.status === "closed";
         const full = s.remaining === 0;
-        const started = new Date(s.starts_at).getTime() <= Date.now();
+        const started = s.started ?? false;
         const unavailable = closed || full || started;
         const max = Math.min(10, Math.max(s.remaining, 1));
         const notice = notices[s.id];
@@ -86,7 +71,7 @@ export function SessionReserve({
                         : `잔여 ${s.remaining}명 / 정원 ${s.capacity}명`}
                 </p>
               </div>
-              {!unavailable && auth && (
+              {!unavailable && loggedIn && (
                 <div className="flex w-full items-center justify-end gap-2 sm:w-auto">
                   <label
                     className="text-sm text-ink-muted"
@@ -113,18 +98,18 @@ export function SessionReserve({
                   </select>
                   <button
                     type="button"
-                    disabled={busy === s.id}
+                    disabled={pendingId === s.id}
                     onClick={() => submit(s)}
                     className="btn btn-primary"
                   >
-                    {busy === s.id ? "예약 중…" : "예약하기"}
+                    {pendingId === s.id ? "예약 중…" : "예약하기"}
                   </button>
                 </div>
               )}
-              {!unavailable && !auth && (
-                <p className="text-sm text-ink-muted">
-                  예약하려면 로그인이 필요해요.
-                </p>
+              {!unavailable && !loggedIn && (
+                <Link href={loginHref} className="btn btn-secondary">
+                  로그인하고 예약하기
+                </Link>
               )}
             </div>
             {notice && (

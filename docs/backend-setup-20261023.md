@@ -72,17 +72,17 @@ npm install && npm run dev
 
 ## 7. 검증 상태
 
-| 항목                                                                                                          | 상태                   |
-| ------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `uv sync`, `uv run pytest` (5건: health, DB 미설정 응답, CORS 허용/차단, asyncpg 주소 강제, `*` 거부)         | 로컬 통과              |
-| uvicorn 실행, `/health`·`/health/db`·CORS 헤더·처리 시간 로그                                                 | 로컬 확인              |
-| 4조 새 Supabase(Session pooler)에 asyncpg 연결 (`select 1`)                                                   | 로컬 확인 (2026-10-23) |
-| 마이그레이션 13개 적용 (`backend/scripts/apply_sql.py migrations`) → public 테이블 12개, 버킷 `market-images` | 로컬 확인              |
-| 시드 적용 (`apply_sql.py seeds`) → vegetables 21, products 71, recipes 23, recipe_products 115                | 로컬 확인              |
-| Storage 이미지 92개(products 71, vegetables 21) 대시보드 업로드, 공개 URL 200 응답                            | 확인                   |
-| lifespan 종료 시 풀 정리                                                                                      | **미검증**             |
-| 프론트 ↔ FastAPI 호출, 기존 Next.js 빌드·실행                                                                 | **미검증**             |
-| 인증·JWT·블랙리스트 등                                                                                        | 미구현                 |
+| 항목                                                                                                          | 상태                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `uv sync`, `uv run pytest` (5건: health, DB 미설정 응답, CORS 허용/차단, asyncpg 주소 강제, `*` 거부)         | 로컬 통과                                                                                                                    |
+| uvicorn 실행, `/health`·`/health/db`·CORS 헤더·처리 시간 로그                                                 | 로컬 확인                                                                                                                    |
+| 4조 새 Supabase(Session pooler)에 asyncpg 연결 (`select 1`)                                                   | 로컬 확인 (2026-10-23)                                                                                                       |
+| 마이그레이션 13개 적용 (`backend/scripts/apply_sql.py migrations`) → public 테이블 12개, 버킷 `market-images` | 로컬 확인                                                                                                                    |
+| 시드 적용 (`apply_sql.py seeds`) → vegetables 21, products 71, recipes 23, recipe_products 115                | 로컬 확인                                                                                                                    |
+| Storage 이미지 92개(products 71, vegetables 21) 대시보드 업로드, 공개 URL 200 응답                            | 확인                                                                                                                         |
+| lifespan 종료 시 풀 정리                                                                                      | **미검증**                                                                                                                   |
+| 프론트 ↔ FastAPI 호출, 기존 Next.js 빌드·실행                                                                 | **미검증**                                                                                                                   |
+| 인증·JWT·블랙리스트                                                                                           | 지나 구현(PR #9)을 `main.py`에 등록하고 체험 API에 연동, 마이그레이션 `202610260001_accounts.sql`을 새 DB에 적용(2026-10-26) |
 
 ## 8. 다른 문서와 차이 (영우와 범위 공유 필요)
 

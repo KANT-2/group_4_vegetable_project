@@ -1,95 +1,38 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useTransition } from "react";
+import { closeSessionAction } from "@/actions/experiences";
 import {
-  adminReservations,
-  ApiError,
-  closeSession,
   formatSessionTime,
-  getExperience,
-  listExperiences,
   type ExperienceDetail,
   type Reservation,
-} from "@/lib/experiences-api";
-import { useAuth } from "./useAuth";
+} from "@/lib/experiences-types";
 
-export function AdminReservations() {
-  const { auth, ready } = useAuth();
-  const [experiences, setExperiences] = useState<ExperienceDetail[] | null>(
-    null,
-  );
-  const [reservations, setReservations] = useState<Reservation[]>([]);
-  const [error, setError] = useState<string | null>(null);
+export function AdminReservations({
+  experiences,
+  reservations,
+}: {
+  experiences: ExperienceDetail[];
+  reservations: Reservation[];
+}) {
   const [message, setMessage] = useState<string | null>(null);
-  const [busy, setBusy] = useState<string | null>(null);
-  const [version, setVersion] = useState(0);
-  const token = auth?.token;
-  const isAdmin = auth?.role === "admin";
-  const reload = () => setVersion((v) => v + 1);
+  const [pendingId, setPendingId] = useState<string | null>(null);
+  const [, startTransition] = useTransition();
 
-  useEffect(() => {
-    if (!token || !isAdmin) return;
-    let alive = true;
-    Promise.all([
-      listExperiences({ size: 100 }).then((p) =>
-        Promise.all(p.items.map((e) => getExperience(e.id))),
-      ),
-      adminReservations(token, { size: 100 }),
-    ])
-      .then(([list, rows]) => {
-        if (!alive) return;
-        setExperiences(list);
-        setReservations(rows.items);
-        setError(null);
-      })
-      .catch((e) => {
-        if (!alive) return;
-        setExperiences(null);
-        setError(
-          e instanceof ApiError ? e.message : "예약 정보를 불러오지 못했어요.",
-        );
-      });
-    return () => {
-      alive = false;
-    };
-  }, [token, isAdmin, version]);
-
-  if (!ready) return <p className="mt-6 text-ink-muted">불러오는 중…</p>;
-  if (!token)
-    return (
-      <p className="mt-6 rounded-card bg-sand p-6 text-center text-ink-muted">
-        관리자로 로그인해 주세요.
-      </p>
-    );
-  if (!isAdmin)
-    return (
-      <p
-        role="alert"
-        className="mt-6 rounded-card bg-danger-soft p-6 text-center text-danger"
-      >
-        관리자만 사용할 수 있어요.
-      </p>
-    );
-
-  async function close(sessionId: string) {
+  function close(sessionId: string) {
     if (
-      !token ||
       !window.confirm(
         "이 회차의 접수를 마감할까요? 마감하면 새 예약을 받지 않아요.",
       )
     )
       return;
-    setBusy(sessionId);
+    setPendingId(sessionId);
     setMessage(null);
-    try {
-      await closeSession(token, sessionId);
-      setMessage("접수를 마감했어요.");
-      reload();
-    } catch (e) {
-      setMessage(e instanceof ApiError ? e.message : "마감하지 못했어요.");
-    } finally {
-      setBusy(null);
-    }
+    startTransition(async () => {
+      const result = await closeSessionAction(sessionId);
+      setMessage(result.ok ? "접수를 마감했어요." : result.error);
+      setPendingId(null);
+    });
   }
 
   return (
@@ -102,12 +45,7 @@ export function AdminReservations() {
           {message}
         </p>
       )}
-      {error && (
-        <p role="alert" className="rounded-card bg-danger-soft p-4 text-danger">
-          {error}
-        </p>
-      )}
-      {experiences?.map((e) => (
+      {experiences.map((e) => (
         <section key={e.id}>
           <h2 className="text-lg font-extrabold text-ink">{e.title}</h2>
           <ul className="mt-2 grid gap-3">
@@ -137,11 +75,11 @@ export function AdminReservations() {
                     {s.status === "open" && (
                       <button
                         type="button"
-                        disabled={busy === s.id}
+                        disabled={pendingId === s.id}
                         onClick={() => close(s.id)}
                         className="btn btn-secondary"
                       >
-                        {busy === s.id ? "마감 중…" : "접수 마감"}
+                        {pendingId === s.id ? "마감 중…" : "접수 마감"}
                       </button>
                     )}
                   </div>
