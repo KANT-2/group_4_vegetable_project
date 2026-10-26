@@ -97,7 +97,7 @@ export default async function ProductsPage({
       <VisitMark />
       {/* 기획전 이름은 상단 메뉴에 이미 보여서 큰 제목 없이 화면 읽기용으로만 둬요. */}
       <h1 className="sr-only">{collection?.title ?? "상품 목록"}</h1>
-      {/* 코너 이동은 헤더 메뉴(제철·특가·대용량·1인 가구)에서 해요. */}
+      {/* 코너(제철·특가·대용량·1인 가구)는 홈 진열 줄의 "더보기"로 들어와요. */}
 
       {filters.q && (
         <p className="mt-6 text-xl font-bold text-ink">
