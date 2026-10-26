@@ -608,8 +608,8 @@ function FarmCard({
   farm: FarmStory;
   photo: { imageUrl: string; alt: string; position: string };
 }) {
-  const crops = [...new Set(farm.products.map((p) => p.vegetableName))];
-  const headline = getFarmStoryDetail(farm.farmName)?.headline;
+  const crops = farm.crops ?? [...new Set(farm.products.map((p) => p.vegetableName))];
+  const headline = farm.detail?.headline ?? getFarmStoryDetail(farm.farmName)?.headline;
   return (
     <Link href={routes.farm(farm.farmName)} className="group block">
       <span className="relative block overflow-hidden rounded-[0.25rem] bg-sand">

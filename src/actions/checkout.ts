@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 import { checkoutShippingSchema } from "@/schemas/shipping";
+import { productUnavailable } from "@/lib/managed-content";
 
 const checkoutSchema = z
   .object({
@@ -35,6 +36,7 @@ export async function mockCheckout(
   const parsed = checkoutSchema.safeParse(input);
   if (!parsed.success)
     return { ok: false, error: parsed.error.issues[0].message };
+  if (parsed.data.items.some((item) => productUnavailable(item.product_id))) return { ok: false, error: "품절 또는 판매 중지된 상품이 포함되어 있습니다. 장바구니를 확인해 주세요." };
   try {
     const user = await getCurrentUser();
     if (!user || user.id !== parsed.data.userId)

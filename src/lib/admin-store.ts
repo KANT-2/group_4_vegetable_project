@@ -48,6 +48,7 @@ export type AdminState = {
   deletedKeys?: string[];
 };
 export type AdminAction =
+  | { type: "hydrate"; state: AdminState }
   | {
       type: "products";
       update: AdminProduct[] | ((products: AdminProduct[]) => AdminProduct[]);
@@ -63,6 +64,7 @@ export function adminReducer(
   state: AdminState,
   action: AdminAction,
 ): AdminState {
+  if (action.type === "hydrate") return action.state;
   if (action.type === "save-promotion")
     return {
       ...state,

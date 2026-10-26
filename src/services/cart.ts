@@ -57,7 +57,7 @@ export async function getCart(): Promise<{
         return {
           productId,
           quantity,
-          available: Boolean(product),
+          available: Boolean(product && product.stock !== 0),
           name: product?.name ?? "판매가 끝난 상품",
           unit: product?.unit ?? "",
           price: product?.price ?? 0,

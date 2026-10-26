@@ -7,6 +7,7 @@ import { getCustomerDemo } from "@/lib/customer-demo";
 import { writeDemoWish } from "@/lib/customer-demo-wishlist";
 import { getProductById } from "@/services/products";
 import { changeDemoCart } from "@/lib/customer-demo-cart";
+import { productUnavailable } from "@/lib/managed-content";
 import {
   MAX_CART_QUANTITY,
   cartItemSchema,
@@ -46,6 +47,7 @@ export async function addToCart(input: unknown): Promise<CartActionResult> {
   if (!parsed.success)
     return { ok: false, error: parsed.error.issues[0].message };
   const { product_id, quantity } = parsed.data;
+  if (productUnavailable(product_id)) return { ok: false, error: "품절 또는 판매 중지된 상품입니다." };
   try {
     if (await getCustomerDemo()) {
       if (!(await getProductById(product_id)))

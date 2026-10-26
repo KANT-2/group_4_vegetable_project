@@ -6,6 +6,7 @@
 // 상품·채소 화면(B)이 아직 없으면 그쪽으로 가는 링크는 그리지 않아요. (src/lib/routes.ts)
 
 import Link from "next/link";
+import { publicPromotions } from "@/services/managed-content";
 import { homeCampaigns } from "@/data/home-campaigns";
 import {
   HomeBanner,
@@ -45,6 +46,7 @@ function ProductItems({ products }: { products: Product[] }) {
         eyebrow={product.farmName}
         href={routes.product(product.id)}
         productId={product.id}
+        stock={product.stock}
         reviewCount={product.reviewCount}
       />
     </li>
@@ -119,7 +121,11 @@ export default async function HomePage() {
   );
 
   const recipeImage = recipes.find((recipe) => recipe.imageUrl)?.imageUrl;
-  const slides: HomeBannerSlide[] = homeCampaigns;
+  const promos = publicPromotions();
+  const slides: HomeBannerSlide[] = promos.map((promo) => {
+    const base = homeCampaigns.find((campaign) => campaign.id === promo.slug);
+    return { ...base, id: promo.slug, eyebrow: promo.label, title: promo.title, imageUrl: promo.image, href: `/promotions/${promo.slug}` };
+  });
 
   return (
     <>

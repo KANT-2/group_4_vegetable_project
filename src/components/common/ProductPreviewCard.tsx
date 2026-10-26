@@ -27,6 +27,7 @@ interface ProductPreviewCardProps {
   reviewCount?: number;
   description?: string; // 이름 아래 회색 한 줄 (예: 홍보 문구)
   priority?: boolean; // 첫 화면 사진은 먼저 불러와요
+  stock?: number;
 }
 
 const won = (n: number) => n.toLocaleString("ko-KR");
@@ -46,6 +47,7 @@ export function ProductPreviewCard({
   reviewCount,
   description,
   priority = false,
+  stock,
 }: ProductPreviewCardProps) {
   const discount = getDiscountRate(price, originalPrice);
 
@@ -76,6 +78,7 @@ export function ProductPreviewCard({
             <span className="absolute left-2.5 top-2.5 rounded-[0.25rem] bg-brand px-2 py-0.5 text-sm font-medium text-white">
               {UGLY_REASON_LABELS[uglyReason]}
             </span>
+            {stock === 0 && <span className="absolute inset-0 flex items-center justify-center bg-black/30 text-xl font-bold text-white">품절</span>}
           </div>,
           "block",
         )}
@@ -90,7 +93,8 @@ export function ProductPreviewCard({
           </div>
         )}
       </div>
-      {productId && showQuickAdd && (
+      {stock === 0 && <button disabled className="my-2 min-h-10 w-full rounded-control border border-line bg-sand text-sm text-ink-muted">품절 · 현재 구매할 수 없어요</button>}
+      {stock !== 0 && productId && showQuickAdd && (
         <QuickAddButton productId={productId} productName={name} />
       )}
       {wrap(

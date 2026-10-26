@@ -111,7 +111,7 @@ export function AdminProducts({
         .replace(/\s/g, "")
         .includes(normalized) &&
       (selectedStatuses.length === 0 ||
-        selectedStatuses.includes(product.isActive ? "active" : "inactive")) &&
+        selectedStatuses.includes(!product.isActive ? "inactive" : product.stock === 0 ? "soldout" : "active")) &&
       (selectedRegions.length === 0 ||
         selectedRegions.includes(regionOf(product))) &&
       (selectedCategories.length === 0 ||
@@ -479,7 +479,8 @@ export function AdminProducts({
                       originalPrice: product.price,
                       category: product.category,
                       imageUrl: product.imageUrl,
-                      isActive: product.status === "active",
+                      isActive: product.status !== "inactive",
+                      stock: product.stock,
                       registered: true,
                       vegetableId: "",
                       uglyReason: "irregular",
@@ -551,6 +552,7 @@ export function AdminProducts({
                   label="판매 상태"
                   options={[
                     { value: "active", label: "판매 중" },
+                    { value: "soldout", label: "품절" },
                     { value: "inactive", label: "판매 중지" },
                   ]}
                   selected={selectedStatuses}
@@ -663,7 +665,7 @@ export function AdminProducts({
                           <span
                             className={`inline-block rounded-full px-3 py-1 text-xs font-bold ${product.isActive ? "bg-green-50 text-green-800" : "bg-gray-100 text-gray-600"}`}
                           >
-                            {product.isActive ? "판매 중" : "판매 중지"}
+                            {!product.isActive ? "판매 중지" : product.stock === 0 ? "품절" : "판매 중"}
                           </span>
                         </td>
                         <td className="px-5 py-4">
@@ -788,7 +790,8 @@ export function AdminProducts({
               category: getCategory(editing) ?? "root",
               region: editing.farmRegion ?? "",
               price: editing.price,
-              status: editing.isActive ? "active" : "inactive",
+              status: !editing.isActive ? "inactive" : editing.stock === 0 ? "soldout" : "active",
+              stock: editing.stock ?? 100,
             }}
             existingIds={[
               ...products
@@ -815,7 +818,8 @@ export function AdminProducts({
                           product.originalPrice,
                           updated.price,
                         ),
-                        isActive: updated.status === "active",
+                        isActive: updated.status !== "inactive",
+                        stock: updated.stock,
                         registered: true,
                       }
                     : product,

@@ -9,6 +9,7 @@ import type { Database } from "@/types/database";
 import type { Product, ProductListItem, UglyReason } from "@/types/product";
 import { isMockCatalog, toImageSrc } from "./catalog-source";
 import { getVegetables } from "./vegetables";
+import { managedProducts } from "./managed-content";
 
 type ProductRow = Database["public"]["Tables"]["products"]["Row"];
 
@@ -45,9 +46,9 @@ function toProduct(row: ProductRow): Product {
 // 판매 중인 상품 전체 (RLS가 is_active = true인 상품만 돌려줘요)
 async function getActiveProducts(publicOnly = false): Promise<Product[]> {
   if (isMockCatalog())
-    return mockProducts
+    return managedProducts(mockProducts
       .filter((p) => p.isActive)
-      .map((p) => ({ ...p, imageUrl: getProductImages(p)[0] ?? p.imageUrl }));
+      .map((p) => ({ ...p, imageUrl: getProductImages(p)[0] ?? p.imageUrl })));
 
   const supabase = publicOnly
     ? createPublicSupabaseClient()
@@ -58,7 +59,7 @@ async function getActiveProducts(publicOnly = false): Promise<Product[]> {
     .eq("is_active", true)
     .order("created_at");
   if (error) throw new Error("상품을 불러오지 못했어요.");
-  return data.map(toProduct);
+  return managedProducts(data.map(toProduct));
 }
 
 // 상품 목록: 채소 분류를 붙이고 조건대로 거르고 정렬해요.
@@ -83,7 +84,7 @@ export async function getProductList(
     ).includes(keyword);
 
   const list = products
-    .map((p) => ({ ...p, category: categoryOf.get(p.vegetableId) ?? "root" }))
+    .map((p) => ({ ...p, category: (p as ProductListItem).category ?? categoryOf.get(p.vegetableId) ?? "root" }))
     .filter(
       (p) =>
         (!filters.category || p.category === filters.category) &&
@@ -102,26 +103,10 @@ export function countByReason(list: Product[]): Record<UglyReason, number> {
 }
 
 export async function getProductById(id: string): Promise<Product | null> {
-  if (isMockCatalog()) {
-    const product = mockProducts.find((p) => p.id === id && p.isActive);
-    return product
-      ? {
-          ...product,
-          imageUrl: getProductImages(product)[0] ?? product.imageUrl,
-        }
-      : null;
-  }
-
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("products")
-    .select("*")
-    .eq("id", id)
-    .eq("is_active", true)
-    .maybeSingle();
-  if (error) throw new Error("상품을 불러오지 못했어요.");
-  return data ? toProduct(data) : null;
+  return (await getActiveProducts()).find((product) => product.id === id) ?? null;
 }
+
+
 
 export async function getProductsByVegetable(
   vegetableId: string,

@@ -6,8 +6,9 @@ import * as cartSchemas from "../src/schemas/cart.ts";
 import { summarizeCart } from "../src/lib/cart.ts";
 
 // src/actions/cart.ts를 가짜 Supabase로 실행해요.
-function loadActions({ user = { id: "me" }, db }) {
+function loadActions({ user = { id: "me" }, db, unavailable = false }) {
   const modules = {
+    "@/lib/managed-content": { productUnavailable: () => unavailable },
     "@/lib/customer-demo": { getCustomerDemo: async () => null },
     "next/cache": { revalidatePath: () => {} },
     "@/lib/auth": { getCurrentUser: async () => user },
@@ -27,6 +28,13 @@ function loadActions({ user = { id: "me" }, db }) {
 }
 
 // 아주 작은 가짜 DB: cart_items, wishlist_items, products(판매 중 목록)
+test("품절 상품은 장바구니 저장 전에 서버에서 차단한다", async () => {
+  const { addToCart } = loadActions({ db: null, unavailable: true });
+  const result = await addToCart({ product_id: "carrot-1kg", quantity: 1 });
+  assert.equal(result.ok, false);
+  assert.match(result.error, /품절/);
+});
+
 function fakeDb({ active = ["carrot-1kg"], cart = [], wish = [] } = {}) {
   const tables = { cart_items: cart, wishlist_items: wish };
   const calls = [];
