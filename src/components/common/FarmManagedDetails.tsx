@@ -12,7 +12,7 @@ export function useManagedFarm(id: string) {
     deletedKeys?.includes(`farm:${id}`);
   return deleted
     ? undefined
-    : (otherChanges?.[`farm:${id}`] as AdminFarm | undefined);
+    : ((otherChanges?.[`farm:${id}`] ?? Object.values(otherChanges ?? {}).find((item) => "farmName" in item && item.farmName === id)) as AdminFarm | undefined);
 }
 
 export function FarmManagedDetails({

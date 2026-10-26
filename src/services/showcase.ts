@@ -13,6 +13,7 @@ import { getDataSource } from "@/lib/data-source";
 import { getImageUrl } from "@/lib/storage";
 import { createPublicSupabaseClient } from "@/lib/supabase/public";
 import type { FarmStory, FeaturedProduct } from "@/types/showcase";
+import { managedFarms, managedProducts } from "./managed-content";
 
 const FEATURED_COUNT = 4; // README: 메인 추천 상품은 4개
 
@@ -76,7 +77,7 @@ export async function getFeaturedProducts(): Promise<FeaturedProduct[]> {
 }
 
 // 농가 이야기 화면: 농가별로 상품을 묶어서 돌려줘요.
-export async function getFarmStories(): Promise<FarmStory[]> {
+export async function getFarmStories(includeManaged = true): Promise<FarmStory[]> {
   type Item = {
     farmName: string;
     farmRegion?: string;
@@ -89,7 +90,7 @@ export async function getFarmStories(): Promise<FarmStory[]> {
     const vegetableName = new Map(
       mockVegetables.map((vegetable) => [vegetable.id, vegetable.name]),
     );
-    items = mockProducts
+    items = managedProducts(mockProducts)
       .filter((product) => product.isActive)
       .map((product) => ({
         farmName: product.farmName,
@@ -128,5 +129,5 @@ export async function getFarmStories(): Promise<FarmStory[]> {
       farms.set(farmName, { farmName, farmRegion, story, products: [product] });
     }
   }
-  return [...farms.values()];
+  return includeManaged ? managedFarms([...farms.values()]) : [...farms.values()];
 }

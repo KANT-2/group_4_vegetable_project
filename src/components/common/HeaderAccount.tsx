@@ -1,7 +1,7 @@
 "use client";
 
 // 헤더 맨 윗줄의 작은 회원 메뉴 (v2 시안, 마켓컬리 기준)
-// 로그인 전: 회원가입 | 로그인 / 로그인 후: 닉네임님 | 마이페이지 | 로그아웃
+// 로그인 전: 로그인(진하게) | 회원가입 / 로그인 후: 닉네임님 | 마이페이지 | 로그아웃
 // 로그인 상태와 로그아웃은 C의 useNavigation·signOut 을 그대로 사용해요.
 
 import Link from "next/link";
@@ -39,13 +39,13 @@ export function HeaderAccount() {
     return personalPages.login ? (
       <ul className="flex items-center divide-x divide-line">
         <li>
-          <Link href="/signup" className={`${item} font-bold text-brand`}>
-            회원가입
+          <Link href="/login" className={`${item} font-bold text-brand`}>
+            로그인
           </Link>
         </li>
         <li>
-          <Link href="/login" className={item}>
-            로그인
+          <Link href="/signup" className={item}>
+            회원가입
           </Link>
         </li>
       </ul>

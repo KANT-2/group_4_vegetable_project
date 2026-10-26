@@ -176,6 +176,7 @@ export default async function RecipeDetailPage({
                   uglyReason={product.uglyReason}
                   href={routes.product(product.id)}
                   productId={product.id}
+        stock={product.stock}
                   showQuickAdd={false}
                 />
               </li>
