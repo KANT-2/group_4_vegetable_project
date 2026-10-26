@@ -22,6 +22,9 @@ class AppUserModel(AccountBase):
         PGUUID(as_uuid=True), primary_key=True
     )
     email: Mapped[str] = mapped_column(Text, unique=True, index=True)
+    username: Mapped[str | None] = mapped_column(
+        Text, unique=True, index=True, nullable=True
+    )
     password_hash: Mapped[str] = mapped_column(Text)
     role: Mapped[str] = mapped_column(Text, default="user", server_default="user")
     is_active: Mapped[bool] = mapped_column(

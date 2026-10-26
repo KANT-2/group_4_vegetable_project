@@ -1,6 +1,6 @@
 """회원 Repository와 요청 단위 트랜잭션 구현."""
 
-from sqlalchemy import select, text
+from sqlalchemy import func, or_, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.accounts.models import (
@@ -62,6 +62,18 @@ class SqlAlchemyAccountRepository:
         )
         return _to_account(model) if model else None
 
+    async def get_by_login(self, identifier: str) -> Account | None:
+        normalized = identifier.strip().lower()
+        model = await self._session.scalar(
+            select(AppUserModel).where(
+                or_(
+                    func.lower(AppUserModel.email) == normalized,
+                    func.lower(AppUserModel.username) == normalized,
+                )
+            )
+        )
+        return _to_account(model) if model else None
+
     async def get_by_id(self, user_id) -> Account | None:
         model = await self._session.get(AppUserModel, user_id)
         return _to_account(model) if model else None
@@ -85,7 +97,26 @@ class SqlAlchemyAccountRepository:
     ) -> None:
         if account.id != registration.account_id:
             raise ValueError("계정과 관리자 가입 신청의 사용자 ID가 일치해야 합니다.")
-        # auth.users를 먼저 만든 뒤 같은 UUID로 인증·프로필·가입 신청을 묶는다.
+        await self.add_user(
+            account,
+            Profile(account.id, registration.display_name),
+            registration.username,
+        )
+        self._session.add(
+            AdminRegistrationModel(
+                account_id=registration.account_id,
+                username=registration.username,
+                email=account.email,
+                display_name=registration.display_name,
+                status=registration.status.value,
+            )
+        )
+
+    async def add_user(
+        self, account: Account, profile: Profile, username: str
+    ) -> None:
+        if account.id != profile.user_id:
+            raise ValueError("계정과 프로필의 사용자 ID가 일치해야 합니다.")
         # 호출 측 UnitOfWork가 한 번만 commit하므로 어느 단계든 실패하면 전부 롤백된다.
         await self._session.execute(
             text("insert into auth.users (id, email) values (:id, :email)"),
@@ -96,21 +127,13 @@ class SqlAlchemyAccountRepository:
                 id=account.id,
                 supabase_user_id=account.id,
                 email=account.email,
+                username=username,
                 password_hash=account.password_hash,
                 role=account.role.value,
                 is_active=account.is_active,
             )
         )
-        self._session.add(ProfileModel(id=account.id, nickname=registration.display_name))
-        self._session.add(
-            AdminRegistrationModel(
-                account_id=registration.account_id,
-                username=registration.username,
-                email=account.email,
-                display_name=registration.display_name,
-                status=registration.status.value,
-            )
-        )
+        self._session.add(ProfileModel(id=profile.user_id, nickname=profile.nickname))
         await self._session.flush()
 
     async def get_profile(self, user_id) -> Profile | None:

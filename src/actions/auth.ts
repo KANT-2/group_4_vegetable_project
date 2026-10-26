@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { signInSchema } from "@/schemas/auth";
+import { signInSchema, signUpSchema } from "@/schemas/auth";
 import { safeNextPath } from "@/lib/redirect";
 import type { ActionResult } from "@/types/action";
 import { googleCallbackUrl } from "@/lib/auth-urls";
@@ -81,6 +81,28 @@ export async function signIn(input: unknown): Promise<ActionResult> {
 
   revalidatePath("/", "layout");
   redirect(safeNextPath(parsed.data.next));
+}
+
+export async function signUp(input: unknown): Promise<ActionResult> {
+  const parsed = signUpSchema.safeParse(input);
+  if (!parsed.success)
+    return { ok: false, error: parsed.error.issues[0].message };
+  try {
+    await fastApi("/api/v1/accounts/register", {
+      method: "POST",
+      body: JSON.stringify({
+        username: parsed.data.username,
+        email: parsed.data.email,
+        nickname: parsed.data.nickname,
+        password: parsed.data.password,
+      }),
+    });
+  } catch (error) {
+    if (error instanceof FastApiError && error.status === 409)
+      return { ok: false, error: "이미 사용 중인 아이디 또는 이메일입니다." };
+    return { ok: false, error: "회원가입 서버에 연결할 수 없습니다." };
+  }
+  redirect("/login?registered=1");
 }
 
 export async function signOut(returnToHome = true): Promise<ActionResult> {

@@ -44,7 +44,7 @@ export function HeaderAccount() {
           </Link>
         </li>
         <li>
-          <Link href="/login" className={item}>
+          <Link href="/signup" className={item}>
             회원가입
           </Link>
         </li>

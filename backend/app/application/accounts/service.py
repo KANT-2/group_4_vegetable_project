@@ -5,7 +5,13 @@ from uuid import uuid4
 
 from app.application.accounts.ports import AccountUnitOfWork
 from app.application.accounts.security import AccessTokenCodec, hash_password, verify_password
-from app.domain.accounts.models import AccessTokenPayload, Account, AdminRegistration, UserRole
+from app.domain.accounts.models import (
+    AccessTokenPayload,
+    Account,
+    AdminRegistration,
+    Profile,
+    UserRole,
+)
 
 
 class InvalidCredentials(Exception):
@@ -29,8 +35,8 @@ class AccountService:
         self._uow = uow
         self._token_codec = token_codec
 
-    async def login(self, email: str, password: str) -> LoginResult:
-        account = await self._uow.repo.get_by_email(email.strip().lower())
+    async def login(self, identifier: str, password: str) -> LoginResult:
+        account = await self._uow.repo.get_by_login(identifier.strip().lower())
         if (
             account is None
             or not account.is_active
@@ -83,3 +89,28 @@ class AccountService:
             await self._uow.rollback()
             raise
         return registration
+
+    async def register_user(
+        self, email: str, password: str, username: str, nickname: str
+    ) -> Account:
+        normalized_email = email.strip().lower()
+        normalized_username = username.strip().lower()
+        if await self._uow.repo.get_by_email(normalized_email):
+            raise RegistrationConflict("이미 사용 중인 이메일입니다.")
+        if await self._uow.repo.get_by_login(normalized_username):
+            raise RegistrationConflict("이미 사용 중인 아이디입니다.")
+        account = Account(
+            uuid4(),
+            normalized_email,
+            hash_password(password),
+            UserRole.USER,
+            True,
+        )
+        profile = Profile(account.id, nickname)
+        try:
+            await self._uow.repo.add_user(account, profile, normalized_username)
+            await self._uow.commit()
+        except Exception:
+            await self._uow.rollback()
+            raise
+        return account

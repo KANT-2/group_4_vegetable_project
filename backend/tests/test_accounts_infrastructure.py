@@ -112,6 +112,28 @@ async def test_get_by_email_maps_orm_model_to_domain_account():
     assert account.is_active
 
 
+async def test_get_by_login_queries_username_or_email_case_insensitively():
+    user_id = uuid4()
+    session = Mock()
+    session.scalar = AsyncMock(
+        return_value=AppUserModel(
+            id=user_id,
+            supabase_user_id=user_id,
+            email="jina@test.com",
+            username="jina",
+            password_hash="encoded",
+            role="user",
+            is_active=True,
+        )
+    )
+    repo = SqlAlchemyAccountRepository(session)
+
+    account = await repo.get_by_login(" JINA ")
+
+    assert account.id == user_id
+    assert "lower" in str(session.scalar.await_args.args[0]).lower()
+
+
 async def test_get_by_id_maps_orm_model_to_domain_account():
     user_id = uuid4()
     session = Mock()
