@@ -3,7 +3,10 @@ import { PageHeading } from "@/components/common/PageHeading";
 import { listExperiences } from "@/lib/experiences-api";
 import { FastApiError } from "@/lib/fastapi";
 import { SafeImage } from "@/components/common/SafeImage";
-import { experienceImageSrc } from "@/lib/experiences-image";
+import {
+  experienceImageFocus,
+  experienceImageSrc,
+} from "@/lib/experiences-image";
 import { formatPrice } from "@/lib/format";
 
 export const metadata = { title: "체험 예약" };
@@ -102,7 +105,7 @@ export default async function ExperiencesPage({
                     <SafeImage
                       src={experienceImageSrc(e.image_path)}
                       alt={e.title}
-                      className="aspect-[4/3] w-full object-cover object-[50%_12%]"
+                      className={`aspect-[4/3] w-full object-cover ${experienceImageFocus(e.image_path)}`}
                       placeholderText="사진 준비 중"
                     />
                     <div className="p-5">
