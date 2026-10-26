@@ -12,6 +12,7 @@ class FakeAccountRepository:
     def __init__(self, account: Account | None = None):
         self.account = account
         self.revoked: dict[str, tuple] = {}
+        self.added_user = None
 
     async def get_by_email(self, email: str) -> Account | None:
         if self.account and self.account.email == email:
@@ -22,6 +23,9 @@ class FakeAccountRepository:
         if self.account and identifier in {self.account.email, "jina"}:
             return self.account
         return None
+
+    async def add_user(self, account, profile, username):
+        self.added_user = (account, profile, username)
 
     async def revoke_token(self, jti, user_id, expires_at) -> None:
         self.revoked[jti] = (user_id, expires_at)
@@ -122,3 +126,20 @@ async def test_logout_is_idempotent_for_already_revoked_token():
 
     assert len(uow.repo.revoked) == 1
     assert uow.commits == 2
+
+
+async def test_register_user_creates_active_account_and_profile():
+    service, uow = make_service()
+
+    account = await service.register_user(
+        " NEW@EXAMPLE.TEST ", "test1234!", " New_User ", " 새싹회원 "
+    )
+
+    saved_account, profile, username = uow.repo.added_user
+    assert account == saved_account
+    assert account.email == "new@example.test"
+    assert account.is_active
+    assert username == "new_user"
+    assert profile.user_id == account.id
+    assert profile.nickname == "새싹회원"
+    assert uow.commits == 1

@@ -13,6 +13,7 @@ export const metadata: Metadata = { title: "로그인" };
 type SearchParams = Promise<{
   next?: string | string[];
   error?: string | string[];
+  registered?: string | string[];
 }>;
 
 async function LoginContent({ searchParams }: { searchParams: SearchParams }) {
@@ -33,6 +34,14 @@ async function LoginContent({ searchParams }: { searchParams: SearchParams }) {
         >
           로그인을 완료하지 못했어요. 취소했거나 연결이 만료되었을 수 있어요.
           다시 시도해 주세요.
+        </p>
+      )}
+      {params.registered === "1" && (
+        <p
+          className="mb-6 rounded-control bg-green-50 p-4 text-green-800"
+          role="status"
+        >
+          회원가입이 완료되었습니다. 새 계정으로 로그인해 주세요.
         </p>
       )}
       <EmailLoginForm next={next} />
@@ -71,7 +80,10 @@ export default function LoginPage({
           <LoginContent searchParams={searchParams} />
         </Suspense>
         <p className="mt-6 text-sm text-ink-muted">
-          개발용 계정은 아이디 또는 이메일로 이용할 수 있어요.
+          계정이 없으신가요?{" "}
+          <Link href="/signup" className="font-bold text-brand">
+            회원가입
+          </Link>
         </p>
         <Link
           href="/"

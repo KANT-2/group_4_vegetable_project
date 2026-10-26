@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { safeNextPath } from "../src/lib/redirect.ts";
-import { signInSchema } from "../src/schemas/auth.ts";
+import { signInSchema, signUpSchema } from "../src/schemas/auth.ts";
 import { profileSchema } from "../src/schemas/profile.ts";
 import { shippingSchema } from "../src/schemas/shipping.ts";
 import { refundSchema } from "../src/schemas/refund.ts";
@@ -42,6 +42,22 @@ test("로그인 입력을 검증하고 비밀번호 공백은 보존한다", () 
     signInSchema.safeParse({ ...input, password: "a".repeat(1025) }).success,
     false,
   );
+});
+
+test("일반 회원가입은 아이디·이메일·닉네임과 비밀번호 확인을 검증한다", () => {
+  const valid = {
+    username: "new_user",
+    email: "new@example.test",
+    nickname: "새싹회원",
+    password: "test1234!",
+    confirmPassword: "test1234!",
+  };
+  assert.equal(signUpSchema.safeParse(valid).success, true);
+  assert.equal(
+    signUpSchema.safeParse({ ...valid, confirmPassword: "different" }).success,
+    false,
+  );
+  assert.equal(signUpSchema.safeParse({ ...valid, username: "한글" }).success, false);
 });
 
 test("프로필은 닉네임만 변경하고 길이를 검증한다", () => {

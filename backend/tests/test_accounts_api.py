@@ -33,6 +33,7 @@ class FakeAccountService:
         self.login_args = None
         self.logged_out = None
         self.registration_args = None
+        self.user_registration_args = None
 
     async def login(self, email, password):
         self.login_args = (email, password)
@@ -47,6 +48,10 @@ class FakeAccountService:
     async def register_admin(self, email, password, username, display_name):
         self.registration_args = (email, password, username, display_name)
         return AdminRegistration(uuid4(), username, display_name)
+
+    async def register_user(self, email, password, username, nickname):
+        self.user_registration_args = (email, password, username, nickname)
+        return Account(uuid4(), email, "encoded", UserRole.USER, True)
 
 
 class FakeProfileService:
@@ -141,6 +146,30 @@ async def test_admin_registration_returns_pending_without_exposing_password():
         "SecurePass123!",
         "newadmin",
         "관리자 신청자",
+    )
+
+
+async def test_user_registration_creates_normal_account():
+    service = FakeAccountService()
+    async with await request_with(service) as client:
+        response = await client.post(
+            "/api/v1/accounts/register",
+            json={
+                "username": "new_user",
+                "email": "new@example.test",
+                "nickname": "새싹회원",
+                "password": "test1234!",
+            },
+        )
+
+    assert response.status_code == 201
+    assert response.json()["username"] == "new_user"
+    assert response.json()["email"] == "new@example.test"
+    assert service.user_registration_args == (
+        "new@example.test",
+        "test1234!",
+        "new_user",
+        "새싹회원",
     )
 
 

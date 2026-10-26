@@ -22,9 +22,33 @@ from app.presentation.accounts.schemas import (
     ShippingAddressIn,
     ShippingAddressOut,
     TokenOut,
+    UserRegistrationIn,
+    UserRegistrationOut,
 )
 
 router = APIRouter(prefix="/accounts", tags=["accounts"])
+
+
+@router.post(
+    "/register",
+    response_model=UserRegistrationOut,
+    status_code=status.HTTP_201_CREATED,
+    summary="일반 회원가입",
+)
+async def register_user(
+    body: UserRegistrationIn, service: AccountServiceDep
+) -> UserRegistrationOut:
+    try:
+        account = await service.register_user(
+            body.email, body.password, body.username, body.nickname
+        )
+    except RegistrationConflict as exc:
+        raise HTTPException(status.HTTP_409_CONFLICT, str(exc)) from None
+    return UserRegistrationOut(
+        id=account.id,
+        email=account.email,
+        username=body.username.strip().lower(),
+    )
 
 
 @router.post(

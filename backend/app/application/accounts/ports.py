@@ -22,6 +22,10 @@ class AccountRepository(Protocol):
 
     async def save_profile(self, profile: Profile) -> None: ...
 
+    async def add_user(
+        self, account: Account, profile: Profile, username: str
+    ) -> None: ...
+
     async def add_admin_registration(
         self, account: Account, registration: AdminRegistration
     ) -> None: ...

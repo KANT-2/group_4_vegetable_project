@@ -39,7 +39,7 @@ export function HeaderAccount() {
     return personalPages.login ? (
       <ul className="flex items-center divide-x divide-line">
         <li>
-          <Link href="/login" className={`${item} font-bold text-brand`}>
+          <Link href="/signup" className={`${item} font-bold text-brand`}>
             회원가입
           </Link>
         </li>
@@ -82,7 +82,11 @@ export function HeaderAccount() {
             </p>
           )}
         </div>
-        <AccountMenu onNavigate={() => { if (menu.current) menu.current.open = false; }} />
+        <AccountMenu
+          onNavigate={() => {
+            if (menu.current) menu.current.open = false;
+          }}
+        />
       </div>
     </details>
   );

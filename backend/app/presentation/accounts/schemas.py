@@ -28,6 +28,21 @@ class AdminRegistrationOut(BaseModel):
     status: str
 
 
+class UserRegistrationIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    username: str = Field(pattern=r"^[a-zA-Z0-9_.-]{4,40}$")
+    email: str = Field(max_length=320, pattern=r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
+    password: str = Field(min_length=8, max_length=128)
+    nickname: str = Field(min_length=2, max_length=20)
+
+
+class UserRegistrationOut(BaseModel):
+    id: UUID
+    email: str
+    username: str
+
+
 class NicknameUpdate(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
