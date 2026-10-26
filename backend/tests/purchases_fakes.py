@@ -44,6 +44,10 @@ class FakeCartRepository:
         key = (item.user_id, item.product_id)
         self._items[key] = self._items.get(key, 0) + item.quantity
 
+    async def upsert_at_least(self, item: CartItem) -> None:
+        key = (item.user_id, item.product_id)
+        self._items[key] = max(self._items.get(key, 0), item.quantity)
+
     async def update_item(self, item: CartItem) -> None:
         self._items[(item.user_id, item.product_id)] = item.quantity
 

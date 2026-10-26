@@ -99,3 +99,11 @@ class PlacedOrder:
 
     order: OrderView
     created: bool
+
+
+@dataclass(frozen=True)
+class MergeResult:
+    """비회원 장바구니 합치기 결과. skipped 는 판매가 끝났거나 없는 상품이라 합치지 못한 상품 ID 다."""
+
+    merged: int
+    skipped: list[str]

@@ -80,6 +80,63 @@ async def test_login_is_required_with_real_auth(real_auth):
     assert real_auth.uow.committed == {}
 
 
+async def test_merge_requires_login_with_real_auth(real_auth):
+    body = {"items": [{"product_id": CARROT.id, "quantity": 1}]}
+    assert (await real_auth.client.post(f"{BASE}/merge", json=body)).status_code == 401
+    assert (await real_auth.client.post(f"{BASE}/merge", json=body, headers={"Authorization": "Bearer x"})).status_code == 401
+    assert real_auth.uow.committed == {}
+
+
+async def test_merge_is_idempotent_and_reports_skipped_products(env):
+    h = bearer(USER_A)
+    await env.client.post(f"{BASE}/items", json={"product_id": CARROT.id, "quantity": 3}, headers=h)
+    body = {
+        "items": [
+            {"product_id": CARROT.id, "quantity": 2},
+            {"product_id": ONION.id, "quantity": 4},
+            {"product_id": RETIRED.id, "quantity": 1},
+            {"product_id": "no-such-product", "quantity": 1},
+        ]
+    }
+    first = await env.client.post(f"{BASE}/merge", json=body, headers=h)
+    assert first.status_code == 200
+    # 건너뛴 상품은 상품 ID 순서로 항상 같은 순서로 알려 준다
+    assert first.json() == {"merged": 2, "skipped_product_ids": sorted([RETIRED.id, "no-such-product"])}
+    for _ in range(3):  # 같은 요청을 반복해도 수량이 변하지 않는다
+        assert (await env.client.post(f"{BASE}/merge", json=body, headers=h)).json() == first.json()
+    cart = (await env.client.get(BASE, headers=h)).json()
+    assert {i["product_id"]: i["quantity"] for i in cart["items"]} == {CARROT.id: 3, ONION.id: 4}
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        {},
+        {"items": []},
+        {"items": [{"product_id": CARROT.id, "quantity": 0}]},
+        {"items": [{"product_id": CARROT.id, "quantity": 100}]},
+        {"items": [{"product_id": CARROT.id, "quantity": "2"}]},
+        {"items": [{"product_id": CARROT.id, "quantity": True}]},
+        {"items": [{"product_id": "", "quantity": 1}]},
+        {"items": [{"product_id": CARROT.id, "quantity": 1, "user_id": str(USER_B)}]},
+        {"items": [{"product_id": CARROT.id, "quantity": 1}], "user_id": str(USER_B)},
+        {"items": [{"product_id": f"p-{i}", "quantity": 1} for i in range(51)]},
+    ],
+)
+async def test_merge_rejects_invalid_requests_and_saves_nothing(env, body):
+    r = await env.client.post(f"{BASE}/merge", json=body, headers=bearer(USER_A))
+    assert r.status_code == 422
+    assert env.uow.committed == {}
+
+
+async def test_merge_does_not_touch_other_users_carts(env):
+    await env.client.post(f"{BASE}/items", json={"product_id": CARROT.id, "quantity": 4}, headers=bearer(USER_B))
+    await env.client.post(
+        f"{BASE}/merge", json={"items": [{"product_id": CARROT.id, "quantity": 9}]}, headers=bearer(USER_A)
+    )
+    assert env.uow.quantity(USER_B, CARROT.id) == 4 and env.uow.quantity(USER_A, CARROT.id) == 9
+
+
 async def test_login_is_required_with_fake_auth(env):
     assert (await env.client.get(BASE)).status_code == 401
 

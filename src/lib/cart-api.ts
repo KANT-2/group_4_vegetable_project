@@ -97,6 +97,19 @@ export const apiRemoveFromCart = (token: string, productId: string) =>
     token,
   );
 
+// 비회원 장바구니 전체를 한 번에 합쳐요. 서버는 수량을 더하지 않고 기존·비회원 수량 중 큰 값으로 맞추므로
+// 응답이 유실돼 같은 요청을 다시 보내도(또는 두 탭에서 동시에 보내도) 결과가 같아요.
+export type ApiMergeResult = { merged: number; skipped_product_ids: string[] };
+export const apiMergeCart = (
+  token: string,
+  items: { product_id: string; quantity: number }[],
+) =>
+  fastApi<ApiMergeResult>(
+    `${CART}/merge`,
+    { method: "POST", ...json({ items }) },
+    token,
+  );
+
 export const apiPlaceOrder = (token: string, input: ApiOrderInput) =>
   fastApi<ApiOrder>(ORDERS, { method: "POST", ...json(input) }, token);
 

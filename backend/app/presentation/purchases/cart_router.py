@@ -15,7 +15,14 @@ from fastapi import APIRouter, Depends, Path, Response, status
 from app.application.purchases.cart_service import CartService
 from app.presentation.purchases.dependencies import CurrentUser, get_cart_service
 from app.presentation.purchases.order_router import router as order_router
-from app.presentation.purchases.schemas import CartItemCreate, CartItemUpdate, CartLineOut, CartOut
+from app.presentation.purchases.schemas import (
+    CartItemCreate,
+    CartItemUpdate,
+    CartLineOut,
+    CartMergeIn,
+    CartMergeOut,
+    CartOut,
+)
 
 cart = APIRouter(prefix="/cart", tags=["purchases"])
 
@@ -27,6 +34,16 @@ ProductId = Annotated[str, Path(min_length=1, max_length=100)]
 @cart.get("", response_model=CartOut, summary="내 장바구니 (줄별 금액·판매 여부, 판매 중 상품만 합산)")
 async def get_cart(service: Service, user: User):
     return CartOut.from_view(await service.get_cart(user.id))
+
+
+@cart.post(
+    "/merge",
+    response_model=CartMergeOut,
+    summary="비회원 장바구니 합치기 (같은 요청을 반복해도 결과가 같음: 수량은 더하지 않고 기존·비회원 중 큰 값)",
+)
+async def merge_cart(body: CartMergeIn, service: Service, user: User):
+    result = await service.merge_items(user.id, [(line.product_id, line.quantity) for line in body.items])
+    return CartMergeOut(merged=result.merged, skipped_product_ids=result.skipped)
 
 
 @cart.post(

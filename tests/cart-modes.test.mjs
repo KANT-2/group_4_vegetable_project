@@ -98,6 +98,11 @@ function apiRecorder(handlers = {}) {
         ? handlers.change(productId, quantity)
         : { quantity };
     },
+    apiMergeCart: async (token, items) => {
+      calls.push(["merge", token, items]);
+      if (handlers.merge) return handlers.merge(items);
+      return { merged: items.length, skipped_product_ids: [] };
+    },
     apiRemoveFromCart: async (token, productId) => {
       calls.push(["remove", token, productId]);
       if (handlers.remove) return handlers.remove(productId);
@@ -222,61 +227,123 @@ test("FastAPI: 요청 형식이 틀리면 FastAPI 를 부르지 않는다", asyn
   assert.deepEqual(calls, []);
 });
 
-// ---------- 로그인 후 비회원 장바구니 합치기 ----------
+// ---------- 로그인 후 비회원 장바구니 합치기 (멱등) ----------
 
-test("합치기: 비회원 장바구니를 계정 장바구니에 담고 쿠키를 지운다", async () => {
+test("합치기: 비회원 장바구니 전체를 한 번에 보내고 성공하면 쿠키를 지운다", async () => {
   const { api, calls } = apiRecorder();
   const guest = fakeGuestStore([
     { productId: carrot, quantity: 2 },
     { productId: apple, quantity: 1 },
   ]);
   const { mergeGuestCart } = loadActions({ mode: fastapi, api, guest });
-  assert.deepEqual(await mergeGuestCart(), {
-    ok: true,
-    merged: 2,
-    skipped: 0,
-    pending: 0,
-  });
+  assert.deepEqual(await mergeGuestCart(), { ok: true, merged: 2, skipped: 0 });
   assert.deepEqual(calls, [
-    ["add", "TOKEN", carrot, 2],
-    ["add", "TOKEN", apple, 1],
-  ]);
+    [
+      "merge",
+      "TOKEN",
+      [
+        { product_id: carrot, quantity: 2 },
+        { product_id: apple, quantity: 1 },
+      ],
+    ],
+  ]); // 상품마다 따로 "더하기"를 부르지 않고 한 번에 보낸다
   assert.deepEqual(guest.store.items, []);
   assert.equal(guest.store.clears, 1);
 });
 
-test("합치기: 담을 수 없는 줄(판매 종료·99 초과)은 건너뛰고, 서버 장애 줄은 쿠키에 남긴다", async () => {
+test("합치기: 서버가 알려 준 건너뛴 상품 수(판매 종료·없는 상품)를 안내한다", async () => {
   const { api } = apiRecorder({
-    add: (productId) => {
-      if (productId === "sold-1kg")
-        throw new FastApiError(409, "판매가 끝난 상품은 담을 수 없습니다.");
-      if (productId === "full-1kg")
-        throw new FastApiError(422, "수량은 1~99개여야 합니다.");
-      if (productId === "later-1kg") throw new FastApiError(503, "일시 장애");
-      return { quantity: 1 };
-    },
+    merge: () => ({ merged: 1, skipped_product_ids: ["sold-1kg", "gone-1kg"] }),
   });
   const guest = fakeGuestStore([
     { productId: carrot, quantity: 1 },
     { productId: "sold-1kg", quantity: 1 },
-    { productId: "full-1kg", quantity: 5 },
-    { productId: "later-1kg", quantity: 2 },
+    { productId: "gone-1kg", quantity: 1 },
+  ]);
+  const result = await loadActions({
+    mode: fastapi,
+    api,
+    guest,
+  }).mergeGuestCart();
+  assert.deepEqual(result, { ok: true, merged: 1, skipped: 2 });
+  assert.deepEqual(guest.store.items, []);
+});
+
+test("합치기: 응답이 유실돼 실패해도 쿠키를 남기고, 다시 보내도 같은 요청이라 수량이 두 번 더해지지 않는다", async () => {
+  // 서버 쪽 장바구니를 흉내 내요: 서버는 요청을 반영했는데 응답만 실패하는 상황.
+  const server = new Map([[carrot, 3]]);
+  let dropResponse = true;
+  const { api, calls } = apiRecorder({
+    merge: (items) => {
+      for (const { product_id, quantity } of items)
+        server.set(product_id, Math.max(server.get(product_id) ?? 0, quantity)); // 서버는 큰 값으로 맞춘다
+      if (dropResponse) throw new Error("fetch failed"); // 반영 후 응답 유실
+      return { merged: items.length, skipped_product_ids: [] };
+    },
+  });
+  const guest = fakeGuestStore([
+    { productId: carrot, quantity: 2 },
+    { productId: apple, quantity: 1 },
   ]);
   const { mergeGuestCart } = loadActions({ mode: fastapi, api, guest });
-  assert.deepEqual(await mergeGuestCart(), {
-    ok: true,
-    merged: 1,
-    skipped: 2,
-    pending: 1,
+
+  const first = await mergeGuestCart();
+  assert.equal(first.ok, false);
+  assert.equal(guest.store.items.length, 2); // 성공을 확인하지 못했으니 쿠키는 그대로
+  assert.equal(guest.store.clears, 0);
+
+  dropResponse = false; // 새로고침해서 다시 시도
+  assert.deepEqual(await mergeGuestCart(), { ok: true, merged: 2, skipped: 0 });
+  assert.deepEqual(
+    [...server],
+    [
+      [carrot, 3],
+      [apple, 1],
+    ],
+  ); // 3+2=5 나 1+1=2 가 아니다
+  assert.deepEqual(guest.store.items, []);
+  assert.equal(calls.length, 2);
+});
+
+test("합치기: 서버 장애(5xx)는 쿠키를 남겨 다시 시도할 수 있게 한다", async () => {
+  const { api } = apiRecorder({
+    merge: () => {
+      throw new FastApiError(503, "일시 장애");
+    },
   });
-  assert.deepEqual(guest.store.items, [
-    { productId: "later-1kg", quantity: 2 },
-  ]); // 다시 시도할 줄만 남는다
+  const guest = fakeGuestStore([{ productId: carrot, quantity: 2 }]);
+  const result = await loadActions({
+    mode: fastapi,
+    api,
+    guest,
+  }).mergeGuestCart();
+  assert.equal(result.ok, false);
+  assert.doesNotMatch(result.error, /일시 장애/); // 내부 오류 문구는 숨긴다
+  assert.deepEqual(guest.store.items, [{ productId: carrot, quantity: 2 }]);
+});
+
+test("합치기: 요청이 거부되면(4xx) 다시 보내도 성공할 수 없어 쿠키를 지운다", async () => {
+  const { api } = apiRecorder({
+    merge: () => {
+      throw new FastApiError(422, "요청 형식 오류");
+    },
+  });
+  const guest = fakeGuestStore([
+    { productId: carrot, quantity: 2 },
+    { productId: apple, quantity: 1 },
+  ]);
+  const result = await loadActions({
+    mode: fastapi,
+    api,
+    guest,
+  }).mergeGuestCart();
+  assert.deepEqual(result, { ok: true, merged: 0, skipped: 2 });
+  assert.deepEqual(guest.store.items, []);
 });
 
 test("합치기: 로그인이 풀렸으면(401) 쿠키를 지우지 않고 로그인이 필요하다고 알린다", async () => {
   const { api } = apiRecorder({
-    add: () => {
+    merge: () => {
       throw new FastApiError(401, "로그아웃된 토큰입니다.");
     },
   });
@@ -299,7 +366,7 @@ test("합치기: 비회원·데모·Supabase 사용자에게는 아무 일도 �
     const { api, calls } = apiRecorder();
     const guest = fakeGuestStore([{ productId: carrot, quantity: 1 }]);
     const result = await loadActions({ mode, api, guest }).mergeGuestCart();
-    assert.deepEqual(result, { ok: true, merged: 0, skipped: 0, pending: 0 });
+    assert.deepEqual(result, { ok: true, merged: 0, skipped: 0 });
     assert.deepEqual(calls, []);
     assert.equal(guest.store.items.length, 1);
   }
@@ -308,7 +375,7 @@ test("합치기: 비회원·데모·Supabase 사용자에게는 아무 일도 �
 test("합치기: 비어 있으면 FastAPI 를 부르지 않는다", async () => {
   const { api, calls } = apiRecorder();
   const result = await loadActions({ mode: fastapi, api }).mergeGuestCart();
-  assert.deepEqual(result, { ok: true, merged: 0, skipped: 0, pending: 0 });
+  assert.deepEqual(result, { ok: true, merged: 0, skipped: 0 });
   assert.deepEqual(calls, []);
 });
 

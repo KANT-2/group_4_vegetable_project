@@ -18,6 +18,9 @@ class CartRepository(Protocol):
     async def add_item(self, item: CartItem) -> None:
         """없으면 새로 만들고, 동시에 같은 상품을 담아 이미 있으면 수량을 더한다."""
 
+    async def upsert_at_least(self, item: CartItem) -> None:
+        """없으면 새로 만들고, 있으면 기존 수량과 item.quantity 중 큰 값으로 맞춘다. 반복·동시에 실행해도 결과가 같다."""
+
     async def update_item(self, item: CartItem) -> None: ...
 
     async def delete_item(self, user_id: UUID, product_id: str) -> bool: ...

@@ -52,3 +52,23 @@ class CartOut(BaseModel):
     @classmethod
     def from_view(cls, view: CartView) -> "CartOut":
         return cls(items=[CartLineOut.from_line(line) for line in view.lines], subtotal_amount=view.subtotal_amount)
+
+
+class CartMergeLine(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    product_id: str = Field(min_length=1, max_length=100)
+    quantity: int = Field(ge=1, le=MAX_QUANTITY, strict=True)
+
+
+class CartMergeIn(BaseModel):
+    """비회원 장바구니 전체. 비회원 장바구니는 최대 50종류라 요청도 50줄로 제한한다."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    items: list[CartMergeLine] = Field(min_length=1, max_length=50)
+
+
+class CartMergeOut(BaseModel):
+    merged: int
+    skipped_product_ids: list[str]

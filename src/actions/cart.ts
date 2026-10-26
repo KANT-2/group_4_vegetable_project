@@ -11,6 +11,7 @@ import { getCartMode } from "@/lib/cart-mode";
 import {
   apiAddToCart,
   apiChangeQuantity,
+  apiMergeCart,
   apiRemoveFromCart,
 } from "@/lib/cart-api";
 import { FastApiError } from "@/lib/fastapi";
@@ -246,38 +247,43 @@ export async function removeFromCart(
 }
 
 // 로그인한 뒤 비회원 장바구니를 계정 장바구니로 합쳐요. (FastAPI 로그인일 때만 동작)
-// 이미 99개가 차 있거나 판매가 끝난 상품처럼 합칠 수 없는 줄은 건너뛰고 알려 줘요.
-// 서버 장애처럼 다시 시도하면 되는 줄은 쿠키에 남겨 둬요.
+// 서버 한 번 호출로 전체를 합치고, 수량은 더하지 않고 기존·비회원 중 큰 값으로 맞춰요. 그래서 서버는 반영했는데
+// 응답만 유실돼 다시 시도해도(새로고침, 두 탭) 수량이 두 번 더해지지 않아요. 성공해야만 쿠키를 지워요.
 export type MergeResult =
-  | { ok: true; merged: number; skipped: number; pending: number }
-  | { ok: false; error: string };
+  { ok: true; merged: number; skipped: number } | { ok: false; error: string };
 
 export async function mergeGuestCart(): Promise<MergeResult> {
   try {
     const mode = await getCartMode();
-    if (mode.kind !== "fastapi")
-      return { ok: true, merged: 0, skipped: 0, pending: 0 };
+    if (mode.kind !== "fastapi") return { ok: true, merged: 0, skipped: 0 };
     const items = await readGuestCart();
-    if (!items.length) return { ok: true, merged: 0, skipped: 0, pending: 0 };
-    let merged = 0;
-    let skipped = 0;
-    const pending = [];
-    for (const item of items) {
-      try {
-        await apiAddToCart(mode.token, item.productId, item.quantity);
-        merged += 1;
-      } catch (error) {
-        if (error instanceof FastApiError && error.status === 401)
-          return { ok: false, error: "로그인이 필요해요." };
-        if (error instanceof FastApiError && error.status < 500) skipped += 1;
-        else pending.push(item);
+    if (!items.length) return { ok: true, merged: 0, skipped: 0 };
+    try {
+      const result = await apiMergeCart(
+        mode.token,
+        items.map((item) => ({
+          product_id: item.productId,
+          quantity: item.quantity,
+        })),
+      );
+      await clearGuestCart();
+      revalidatePath("/cart");
+      revalidatePath("/cart/checkout");
+      return {
+        ok: true,
+        merged: result.merged,
+        skipped: result.skipped_product_ids.length,
+      };
+    } catch (error) {
+      if (error instanceof FastApiError && error.status === 401)
+        return { ok: false, error: "로그인이 필요해요." };
+      if (error instanceof FastApiError && error.status < 500) {
+        // 요청 자체가 거부되면(형식 오류 등) 다시 보내도 성공할 수 없어서 쿠키를 지우고 합치지 못했다고 알려요.
+        await clearGuestCart();
+        return { ok: true, merged: 0, skipped: items.length };
       }
+      throw error; // 서버 장애·연결 끊김: 쿠키를 남겨 다시 시도해요. (다시 보내도 안전해요.)
     }
-    if (pending.length) await saveGuestCart(pending);
-    else await clearGuestCart();
-    revalidatePath("/cart");
-    revalidatePath("/cart/checkout");
-    return { ok: true, merged, skipped, pending: pending.length };
   } catch {
     return {
       ok: false,

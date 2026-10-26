@@ -65,6 +65,20 @@ class SqlAlchemyCartRepository:
             # 동시 요청으로 합계가 DB 제약(1~99)을 넘은 경우
             raise InvalidQuantity(f"수량은 1~{MAX_QUANTITY}개여야 합니다.") from error
 
+    async def upsert_at_least(self, item: CartItem) -> None:
+        # 기존 수량과 비회원 수량 중 큰 값. 한 문장이라 동시에 실행돼도 결과가 같다.
+        statement = pg_insert(CartItemModel).values(
+            user_id=item.user_id, product_id=item.product_id, quantity=item.quantity
+        )
+        statement = statement.on_conflict_do_update(
+            index_elements=[CartItemModel.user_id, CartItemModel.product_id],
+            set_={
+                "quantity": func.greatest(CartItemModel.quantity, statement.excluded.quantity),
+                "updated_at": func.now(),
+            },
+        )
+        await self._session.execute(statement)
+
     async def update_item(self, item: CartItem) -> None:
         await self._session.execute(
             update(CartItemModel)
