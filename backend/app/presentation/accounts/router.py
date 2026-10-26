@@ -5,7 +5,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from fastapi.security import OAuth2PasswordRequestForm
 
-from app.application.accounts.service import InvalidCredentials
+from app.application.accounts.service import InvalidCredentials, RegistrationConflict
 from app.application.accounts.profile_service import AccountNotFound, ProfileNotFound
 from app.presentation.accounts.dependencies import (
     AccountServiceDep,
@@ -15,6 +15,8 @@ from app.presentation.accounts.dependencies import (
 )
 from app.presentation.accounts.schemas import (
     MeOut,
+    AdminRegistrationIn,
+    AdminRegistrationOut,
     NicknameUpdate,
     ProfileOut,
     ShippingAddressIn,
@@ -23,6 +25,24 @@ from app.presentation.accounts.schemas import (
 )
 
 router = APIRouter(prefix="/accounts", tags=["accounts"])
+
+
+@router.post(
+    "/admin-registrations",
+    response_model=AdminRegistrationOut,
+    status_code=status.HTTP_201_CREATED,
+    summary="관리자 가입 신청",
+)
+async def register_admin(
+    body: AdminRegistrationIn, service: AccountServiceDep
+) -> AdminRegistrationOut:
+    try:
+        registration = await service.register_admin(
+            body.email, body.password, body.username, body.display_name
+        )
+    except RegistrationConflict as exc:
+        raise HTTPException(status.HTTP_409_CONFLICT, str(exc)) from None
+    return AdminRegistrationOut(status=registration.status.value)
 
 
 @router.post(

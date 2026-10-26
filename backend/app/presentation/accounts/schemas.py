@@ -15,6 +15,19 @@ class TokenOut(BaseModel):
     expires_in: int
 
 
+class AdminRegistrationIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    username: str = Field(pattern=r"^[!-~]{4,40}$")
+    password: str = Field(min_length=12, max_length=128, pattern=r"^[!-~]+$")
+    display_name: str = Field(min_length=1, max_length=60)
+    email: str = Field(max_length=254, pattern=r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
+
+
+class AdminRegistrationOut(BaseModel):
+    status: str
+
+
 class NicknameUpdate(BaseModel):
     model_config = ConfigDict(extra="forbid")
 

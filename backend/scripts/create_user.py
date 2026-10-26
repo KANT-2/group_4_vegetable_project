@@ -9,8 +9,12 @@
 
 import argparse
 import asyncio
+from pathlib import Path
 import re
+from uuid import uuid4
 
+from dotenv import load_dotenv
+from sqlalchemy import text
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
@@ -50,16 +54,24 @@ async def create_user(
     normalized_email = normalize_email(email)
     validate_password(password)
     normalized_nickname = normalize_nickname(nickname)
+    user_id = uuid4()
     user = AppUserModel(
+        id=user_id,
         email=normalized_email,
         password_hash=hash_password(password),
         role=role.value,
         is_active=True,
+        supabase_user_id=user_id,
     )
     try:
+        # 서비스 전체의 공통 사용자 UUID를 auth.users에서 먼저 확보한다.
+        await session.execute(
+            text("insert into auth.users (id, email) values (:id, :email)"),
+            {"id": user_id, "email": normalized_email},
+        )
         session.add(user)
+        session.add(ProfileModel(id=user_id, nickname=normalized_nickname))
         await session.flush()
-        session.add(ProfileModel(id=user.id, nickname=normalized_nickname))
         await session.commit()
     except Exception:
         await session.rollback()
@@ -78,6 +90,9 @@ def parse_args():
 
 async def main() -> None:
     args = parse_args()
+    # 팀 저장소는 프론트와 백엔드가 공유하는 루트 .env를 사용한다.
+    load_dotenv(Path(__file__).resolve().parents[2] / ".env", override=False)
+    get_settings.cache_clear()
     settings = get_settings()
     if not settings.database_url:
         raise SystemExit("DATABASE_URL이 설정되지 않았습니다.")

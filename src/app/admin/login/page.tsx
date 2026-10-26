@@ -3,9 +3,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { getAdminAccess } from "@/lib/admin-auth";
-import { getGoogleLoginStatus } from "@/services/auth-settings";
 import { AdminLoginForm } from "@/components/admin/AdminLoginForm";
-import { GoogleLoginButton } from "@/components/account/GoogleLoginButton";
 import { adminSignOut } from "@/actions/admin-auth";
 
 export const metadata = {
@@ -20,7 +18,6 @@ async function LoginContent({
 }) {
   const access = await getAdminAccess();
   if (access.allowed) redirect("/admin");
-  const status = await getGoogleLoginStatus();
   const { error } = await searchParams;
   return (
     <>
@@ -30,24 +27,18 @@ async function LoginContent({
           className="mb-5 rounded-control bg-danger-soft p-3 text-sm text-danger"
         >
           {error === "permission"
-            ? "관리자 권한이 없는 Google 계정입니다."
-            : "Google 로그인을 완료하지 못했어요. 다시 시도해 주세요."}
+            ? "관리자 권한이 없는 계정입니다."
+            : "로그인을 완료하지 못했어요. 다시 시도해 주세요."}
         </p>
       )}
       <AdminLoginForm />
-      <div className="my-6 flex items-center gap-3 text-xs text-ink-muted">
-        <span className="h-px flex-1 bg-line" />
-        또는
-        <span className="h-px flex-1 bg-line" />
-      </div>
-      <GoogleLoginButton next="/admin" ready={status.ready} message="" />
       <p className="mt-3 text-xs leading-relaxed text-ink-muted">
-        관리자로 등록된 Google 계정만 이용할 수 있습니다.
+        FastAPI에서 관리자 권한이 확인된 계정만 이용할 수 있습니다.
       </p>
       {access.signedIn && (
         <form action={adminSignOut} className="mt-3">
           <button className="min-h-11 text-sm font-bold text-brand">
-            현재 Google 계정 로그아웃
+            현재 계정 로그아웃
           </button>
         </form>
       )}
