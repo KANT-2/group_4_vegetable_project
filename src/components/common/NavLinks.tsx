@@ -2,8 +2,7 @@
 
 // 헤더 메뉴 (v2 시안, 마켓컬리 기준)
 // desktop: "카테고리" 옆에 넓게 펼친 한 줄 / mobile: 옆으로 넘기는 탭 줄
-// 지금 보고 있는 메뉴에 aria-current 를 표시하고, 관리자 화면처럼 연한 주황 배경과 테라코타 글자로 보여줘요.
-// ?collection= 같은 주소 조건까지 비교해요.
+// 지금 보고 있는 메뉴에 aria-current 를 표시해요. ?collection= 같은 주소 조건까지 비교해요.
 
 import Link from "next/link";
 import ScrollRow from "@/components/products/ScrollRow";
@@ -44,7 +43,7 @@ export function NavLinks({
                   aria-current={
                     isActive(pathname, search, link.href) ? "page" : undefined
                   }
-                  className="inline-flex min-h-10 items-center rounded-md px-3 text-[0.9375rem] font-medium text-ink-muted aria-[current=page]:bg-brand-soft aria-[current=page]:font-bold aria-[current=page]:text-brand"
+                  className="inline-flex min-h-12 items-center border-b-[3px] border-transparent px-3 text-[0.9375rem] font-medium text-ink-muted aria-[current=page]:border-brand aria-[current=page]:font-bold aria-[current=page]:text-brand"
                 >
                   {link.label}
                 </Link>
@@ -66,7 +65,7 @@ export function NavLinks({
               aria-current={
                 isActive(pathname, search, link.href) ? "page" : undefined
               }
-              className="inline-flex min-h-10 items-center rounded-md px-3 font-medium text-ink hover:text-brand aria-[current=page]:bg-brand-soft aria-[current=page]:font-bold aria-[current=page]:text-brand"
+              className="inline-flex min-h-14 items-center px-2 font-medium text-ink hover:text-brand aria-[current=page]:font-bold aria-[current=page]:text-brand"
             >
               {link.label}
             </Link>
