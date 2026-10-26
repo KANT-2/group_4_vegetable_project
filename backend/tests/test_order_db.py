@@ -118,8 +118,9 @@ async def test_concurrent_requests_with_same_key_create_one_order(env):
     product = await env.new_product()
     await add(env, headers, product, 2)
     payload = order_body()
-    results = await asyncio.gather(*[env.client.post(ORDERS, json=payload, headers=headers) for _ in range(6)])
-    assert sorted(r.status_code for r in results) == [200] * 5 + [201]
+    # 팀 DB 풀러의 동시 접속 한도(15개)를 팀원과 나눠 쓰므로 동시 요청은 3개로 제한한다.
+    results = await asyncio.gather(*[env.client.post(ORDERS, json=payload, headers=headers) for _ in range(3)])
+    assert sorted(r.status_code for r in results) == [200, 200, 201]
     assert len({r.json()["id"] for r in results}) == 1
     assert await order_count(env, user_id) == 1
     assert await env.scalar("select count(*) from public.order_items oi join public.orders o on o.id=oi.order_id "

@@ -114,10 +114,11 @@ async def test_inactive_product_rules(env):
 async def test_concurrent_adds_of_same_product_merge_without_error(env):
     user_id, headers = await env.make_user()
     product = await env.new_product()
-    results = await asyncio.gather(*[add(env, headers, product, 2) for _ in range(5)])
-    assert [r.status_code for r in results] == [201] * 5
+    # 팀 DB 풀러의 동시 접속 한도(15개)를 팀원과 나눠 쓰므로 동시 요청은 3개로 제한한다.
+    results = await asyncio.gather(*[add(env, headers, product, 2) for _ in range(3)])
+    assert [r.status_code for r in results] == [201] * 3
     assert await env.scalar("select count(*) from public.cart_items where user_id=:u", u=user_id) == 1
-    assert await env.scalar("select quantity from public.cart_items where user_id=:u", u=user_id) == 10
+    assert await env.scalar("select quantity from public.cart_items where user_id=:u", u=user_id) == 6
 
 
 async def test_concurrent_adds_cannot_exceed_limit(env):

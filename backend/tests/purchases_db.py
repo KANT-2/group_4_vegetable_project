@@ -5,6 +5,8 @@
 - 끝나면 만든 계정(→ 장바구니·주문·프로필은 외래키 cascade)과 상품을 모두 지운다.
 """
 
+import asyncio
+import pytest
 import secrets
 from contextlib import asynccontextmanager
 from uuid import UUID, uuid4
@@ -12,6 +14,7 @@ from uuid import UUID, uuid4
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+from sqlalchemy.pool import NullPool
 
 from app.application.accounts.security import hash_password
 from app.core.config import Settings, get_settings
@@ -107,22 +110,46 @@ class PurchaseEnv:
             return (await s.execute(text(sql), params)).all()
 
     async def cleanup(self) -> None:
-        async with self.maker() as s:
-            for user_id in self.user_ids:
-                await s.execute(text("delete from public.app_users where id=:id"), {"id": user_id})  # revoked_tokens cascade
-                await s.execute(text("delete from auth.users where id=:id"), {"id": user_id})  # 장바구니·주문·프로필 cascade
-            for product_id in self.product_ids:
-                await s.execute(text("delete from public.products where id=:id"), {"id": product_id})
-            await s.commit()
+        """만든 계정·주문·상품을 지운다. 동시 요청 직후에는 DB 가 잠깐 교착(deadlock)을 낼 수 있어 몇 번 다시 시도한다."""
+        statements = []
+        for user_id in self.user_ids:
+            params = {"id": user_id}
+            statements += [
+                ("delete from public.order_items where order_id in (select id from public.orders where user_id=:id)", params),
+                ("delete from public.orders where user_id=:id", params),
+                ("delete from public.cart_items where user_id=:id", params),
+                ("delete from public.profiles where id=:id", params),
+                ("delete from public.app_users where id=:id", params),  # revoked_tokens cascade
+                ("delete from auth.users where id=:id", params),
+            ]
+        statements += [("delete from public.products where id=:id", {"id": pid}) for pid in self.product_ids]
+        for sql, params in statements:
+            for attempt in range(4):
+                try:
+                    async with self.maker() as s:
+                        await s.execute(text(sql), params)
+                        await s.commit()
+                    break
+                except Exception:  # noqa: BLE001
+                    if attempt == 3:
+                        raise
+                    await asyncio.sleep(0.3 * (attempt + 1))
 
 
 @asynccontextmanager
 async def purchase_env():
     get_settings.cache_clear()
-    engine = create_async_engine(SETTINGS.database_url)
+    # 테스트 도우미는 연결을 쓰고 바로 돌려줘요(NullPool). 팀 DB 연결 풀러는 동시 접속이 15개로 제한되고 팀원들과 나눠 쓰기 때문이에요.
+    engine = create_async_engine(SETTINGS.database_url, poolclass=NullPool)
     maker = async_sessionmaker(engine, expire_on_commit=False)
-    async with maker() as s:
-        vegetable_id = (await s.execute(text("select id from public.vegetables order by id limit 1"))).scalar()
+    try:
+        async with maker() as s:
+            vegetable_id = (await s.execute(text("select id from public.vegetables order by id limit 1"))).scalar()
+    except Exception as error:  # noqa: BLE001
+        await engine.dispose()
+        if "EMAXCONNSESSION" in str(error) or "max clients reached" in str(error):
+            pytest.skip("팀 DB 연결 한도(15개)가 가득 차 실제 DB 테스트를 건너뜁니다. 잠시 뒤 다시 실행해 주세요.")
+        raise
     assert vegetable_id, "테스트 상품을 만들 채소 행이 필요합니다."
     env = None
     try:

@@ -18,6 +18,7 @@ async function OrderDetails({ params }: { params: Params }) {
         order={result.order}
         items={result.items}
         refund={result.refund}
+        refundSupported={result.refundSupported}
       />
     </AccountGuard>
   );

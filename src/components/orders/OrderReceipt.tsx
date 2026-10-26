@@ -33,10 +33,13 @@ export function OrderReceipt({
   order,
   items,
   refund,
+  refundSupported = true,
 }: {
   order: ReceiptOrder;
   items: ReceiptItem[];
   refund: { status: string } | null;
+  // false 이면 환불 버튼 대신 안내를 보여 줘요. (동작하지 않는 버튼은 두지 않아요.)
+  refundSupported?: boolean;
 }) {
   const paid = order.status === "paid";
   const failed = order.status === "payment_failed";
@@ -265,7 +268,11 @@ export function OrderReceipt({
             <h2 id="receipt-refund-title" className="text-sm font-bold">
               주문 관리
             </h2>
-            {refund ? (
+            {!refundSupported ? (
+              <p className="mt-2 text-xs leading-relaxed text-ink-muted">
+                이 주문의 환불·취소는 아직 지원하지 않아요.
+              </p>
+            ) : refund ? (
               <>
                 <p className="mt-3 text-sm font-semibold text-brand">
                   {refundStatusLabels[refund.status] ?? "신청 상태 확인 필요"}

@@ -106,6 +106,7 @@ export async function getOrder(orderId: string) {
           unit_price: item.unit_price,
         })),
         refund: null,
+        refundSupported: false, // 환불은 FastAPI 주문 범위가 아니에요.
       };
     } catch (error) {
       // 없는 주문이거나 남의 주문이면 FastAPI 가 같은 404 를 돌려줘요.
@@ -138,5 +139,10 @@ export async function getOrder(orderId: string) {
   ]);
   if (items.error || refund.error)
     throw new Error("주문 상세를 불러오지 못했습니다.");
-  return { order, items: items.data, refund: refund.data };
+  return {
+    order,
+    items: items.data,
+    refund: refund.data,
+    refundSupported: true,
+  };
 }
