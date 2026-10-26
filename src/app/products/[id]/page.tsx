@@ -13,6 +13,7 @@ import { getProductById } from "@/services/products";
 import { routes } from "@/lib/routes";
 import { UGLY_REASON_LABELS } from "@/types/product";
 
+import { ProductReviews } from "@/components/products/ProductReviews";
 // 브라우저 탭 제목: "못난이 당근 1kg | 못난이마켓"
 export async function generateMetadata({
   params,
@@ -66,18 +67,7 @@ export default async function ProductDetailPage({
             <h1 className="text-2xl font-bold text-ink sm:text-3xl">
               {product.name}
             </h1>
-            {product.rating !== undefined && (
-              <p className="mt-1 flex items-center gap-1 text-sm text-ink-muted">
-                <span aria-hidden className="text-amber-500">
-                  ★
-                </span>
-                <span className="sr-only">별점</span>
-                <span className="font-semibold text-ink-muted">
-                  {product.rating.toFixed(1)}
-                </span>
-                <span>· 리뷰 {product.reviewCount}개</span>
-              </p>
-            )}
+            <Link href="#reviews" className="mt-2 inline-block text-sm text-ink-muted underline underline-offset-4">회원 상품 후기 보기</Link>
           </div>
           <p className="text-ink-muted">{product.description}</p>
 
@@ -169,5 +159,7 @@ export default async function ProductDetailPage({
         </div>
       </div>
     </div>
+      <ProductReviews productId={product.id} />
+
   );
 }

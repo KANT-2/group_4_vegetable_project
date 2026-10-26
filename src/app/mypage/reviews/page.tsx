@@ -4,13 +4,15 @@ import { AccountLayout } from "@/components/account/AccountLayout";
 import { AccountGuard } from "@/components/account/AccountGuard";
 import { OrderReviewButton } from "@/components/orders/OrderReviewButton";
 import { formatOrderDate } from "@/lib/orders";
+import { MyProductReviews } from "@/components/account/MyProductReviews";
 
 export const metadata = { title: "나의 리뷰" };
 async function Reviews() {
   const result = await getOrders();
   const orders = result.orders.filter((order) => order.status === "paid");
   return <AccountGuard userId={result.userId}>
-    <p className="mb-5 text-sm text-ink-muted">주문한 상품의 리뷰를 작성하거나 저장한 리뷰를 수정할 수 있어요.</p>
+    {result.userId !== "customer-demo-qwer" && <MyProductReviews />}
+    <p className="mb-5 text-sm text-ink-muted">주문한 상품의 후기를 확인하거나 상품 상세에서 리뷰를 남길 수 있어요.</p>
     <ul className="divide-y divide-line overflow-hidden rounded-xl border border-line bg-white">
       {orders.map((order) => <li key={order.id} className="flex flex-wrap items-center justify-between gap-4 p-5">
         <div><p className="font-bold">{order.order_items[0]?.product_name}{order.order_items.length > 1 ? ` 외 ${order.order_items.length - 1}종` : ""}</p><p className="mt-2 text-xs text-ink-muted">{formatOrderDate(order.created_at)}</p></div>

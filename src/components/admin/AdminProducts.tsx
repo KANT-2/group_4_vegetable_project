@@ -35,7 +35,7 @@ export function AdminProducts({
   topNotice,
   description,
 }: {
-  view?: "products" | "recipes" | "farms" | "promotions" | "trash" | "mypage";
+  view?: "products" | "recipes" | "farms" | "promotions" | "reviews" | "trash" | "mypage";
   children?: React.ReactNode;
   headerAction?: React.ReactNode;
   topNotice?: React.ReactNode;
@@ -49,6 +49,7 @@ export function AdminProducts({
     farms: "농가 관리",
     promotions: "혜택 · 이벤트 관리",
     trash: "휴지통",
+    reviews: "리뷰 관리",
     mypage: "관리자 마이페이지",
   };
   const menuClass = (selected: boolean) =>
@@ -234,6 +235,7 @@ export function AdminProducts({
                 ["farms", "/admin/farms", "농가 관리"],
                 ["promotions", "/admin/promotions", "혜택 · 이벤트 관리"],
                 ["trash", "/admin/trash", "휴지통"],
+                ["reviews", "/admin/reviews", "리뷰 관리"],
               ] as const
             ).map(([key, href, title]) => (
               <Link
@@ -358,6 +360,10 @@ export function AdminProducts({
               혜택 · 이벤트 관리
             </Link>
             <Link
+            <Link href="/admin/reviews" aria-current={view === "reviews" ? "page" : undefined} className={menuClass(view === "reviews")}>
+              <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M21 15a3 3 0 0 1-3 3H8l-5 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v9Z" /><path d="M7 8h10M7 12h7" /></svg>
+              리뷰 관리
+            </Link>
               href="/admin/trash"
               aria-current={view === "trash" ? "page" : undefined}
               className={menuClass(view === "trash")}

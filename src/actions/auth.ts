@@ -67,6 +67,7 @@ export async function signIn(input: unknown): Promise<ActionResult> {
       token.access_token,
       accessTokenCookieOptions(token.expires_in),
     );
+    await clearCustomerDemo();
   } catch (error) {
     if (error instanceof FastApiError && error.status === 401)
       return {
