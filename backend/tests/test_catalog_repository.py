@@ -95,7 +95,14 @@ async def test_database_pagination_is_stable_and_reason_counts_not_page_limited(
 
 @pytest.mark.parametrize("collection, expected", [("bulk", ["product-1"]), ("single", ["product-0", "product-2", "product-4"]), ("seasonal", ["product-0", "product-2", "product-4"]), ("bigsale", ["product-0", "product-2", "product-1"])])
 async def test_collection_filters(repo, collection, expected):
-    assert [p["id"] for p in (await repo[0].list_products(Filters(collection=collection)))["items"]] == expected
+    assert [p["id"] for p in (await repo[0].list_products(Filters(collection=(collection,))))["items"]] == expected
+
+
+async def test_several_collections_must_all_match(repo):
+    # 제철이면서 1인 가구(소포장)인 상품만
+    both = await repo[0].list_products(Filters(collection=("seasonal", "single")))
+    assert [p["id"] for p in both["items"]] == ["product-0", "product-2", "product-4"]
+    assert (await repo[0].list_products(Filters(collection=("bulk", "single"))))["items"] == []
 
 
 async def test_repository_update_commits_and_is_requeryable(repo):

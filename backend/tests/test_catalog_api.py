@@ -20,7 +20,7 @@ BASE = "/api/v1/catalog"
 
 
 def item(id="carrot", **updates):
-    return dict(id=id, vegetable_id="carrot", name="당근", category="root", price=1000, original_price=2000, unit="1kg", ugly_reason="bent", description="상품", farm_name="농장", is_active=True, is_featured=False, is_seasonal=False, created_at=NOW, updated_at=NOW, **updates)
+    return dict(id=id, vegetable_id="carrot", name="당근", category="root", price=1000, original_price=2000, unit="1kg", ugly_reason="bent", description="상품", farm_name="농장", is_active=True, is_featured=False, is_seasonal=False, stock=20, created_at=NOW, updated_at=NOW, **updates)
 
 
 class MemoryUow:
@@ -114,10 +114,10 @@ async def test_public_list_and_detail_hide_inactive(env):
 
 async def test_filters_and_page_are_passed_to_service(env):
     c, uow = env
-    r = await c.get(f"{BASE}/products", params=dict(q="당근", category="root", reason="bent", sort="price_asc", collection="bulk", page=2, size=1, min_price=100, max_price=3000))
+    r = await c.get(f"{BASE}/products", params=dict(q="당근", category="root", reason="bent", sort="price_asc", collection=["single", "bulk", "single"], page=2, size=1, min_price=100, max_price=3000))
     assert r.status_code == 200
     assert r.json()["items"] == []
-    assert uow.options == Filters(page=2, size=1, q="당근", category="root", reason="bent", sort="price_asc", collection="bulk", min_price=100, max_price=3000)
+    assert uow.options == Filters(page=2, size=1, q="당근", category="root", reason="bent", sort="price_asc", collection=("bulk", "single"), min_price=100, max_price=3000)
 
 
 @pytest.mark.parametrize("query", ["page=0", "page=100001", "size=0", "size=101", "category=bad", "sort=bad", "reason=bad", "min_price=-1", "min_price=20&max_price=10", "q="+"x"*101])

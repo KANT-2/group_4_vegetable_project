@@ -1,11 +1,16 @@
 from dataclasses import replace
 from uuid import UUID
-from sqlalchemy import select, func, cast, Float, delete
+import time
+from sqlalchemy import select, func, cast, Float, delete, text
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.application.catalog.ports import Filters
 from app.domain.catalog.models import Product
 from app.infrastructure.catalog.models import ProductModel as P, VegetableModel as V, WishlistModel as W
+
+
+# 관리자가 바꿀 수 있는 칸(도메인 Product 와 같은 이름)
+EDITABLE = ("name", "price", "original_price", "is_active", "stock", "unit", "farm_name", "farm_region", "vegetable_id", "ugly_reason")
 
 
 def output(product: P, category: str) -> dict:
@@ -34,14 +39,15 @@ def conditions(f: Filters):
     if f.max_price is not None:
         terms.append(P.price <= f.max_price)
     weight = cast(func.coalesce(func.substring(P.unit, r'([0-9]+[.]?[0-9]*)\s*kg'), "0"), Float)
-    if f.collection == "seasonal":
-        terms.append(P.is_seasonal.is_(True))
-    elif f.collection == "bigsale":
-        terms.append((P.original_price - P.price) * 100 >= P.original_price * 40)
-    elif f.collection == "bulk":
-        terms.append(weight >= 3)
-    elif f.collection == "single":
-        terms.extend([P.ugly_reason == "small", weight < 3])
+    for collection in f.collection:
+        if collection == "seasonal":
+            terms.append(P.is_seasonal.is_(True))
+        elif collection == "bigsale":
+            terms.append((P.original_price - P.price) * 100 >= P.original_price * 40)
+        elif collection == "bulk":
+            terms.append(weight >= 3)
+        elif collection == "single":
+            terms.extend([P.ugly_reason == "small", weight < 3])
     return terms
 
 
@@ -86,12 +92,53 @@ class SqlAlchemyCatalogRepository:
 
     async def lock_product(self, product_id: str):
         row = await self.session.scalar(select(P).where(P.id == product_id).with_for_update())
-        return Product(row.id, row.price, row.original_price, row.is_active) if row else None
+        if row is None:
+            return None
+        return Product(
+            row.id, row.price, row.original_price, row.is_active, row.stock,
+            row.name, row.unit, row.farm_name, row.farm_region, row.vegetable_id, row.ugly_reason,
+        )
 
     async def save_product(self, product: Product):
         row = await self.session.get(P, product.id)
-        row.price, row.is_active = product.price, product.is_active
+        for field in EDITABLE:
+            setattr(row, field, getattr(product, field))
+        row.updated_at = func.now()  # 카탈로그 버전이 바뀌어 고객 화면의 재고 표시도 새로 고쳐진다
         await self.session.flush()
+
+    async def exists(self, product_id: str):
+        return await self.session.scalar(select(func.count()).select_from(P).where(P.id == product_id)) > 0
+
+    async def vegetable_exists(self, vegetable_id: str):
+        return await self.session.scalar(select(func.count()).select_from(V).where(V.id == vegetable_id)) > 0
+
+    async def add_product(self, product: Product):
+        # 상품 설명·농가 이야기는 고객 화면용 문구라 등록 뒤 따로 채운다(빈 설명으로 시작).
+        self.session.add(P(id=product.id, description="", is_seasonal=False, is_featured=False, review_count=0,
+                           created_at=func.now(), updated_at=func.now(),
+                           **{field: getattr(product, field) for field in EDITABLE}))
+        await self.session.flush()
+
+    async def is_ordered(self, product_id: str):
+        return bool(await self.session.scalar(text("select exists(select 1 from public.order_items where product_id = :id)"), {"id": product_id}))
+
+    async def delete_product(self, product_id: str):
+        result = await self.session.execute(delete(P).where(P.id == product_id).returning(P.id))
+        return result.scalar_one_or_none() is not None
+
+    async def save_image(self, product_id: str, body: bytes):
+        await self.session.execute(text(
+            "insert into public.product_images (product_id, body) values (:id, :body) "
+            "on conflict (product_id) do update set body = excluded.body, updated_at = now()"
+        ), {"id": product_id, "body": body})
+        # 주소에 버전을 붙여 사진을 바꾸면 브라우저가 새 사진을 받게 한다.
+        row = await self.session.get(P, product_id)
+        row.image_path = f"/api/product-images/{product_id}?v={int(time.time())}"
+        row.updated_at = func.now()
+        await self.session.flush()
+
+    async def image(self, product_id: str):
+        return await self.session.scalar(text("select body from public.product_images where product_id = :id"), {"id": product_id})
 
     async def list_wishes(self, user_id: UUID, page: int, size: int):
         total = await self.session.scalar(select(func.count()).select_from(W).where(W.user_id == user_id))

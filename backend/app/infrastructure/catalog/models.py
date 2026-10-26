@@ -38,6 +38,7 @@ class ProductModel(CatalogBase):
     tagline: Mapped[str | None] = mapped_column(Text)
     rating: Mapped[float | None] = mapped_column(Numeric)
     review_count: Mapped[int] = mapped_column(Integer)
+    stock: Mapped[int] = mapped_column(Integer, server_default=text("20"))  # DB 기본값과 같다(시연용 초기 재고)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
