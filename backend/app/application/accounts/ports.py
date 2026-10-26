@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Protocol
 from uuid import UUID
 
-from app.domain.accounts.models import Account, Profile
+from app.domain.accounts.models import Account, AdminRegistration, Profile
 
 
 class AccountRepository(Protocol):
@@ -12,9 +12,17 @@ class AccountRepository(Protocol):
 
     async def get_by_id(self, user_id: UUID) -> Account | None: ...
 
+    async def get_admin_registration_by_username(
+        self, username: str
+    ) -> AdminRegistration | None: ...
+
     async def get_profile(self, user_id: UUID) -> Profile | None: ...
 
     async def save_profile(self, profile: Profile) -> None: ...
+
+    async def add_admin_registration(
+        self, account: Account, registration: AdminRegistration
+    ) -> None: ...
 
     async def revoke_token(
         self, jti: str, user_id: UUID, expires_at: datetime
