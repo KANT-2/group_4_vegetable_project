@@ -55,7 +55,7 @@ npm install && npm run dev
 
 ## 5. 새 Supabase/DB 준비 순서
 
-진행 상태: 1~5 완료(2026-10-23), 6(Google 로그인)만 남음. 적용 명령은 `cd backend && PYTHONPATH=. uv run python scripts/apply_sql.py migrations` 후 `seeds`. 이 스크립트는 public에 테이블이 있거나 products에 데이터가 있으면 중단하며, 삭제·초기화는 하지 않습니다. 이미지는 시드가 참조하는 `products/`·`vegetables/` 경로 92개를 `public/images`에서 모아 대시보드 Storage에 올렸습니다.
+진행 상태: 1~5 완료(2026-10-23), 6(Google 로그인)만 남음. 새 Supabase에 적용된 마이그레이션(2026-10-26 기준): 기존 13개 + `202610250001_experiences`, `202610250002_admin_registrations`(서현 관리자 가입, `auth.users` 트리거 2개), `202610260001_accounts`(지나 app_users·revoked_tokens), `202610260002_experience_reservation_user_fk`. 시드는 `catalog`, `recipes`, `verified-recipes`, `experiences`. 적용 명령은 `cd backend && PYTHONPATH=. uv run python scripts/apply_sql.py migrations` 후 `seeds`. 이 스크립트는 public에 테이블이 있거나 products에 데이터가 있으면 중단하며, 삭제·초기화는 하지 않습니다. 이미지는 시드가 참조하는 `products/`·`vegetables/` 경로 92개를 `public/images`에서 모아 대시보드 Storage에 올렸습니다.
 
 1. 4조 새 Supabase 프로젝트 존재 여부 확인 및 생성 — 형준
 2. DB 연결 문자열 확보(Session pooler 권장) 후 각자 `backend/.env`에 직접 입력 — 전원
