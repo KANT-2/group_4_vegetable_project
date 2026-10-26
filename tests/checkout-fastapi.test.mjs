@@ -34,7 +34,7 @@ const input = (overrides = {}) => ({
   ...overrides,
 });
 
-function load({ mode, place }) {
+function load({ mode, place, unavailable = false }) {
   const calls = [];
   const paths = [];
   const modules = {
@@ -47,6 +47,7 @@ function load({ mode, place }) {
         throw new Error("FastAPI 주문은 Supabase 를 부르면 안 돼요");
       },
     },
+    "@/lib/managed-content": { productUnavailable: () => unavailable },
     "@/lib/cart-mode": { getCartMode: async () => mode },
     "@/lib/cart-api": {
       apiPlaceOrder: async (token, body) => {
@@ -177,5 +178,13 @@ test("비회원은 주문·결제를 할 수 없다", async () => {
   const result = await mockCheckout(input());
   assert.equal(result.ok, false);
   assert.match(result.error, /로그인/);
+  assert.deepEqual(calls, []);
+});
+
+test("품절·판매 중지 상품이 들어 있으면 FastAPI 주문 API 를 부르지 않는다", async () => {
+  const { mockCheckout, calls } = load({ mode: fastapi, unavailable: true });
+  const result = await mockCheckout(input());
+  assert.equal(result.ok, false);
+  assert.match(result.error, /품절/);
   assert.deepEqual(calls, []);
 });

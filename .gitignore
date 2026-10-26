@@ -57,6 +57,7 @@ desktop.ini
 var/food-catalog/
 var/admin/
 var/customer-demo/
+var/managed-content/
 __pycache__/
 *.pyc
 

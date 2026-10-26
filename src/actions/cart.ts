@@ -16,6 +16,7 @@ import {
 import { FastApiError } from "@/lib/fastapi";
 import { changeGuestCart } from "@/lib/guest-cart-core";
 import { clearGuestCart, readGuestCart, saveGuestCart } from "@/lib/guest-cart";
+import { productUnavailable } from "@/lib/managed-content";
 import {
   MAX_CART_QUANTITY,
   cartItemSchema,
@@ -70,6 +71,8 @@ export async function addToCart(input: unknown): Promise<CartActionResult> {
   if (!parsed.success)
     return { ok: false, error: parsed.error.issues[0].message };
   const { product_id, quantity } = parsed.data;
+  if (productUnavailable(product_id))
+    return { ok: false, error: "품절 또는 판매 중지된 상품입니다." };
   try {
     const mode = await getCartMode();
     if (mode.kind === "demo") {

@@ -11,7 +11,9 @@ test("모의 결제 Action은 계정 전환·추가 필드·잘못된 입력을 
   let error = null;
   const calls = [];
   const paths = [];
+  let unavailable = false;
   const modules = {
+    "@/lib/managed-content": { productUnavailable: () => unavailable },
     zod: { z },
     "next/cache": { revalidatePath: (path) => paths.push(path) },
     "@/lib/auth": { getCurrentUser: async () => user },
@@ -103,4 +105,8 @@ test("모의 결제 Action은 계정 전환·추가 필드·잘못된 입력을 
   assert.deepEqual(paths, ["/cart", "/mypage/orders"]);
   error = { message: "CART_CHANGED" };
   assert.match((await exports.mockCheckout(input)).error, /변경/);
+  unavailable = true;
+  const previousCalls = calls.length;
+  assert.match((await exports.mockCheckout(input)).error, /품절/);
+  assert.equal(calls.length, previousCalls);
 });

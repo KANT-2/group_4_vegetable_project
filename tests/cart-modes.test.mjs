@@ -311,3 +311,32 @@ test("합치기: 비어 있으면 FastAPI 를 부르지 않는다", async () => 
   assert.deepEqual(result, { ok: true, merged: 0, skipped: 0, pending: 0 });
   assert.deepEqual(calls, []);
 });
+
+// ---------- 품절·판매 중지 상품 (서현 님 관리자 설정) ----------
+
+test("품절·판매 중지 상품은 비회원·FastAPI 로그인 모두 담기 전에 차단한다", async () => {
+  const guest = fakeGuestStore();
+  const blockedGuest = loadActions({
+    user: null,
+    guest,
+    active,
+    unavailable: true,
+  });
+  const guestResult = await blockedGuest.addToCart({
+    product_id: carrot,
+    quantity: 1,
+  });
+  assert.equal(guestResult.ok, false);
+  assert.match(guestResult.error, /품절/);
+  assert.equal(guest.store.saves, 0);
+
+  const { api, calls } = apiRecorder();
+  const blockedApi = loadActions({ mode: fastapi, api, unavailable: true });
+  const apiResult = await blockedApi.addToCart({
+    product_id: carrot,
+    quantity: 1,
+  });
+  assert.equal(apiResult.ok, false);
+  assert.match(apiResult.error, /품절/);
+  assert.deepEqual(calls, []);
+});

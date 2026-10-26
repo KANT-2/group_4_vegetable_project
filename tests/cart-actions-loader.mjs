@@ -39,10 +39,12 @@ export function loadActions({
   api = {},
   active = ["carrot-1kg"],
   calls = [],
+  unavailable = false,
 } = {}) {
   const resolvedMode =
     mode ?? (user ? { kind: "supabase", userId: user.id } : { kind: "guest" });
   const modules = {
+    "@/lib/managed-content": { productUnavailable: () => unavailable },
     "@/lib/customer-demo": { getCustomerDemo: async () => null },
     "next/cache": {
       revalidatePath: (path) => calls.push(["revalidate", path]),

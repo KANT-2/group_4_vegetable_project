@@ -10,6 +10,7 @@ export function getProductImages(product: {
   imageUrl?: string;
   vegetableId?: string;
 }): string[] {
+  if (product.imageUrl?.startsWith("data:")) return [product.imageUrl];
   const selected = photosByProduct[product.id ?? ""];
   if (Array.isArray(selected)) return [...selected];
   const candidates = photosByVegetable[product.vegetableId ?? ""] ?? [];

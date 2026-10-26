@@ -133,6 +133,7 @@ export default async function ProductDetailPage({
                 productId={product.id}
                 productName={product.name}
                 price={product.price}
+                  stock={product.stock}
               />
             </div>
             <WishlistButton
@@ -161,6 +162,7 @@ export default async function ProductDetailPage({
               productId={product.id}
               productName={product.name}
               price={product.price}
+                  stock={product.stock}
               layout="bar"
             />
           </div>

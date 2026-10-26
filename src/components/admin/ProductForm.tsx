@@ -35,7 +35,12 @@ const schema = z.object({
     "fruit",
     "seasoning",
   ]),
-  status: z.enum(["active", "inactive"]),
+  status: z.enum(["active", "soldout", "inactive"]),
+  stock: z.coerce
+    .number()
+    .int()
+    .min(0, "재고는 0개 이상이어야 합니다.")
+    .max(1000000),
 });
 export type RegisteredProduct = {
   id: string;
@@ -44,7 +49,8 @@ export type RegisteredProduct = {
   region: string;
   price: number;
   category: VegetableCategory;
-  status: "active" | "inactive";
+  status: "active" | "soldout" | "inactive";
+  stock: number;
   imageUrl: string;
 };
 const inputClass =
@@ -104,7 +110,11 @@ export function ProductForm({
           );
           return;
         }
-        onSubmit({ ...parsed.data, imageUrl: preview });
+        onSubmit({
+          ...parsed.data,
+          stock: parsed.data.status === "soldout" ? 0 : parsed.data.stock,
+          imageUrl: preview,
+        });
       }}
     >
       <div className="grid gap-5 @min-[480px]:grid-cols-2">
@@ -245,14 +255,43 @@ export function ProductForm({
             className={inputClass}
           />
         </label>
-        <label className="text-sm font-bold @min-[480px]:col-span-2">
+        <label className="text-sm font-bold">
+          재고 수량 (개)
+          <input
+            name="stock"
+            type="number"
+            min={0}
+            max={1000000}
+            step={1}
+            required
+            defaultValue={initial?.stock ?? 100}
+            className={inputClass}
+          />
+          <span className="mt-2 block text-xs font-normal text-ink-muted">
+            0개이면 고객 화면에 품절로 표시됩니다.
+          </span>
+        </label>
+        <label className="text-sm font-bold">
           판매 상태
           <select
             name="status"
             defaultValue={initial?.status ?? "active"}
+            onChange={(event) => {
+              const input = form.current?.elements.namedItem(
+                "stock",
+              ) as HTMLInputElement | null;
+              if (input && event.target.value === "soldout") input.value = "0";
+              if (
+                input &&
+                event.target.value === "active" &&
+                Number(input.value) === 0
+              )
+                input.value = "1";
+            }}
             className={inputClass}
           >
             <option value="active">판매 중</option>
+            <option value="soldout">품절 (고객 화면에 표시)</option>
             <option value="inactive">판매 중지</option>
           </select>
         </label>

@@ -59,7 +59,8 @@ async function linesFromCatalog(
       return {
         productId,
         quantity,
-        available: Boolean(product),
+        // 재고가 0인 상품(품절)은 구매할 수 없어요.
+        available: Boolean(product && product.stock !== 0),
         name: product?.name ?? "판매가 끝난 상품",
         unit: product?.unit ?? "",
         price: product?.price ?? 0,
@@ -101,17 +102,19 @@ export async function getCart(): Promise<{
     const lines = await Promise.all(
       [...cart.items].reverse().map(async (line) => {
         const catalog = await getProductById(line.product_id);
+        // FastAPI 는 판매 여부(is_active)만 알아서, 재고가 0인 품절 상품은 화면 쪽 상품 데이터로 함께 판단해요.
+        const available = line.is_active && catalog?.stock !== 0;
         return {
           productId: line.product_id,
           quantity: line.quantity,
-          available: line.is_active,
-          name: line.is_active ? line.name : "판매가 끝난 상품",
-          unit: line.is_active ? line.unit : "",
-          price: line.is_active ? line.unit_price : 0,
-          originalPrice: line.is_active
+          available,
+          name: available ? line.name : "판매가 끝난 상품",
+          unit: available ? line.unit : "",
+          price: available ? line.unit_price : 0,
+          originalPrice: available
             ? (catalog?.originalPrice ?? line.unit_price)
             : 0,
-          imageUrl: line.is_active
+          imageUrl: available
             ? (catalog?.imageUrl ?? toImageSrc(line.image_path))
             : undefined,
         };
