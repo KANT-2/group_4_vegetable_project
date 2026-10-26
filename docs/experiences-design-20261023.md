@@ -1,6 +1,6 @@
 # 체험 예약 설계 (형준 담당) — 초안
 
-작성: 2026-10-23, 갱신: 2026-10-25. 아래 "구현 상태"를 먼저 보세요. 본문의 SQL은 초안이며 실제 적용본은 `supabase/migrations/202610250001_experiences.sql`입니다. 사용자 식별(`app_users` 여부)이 확정되기 전이라 `user_id` 외래키는 비워 두었습니다(`docs/api-contract-20261023.md` §0).
+작성: 2026-10-23, 갱신: 2026-10-26. 아래 "구현 상태"를 먼저 보세요. 본문의 SQL은 초안이며 실제 적용본은 `supabase/migrations/202610250001_experiences.sql`과 `202610260002_experience_reservation_user_fk.sql`입니다. 사용자 식별은 지나의 `app_users`로 확정되어 `user_id`가 `app_users`를 참조합니다(`docs/api-contract-20261023.md` §0).
 
 ## 범위
 
@@ -86,7 +86,6 @@ create unique index experience_reservations_one_active
 ## 열린 질문
 
 - 취소 가능 시점(시작 24시간 전)과 1회 최대 인원(10명)을 팀·수업 기준과 맞출지
-- 사용자 식별 확정 후 `experience_reservations.user_id` 외래키 대상
 - 프론트 화면 신규 구성 범위(목록·상세·예약·내 예약)와 `/experiences` 라우트 추가는 헤더 메뉴(공통 파일, 형준 통합)와 함께 진행
 
 ## 구현 상태 (2026-10-25)
@@ -101,4 +100,4 @@ create unique index experience_reservations_one_active
 | 표현 계층: 라우터 7개·Pydantic 스키마(인원 1~10 검증, 페이지 size 1~100)·예외→HTTP 변환(404/403/422/409)                               | 완료, API 테스트 8건 통과(실제 DB)                                                                                                                                                                  |
 | 인증 연동                                                                                                                              | **완료(2026-10-26)**: 지나의 공통 인증(`CurrentUser`·`AdminUser`, 블랙리스트·비활성 계정 검사)을 사용. 로그아웃 토큰 재사용 401·일반 사용자 관리자 API 403을 실제 DB 테스트와 실행 중인 서버로 확인 |
 | 프론트 화면 연결                                                                                                                       | **완료**: 지나의 쿠키 로그인과 서버 액션으로 연동, 브라우저에서 예약·취소·관리자 마감 확인                                                                                                          |
-| `user_id` 외래키                                                                                                                       | **미적용** (사용자 식별 확정 후)                                                                                                                                                                    |
+| `user_id` 외래키                                                                                                                       | **완료(2026-10-26)**: `app_users(id)` 참조, 삭제 시 cascade. 다른 기능의 테이블 외래키 통합은 팀 합의 후 별도                                                                                       |
