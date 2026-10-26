@@ -1,10 +1,18 @@
 """회원 Repository와 요청 단위 트랜잭션 구현."""
 
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.accounts.models import Account, Profile, ShippingAddress, UserRole
+from app.domain.accounts.models import (
+    Account,
+    AdminRegistration,
+    AdminRegistrationStatus,
+    Profile,
+    ShippingAddress,
+    UserRole,
+)
 from app.infrastructure.accounts.models import (
+    AdminRegistrationModel,
     AppUserModel,
     ProfileModel,
     RevokedTokenModel,
@@ -34,6 +42,16 @@ def _to_profile(model: ProfileModel) -> Profile:
     return Profile(model.id, model.nickname, shipping)
 
 
+def _to_admin_registration(model: AdminRegistrationModel) -> AdminRegistration:
+    return AdminRegistration(
+        account_id=model.account_id,
+        username=model.username,
+        display_name=model.display_name,
+        status=AdminRegistrationStatus(model.status),
+        created_at=model.created_at,
+    )
+
+
 class SqlAlchemyAccountRepository:
     def __init__(self, session: AsyncSession):
         self._session = session
@@ -47,6 +65,53 @@ class SqlAlchemyAccountRepository:
     async def get_by_id(self, user_id) -> Account | None:
         model = await self._session.get(AppUserModel, user_id)
         return _to_account(model) if model else None
+
+    async def get_admin_registration(self, account_id) -> AdminRegistration | None:
+        model = await self._session.get(AdminRegistrationModel, account_id)
+        return _to_admin_registration(model) if model else None
+
+    async def get_admin_registration_by_username(
+        self, username: str
+    ) -> AdminRegistration | None:
+        model = await self._session.scalar(
+            select(AdminRegistrationModel).where(
+                AdminRegistrationModel.username == username.strip().lower()
+            )
+        )
+        return _to_admin_registration(model) if model else None
+
+    async def add_admin_registration(
+        self, account: Account, registration: AdminRegistration
+    ) -> None:
+        if account.id != registration.account_id:
+            raise ValueError("계정과 관리자 가입 신청의 사용자 ID가 일치해야 합니다.")
+        # auth.users를 먼저 만든 뒤 같은 UUID로 인증·프로필·가입 신청을 묶는다.
+        # 호출 측 UnitOfWork가 한 번만 commit하므로 어느 단계든 실패하면 전부 롤백된다.
+        await self._session.execute(
+            text("insert into auth.users (id, email) values (:id, :email)"),
+            {"id": account.id, "email": account.email},
+        )
+        self._session.add(
+            AppUserModel(
+                id=account.id,
+                supabase_user_id=account.id,
+                email=account.email,
+                password_hash=account.password_hash,
+                role=account.role.value,
+                is_active=account.is_active,
+            )
+        )
+        self._session.add(ProfileModel(id=account.id, nickname=registration.display_name))
+        self._session.add(
+            AdminRegistrationModel(
+                account_id=registration.account_id,
+                username=registration.username,
+                email=account.email,
+                display_name=registration.display_name,
+                status=registration.status.value,
+            )
+        )
+        await self._session.flush()
 
     async def get_profile(self, user_id) -> Profile | None:
         model = await self._session.get(ProfileModel, user_id)

@@ -2,6 +2,8 @@ import "server-only";
 import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 import { getCurrentUser } from "@/lib/auth";
+import { ACCESS_TOKEN_COOKIE } from "@/lib/auth-cookie";
+import { fastApi, type FastApiUser } from "@/lib/fastapi";
 import {
   readLocalAdminCredential,
   matchesLocalAdminPassword,
@@ -141,9 +143,13 @@ export async function hasPasswordSession() {
 export async function getAdminAccess() {
   if (await hasPasswordSession()) return { allowed: true, signedIn: true };
   const user = await getCurrentUser();
-  // app_metadata는 Supabase의 신뢰된 서버/관리 도구에서만 부여합니다.
-  return {
-    allowed: Boolean(user && "app_metadata" in user && user.app_metadata?.role === "admin"),
-    signedIn: Boolean(user),
-  };
+  if (!user) return { allowed: false, signedIn: false };
+  const token = (await cookies()).get(ACCESS_TOKEN_COOKIE)?.value;
+  if (!token) return { allowed: false, signedIn: true };
+  try {
+    const me = await fastApi<FastApiUser>("/api/v1/accounts/me", {}, token);
+    return { allowed: me.role === "admin", signedIn: true };
+  } catch {
+    return { allowed: false, signedIn: true };
+  }
 }

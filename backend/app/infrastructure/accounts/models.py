@@ -6,7 +6,7 @@
 from datetime import datetime
 from uuid import UUID
 
-from sqlalchemy import Boolean, DateTime, ForeignKey, Text, func, text
+from sqlalchemy import Boolean, Computed, DateTime, ForeignKey, Text, func
 from sqlalchemy.dialects.postgresql import UUID as PGUUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
@@ -19,7 +19,7 @@ class AppUserModel(AccountBase):
     __tablename__ = "app_users"
 
     id: Mapped[UUID] = mapped_column(
-        PGUUID(as_uuid=True), primary_key=True, server_default=text("gen_random_uuid()")
+        PGUUID(as_uuid=True), primary_key=True
     )
     email: Mapped[str] = mapped_column(Text, unique=True, index=True)
     password_hash: Mapped[str] = mapped_column(Text)
@@ -27,8 +27,8 @@ class AppUserModel(AccountBase):
     is_active: Mapped[bool] = mapped_column(
         Boolean, default=True, server_default="true"
     )
-    supabase_user_id: Mapped[UUID | None] = mapped_column(
-        PGUUID(as_uuid=True), unique=True, nullable=True
+    supabase_user_id: Mapped[UUID] = mapped_column(
+        PGUUID(as_uuid=True), unique=True, nullable=False
     )
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
@@ -44,6 +44,29 @@ class RevokedTokenModel(AccountBase):
     )
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
     revoked_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class AdminRegistrationModel(AccountBase):
+    __tablename__ = "admin_registrations"
+
+    account_id: Mapped[UUID] = mapped_column(
+        "id", PGUUID(as_uuid=True), primary_key=True
+    )
+    username: Mapped[str] = mapped_column(Text, unique=True, index=True)
+    username_key: Mapped[str] = mapped_column(
+        Text, Computed("lower(username)"), unique=True
+    )
+    email: Mapped[str] = mapped_column(Text)
+    email_key: Mapped[str] = mapped_column(
+        Text, Computed("lower(btrim(email))"), unique=True
+    )
+    display_name: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(
+        Text, default="pending", server_default="pending", index=True
+    )
+    created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
 
