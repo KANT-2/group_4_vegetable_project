@@ -3,7 +3,7 @@ import { PageHeading } from "@/components/common/PageHeading";
 import { listExperiences } from "@/lib/experiences-api";
 import { FastApiError } from "@/lib/fastapi";
 import { SafeImage } from "@/components/common/SafeImage";
-import { toImageSrc } from "@/services/catalog-source";
+import { experienceImageSrc } from "@/lib/experiences-image";
 import { formatPrice } from "@/lib/format";
 
 export const metadata = { title: "체험 예약" };
@@ -100,7 +100,7 @@ export default async function ExperiencesPage({
                     className="block h-full overflow-hidden rounded-card bg-surface ring-1 ring-line transition hover:ring-brand"
                   >
                     <SafeImage
-                      src={toImageSrc(e.image_path)}
+                      src={experienceImageSrc(e.image_path)}
                       alt={e.title}
                       className="aspect-[4/3] w-full object-cover"
                       placeholderText="사진 준비 중"

@@ -6,7 +6,7 @@ import { getExperience } from "@/lib/experiences-api";
 import { getExperienceAuth } from "@/lib/experiences-auth";
 import { FastApiError } from "@/lib/fastapi";
 import { formatPrice } from "@/lib/format";
-import { toImageSrc } from "@/services/catalog-source";
+import { experienceImageSrc } from "@/lib/experiences-image";
 
 export async function generateMetadata({
   params,
@@ -55,7 +55,7 @@ export default async function ExperienceDetailPage({
         ← 체험 목록
       </Link>
       <SafeImage
-        src={toImageSrc(experience.image_path)}
+        src={experienceImageSrc(experience.image_path)}
         alt={experience.title}
         className="mt-3 aspect-[16/9] w-full max-w-2xl rounded-card object-cover"
         placeholderText="사진 준비 중"
