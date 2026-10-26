@@ -57,7 +57,7 @@ export default async function ExperienceDetailPage({
       <SafeImage
         src={experienceImageSrc(experience.image_path)}
         alt={experience.title}
-        className="mt-3 aspect-[16/9] w-full max-w-2xl rounded-card object-cover"
+        className="mt-3 aspect-[16/9] w-full max-w-2xl rounded-card object-cover object-[50%_12%]"
         placeholderText="사진 준비 중"
       />
       <header className="mt-4">

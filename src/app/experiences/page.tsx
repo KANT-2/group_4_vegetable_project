@@ -102,7 +102,7 @@ export default async function ExperiencesPage({
                     <SafeImage
                       src={experienceImageSrc(e.image_path)}
                       alt={e.title}
-                      className="aspect-[4/3] w-full object-cover"
+                      className="aspect-[4/3] w-full object-cover object-[50%_12%]"
                       placeholderText="사진 준비 중"
                     />
                     <div className="p-5">
