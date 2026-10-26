@@ -13,6 +13,6 @@ export default async function AdminFarmsPage() {
     redirect(
       access.signedIn ? "/admin/login?error=permission" : "/admin/login",
     );
-  const farms = await getFarmStories();
+  const farms = await getFarmStories(false);
   return <AdminFarms farms={farms} />;
 }

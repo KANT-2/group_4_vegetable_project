@@ -4,27 +4,28 @@ import Link from "next/link";
 import { SafeImage } from "@/components/common/SafeImage";
 import { useAdminStore } from "@/components/admin/AdminStore";
 import { managedPromotions, safePromotionHref } from "@/lib/admin-promotions";
+import type { AdminPromotion } from "@/lib/admin-store";
 
-export function PromotionPreview({ id }: { id: string }) {
+export function PromotionPreview({ id, promotion }: { id: string; promotion?: AdminPromotion }) {
   const store = useAdminStore();
-  const item = managedPromotions(store).find((promo) => promo.id === id);
+  const item = promotion ?? managedPromotions(store).find((promo) => promo.id === id);
   return (
     <div className="container-page py-10 md:py-16">
-      <Link
+      {!promotion && <Link
         href="/admin/promotions"
         className="text-sm font-semibold text-brand"
       >
         ← 관리 목록으로 돌아가기
-      </Link>
+      </Link>}
       {!item ? (
         <p className="mt-8 text-ink-muted">
           미리볼 공지가 없습니다. 관리 목록에서 다시 선택해 주세요.
         </p>
       ) : (
         <>
-          <p className="mt-6 text-sm text-ink-muted">
+          {!promotion && <p className="mt-6 text-sm text-ink-muted">
             고객 화면 미리보기{!item.published && " · 비공개"}
-          </p>
+          </p>}
           <SafeImage
             src={item.image}
             alt={item.title}

@@ -8,6 +8,9 @@ import ProductCard from "@/components/products/ProductCard";
 import { promotions } from "@/data/promotions";
 import { COLLECTIONS } from "@/lib/catalog";
 import { getProductList } from "@/services/products";
+import { publicPromotions } from "@/services/managed-content";
+import { readContent } from "@/lib/managed-content";
+import { PromotionPreview } from "@/components/promotions/PromotionPreview";
 
 export const revalidate = 300;
 export function generateStaticParams() {
@@ -16,14 +19,16 @@ export function generateStaticParams() {
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const promo = promotions.find((item) => item.slug === slug);
+  const promo = publicPromotions().find((item) => item.slug === slug);
   return {
     title: promo ? promo.label : "행사를 찾을 수 없어요",
   };
 }
 export default async function PromotionPage({ params }: Props) {
   const { slug } = await params;
-  const promo = promotions.find((item) => item.slug === slug);
+  const promo = publicPromotions().find((item) => item.slug === slug);
+  if (!promo) notFound();
+  if (readContent().state.otherChanges?.[`promotion:${promo.id}`]) return <PromotionPreview id={promo.id} promotion={promo} />;
   const campaign = homeCampaigns.find((item) => item.id === slug);
   if (!promo || !campaign) notFound();
   const products = await getProductList({ sort: "recommended" });

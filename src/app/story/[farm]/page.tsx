@@ -69,14 +69,14 @@ export default async function FarmDetailPage({
     ),
   ]);
   const products = catalog.filter(
-    (p) => p.isActive && p.farmName === farm.farmName,
+    (p) => p.isActive && (p.farmName === farm.farmName || p.farmName === farm.id),
   );
   const recipes = [
     ...new Map(recipeLists.flat().map((r) => [r.id, r])).values(),
   ];
   const photo = getFarmPhoto(farm);
-  const detail = getFarmStoryDetail(farm.farmName);
-  const crops = [...new Set(farm.products.map((p) => p.vegetableName))];
+  const detail = farm.detail ?? getFarmStoryDetail(farm.farmName);
+  const crops = farm.crops ?? [...new Set(farm.products.map((p) => p.vegetableName))];
   const reviewTotal = products.reduce((sum, p) => sum + p.reviewCount, 0);
   const others = farms.filter((f) => f.farmName !== farm.farmName);
 
@@ -199,6 +199,7 @@ export default async function FarmDetailPage({
                   uglyReason={product.uglyReason}
                   href={routes.product(product.id)}
                   productId={product.id}
+        stock={product.stock}
                   reviewCount={product.reviewCount}
                 />
               </li>

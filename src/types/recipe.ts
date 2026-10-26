@@ -37,6 +37,7 @@ export type RecipeProduct = Pick<
   | "unit"
   | "uglyReason"
   | "imageUrl"
+  | "stock"
 >;
 
 export interface Recipe {

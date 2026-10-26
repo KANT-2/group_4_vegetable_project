@@ -18,6 +18,10 @@ export type FeaturedProduct = Pick<
 
 // 농가 이야기 화면의 농가 한 곳
 export interface FarmStory {
+  id?: string;
+  detail?: import("../data/farm-stories").FarmStoryDetail;
+  crops?: string[];
+  imageUrl?: string;
   farmName: string;
   farmRegion?: string;
   story?: string; // products.farm_story

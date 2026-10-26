@@ -15,11 +15,13 @@ export function AddToCartButton({
   productName,
   price,
   layout = "stack",
+  stock,
 }: {
   productId: string;
   productName: string;
   price: number;
   layout?: "stack" | "bar";
+  stock?: number;
 }) {
   const [quantity, setQuantity] = useState(1);
   const [message, setMessage] = useState<{
@@ -31,6 +33,7 @@ export function AddToCartButton({
   const goLogin = useLoginReturn();
 
   const submit = () => {
+    if (stock === 0) return;
     if (pending) return; // 중복 클릭 방지
     setMessage(null);
     startTransition(async () => {
@@ -57,6 +60,7 @@ export function AddToCartButton({
   };
 
   const bar = layout === "bar";
+  if (stock === 0) return <div className="space-y-2"><button disabled className="btn w-full border border-line bg-sand text-ink-muted">품절</button><p className="text-sm text-ink-muted">현재 재고가 없어 구매할 수 없습니다.</p></div>;
   return (
     <div className={bar ? "space-y-2" : "space-y-3"}>
       <div className={`flex items-center ${bar ? "gap-2" : "flex-wrap gap-3"}`}>

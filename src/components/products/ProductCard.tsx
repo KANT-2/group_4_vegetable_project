@@ -26,6 +26,7 @@ export default function ProductCard({
       description={product.tagline}
       href={routes.product(product.id) ?? `/products/${product.id}`}
       productId={product.id}
+        stock={product.stock}
       reviewCount={product.reviewCount}
       priority={preload}
     />
