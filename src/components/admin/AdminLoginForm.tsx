@@ -9,7 +9,7 @@ export function AdminLoginForm() {
     <form action={action} className="space-y-4 text-left">
       <div>
         <label htmlFor="admin-id" className="mb-2 block text-sm font-bold">
-          이메일
+          아이디 또는 이메일
         </label>
         <input
           id="admin-id"
@@ -17,8 +17,7 @@ export function AdminLoginForm() {
           autoComplete="username"
           required
           maxLength={100}
-          inputMode="email"
-          placeholder="관리자 이메일을 입력해 주세요"
+          placeholder="관리자 아이디 또는 이메일을 입력해 주세요"
           className="min-h-12 w-full rounded-control border border-field-border px-4"
         />
       </div>

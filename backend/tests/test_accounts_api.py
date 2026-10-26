@@ -288,7 +288,10 @@ async def test_openapi_describes_account_flows_for_swagger_users():
         response = await client.get("/openapi.json")
 
     operations = response.json()["paths"]
-    assert operations["/api/v1/accounts/login"]["post"]["summary"] == "이메일 로그인"
+    assert (
+        operations["/api/v1/accounts/login"]["post"]["summary"]
+        == "아이디 또는 이메일 로그인"
+    )
     assert operations["/api/v1/accounts/logout"]["post"]["summary"] == "로그아웃"
     assert (
         operations["/api/v1/accounts/me/address"]["put"]["summary"]
