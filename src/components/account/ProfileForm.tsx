@@ -110,7 +110,7 @@ export function ProfileEditor({
         <div className="mb-6 flex items-center justify-between border-b border-line pb-4">
           <h2 className="text-lg font-bold">회원 정보</h2>
           <span className="rounded-full bg-brand-soft px-3 py-1 text-xs font-semibold text-brand-dark">
-            Google 계정
+            이메일 계정
           </span>
         </div>
         <dl className="mb-6 grid gap-2 border-b border-line/60 pb-5 sm:grid-cols-[7rem_minmax(0,1fr)]">
@@ -173,17 +173,9 @@ export function ProfileEditor({
           로그인·비밀번호
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-          Google 계정으로 로그인하고 있어요. 비밀번호 변경과 계정 보안 설정은
-          Google에서 관리할 수 있어요.
+          비밀번호는 서버에 해시된 형태로 저장돼요. 비밀번호 변경 기능은 이번
+          필수 범위에서 제외했어요.
         </p>
-        <a
-          className="btn btn-secondary mt-4"
-          href="https://myaccount.google.com/security"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Google 계정 보안 관리 ↗
-        </a>
       </section>
     </div>
   );

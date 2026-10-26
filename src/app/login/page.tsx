@@ -6,6 +6,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { loginNext } from "@/lib/auth-urls";
 import { getGoogleLoginStatus } from "@/services/auth-settings";
 import { GoogleLoginButton } from "@/components/account/GoogleLoginButton";
+import { EmailLoginForm } from "@/components/account/EmailLoginForm";
 
 export const metadata: Metadata = { title: "로그인" };
 type SearchParams = Promise<{
@@ -37,6 +38,12 @@ async function LoginContent({ searchParams }: { searchParams: SearchParams }) {
         ready={status.ready}
         message={status.message}
       />
+      <div className="my-6 flex items-center gap-3 text-sm text-ink-muted">
+        <span className="h-px flex-1 bg-line" />
+        <span>또는 이메일로 로그인</span>
+        <span className="h-px flex-1 bg-line" />
+      </div>
+      <EmailLoginForm next={next} />
     </>
   );
 }
@@ -52,7 +59,7 @@ export default function LoginPage({
         <p className="mb-3 font-bold text-brand">못난이마켓</p>
         <h1 className="page-title">반가워요!</h1>
         <p className="mb-8 mt-3 text-ink-muted">
-          Google 계정으로 로그인하고
+          Google 또는 이메일 계정으로 로그인하고
           <br />
           나만의 장바구니와 찜을 이어가세요.
         </p>
@@ -62,7 +69,7 @@ export default function LoginPage({
           <LoginContent searchParams={searchParams} />
         </Suspense>
         <p className="mt-6 text-sm text-ink-muted">
-          처음 이용하는 경우 Google 인증 후 계정이 생성돼요.
+          이메일 계정은 개발용 사용자 생성 후 이용할 수 있어요.
         </p>
         <Link
           href="/"

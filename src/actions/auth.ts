@@ -9,6 +9,12 @@ import type { ActionResult } from "@/types/action";
 import { googleCallbackUrl } from "@/lib/auth-urls";
 import { requireSupabaseConfig } from "@/lib/supabase/config";
 import { getGoogleLoginStatus } from "@/services/auth-settings";
+import { cookies } from "next/headers";
+import {
+  ACCESS_TOKEN_COOKIE,
+  accessTokenCookieOptions,
+} from "@/lib/auth-cookie";
+import { fastApi, FastApiError, loginWithPassword } from "@/lib/fastapi";
 
 export async function signInWithGoogle(next: string): Promise<ActionResult> {
   let authorizeUrl: string;
@@ -50,17 +56,22 @@ export async function signIn(input: unknown): Promise<ActionResult> {
     return { ok: false, error: parsed.error.issues[0].message };
 
   try {
-    const supabase = await createClient();
-    const { error } = await supabase.auth.signInWithPassword({
-      email: parsed.data.email,
-      password: parsed.data.password,
-    });
-    if (error)
+    const token = await loginWithPassword(
+      parsed.data.email,
+      parsed.data.password,
+    );
+    const cookieStore = await cookies();
+    cookieStore.set(
+      ACCESS_TOKEN_COOKIE,
+      token.access_token,
+      accessTokenCookieOptions(token.expires_in),
+    );
+  } catch (error) {
+    if (error instanceof FastApiError && error.status === 401)
       return {
         ok: false,
         error: "로그인하지 못했습니다. 이메일과 비밀번호를 확인해주세요.",
       };
-  } catch {
     return {
       ok: false,
       error: "로그인 서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.",
@@ -72,18 +83,29 @@ export async function signIn(input: unknown): Promise<ActionResult> {
 }
 
 export async function signOut(returnToHome = true): Promise<ActionResult> {
+  const cookieStore = await cookies();
+  const token = cookieStore.get(ACCESS_TOKEN_COOKIE)?.value;
+  let blacklistFailed = false;
   try {
-    const supabase = await createClient();
-    const { error } = await supabase.auth.signOut();
-    if (error)
-      return {
-        ok: false,
-        error: "로그아웃하지 못했습니다. 다시 시도해주세요.",
-      };
+    if (token)
+      await fastApi<void>("/api/v1/accounts/logout", { method: "POST" }, token);
   } catch {
+    blacklistFailed = Boolean(token);
+  } finally {
+    cookieStore.delete(ACCESS_TOKEN_COOKIE);
+    try {
+      const supabase = await createClient();
+      await supabase.auth.signOut();
+    } catch {
+      // FastAPI 세션 로그아웃과 쿠키 제거 결과를 우선한다.
+    }
+  }
+
+  if (blacklistFailed) {
     return {
       ok: false,
-      error: "로그인 서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.",
+      error:
+        "서버 로그아웃 확인에 실패했지만 이 브라우저의 로그인은 해제했어요.",
     };
   }
 
