@@ -9,9 +9,9 @@ from app.domain.purchases.order import CartChanged, EmptyCart, InvalidShipping
 
 STATUS_BY_ERROR: dict[type[Exception], int] = {
     NotFound: status.HTTP_404_NOT_FOUND,
-    InvalidQuantity: status.HTTP_422_UNPROCESSABLE_CONTENT,
+    InvalidQuantity: status.HTTP_422_UNPROCESSABLE_ENTITY,
     ProductNotPurchasable: status.HTTP_409_CONFLICT,
-    InvalidShipping: status.HTTP_422_UNPROCESSABLE_CONTENT,
+    InvalidShipping: status.HTTP_422_UNPROCESSABLE_ENTITY,
     EmptyCart: status.HTTP_409_CONFLICT,
     CartChanged: status.HTTP_409_CONFLICT,
 }

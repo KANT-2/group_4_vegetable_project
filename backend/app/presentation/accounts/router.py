@@ -72,9 +72,9 @@ async def register_admin(
 @router.post(
     "/login",
     response_model=TokenOut,
-    summary="이메일 로그인",
-    description="이메일과 비밀번호를 검증하고 보호 API에 사용할 JWT를 발급합니다.",
-    responses={401: {"description": "이메일 또는 비밀번호가 올바르지 않음"}},
+    summary="아이디 또는 이메일 로그인",
+    description="아이디 또는 이메일과 비밀번호를 검증하고 보호 API에 사용할 JWT를 발급합니다.",
+    responses={401: {"description": "아이디·이메일 또는 비밀번호가 올바르지 않음"}},
 )
 async def login(
     form: Annotated[OAuth2PasswordRequestForm, Depends()],

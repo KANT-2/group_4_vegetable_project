@@ -45,7 +45,7 @@ export async function adminSignIn(
     );
   } catch (error) {
     if (error instanceof FastApiError && error.status === 401)
-      return { error: "이메일 또는 비밀번호를 확인해 주세요." };
+      return { error: "아이디·이메일 또는 비밀번호를 확인해 주세요." };
     return {
       error: "로그인 서버에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.",
     };
