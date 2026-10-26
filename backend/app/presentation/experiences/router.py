@@ -7,7 +7,8 @@ from fastapi import APIRouter, Depends, Query, status
 
 from app.application.experiences.service import ExperienceService
 from app.domain.experiences.models import ReservationStatus
-from app.presentation.experiences.dependencies import CurrentUser, get_current_user, get_service, require_admin
+from app.presentation.accounts.dependencies import AdminUser, CurrentUser
+from app.presentation.experiences.dependencies import get_service
 from app.presentation.experiences.schemas import (
     ExperienceDetailOut,
     ExperienceList,
@@ -43,13 +44,13 @@ async def list_experiences(
 
 # 고정 경로(/reservations/..., /admin/...)는 /{experience_id} 보다 먼저 선언한다.
 @router.get("/reservations/me", response_model=list[ReservationDetailOut], summary="내 예약 목록 (체험 이름·시작 시간 포함)")
-async def my_reservations(service: Service, user: Annotated[CurrentUser, Depends(get_current_user)]):
+async def my_reservations(service: Service, user: CurrentUser):
     return [ReservationDetailOut.from_detail(d) for d in await service.list_my_reservations(user.id)]
 
 
 @router.post("/reservations/{reservation_id}/cancel", response_model=ReservationOut, summary="예약 취소 (본인만)")
 async def cancel_reservation(
-    reservation_id: UUID, service: Service, user: Annotated[CurrentUser, Depends(get_current_user)]
+    reservation_id: UUID, service: Service, user: CurrentUser
 ):
     return await service.cancel(reservation_id, user.id)
 
@@ -57,7 +58,7 @@ async def cancel_reservation(
 @router.get("/admin/reservations", response_model=ReservationList, summary="[관리자] 예약 목록")
 async def admin_reservations(
     service: Service,
-    _: Annotated[CurrentUser, Depends(require_admin)],
+    _: AdminUser,
     session_id: UUID | None = None,
     reservation_status: Annotated[ReservationStatus | None, Query(alias="status")] = None,
     page: Page = 1,
@@ -68,7 +69,7 @@ async def admin_reservations(
 
 
 @router.post("/admin/sessions/{session_id}/close", response_model=SessionOut, summary="[관리자] 회차 접수 마감")
-async def close_session(session_id: UUID, service: Service, _: Annotated[CurrentUser, Depends(require_admin)]):
+async def close_session(session_id: UUID, service: Service, _: AdminUser):
     return _session_out(await service.close_session(session_id))
 
 
@@ -91,6 +92,6 @@ async def reserve(
     session_id: UUID,
     body: ReservationCreate,
     service: Service,
-    user: Annotated[CurrentUser, Depends(get_current_user)],
+    user: CurrentUser,
 ):
     return await service.reserve(session_id, user.id, body.headcount, experience_id=experience_id)

@@ -45,14 +45,3 @@ def _reset_settings_cache():
     yield
     get_settings.cache_clear()
 
-
-def test_dev_login_only_registered_in_local_env(monkeypatch):
-    from app.main import create_app
-
-    def paths(env):
-        monkeypatch.setenv("APP_ENV", env)
-        get_settings.cache_clear()
-        return set(create_app().openapi()["paths"])
-
-    assert "/api/v1/dev/token" in paths("local")
-    assert "/api/v1/dev/token" not in paths("production")

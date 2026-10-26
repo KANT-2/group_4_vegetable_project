@@ -1,8 +1,12 @@
-"""체험 라우터용 의존성: 서비스 조립(composition root)과 임시 인증 어댑터.
+"""체험 라우터용 의존성: 서비스 조립(composition root).
 
-임시 인증 어댑터: 팀이 합의 중인 토큰 규격(docs/api-contract-20261023.md §1: sub=사용자 UUID, role=user|admin)을
-읽어 검증만 한다. 지나의 공통 인증(get_current_user·require_admin, 블랙리스트 검사 포함)이 develop 에 들어오면
-CurrentUser·get_current_user·require_admin 만 그쪽으로 교체한다. **블랙리스트(로그아웃 토큰 차단)는 아직 검사하지 않는다.**
+체험 라우터 자체는 지나의 공통 인증(app.presentation.accounts.dependencies)을 쓴다(router.py 참고).
+로그아웃(블랙리스트)된 토큰과 비활성 계정은 거기서 401 로 차단된다.
+
+아래 CurrentUser·get_current_user·require_admin 은 **영우의 구매 모듈(purchases/dependencies.py)이 이 경로에서
+import 하는 옛 임시 어댑터(JWT 서명만 확인, 블랙리스트 미검사)** 이다. 영우의 코드·테스트가 아직 이 규격에 의존해서
+호환을 위해서만 남겼다. 영우가 import 를 app.presentation.accounts.dependencies 로 바꾸고 테스트를 실제 계정 방식으로
+고치면 이 임시 어댑터는 삭제한다. 그 전까지 구매 라우터를 main.py 에 등록하지 않는다.
 """
 
 from dataclasses import dataclass

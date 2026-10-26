@@ -75,8 +75,11 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
       "select relname from pg_class where relnamespace = 'public'::regnamespace and relkind = 'r' and relrowsecurity",
     );
     // 기존 12개 + 체험 예약 3개(experiences, experience_sessions, experience_reservations)
-    assert.equal(rows.length, 15);
+    // + FastAPI 회원 2개(app_users, revoked_tokens)
+    assert.equal(rows.length, 17);
     assert.ok(rows.some((row) => row.relname === "experience_reservations"));
+    assert.ok(rows.some((row) => row.relname === "app_users"));
+    assert.ok(rows.some((row) => row.relname === "revoked_tokens"));
     assert.ok(rows.some((row) => row.relname === "user_coupons"));
     assert.ok(rows.some((row) => row.relname === "coupon_campaigns"));
   });
