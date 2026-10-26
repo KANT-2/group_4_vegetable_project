@@ -1,5 +1,5 @@
-// 레시피 목록의 검색창과 채소 필터 (A 담당)
-// 검색·필터 상태는 주소(?q=…&vegetable=…)에 들어가서 새로고침·뒤로 가기·링크 공유가 그대로 동작해요.
+// 레시피 목록의 검색창 · 조리 난이도 · 채소 필터 (A 담당)
+// 검색·필터 상태는 주소(?q=…&difficulty=…&vegetable=…)에 들어가서 새로고침·뒤로 가기·링크 공유가 그대로 동작해요.
 // 자바스크립트가 없어도 동작하는 일반 폼과 링크로 만들었어요.
 
 import Form from "next/form";
@@ -7,18 +7,24 @@ import ScrollRow from "@/components/products/ScrollRow";
 import Link from "next/link";
 import { SearchIcon } from "@/components/common/Icons";
 import { routes } from "@/lib/routes";
-import type {
-  RecipeFilters as Filters,
-  RecipeVegetableOption,
+import {
+  RECIPE_DIFFICULTY_LABELS,
+  type RecipeDifficulty,
+  type RecipeFilters as Filters,
+  type RecipeVegetableOption,
 } from "@/types/recipe";
 
-function listHref(filters: Filters) {
+// 조건을 유지한 목록 주소. page 는 2쪽부터만 붙여요.
+export function recipeListHref(filters: Filters, page = 1) {
   const params = new URLSearchParams();
   if (filters.q) params.set("q", filters.q);
+  if (filters.difficulty) params.set("difficulty", filters.difficulty);
   if (filters.vegetable) params.set("vegetable", filters.vegetable);
+  if (page > 1) params.set("page", String(page));
   const query = params.toString();
   return query ? `${routes.recipes}?${query}` : routes.recipes;
 }
+const listHref = (filters: Filters) => recipeListHref(filters);
 
 export function RecipeFilters({
   filters,
@@ -27,8 +33,6 @@ export function RecipeFilters({
   filters: Filters;
   vegetables: RecipeVegetableOption[];
 }) {
-  const hasFilters = Boolean(filters.q || filters.vegetable);
-
   return (
     <div className="space-y-3 md:space-y-5">
       <Form action={routes.recipes} role="search" className="flex gap-2">
@@ -52,6 +56,28 @@ export function RecipeFilters({
             className="field min-h-11 text-sm md:min-h-12 md:text-base"
           />
         </div>
+        {/* 검색 버튼 왼쪽: 조리 난이도 (검색을 누르면 함께 적용돼요) */}
+        <label htmlFor="recipe-difficulty" className="sr-only">
+          조리 난이도
+        </label>
+        <select
+          id="recipe-difficulty"
+          name="difficulty"
+          defaultValue={filters.difficulty ?? ""}
+          className="field min-h-11 w-28 shrink-0 px-3 text-sm md:min-h-12 md:w-40 md:text-base"
+        >
+          <option value="">난이도 전체</option>
+          {(
+            Object.entries(RECIPE_DIFFICULTY_LABELS) as [
+              RecipeDifficulty,
+              string,
+            ][]
+          ).map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
         <button
           type="submit"
           className="btn btn-primary min-h-11 shrink-0 px-4 text-sm md:min-h-12 md:px-5 md:text-base"
@@ -67,29 +93,24 @@ export function RecipeFilters({
       >
         <ScrollRow label="채소" className="gap-1 px-2 md:gap-2 md:px-0">
           <FilterChip
-            href={listHref({ q: filters.q })}
+            href={listHref({ q: filters.q, difficulty: filters.difficulty })}
             active={!filters.vegetable}
             label="전체"
           />
           {vegetables.map((vegetable) => (
             <FilterChip
               key={vegetable.id}
-              href={listHref({ q: filters.q, vegetable: vegetable.id })}
+              href={listHref({
+                q: filters.q,
+                difficulty: filters.difficulty,
+                vegetable: vegetable.id,
+              })}
               active={filters.vegetable === vegetable.id}
               label={vegetable.name}
             />
           ))}
         </ScrollRow>
       </nav>
-
-      {hasFilters && (
-        <Link
-          href={routes.recipes}
-          className="inline-flex min-h-12 items-center font-bold text-brand-dark underline underline-offset-4"
-        >
-          검색·필터 초기화
-        </Link>
-      )}
     </div>
   );
 }

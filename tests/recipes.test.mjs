@@ -58,6 +58,12 @@ test("공식 레시피의 출처·누락값·상품 없는 채소·말린 재료
     parseRecipeFilters({ q: ["  샐러드 ", "무시"], vegetable: "bad/id" }),
     { q: "샐러드", vegetable: undefined },
   );
+  // 난이도는 쉬움·보통·어려움만, 그 밖의 값은 조건 없음
+  assert.equal(parseRecipeFilters({ difficulty: "easy" }).difficulty, "easy");
+  assert.equal(
+    parseRecipeFilters({ difficulty: "hack" }).difficulty,
+    undefined,
+  );
   assert.equal(
     recipeRowSchema.safeParse({
       ...catalog[0],
