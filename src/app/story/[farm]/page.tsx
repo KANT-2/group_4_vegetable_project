@@ -7,7 +7,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HomeShelf } from "@/components/common/HomeShelf";
-import { MockDataNotice } from "@/components/common/MockDataNotice";
 import { ProductPreviewCard } from "@/components/common/ProductPreviewCard";
 import { SafeImage } from "@/components/common/SafeImage";
 import { FarmManagedDetails } from "@/components/common/FarmManagedDetails";
@@ -153,7 +152,6 @@ export default async function FarmDetailPage({
       </section>
 
       <div className="container-page mt-6">
-        <MockDataNotice subject="농가 이야기와 농산물 정보" />
       </div>
 
       {/* 2. 탭: 마켓컬리 상품 상세처럼 아래 구역으로 이동해요 (스크롤해도 위에 붙어 있어요) */}

@@ -3,11 +3,9 @@ import BackLink from "@/components/products/BackLink";
 import { ProductGallery } from "@/components/products/ProductGallery";
 import { getProductImages } from "@/lib/product-gallery";
 import { notFound } from "next/navigation";
-import MockDataNotice from "@/components/products/MockDataNotice";
 import { AddToCartButton } from "@/components/shopping/AddToCartButton";
 import { WishlistButton } from "@/components/shopping/WishlistButton";
 import { formatPrice, getDiscountRate } from "@/lib/format";
-import { isMockCatalog } from "@/services/catalog-source";
 import { getSavedState } from "@/services/cart";
 import { getProductById } from "@/services/products";
 import { routes } from "@/lib/routes";
@@ -154,8 +152,6 @@ export default async function ProductDetailPage({
               compact
             />
           </div>
-
-          <MockDataNotice usingMock={isMockCatalog()} />
         </div>
       </div>
 

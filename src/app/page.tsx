@@ -13,7 +13,6 @@ import {
   type HomeBannerSlide,
 } from "@/components/common/HomeBanner";
 import { HomeShelf } from "@/components/common/HomeShelf";
-import { MockDataNotice } from "@/components/common/MockDataNotice";
 import { ProductPreviewCard } from "@/components/common/ProductPreviewCard";
 import { SafeImage } from "@/components/common/SafeImage";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
@@ -135,7 +134,6 @@ export default async function HomePage() {
       <HomeBanner slides={slides} intervalMs={3000} />
 
       <div className="container-page [&:not(:empty)]:mt-6">
-        <MockDataNotice subject="상품·농가" />
       </div>
 
       {/* 2. 진열 줄 */}

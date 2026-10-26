@@ -1,6 +1,5 @@
 // 농가 이야기 /story (A 담당)
 // 농가·농산물 정보는 상품 데이터(B)에서 가져와 농가별로 묶어 보여줘요. (services/showcase.ts)
-// 실제 농가 자료가 아닌 개발용 예시일 때는 화면에 그렇게 표시돼요.
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -9,7 +8,6 @@ import {
   type HomeBannerSlide,
 } from "@/components/common/HomeBanner";
 import { ArrowRightIcon } from "@/components/common/Icons";
-import { MockDataNotice } from "@/components/common/MockDataNotice";
 import { SafeImage } from "@/components/common/SafeImage";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import farmPhotos from "@/data/farm-photo-assets.json";
@@ -228,7 +226,6 @@ export default async function StoryPage({
       <HomeBanner slides={slides} />
 
       <div className="container-page pt-6">
-        <MockDataNotice subject="농가 이야기와 농산물 정보" />
       </div>
 
       {/* 2. 숫자로 보는 못난이마켓: 지금 데이터로 계산해요 */}
@@ -493,10 +490,6 @@ export default async function StoryPage({
             소개할 농가 정보를 준비하고 있어요.
           </p>
         )}
-        <p className="mt-6 text-center text-xs text-ink-muted">
-          ※ 농가 이야기는 서비스 시연을 위한 예시예요. 풍경 사진은 작물에 맞춰
-          고른 실제 농장 사진이며, 소개된 농가의 현장은 아니에요.
-        </p>
       </section>
 
       {/* 8. 농장지기 한마디 */}
