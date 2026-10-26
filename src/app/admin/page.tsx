@@ -1,6 +1,8 @@
 import { AdminProducts } from "@/components/admin/AdminProducts";
 import { getAdminAccess } from "@/lib/admin-auth";
 import { redirect } from "next/navigation";
+import { isFastApiCatalog } from "@/lib/catalog-mode";
+import { CatalogProductManager } from "@/components/admin/CatalogProductManager";
 
 export const metadata = {
   title: "관리자 상품 관리",
@@ -10,7 +12,12 @@ export const metadata = {
 export default async function AdminPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string }>;
+  searchParams: Promise<{
+    error?: string;
+    q?: string;
+    status?: string;
+    page?: string;
+  }>;
 }) {
   const access = await getAdminAccess();
   if (!access.allowed)
@@ -20,7 +27,11 @@ export default async function AdminPage({
   const params = await searchParams;
   return (
     <>
-      <AdminProducts />
+      <AdminProducts>
+        {isFastApiCatalog() ? (
+          <CatalogProductManager params={params} />
+        ) : undefined}
+      </AdminProducts>
       {params.error === "logout" && (
         <p
           role="alert"

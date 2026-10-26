@@ -7,6 +7,7 @@ import {
 } from "node:fs";
 import { join, dirname } from "node:path";
 import { randomUUID } from "node:crypto";
+import { isFastApiCatalog } from "./catalog-mode.ts";
 import { products } from "../data/mock/products.ts";
 import {
   adminReducer,
@@ -48,6 +49,7 @@ export function hiddenContent(state: AdminState, kind: string, id: string) {
   );
 }
 export function productUnavailable(id: string) {
+  if (isFastApiCatalog()) return false;
   const { state } = readContent();
   const product = state.products.find((item) => item.id === id);
   return Boolean(

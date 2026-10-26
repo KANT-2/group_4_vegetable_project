@@ -1,0 +1,36 @@
+from dataclasses import dataclass
+from typing import Protocol
+from uuid import UUID
+from app.domain.catalog.models import Product
+
+
+@dataclass(frozen=True)
+class Filters:
+    page: int = 1
+    size: int = 20
+    q: str = ""
+    category: str | None = None
+    reason: str | None = None
+    sort: str = "recommended"
+    collection: str | None = None
+    min_price: int | None = None
+    max_price: int | None = None
+    status: str = "active"
+
+
+class CatalogRepository(Protocol):
+    async def version(self) -> str: ...
+    async def list_products(self, filters: Filters) -> dict: ...
+    async def detail(self, product_id: str, include_inactive: bool = False) -> dict | None: ...
+    async def lock_product(self, product_id: str) -> Product | None: ...
+    async def save_product(self, product: Product) -> None: ...
+    async def list_wishes(self, user_id: UUID, page: int, size: int) -> dict: ...
+    async def wish_ids(self, user_id: UUID) -> list[str]: ...
+    async def add_wish(self, user_id: UUID, product_id: str) -> None: ...
+    async def delete_wish(self, user_id: UUID, product_id: str) -> bool: ...
+
+
+class CatalogUnitOfWork(Protocol):
+    repo: CatalogRepository
+    async def commit(self) -> None: ...
+    async def rollback(self) -> None: ...

@@ -27,7 +27,7 @@ async function CartContent() {
 
 async function WishlistContent() {
   const { userId, lines } = await getWishlist();
-  const key = lines.map((l) => l.productId).join(",");
+  const key = JSON.stringify(lines);
   return (
     <AccountGuard userId={userId}>
       <WishlistList key={key} initialLines={lines} />

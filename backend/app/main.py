@@ -10,6 +10,7 @@ from app.core.config import get_settings
 from app.core.error_handlers import register_common_error_handlers
 from app.core.logging import RequestTimingMiddleware, setup_logging
 from app.presentation.accounts.router import router as accounts_router
+from app.presentation.catalog.router import router as catalog_router
 from app.presentation.experiences.errors import register_experience_error_handlers
 from app.presentation.experiences.router import router as experiences_router
 from app.presentation.purchases.cart_router import router as cart_router
@@ -53,7 +54,7 @@ def create_app() -> FastAPI:
 
     # 기능 라우터 등록 자리 (형준이 모아서 반영, prefix 는 /api/v1/<기능>)
     app.include_router(accounts_router, prefix="/api/v1")   # 지나
-    # app.include_router(catalog_router, prefix="/api/v1")    # 서현
+    app.include_router(catalog_router, prefix="/api/v1")    # 서현
     app.include_router(cart_router, prefix="/api/v1")  # 영우(장바구니)
     register_purchase_error_handlers(app)
     app.include_router(experiences_router, prefix="/api/v1")  # 형준

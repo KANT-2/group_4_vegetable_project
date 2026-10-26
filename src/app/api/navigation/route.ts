@@ -1,7 +1,6 @@
 import { getCurrentUser } from "@/lib/auth";
 import { getCartMode } from "@/lib/cart-mode";
 import { apiGetCart } from "@/lib/cart-api";
-import { fastApi, type FastApiUser } from "@/lib/fastapi";
 import { guestCartCount } from "@/lib/guest-cart-core";
 import { readGuestCart } from "@/lib/guest-cart";
 import { createClient } from "@/lib/supabase/server";
@@ -9,6 +8,8 @@ import type { NavigationState } from "@/types/navigation";
 import { getCustomerDemo } from "@/lib/customer-demo";
 import { readDemoWishlist } from "@/lib/customer-demo-wishlist";
 import { readDemoCart } from "@/lib/customer-demo-cart";
+import { wishlistIds } from "@/lib/catalog-api";
+import { fastApi, type FastApiUser } from "@/lib/fastapi";
 
 const headers = { "Cache-Control": "private, no-store", Vary: "Cookie" };
 
@@ -44,9 +45,10 @@ export async function GET() {
     }
     if (mode.kind === "fastapi") {
       // FastAPI 로그인: 닉네임은 /accounts/me, 장바구니 수량은 FastAPI 장바구니에서 읽어요. (찜은 아직 FastAPI 에 없어요.)
-      const [me, cart] = await Promise.all([
+      const [me, cart, ids] = await Promise.all([
         fastApi<FastApiUser>("/api/v1/accounts/me", {}, mode.token),
         apiGetCart(mode.token),
+        wishlistIds(mode.token),
       ]);
       return Response.json(
         {
@@ -59,7 +61,7 @@ export async function GET() {
             (total, item) => total + item.quantity,
             0,
           ),
-          wishlistIds: [],
+          wishlistIds: ids,
         } satisfies NavigationState,
         { headers },
       );

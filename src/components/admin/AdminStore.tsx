@@ -56,6 +56,32 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
   const [saveError, setSaveError] = useState("");
   useEffect(() => {
     let disposed = false;
+    let version: string | undefined;
+    const check = async () => {
+      try {
+        const response = await fetch("/api/catalog-version", {
+          cache: "no-store",
+        });
+        if (!response.ok || disposed) return;
+        const next = (await response.json()).version as string;
+        if (disposed) return;
+        if (version !== undefined && version !== next) router.refresh();
+        version = next;
+      } catch {
+        /* Keep the current page when the API is offline. */
+      }
+    };
+    void check();
+    const timer = window.setInterval(check, 3000);
+    window.addEventListener("focus", check);
+    return () => {
+      disposed = true;
+      clearInterval(timer);
+      window.removeEventListener("focus", check);
+    };
+  }, [router]);
+  useEffect(() => {
+    let disposed = false;
     let loaded = false;
     const admin = pathname === "/admin" || pathname.startsWith("/admin/");
     const refresh = async () => {

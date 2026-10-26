@@ -9,6 +9,7 @@ test("장바구니 뱃지는 본인 상품의 총 수량을 세고 비로그인�
   let cartError = null;
   let queries = 0;
   const modules = {
+    "@/lib/catalog-api": { catalogToken: async () => null },
     "@/lib/customer-demo": { getCustomerDemo: async () => null },
     "@/lib/auth": { getCurrentUser: async () => user },
     "@/lib/cart-mode": {
