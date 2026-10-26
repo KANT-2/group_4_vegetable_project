@@ -15,6 +15,7 @@ function loadActions(overrides = {}) {
     }
   };
   const modules = {
+    "@/lib/customer-demo": { getCustomerDemo: async () => null, clearCustomerDemo: async () => {} },
     "next/cache": {
       revalidatePath: (...args) => calls.push(["revalidate", ...args]),
     },

@@ -8,6 +8,7 @@ import { summarizeCart } from "../src/lib/cart.ts";
 // src/actions/cart.ts를 가짜 Supabase로 실행해요.
 function loadActions({ user = { id: "me" }, db }) {
   const modules = {
+    "@/lib/customer-demo": { getCustomerDemo: async () => null },
     "next/cache": { revalidatePath: () => {} },
     "@/lib/auth": { getCurrentUser: async () => user },
     "@/schemas/cart": cartSchemas,

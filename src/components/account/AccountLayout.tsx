@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { AccountNav } from "./AccountNav";
+import { AccountMenu } from "./AccountMenu";
 import { AccountWelcome } from "./AccountWelcome";
 
 export function AccountLayout({
@@ -8,7 +8,7 @@ export function AccountLayout({
   description,
   children,
 }: {
-  active: "profile" | "orders";
+  active: "profile" | "orders" | "reviews";
   title: string;
   description?: string;
   children: ReactNode;
@@ -17,11 +17,14 @@ export function AccountLayout({
     <section className="bg-sand/70">
       <div className="container-page py-7 md:py-12">
         <div className="grid items-start gap-6 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-8">
-          <aside className="min-w-0 lg:sticky lg:top-6">
+          <aside className="min-w-0 overflow-hidden rounded-xl border border-line/60 bg-surface lg:sticky lg:top-6">
             <AccountWelcome />
-            <AccountNav active={active} sidebar />
+            <AccountMenu />
           </aside>
           <div className="min-w-0">
+            {active === "profile" && (
+              <div id="account-profile-notice" className="scroll-mt-6" />
+            )}
             <header className="mb-6 border-b-2 border-ink pb-5">
               <p className="mb-2 text-xs font-semibold tracking-widest text-brand">
                 MY MOTNANI

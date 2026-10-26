@@ -3,7 +3,8 @@
 import type { Metadata, Viewport } from "next";
 import { SiteFooter } from "@/components/common/SiteFooter";
 import { SiteHeader } from "@/components/common/SiteHeader";
-import { NavigationProvider } from "@/components/common/NavigationProvider";
+import { CustomerShell } from "@/components/common/CustomerShell";
+import { AdminStore } from "@/components/admin/AdminStore";
 // 마켓컬리와 같은 Pretendard 글꼴: 화면에 쓰인 글자 묶음만 내려받는 동적 부분 집합 (SIL OFL)
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
@@ -34,13 +35,11 @@ export default function RootLayout({
         >
           본문 바로가기
         </a>
-        <NavigationProvider>
-          <SiteHeader />
-          <main id="main" className="flex-1">
+        <AdminStore>
+          <CustomerShell header={<SiteHeader />} footer={<SiteFooter />}>
             {children}
-          </main>
-          <SiteFooter />
-        </NavigationProvider>
+          </CustomerShell>
+        </AdminStore>
       </body>
     </html>
   );

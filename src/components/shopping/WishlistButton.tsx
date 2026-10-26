@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { setWishlist } from "@/actions/cart";
 import { HeartIcon } from "@/components/common/Icons";
 import { useLoginReturn } from "./useLoginReturn";
+import { useNavigation } from "@/components/common/NavigationProvider";
 
 // 찜 버튼. 누르면 바로 바뀌고(낙관적 표시), 저장에 실패하면 원래대로 돌아가요.
 export function WishlistButton({
@@ -17,9 +18,17 @@ export function WishlistButton({
   initialWished: boolean;
   compact?: boolean;
 }) {
-  const [wished, setWished] = useState(initialWished);
+  const [optimisticWished, setWished] = useState(initialWished);
   const [error, setError] = useState("");
   const [pending, startTransition] = useTransition();
+  const { state, refresh } = useNavigation();
+  const wished = pending
+    ? optimisticWished
+    : state && !state.user
+      ? false
+      : state?.wishlistIds
+        ? state.wishlistIds.includes(productId)
+        : optimisticWished;
   const goLogin = useLoginReturn();
 
   const toggle = () => {
@@ -37,7 +46,9 @@ export function WishlistButton({
           setWished(!next);
           if (result.needsLogin) return goLogin();
           setError(result.error);
+          return;
         }
+        await refresh();
       } catch {
         setWished(!next);
         setError("찜하지 못했어요. 연결 상태를 확인해 주세요.");

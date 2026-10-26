@@ -9,6 +9,7 @@ test("장바구니 뱃지는 본인 상품의 총 수량을 세고 비로그인�
   let cartError = null;
   let queries = 0;
   const modules = {
+    "@/lib/customer-demo": { getCustomerDemo: async () => null },
     "@/lib/auth": { getCurrentUser: async () => user },
     "@/lib/supabase/server": {
       createClient: async () => ({
@@ -17,13 +18,15 @@ test("장바구니 뱃지는 본인 상품의 총 수량을 세고 비로그인�
             queries++;
             assert.equal(
               fields,
-              table === "cart_items" ? "quantity" : "nickname",
+              table === "cart_items" ? "quantity" : table === "wishlist_items" ? "product_id" : "nickname",
             );
             return {
               eq: (column, value) => {
-                assert.equal(column, table === "cart_items" ? "user_id" : "id");
+                assert.equal(column, table === "profiles" ? "id" : "user_id");
                 assert.equal(value, "current-user");
-                return table === "cart_items"
+                return table === "wishlist_items"
+                  ? Promise.resolve({ data: [], error: null })
+                  : table === "cart_items"
                   ? Promise.resolve({ data: quantities, error: cartError })
                   : {
                       maybeSingle: async () => ({

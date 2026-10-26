@@ -1,9 +1,11 @@
 import "server-only";
 import { requireUser } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
+import { getCustomerDemo } from "@/lib/customer-demo";
 
 export async function getCouponWallet() {
   const checkedAt = Date.now();
+  if (await getCustomerDemo()) return { checkedAt, userId: "customer-demo-qwer", coupons: [], error: null };
   const user = await requireUser("/cart?tab=coupons");
   const supabase = await createClient();
   const [wallet, campaigns] = await Promise.all([

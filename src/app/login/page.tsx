@@ -7,6 +7,8 @@ import { loginNext } from "@/lib/auth-urls";
 import { getGoogleLoginStatus } from "@/services/auth-settings";
 import { GoogleLoginButton } from "@/components/account/GoogleLoginButton";
 import { EmailLoginForm } from "@/components/account/EmailLoginForm";
+import { CustomerDemoLoginForm } from "@/components/account/CustomerDemoLoginForm";
+import { getCustomerDemo } from "@/lib/customer-demo";
 
 export const metadata: Metadata = { title: "로그인" };
 type SearchParams = Promise<{
@@ -16,6 +18,7 @@ type SearchParams = Promise<{
 
 async function LoginContent({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
+  if (await getCustomerDemo()) redirect("/");
   const next = loginNext(
     typeof params.next === "string" ? params.next : undefined,
   );
@@ -63,6 +66,7 @@ export default function LoginPage({
           <br />
           나만의 장바구니와 찜을 이어가세요.
         </p>
+        {process.env.NODE_ENV === "development" && <CustomerDemoLoginForm />}
         <Suspense
           fallback={<p aria-live="polite">로그인 연결을 확인하고 있어요.</p>}
         >

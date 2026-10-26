@@ -8,6 +8,7 @@ import { SafeImage } from "@/components/common/SafeImage";
 import type { WishlistLine } from "@/lib/cart";
 import { formatPrice, getDiscountRate } from "@/lib/format";
 import { useLoginReturn } from "./useLoginReturn";
+import { useNavigation } from "@/components/common/NavigationProvider";
 
 // 찜 목록: 상품 이름(또는 사진)을 누르면 상품 페이지로, 하트를 누르면 찜 해제돼요.
 export function WishlistList({
@@ -20,6 +21,7 @@ export function WishlistList({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [, startTransition] = useTransition();
   const goLogin = useLoginReturn();
+  const { refresh } = useNavigation();
 
   const unwish = (line: WishlistLine) => {
     if (busy) return; // 중복 클릭 방지
@@ -37,6 +39,7 @@ export function WishlistList({
           return;
         }
         setLines((prev) => prev.filter((l) => l.productId !== line.productId));
+        await refresh();
       } catch {
         setErrors((prev) => ({
           ...prev,

@@ -19,7 +19,7 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
     create role authenticated;
     create role service_role bypassrls;
     create schema auth;
-    create table auth.users (id uuid primary key);
+    create table auth.users (id uuid primary key, email text, raw_user_meta_data jsonb default '{}');
     create function auth.uid() returns uuid language sql stable as $$
       select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid
     $$;
@@ -74,8 +74,9 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
     const { rows } = await db.query(
       "select relname from pg_class where relnamespace = 'public'::regnamespace and relkind = 'r' and relrowsecurity",
     );
-    // 기존 12개 + 체험 예약 3개(experiences, experience_sessions, experience_reservations)
-    assert.equal(rows.length, 15);
+    // 기존 12개 + 체험 3개 + 관리자 가입 신청 1개.
+    assert.equal(rows.length, 16);
+    assert.ok(rows.some((row) => row.relname === "admin_registrations"));
     assert.ok(rows.some((row) => row.relname === "experience_reservations"));
     assert.ok(rows.some((row) => row.relname === "user_coupons"));
     assert.ok(rows.some((row) => row.relname === "coupon_campaigns"));
