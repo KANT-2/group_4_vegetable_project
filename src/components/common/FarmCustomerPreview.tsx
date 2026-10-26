@@ -11,8 +11,7 @@ export function FarmCustomerPreview({ id }: { id: string }) {
       <section className="container-page section">
         <h1 className="page-title">농가 정보를 찾을 수 없습니다.</h1>
         <p className="mt-3 text-ink-muted">
-          이 미리보기는 현재 브라우저에서 등록·수정한 농가만 표시합니다.
-          새로고침하면 임시 정보가 초기화됩니다.
+          저장된 농가 정보를 불러오는 중이거나 삭제된 농가입니다.
         </p>
         <Link href="/admin/farms" className="btn btn-secondary mt-6">
           농가 관리로 돌아가기

@@ -7,5 +7,5 @@
 - Google 로그인은 기존 Supabase OAuth를 사용합니다. 최상위 Supabase URL·Publishable Key·사이트 URL 및 Google 제공자와 callback 설정이 필요합니다.
 - Google 계정은 신뢰된 서버 또는 Supabase 관리 도구에서 `app_metadata.role`이 `admin`으로 지정되어야 관리자 페이지에 접근할 수 있습니다. 사용자 수정이 가능한 `user_metadata`는 권한 판단에 사용하지 않습니다. 이 권한 기준은 지나 담당 공통 인증과 통합 시 조율해야 합니다.
 - 로그아웃은 관리자 세션 및 현재 Supabase 로그인 세션을 종료합니다.
-- 현재 상품 수정은 화면 메모리에만 반영됩니다. 실제 상품 DB 저장 API는 아직 연결하지 않았습니다.
+- 관리자 콘텐츠 변경은 서버 파일에 저장되어 고객 화면에 반영됩니다. 새로고침 후에도 유지되며, 파일 저장 방식과 DB 연동 범위는 [managed-content.md](managed-content.md)를 참고합니다.
 - 현재 아이디 로그인은 로컬 시안 확인을 위한 구성입니다. 공개 서비스 적용 전에는 공통 인증과 로그인 시도 제한 등을 통합해야 합니다.

@@ -1,6 +1,15 @@
 "use client";
 
-import { createContext, useContext, useReducer, useRef, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useRef,
+  useState,
+  useEffect,
+} from "react";
+import { usePathname, useRouter } from "next/navigation";
+import type { AdminAction } from "@/lib/admin-store";
 import { ConfirmDialog } from "./ConfirmDialog";
 import type { Dispatch, SetStateAction } from "react";
 import { products } from "@/data/mock/products";
@@ -38,6 +47,95 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
     recipeChanges: {},
     trash: [],
   });
+  const pathname = usePathname();
+  const router = useRouter();
+  const current = useRef({ revision: 0, state });
+  const queue = useRef(Promise.resolve());
+  const ready = useRef(false);
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
+  useEffect(() => {
+    let disposed = false;
+    let loaded = false;
+    const admin = pathname === "/admin" || pathname.startsWith("/admin/");
+    const refresh = async () => {
+      if (saving) return;
+      try {
+        if (loaded && ready.current) {
+          const version = await fetch("/api/managed-content?version=1", {
+            cache: "no-store",
+          });
+          if (
+            version.ok &&
+            (await version.json()).revision === current.current.revision
+          )
+            return;
+        }
+        const response = await fetch(
+          admin ? "/admin/api/content?admin=1" : "/api/managed-content",
+          { cache: "no-store" },
+        );
+        if (!response.ok) return;
+        const data = await response.json();
+        if (disposed) return;
+        const changed =
+          ready.current && current.current.revision !== data.revision;
+        current.current = data;
+        ready.current = true;
+        loaded = true;
+        dispatch({ type: "hydrate", state: data.state });
+        if (changed && !admin) router.refresh();
+      } catch {
+        /* Keep the last confirmed content while offline. */
+      }
+    };
+    void refresh();
+    const timer = window.setInterval(refresh, 3000);
+    window.addEventListener("focus", refresh);
+    return () => {
+      disposed = true;
+      clearInterval(timer);
+      window.removeEventListener("focus", refresh);
+    };
+  }, [pathname, router, saving]);
+  function persist(action: AdminAction) {
+    queue.current = queue.current.then(async () => {
+      setSaving(true);
+      setSaveError("");
+      try {
+        if (!ready.current)
+          throw new Error(
+            "데이터를 불러오는 중입니다. 잠시 후 다시 저장해 주세요.",
+          );
+        const serializable =
+          action.type === "products" && typeof action.update === "function"
+            ? {
+                ...action,
+                update: action.update(current.current.state.products),
+              }
+            : action;
+        const response = await fetch("/admin/api/content", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            revision: current.current.revision,
+            action: serializable,
+          }),
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error);
+        current.current = data;
+        dispatch({ type: "hydrate", state: data.state });
+        router.refresh();
+      } catch (error) {
+        setSaveError(
+          error instanceof Error ? error.message : "저장하지 못했습니다.",
+        );
+      } finally {
+        setSaving(false);
+      }
+    });
+  }
   type Request = {
     message: string;
     name?: string;
@@ -69,11 +167,11 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
     <Context.Provider
       value={{
         ...state,
-        setProducts: (update) => dispatch({ type: "products", update }),
-        saveRecipe: (recipe) => dispatch({ type: "save-recipe", recipe }),
-        saveFarm: (farm) => dispatch({ type: "save-farm", farm }),
+        setProducts: (update) => persist({ type: "products", update }),
+        saveRecipe: (recipe) => persist({ type: "save-recipe", recipe }),
+        saveFarm: (farm) => persist({ type: "save-farm", farm }),
         savePromotion: (promotion) =>
-          dispatch({ type: "save-promotion", promotion }),
+          persist({ type: "save-promotion", promotion }),
         moveToTrash: async (entry) => {
           if (
             !(await ask({
@@ -84,7 +182,7 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
             }))
           )
             return false;
-          dispatch({
+          persist({
             type: "trash",
             entry: { ...entry, deletedAt: new Date().toISOString() },
           });
@@ -109,7 +207,7 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
             }))
           )
             return false;
-          dispatch({ type: "restore", kind, id });
+          persist({ type: "restore", kind, id });
           return true;
         },
         permanentlyDelete: async (kind, id) => {
@@ -126,12 +224,20 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
             }))
           )
             return false;
-          dispatch({ type: "permanent-delete", kind, id });
+          persist({ type: "permanent-delete", kind, id });
           return true;
         },
       }}
     >
       {children}
+      {(saving || saveError) && (
+        <div
+          role={saveError ? "alert" : "status"}
+          className="fixed bottom-5 left-1/2 z-[100] max-w-[90vw] -translate-x-1/2 rounded-xl border border-line bg-white px-5 py-3 text-sm shadow-lg"
+        >
+          {saveError || "서버에 저장하고 있어요…"}
+        </div>
+      )}
       {request && <ConfirmDialog {...request} onResult={finish} />}
     </Context.Provider>
   );
