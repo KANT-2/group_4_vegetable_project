@@ -35,17 +35,17 @@ async function LoginContent({ searchParams }: { searchParams: SearchParams }) {
           다시 시도해 주세요.
         </p>
       )}
+      <EmailLoginForm next={next} />
+      <div className="my-6 flex items-center gap-3 text-sm text-ink-muted">
+        <span className="h-px flex-1 bg-line" />
+        <span>또는 Google로 로그인</span>
+        <span className="h-px flex-1 bg-line" />
+      </div>
       <GoogleLoginButton
         next={next}
         ready={status.ready}
         message={status.message}
       />
-      <div className="my-6 flex items-center gap-3 text-sm text-ink-muted">
-        <span className="h-px flex-1 bg-line" />
-        <span>또는 이메일로 로그인</span>
-        <span className="h-px flex-1 bg-line" />
-      </div>
-      <EmailLoginForm next={next} />
     </>
   );
 }
