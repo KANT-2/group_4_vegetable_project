@@ -98,6 +98,14 @@ async def test_collection_filters(repo, collection, expected):
     assert [p["id"] for p in (await repo[0].list_products(Filters(collection=(collection,))))["items"]] == expected
 
 
+async def test_vegetable_filter_matches_only_that_vegetable(repo):
+    everything = (await repo[0].list_products(Filters()))["items"]
+    vegetable = everything[0]["vegetable_id"]
+    only = (await repo[0].list_products(Filters(vegetable=vegetable)))["items"]
+    assert only and all(p["vegetable_id"] == vegetable for p in only)
+    assert (await repo[0].list_products(Filters(vegetable="no-such-vegetable")))["items"] == []
+
+
 async def test_several_collections_must_all_match(repo):
     # 제철이면서 1인 가구(소포장)인 상품만
     both = await repo[0].list_products(Filters(collection=("seasonal", "single")))

@@ -16,6 +16,7 @@ class Filters:
     min_price: int | None = None
     max_price: int | None = None
     status: str = "active"
+    vegetable: str | None = None  # 채소 종류 하나로 거르기 (예: carrot)
 
 
 class CatalogRepository(Protocol):

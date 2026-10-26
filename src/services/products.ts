@@ -30,7 +30,9 @@ export async function getCatalogPage(
   }
   const query = new URLSearchParams({ page: String(page), size: String(size) });
   for (const [key, value] of Object.entries(filters))
-    if (value) query.set(key, String(value));
+    if (Array.isArray(value))
+      for (const item of value) query.append(key, String(item));
+    else if (value) query.set(key, String(value));
   const result = await fastApi<CatalogPage>(
     `/api/v1/catalog/products?${query}`,
   );
@@ -101,13 +103,17 @@ export async function getProductList(
     .filter(
       (p) =>
         (!filters.category || p.category === filters.category) &&
+        (!filters.vegetable || p.vegetableId === filters.vegetable) &&
         (!filters.reason || p.uglyReason === filters.reason) &&
         (!keyword || matchesKeyword(p)),
     );
 
-  if (filters.collection) {
+  if (filters.collection?.length) {
     const { COLLECTIONS } = await import("@/lib/catalog");
-    list = list.filter(COLLECTIONS[filters.collection].match);
+    // 여러 구매 옵션을 고르면 모두 만족하는 상품만 (FastAPI 와 같은 규칙)
+    list = list.filter((p) =>
+      filters.collection!.every((key) => COLLECTIONS[key].match(p)),
+    );
   }
   return filters.sort === "newest" ? list : rankProducts(list, filters.sort);
 }

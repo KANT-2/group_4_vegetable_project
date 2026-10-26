@@ -27,11 +27,12 @@ def filters(
     collection: Annotated[list[Collection] | None, Query(max_length=4)] = None,
     min_price: Annotated[int | None, Query(ge=0, le=2147483647)] = None,
     max_price: Annotated[int | None, Query(ge=0, le=2147483647)] = None,
+    vegetable: Annotated[str | None, Query(max_length=100, pattern=r"^[a-z0-9]+(-[a-z0-9]+)*$")] = None,
 ):
     if min_price is not None and max_price is not None and min_price > max_price:
         raise HTTPException(422, "최소 가격이 최대 가격보다 클 수 없습니다.")
     # 같은 구매 옵션이 여러 번 와도 한 번으로, 순서는 고정해 같은 조건이면 같은 Filters 가 되게 한다.
-    return Filters(page, size, q, category, reason, sort, tuple(sorted(set(collection or []))), min_price, max_price)
+    return Filters(page, size, q, category, reason, sort, tuple(sorted(set(collection or []))), min_price, max_price, vegetable=vegetable)
 
 
 FilterDep = Annotated[Filters, Depends(filters)]

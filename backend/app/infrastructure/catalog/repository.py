@@ -34,6 +34,8 @@ def conditions(f: Filters):
         terms.append(V.category == f.category)
     if f.reason:
         terms.append(P.ugly_reason == f.reason)
+    if f.vegetable:
+        terms.append(P.vegetable_id == f.vegetable)
     if f.min_price is not None:
         terms.append(P.price >= f.min_price)
     if f.max_price is not None:
