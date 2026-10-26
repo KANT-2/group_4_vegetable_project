@@ -58,3 +58,13 @@ class CartItem:
 
     def change(self, quantity: int) -> None:
         self.quantity = validate_quantity(quantity)
+
+
+def merged_quantity(existing: int | None, incoming: int) -> int:
+    """비회원 장바구니를 합칠 때의 수량: 이미 담긴 수량과 비회원으로 담아 둔 수량 중 큰 값.
+
+    더하지 않는 이유: 같은 요청이 네트워크 문제로 다시 오거나 두 탭에서 동시에 오더라도 결과가 같아야(멱등) 하기 때문이다.
+    더하는 방식이면 서버는 반영했는데 응답만 실패한 경우 재시도에서 수량이 두 번 더해진다.
+    """
+    validate_quantity(incoming)
+    return incoming if existing is None else max(validate_quantity(existing), incoming)

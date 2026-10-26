@@ -8,6 +8,7 @@ from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.application.purchases.cart_service import CartService
+from app.application.purchases.order_service import OrderService
 from app.core.database import get_session
 from app.infrastructure.purchases.cart_repository import SqlAlchemyPurchaseUnitOfWork
 from app.presentation.accounts.dependencies import CurrentUser
@@ -15,3 +16,7 @@ from app.presentation.accounts.dependencies import CurrentUser
 
 async def get_cart_service(session: AsyncSession = Depends(get_session)) -> CartService:
     return CartService(SqlAlchemyPurchaseUnitOfWork(session))
+
+
+async def get_order_service(session: AsyncSession = Depends(get_session)) -> OrderService:
+    return OrderService(SqlAlchemyPurchaseUnitOfWork(session))

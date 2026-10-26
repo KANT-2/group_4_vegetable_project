@@ -47,7 +47,8 @@ export function isPrivatePath(pathname: string): boolean {
   } catch {
     return false;
   }
-  return ["/cart", "/mypage"].some(
+  // 장바구니(/cart)는 비회원도 쓸 수 있고, 찜·쿠폰 탭은 화면에서 로그인을 확인해요.
+  return ["/cart/checkout", "/mypage"].some(
     (path) => pathname === path || pathname.startsWith(`${path}/`),
   );
 }

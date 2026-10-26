@@ -8,6 +8,9 @@ import { getCustomerDemo } from "@/lib/customer-demo";
 import { readDemoWishlist } from "@/lib/customer-demo-wishlist";
 import { getProductById } from "./products";
 import { readDemoCart } from "@/lib/customer-demo-cart";
+import { getCartMode } from "@/lib/cart-mode";
+import { apiGetCart } from "@/lib/cart-api";
+import { readGuestCart } from "@/lib/guest-cart";
 
 const PRODUCT_FIELDS =
   "products(id, name, unit, price, original_price, image_path, is_active)";
@@ -46,27 +49,79 @@ function toProductInfo(productId: string, product: ProductRow) {
   };
 }
 
+// 장바구니 한 줄을 화면용으로 만들어요. 상품 정보는 상품 데이터(B)에서 읽고, 판매 종료·삭제된 상품은 available=false 예요.
+async function linesFromCatalog(
+  items: { productId: string; quantity: number }[],
+) {
+  return Promise.all(
+    items.map(async ({ productId, quantity }) => {
+      const product = await getProductById(productId);
+      return {
+        productId,
+        quantity,
+        // 재고가 0인 상품(품절)은 구매할 수 없어요.
+        available: Boolean(product && product.stock !== 0),
+        name: product?.name ?? "판매가 끝난 상품",
+        unit: product?.unit ?? "",
+        price: product?.price ?? 0,
+        originalPrice: product?.originalPrice ?? 0,
+        imageUrl: product?.imageUrl,
+      };
+    }),
+  );
+}
+
+// userId 는 로그인 사용자의 ID 예요. 비회원은 isGuest=true 이고 계정 확인(AccountGuard)을 거치지 않아요.
 export async function getCart(): Promise<{
   userId: string;
+  isGuest: boolean;
+  // 로그인했는데 합치지 못한 비회원 장바구니 줄 수(0이면 합칠 것이 없어요).
+  guestPending: number;
   lines: CartLine[];
 }> {
-  if (await getCustomerDemo()) {
+  const mode = await getCartMode();
+  if (mode.kind === "demo") {
+    return {
+      userId: "customer-demo-qwer",
+      isGuest: false,
+      guestPending: 0,
+      lines: await linesFromCatalog(readDemoCart()),
+    };
+  }
+  if (mode.kind === "guest") {
+    return {
+      userId: "guest",
+      isGuest: true,
+      guestPending: 0,
+      lines: await linesFromCatalog(await readGuestCart()),
+    };
+  }
+  if (mode.kind === "fastapi") {
+    // 수량·단가·판매 여부는 FastAPI(서버 기준)를 따르고, 정가·사진은 상품 데이터에서 보충해요.
+    const cart = await apiGetCart(mode.token);
     const lines = await Promise.all(
-      readDemoCart().map(async ({ productId, quantity }) => {
-        const product = await getProductById(productId);
+      [...cart.items].reverse().map(async (line) => {
+        const catalog = await getProductById(line.product_id);
+        // FastAPI 는 판매 여부(is_active)만 알아서, 재고가 0인 품절 상품은 화면 쪽 상품 데이터로 함께 판단해요.
+        const available = line.is_active && catalog?.stock !== 0;
         return {
-          productId,
-          quantity,
-          available: Boolean(product && product.stock !== 0),
-          name: product?.name ?? "판매가 끝난 상품",
-          unit: product?.unit ?? "",
-          price: product?.price ?? 0,
-          originalPrice: product?.originalPrice ?? 0,
-          imageUrl: product?.imageUrl,
+          productId: line.product_id,
+          quantity: line.quantity,
+          available,
+          name: available ? line.name : "판매가 끝난 상품",
+          unit: available ? line.unit : "",
+          price: available ? line.unit_price : 0,
+          originalPrice: available
+            ? (catalog?.originalPrice ?? line.unit_price)
+            : 0,
+          imageUrl: available
+            ? (catalog?.imageUrl ?? toImageSrc(line.image_path))
+            : undefined,
         };
       }),
     );
-    return { userId: "customer-demo-qwer", lines };
+    const guestPending = (await readGuestCart()).length;
+    return { userId: mode.userId, isGuest: false, guestPending, lines };
   }
   const user = await requireUser("/cart");
   const supabase = await createClient();
@@ -78,6 +133,8 @@ export async function getCart(): Promise<{
   if (error) throw new Error("장바구니를 불러오지 못했어요.");
   return {
     userId: user.id,
+    isGuest: false,
+    guestPending: 0,
     lines: data.map((row) => ({
       productId: row.product_id,
       quantity: row.quantity,

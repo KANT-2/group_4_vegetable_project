@@ -7,8 +7,8 @@ from uuid import UUID
 
 from app.application.purchases.errors import NotFound
 from app.application.purchases.ports import PurchaseUnitOfWork
-from app.application.purchases.read_models import CartLine, CartView
-from app.domain.purchases.cart import CartItem, validate_quantity
+from app.application.purchases.read_models import CartLine, CartView, MergeResult
+from app.domain.purchases.cart import CartItem, merged_quantity, validate_quantity
 
 
 class CartService:
@@ -56,6 +56,35 @@ class CartService:
             await self._uow.rollback()
             raise
         return await self._line(user_id, product_id)
+
+    async def merge_items(self, user_id: UUID, items: list[tuple[str, int]]) -> MergeResult:
+        """로그인 직후 비회원 장바구니를 한 번에 합친다. 같은 요청을 몇 번 보내도(응답 유실 후 재시도, 두 탭) 결과가 같다.
+
+        수량은 더하지 않고 기존 수량과 비회원 수량 중 큰 값으로 맞춘다. 판매 중인 상품만 합치고 나머지는 건너뛴다.
+        모든 상품이 한 트랜잭션이라 중간에 실패하면 아무것도 반영되지 않는다.
+        """
+        wanted: dict[str, int] = {}
+        for product_id, quantity in items:
+            validate_quantity(quantity)
+            # 같은 상품이 여러 번 오면 큰 수량 하나로 본다
+            wanted[product_id] = merged_quantity(wanted.get(product_id), quantity)
+        repo = self._uow.cart
+        merged = 0
+        skipped: list[str] = []
+        try:
+            # 상품 ID 순서로 처리해 동시에 합치는 요청끼리 잠금 순서가 같게 한다(교착 방지)
+            for product_id in sorted(wanted):
+                product = await repo.get_product(product_id)
+                if product is None or not product.is_active:
+                    skipped.append(product_id)
+                    continue
+                await repo.upsert_at_least(CartItem(user_id=user_id, product_id=product_id, quantity=wanted[product_id]))
+                merged += 1
+            await self._uow.commit()
+        except Exception:
+            await self._uow.rollback()
+            raise
+        return MergeResult(merged=merged, skipped=skipped)
 
     async def remove_item(self, user_id: UUID, product_id: str) -> None:
         try:

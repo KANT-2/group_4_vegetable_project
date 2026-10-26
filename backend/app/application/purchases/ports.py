@@ -3,8 +3,9 @@
 from typing import Protocol
 from uuid import UUID
 
-from app.application.purchases.read_models import CartLine
+from app.application.purchases.read_models import CartLine, OrderView
 from app.domain.purchases.cart import CartItem, ProductInfo
+from app.domain.purchases.order import Order
 
 
 class CartRepository(Protocol):
@@ -17,15 +18,39 @@ class CartRepository(Protocol):
     async def add_item(self, item: CartItem) -> None:
         """없으면 새로 만들고, 동시에 같은 상품을 담아 이미 있으면 수량을 더한다."""
 
+    async def upsert_at_least(self, item: CartItem) -> None:
+        """없으면 새로 만들고, 있으면 기존 수량과 item.quantity 중 큰 값으로 맞춘다. 반복·동시에 실행해도 결과가 같다."""
+
     async def update_item(self, item: CartItem) -> None: ...
 
     async def delete_item(self, user_id: UUID, product_id: str) -> bool: ...
+
+
+class OrderRepository(Protocol):
+    async def lock_user(self, user_id: UUID) -> None:
+        """같은 사용자의 주문 요청을 한 줄로 세운다(트랜잭션이 끝나면 풀린다). 같은 request_key 의 중복 생성을 막는 데 쓴다."""
+
+    async def get_by_request_key(self, user_id: UUID, request_key: UUID) -> OrderView | None: ...
+
+    async def checkout_lines(self, user_id: UUID) -> list[tuple[ProductInfo, int]]:
+        """주문할 장바구니 줄(상품 정보, 수량)을 잠그고 읽는다. 주문하는 동안 장바구니·상품이 바뀌지 않게 한다."""
+
+    async def add(self, order: Order) -> None: ...
+
+    async def remove_cart_items(self, user_id: UUID, product_ids: list[str]) -> None:
+        """주문한 상품만 장바구니에서 지운다."""
+
+    async def get(self, user_id: UUID, order_id: UUID) -> OrderView | None:
+        """본인 주문만 돌려준다. 남의 주문이거나 없으면 None."""
+
+    async def list_for_user(self, user_id: UUID, page: int, size: int) -> tuple[list[OrderView], int]: ...
 
 
 class PurchaseUnitOfWork(Protocol):
     """한 요청의 트랜잭션 경계. 서비스가 commit/rollback 을 결정한다."""
 
     cart: CartRepository
+    orders: OrderRepository
 
     async def commit(self) -> None: ...
 

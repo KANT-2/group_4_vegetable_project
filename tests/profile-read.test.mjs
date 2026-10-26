@@ -97,6 +97,7 @@ test("결제 화면은 장바구니·배송지 조회를 동시에 시작하고 
     },
     "@/components/account/AccountGuard": { AccountGuard: () => null },
     "@/components/shopping/CheckoutForm": { CheckoutForm: () => null },
+    "@/components/shopping/GuestCartMerge": { GuestCartMerge: () => null },
   };
   const exports = {};
   const { outputText } = ts.transpileModule(

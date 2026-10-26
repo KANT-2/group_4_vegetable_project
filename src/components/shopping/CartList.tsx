@@ -10,7 +10,13 @@ import { formatPrice } from "@/lib/format";
 import { QuantityStepper } from "./QuantityStepper";
 import { useLoginReturn } from "./useLoginReturn";
 
-export function CartList({ initialLines }: { initialLines: CartLine[] }) {
+export function CartList({
+  initialLines,
+  isGuest = false,
+}: {
+  initialLines: CartLine[];
+  isGuest?: boolean;
+}) {
   const [lines, setLines] = useState(initialLines);
   const [busy, setBusy] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -169,8 +175,10 @@ export function CartList({ initialLines }: { initialLines: CartLine[] }) {
         <div className="card sticky top-4 space-y-3 p-5">
           <SummaryRows summary={summary} />
           <OrderButton
+            isGuest={isGuest}
             disabled={!!busy || summary.kinds === 0 || summary.unavailable > 0}
           />
+          {isGuest && <GuestNotice />}
         </div>
       </aside>
       <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-surface px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] lg:hidden">
@@ -182,8 +190,10 @@ export function CartList({ initialLines }: { initialLines: CartLine[] }) {
             </span>
           </p>
           <OrderButton
+            isGuest={isGuest}
             disabled={!!busy || summary.kinds === 0 || summary.unavailable > 0}
           />
+          {isGuest && <GuestNotice />}
         </div>
         <p className="mt-2 text-xs text-ink-muted">
           배송비 {formatPrice(summary.shippingFee)} 포함 · 20,000원 이상
@@ -238,16 +248,35 @@ function SummaryRows({
   );
 }
 
-function OrderButton({ disabled }: { disabled: boolean }) {
+// 비회원은 장바구니만 쓸 수 있어요. 주문·결제는 로그인한 뒤 같은 장바구니로 이어서 해요.
+function GuestNotice() {
+  return (
+    <p className="text-xs text-ink-muted">
+      지금은 비회원이라 이 기기에만 저장돼요. 로그인하면 담아 둔 상품이 내
+      장바구니로 합쳐지고, 주문·결제도 할 수 있어요.
+    </p>
+  );
+}
+
+function OrderButton({
+  disabled,
+  isGuest,
+}: {
+  disabled: boolean;
+  isGuest: boolean;
+}) {
   if (!disabled)
     return (
-      <Link href="/cart/checkout" className="btn btn-primary">
-        주문하기
+      <Link
+        href={isGuest ? "/login?next=%2Fcart%2Fcheckout" : "/cart/checkout"}
+        className="btn btn-primary"
+      >
+        {isGuest ? "로그인하고 주문하기" : "주문하기"}
       </Link>
     );
   return (
     <button type="button" className="btn btn-primary" disabled>
-      주문하기
+      {isGuest ? "로그인하고 주문하기" : "주문하기"}
     </button>
   );
 }

@@ -125,3 +125,54 @@ async def test_failure_while_saving_rolls_back(service):
         await failing.add_item(USER_A, CARROT.id, 2)
     assert uow.rollbacks == 1
     assert uow.working == {} and uow.committed == {}  # 일부만 저장되지 않는다
+
+
+# ---------- 비회원 장바구니 합치기 (멱등) ----------
+
+
+async def test_merge_adds_new_lines_and_skips_unavailable_products(service, uow):
+    result = await service.merge_items(USER_A, [(CARROT.id, 2), (RETIRED.id, 1), ("no-such-product", 4)])
+    assert result.merged == 1
+    assert sorted(result.skipped) == sorted([RETIRED.id, "no-such-product"])
+    assert uow.quantity(USER_A, CARROT.id) == 2
+    assert uow.quantity(USER_A, RETIRED.id) is None
+
+
+async def test_merge_keeps_the_larger_quantity_instead_of_adding(service, uow):
+    await service.add_item(USER_A, CARROT.id, 3)
+    await service.add_item(USER_A, ONION.id, 1)
+    await service.merge_items(USER_A, [(CARROT.id, 2), (ONION.id, 5)])
+    assert uow.quantity(USER_A, CARROT.id) == 3  # 기존이 더 크면 그대로
+    assert uow.quantity(USER_A, ONION.id) == 5  # 비회원 수량이 더 크면 그 수량
+
+
+async def test_repeating_the_same_merge_never_changes_the_result(service, uow):
+    # 서버는 반영했는데 응답만 유실돼 같은 요청을 다시 보내는 상황
+    items = [(CARROT.id, 2), (ONION.id, 1)]
+    for _ in range(5):
+        await service.merge_items(USER_A, items)
+    assert uow.quantity(USER_A, CARROT.id) == 2 and uow.quantity(USER_A, ONION.id) == 1
+
+
+async def test_duplicate_products_in_one_request_use_the_larger_quantity(service, uow):
+    await service.merge_items(USER_A, [(CARROT.id, 2), (CARROT.id, 7), (CARROT.id, 4)])
+    assert uow.quantity(USER_A, CARROT.id) == 7
+
+
+async def test_invalid_quantity_rejects_the_whole_merge_without_saving_anything(service, uow):
+    with pytest.raises(InvalidQuantity):
+        await service.merge_items(USER_A, [(CARROT.id, 2), (ONION.id, 0)])
+    assert uow.committed == {}
+
+
+async def test_merge_only_changes_the_given_users_cart(service, uow):
+    await service.add_item(USER_B, CARROT.id, 4)
+    await service.merge_items(USER_A, [(CARROT.id, 9)])
+    assert uow.quantity(USER_A, CARROT.id) == 9 and uow.quantity(USER_B, CARROT.id) == 4
+
+
+async def test_failure_while_merging_rolls_everything_back():
+    uow = FakeUnitOfWork(fail_on_commit=RuntimeError("저장 실패"))
+    with pytest.raises(RuntimeError):
+        await CartService(uow).merge_items(USER_A, [(CARROT.id, 2), (ONION.id, 1)])
+    assert uow.rollbacks == 1 and uow.committed == {} and uow.working == {}

@@ -17,6 +17,10 @@ test("모의 결제 Action은 계정 전환·추가 필드·잘못된 입력을 
     zod: { z },
     "next/cache": { revalidatePath: (path) => paths.push(path) },
     "@/lib/auth": { getCurrentUser: async () => user },
+    "@/lib/cart-mode": {
+      getCartMode: async () =>
+        user ? { kind: "supabase", userId: user.id } : { kind: "guest" },
+    },
     "@/schemas/shipping": { checkoutShippingSchema },
     "@/lib/supabase/server": {
       createClient: async () => ({
