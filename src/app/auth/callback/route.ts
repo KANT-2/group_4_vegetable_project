@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { getSiteOrigin, loginNext } from "@/lib/auth-urls";
 import { getProfile } from "@/services/profile";
+import { fastApi, type FastApiToken } from "@/lib/fastapi";
+import { ACCESS_TOKEN_COOKIE, accessTokenCookieOptions } from "@/lib/auth-cookie";
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
@@ -26,17 +28,28 @@ export async function GET(request: Request) {
     if (!code || requestUrl.searchParams.has("error"))
       throw new Error("missing code");
     const supabase = await createClient();
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
-    if (error) throw new Error("code exchange failed");
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+    if (error || !data.session?.access_token)
+      throw new Error("code exchange failed");
+    const token = await fastApi<FastApiToken>("/api/v1/accounts/google-login", {
+      method: "POST",
+      body: JSON.stringify({ access_token: data.session.access_token }),
+    });
+    const success = NextResponse.redirect(new URL(next, origin), {
+      headers: { "Cache-Control": "private, no-store" },
+    });
+    success.cookies.set(
+      ACCESS_TOKEN_COOKIE,
+      token.access_token,
+      accessTokenCookieOptions(token.expires_in),
+    );
     try {
       await getProfile();
     } catch {
       await supabase.auth.signOut();
       throw new Error("profile setup failed");
     }
-    return NextResponse.redirect(new URL(next, origin), {
-      headers: { "Cache-Control": "private, no-store" },
-    });
+    return success;
   } catch {
     return NextResponse.redirect(failure, {
       headers: { "Cache-Control": "private, no-store" },

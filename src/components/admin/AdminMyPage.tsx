@@ -64,7 +64,7 @@ export function AdminMyPage({ profile }: { profile: AdminProfileView }) {
               <input
                 name="name"
                 defaultValue={profile.name}
-                readOnly={!profile.editable}
+                readOnly={!profile.local}
                 required
                 maxLength={60}
                 autoComplete="name"

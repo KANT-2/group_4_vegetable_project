@@ -25,6 +25,7 @@ class Account:
     password_hash: str
     role: UserRole = UserRole.USER
     is_active: bool = True
+    username: str | None = None
 
 
 @dataclass(frozen=True)

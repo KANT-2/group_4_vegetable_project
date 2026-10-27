@@ -17,6 +17,7 @@ export type FastApiAddress = {
 export type FastApiUser = {
   id: string;
   email: string;
+  username: string | null;
   role: "user" | "admin";
   profile: {
     user_id: string;

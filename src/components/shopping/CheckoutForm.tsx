@@ -49,6 +49,12 @@ export function CheckoutForm({
   const { refresh } = useNavigation();
   const summary = summarizeCart(lines);
   const canOrder = lines.length > 0 && summary.unavailable === 0;
+  const hasInitialAddress = Boolean(
+    initialAddress.recipient_name &&
+      initialAddress.recipient_phone &&
+      initialAddress.postal_code &&
+      initialAddress.address,
+  );
 
   function submit() {
     if (busy.current || !canOrder) return;
@@ -159,8 +165,9 @@ export function CheckoutForm({
               </Link>
             </div>
             <p className="mt-4 text-xs leading-relaxed text-ink-muted">
-              저장한 기본 배송지를 불러왔어요. 변경한 주소는 이번 주문에만
-              적용돼요.
+              {hasInitialAddress
+                ? "저장한 기본 배송지를 불러왔어요. 변경한 주소는 이번 주문에만 적용돼요."
+                : "저장한 기본 배송지가 없어요. 이번 주문에 사용할 배송 정보를 입력해 주세요."}
             </p>
             <div className="mt-6 space-y-4">
               {fields.map(([name, label, complete, max]) => (

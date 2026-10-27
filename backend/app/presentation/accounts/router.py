@@ -3,6 +3,8 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Response, status
+import httpx
+from uuid import UUID
 from fastapi.security import OAuth2PasswordRequestForm
 
 from app.application.accounts.service import InvalidCredentials, RegistrationConflict
@@ -22,9 +24,11 @@ from app.presentation.accounts.schemas import (
     ShippingAddressIn,
     ShippingAddressOut,
     TokenOut,
+    GoogleLoginIn,
     UserRegistrationIn,
     UserRegistrationOut,
 )
+from app.core.config import get_settings
 
 router = APIRouter(prefix="/accounts", tags=["accounts"])
 
@@ -88,6 +92,43 @@ async def login(
             str(exc),
             headers={"WWW-Authenticate": "Bearer"},
         ) from None
+    return TokenOut(
+        access_token=result.access_token,
+        token_type=result.token_type,
+        expires_in=result.expires_in,
+    )
+
+
+@router.post(
+    "/google-login",
+    response_model=TokenOut,
+    summary="Google 로그인·최초 회원가입",
+    responses={401: {"description": "유효하지 않은 Supabase Google 세션"}},
+)
+async def google_login(body: GoogleLoginIn, service: AccountServiceDep) -> TokenOut:
+    settings = get_settings()
+    if not settings.supabase_url or not settings.supabase_anon_key:
+        raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, "Google 인증 설정이 없습니다.")
+    try:
+        async with httpx.AsyncClient(timeout=5) as client:
+            response = await client.get(
+                f"{settings.supabase_url.rstrip('/')}/auth/v1/user",
+                headers={
+                    "apikey": settings.supabase_anon_key,
+                    "Authorization": f"Bearer {body.access_token}",
+                },
+            )
+        response.raise_for_status()
+        identity = response.json()
+        user_id = UUID(identity["id"])
+        email = identity["email"]
+        metadata = identity.get("user_metadata") or {}
+        nickname = metadata.get("full_name") or metadata.get("name") or "새싹회원"
+        result = await service.login_with_google(user_id, email, nickname)
+    except (httpx.HTTPError, KeyError, TypeError, ValueError, InvalidCredentials):
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Google 인증을 확인할 수 없습니다.") from None
+    except RegistrationConflict as exc:
+        raise HTTPException(status.HTTP_409_CONFLICT, str(exc)) from None
     return TokenOut(
         access_token=result.access_token,
         token_type=result.token_type,

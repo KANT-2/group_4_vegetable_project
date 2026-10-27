@@ -38,9 +38,10 @@ export default async function AdminMyPagePage() {
     );
   const user = await getCurrentUser();
   if (!user) redirect("/admin/login");
+  const fastApiUser = "profile" in user ? user : null;
   const profile: AdminProfileView = {
-    id: "미등록",
-    name: String(
+    id: fastApiUser?.username ?? "Google 계정",
+    name: fastApiUser?.profile.nickname ?? String(
       ("user_metadata" in user ? user.user_metadata?.full_name ?? user.user_metadata?.name : undefined) ?? "관리자",
     ),
     email: user.email ?? "미등록",
@@ -48,13 +49,13 @@ export default async function AdminMyPagePage() {
       "app_metadata" in user && user.app_metadata?.provider === "google"
         ? "Google 연동 로그인"
         : "아이디 · 비밀번호 로그인",
-    editable: false,
+    editable: Boolean(fastApiUser),
     local: false,
     googleOnly: "identities" in user && !user.identities?.some(
       (identity) => identity.provider === "email",
     ),
   };
-  try {
+  if (!fastApiUser) try {
     const registry = adminRegistrationClient();
     const { data, error } = await registry
       .from("admin_registrations")
