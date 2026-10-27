@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { getSiteOrigin, loginNext } from "@/lib/auth-urls";
-import { getProfile } from "@/services/profile";
-import { fastApi, type FastApiToken } from "@/lib/fastapi";
+import { fastApi, type FastApiToken, type FastApiUser } from "@/lib/fastapi";
 import { ACCESS_TOKEN_COOKIE, accessTokenCookieOptions } from "@/lib/auth-cookie";
 
 export async function GET(request: Request) {
@@ -48,7 +47,9 @@ export async function GET(request: Request) {
     );
     stage = "profile-check";
     try {
-      await getProfile();
+      // 응답 쿠키는 다음 브라우저 요청부터 보인다. 방금 발급받은 JWT로
+      // 직접 확인해야 새 Google 로그인을 기존 쿠키 부재로 오판하지 않는다.
+      await fastApi<FastApiUser>("/api/v1/accounts/me", {}, token.access_token);
     } catch {
       await supabase.auth.signOut();
       throw new Error("profile setup failed");
