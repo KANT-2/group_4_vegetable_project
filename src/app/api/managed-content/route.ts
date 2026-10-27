@@ -8,6 +8,25 @@ import {
 } from "@/lib/managed-content";
 import type { AdminAction } from "@/lib/admin-store";
 import { z } from "zod";
+import { isFastApiCatalog } from "@/lib/catalog-mode";
+import { catalogToken } from "@/lib/catalog-api";
+import {
+  adminCatalogProducts,
+  applyCatalogAction,
+  CatalogSyncError,
+} from "@/lib/admin-catalog-sync";
+
+// 실제 DB 모드에서 관리자 화면의 상품 목록은 Supabase(FastAPI) 값이에요.
+// 휴지통·영구 삭제로 숨긴 상품은 빼고 보여 줘요. (레시피·농가 등 나머지는 기존처럼 파일에 저장해요.)
+async function withCatalogProducts(data: ReturnType<typeof readContent>) {
+  if (!isFastApiCatalog()) return data;
+  const token = await catalogToken();
+  if (!token) return data;
+  const products = (await adminCatalogProducts(token)).filter(
+    (product) => !hiddenContent(data.state, "product", product.id),
+  );
+  return { ...data, state: { ...data.state, products } };
+}
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -22,7 +41,17 @@ export async function GET(request: Request) {
         { error: "관리자 로그인이 필요합니다." },
         { status: 403, headers },
       );
-    return NextResponse.json(data, { headers });
+    try {
+      return NextResponse.json(await withCatalogProducts(data), { headers });
+    } catch {
+      return NextResponse.json(
+        {
+          error:
+            "상품 목록을 불러오지 못했습니다. 백엔드 서버를 확인해 주세요.",
+        },
+        { status: 503, headers },
+      );
+    }
   }
   const state = data.state;
   return NextResponse.json(
@@ -130,13 +159,28 @@ export async function POST(request: Request) {
         { error: "저장할 정보를 확인해 주세요." },
         { status: 400 },
       );
+    const current = readContent();
+    if (current.revision !== parsed.data.revision)
+      throw new Error("CONTENT_CONFLICT");
+    // 상품 변경은 DB 에 먼저 반영하고, 성공했을 때만 휴지통 기록 등을 파일에 남겨요.
+    if (isFastApiCatalog())
+      await applyCatalogAction(
+        await catalogToken(),
+        parsed.data.action as AdminAction,
+        current.state,
+      );
     const data = mutateContent(
       parsed.data.action as AdminAction,
       parsed.data.revision,
     );
     revalidatePath("/", "layout");
-    return NextResponse.json(data, { headers });
+    return NextResponse.json(await withCatalogProducts(data), { headers });
   } catch (error) {
+    if (error instanceof CatalogSyncError)
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.status },
+      );
     const conflict =
       error instanceof Error && error.message === "CONTENT_CONFLICT";
     return NextResponse.json(

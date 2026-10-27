@@ -128,7 +128,7 @@ function action(
 import * as requireZod from "zod";
 import * as cartSchemas from "../src/schemas/cart.ts";
 
-test("admin save sends only validated price and sale state using the HttpOnly token", async () => {
+test("admin save sends only validated price, sale state and stock using the HttpOnly token", async () => {
   const calls = [],
     refreshed = [];
   const { updateCatalogProduct } = action("../src/actions/catalog-admin.ts", {
@@ -141,6 +141,7 @@ test("admin save sends only validated price and sale state using the HttpOnly to
         id: "carrot",
         price: 1500,
         is_active: false,
+        stock: 2,
       })
     ).ok,
     true,
@@ -150,6 +151,7 @@ test("admin save sends only validated price and sale state using the HttpOnly to
   assert.deepEqual(JSON.parse(calls[0][1].body), {
     price: 1500,
     is_active: false,
+    stock: 2,
   });
   assert.deepEqual(refreshed, [["/", "layout"]]);
 });
@@ -160,11 +162,13 @@ test("admin save rejects invalid fields, missing token and server 403 without an
     api: async (...args) => calls.push(args),
   });
   for (const input of [
-    { id: "carrot", price: 0, is_active: true },
-    { id: "carrot", price: 10, is_active: true, role: "admin" },
+    { id: "carrot", price: 0, is_active: true, stock: 1 },
+    { id: "carrot", price: 10, is_active: true, stock: -1 },
+    { id: "carrot", price: 10, is_active: true, stock: 1.5 },
+    { id: "carrot", price: 10, is_active: true, stock: 1, role: "admin" },
   ])
     assert.equal((await updateCatalogProduct(input)).ok, false);
-  const input = { id: "carrot", price: 1000, is_active: true };
+  const input = { id: "carrot", price: 1000, is_active: true, stock: 20 };
   assert.equal(
     (
       await action("../src/actions/catalog-admin.ts", {

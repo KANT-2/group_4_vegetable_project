@@ -53,6 +53,7 @@ export function catalogProduct(row: CatalogProduct): ProductListItem {
     tagline: row.tagline ?? undefined,
     rating: row.rating ?? undefined,
     reviewCount: row.review_count,
+    stock: row.stock,
   };
 }
 export async function wishlistIds(token: string) {

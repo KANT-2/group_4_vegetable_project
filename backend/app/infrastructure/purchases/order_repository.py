@@ -6,7 +6,7 @@ from sqlalchemy import delete, func, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.application.purchases.read_models import OrderItemView, OrderView, ShippingView
-from app.domain.purchases.cart import ProductInfo
+from app.domain.purchases.cart import InsufficientStock, ProductInfo
 from app.domain.purchases.order import Order
 from app.infrastructure.purchases.models import CartItemModel, OrderItemModel, OrderModel
 
@@ -63,19 +63,28 @@ class SqlAlchemyOrderRepository:
         return _to_view(row, (await self._items_of([row.id]))[row.id])
 
     async def checkout_lines(self, user_id: UUID) -> list[tuple[ProductInfo, int]]:
-        # 장바구니 행은 쓰기 잠금, 상품 행은 공유 잠금: 주문하는 동안 수량·가격·판매 여부가 바뀌지 않는다.
+        # 장바구니·상품 행 모두 쓰기 잠금: 주문하는 동안 수량·가격·판매 여부·재고가 바뀌지 않고,
+        # 같은 상품을 동시에 주문하는 요청은 한 줄로 서서 마지막 재고를 두 사람이 사는 일(초과 판매)이 없다.
         rows = await self._session.execute(
             text(
-                "select c.quantity, p.id, p.name, p.unit, p.price, p.is_active, p.image_path "
+                "select c.quantity, p.id, p.name, p.unit, p.price, p.is_active, p.image_path, p.stock "
                 "from public.cart_items c join public.products p on p.id = c.product_id "
                 "where c.user_id = :user_id order by c.product_id "
-                "for update of c for share of p"
+                "for update of c, p"
             ),
             {"user_id": user_id},
         )
         return [
             (
-                ProductInfo(id=r.id, name=r.name, unit=r.unit, price=r.price, is_active=r.is_active, image_path=r.image_path),
+                ProductInfo(
+                    id=r.id,
+                    name=r.name,
+                    unit=r.unit,
+                    price=r.price,
+                    is_active=r.is_active,
+                    image_path=r.image_path,
+                    stock=r.stock,
+                ),
                 r.quantity,
             )
             for r in rows
@@ -113,6 +122,26 @@ class SqlAlchemyOrderRepository:
                 )
             )
         await self._session.flush()
+
+    async def decrease_stock(self, lines: list[tuple[str, int]]) -> None:
+        for product_id, quantity in sorted(lines):
+            # 조건부 차감: 잠금과 별개로 재고가 음수가 되는 일을 문장 자체에서 한 번 더 막는다.
+            row = (
+                await self._session.execute(
+                    text(
+                        "update public.products set stock = stock - :quantity, updated_at = now() "
+                        "where id = :id and stock >= :quantity returning stock"
+                    ),
+                    {"id": product_id, "quantity": quantity},
+                )
+            ).first()
+            if row is None:
+                current = (
+                    await self._session.execute(
+                        text("select name, stock from public.products where id = :id"), {"id": product_id}
+                    )
+                ).first()
+                raise InsufficientStock(current.name if current else product_id, current.stock if current else 0)
 
     async def remove_cart_items(self, user_id: UUID, product_ids: list[str]) -> None:
         await self._session.execute(

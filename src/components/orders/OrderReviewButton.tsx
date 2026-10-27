@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
+import { ProductReviewLink } from "./ProductReviewLink";
 
 const reviewEvent = "motnani-review-changed";
 function subscribe(callback: () => void) {
@@ -18,7 +19,11 @@ function readReview(key: string): { rating: number; content: string } | null {
   } catch { return null; }
 }
 
-export function OrderReviewButton({ userId, orderId, items }: {
+export function OrderReviewButton(props: { userId: string; orderId: string; items: { product_id: string; product_name: string }[] }) {
+  return props.userId === "customer-demo-qwer" ? <DemoOrderReviewButton {...props} /> : <ProductReviewLink items={props.items} />;
+}
+
+function DemoOrderReviewButton({ userId, orderId, items }: {
   userId: string;
   orderId: string;
   items: { product_id: string; product_name: string }[];

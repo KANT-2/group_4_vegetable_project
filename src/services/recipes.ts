@@ -157,10 +157,11 @@ const loadAllRecipes = cache(async (): Promise<Recipe[]> => {
 
 function matchesFilters(
   recipe: Recipe,
-  { q, vegetable }: RecipeFilters,
+  { q, vegetable, difficulty }: RecipeFilters,
 ): boolean {
   if (vegetable && !recipeVegetableIds(recipe).includes(vegetable))
     return false;
+  if (difficulty && recipe.difficulty !== difficulty) return false;
 
   const terms = (q ?? "").toLowerCase().split(/\s+/).filter(Boolean);
   if (terms.length === 0) return true;

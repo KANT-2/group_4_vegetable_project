@@ -28,6 +28,7 @@ class CartLineOut(BaseModel):
     line_total: int
     is_active: bool
     image_path: str | None
+    stock: int | None = Field(default=None, description="남은 재고. 0이면 품절")
 
     @classmethod
     def from_line(cls, line: CartLine) -> "CartLineOut":
@@ -40,6 +41,7 @@ class CartLineOut(BaseModel):
             line_total=line.line_total,
             is_active=line.product.is_active,
             image_path=line.product.image_path,
+            stock=line.product.stock,
         )
 
 

@@ -123,7 +123,7 @@ async def test_concurrent_adds_of_same_product_merge_without_error(env):
 
 async def test_concurrent_adds_cannot_exceed_limit(env):
     user_id, headers = await env.make_user()
-    product = await env.new_product()
+    product = await env.new_product(stock=1000)  # 재고가 아니라 장바구니 한도(99개)를 보는 테스트
     assert (await add(env, headers, product, 90)).status_code == 201
     results = await asyncio.gather(add(env, headers, product, 6), add(env, headers, product, 6))
     assert sorted(r.status_code for r in results) == [201, 422]  # 96 은 되고 102 는 거부

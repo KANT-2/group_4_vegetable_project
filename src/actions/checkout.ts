@@ -110,12 +110,14 @@ async function placeFastApiOrder(
     });
     revalidatePath("/cart");
     revalidatePath("/mypage/orders");
+    // 주문과 함께 재고가 줄었으니 상품 화면(남은 수량·품절 표시)도 새로 그려요.
+    revalidatePath("/", "layout");
     return { ok: true, orderId: order.id };
   } catch (error) {
     if (error instanceof FastApiError) {
       if (error.status === 401)
         return { ok: false, error: "로그인이 필요해요. 다시 로그인해 주세요." };
-      // 409(장바구니·가격 변경, 빈 장바구니, 판매 종료)·422(입력 오류)는 서버가 알려 준 문구를 그대로 보여 줘요.
+      // 409(장바구니·가격 변경, 빈 장바구니, 판매 종료, 재고 부족)·422(입력 오류)는 서버가 알려 준 문구를 그대로 보여 줘요.
       if (error.status === 409 || error.status === 422)
         return { ok: false, error: error.message };
     }

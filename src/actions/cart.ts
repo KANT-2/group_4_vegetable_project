@@ -6,7 +6,8 @@ import { createClient } from "@/lib/supabase/server";
 import { getCustomerDemo } from "@/lib/customer-demo";
 import { writeDemoWish } from "@/lib/customer-demo-wishlist";
 import { getProductById } from "@/services/products";
-import { changeDemoCart } from "@/lib/customer-demo-cart";
+import { changeDemoCart, readDemoCart } from "@/lib/customer-demo-cart";
+import { stockLimitMessage } from "@/lib/stock";
 import { getCartMode } from "@/lib/cart-mode";
 import {
   apiAddToCart,
@@ -29,9 +30,10 @@ import {
 } from "@/schemas/cart";
 
 // needsLogin: 화면에서 로그인 페이지로 보낸 뒤 원래 화면으로 돌아오게 해요.
+// available: 재고가 모자라 거절됐을 때 지금 살 수 있는 최대 수량(화면이 안내 팝업을 띄워요).
 export type CartActionResult =
   | { ok: true; quantity?: number }
-  | { ok: false; error: string; needsLogin?: boolean };
+  | { ok: false; error: string; needsLogin?: boolean; available?: number };
 
 const LOGIN_REQUIRED: CartActionResult = {
   ok: false,
@@ -46,6 +48,24 @@ const NOT_FOR_SALE: CartActionResult = {
   ok: false,
   error: "지금 판매 중인 상품이 아니에요.",
 };
+
+// 데모·비회원 장바구니는 FastAPI 를 거치지 않으니 여기서 재고를 확인해요. inCart 는 이미 담긴 수량이에요.
+// (FastAPI 장바구니는 서버가 같은 규칙으로 확인하고, 실제 차감은 주문할 때 FastAPI 가 해요.)
+async function checkStock(
+  productId: string,
+  quantity: number,
+  inCart = 0,
+): Promise<CartActionResult | null> {
+  const product = await getProductById(productId);
+  if (!product) return NOT_FOR_SALE;
+  if (product.stock !== undefined && inCart + quantity > product.stock)
+    return {
+      ok: false,
+      error: stockLimitMessage(product.stock, inCart),
+      available: product.stock,
+    };
+  return null;
+}
 
 // DB 수정 대상은 항상 서버에서 확인한 로그인 사용자로 정해요. (찜 기능에서 사용)
 async function currentUserId() {
@@ -62,6 +82,8 @@ function refreshPages(productId: string) {
 function fromApiError(error: unknown): CartActionResult {
   if (error instanceof FastApiError) {
     if (error.status === 401) return LOGIN_REQUIRED;
+    if (error.status === 409 && error.available !== undefined)
+      return { ok: false, error: error.message, available: error.available };
     if ([404, 409, 422].includes(error.status))
       return { ok: false, error: error.message };
   }
@@ -80,20 +102,23 @@ export async function addToCart(input: unknown): Promise<CartActionResult> {
   try {
     const mode = await getCartMode();
     if (mode.kind === "demo") {
-      if (!(await getProductById(product_id))) return NOT_FOR_SALE;
+      const inCart =
+        readDemoCart().find((item) => item.productId === product_id)
+          ?.quantity ?? 0;
+      const rejected = await checkStock(product_id, quantity, inCart);
+      if (rejected) return rejected;
       const saved = changeDemoCart(product_id, "add", quantity);
       refreshPages(product_id);
       return { ok: true, quantity: saved };
     }
     if (mode.kind === "guest") {
-      // 비회원도 판매 중인 상품만 담을 수 있어요.
-      if (!(await getProductById(product_id))) return NOT_FOR_SALE;
-      const changed = changeGuestCart(
-        await readGuestCart(),
-        product_id,
-        "add",
-        quantity,
-      );
+      // 비회원도 판매 중이고 재고가 있는 상품만 담을 수 있어요.
+      const guestCart = await readGuestCart();
+      const inCart =
+        guestCart.find((item) => item.productId === product_id)?.quantity ?? 0;
+      const rejected = await checkStock(product_id, quantity, inCart);
+      if (rejected) return rejected;
+      const changed = changeGuestCart(guestCart, product_id, "add", quantity);
       if (!changed.ok) return { ok: false, error: changed.error };
       await saveGuestCart(changed.items);
       refreshPages(product_id);
@@ -164,12 +189,15 @@ export async function updateCartQuantity(
   try {
     const mode = await getCartMode();
     if (mode.kind === "demo") {
-      if (!(await getProductById(product_id))) return NOT_FOR_SALE;
+      const rejected = await checkStock(product_id, quantity);
+      if (rejected) return rejected;
       const saved = changeDemoCart(product_id, "update", quantity);
       refreshPages(product_id);
       return { ok: true, quantity: saved };
     }
     if (mode.kind === "guest") {
+      const rejected = await checkStock(product_id, quantity);
+      if (rejected) return rejected;
       const changed = changeGuestCart(
         await readGuestCart(),
         product_id,

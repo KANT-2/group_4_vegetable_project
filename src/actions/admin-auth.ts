@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { clearAdminSession } from "@/lib/admin-auth";
+import { clearCustomerDemo } from "@/lib/customer-demo";
 import { cookies } from "next/headers";
 import {
   ACCESS_TOKEN_COOKIE,
@@ -43,6 +44,7 @@ export async function adminSignIn(
       token.access_token,
       accessTokenCookieOptions(token.expires_in),
     );
+    await clearCustomerDemo();
   } catch (error) {
     if (error instanceof FastApiError && error.status === 401)
       return { error: "아이디·이메일 또는 비밀번호를 확인해 주세요." };

@@ -1,6 +1,6 @@
 """주문 응용 서비스. 모의 결제 주문을 만들고 조회한다. 업무 규칙 판단은 도메인(Order.place)에 맡긴다.
 
-한 요청 안에서 사용자 잠금 → 중복 요청 확인 → 장바구니 잠금·읽기 → 주문 생성 → 저장 → 주문한 상품만 장바구니에서 삭제 →
+한 요청 안에서 사용자 잠금 → 중복 요청 확인 → 장바구니 잠금·읽기 → 주문 생성 → 저장 → 재고 차감 → 주문한 상품만 장바구니에서 삭제 →
 커밋을 한 트랜잭션으로 처리한다. 중간에 하나라도 실패하면 전부 롤백되어 주문만 생기거나 장바구니만 비워지지 않는다.
 사용자는 인증된 user_id 인자로만 정한다. 남의 주문은 조회할 수 없다.
 """
@@ -48,6 +48,7 @@ class OrderService:
                 expected_total_amount=expected_total_amount,
             )
             await repo.add(order)
+            await repo.decrease_stock([(item.product_id, item.quantity) for item in order.items])
             await repo.remove_cart_items(user_id, [item.product_id for item in order.items])
             await self._uow.commit()
             return PlacedOrder(order=OrderView.from_order(order), created=True)

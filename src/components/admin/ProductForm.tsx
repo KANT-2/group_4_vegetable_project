@@ -6,6 +6,8 @@ import { VEGETABLE_CATEGORY_LABELS } from "@/types/vegetable";
 import type { VegetableCategory } from "@/types/vegetable";
 import { SafeImage } from "@/components/common/SafeImage";
 import { products } from "@/data/mock/products";
+import { vegetables } from "@/data/mock/vegetables";
+import { UGLY_REASON_LABELS, type UglyReason } from "@/types/product";
 
 const schema = z.object({
   id: z
@@ -14,12 +16,19 @@ const schema = z.object({
     .min(1, "상품 ID를 입력해 주세요.")
     .max(100)
     .regex(
-      /^[a-zA-Z0-9_-]+$/,
-      "상품 ID는 영문·숫자·하이픈·밑줄만 사용할 수 있습니다.",
+      /^[a-z0-9]+(-[a-z0-9]+)*$/,
+      "상품 ID는 영문 소문자·숫자와 하이픈(-)만 사용할 수 있습니다. 예: carrot-bent-1kg",
     ),
   name: z.string().trim().min(1, "상품명을 입력해 주세요.").max(100),
   unit: z.string().trim().min(1, "용량을 입력해 주세요.").max(100),
   region: z.string().trim().min(1, "지역을 입력해 주세요.").max(100),
+  farmName: z.string().trim().min(1, "농가명을 입력해 주세요.").max(100),
+  vegetableId: z
+    .string({ message: "채소를 선택해 주세요." })
+    .min(1, "채소를 선택해 주세요."),
+  uglyReason: z.enum(["small", "bent", "scratched", "irregular"], {
+    message: "못난이 이유를 선택해 주세요.",
+  }),
   price: z
     .string()
     .regex(/^\d+$/, "가격은 정수로 입력해 주세요.")
@@ -47,6 +56,9 @@ export type RegisteredProduct = {
   name: string;
   unit: string;
   region: string;
+  farmName: string;
+  vegetableId: string;
+  uglyReason: UglyReason;
   price: number;
   category: VegetableCategory;
   status: "active" | "soldout" | "inactive";
@@ -75,6 +87,12 @@ export function ProductForm({
   const [preview, setPreview] = useState(initial?.imageUrl ?? "");
   const [reading, setReading] = useState(false);
   const imageRead = useRef(0);
+  // 종류를 고르면 그 종류의 채소만 고를 수 있어요. (상품은 DB 에서 채소에 연결돼요)
+  const [category, setCategory] = useState<string>(initial?.category ?? "");
+  const farmOptions = [
+    ...new Set(products.map((product) => product.farmName)),
+  ].sort((a, b) => a.localeCompare(b, "ko"));
+  const farmListId = useId();
   const regionOptions = [
     ...new Set(
       [
@@ -123,11 +141,22 @@ export function ProductForm({
           <input
             name="id"
             defaultValue={initial?.id}
+            // 등록된 상품의 ID는 주문 기록과 이어져 있어 바꿀 수 없어요.
+            readOnly={Boolean(initial)}
+            aria-describedby={initial ? `${imageId}-id-note` : undefined}
             required
             maxLength={100}
-            placeholder="예: carrot-001"
-            className={inputClass}
+            placeholder="예: carrot-bent-1kg"
+            className={`${inputClass} read-only:bg-sand read-only:text-ink-muted`}
           />
+          {initial && (
+            <span
+              id={`${imageId}-id-note`}
+              className="mt-2 block text-xs font-normal text-ink-muted"
+            >
+              등록된 상품 ID는 바꿀 수 없어요.
+            </span>
+          )}
         </label>
         <label className="text-sm font-bold">
           상품명
@@ -213,7 +242,8 @@ export function ProductForm({
           <select
             name="category"
             required
-            defaultValue={initial?.category ?? ""}
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
             className={inputClass}
           >
             <option value="" disabled>
@@ -225,6 +255,71 @@ export function ProductForm({
               </option>
             ))}
           </select>
+        </label>
+        <label className="text-sm font-bold">
+          채소
+          <select
+            key={category}
+            name="vegetableId"
+            required
+            defaultValue={
+              vegetables.some(
+                (vegetable) =>
+                  vegetable.id === initial?.vegetableId &&
+                  vegetable.category === category,
+              )
+                ? initial?.vegetableId
+                : ""
+            }
+            disabled={!category}
+            className={inputClass}
+          >
+            <option value="" disabled>
+              {category ? "채소 선택" : "종류를 먼저 선택"}
+            </option>
+            {vegetables
+              .filter((vegetable) => vegetable.category === category)
+              .map((vegetable) => (
+                <option key={vegetable.id} value={vegetable.id}>
+                  {vegetable.name}
+                </option>
+              ))}
+          </select>
+        </label>
+        <label className="text-sm font-bold">
+          못난이 이유
+          <select
+            name="uglyReason"
+            required
+            defaultValue={initial?.uglyReason ?? ""}
+            className={inputClass}
+          >
+            <option value="" disabled>
+              이유 선택
+            </option>
+            {Object.entries(UGLY_REASON_LABELS).map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="text-sm font-bold">
+          농가명
+          <input
+            name="farmName"
+            defaultValue={initial?.farmName}
+            required
+            maxLength={100}
+            list={farmListId}
+            placeholder="예: 해남 김씨농장"
+            className={inputClass}
+          />
+          <datalist id={farmListId}>
+            {farmOptions.map((farm) => (
+              <option key={farm} value={farm} />
+            ))}
+          </datalist>
         </label>
         <label className="text-sm font-bold">
           지역

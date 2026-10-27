@@ -1,8 +1,6 @@
 import { AdminProducts } from "@/components/admin/AdminProducts";
 import { getAdminAccess } from "@/lib/admin-auth";
 import { redirect } from "next/navigation";
-import { isFastApiCatalog } from "@/lib/catalog-mode";
-import { CatalogProductManager } from "@/components/admin/CatalogProductManager";
 
 export const metadata = {
   title: "관리자 상품 관리",
@@ -12,12 +10,7 @@ export const metadata = {
 export default async function AdminPage({
   searchParams,
 }: {
-  searchParams: Promise<{
-    error?: string;
-    q?: string;
-    status?: string;
-    page?: string;
-  }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
   const access = await getAdminAccess();
   if (!access.allowed)
@@ -27,11 +20,8 @@ export default async function AdminPage({
   const params = await searchParams;
   return (
     <>
-      <AdminProducts>
-        {isFastApiCatalog() ? (
-          <CatalogProductManager params={params} />
-        ) : undefined}
-      </AdminProducts>
+      {/* 실제 DB 모드에서도 같은 화면이에요. 저장은 /admin/api/content 가 Supabase(FastAPI)에 반영해요. */}
+      <AdminProducts />
       {params.error === "logout" && (
         <p
           role="alert"

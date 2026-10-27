@@ -24,6 +24,7 @@ class ProductReadModel(PurchaseBase):
     price: Mapped[int] = mapped_column(Integer)
     is_active: Mapped[bool] = mapped_column(Boolean)
     image_path: Mapped[str | None] = mapped_column(Text, nullable=True)
+    stock: Mapped[int] = mapped_column(Integer, server_default=text("20"))  # DB 기본값과 같다(시연용 초기 재고)
 
 
 class CartItemModel(PurchaseBase):

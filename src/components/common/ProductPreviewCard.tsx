@@ -7,6 +7,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { UGLY_REASON_LABELS, type UglyReason } from "@/types/product";
 import { getDiscountRate } from "@/lib/format";
+import { LOW_STOCK } from "@/lib/stock";
 import { QuickAddButton } from "./QuickAddButton";
 import { ProductImageRotator } from "@/components/products/ProductImageRotator";
 import { getProductImages } from "@/lib/product-gallery";
@@ -78,7 +79,16 @@ export function ProductPreviewCard({
             <span className="absolute left-2.5 top-2.5 rounded-[0.25rem] bg-brand px-2 py-0.5 text-sm font-medium text-white">
               {UGLY_REASON_LABELS[uglyReason]}
             </span>
-            {stock === 0 && <span className="absolute inset-0 flex items-center justify-center bg-black/30 text-xl font-bold text-white">품절</span>}
+            {stock !== undefined && stock > 0 && stock <= LOW_STOCK && (
+              <span className="absolute right-2.5 top-2.5 rounded-[0.25rem] bg-accent px-2 py-0.5 text-sm font-medium text-white">
+                {stock}개 남음
+              </span>
+            )}
+            {stock === 0 && (
+              <span className="absolute inset-0 flex items-center justify-center bg-black/30 text-xl font-bold text-white">
+                품절
+              </span>
+            )}
           </div>,
           "block",
         )}
@@ -108,7 +118,7 @@ export function ProductPreviewCard({
               {description}
             </p>
           )}
-          <p className="sr-only">{unit}</p>
+          <p className="mt-0.5 text-sm text-ink-muted">{unit}</p>
           {discount > 0 && (
             <p className="mt-1.5 text-sm leading-tight text-ink-muted">
               <span className="sr-only">정가 </span>

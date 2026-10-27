@@ -13,6 +13,8 @@ export function isMockCatalog() {
 // Mock 모드: public/images의 같은 파일 (Storage에 올린 사진과 같아요)
 export function toImageSrc(path: string | null): string | undefined {
   if (!path) return undefined;
+  // 관리자가 올린 사진: FastAPI 가 DB 에서 내려주는 주소예요.
+  if (path.startsWith("/api/product-images/")) return path;
   if (!isMockCatalog()) return getImageUrl(path) ?? undefined;
   const fileName = path.split("/").pop();
   return fileName ? `/images/${fileName}` : undefined;

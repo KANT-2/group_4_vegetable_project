@@ -33,9 +33,12 @@ class OrderRepository(Protocol):
     async def get_by_request_key(self, user_id: UUID, request_key: UUID) -> OrderView | None: ...
 
     async def checkout_lines(self, user_id: UUID) -> list[tuple[ProductInfo, int]]:
-        """주문할 장바구니 줄(상품 정보, 수량)을 잠그고 읽는다. 주문하는 동안 장바구니·상품이 바뀌지 않게 한다."""
+        """주문할 장바구니 줄(상품 정보, 수량)을 잠그고 읽는다. 주문하는 동안 장바구니·상품(재고)이 바뀌지 않게 쓰기 잠금을 건다."""
 
     async def add(self, order: Order) -> None: ...
+
+    async def decrease_stock(self, lines: list[tuple[str, int]]) -> None:
+        """(상품 ID, 수량)만큼 재고를 줄인다. checkout_lines 가 잡은 잠금 안에서 부른다. 모자라면 InsufficientStock."""
 
     async def remove_cart_items(self, user_id: UUID, product_ids: list[str]) -> None:
         """주문한 상품만 장바구니에서 지운다."""

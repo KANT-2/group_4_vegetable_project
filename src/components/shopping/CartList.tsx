@@ -7,7 +7,9 @@ import { SafeImage } from "@/components/common/SafeImage";
 import { useNavigation } from "@/components/common/NavigationProvider";
 import { type CartLine, summarizeCart } from "@/lib/cart";
 import { formatPrice } from "@/lib/format";
+import { LOW_STOCK, maxPurchasable, stockLimitMessage } from "@/lib/stock";
 import { QuantityStepper } from "./QuantityStepper";
+import { StockAlertDialog } from "./StockAlertDialog";
 import { useLoginReturn } from "./useLoginReturn";
 
 export function CartList({
@@ -20,10 +22,18 @@ export function CartList({
   const [lines, setLines] = useState(initialLines);
   const [busy, setBusy] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [stockAlert, setStockAlert] = useState<string | null>(null);
   const [, startTransition] = useTransition();
   const { refresh } = useNavigation();
   const goLogin = useLoginReturn();
   const summary = summarizeCart(lines);
+  // 담은 뒤 다른 손님의 결제로 재고가 줄어 담긴 수량보다 적어진 줄. 수량을 줄여야 주문할 수 있어요.
+  const overStock = lines.some(
+    (line) =>
+      line.available && line.stock !== undefined && line.quantity > line.stock,
+  );
+  const orderDisabled =
+    !!busy || summary.kinds === 0 || summary.unavailable > 0 || overStock;
 
   const run = (
     productId: string,
@@ -31,6 +41,7 @@ export function CartList({
       ok: boolean;
       error?: string;
       needsLogin?: boolean;
+      available?: number;
     }>,
     apply: () => void,
   ) => {
@@ -42,6 +53,17 @@ export function CartList({
         const result = await action();
         if (!result.ok) {
           if (result.needsLogin) return goLogin();
+          if (result.available !== undefined) {
+            setStockAlert(result.error ?? stockLimitMessage(result.available));
+            setLines((prev) =>
+              prev.map((l) =>
+                l.productId === productId
+                  ? { ...l, stock: result.available }
+                  : l,
+              ),
+            );
+            return;
+          }
           setErrors((prev) => ({
             ...prev,
             [productId]: result.error ?? "저장하지 못했어요.",
@@ -130,9 +152,28 @@ export function CartList({
                   </p>
                 ) : (
                   <p className="text-sm text-danger">
-                    지금은 구매할 수 없어 합계에서 빠졌어요.
+                    {line.stock === 0
+                      ? "품절되어 합계에서 빠졌어요. 삭제 후 주문해 주세요."
+                      : "지금은 구매할 수 없어 합계에서 빠졌어요."}
                   </p>
                 )}
+                {line.available &&
+                  line.stock !== undefined &&
+                  (line.quantity > line.stock ? (
+                    <p
+                      role="alert"
+                      className="mt-1 text-sm font-semibold text-danger"
+                    >
+                      재고가 {line.stock}개만 남았어요. 수량을 {line.stock}개
+                      이하로 줄여야 주문할 수 있어요.
+                    </p>
+                  ) : (
+                    line.stock <= LOW_STOCK && (
+                      <p className="mt-1 text-sm font-semibold text-accent">
+                        품절 임박 · 남은 재고 {line.stock}개
+                      </p>
+                    )
+                  ))}
                 <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
                   {line.available && (
                     <QuantityStepper
@@ -140,6 +181,14 @@ export function CartList({
                       onChange={(q) => changeQuantity(line, q)}
                       disabled={!!busy}
                       label={line.name}
+                      max={maxPurchasable(line.stock)}
+                      onLimit={
+                        line.stock !== undefined &&
+                        line.stock === maxPurchasable(line.stock)
+                          ? () =>
+                              setStockAlert(stockLimitMessage(line.stock ?? 0))
+                          : undefined
+                      }
                     />
                   )}
                   <div className="flex items-center gap-3">
@@ -174,13 +223,14 @@ export function CartList({
       <aside aria-label="결제 예정 금액" className="hidden lg:block">
         <div className="card sticky top-4 space-y-3 p-5">
           <SummaryRows summary={summary} />
-          <OrderButton
-            isGuest={isGuest}
-            disabled={!!busy || summary.kinds === 0 || summary.unavailable > 0}
-          />
+          <OrderButton isGuest={isGuest} disabled={orderDisabled} />
           {isGuest && <GuestNotice />}
         </div>
       </aside>
+      <StockAlertDialog
+        message={stockAlert}
+        onClose={() => setStockAlert(null)}
+      />
       <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-surface px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] lg:hidden">
         <div className="flex items-center justify-between gap-3">
           <p className="text-sm text-ink-muted">
@@ -189,10 +239,7 @@ export function CartList({
               {formatPrice(summary.orderTotal)}
             </span>
           </p>
-          <OrderButton
-            isGuest={isGuest}
-            disabled={!!busy || summary.kinds === 0 || summary.unavailable > 0}
-          />
+          <OrderButton isGuest={isGuest} disabled={orderDisabled} />
           {isGuest && <GuestNotice />}
         </div>
         <p className="mt-2 text-xs text-ink-muted">
