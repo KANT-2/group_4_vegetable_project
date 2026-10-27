@@ -4,6 +4,20 @@ import { createClient } from "@/lib/supabase/server";
 import type { CartLine, WishlistLine } from "@/lib/cart";
 import { toImageSrc } from "./catalog-source";
 import { getProductImages } from "@/lib/product-gallery";
+import { getCustomerDemo } from "@/lib/customer-demo";
+import { readDemoWishlist } from "@/lib/customer-demo-wishlist";
+import { getProductById } from "./products";
+import { readDemoCart } from "@/lib/customer-demo-cart";
+import { getCartMode } from "@/lib/cart-mode";
+import { apiGetCart } from "@/lib/cart-api";
+import { readGuestCart } from "@/lib/guest-cart";
+import { isFastApiCatalog } from "@/lib/catalog-mode";
+import {
+  catalogToken,
+  catalogProduct,
+  wishlistPages,
+  wishlistIds,
+} from "@/lib/catalog-api";
 
 const PRODUCT_FIELDS =
   "products(id, name, unit, price, original_price, image_path, is_active)";
@@ -42,10 +56,84 @@ function toProductInfo(productId: string, product: ProductRow) {
   };
 }
 
+// 장바구니 한 줄을 화면용으로 만들어요. 상품 정보는 상품 데이터(B)에서 읽고, 판매 종료·삭제된 상품은 available=false 예요.
+async function linesFromCatalog(
+  items: { productId: string; quantity: number }[],
+) {
+  return Promise.all(
+    items.map(async ({ productId, quantity }) => {
+      const product = await getProductById(productId);
+      return {
+        productId,
+        quantity,
+        // 재고가 0인 상품(품절)은 구매할 수 없어요.
+        available: Boolean(product && product.stock !== 0),
+        name: product?.name ?? "판매가 끝난 상품",
+        unit: product?.unit ?? "",
+        price: product?.price ?? 0,
+        originalPrice: product?.originalPrice ?? 0,
+        imageUrl: product?.imageUrl,
+        stock: product?.stock,
+      };
+    }),
+  );
+}
+
+// userId 는 로그인 사용자의 ID 예요. 비회원은 isGuest=true 이고 계정 확인(AccountGuard)을 거치지 않아요.
 export async function getCart(): Promise<{
   userId: string;
+  isGuest: boolean;
+  // 로그인했는데 합치지 못한 비회원 장바구니 줄 수(0이면 합칠 것이 없어요).
+  guestPending: number;
   lines: CartLine[];
 }> {
+  const mode = await getCartMode();
+  if (mode.kind === "demo") {
+    return {
+      userId: "customer-demo-qwer",
+      isGuest: false,
+      guestPending: 0,
+      lines: await linesFromCatalog(readDemoCart()),
+    };
+  }
+  if (mode.kind === "guest") {
+    return {
+      userId: "guest",
+      isGuest: true,
+      guestPending: 0,
+      lines: await linesFromCatalog(await readGuestCart()),
+    };
+  }
+  if (mode.kind === "fastapi") {
+    // 수량·단가·판매 여부는 FastAPI(서버 기준)를 따르고, 정가·사진은 상품 데이터에서 보충해요.
+    const cart = await apiGetCart(mode.token);
+    const lines = await Promise.all(
+      [...cart.items].reverse().map(async (line) => {
+        const catalog = await getProductById(line.product_id);
+        // 재고는 FastAPI 장바구니 응답(주문 때 차감하는 DB 값)을 기준으로 해요. 0이면 품절이에요.
+        const stock = line.stock ?? catalog?.stock;
+        const available = line.is_active && stock !== 0;
+        return {
+          productId: line.product_id,
+          quantity: line.quantity,
+          available,
+          // 품절은 다시 입고될 수 있어 이름·사진을 그대로 보여 주고, 판매 종료만 가려요.
+          name: line.is_active ? line.name : "판매가 끝난 상품",
+          unit: available ? line.unit : "",
+          price: available ? line.unit_price : 0,
+          originalPrice: available
+            ? (catalog?.originalPrice ?? line.unit_price)
+            : 0,
+          imageUrl: line.is_active
+            ? (catalog?.imageUrl ?? toImageSrc(line.image_path))
+            : undefined,
+          stock,
+        };
+      }),
+    );
+    const guestPending = (await readGuestCart()).length;
+    return { userId: mode.userId, isGuest: false, guestPending, lines };
+  }
   const user = await requireUser("/cart");
   const supabase = await createClient();
   const { data, error } = await supabase
@@ -56,6 +144,8 @@ export async function getCart(): Promise<{
   if (error) throw new Error("장바구니를 불러오지 못했어요.");
   return {
     userId: user.id,
+    isGuest: false,
+    guestPending: 0,
     lines: data.map((row) => ({
       productId: row.product_id,
       quantity: row.quantity,
@@ -68,6 +158,47 @@ export async function getWishlist(): Promise<{
   userId: string;
   lines: WishlistLine[];
 }> {
+  const token = await catalogToken();
+  if (isFastApiCatalog() && !token) {
+    const { redirect } = await import("next/navigation");
+    redirect("/login?next=%2Fcart%3Ftab%3Dwishlist");
+  }
+  if (token) {
+    const user = await requireUser("/cart?tab=wishlist");
+    const items = await wishlistPages(token);
+    return {
+      userId: user.id,
+      lines: items.map((row) => {
+        const product = catalogProduct(row.product);
+        return {
+          productId: product.id,
+          available: product.isActive,
+          name: product.name,
+          unit: product.unit,
+          price: product.price,
+          originalPrice: product.originalPrice,
+          imageUrl: product.imageUrl,
+        };
+      }),
+    };
+  }
+  if (await getCustomerDemo()) {
+    const lines = await Promise.all(
+      readDemoWishlist().map(async (productId) => {
+        const product = await getProductById(productId);
+        return {
+          productId,
+          available: Boolean(product),
+          name: product?.name ?? "판매가 끝난 상품",
+          unit: product?.unit ?? "",
+          price: product?.price ?? 0,
+          originalPrice: product?.originalPrice ?? 0,
+          imageUrl: product?.imageUrl,
+        };
+      }),
+    );
+    return { userId: "customer-demo-qwer", lines };
+  }
   const user = await requireUser("/cart?tab=wishlist");
   const supabase = await createClient();
   const { data, error } = await supabase
@@ -88,6 +219,15 @@ export async function getWishlist(): Promise<{
 // 상품 상세의 버튼 초기 상태. 로그인 전이거나 조회에 실패하면 "찜 안 함"으로 보여요.
 export async function getSavedState(productId: string) {
   try {
+    const token = await catalogToken();
+    if (token)
+      return {
+        loggedIn: true,
+        wished: (await wishlistIds(token)).includes(productId),
+      };
+    if (isFastApiCatalog()) return { loggedIn: false, wished: false };
+    if (await getCustomerDemo())
+      return { loggedIn: true, wished: readDemoWishlist().includes(productId) };
     const user = await getCurrentUser();
     if (!user) return { loggedIn: false, wished: false };
     const supabase = await createClient();

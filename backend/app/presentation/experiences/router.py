@@ -1,0 +1,114 @@
+"""체험 예약 API. prefix 는 main.py 에서 /api/v1/experiences 로 붙인다."""
+
+from typing import Annotated
+from uuid import UUID
+
+from fastapi import APIRouter, Depends, Path, Query, status
+from pydantic import AfterValidator
+
+from app.application.experiences.service import ExperienceService
+from app.domain.experiences.models import ReservationStatus
+from app.presentation.accounts.dependencies import AdminUser, CurrentUser
+from app.presentation.experiences.dependencies import get_service
+from app.presentation.experiences.schemas import (
+    ExperienceDetailOut,
+    ExperienceList,
+    ExperienceOut,
+    ReservationCreate,
+    ReservationDetailOut,
+    ReservationList,
+    ReservationOut,
+    SessionOut,
+)
+
+router = APIRouter(prefix="/experiences", tags=["experiences"])
+
+Service = Annotated[ExperienceService, Depends(get_service)]
+
+
+def _no_nul(value: str) -> str:
+    # PostgreSQL 은 널 문자(\x00)가 든 문자열을 저장·비교하지 못해 500 이 난다. 입력 단계에서 422 로 막는다.
+    if "\x00" in value:
+        raise ValueError("널 문자는 사용할 수 없어요.")
+    return value
+
+
+SafeText = Annotated[str, AfterValidator(_no_nul)]
+ExperienceId = Annotated[SafeText, Path(max_length=100)]
+# page 에 상한이 없으면 아주 큰 값이 DB 오프셋 범위를 넘어 500 이 난다.
+Page = Annotated[int, Query(ge=1, le=10_000)]
+Size = Annotated[int, Query(ge=1, le=100)]
+
+
+def _session_out(s) -> SessionOut:
+    return SessionOut(
+        id=s.id, experience_id=s.experience_id, starts_at=s.starts_at,
+        capacity=s.capacity, remaining=s.remaining, status=s.status,
+    )
+
+
+@router.get("", response_model=ExperienceList, summary="체험 목록 (검색·지역 필터·페이지네이션)")
+async def list_experiences(
+    service: Service,
+    q: Annotated[SafeText | None, Query(max_length=100)] = None,
+    region: Annotated[SafeText | None, Query(max_length=50)] = None,
+    page: Page = 1,
+    size: Size = 20,
+):
+    items, total = await service.list_experiences(q, region, page, size)
+    return ExperienceList(items=[ExperienceOut.model_validate(i) for i in items], total=total, page=page, size=size)
+
+
+# 고정 경로(/reservations/..., /admin/...)는 /{experience_id} 보다 먼저 선언한다.
+@router.get("/reservations/me", response_model=list[ReservationDetailOut], summary="내 예약 목록 (체험 이름·시작 시간 포함)")
+async def my_reservations(service: Service, user: CurrentUser):
+    return [ReservationDetailOut.from_detail(d) for d in await service.list_my_reservations(user.id)]
+
+
+@router.post("/reservations/{reservation_id}/cancel", response_model=ReservationOut, summary="예약 취소 (본인만)")
+async def cancel_reservation(
+    reservation_id: UUID, service: Service, user: CurrentUser
+):
+    return await service.cancel(reservation_id, user.id)
+
+
+@router.get("/admin/reservations", response_model=ReservationList, summary="[관리자] 예약 목록")
+async def admin_reservations(
+    service: Service,
+    _: AdminUser,
+    session_id: UUID | None = None,
+    reservation_status: Annotated[ReservationStatus | None, Query(alias="status")] = None,
+    page: Page = 1,
+    size: Size = 20,
+):
+    items, total = await service.list_reservations(session_id, reservation_status, page, size)
+    return ReservationList(items=[ReservationDetailOut.from_detail(i) for i in items], total=total, page=page, size=size)
+
+
+@router.post("/admin/sessions/{session_id}/close", response_model=SessionOut, summary="[관리자] 회차 접수 마감")
+async def close_session(session_id: UUID, service: Service, _: AdminUser):
+    return _session_out(await service.close_session(session_id))
+
+
+@router.get("/{experience_id}", response_model=ExperienceDetailOut, summary="체험 상세와 회차(잔여 인원)")
+async def get_experience(experience_id: ExperienceId, service: Service):
+    experience, sessions = await service.get_experience(experience_id)
+    return ExperienceDetailOut(
+        **ExperienceOut.model_validate(experience).model_dump(), sessions=[_session_out(s) for s in sessions]
+    )
+
+
+@router.post(
+    "/{experience_id}/sessions/{session_id}/reservations",
+    response_model=ReservationOut,
+    status_code=status.HTTP_201_CREATED,
+    summary="예약",
+)
+async def reserve(
+    experience_id: ExperienceId,
+    session_id: UUID,
+    body: ReservationCreate,
+    service: Service,
+    user: CurrentUser,
+):
+    return await service.reserve(session_id, user.id, body.headcount, experience_id=experience_id)

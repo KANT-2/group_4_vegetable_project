@@ -1,0 +1,117 @@
+"""Reviews and bounded, re-encoded images share one PostgreSQL transaction."""
+from uuid import uuid4
+from sqlalchemy import text
+from app.application.catalog.reviews import ReviewConflict, ReviewNotFound, ReviewPurchaseRequired
+
+
+class SqlReviewRepository:
+    def __init__(self, session):
+        self.session = session
+
+    async def purchased(self, user_id, product_id, *, lock=False):
+        query = """
+            SELECT o.id FROM public.orders o
+            JOIN public.order_items i ON i.order_id=o.id
+            WHERE o.user_id=:user AND i.product_id=:product
+              AND o.status='paid' AND o.paid_at IS NOT NULL
+            ORDER BY o.id LIMIT 1
+        """
+        if lock:
+            query += " FOR SHARE OF o"
+        return await self.session.scalar(text(query), {"user": user_id, "product": product_id}) is not None
+
+    async def create(self, user_id, product_id, content, rating, images):
+        try:
+            product = await self.session.scalar(text("SELECT id FROM products WHERE id=:id AND is_active FOR UPDATE"), {"id": product_id})
+            if not product:
+                raise ReviewNotFound()
+            if not await self.purchased(user_id, product_id, lock=True):
+                raise ReviewPurchaseRequired()
+            rid = uuid4()
+            result = await self.session.scalar(text("""
+                INSERT INTO product_reviews(id,user_id,product_id,content,rating,image_count)
+                VALUES (:id,:user,:product,:content,:rating,:count)
+                ON CONFLICT (user_id,product_id) DO NOTHING RETURNING id
+            """), {"id": rid, "user": user_id, "product": product_id, "content": content, "rating": rating, "count": len(images)})
+            if result is None:
+                raise ReviewConflict()
+            for index, image in enumerate(images):
+                await self.session.execute(text("INSERT INTO product_review_images(review_id,position,body) VALUES (:id,:index,:body)"), {"id": rid, "index": index, "body": image})
+            await self.session.commit()
+            return {"id": str(rid)}
+        except Exception:
+            await self.session.rollback()
+            raise
+
+    async def listing(self, product_id=None, sort="newest", kind="all", page=1, size=12, admin=False, status="visible", q="", owner_id=None, date_from=None, date_to=None):
+        where = ["r.deleted_at IS NULL"] if not admin or status == "visible" else (["r.deleted_at IS NOT NULL"] if status == "deleted" else [])
+        args = {"limit": size, "offset": (page - 1) * size}
+        if owner_id is not None:
+            where.append("r.user_id=:owner")
+            args["owner"] = owner_id
+        if product_id is not None:
+            where.append("r.product_id=:product")
+            args["product"] = product_id
+        if not admin:
+            where.append("p.is_active")
+        if kind != "all":
+            where.append("r.image_count > 0" if kind == "images" else "r.image_count = 0")
+        # 기간은 한국 날짜 기준으로 시작일·종료일을 모두 포함한다.
+        if date_from is not None:
+            where.append("(r.created_at AT TIME ZONE 'Asia/Seoul')::date >= :date_from")
+            args["date_from"] = date_from
+        if date_to is not None:
+            where.append("(r.created_at AT TIME ZONE 'Asia/Seoul')::date <= :date_to")
+            args["date_to"] = date_to
+        if q:
+            where.append("(r.content ILIKE :q ESCAPE '\\' OR p.name ILIKE :q ESCAPE '\\')")
+            args["q"] = "%" + q.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_") + "%"
+        conditions = " AND ".join(where) or "TRUE"
+        source = "FROM product_reviews r JOIN products p ON p.id=r.product_id LEFT JOIN profiles u ON u.id=r.user_id"
+        total = await self.session.scalar(text(f"SELECT count(*) {source} WHERE {conditions}"), args)
+        direction = "ASC" if sort == "oldest" else "DESC"
+        rows = (await self.session.execute(text(f"""
+            SELECT r.id,r.product_id,p.name AS product_name,r.rating,r.content,r.image_count,
+                r.created_at,r.deleted_at,r.deletion_reason,coalesce(u.nickname,'회원') AS author
+            {source} WHERE {conditions}
+            ORDER BY r.created_at {direction},r.id {direction} LIMIT :limit OFFSET :offset
+        """), args)).mappings().all()
+        # Do not expose account UUIDs, emails, or original photo metadata.
+        return {"items": [dict(row) for row in rows], "total": total, "page": page, "size": size}
+
+    async def mine(self, user_id, product_id):
+        row = (await self.session.execute(text("""
+            SELECT id,content,rating,image_count,created_at,deleted_at,deletion_reason
+            FROM product_reviews WHERE user_id=:user AND product_id=:product
+        """), {"user": user_id, "product": product_id})).mappings().first()
+        return dict(row) if row else None
+
+    async def remove(self, review_id, reason):
+        try:
+            result = await self.session.scalar(text("""
+                UPDATE product_reviews SET deleted_at=clock_timestamp(),deletion_reason=:reason
+                WHERE id=:id AND deleted_at IS NULL RETURNING id
+            """), {"id": review_id, "reason": reason})
+            await self.session.commit()
+            return result is not None
+        except Exception:
+            await self.session.rollback()
+            raise
+
+    async def restore(self, review_id):
+        result = await self.session.scalar(text("UPDATE product_reviews SET deleted_at=NULL,deletion_reason=NULL WHERE id=:id AND deleted_at IS NOT NULL RETURNING id"), {"id": review_id})
+        await self.session.commit()
+        return result is not None
+
+    async def purge(self, review_id):
+        # 휴지통(삭제됨)에 있는 리뷰만 완전히 지운다. 사진은 외래키 cascade 로 함께 지워진다.
+        result = await self.session.scalar(text("DELETE FROM product_reviews WHERE id=:id AND deleted_at IS NOT NULL RETURNING id"), {"id": review_id})
+        await self.session.commit()
+        return result is not None
+
+    async def image(self, review_id, index):
+        return await self.session.scalar(text("""
+            SELECT i.body FROM product_review_images i JOIN product_reviews r ON r.id=i.review_id
+            JOIN products p ON p.id=r.product_id
+            WHERE i.review_id=:id AND i.position=:index AND r.deleted_at IS NULL AND p.is_active
+        """), {"id": review_id, "index": index})

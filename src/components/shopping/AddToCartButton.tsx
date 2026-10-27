@@ -5,7 +5,9 @@ import { useState, useTransition } from "react";
 import { addToCart } from "@/actions/cart";
 import { useNavigation } from "@/components/common/NavigationProvider";
 import { formatPrice } from "@/lib/format";
+import { maxPurchasable, stockLimitMessage } from "@/lib/stock";
 import { QuantityStepper } from "./QuantityStepper";
+import { StockAlertDialog } from "./StockAlertDialog";
 import { useLoginReturn } from "./useLoginReturn";
 
 // 상품 상세·목록 어디서나 쓰는 장바구니 담기 버튼.
@@ -15,22 +17,27 @@ export function AddToCartButton({
   productName,
   price,
   layout = "stack",
+  stock,
 }: {
   productId: string;
   productName: string;
   price: number;
   layout?: "stack" | "bar";
+  stock?: number;
 }) {
   const [quantity, setQuantity] = useState(1);
   const [message, setMessage] = useState<{
     kind: "ok" | "error";
     text: string;
   } | null>(null);
+  const [stockAlert, setStockAlert] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const { refresh } = useNavigation();
+  const max = maxPurchasable(stock);
   const goLogin = useLoginReturn();
 
   const submit = () => {
+    if (stock === 0) return;
     if (pending) return; // 중복 클릭 방지
     setMessage(null);
     startTransition(async () => {
@@ -38,6 +45,14 @@ export function AddToCartButton({
         const result = await addToCart({ product_id: productId, quantity });
         if (!result.ok) {
           if (result.needsLogin) return goLogin();
+          if (result.available !== undefined) {
+            // 그사이 재고가 줄었거나 장바구니에 이미 담긴 수량이 있어요: 팝업으로 알리고 수량을 맞춰요.
+            setStockAlert(result.error);
+            setQuantity((current) =>
+              Math.max(1, Math.min(current, result.available ?? current)),
+            );
+            return;
+          }
           setMessage({ kind: "error", text: result.error });
           return;
         }
@@ -57,6 +72,7 @@ export function AddToCartButton({
   };
 
   const bar = layout === "bar";
+  if (stock === 0) return <div className="space-y-2"><button disabled className="btn w-full border border-line bg-sand text-ink-muted">품절</button><p className="text-sm text-ink-muted">현재 재고가 없어 구매할 수 없습니다.</p></div>;
   return (
     <div className={bar ? "space-y-2" : "space-y-3"}>
       <div className={`flex items-center ${bar ? "gap-2" : "flex-wrap gap-3"}`}>
@@ -66,6 +82,12 @@ export function AddToCartButton({
           disabled={pending}
           label={productName}
           compact={bar}
+          max={max}
+          onLimit={
+            stock !== undefined && stock === max
+              ? () => setStockAlert(stockLimitMessage(stock))
+              : undefined
+          }
         />
         <button
           type="button"
@@ -96,6 +118,10 @@ export function AddToCartButton({
           </Link>
         )}
       </p>
+      <StockAlertDialog
+        message={stockAlert}
+        onClose={() => setStockAlert(null)}
+      />
     </div>
   );
 }

@@ -44,3 +44,22 @@ def test_cors_wildcard_rejected():
 def _reset_settings_cache():
     yield
     get_settings.cache_clear()
+
+
+
+async def test_unhandled_error_returns_json_without_internal_details():
+    from app.main import create_app
+
+    app2 = create_app()
+
+    async def boom():
+        raise RuntimeError("SECRET-INTERNAL-DETAIL postgresql://user:pass@host/db")
+
+    app2.add_api_route("/boom", boom)
+    transport = ASGITransport(app=app2, raise_app_exceptions=False)
+    async with AsyncClient(transport=transport, base_url="http://test") as c:
+        r = await c.get("/boom")
+    assert r.status_code == 500
+    assert r.headers["content-type"].startswith("application/json")
+    assert set(r.json()) == {"detail"}
+    assert "SECRET-INTERNAL-DETAIL" not in r.text and "Traceback" not in r.text

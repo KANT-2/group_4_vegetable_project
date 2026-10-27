@@ -1,71 +1,81 @@
 import "server-only";
-import { createClient } from "@/lib/supabase/server";
-import { createPublicSupabaseClient } from "@/lib/supabase/public";
 import { products as mockProducts } from "@/data/mock/products";
 import { rankProducts } from "@/lib/product-ranking";
 import { getProductImages } from "@/lib/product-gallery";
-import { uglyReasonSchema, type CatalogFilters } from "@/schemas/product";
-import type { Database } from "@/types/database";
+import type { CatalogFilters } from "@/schemas/product";
 import type { Product, ProductListItem, UglyReason } from "@/types/product";
-import { isMockCatalog, toImageSrc } from "./catalog-source";
 import { getVegetables } from "./vegetables";
+import { managedProducts } from "./managed-content";
+import { isFastApiCatalog } from "@/lib/catalog-mode";
+import { catalogProduct, type CatalogPage } from "@/lib/catalog-api";
+import { fastApi, FastApiError } from "@/lib/fastapi";
 
-type ProductRow = Database["public"]["Tables"]["products"]["Row"];
-
-// DB 한 줄(snake_case) → 화면용 이름표(camelCase)
-function toProduct(row: ProductRow): Product {
+export async function getCatalogPage(
+  filters: CatalogFilters,
+  page = 1,
+  size = 20,
+) {
+  if (!isFastApiCatalog()) {
+    const all = await getProductList(filters);
+    const counts = countByReason(
+      await getProductList({ ...filters, reason: undefined }),
+    );
+    return {
+      items: all.slice((page - 1) * size, page * size),
+      total: all.length,
+      page,
+      size,
+      reasonCounts: counts,
+    };
+  }
+  const query = new URLSearchParams({ page: String(page), size: String(size) });
+  for (const [key, value] of Object.entries(filters))
+    if (Array.isArray(value))
+      for (const item of value) query.append(key, String(item));
+    else if (value) query.set(key, String(value));
+  const result = await fastApi<CatalogPage>(
+    `/api/v1/catalog/products?${query}`,
+  );
   return {
-    id: row.id,
-    vegetableId: row.vegetable_id,
-    name: row.name,
-    price: row.price,
-    originalPrice: row.original_price,
-    unit: row.unit,
-    uglyReason: uglyReasonSchema.parse(row.ugly_reason),
-    conditionNote: row.condition_note ?? undefined,
-    farmName: row.farm_name,
-    farmRegion: row.farm_region ?? undefined,
-    farmStory: row.farm_story ?? undefined,
-    imageUrl:
-      getProductImages({
-        id: row.id,
-        imageUrl: toImageSrc(row.image_path),
-        vegetableId: row.vegetable_id,
-      })[0] ?? "",
-    description: row.description,
-    isSeasonal: row.is_seasonal,
-    isFeatured: row.is_featured,
-    isActive: row.is_active,
-    tagline: row.tagline ?? undefined,
-    rating: row.rating ?? undefined,
-    reviewCount: row.review_count,
+    items: result.items.map(catalogProduct),
+    total: result.total,
+    page,
+    size,
+    reasonCounts: result.reason_counts,
   };
 }
 
-// 판매 중인 상품 전체 (RLS가 is_active = true인 상품만 돌려줘요)
-async function getActiveProducts(publicOnly = false): Promise<Product[]> {
-  if (isMockCatalog())
-    return mockProducts
-      .filter((p) => p.isActive)
-      .map((p) => ({ ...p, imageUrl: getProductImages(p)[0] ?? p.imageUrl }));
-
-  const supabase = publicOnly
-    ? createPublicSupabaseClient()
-    : await createClient();
-  const { data, error } = await supabase
-    .from("products")
-    .select("*")
-    .eq("is_active", true)
-    .order("created_at");
-  if (error) throw new Error("상품을 불러오지 못했어요.");
-  return data.map(toProduct);
+async function getActiveProducts(): Promise<Product[]> {
+  if (!isFastApiCatalog())
+    return managedProducts(
+      mockProducts
+        .filter((p) => p.isActive)
+        .map((p) => ({ ...p, imageUrl: getProductImages(p)[0] ?? p.imageUrl })),
+    );
+  const result: Product[] = [];
+  let page = 1;
+  while (true) {
+    const batch = await getCatalogPage({ sort: "recommended" }, page, 100);
+    result.push(...batch.items);
+    if (!batch.items.length || page * batch.size >= batch.total) return result;
+    page++;
+  }
 }
 
-// 상품 목록: 채소 분류를 붙이고 조건대로 거르고 정렬해요.
-// 상품이 16개뿐이라 한 번에 받아서 서버에서 걸러요.
 export async function getProductList(
   filters: CatalogFilters,
 ): Promise<ProductListItem[]> {
+  if (isFastApiCatalog()) {
+    const result: ProductListItem[] = [];
+    let page = 1;
+    while (true) {
+      const batch = await getCatalogPage(filters, page, 100);
+      result.push(...batch.items);
+      if (!batch.items.length || page * batch.size >= batch.total)
+        return result;
+      page++;
+    }
+  }
   const [products, vegetables] = await Promise.all([
     getActiveProducts(),
     getVegetables(),
@@ -82,15 +92,29 @@ export async function getProductList(
       ),
     ).includes(keyword);
 
-  const list = products
-    .map((p) => ({ ...p, category: categoryOf.get(p.vegetableId) ?? "root" }))
+  let list = products
+    .map((p) => ({
+      ...p,
+      category:
+        (p as ProductListItem).category ??
+        categoryOf.get(p.vegetableId) ??
+        "root",
+    }))
     .filter(
       (p) =>
         (!filters.category || p.category === filters.category) &&
+        (!filters.vegetable || p.vegetableId === filters.vegetable) &&
         (!filters.reason || p.uglyReason === filters.reason) &&
         (!keyword || matchesKeyword(p)),
     );
 
+  if (filters.collection?.length) {
+    const { COLLECTIONS } = await import("@/lib/catalog");
+    // 여러 구매 옵션을 고르면 모두 만족하는 상품만 (FastAPI 와 같은 규칙)
+    list = list.filter((p) =>
+      filters.collection!.every((key) => COLLECTIONS[key].match(p)),
+    );
+  }
   return filters.sort === "newest" ? list : rankProducts(list, filters.sort);
 }
 
@@ -102,25 +126,19 @@ export function countByReason(list: Product[]): Record<UglyReason, number> {
 }
 
 export async function getProductById(id: string): Promise<Product | null> {
-  if (isMockCatalog()) {
-    const product = mockProducts.find((p) => p.id === id && p.isActive);
-    return product
-      ? {
-          ...product,
-          imageUrl: getProductImages(product)[0] ?? product.imageUrl,
-        }
-      : null;
+  if (!isFastApiCatalog())
+    return (
+      (await getActiveProducts()).find((product) => product.id === id) ?? null
+    );
+  try {
+    const row = await fastApi<import("@/lib/catalog-api").CatalogProduct>(
+      `/api/v1/catalog/products/${encodeURIComponent(id)}`,
+    );
+    return catalogProduct(row);
+  } catch (error) {
+    if (error instanceof FastApiError && error.status === 404) return null;
+    throw error;
   }
-
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("products")
-    .select("*")
-    .eq("id", id)
-    .eq("is_active", true)
-    .maybeSingle();
-  if (error) throw new Error("상품을 불러오지 못했어요.");
-  return data ? toProduct(data) : null;
 }
 
 export async function getProductsByVegetable(
@@ -132,5 +150,5 @@ export async function getProductsByVegetable(
 
 // 레시피 빌드와 공개 조회에는 사용자 쿠키를 읽지 않는 연결을 사용해요.
 export async function getPublicProducts(): Promise<Product[]> {
-  return getActiveProducts(true);
+  return getActiveProducts();
 }

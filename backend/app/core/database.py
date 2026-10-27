@@ -9,6 +9,7 @@ from collections.abc import AsyncIterator
 from fastapi import HTTPException, status
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.pool import NullPool
 
 _engine: AsyncEngine | None = None
 _session_factory: async_sessionmaker[AsyncSession] | None = None
@@ -19,7 +20,15 @@ async def init_engine(database_url: str) -> bool:
     global _engine, _session_factory
     if not database_url:
         return False
-    _engine = create_async_engine(database_url, pool_pre_ping=True)
+    # 팀 Supabase의 transaction-mode pooler를 여러 로컬 서버가 함께 사용한다.
+    # 애플리케이션 풀과 asyncpg statement cache를 끄면 연결을 즉시 반환하고,
+    # PgBouncer가 다른 서버 연결을 재사용할 때 prepared statement가 충돌하지 않는다.
+    _engine = create_async_engine(
+        database_url,
+        pool_pre_ping=True,
+        poolclass=NullPool,
+        connect_args={"statement_cache_size": 0},
+    )
     _session_factory = async_sessionmaker(_engine, expire_on_commit=False)
     return True
 

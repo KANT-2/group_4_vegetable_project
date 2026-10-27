@@ -63,6 +63,7 @@ export function HomeBanner({
   }, [moving, go, intervalMs]);
 
   if (slides.length === 0) return null;
+  const activeIndex = index % slides.length;
 
   const artwork = slides.every((slide) => slide.layout === "artwork");
 
@@ -82,7 +83,7 @@ export function HomeBanner({
       }}
     >
       {slides.map((slide, i) => {
-        const current = i === index;
+        const current = i === activeIndex;
         return (
           <div
             key={slide.id}
@@ -112,6 +113,7 @@ export function HomeBanner({
                     preload={i === 0}
                     loading={i === 0 ? undefined : "eager"}
                     className="object-cover object-right sm:object-center"
+                    unoptimized={slide.imageUrl?.startsWith("data:")}
                   />
                   {slide.copyOverride ? (
                     <DeliveryBannerCopy />
@@ -209,7 +211,7 @@ export function HomeBanner({
               </button>
               <span aria-live="polite">
                 <b className="font-bold">
-                  {String(index + 1).padStart(2, "0")}
+                  {String(activeIndex + 1).padStart(2, "0")}
                 </b>{" "}
                 / {String(slides.length).padStart(2, "0")}
               </span>

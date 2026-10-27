@@ -3,29 +3,36 @@ import { getCart } from "@/services/cart";
 import { getProfile } from "@/services/profile";
 import { AccountGuard } from "@/components/account/AccountGuard";
 import { CheckoutForm } from "@/components/shopping/CheckoutForm";
+import { GuestCartMerge } from "@/components/shopping/GuestCartMerge";
 
 export const metadata = { title: "결제" };
 
 async function CheckoutContent() {
-  const [{ userId, lines }, profile] = await Promise.all([
+  const [{ userId, lines, guestPending }, profile] = await Promise.all([
     getCart(),
     getProfile(),
   ]);
   if (profile.id !== userId)
     throw new Error("로그인 계정이 변경됐어요. 새로고침해 주세요.");
+  // 합칠 비회원 장바구니가 있으면(guestPending > 0) 먼저 합치고, 값이 없으면 합칠 것이 없는 것으로 봐요.
+  const merging = guestPending > 0;
   return (
     <AccountGuard userId={userId}>
-      <CheckoutForm
-        userId={userId}
-        lines={lines}
-        initialAddress={{
-          recipient_name: profile.recipient_name ?? "",
-          recipient_phone: profile.recipient_phone ?? "",
-          postal_code: profile.postal_code ?? "",
-          address: profile.address ?? "",
-          address_detail: profile.address_detail ?? "",
-        }}
-      />
+      {/* 로그인 직후 합칠 비회원 장바구니가 남아 있으면 먼저 합치고, 합친 뒤에 결제 화면을 보여 줘요. */}
+      <GuestCartMerge pending={merging ? guestPending : 0} />
+      {!merging && (
+        <CheckoutForm
+          userId={userId}
+          lines={lines}
+          initialAddress={{
+            recipient_name: profile.recipient_name ?? "",
+            recipient_phone: profile.recipient_phone ?? "",
+            postal_code: profile.postal_code ?? "",
+            address: profile.address ?? "",
+            address_detail: profile.address_detail ?? "",
+          }}
+        />
+      )}
     </AccountGuard>
   );
 }

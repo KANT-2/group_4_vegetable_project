@@ -16,6 +16,12 @@
 
 ## Google Cloud·Supabase 설정 순서
 
+FastAPI JWT 통합 뒤에는 같은 공개 Supabase URL·publishable key를 백엔드의
+`SUPABASE_URL`, `SUPABASE_ANON_KEY`에도 설정합니다. 백엔드는 Google callback에서
+받은 Supabase access token을 `/auth/v1/user`로 다시 검증한 뒤에만 동일 UUID의
+`app_users`와 `profiles`를 만들고 자체 JWT를 발급합니다. Google Client Secret은
+계속 Supabase 대시보드에만 보관하며 앱 환경변수나 Git에 넣지 않습니다.
+
 Google Cloud `motnani-story` 프로젝트의 앱 이름은 못난이이야기이며 외부·테스트 모드로 구성했습니다. OAuth 웹 클라이언트를 발급해 실제 Supabase `vegetable` 프로젝트에 등록했고 Google provider를 활성화했습니다. Client Secret은 Supabase 설정에만 저장하며 앱 환경변수나 저장소에 넣지 않습니다.
 
 승인된 JavaScript 원본은 `http://localhost:3000`, `http://127.0.0.1:3103`입니다. Supabase 반환 주소는 두 원본 각각의 `/auth/callback`과 `/auth/callback?**`를 등록해 로그인 후 이동 경로를 허용합니다. Site URL은 `http://localhost:3000`이며 검증 서버에는 `NEXT_PUBLIC_SITE_URL=http://127.0.0.1:3103`을 명시했습니다. nonce 검사 생략과 이메일 없는 계정 허용은 비활성 상태를 유지했습니다.

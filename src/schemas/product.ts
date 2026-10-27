@@ -37,14 +37,34 @@ export const catalogFiltersSchema = z.object({
     firstValue,
     vegetableCategorySchema.optional().catch(undefined),
   ),
+  // 채소 종류 하나로 거르기 (제철 채소 달력에서 눌렀을 때). 예: ?vegetable=carrot
+  vegetable: z.preprocess(
+    firstValue,
+    z
+      .string()
+      .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
+      .max(100)
+      .optional()
+      .catch(undefined),
+  ),
   reason: z.preprocess(
     firstValue,
     uglyReasonSchema.optional().catch(undefined),
   ),
   sort: z.preprocess(firstValue, productSortSchema.catch("recommended")),
+  // 구매 옵션은 여러 개 고를 수 있어요: ?collection=seasonal&collection=bulk
+  // 허용되지 않은 값은 빼고, 같은 값은 한 번만, 순서는 고정해요.
   collection: z.preprocess(
-    firstValue,
-    collectionSchema.optional().catch(undefined),
+    (value) =>
+      [
+        ...new Set(
+          (Array.isArray(value) ? value : value === undefined ? [] : [value])
+            .map((item) => collectionSchema.safeParse(item))
+            .filter((result) => result.success)
+            .map((result) => result.data),
+        ),
+      ].sort(),
+    z.array(collectionSchema).catch([]),
   ),
   // 검색어: 앞뒤 공백 제거, 빈 값은 없음으로, 너무 길면 30자까지만
   q: z.preprocess(
@@ -58,4 +78,8 @@ export const catalogFiltersSchema = z.object({
   ),
 });
 
-export type CatalogFilters = z.infer<typeof catalogFiltersSchema>;
+// 주소에서 읽으면 collection 은 항상 배열이지만, 코드에서 부를 때는 생략할 수 있어요.
+export type CatalogFilters = Omit<
+  z.infer<typeof catalogFiltersSchema>,
+  "collection"
+> & { collection?: z.infer<typeof collectionSchema>[] };

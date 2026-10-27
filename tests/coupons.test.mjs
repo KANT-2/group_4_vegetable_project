@@ -9,7 +9,7 @@ test("쿠폰은 서버 조건·중복 방지·본인 조회·직접 쓰기 차�
   const one = "00000000-0000-4000-8000-000000000001";
   const two = "00000000-0000-4000-8000-000000000002";
   await db.exec(`create role anon; create role authenticated;
-    create schema auth; create table auth.users(id uuid primary key);
+    create schema auth; create table auth.users(id uuid primary key, email text, raw_user_meta_data jsonb default '{}');
     create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
     grant usage on schema public,auth to anon,authenticated;
     insert into auth.users values ('${one}'),('${two}');

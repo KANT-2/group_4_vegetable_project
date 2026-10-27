@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { promotions } from "@/data/promotions";
+import { publicPromotions } from "@/services/managed-content";
 export const metadata = { title: "혜택과 이야기" };
 export default function PromotionsPage() {
+  const promotions = publicPromotions();
   return (
     <div className="container-page py-10 md:py-16">
       <p className="text-xs font-bold tracking-widest text-brand">
@@ -26,6 +27,7 @@ export default function PromotionsPage() {
                   fill
                   sizes="(max-width: 768px) 100vw, 525px"
                   className="object-cover"
+                  unoptimized={promo.image.startsWith("data:")}
                 />
               </div>
               <div className="p-5">

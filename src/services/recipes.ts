@@ -11,6 +11,7 @@ import "server-only";
 import { cache } from "react";
 import easyRecipes from "@/data/easy-recipes.json";
 import { getPublicProducts } from "./products";
+import { managedRecipes } from "./managed-content";
 import { getPublicVegetables } from "./vegetables";
 import {
   mergeRecipeCatalogs,
@@ -136,7 +137,8 @@ function uniqueVegetables(vegetables: RecipeVegetable[]): RecipeVegetable[] {
 
 // 한 요청 안에서 여러 번 불러도 한 번만 읽어요.
 const loadAllRecipes = cache(async (): Promise<Recipe[]> => {
-  if (getDataSource() === "mock") return loadMockRecipes();
+  if (getDataSource() === "mock")
+    return managedRecipes(loadMockRecipes(), await getPublicProducts());
   // 편집 레시피는 배포에 포함되고 상품 연결은 실제 DB 상품으로 계산해요.
   // DB 오류는 그대로 전파하며, 공식 DB 데이터를 Mock으로 대체하지 않아요.
   const [rows, products, vegetables] = await Promise.all([
@@ -144,18 +146,22 @@ const loadAllRecipes = cache(async (): Promise<Recipe[]> => {
     getPublicProducts(),
     getPublicVegetables(),
   ]);
-  return mergeRecipeCatalogs(
-    connectCatalogRecipes(easyCatalog, products, vegetables),
-    rows.map((row) => withRecipePhoto(rowToRecipe(row))),
+  return managedRecipes(
+    mergeRecipeCatalogs(
+      connectCatalogRecipes(easyCatalog, products, vegetables),
+      rows.map((row) => withRecipePhoto(rowToRecipe(row))),
+    ),
+    products,
   );
 });
 
 function matchesFilters(
   recipe: Recipe,
-  { q, vegetable }: RecipeFilters,
+  { q, vegetable, difficulty }: RecipeFilters,
 ): boolean {
   if (vegetable && !recipeVegetableIds(recipe).includes(vegetable))
     return false;
+  if (difficulty && recipe.difficulty !== difficulty) return false;
 
   const terms = (q ?? "").toLowerCase().split(/\s+/).filter(Boolean);
   if (terms.length === 0) return true;

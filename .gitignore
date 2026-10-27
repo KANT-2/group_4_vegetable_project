@@ -10,6 +10,7 @@ node_modules/
 
 # Next.js 빌드 결과물
 .next/
+.next-admin/
 out/
 build/
 
@@ -38,6 +39,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+next-*.log
+backend/uvicorn-*.log
 
 # 운영체제 자동 생성 파일
 .DS_Store
@@ -55,6 +58,9 @@ desktop.ini
 
 # 개인 실행 데이터베이스와 Python 캐시
 var/food-catalog/
+var/admin/
+var/customer-demo/
+var/managed-content/
 __pycache__/
 *.pyc
 

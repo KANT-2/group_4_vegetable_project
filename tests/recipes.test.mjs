@@ -58,6 +58,12 @@ test("공식 레시피의 출처·누락값·상품 없는 채소·말린 재료
     parseRecipeFilters({ q: ["  샐러드 ", "무시"], vegetable: "bad/id" }),
     { q: "샐러드", vegetable: undefined },
   );
+  // 난이도는 쉬움·보통·어려움만, 그 밖의 값은 조건 없음
+  assert.equal(parseRecipeFilters({ difficulty: "easy" }).difficulty, "easy");
+  assert.equal(
+    parseRecipeFilters({ difficulty: "hack" }).difficulty,
+    undefined,
+  );
   assert.equal(
     recipeRowSchema.safeParse({
       ...catalog[0],
@@ -77,7 +83,7 @@ test("공통 DB에 공식 시드를 두 번 적용해도 중복·사용자 데�
   const db = new PGlite();
   t.after(() => db.close());
   await db.exec(`create role anon; create role authenticated; create role service_role bypassrls;
-    create schema auth; create table auth.users (id uuid primary key);
+    create schema auth; create table auth.users (id uuid primary key, email text, raw_user_meta_data jsonb default '{}');
     create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid$$;
     grant usage on schema auth, public to anon, authenticated, service_role;
     create schema storage; create table storage.buckets (id text primary key, name text not null, public boolean not null default false, file_size_limit bigint, allowed_mime_types text[]);

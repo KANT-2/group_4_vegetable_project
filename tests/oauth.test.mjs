@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
 import {
   getSiteOrigin,
   googleCallbackUrl,
@@ -47,11 +48,11 @@ test("인증 경로로 되돌아가는 로그인 루프를 차단한다", () => 
 
 test("개인 경로는 하위 경로까지 보호하고 공개 경로는 유지한다", () => {
   for (const path of [
-    "/cart",
-    "/cart/items",
+    "/cart/checkout",
+    "/cart/checkout/done",
     "/mypage",
     "/mypage/profile",
-    "/%63art",
+    "/%63art/checkout",
     "/%6dypage/profile",
   ])
     assert.equal(isPrivatePath(path), true);
@@ -60,8 +61,21 @@ test("개인 경로는 하위 경로까지 보호하고 공개 경로는 유지�
     "/login",
     "/auth/callback",
     "/recipes",
+    "/cart", // 비회원 장바구니
+    "/cart/items",
+    "/%63art",
+    "/cart/checkouts",
     "/cartoon",
     "/mypages",
   ])
     assert.equal(isPrivatePath(path), false);
+});
+
+test("로그인된 사용자는 이전 OAuth 오류 표시가 남아 있어도 로그인 폼을 보지 않는다", () => {
+  const loginPage = readFileSync(
+    new URL("../src/app/login/page.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(loginPage, /if \(user\) redirect\(next\)/);
+  assert.doesNotMatch(loginPage, /user\s*&&\s*!params\.error/);
 });

@@ -178,6 +178,7 @@ function positionFor(farmName: string): (typeof POSITIONS)[number] {
 export function getFarmPhoto(
   farm: FarmStory,
 ): FarmPhoto & { position: string } {
+  if (farm.imageUrl) return { imageUrl: farm.imageUrl, alt: `${farm.farmName} 농가 사진`, position: "object-center" };
   // 농가마다 따로 고른 사진
   const own = FARM_PHOTOS[farm.farmName];
   if (own) return { ...own, position: "object-center" };

@@ -5,17 +5,21 @@ import { AccountGuard } from "@/components/account/AccountGuard";
 import { CouponWallet } from "@/components/shopping/CouponWallet";
 import { CartList } from "@/components/shopping/CartList";
 import { WishlistList } from "@/components/shopping/WishlistList";
+import { GuestCartMerge } from "@/components/shopping/GuestCartMerge";
 import { getCart, getWishlist } from "@/services/cart";
 
 export const metadata: Metadata = { title: "장바구니·찜" };
 type SearchParams = Promise<{ tab?: string | string[] }>;
 
 async function CartContent() {
-  const { userId, lines } = await getCart();
+  const { userId, isGuest, guestPending, lines } = await getCart();
   // 서버 데이터가 바뀌면(새로고침) 목록 상태를 새로 시작해요.
   const key = lines.map((l) => `${l.productId}:${l.quantity}`).join(",");
+  // 비회원은 로그인 계정이 없어서 계정 확인(AccountGuard)을 거치지 않아요.
+  if (isGuest) return <CartList key={key} initialLines={lines} isGuest />;
   return (
     <AccountGuard userId={userId}>
+      <GuestCartMerge pending={guestPending} />
       <CartList key={key} initialLines={lines} />
     </AccountGuard>
   );
@@ -23,7 +27,7 @@ async function CartContent() {
 
 async function WishlistContent() {
   const { userId, lines } = await getWishlist();
-  const key = lines.map((l) => l.productId).join(",");
+  const key = JSON.stringify(lines);
   return (
     <AccountGuard userId={userId}>
       <WishlistList key={key} initialLines={lines} />

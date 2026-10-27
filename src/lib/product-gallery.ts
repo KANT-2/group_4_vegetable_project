@@ -10,6 +10,12 @@ export function getProductImages(product: {
   imageUrl?: string;
   vegetableId?: string;
 }): string[] {
+  // 관리자가 직접 올린 사진은 기본 사진 묶음보다 먼저, 그 사진만 보여 줘요.
+  if (
+    product.imageUrl?.startsWith("data:") ||
+    product.imageUrl?.startsWith("/api/product-images/")
+  )
+    return [product.imageUrl];
   const selected = photosByProduct[product.id ?? ""];
   if (Array.isArray(selected)) return [...selected];
   const candidates = photosByVegetable[product.vegetableId ?? ""] ?? [];

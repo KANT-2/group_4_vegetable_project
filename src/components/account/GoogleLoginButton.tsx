@@ -6,7 +6,6 @@ import { signInWithGoogle } from "@/actions/auth";
 export function GoogleLoginButton({
   next,
   ready,
-  message,
 }: {
   next: string;
   ready: boolean;
@@ -33,7 +32,6 @@ export function GoogleLoginButton({
         </span>
         {pending ? "Google로 이동 중" : "Google로 계속하기"}
       </button>
-      {message && <p className="mt-3 text-sm text-ink-muted">{message}</p>}
       {error && (
         <p className="field-error" role="alert">
           {error}

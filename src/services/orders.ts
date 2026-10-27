@@ -2,18 +2,84 @@ import "server-only";
 import { requireUser } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 import { z } from "zod";
+import { getCustomerDemo } from "@/lib/customer-demo";
+import {
+  customerDemoOrders,
+  customerDemoRefundOrders,
+} from "@/lib/customer-demo-orders";
+import { getCartMode } from "@/lib/cart-mode";
+import { apiGetOrder, apiGetOrders, type ApiOrder } from "@/lib/cart-api";
+import { FastApiError } from "@/lib/fastapi";
 
-export async function getOrders(page = 1) {
+// FastAPI 주문을 기존 주문 화면이 읽는 모양(주문 행 + 주문 상품 + 환불 신청)으로 바꿔요.
+function toOrderRow(order: ApiOrder, userId: string) {
+  return {
+    id: order.id,
+    user_id: userId,
+    status: order.status,
+    total_amount: order.total_amount,
+    shipping_fee: order.shipping_fee,
+    created_at: order.created_at,
+    paid_at: order.paid_at,
+    payment_method: order.payment_method,
+    recipient_name: order.shipping.recipient_name,
+    recipient_phone: order.shipping.recipient_phone,
+    postal_code: order.shipping.postal_code,
+    address: order.shipping.address,
+    address_detail: order.shipping.address_detail,
+    order_items: order.items.map((item) => ({
+      product_id: item.product_id,
+      product_name: item.product_name,
+      product_unit: item.product_unit,
+      quantity: item.quantity,
+      unit_price: item.unit_price,
+    })),
+    refund_requests: order.refund ? { status: order.refund.status } : null,
+  };
+}
+
+export async function getOrders(page = 1, refundsOnly = false) {
+  const pageSize = 12;
+  if (await getCustomerDemo()) {
+    const orders = refundsOnly ? customerDemoRefundOrders : customerDemoOrders;
+    return {
+      userId: "customer-demo-qwer",
+      orders: orders.slice((page - 1) * pageSize, page * pageSize),
+      count: orders.length,
+      page,
+      pageSize,
+    };
+  }
+  const mode = await getCartMode();
+  if (mode.kind === "fastapi") {
+    // "취소·환불 내역"은 환불을 신청했거나 취소된 주문만 서버가 골라 줘요.
+    const result = await apiGetOrders(mode.token, page, pageSize, refundsOnly);
+    return {
+      userId: mode.userId,
+      orders: result.items.map((order) => toOrderRow(order, mode.userId)),
+      count: result.total,
+      page,
+      pageSize,
+    };
+  }
   const user = await requireUser("/mypage/orders");
   const supabase = await createClient();
-  const pageSize = 20;
-  const { data, error, count } = await supabase
+  let query = supabase
     .from("orders")
     .select(
-      "id, status, total_amount, created_at, order_items(product_name, quantity), refund_requests(status)",
+      "id, status, total_amount, shipping_fee, created_at, paid_at, payment_method, recipient_name, recipient_phone, postal_code, address, address_detail, order_items(product_id, product_name, product_unit, quantity, unit_price), refund_requests(status)",
       { count: "exact" },
     )
-    .eq("user_id", user.id)
+    .eq("user_id", user.id);
+  if (refundsOnly) {
+    const refunds = await supabase.from("refund_requests").select("order_id");
+    if (refunds.error) throw new Error("환불내역을 불러오지 못했습니다.");
+    const ids = refunds.data.map((refund) => refund.order_id);
+    query = ids.length
+      ? query.or(`status.eq.cancelled,id.in.(${ids.join(",")})`)
+      : query.eq("status", "cancelled");
+  }
+  const { data, error, count } = await query
     .order("created_at", { ascending: false })
     .order("id", { ascending: false })
     .range((page - 1) * pageSize, page * pageSize - 1);
@@ -22,6 +88,38 @@ export async function getOrders(page = 1) {
 }
 
 export async function getOrder(orderId: string) {
+  const mode = await getCartMode();
+  if (mode.kind === "fastapi") {
+    if (!z.uuid().safeParse(orderId).success) return null;
+    try {
+      const order = await apiGetOrder(mode.token, orderId);
+      return {
+        order: toOrderRow(order, mode.userId),
+        items: order.items.map((item) => ({
+          order_id: order.id,
+          product_id: item.product_id,
+          product_name: item.product_name,
+          product_unit: item.product_unit,
+          quantity: item.quantity,
+          unit_price: item.unit_price,
+        })),
+        refund: order.refund
+          ? {
+              order_id: order.id,
+              status: order.refund.status,
+              reason: order.refund.reason,
+              created_at: order.refund.created_at,
+              reviewed_at: order.refund.reviewed_at,
+            }
+          : null,
+        refundSupported: true, // 환불 신청 접수까지 지원해요(승인·실제 환불은 아니에요).
+      };
+    } catch (error) {
+      // 없는 주문이거나 남의 주문이면 FastAPI 가 같은 404 를 돌려줘요.
+      if (error instanceof FastApiError && error.status === 404) return null;
+      throw error;
+    }
+  }
   const user = await requireUser(`/mypage/orders/${orderId}`);
   if (!z.uuid().safeParse(orderId).success) return null;
   const supabase = await createClient();
@@ -47,5 +145,10 @@ export async function getOrder(orderId: string) {
   ]);
   if (items.error || refund.error)
     throw new Error("주문 상세를 불러오지 못했습니다.");
-  return { order, items: items.data, refund: refund.data };
+  return {
+    order,
+    items: items.data,
+    refund: refund.data,
+    refundSupported: true,
+  };
 }

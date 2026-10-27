@@ -13,6 +13,8 @@ interface RecipeImageProps {
   className?: string;
   priority?: boolean;
   href?: string;
+  // true 면 마우스를 올리거나 키보드로 초점을 줄 때만 사진을 넘겨요(목록 카드용).
+  rotateOnHover?: boolean;
 }
 
 export function RecipeImage({
@@ -20,8 +22,10 @@ export function RecipeImage({
   className = "",
   priority,
   href,
+  rotateOnHover = false,
 }: RecipeImageProps) {
   const [index, setIndex] = useState(0);
+  const [active, setActive] = useState(false);
   const photos = [
     ...new Set(
       [recipe.imageUrl, ...(recipe.additionalImageUrls ?? [])].filter(
@@ -37,7 +41,7 @@ export function RecipeImage({
   const isSubstitute = photos.length === 0 && Boolean(substituteUrl);
 
   useEffect(() => {
-    if (!multiple) return;
+    if (!multiple || (rotateOnHover && !active)) return;
     const timer = window.setInterval(() => {
       // 백그라운드 탭과 동작 줄이기 설정에서는 자동 넘김을 멈춥니다.
       if (
@@ -48,7 +52,27 @@ export function RecipeImage({
       setIndex((previous) => (previous + 1) % photos.length);
     }, 2000);
     return () => window.clearInterval(timer);
-  }, [multiple, photos.length]);
+  }, [multiple, photos.length, rotateOnHover, active]);
+
+  // 올리자마자 다음 사진을 보여 주고, 손을 떼면 다시 첫 사진으로 돌아가요.
+  const start = () => {
+    if (active) return;
+    setActive(true);
+    setIndex(1);
+  };
+  const stop = () => {
+    setActive(false);
+    setIndex(0);
+  };
+  const hoverHandlers =
+    rotateOnHover && multiple
+      ? {
+          onPointerEnter: start,
+          onPointerLeave: stop,
+          onFocus: start,
+          onBlur: stop,
+        }
+      : {};
 
   const image = multiple ? (
     <div className="absolute inset-0">
@@ -84,7 +108,10 @@ export function RecipeImage({
   );
 
   return (
-    <div className={`relative overflow-hidden ${multiple ? className : ""}`}>
+    <div
+      className={`relative overflow-hidden ${multiple ? className : ""}`}
+      {...hoverHandlers}
+    >
       {href ? (
         <Link
           href={href}

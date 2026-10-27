@@ -1,31 +1,18 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFileSync } from "node:fs";
-import ts from "typescript";
-import * as cartSchemas from "../src/schemas/cart.ts";
+import { loadActions } from "./cart-actions-loader.mjs";
 import { summarizeCart } from "../src/lib/cart.ts";
 
-// src/actions/cart.ts를 가짜 Supabase로 실행해요.
-function loadActions({ user = { id: "me" }, db }) {
-  const modules = {
-    "next/cache": { revalidatePath: () => {} },
-    "@/lib/auth": { getCurrentUser: async () => user },
-    "@/schemas/cart": cartSchemas,
-    "@/lib/supabase/server": { createClient: async () => db },
-  };
-  const { outputText } = ts.transpileModule(
-    readFileSync(new URL("../src/actions/cart.ts", import.meta.url), "utf8"),
-    { compilerOptions: { module: ts.ModuleKind.CommonJS } },
-  );
-  const exports = {};
-  new Function("require", "exports", outputText)(
-    (name) => modules[name],
-    exports,
-  );
-  return exports;
-}
+// src/actions/cart.ts를 가짜 Supabase로 실행해요. (예전 Supabase 로그인 경로)
 
 // 아주 작은 가짜 DB: cart_items, wishlist_items, products(판매 중 목록)
+test("품절 상품은 장바구니 저장 전에 서버에서 차단한다", async () => {
+  const { addToCart } = loadActions({ db: null, unavailable: true });
+  const result = await addToCart({ product_id: "carrot-1kg", quantity: 1 });
+  assert.equal(result.ok, false);
+  assert.match(result.error, /품절/);
+});
+
 function fakeDb({ active = ["carrot-1kg"], cart = [], wish = [] } = {}) {
   const tables = { cart_items: cart, wishlist_items: wish };
   const calls = [];
@@ -95,7 +82,7 @@ test("장바구니 담기: 새 상품은 추가, 같은 상품은 수량을 더�
   assert.equal(db.tables.cart_items[0].user_id, "me");
 });
 
-test("장바구니 담기: 판매 중이 아닌 상품·잘못된 수량·비로그인은 저장하지 않는다", async () => {
+test("장바구니 담기: 판매 중이 아닌 상품·잘못된 수량은 저장하지 않고 비회원 찜은 로그인이 필요하다", async () => {
   const db = fakeDb();
   const { addToCart } = loadActions({ db });
   assert.equal(
@@ -116,10 +103,15 @@ test("장바구니 담기: 판매 중이 아닌 상품·잘못된 수량·비로
   );
   assert.equal(db.tables.cart_items.length, 0);
 
-  const guest = loadActions({ user: null, db }).addToCart;
-  const result = await guest({ product_id: "carrot-1kg", quantity: 1 });
-  assert.equal(result.ok, false);
-  assert.equal(result.needsLogin, true);
+  // 비회원은 장바구니에 담을 수 있지만(쿠키), 찜은 로그인이 필요해요. (비회원 장바구니는 tests/cart-modes.test.mjs)
+  const guestActions = loadActions({ user: null, db });
+  const wish = await guestActions.setWishlist({
+    product_id: "carrot-1kg",
+    wished: true,
+  });
+  assert.equal(wish.ok, false);
+  assert.equal(wish.needsLogin, true);
+  assert.equal(db.tables.wishlist_items.length, 0);
 });
 
 test("수량 수정·삭제·찜은 항상 로그인 사용자 기준으로만 바뀐다", async () => {

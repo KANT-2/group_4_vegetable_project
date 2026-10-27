@@ -37,6 +37,7 @@ export type RecipeProduct = Pick<
   | "unit"
   | "uglyReason"
   | "imageUrl"
+  | "stock"
 >;
 
 export interface Recipe {
@@ -77,6 +78,7 @@ export interface RecipeDetail extends Recipe {
 export interface RecipeFilters {
   q?: string; // 이름·소개·재료·채소 이름에서 검색
   vegetable?: string; // 채소 id
+  difficulty?: RecipeDifficulty; // 조리 난이도
 }
 
 // 필터 칩에 보여줄 채소와 그 채소를 쓰는 레시피 수

@@ -73,7 +73,7 @@ export default async function VegetablePage({
       </section>
 
       {/* 보관법·손질법 */}
-      <section className="mt-4 grid gap-4 sm:grid-cols-2">
+      <section id="storage-prep" className="mt-4 grid scroll-mt-6 gap-4 sm:grid-cols-2" aria-label="보관법·손질법">
         <div className="rounded-card bg-surface p-5 ring-1 ring-line">
           <h2 className="font-bold text-ink">보관법</h2>
           <p className="mt-2 text-sm text-ink-muted">

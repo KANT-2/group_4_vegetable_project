@@ -6,20 +6,26 @@ import { getCurrentUser } from "@/lib/auth";
 import { loginNext } from "@/lib/auth-urls";
 import { getGoogleLoginStatus } from "@/services/auth-settings";
 import { GoogleLoginButton } from "@/components/account/GoogleLoginButton";
+import { EmailLoginForm } from "@/components/account/EmailLoginForm";
+import { getCustomerDemo } from "@/lib/customer-demo";
 
 export const metadata: Metadata = { title: "로그인" };
 type SearchParams = Promise<{
   next?: string | string[];
   error?: string | string[];
+  registered?: string | string[];
 }>;
 
 async function LoginContent({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
+  if (await getCustomerDemo()) redirect("/");
   const next = loginNext(
     typeof params.next === "string" ? params.next : undefined,
   );
   const user = await getCurrentUser();
-  if (user && !params.error) redirect(next);
+  // 이미 인증된 사용자는 이전 OAuth 실패 표시가 URL에 남아 있어도
+  // 로그인 폼을 다시 보여 주지 않는다.
+  if (user) redirect(next);
   const status = await getGoogleLoginStatus();
   return (
     <>
@@ -32,6 +38,20 @@ async function LoginContent({ searchParams }: { searchParams: SearchParams }) {
           다시 시도해 주세요.
         </p>
       )}
+      {params.registered === "1" && (
+        <p
+          className="mb-6 rounded-control bg-green-50 p-4 text-green-800"
+          role="status"
+        >
+          회원가입이 완료되었습니다. 새 계정으로 로그인해 주세요.
+        </p>
+      )}
+      <EmailLoginForm next={next} />
+      <div className="my-6 flex items-center gap-3 text-sm text-ink-muted">
+        <span className="h-px flex-1 bg-line" />
+        <span>또는 Google로 로그인</span>
+        <span className="h-px flex-1 bg-line" />
+      </div>
       <GoogleLoginButton
         next={next}
         ready={status.ready}
@@ -52,7 +72,7 @@ export default function LoginPage({
         <p className="mb-3 font-bold text-brand">못난이마켓</p>
         <h1 className="page-title">반가워요!</h1>
         <p className="mb-8 mt-3 text-ink-muted">
-          Google 계정으로 로그인하고
+          아이디·이메일 또는 Google 계정으로 로그인하고
           <br />
           나만의 장바구니와 찜을 이어가세요.
         </p>
@@ -61,12 +81,15 @@ export default function LoginPage({
         >
           <LoginContent searchParams={searchParams} />
         </Suspense>
-        <p className="mt-6 text-sm text-ink-muted">
-          처음 이용하는 경우 Google 인증 후 계정이 생성돼요.
+        <p className="mt-6 text-center text-sm text-ink-muted">
+          계정이 없으신가요?{" "}
+          <Link href="/signup" className="font-bold text-brand">
+            회원가입
+          </Link>
         </p>
         <Link
           href="/"
-          className="mt-6 inline-flex min-h-12 items-center font-bold text-brand"
+          className="mt-6 flex min-h-12 items-center justify-center text-center font-bold text-brand"
         >
           로그인 없이 둘러보기 →
         </Link>

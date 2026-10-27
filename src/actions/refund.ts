@@ -5,11 +5,56 @@ import { requireUser } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 import { refundSchema } from "@/schemas/refund";
 import type { ActionResult } from "@/types/action";
+import { getCartMode } from "@/lib/cart-mode";
+import { apiRequestRefund } from "@/lib/cart-api";
+import { FastApiError } from "@/lib/fastapi";
+
+function refreshOrderPages(orderId: string) {
+  revalidatePath("/mypage/orders");
+  revalidatePath(`/mypage/orders/${orderId}`);
+  revalidatePath(`/mypage/orders/${orderId}/refund`);
+}
+
+// FastAPI 로그인 사용자의 환불 신청. 서버가 내 결제 완료 주문인지 확인하고 접수해요(접수만 하며 실제 환불은 아니에요).
+async function requestFastApiRefund(
+  token: string,
+  orderId: string,
+  reason: string,
+): Promise<ActionResult> {
+  try {
+    await apiRequestRefund(token, orderId, reason);
+  } catch (error) {
+    if (error instanceof FastApiError) {
+      if (error.status === 401)
+        return { ok: false, error: "로그인이 필요해요. 다시 로그인해 주세요." };
+      if (error.status === 404)
+        return {
+          ok: false,
+          error: "본인의 결제 완료 주문만 환불을 신청할 수 있어요.",
+        };
+      if (error.status === 409 || error.status === 422)
+        return { ok: false, error: error.message };
+    }
+    return {
+      ok: false,
+      error: "환불 신청을 접수하지 못했어요. 다시 시도해 주세요.",
+    };
+  }
+  refreshOrderPages(orderId);
+  return { ok: true };
+}
 
 export async function requestRefund(input: unknown): Promise<ActionResult> {
   const parsed = refundSchema.safeParse(input);
   if (!parsed.success)
     return { ok: false, error: parsed.error.issues[0].message };
+  const mode = await getCartMode();
+  if (mode.kind === "fastapi")
+    return requestFastApiRefund(
+      mode.token,
+      parsed.data.order_id,
+      parsed.data.reason,
+    );
   const user = await requireUser(
     `/mypage/orders/${parsed.data.order_id}/refund`,
   );

@@ -21,15 +21,15 @@ npm install && npm run dev
 
 ## 2. 환경변수와 책임
 
-| 위치 | 변수 | 용도 | 비밀 여부 |
-| --- | --- | --- | --- |
-| 루트 `.env.local` | `NEXT_PUBLIC_API_BASE_URL` | 프론트가 호출할 FastAPI 주소 (기본 `http://localhost:8000`) | 공개값 |
-| 루트 `.env.local` | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `NEXT_PUBLIC_SITE_URL` | 기존 Supabase 화면용(유지 여부 미결정) | 공개값 |
-| 루트 `.env.local` | `USE_MOCK_DATA` | 선택. Mock 표시이며 DB 연결 성공이 아님 | - |
-| `backend/.env` | `DATABASE_URL` | `postgresql+asyncpg://…` 형식 필수 | **비밀** |
-| `backend/.env` | `JWT_SECRET_KEY` (+ `JWT_ALGORITHM`, `JWT_ACCESS_TOKEN_EXPIRE_MINUTES`) | JWT 서명 | **비밀** |
-| `backend/.env` | `CORS_ALLOW_ORIGINS` | 쉼표 구분, `*` 금지 | 공개값 |
-| `backend/.env` | `APP_ENV` | local/test/production | - |
+| 위치              | 변수                                                                                       | 용도                                                        | 비밀 여부 |
+| ----------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | --------- |
+| 루트 `.env.local` | `NEXT_PUBLIC_API_BASE_URL`                                                                 | 프론트가 호출할 FastAPI 주소 (기본 `http://localhost:8000`) | 공개값    |
+| 루트 `.env.local` | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `NEXT_PUBLIC_SITE_URL` | 기존 Supabase 화면용(유지 여부 미결정)                      | 공개값    |
+| 루트 `.env.local` | `USE_MOCK_DATA`                                                                            | 선택. Mock 표시이며 DB 연결 성공이 아님                     | -         |
+| `backend/.env`    | `DATABASE_URL`                                                                             | `postgresql+asyncpg://…` 형식 필수                          | **비밀**  |
+| `backend/.env`    | `JWT_SECRET_KEY` (+ `JWT_ALGORITHM`, `JWT_ACCESS_TOKEN_EXPIRE_MINUTES`)                    | JWT 서명                                                    | **비밀**  |
+| `backend/.env`    | `CORS_ALLOW_ORIGINS`                                                                       | 쉼표 구분, `*` 금지                                         | 공개값    |
+| `backend/.env`    | `APP_ENV`                                                                                  | local/test/production                                       | -         |
 
 `NEXT_PUBLIC_` 변수에는 비밀번호·서비스 역할 키·JWT 비밀 키를 넣지 않습니다. 이전 팀 프로젝트의 비밀값은 재사용하지 않습니다.
 
@@ -55,8 +55,7 @@ npm install && npm run dev
 
 ## 5. 새 Supabase/DB 준비 순서
 
-진행 상태: 1~5 완료(2026-10-23), 6(Google 로그인)만 남음. 적용 명령은 `cd backend && PYTHONPATH=. uv run python scripts/apply_sql.py migrations` 후 `seeds`. 이 스크립트는 public에 테이블이 있거나 products에 데이터가 있으면 중단하며, 삭제·초기화는 하지 않습니다. 이미지는 시드가 참조하는 `products/`·`vegetables/` 경로 92개를 `public/images`에서 모아 대시보드 Storage에 올렸습니다.
-
+진행 상태: 1~5 완료(2026-10-23), 6(Google 로그인)만 남음. 새 Supabase에 적용된 마이그레이션(2026-10-26 기준): 기존 13개 + `202610250001_experiences`, `202610250002_admin_registrations`(서현 관리자 가입, `auth.users` 트리거 2개), `202610260001_accounts`(지나 app_users·revoked_tokens), `202610260002_experience_reservation_user_fk`. 시드는 `catalog`, `recipes`, `verified-recipes`, `experiences`. 적용 명령은 `cd backend && PYTHONPATH=. uv run python scripts/apply_sql.py migrations` 후 `seeds`. 이 스크립트는 public에 테이블이 있거나 products에 데이터가 있으면 중단하며, 삭제·초기화는 하지 않습니다. 이미지는 시드가 참조하는 `products/`·`vegetables/` 경로 92개를 `public/images`에서 모아 대시보드 Storage에 올렸습니다.
 
 1. 4조 새 Supabase 프로젝트 존재 여부 확인 및 생성 — 형준
 2. DB 연결 문자열 확보(Session pooler 권장) 후 각자 `backend/.env`에 직접 입력 — 전원
@@ -73,17 +72,17 @@ npm install && npm run dev
 
 ## 7. 검증 상태
 
-| 항목 | 상태 |
-| --- | --- |
-| `uv sync`, `uv run pytest` (5건: health, DB 미설정 응답, CORS 허용/차단, asyncpg 주소 강제, `*` 거부) | 로컬 통과 |
-| uvicorn 실행, `/health`·`/health/db`·CORS 헤더·처리 시간 로그 | 로컬 확인 |
-| 4조 새 Supabase(Session pooler)에 asyncpg 연결 (`select 1`) | 로컬 확인 (2026-10-23) |
-| 마이그레이션 13개 적용 (`backend/scripts/apply_sql.py migrations`) → public 테이블 12개, 버킷 `market-images` | 로컬 확인 |
-| 시드 적용 (`apply_sql.py seeds`) → vegetables 21, products 71, recipes 23, recipe_products 115 | 로컬 확인 |
-| Storage 이미지 92개(products 71, vegetables 21) 대시보드 업로드, 공개 URL 200 응답 | 확인 |
-| lifespan 종료 시 풀 정리 | **미검증** |
-| 프론트 ↔ FastAPI 호출, 기존 Next.js 빌드·실행 | **미검증** |
-| 인증·JWT·블랙리스트 등 | 미구현 |
+| 항목                                                                                                          | 상태                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `uv sync`, `uv run pytest` (5건: health, DB 미설정 응답, CORS 허용/차단, asyncpg 주소 강제, `*` 거부)         | 로컬 통과                                                                                                                    |
+| uvicorn 실행, `/health`·`/health/db`·CORS 헤더·처리 시간 로그                                                 | 로컬 확인                                                                                                                    |
+| 4조 새 Supabase(Session pooler)에 asyncpg 연결 (`select 1`)                                                   | 로컬 확인 (2026-10-23)                                                                                                       |
+| 마이그레이션 13개 적용 (`backend/scripts/apply_sql.py migrations`) → public 테이블 12개, 버킷 `market-images` | 로컬 확인                                                                                                                    |
+| 시드 적용 (`apply_sql.py seeds`) → vegetables 21, products 71, recipes 23, recipe_products 115                | 로컬 확인                                                                                                                    |
+| Storage 이미지 92개(products 71, vegetables 21) 대시보드 업로드, 공개 URL 200 응답                            | 확인                                                                                                                         |
+| lifespan 종료 시 풀 정리                                                                                      | **미검증**                                                                                                                   |
+| 프론트 ↔ FastAPI 호출, 기존 Next.js 빌드·실행                                                                 | **미검증**                                                                                                                   |
+| 인증·JWT·블랙리스트                                                                                           | 지나 구현(PR #9)을 `main.py`에 등록하고 체험 API에 연동, 마이그레이션 `202610260001_accounts.sql`을 새 DB에 적용(2026-10-26) |
 
 ## 8. 다른 문서와 차이 (영우와 범위 공유 필요)
 
