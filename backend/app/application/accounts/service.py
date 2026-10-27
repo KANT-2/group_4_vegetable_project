@@ -1,7 +1,8 @@
 """로그인·로그아웃 유스케이스."""
 
 from dataclasses import dataclass
-from uuid import uuid4
+from uuid import UUID, uuid4
+import secrets
 
 from app.application.accounts.ports import AccountUnitOfWork
 from app.application.accounts.security import AccessTokenCodec, hash_password, verify_password
@@ -52,6 +53,39 @@ class AccountService:
             expires_in=expires_in,
             account=account,
         )
+
+    async def login_with_google(
+        self, user_id: UUID, email: str, nickname: str
+    ) -> LoginResult:
+        normalized_email = email.strip().lower()
+        account = await self._uow.repo.get_by_id(user_id)
+        if account is None:
+            by_email = await self._uow.repo.get_by_email(normalized_email)
+            if by_email is not None and by_email.id != user_id:
+                raise RegistrationConflict("이미 다른 계정에서 사용 중인 이메일입니다.")
+            account = Account(
+                user_id,
+                normalized_email,
+                hash_password(secrets.token_urlsafe(32)),
+                UserRole.USER,
+                True,
+            )
+            clean_nickname = nickname.strip()[:20]
+            if len(clean_nickname) < 2:
+                clean_nickname = "새싹회원"
+            try:
+                await self._uow.repo.add_oauth_user(
+                    account, Profile(user_id, clean_nickname)
+                )
+                await self._uow.commit()
+            except Exception:
+                await self._uow.rollback()
+                raise
+        elif account.email.lower() != normalized_email or not account.is_active:
+            raise InvalidCredentials("사용할 수 없는 Google 계정입니다.")
+
+        token, expires_in = self._token_codec.encode(account.id, account.role)
+        return LoginResult(token, "bearer", expires_in, account)
 
     async def logout(self, payload: AccessTokenPayload) -> None:
         try:

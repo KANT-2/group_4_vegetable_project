@@ -13,6 +13,7 @@ class FakeAccountRepository:
         self.account = account
         self.revoked: dict[str, tuple] = {}
         self.added_user = None
+        self.added_oauth_user = None
 
     async def get_by_email(self, email: str) -> Account | None:
         if self.account and self.account.email == email:
@@ -24,8 +25,14 @@ class FakeAccountRepository:
             return self.account
         return None
 
+    async def get_by_id(self, user_id) -> Account | None:
+        return self.account if self.account and self.account.id == user_id else None
+
     async def add_user(self, account, profile, username):
         self.added_user = (account, profile, username)
+
+    async def add_oauth_user(self, account, profile):
+        self.added_oauth_user = (account, profile)
 
     async def revoke_token(self, jti, user_id, expires_at) -> None:
         self.revoked[jti] = (user_id, expires_at)
@@ -85,6 +92,36 @@ async def test_login_accepts_username_identifier():
     result = await service.login(" JINA ", "test1234!")
 
     assert result.account == account
+
+
+async def test_google_login_creates_same_uuid_account_and_profile():
+    service, uow = make_service()
+    user_id = uuid4()
+
+    result = await service.login_with_google(
+        user_id, " GOOGLE@EXAMPLE.TEST ", " Google 사용자 "
+    )
+
+    account, profile = uow.repo.added_oauth_user
+    assert account.id == profile.user_id == user_id
+    assert account.email == "google@example.test"
+    assert profile.nickname == "Google 사용자"
+    assert result.account == account
+    assert service._token_codec.decode(result.access_token).user_id == user_id
+    assert uow.commits == 1
+
+
+async def test_google_login_reuses_existing_same_uuid_account():
+    account = make_account(email="google@example.test")
+    service, uow = make_service(account)
+
+    result = await service.login_with_google(
+        account.id, "google@example.test", "무시되는 이름"
+    )
+
+    assert result.account == account
+    assert uow.repo.added_oauth_user is None
+    assert uow.commits == 0
 
 
 @pytest.mark.parametrize("email,password", [("none@test.com", "test1234!"), ("jina@test.com", "wrong")])

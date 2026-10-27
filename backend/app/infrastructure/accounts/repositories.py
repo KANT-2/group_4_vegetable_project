@@ -26,6 +26,7 @@ def _to_account(model: AppUserModel) -> Account:
         password_hash=model.password_hash,
         role=UserRole(model.role),
         is_active=model.is_active,
+        username=model.username,
     )
 
 
@@ -128,6 +129,24 @@ class SqlAlchemyAccountRepository:
                 supabase_user_id=account.id,
                 email=account.email,
                 username=username,
+                password_hash=account.password_hash,
+                role=account.role.value,
+                is_active=account.is_active,
+            )
+        )
+        self._session.add(ProfileModel(id=profile.user_id, nickname=profile.nickname))
+        await self._session.flush()
+
+    async def add_oauth_user(self, account: Account, profile: Profile) -> None:
+        if account.id != profile.user_id:
+            raise ValueError("계정과 프로필의 사용자 ID가 일치해야 합니다.")
+        # Supabase OAuth가 auth.users 행을 먼저 만들었으므로 중복 INSERT하지 않는다.
+        self._session.add(
+            AppUserModel(
+                id=account.id,
+                supabase_user_id=account.id,
+                email=account.email,
+                username=None,
                 password_hash=account.password_hash,
                 role=account.role.value,
                 is_active=account.is_active,

@@ -4,6 +4,9 @@ import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { adminRegistrationClient } from "@/lib/admin-registration-server";
 import { hasPasswordSession, saveSessionAdminProfile } from "@/lib/admin-auth";
+import { ACCESS_TOKEN_COOKIE } from "@/lib/auth-cookie";
+import { cookies } from "next/headers";
+import { fastApi } from "@/lib/fastapi";
 
 export async function updateAdminName(
   _previous: { error: string; success: string },
@@ -26,6 +29,16 @@ export async function updateAdminName(
         success:
           "관리자 정보가 저장되었습니다. 현재 로그인 세션 동안 유지됩니다.",
       };
+    }
+    const token = (await cookies()).get(ACCESS_TOKEN_COOKIE)?.value;
+    if (token) {
+      await fastApi(
+        "/api/v1/accounts/me/profile",
+        { method: "PATCH", body: JSON.stringify({ nickname: name }) },
+        token,
+      );
+      revalidatePath("/admin/mypage");
+      return { error: "", success: "관리자 이름이 저장되었습니다." };
     }
     const supabase = await createClient();
     const {

@@ -14,7 +14,13 @@ export const getCurrentUser = cache(async () => {
   if (token) {
     try {
       const user = await fastApi<FastApiUser>("/api/v1/accounts/me", {}, token);
-      return { id: user.id, email: user.email };
+      return {
+        id: user.id,
+        email: user.email,
+        username: user.username,
+        role: user.role,
+        profile: user.profile,
+      };
     } catch (error) {
       if (error instanceof FastApiError && error.status === 401) return null;
       throw new Error(

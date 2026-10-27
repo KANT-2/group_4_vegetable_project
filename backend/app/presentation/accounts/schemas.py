@@ -15,6 +15,12 @@ class TokenOut(BaseModel):
     expires_in: int
 
 
+class GoogleLoginIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    access_token: str = Field(min_length=20, max_length=4096)
+
+
 class AdminRegistrationIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -98,6 +104,7 @@ class ProfileOut(BaseModel):
 class MeOut(BaseModel):
     id: UUID
     email: str
+    username: str | None
     role: UserRole
     profile: ProfileOut
 
@@ -106,6 +113,7 @@ class MeOut(BaseModel):
         return cls(
             id=value.account.id,
             email=value.account.email,
+            username=value.account.username,
             role=value.account.role,
             profile=ProfileOut.from_domain(value.profile),
         )

@@ -20,6 +20,8 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     jwt_access_token_expire_minutes: int = 60
     cors_allow_origins: str = "http://localhost:3000,http://127.0.0.1:3000"
+    supabase_url: str = ""
+    supabase_anon_key: str = ""
 
     @field_validator("database_url")
     @classmethod

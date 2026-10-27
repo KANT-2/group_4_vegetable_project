@@ -79,7 +79,7 @@ export default function LoginPage({
         >
           <LoginContent searchParams={searchParams} />
         </Suspense>
-        <p className="mt-6 text-sm text-ink-muted">
+        <p className="mt-6 text-center text-sm text-ink-muted">
           계정이 없으신가요?{" "}
           <Link href="/signup" className="font-bold text-brand">
             회원가입
@@ -87,7 +87,7 @@ export default function LoginPage({
         </p>
         <Link
           href="/"
-          className="mt-6 inline-flex min-h-12 items-center font-bold text-brand"
+          className="mt-6 flex min-h-12 items-center justify-center text-center font-bold text-brand"
         >
           로그인 없이 둘러보기 →
         </Link>
