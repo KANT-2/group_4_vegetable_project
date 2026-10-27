@@ -5,11 +5,8 @@ import ts from "typescript";
 import * as jsxRuntime from "react/jsx-runtime";
 import { Suspense } from "react";
 
-test("프로필이 있으면 조회만 하고 없을 때만 준비하며 타인의 닉네임을 덮어쓰지 않는다", async () => {
-  let currentId = "user-one";
-  let existing = { id: currentId, nickname: "기존이름" };
-  let readError = null;
-  const writes = [];
+test("서비스 JWT 없이 Supabase 프로필을 조회하거나 자동 생성하지 않는다", async () => {
+  let supabaseCalls = 0;
   const modules = {
     "server-only": {},
     "next/headers": {
@@ -21,30 +18,12 @@ test("프로필이 있으면 조회만 하고 없을 때만 준비하며 타인�
         throw new Error("FastAPI should not be called without a token");
       },
     },
-    "@/lib/auth": { requireUser: async () => ({ id: currentId }) },
+    "@/lib/auth": { requireUser: async () => ({ id: "user-one" }) },
     "@/lib/supabase/server": {
-      createClient: async () => ({
-        from: () => ({
-          select: () => ({
-            eq: (field, id) => {
-              assert.equal(field, "id");
-              assert.equal(id, currentId);
-              return {
-                maybeSingle: async () => ({ data: existing, error: readError }),
-                single: async () => ({
-                  data: { id, nickname: "새싹회원" },
-                  error: null,
-                }),
-              };
-            },
-          }),
-          upsert: async (row, options) => {
-            writes.push(row);
-            assert.equal(options.ignoreDuplicates, true);
-            return { error: null };
-          },
-        }),
-      }),
+      createClient: async () => {
+        supabaseCalls += 1;
+        throw new Error("Supabase must not be used for service profiles");
+      },
     },
   };
   const exports = {};
@@ -59,18 +38,8 @@ test("프로필이 있으면 조회만 하고 없을 때만 준비하며 타인�
     (name) => modules[name],
     exports,
   );
-  assert.deepEqual(await exports.getProfile(), existing);
-  assert.equal(writes.length, 0);
-  existing = null;
-  assert.equal((await exports.getProfile()).id, currentId);
-  assert.deepEqual(writes, [{ id: currentId, nickname: "새싹회원" }]);
-  currentId = "user-two";
-  existing = { id: currentId, nickname: "다른회원" };
-  assert.equal((await exports.getProfile()).id, "user-two");
-  assert.equal(writes.length, 1);
-  readError = new Error("unavailable");
-  await assert.rejects(exports.getProfile(), /불러오지/);
-  assert.equal(writes.length, 1);
+  await assert.rejects(exports.getProfile(), /로그인이 필요/);
+  assert.equal(supabaseCalls, 0);
 });
 
 test("결제 화면은 장바구니·배송지 조회를 동시에 시작하고 계정 불일치를 차단한다", async () => {

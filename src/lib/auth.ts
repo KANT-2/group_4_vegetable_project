@@ -1,8 +1,6 @@
 import "server-only";
 import { cache } from "react";
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
-import { getSupabaseConfig } from "@/lib/supabase/config";
 import { safeNextPath } from "@/lib/redirect";
 import { cookies } from "next/headers";
 import { ACCESS_TOKEN_COOKIE } from "@/lib/auth-cookie";
@@ -28,15 +26,9 @@ export const getCurrentUser = cache(async () => {
       );
     }
   }
-  if (!getSupabaseConfig()) return null;
-  const supabase = await createClient();
-  const { data, error } = await supabase.auth.getUser();
-  if (error && error.name !== "AuthSessionMissingError") {
-    throw new Error(
-      "로그인 상태를 확인할 수 없습니다. 잠시 후 다시 시도해주세요.",
-    );
-  }
-  return data.user;
+  // Google 인증도 콜백에서 FastAPI JWT를 발급받아 이 쿠키에 저장한다.
+  // Supabase 세션만으로는 서비스 계정이 완성됐다고 인정하지 않는다.
+  return null;
 });
 
 export async function requireUser(next = "/mypage") {

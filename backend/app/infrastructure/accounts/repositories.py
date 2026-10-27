@@ -152,7 +152,11 @@ class SqlAlchemyAccountRepository:
                 is_active=account.is_active,
             )
         )
-        self._session.add(ProfileModel(id=profile.user_id, nickname=profile.nickname))
+        existing_profile = await self._session.get(ProfileModel, profile.user_id)
+        if existing_profile is None:
+            self._session.add(
+                ProfileModel(id=profile.user_id, nickname=profile.nickname)
+            )
         await self._session.flush()
 
     async def get_profile(self, user_id) -> Profile | None:
