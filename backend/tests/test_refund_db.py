@@ -108,3 +108,15 @@ async def test_junk_postal_code_and_address_are_rejected_without_saving(env):
     assert r.status_code == 422
     assert await env.scalar("select count(*) from public.orders where user_id=:u", u=user_id) == 0
     assert await env.scalar("select count(*) from public.cart_items where user_id=:u", u=user_id) == 1  # 장바구니는 그대로
+
+
+async def test_phone_with_hyphens_is_accepted_and_saved_as_digits(env):
+    user_id, headers = await env.make_user()
+    product = await env.new_product()
+    await env.client.post(f"{CART}/items", json={"product_id": product, "quantity": 1}, headers=headers)
+    shipping = {**SHIPPING, "recipient_phone": "010-1234-5678"}
+    r = await env.client.post(ORDERS, json=order_body(shipping=shipping), headers=headers)
+    assert r.status_code == 201, r.text
+    assert r.json()["shipping"]["recipient_phone"] == "01012345678"
+    # DB 에도 하이픈 없이 숫자만 저장된다
+    assert await env.scalar("select recipient_phone from public.orders where user_id=:u", u=user_id) == "01012345678"

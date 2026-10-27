@@ -117,8 +117,10 @@ class ShippingAddress:
 
     def __post_init__(self) -> None:
         name = _text(self.recipient_name, "받는 분 이름")
-        # 전화번호·우편번호는 DB 와 같게 앞뒤 공백을 정리하지 않고 형식만 확인한다.
-        phone, postal = self.recipient_phone, self.postal_code
+        # 연락처는 배송지 저장(accounts)과 같게 앞뒤 공백과 하이픈·공백을 빼고 숫자만 남긴다(010-1234-5678 → 01012345678).
+        # 우편번호는 정리하지 않고 형식만 확인한다.
+        phone = re.sub(r"[- ]", "", self.recipient_phone.strip()) if isinstance(self.recipient_phone, str) else self.recipient_phone
+        postal = self.postal_code
         address = _text(self.address, "주소")
         detail = _text(self.address_detail, "상세주소")
         if not 2 <= len(name) <= 40:
@@ -138,6 +140,7 @@ class ShippingAddress:
         if not _is_plausible_detail(detail):
             raise InvalidShipping("상세주소를 확인해 주세요. 동·호수 등을 입력해 주세요.")
         object.__setattr__(self, "recipient_name", name)
+        object.__setattr__(self, "recipient_phone", phone)
         object.__setattr__(self, "address", address)
         object.__setattr__(self, "address_detail", detail)
 

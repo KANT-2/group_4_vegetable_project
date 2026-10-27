@@ -142,7 +142,8 @@ async def test_missing_shipping_is_422(env):
     "shipping",
     [
         {"recipient_name": "김"},
-        {"recipient_phone": "010-1234-5678"},
+        {"recipient_phone": "010-1234"},
+        {"recipient_phone": "abc-defg-hijk"},
         {"postal_code": "0623"},
         {"address": "서울"},
         {"address_detail": "   "},
@@ -155,6 +156,16 @@ async def test_invalid_shipping_is_422_and_saves_nothing(env, shipping):
     r = await env.client.post(ORDERS, json=body(shipping={**SHIPPING, **shipping}), headers=h)
     assert r.status_code == 422
     assert env.uow.orders_committed == {} and env.uow.quantity(USER_A, CARROT.id) == 2
+
+
+@pytest.mark.parametrize("typed", ["010-1234-5678", "010 1234 5678", " 01012345678 "])
+async def test_phone_with_hyphens_or_spaces_is_accepted_and_saved_as_digits(env, typed):
+    h = await fill_cart(env)
+    r = await env.client.post(ORDERS, json=body(shipping={**SHIPPING, "recipient_phone": typed}), headers=h)
+    assert r.status_code == 201, r.text
+    assert r.json()["shipping"]["recipient_phone"] == "01012345678"
+    detail = await env.client.get(f"{ORDERS}/{r.json()['id']}", headers=h)
+    assert detail.json()["shipping"]["recipient_phone"] == "01012345678"
 
 
 async def test_empty_cart_is_409(env):
