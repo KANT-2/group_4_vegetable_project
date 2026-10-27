@@ -76,7 +76,9 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
     );
     // 기존 12개 + 체험 예약 3개(experiences, experience_sessions, experience_reservations)
     // + 관리자 가입 신청 1개 + FastAPI 회원 2개 + 상품 리뷰·사진 2개 + 관리자 상품 사진 1개
-    assert.equal(rows.length, 21);
+    // + 익명 레시피 조회 집계 1개
+    assert.equal(rows.length, 22);
+    assert.ok(rows.some((row) => row.relname === "recipe_view_events"));
     assert.ok(rows.some((row) => row.relname === "product_images"));
     assert.ok(rows.some((row) => row.relname === "product_reviews"));
     assert.ok(rows.some((row) => row.relname === "product_review_images"));
@@ -86,6 +88,14 @@ test("공통 migration의 제약 조건과 RLS를 PostgreSQL에서 검증한다"
     assert.ok(rows.some((row) => row.relname === "revoked_tokens"));
     assert.ok(rows.some((row) => row.relname === "user_coupons"));
     assert.ok(rows.some((row) => row.relname === "coupon_campaigns"));
+  });
+
+  await t.test("익명 레시피 조회 식별자는 공개 REST 역할에서 읽거나 쓸 수 없다", async () => {
+    await asRole("anon");
+    await assert.rejects(db.query("select * from recipe_view_events"));
+    await asRole("authenticated", user1);
+    await assert.rejects(db.query("select * from recipe_view_events"));
+    await db.exec("reset role");
   });
 
   await t.test(

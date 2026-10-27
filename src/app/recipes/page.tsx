@@ -5,6 +5,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
+import { RecipeDiscovery } from "@/components/recipes/RecipeDiscovery";
+import { getPublicVegetables } from "@/services/vegetables";
 import {
   RecipeFilters,
   recipeListHref,
@@ -46,10 +48,16 @@ async function RecipeResults({
 }) {
   const params = await searchParams;
   const filters = parseRecipeFilters(params);
-  const [recipes, vegetables] = await Promise.all([
+  const [recipes, vegetables, guideVegetables] = await Promise.all([
     getRecipes(filters),
     getRecipeVegetableOptions(),
+    getPublicVegetables(),
   ]);
+  const guideOrder = ["potato", "carrot", "onion", "aehobak", "broccoli", "cabbage"];
+  const guides = [...guideVegetables].sort((a, b) => {
+    const rank = (id: string) => guideOrder.includes(id) ? guideOrder.indexOf(id) : guideOrder.length;
+    return rank(a.id) - rank(b.id);
+  }).map(({ id, name, imageUrl }) => ({ id, name, imageUrl }));
 
   const vegetableName = vegetables.find(
     (vegetable) => vegetable.id === filters.vegetable,
@@ -78,6 +86,7 @@ async function RecipeResults({
 
   return (
     <>
+      <RecipeDiscovery vegetables={guides} />
       <div>
         <RecipeFilters filters={filters} vegetables={vegetables} />
       </div>

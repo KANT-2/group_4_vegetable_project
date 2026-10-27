@@ -8,6 +8,7 @@ import { ArrowLeftIcon } from "@/components/common/Icons";
 import { ProductPreviewCard } from "@/components/common/ProductPreviewCard";
 import { ZoomableRecipePhoto } from "@/components/recipes/ZoomableRecipePhoto";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
+import { RecipeViewTracker } from "@/components/recipes/RecipeViewTracker";
 import { RecipeImage } from "@/components/recipes/RecipeImage";
 import { RecipeIngredients } from "@/components/recipes/RecipeIngredients";
 import { RecipeMeta } from "@/components/recipes/RecipeMeta";
@@ -58,6 +59,7 @@ export default async function RecipeDetailPage({
 
   return (
     <div className="container-page py-6 md:py-10">
+      <RecipeViewTracker recipeId={recipe.id} />
       <nav aria-label="현재 위치" className="text-sm text-ink-muted">
         <ol className="flex flex-wrap items-center gap-x-2">
           <li>

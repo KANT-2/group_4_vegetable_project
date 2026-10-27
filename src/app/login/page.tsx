@@ -23,7 +23,9 @@ async function LoginContent({ searchParams }: { searchParams: SearchParams }) {
     typeof params.next === "string" ? params.next : undefined,
   );
   const user = await getCurrentUser();
-  if (user && !params.error) redirect(next);
+  // 이미 인증된 사용자는 이전 OAuth 실패 표시가 URL에 남아 있어도
+  // 로그인 폼을 다시 보여 주지 않는다.
+  if (user) redirect(next);
   const status = await getGoogleLoginStatus();
   return (
     <>

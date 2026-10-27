@@ -1,6 +1,6 @@
 // 상품 목록 필터 줄 (2026-10-26 시안 A)
 // - CatalogCategoryTabs: 카테고리 밑줄 탭
-// - CatalogOptionChips: 구매 옵션 작은 칩 (여러 개 고를 수 있어요)
+// - CatalogOptionChips: 구매 옵션 작은 칩 (여러 개 고를 수 있어요, 단 "제철"은 달력 채소와 함께 못 골라요)
 // 모두 링크라 자바스크립트 없이도 동작하고, 지금 조건에서 하나만 바꾼 주소로 이동해요.
 
 import Link from "next/link";
@@ -89,6 +89,8 @@ export function CatalogOptionChips({ filters }: { filters: CatalogFilters }) {
             <Link
               href={catalogHref(filters, {
                 collection: toggleCollection(filters.collection, key),
+                // "제철"과 제철 달력 채소는 둘 중 하나만 골라요.
+                ...(key === "seasonal" && { vegetable: undefined }),
               })}
               scroll={false}
               aria-pressed={active}

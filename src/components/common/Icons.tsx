@@ -165,3 +165,12 @@ export const ResetIcon = (props: SVGProps<SVGSVGElement>) => (
     <path d="M3 4v5h5" />
   </Icon>
 );
+
+// 쿠폰 (반짝이는 티켓)
+export const TicketIcon = (props: SVGProps<SVGSVGElement>) => (
+  <Icon strokeWidth="1.8" {...props}>
+    <path d="M4 10.5 15.5 6l1.3 3.2a2 2 0 0 0 1.4 3.4l1.3 3.2L8 20.3l-1.3-3.2a2 2 0 0 0-1.4-3.4z" />
+    <path d="m10.3 10.6 2.2 5.4" strokeDasharray="1.6 1.6" />
+    <path d="M14 2.5v1.8M17.5 3.3l-1 1.5M10.6 3.3l1 1.5" />
+  </Icon>
+);
