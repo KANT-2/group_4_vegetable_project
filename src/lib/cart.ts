@@ -8,6 +8,7 @@ export interface CartLine {
   price: number;
   originalPrice: number;
   imageUrl?: string;
+  stock?: number; // 남은 재고. 담은 수량이 이보다 많으면 주문할 수 없어요.
 }
 
 export interface WishlistLine {

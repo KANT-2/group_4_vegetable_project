@@ -2,9 +2,9 @@
 begin;
 
 insert into public.experiences (id, title, description, farm_name, region, fee, image_path) values
-  ('kimjang-class', '못난이 배추 김장 체험', '농가에서 직접 배추를 절이고 양념을 버무려 보는 김장 체험입니다.', '햇살배추농장', '강원 평창', 30000, null),
-  ('apple-picking', '못난이 사과 따기 체험', '모양은 제각각이어도 맛은 그대로인 사과를 직접 따 보는 체험입니다.', '바람언덕과수원', '경북 안동', 15000, null),
-  ('carrot-harvest', '당근 수확 체험', '흙 속에서 당근을 뽑아 보고 당근 라페를 함께 만듭니다.', '붉은들농원', '제주 구좌', 20000, null)
+  ('kimjang-class', '못난이 배추 김장 체험', '농가에서 직접 배추를 절이고 양념을 버무려 보는 김장 체험입니다.', '햇살배추농장', '강원 평창', 30000, '/images/experiences/kimjang-class.webp'),
+  ('apple-picking', '못난이 사과 따기 체험', '모양은 제각각이어도 맛은 그대로인 사과를 직접 따 보는 체험입니다.', '바람언덕과수원', '경북 안동', 15000, 'products/apple.jpg'),
+  ('carrot-harvest', '당근 수확 체험', '흙 속에서 당근을 뽑아 보고 당근 라페를 함께 만듭니다.', '붉은들농원', '제주 구좌', 20000, '/images/experiences/carrot-harvest.webp')
 on conflict (id) do nothing;
 
 insert into public.experience_sessions (experience_id, starts_at, capacity, status) values

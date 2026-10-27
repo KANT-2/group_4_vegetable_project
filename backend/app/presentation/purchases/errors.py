@@ -4,13 +4,14 @@ from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 
 from app.application.purchases.errors import NotFound
-from app.domain.purchases.cart import InvalidQuantity, ProductNotPurchasable, PurchaseDomainError
+from app.domain.purchases.cart import InsufficientStock, InvalidQuantity, ProductNotPurchasable, PurchaseDomainError
 from app.domain.purchases.order import CartChanged, EmptyCart, InvalidShipping
 
 STATUS_BY_ERROR: dict[type[Exception], int] = {
     NotFound: status.HTTP_404_NOT_FOUND,
     InvalidQuantity: status.HTTP_422_UNPROCESSABLE_ENTITY,
     ProductNotPurchasable: status.HTTP_409_CONFLICT,
+    InsufficientStock: status.HTTP_409_CONFLICT,
     InvalidShipping: status.HTTP_422_UNPROCESSABLE_ENTITY,
     EmptyCart: status.HTTP_409_CONFLICT,
     CartChanged: status.HTTP_409_CONFLICT,
@@ -19,7 +20,10 @@ STATUS_BY_ERROR: dict[type[Exception], int] = {
 
 def register_purchase_error_handlers(app: FastAPI) -> None:
     async def handle(_: Request, exc: Exception) -> JSONResponse:
-        return JSONResponse({"detail": str(exc)}, status_code=STATUS_BY_ERROR[type(exc)])
+        body: dict = {"detail": str(exc)}
+        if isinstance(exc, InsufficientStock):
+            body["available"] = exc.available  # 화면이 수량을 남은 재고에 맞출 수 있게 함께 보낸다
+        return JSONResponse(body, status_code=STATUS_BY_ERROR[type(exc)])
 
     for error_type in STATUS_BY_ERROR:
         app.add_exception_handler(error_type, handle)

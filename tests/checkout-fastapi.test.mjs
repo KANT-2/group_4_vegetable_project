@@ -95,7 +95,7 @@ test("FastAPI 주문: 토큰·요청 키·배송지·결제 수단·화면 금�
     payment_method: "easy_pay",
     expected_total_amount: 22200, // 5,800 + 12,900 = 18,700 + 배송비 3,500
   });
-  assert.deepEqual(paths.sort(), ["/cart", "/mypage/orders"]);
+  assert.deepEqual(paths.sort(), ["/", "/cart", "/mypage/orders"]); // "/": 재고가 바뀐 상품 화면
 });
 
 test("FastAPI 주문: 2만원 이상이면 배송비 없이 화면 금액을 보낸다", async () => {

@@ -15,6 +15,7 @@ import { useAdminStore } from "./AdminStore";
 import { RegisterProduct } from "./RegisterProduct";
 import { ProductForm } from "./ProductForm";
 import { useUnsavedDialog } from "./useUnsavedDialog";
+import { LOW_STOCK } from "@/lib/stock";
 
 const getCategory = (product: AdminProduct) =>
   product.category ?? categoryOf.get(product.vegetableId);
@@ -35,7 +36,7 @@ export function AdminProducts({
   topNotice,
   description,
 }: {
-  view?: "products" | "recipes" | "farms" | "promotions" | "trash" | "mypage";
+  view?: "products" | "recipes" | "farms" | "promotions" | "reviews" | "trash" | "mypage";
   children?: React.ReactNode;
   headerAction?: React.ReactNode;
   topNotice?: React.ReactNode;
@@ -48,6 +49,7 @@ export function AdminProducts({
     recipes: "레시피 관리",
     farms: "농가 관리",
     promotions: "혜택 · 이벤트 관리",
+    reviews: "리뷰 관리",
     trash: "휴지통",
     mypage: "관리자 마이페이지",
   };
@@ -233,6 +235,7 @@ export function AdminProducts({
                 ["recipes", "/admin/recipes", "레시피 관리"],
                 ["farms", "/admin/farms", "농가 관리"],
                 ["promotions", "/admin/promotions", "혜택 · 이벤트 관리"],
+                ["reviews", "/admin/reviews", "리뷰 관리"],
                 ["trash", "/admin/trash", "휴지통"],
               ] as const
             ).map(([key, href, title]) => (
@@ -357,6 +360,10 @@ export function AdminProducts({
               </svg>
               혜택 · 이벤트 관리
             </Link>
+            <Link href="/admin/reviews" aria-current={view === "reviews" ? "page" : undefined} className={menuClass(view === "reviews")}>
+              <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M21 15a3 3 0 0 1-3 3H8l-5 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v9Z" /><path d="M7 8h10M7 12h7" /></svg>
+              리뷰 관리
+            </Link>
             <Link
               href="/admin/trash"
               aria-current={view === "trash" ? "page" : undefined}
@@ -446,7 +453,7 @@ export function AdminProducts({
               )}
               {productView && (
                 <p className="mt-2 text-ink-muted">
-                  상품 가격과 판매 여부를 관리해요.
+                  상품 정보·재고·판매 여부를 관리해요. 저장하면 고객 화면에 바로 반영돼요.
                 </p>
               )}
             </div>
@@ -482,9 +489,9 @@ export function AdminProducts({
                       isActive: product.status !== "inactive",
                       stock: product.stock,
                       registered: true,
-                      vegetableId: "",
-                      uglyReason: "irregular",
-                      farmName: "",
+                      vegetableId: product.vegetableId,
+                      uglyReason: product.uglyReason,
+                      farmName: product.farmName,
                       description: "",
                       isSeasonal: false,
                       isFeatured: false,
@@ -611,6 +618,7 @@ export function AdminProducts({
                         "종류",
                         "지역",
                         "가격",
+                        "재고",
                         "판매 상태",
                         "관리",
                       ].map((heading) => (
@@ -661,9 +669,16 @@ export function AdminProducts({
                         <td className="whitespace-nowrap px-5 py-4 font-semibold">
                           {money(product.price)}
                         </td>
+                        <td
+                          className={`whitespace-nowrap px-5 py-4 tabular-nums ${product.stock === 0 ? "font-bold text-danger" : product.stock !== undefined && product.stock <= LOW_STOCK ? "font-bold text-orange-700" : ""}`}
+                        >
+                          {product.stock === undefined
+                            ? "-"
+                            : `${product.stock.toLocaleString("ko-KR")}개`}
+                        </td>
                         <td className="whitespace-nowrap px-5 py-4">
                           <span
-                            className={`inline-block rounded-full px-3 py-1 text-xs font-bold ${product.isActive ? "bg-green-50 text-green-800" : "bg-gray-100 text-gray-600"}`}
+                            className={`inline-block rounded-full px-3 py-1 text-xs font-bold ${!product.isActive ? "bg-gray-100 text-gray-600" : product.stock === 0 ? "bg-danger-soft text-danger" : "bg-green-50 text-green-800"}`}
                           >
                             {!product.isActive ? "판매 중지" : product.stock === 0 ? "품절" : "판매 중"}
                           </span>
@@ -702,7 +717,7 @@ export function AdminProducts({
                     {!visible.length && (
                       <tr>
                         <td
-                          colSpan={8}
+                          colSpan={9}
                           className="px-5 py-16 text-center text-ink-muted"
                         >
                           검색 조건에 맞는 상품이 없습니다.
@@ -789,6 +804,9 @@ export function AdminProducts({
               unit: editing.unit,
               category: getCategory(editing) ?? "root",
               region: editing.farmRegion ?? "",
+              farmName: editing.farmName,
+              vegetableId: editing.vegetableId,
+              uglyReason: editing.uglyReason,
               price: editing.price,
               status: !editing.isActive ? "inactive" : editing.stock === 0 ? "soldout" : "active",
               stock: editing.stock ?? 100,
@@ -813,6 +831,9 @@ export function AdminProducts({
                         unit: updated.unit,
                         category: updated.category,
                         farmRegion: updated.region,
+                        farmName: updated.farmName,
+                        vegetableId: updated.vegetableId,
+                        uglyReason: updated.uglyReason,
                         price: updated.price,
                         originalPrice: Math.max(
                           product.originalPrice,

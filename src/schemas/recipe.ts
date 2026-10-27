@@ -11,7 +11,7 @@ const vegetableIdSchema = z.string().regex(/^[a-z0-9-]{1,40}$/);
 const firstValue = (value: unknown) =>
   Array.isArray(value) ? value[0] : value;
 
-// /recipes?q=당근&vegetable=carrot 의 값을 안전하게 읽어요.
+// /recipes?q=당근&vegetable=carrot&difficulty=easy 의 값을 안전하게 읽어요.
 // 잘못된 값은 오류 화면 대신 "조건 없음"으로 취급해요.
 export const recipeFiltersSchema = z.object({
   q: z
@@ -25,6 +25,9 @@ export const recipeFiltersSchema = z.object({
     .transform((value) => value || undefined),
   vegetable: z
     .preprocess(firstValue, vegetableIdSchema.optional())
+    .catch(undefined),
+  difficulty: z
+    .preprocess(firstValue, z.enum(["easy", "normal", "hard"]).optional())
     .catch(undefined),
 });
 

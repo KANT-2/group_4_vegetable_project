@@ -4,10 +4,11 @@
 """
 
 from copy import deepcopy
+from dataclasses import replace
 from uuid import UUID
 
 from app.application.purchases.read_models import CartLine, OrderView
-from app.domain.purchases.cart import CartItem, ProductInfo
+from app.domain.purchases.cart import CartItem, InsufficientStock, ProductInfo
 from app.domain.purchases.order import Order
 
 USER_A = UUID("00000000-0000-4000-8000-00000000000a")
@@ -83,6 +84,14 @@ class FakeOrderRepository:
         self._uow.orders_working[(order.user_id, order.id)] = OrderView.from_order(order)
         self._uow.request_keys[order.id] = (order.user_id, order.request_key)
 
+    async def decrease_stock(self, lines: list[tuple[str, int]]) -> None:
+        for product_id, quantity in lines:
+            product = self._uow.products[product_id]
+            if product.stock is not None:
+                if product.stock < quantity:
+                    raise InsufficientStock(product.name, product.stock)
+                self._uow.products[product_id] = replace(product, stock=product.stock - quantity)
+
     async def remove_cart_items(self, user_id: UUID, product_ids: list[str]) -> None:
         if self._uow.fail_on_remove_cart is not None:
             raise self._uow.fail_on_remove_cart
@@ -110,6 +119,7 @@ class FakeUnitOfWork:
         fail_on_remove_cart: Exception | None = None,
     ):
         self.products = {p.id: p for p in (products if products is not None else [CARROT, ONION, RETIRED])}
+        self.products_committed = dict(self.products)  # 재고 차감도 commit 전에는 rollback 으로 되돌아간다
         self.committed: dict[tuple[UUID, str], int] = {}
         self.working: dict[tuple[UUID, str], int] = {}
         self.fail_on_commit = fail_on_commit
@@ -129,11 +139,13 @@ class FakeUnitOfWork:
             raise self.fail_on_commit
         self.committed = deepcopy(self.working)
         self.orders_committed = dict(self.orders_working)
+        self.products_committed = dict(self.products)
         self.commits += 1
 
     async def rollback(self) -> None:
         self.working = deepcopy(self.committed)
         self.orders_working = dict(self.orders_committed)
+        self.products = dict(self.products_committed)
         self.request_keys = {oid: key for oid, key in self.request_keys.items() if (key[0], oid) in self.orders_committed}
         self.rollbacks += 1
 

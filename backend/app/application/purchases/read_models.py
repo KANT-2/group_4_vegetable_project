@@ -26,8 +26,8 @@ class CartView:
 
     @property
     def subtotal_amount(self) -> int:
-        """판매 중인 상품만 합산한다. 판매가 끝난 줄은 보여 주되 금액에서 뺀다."""
-        return sum(line.line_total for line in self.lines if line.product.is_active)
+        """판매 중이고 품절이 아닌 상품만 합산한다. 판매가 끝났거나 품절된 줄은 보여 주되 금액에서 뺀다."""
+        return sum(line.line_total for line in self.lines if line.product.is_purchasable)
 
 
 @dataclass(frozen=True)

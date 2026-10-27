@@ -73,6 +73,7 @@ async function linesFromCatalog(
         price: product?.price ?? 0,
         originalPrice: product?.originalPrice ?? 0,
         imageUrl: product?.imageUrl,
+        stock: product?.stock,
       };
     }),
   );
@@ -109,21 +110,24 @@ export async function getCart(): Promise<{
     const lines = await Promise.all(
       [...cart.items].reverse().map(async (line) => {
         const catalog = await getProductById(line.product_id);
-        // FastAPI 는 판매 여부(is_active)만 알아서, 재고가 0인 품절 상품은 화면 쪽 상품 데이터로 함께 판단해요.
-        const available = line.is_active && catalog?.stock !== 0;
+        // 재고는 FastAPI 장바구니 응답(주문 때 차감하는 DB 값)을 기준으로 해요. 0이면 품절이에요.
+        const stock = line.stock ?? catalog?.stock;
+        const available = line.is_active && stock !== 0;
         return {
           productId: line.product_id,
           quantity: line.quantity,
           available,
-          name: available ? line.name : "판매가 끝난 상품",
+          // 품절은 다시 입고될 수 있어 이름·사진을 그대로 보여 주고, 판매 종료만 가려요.
+          name: line.is_active ? line.name : "판매가 끝난 상품",
           unit: available ? line.unit : "",
           price: available ? line.unit_price : 0,
           originalPrice: available
             ? (catalog?.originalPrice ?? line.unit_price)
             : 0,
-          imageUrl: available
+          imageUrl: line.is_active
             ? (catalog?.imageUrl ?? toImageSrc(line.image_path))
             : undefined,
+          stock,
         };
       }),
     );

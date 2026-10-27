@@ -1,17 +1,13 @@
 // C 공통 헤더: A의 디자인과 실제 개인 상태를 연결합니다.
-// v2 시안(마켓컬리 기준): 회원 메뉴 줄 → 로고·검색창·아이콘 줄 → 카테고리·메뉴 줄
+// v2 시안(마켓컬리 기준): 회원 메뉴 줄 → 로고·검색창·아이콘 줄 → 메뉴 줄
 // 휴대폰: 로고·아이콘 → 검색창 → 옆으로 넘기는 메뉴 탭
 
 import Link from "next/link";
 import { Suspense } from "react";
 import { routes } from "@/lib/routes";
-import {
-  VEGETABLE_CATEGORY_LABELS,
-  type VegetableCategory,
-} from "@/types/vegetable";
 import { HeaderAccount } from "./HeaderAccount";
 import { HeaderIcons } from "./HeaderIcons";
-import { MenuIcon, SearchIcon } from "./Icons";
+import { SearchIcon } from "./Icons";
 import { MobileMenu, type NavLink } from "./MobileMenu";
 import { NavLinks } from "./NavLinks";
 import { BrandLogo } from "./BrandLogo";
@@ -45,55 +41,17 @@ function HeaderSearch({ id }: { id: string }) {
   );
 }
 
-// "☰ 카테고리": 마우스를 올리거나 키보드로 들어가면 채소 분류가 펼쳐져요.
-function CategoryMenu() {
-  if (!routes.productList) return null;
-  const categories = Object.entries(VEGETABLE_CATEGORY_LABELS) as [
-    VegetableCategory,
-    string,
-  ][];
-  return (
-    <div className="group relative">
-      <Link
-        href={routes.productList}
-        className="inline-flex min-h-14 items-center gap-2 pr-6 font-medium hover:text-brand"
-        aria-haspopup="true"
-      >
-        <MenuIcon width={20} height={20} />
-        카테고리
-      </Link>
-      <ul className="invisible absolute left-0 top-full z-40 w-52 border border-line bg-surface py-2 shadow-card group-focus-within:visible group-hover:visible">
-        {categories.map(([key, label]) => (
-          <li key={key}>
-            <Link
-              href={`${routes.productList}?category=${key}`}
-              className="flex min-h-10 items-center px-4 text-sm hover:bg-sand hover:text-brand"
-            >
-              {label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 export function SiteHeader() {
   const list = routes.productList;
+  // 채소 분류는 상품 목록 화면의 분류 탭에서 골라요.
   const links: NavLink[] = [
     ...(list
-      ? [
-          { href: list, label: "전체 상품" },
-          { href: `${list}?collection=seasonal`, label: "제철" },
-          { href: `${list}?collection=bigsale`, label: "특가" },
-          { href: `${list}?collection=bulk`, label: "대용량" },
-          { href: `${list}?collection=single`, label: "1인 가구" },
-        ]
+      ? [{ href: list, label: "전체 상품", icon: "menu" as const }]
       : []),
-    { href: routes.recipes, label: "레시피" },
-    { href: routes.story, label: "농가 이야기" },
-    { href: "/experiences", label: "체험 예약" },
-    { href: "/promotions", label: "혜택과 이야기" },
+    { href: routes.recipes, label: "레시피", icon: "recipe" },
+    { href: routes.story, label: "농가 이야기", icon: "farm" },
+    { href: "/experiences", label: "체험 예약", icon: "experience" },
+    { href: "/promotions", label: "혜택과 이야기", icon: "gift" },
   ];
   const mobileLinks: NavLink[] = [{ href: routes.home, label: "홈" }, ...links];
 
@@ -125,9 +83,8 @@ export function SiteHeader() {
         </Suspense>
       </div>
 
-      {/* 3. 카테고리 · 메뉴 줄 (넓은 화면) */}
+      {/* 3. 메뉴 줄 (넓은 화면) */}
       <div className="container-page hidden items-center lg:flex">
-        <CategoryMenu />
         <Suspense fallback={null}>
           <NavLinks links={links} />
         </Suspense>

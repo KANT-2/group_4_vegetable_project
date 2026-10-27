@@ -3,15 +3,15 @@ import BackLink from "@/components/products/BackLink";
 import { ProductGallery } from "@/components/products/ProductGallery";
 import { getProductImages } from "@/lib/product-gallery";
 import { notFound } from "next/navigation";
-import MockDataNotice from "@/components/products/MockDataNotice";
 import { AddToCartButton } from "@/components/shopping/AddToCartButton";
 import { WishlistButton } from "@/components/shopping/WishlistButton";
 import { formatPrice, getDiscountRate } from "@/lib/format";
-import { isMockCatalog } from "@/services/catalog-source";
 import { getSavedState } from "@/services/cart";
 import { getProductById } from "@/services/products";
 import { routes } from "@/lib/routes";
+import { LOW_STOCK } from "@/lib/stock";
 import { UGLY_REASON_LABELS } from "@/types/product";
+import { ProductReviews } from "@/components/products/ProductReviews";
 
 // 브라우저 탭 제목: "못난이 당근 1kg | 못난이마켓"
 export async function generateMetadata({
@@ -66,18 +66,7 @@ export default async function ProductDetailPage({
             <h1 className="text-2xl font-bold text-ink sm:text-3xl">
               {product.name}
             </h1>
-            {product.rating !== undefined && (
-              <p className="mt-1 flex items-center gap-1 text-sm text-ink-muted">
-                <span aria-hidden className="text-amber-500">
-                  ★
-                </span>
-                <span className="sr-only">별점</span>
-                <span className="font-semibold text-ink-muted">
-                  {product.rating.toFixed(1)}
-                </span>
-                <span>· 리뷰 {product.reviewCount}개</span>
-              </p>
-            )}
+            <Link href="#reviews" className="mt-2 inline-block text-sm text-ink-muted underline underline-offset-4">회원 상품 후기 보기</Link>
           </div>
           <p className="text-ink-muted">{product.description}</p>
 
@@ -102,6 +91,26 @@ export default async function ProductDetailPage({
             <dd className="text-ink">{product.unit}</dd>
             <dt className="text-ink-muted">상품 상태</dt>
             <dd className="text-ink">{product.conditionNote ?? "-"}</dd>
+            {product.stock !== undefined && (
+              <>
+                <dt className="text-ink-muted">남은 수량</dt>
+                <dd
+                  className={
+                    product.stock === 0
+                      ? "font-bold text-danger"
+                      : product.stock <= LOW_STOCK
+                        ? "font-bold text-accent"
+                        : "text-ink"
+                  }
+                >
+                  {product.stock === 0
+                    ? "품절 · 모두 판매됐어요"
+                    : product.stock <= LOW_STOCK
+                      ? `품절 임박 · ${product.stock}개 남았어요`
+                      : `${product.stock}개`}
+                </dd>
+              </>
+            )}
           </dl>
 
           {product.farmStory && (
@@ -133,7 +142,7 @@ export default async function ProductDetailPage({
                 productId={product.id}
                 productName={product.name}
                 price={product.price}
-                  stock={product.stock}
+                stock={product.stock}
               />
             </div>
             <WishlistButton
@@ -143,10 +152,10 @@ export default async function ProductDetailPage({
               compact
             />
           </div>
-
-          <MockDataNotice usingMock={isMockCatalog()} />
         </div>
       </div>
+
+      <ProductReviews productId={product.id} />
 
       {/* 모바일 하단 고정 바: 아이폰 홈 바 영역(safe-area)만큼 띄워요 */}
       <div className="fixed inset-x-0 bottom-0 border-t border-line bg-surface px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] md:hidden">
@@ -162,7 +171,7 @@ export default async function ProductDetailPage({
               productId={product.id}
               productName={product.name}
               price={product.price}
-                  stock={product.stock}
+              stock={product.stock}
               layout="bar"
             />
           </div>

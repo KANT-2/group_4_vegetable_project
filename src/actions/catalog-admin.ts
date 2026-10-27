@@ -12,12 +12,16 @@ const change = z
       .max(100),
     price: z.number().int().min(1).max(2147483647),
     is_active: z.boolean(),
+    stock: z.number().int().min(0).max(1000000),
   })
   .strict();
 export async function updateCatalogProduct(input: unknown) {
   const parsed = change.safeParse(input);
   if (!parsed.success)
-    return { ok: false as const, error: "가격과 판매 여부를 확인해 주세요." };
+    return {
+      ok: false as const,
+      error: "가격·판매 여부·재고를 확인해 주세요.",
+    };
   const token = await catalogToken();
   if (!token)
     return {
