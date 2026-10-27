@@ -3,12 +3,14 @@ from fastapi import APIRouter, Query, Path, HTTPException, Response, Depends, Fi
 from app.application.catalog.ports import Filters
 from app.domain.catalog.models import CatalogConflict, CatalogNotFound, InvalidProductChange
 from app.domain.catalog.reviews import MAX_IMAGE_BYTES
+from app.presentation.catalog.recipe_views import router as recipe_views_router
 from app.presentation.accounts.dependencies import CurrentUser, AdminUser
 from app.presentation.catalog.dependencies import Service
 from app.presentation.catalog.reviews import clean_image
 from app.presentation.catalog.schemas import ProductOut, ProductPage, ProductChange, ProductCreate, WishPage, Category, Reason, Sort, Collection
 
 router = APIRouter(prefix="/catalog", tags=["catalog"])
+router.include_router(recipe_views_router)
 ProductId = Annotated[str, Path(min_length=1, max_length=100, pattern=r"^[a-z0-9]+(-[a-z0-9]+)*$")]
 
 
