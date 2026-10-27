@@ -11,8 +11,15 @@ from uuid import UUID
 
 from app.application.purchases.errors import NotFound
 from app.application.purchases.ports import PurchaseUnitOfWork
-from app.application.purchases.read_models import OrderView, PlacedOrder
-from app.domain.purchases.order import Order, PaymentMethod, ShippingAddress
+from app.application.purchases.read_models import OrderView, PlacedOrder, RefundResult
+from app.domain.purchases.order import (
+    Order,
+    OrderStatus,
+    PaymentMethod,
+    RefundNotAllowed,
+    ShippingAddress,
+    validate_refund_reason,
+)
 
 
 class OrderService:
@@ -62,5 +69,35 @@ class OrderService:
             raise NotFound("주문을 찾을 수 없습니다.")  # 남의 주문도 같은 응답이라 존재 여부를 알 수 없다
         return order
 
-    async def list_orders(self, user_id: UUID, page: int, size: int) -> tuple[list[OrderView], int]:
-        return await self._uow.orders.list_for_user(user_id, page, size)
+    async def list_orders(
+        self, user_id: UUID, page: int, size: int, refunds_only: bool = False
+    ) -> tuple[list[OrderView], int]:
+        return await self._uow.orders.list_for_user(user_id, page, size, refunds_only)
+
+    async def request_refund(self, user_id: UUID, order_id: UUID, reason: str) -> RefundResult:
+        """내 결제 완료 주문의 환불 신청을 접수한다. 주문당 1건이라 다시 신청하면 처음 신청을 그대로 돌려준다.
+
+        접수만 한다: 승인·반려, 실제 환불, 재고 복원은 하지 않는다(범위 밖).
+        """
+        reason = validate_refund_reason(reason)
+        repo = self._uow.orders
+        try:
+            await repo.lock_user(user_id)  # 같은 사용자의 요청을 한 줄로 세워 중복 신청 경쟁을 없앤다
+            order = await repo.get(user_id, order_id)
+            if order is None:
+                raise NotFound("주문을 찾을 수 없습니다.")  # 남의 주문도 같은 응답
+            if order.refund is not None:
+                await self._uow.commit()
+                return RefundResult(refund=order.refund, created=False)
+            if order.status != OrderStatus.PAID.value:
+                raise RefundNotAllowed("결제 완료 주문만 환불을 신청할 수 있어요.")
+            created = await repo.add_refund(order_id, reason)
+            if created is None:  # 방금 다른 요청이 먼저 저장한 경우
+                existing = await repo.get(user_id, order_id)
+                await self._uow.commit()
+                return RefundResult(refund=existing.refund, created=False)
+            await self._uow.commit()
+            return RefundResult(refund=created, created=True)
+        except Exception:
+            await self._uow.rollback()
+            raise

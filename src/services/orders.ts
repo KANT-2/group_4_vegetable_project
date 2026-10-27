@@ -11,7 +11,7 @@ import { getCartMode } from "@/lib/cart-mode";
 import { apiGetOrder, apiGetOrders, type ApiOrder } from "@/lib/cart-api";
 import { FastApiError } from "@/lib/fastapi";
 
-// FastAPI 주문을 기존 주문 화면이 읽는 모양(주문 행 + 주문 상품)으로 바꿔요. 환불은 FastAPI 범위가 아니라 없어요.
+// FastAPI 주문을 기존 주문 화면이 읽는 모양(주문 행 + 주문 상품 + 환불 신청)으로 바꿔요.
 function toOrderRow(order: ApiOrder, userId: string) {
   return {
     id: order.id,
@@ -34,7 +34,7 @@ function toOrderRow(order: ApiOrder, userId: string) {
       quantity: item.quantity,
       unit_price: item.unit_price,
     })),
-    refund_requests: null,
+    refund_requests: order.refund ? { status: order.refund.status } : null,
   };
 }
 
@@ -52,10 +52,8 @@ export async function getOrders(page = 1, refundsOnly = false) {
   }
   const mode = await getCartMode();
   if (mode.kind === "fastapi") {
-    // 환불·취소 내역은 FastAPI 주문 범위가 아니라서 비어 있어요.
-    if (refundsOnly)
-      return { userId: mode.userId, orders: [], count: 0, page, pageSize };
-    const result = await apiGetOrders(mode.token, page, pageSize);
+    // "취소·환불 내역"은 환불을 신청했거나 취소된 주문만 서버가 골라 줘요.
+    const result = await apiGetOrders(mode.token, page, pageSize, refundsOnly);
     return {
       userId: mode.userId,
       orders: result.items.map((order) => toOrderRow(order, mode.userId)),
@@ -105,8 +103,16 @@ export async function getOrder(orderId: string) {
           quantity: item.quantity,
           unit_price: item.unit_price,
         })),
-        refund: null,
-        refundSupported: false, // 환불은 FastAPI 주문 범위가 아니에요.
+        refund: order.refund
+          ? {
+              order_id: order.id,
+              status: order.refund.status,
+              reason: order.refund.reason,
+              created_at: order.refund.created_at,
+              reviewed_at: order.refund.reviewed_at,
+            }
+          : null,
+        refundSupported: true, // 환불 신청 접수까지 지원해요(승인·실제 환불은 아니에요).
       };
     } catch (error) {
       // 없는 주문이거나 남의 주문이면 FastAPI 가 같은 404 를 돌려줘요.

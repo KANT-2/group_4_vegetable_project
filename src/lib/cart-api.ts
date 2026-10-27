@@ -31,6 +31,12 @@ export type ApiOrderItem = {
   quantity: number;
   line_total: number;
 };
+export type ApiRefund = {
+  status: string;
+  reason: string;
+  created_at: string;
+  reviewed_at: string | null;
+};
 export type ApiOrder = {
   id: string;
   status: string;
@@ -42,6 +48,7 @@ export type ApiOrder = {
   total_amount: number;
   paid_at: string | null;
   created_at: string;
+  refund: ApiRefund | null;
 };
 export type ApiOrderList = {
   items: ApiOrder[];
@@ -114,8 +121,29 @@ export const apiMergeCart = (
 export const apiPlaceOrder = (token: string, input: ApiOrderInput) =>
   fastApi<ApiOrder>(ORDERS, { method: "POST", ...json(input) }, token);
 
-export const apiGetOrders = (token: string, page: number, size: number) =>
-  fastApi<ApiOrderList>(`${ORDERS}?page=${page}&size=${size}`, {}, token);
+export const apiGetOrders = (
+  token: string,
+  page: number,
+  size: number,
+  refundsOnly = false,
+) =>
+  fastApi<ApiOrderList>(
+    `${ORDERS}?page=${page}&size=${size}${refundsOnly ? "&refunds_only=true" : ""}`,
+    {},
+    token,
+  );
+
+// 환불 신청 접수(승인 아님). 이미 신청한 주문이면 처음 신청을 그대로 돌려줘요.
+export const apiRequestRefund = (
+  token: string,
+  orderId: string,
+  reason: string,
+) =>
+  fastApi<ApiRefund>(
+    `${ORDERS}/${encodeURIComponent(orderId)}/refund`,
+    { method: "POST", ...json({ reason }) },
+    token,
+  );
 
 export const apiGetOrder = (token: string, orderId: string) =>
   fastApi<ApiOrder>(`${ORDERS}/${encodeURIComponent(orderId)}`, {}, token);

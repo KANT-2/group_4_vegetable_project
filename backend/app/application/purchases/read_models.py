@@ -55,6 +55,24 @@ class OrderItemView:
 
 
 @dataclass(frozen=True)
+class RefundView:
+    """환불 신청(접수) 한 건. 이번 범위는 접수까지라 승인·반려는 관리자 쪽에서 상태만 바꾼다."""
+
+    status: str
+    reason: str
+    created_at: datetime
+    reviewed_at: datetime | None
+
+
+@dataclass(frozen=True)
+class RefundResult:
+    """환불 신청 결과. created=False 는 이미 신청한 주문이라 기존 신청을 그대로 돌려준 경우다."""
+
+    refund: RefundView
+    created: bool
+
+
+@dataclass(frozen=True)
 class OrderView:
     id: UUID
     status: str
@@ -65,6 +83,7 @@ class OrderView:
     shipping_fee: int
     paid_at: datetime | None
     created_at: datetime
+    refund: RefundView | None = None
 
     @property
     def total_amount(self) -> int:

@@ -11,6 +11,10 @@ test("환불 Action은 주문 소유자·결제 상태를 확인하고 재시도
   const modules = {
     "next/cache": { revalidatePath: () => {} },
     "@/lib/auth": { requireUser: async () => ({ id: "current-user" }) },
+    // 예전 Supabase 로그인 경로 확인용이라 FastAPI 모드가 아니에요(FastAPI 경로는 refund-fastapi.test.mjs).
+    "@/lib/cart-mode": { getCartMode: async () => ({ kind: "supabase" }) },
+    "@/lib/cart-api": {},
+    "@/lib/fastapi": { FastApiError: class FastApiError extends Error {} },
     "@/schemas/refund": { refundSchema },
     "@/lib/supabase/server": {
       createClient: async () => ({

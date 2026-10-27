@@ -5,9 +5,10 @@
 
 from copy import deepcopy
 from dataclasses import replace
+from datetime import datetime, timezone
 from uuid import UUID
 
-from app.application.purchases.read_models import CartLine, OrderView
+from app.application.purchases.read_models import CartLine, OrderView, RefundView
 from app.domain.purchases.cart import CartItem, InsufficientStock, ProductInfo
 from app.domain.purchases.order import Order
 
@@ -101,13 +102,31 @@ class FakeOrderRepository:
     async def get(self, user_id: UUID, order_id: UUID) -> OrderView | None:
         return self._uow.orders_working.get((user_id, order_id))
 
-    async def list_for_user(self, user_id: UUID, page: int, size: int) -> tuple[list[OrderView], int]:
+    async def list_for_user(
+        self, user_id: UUID, page: int, size: int, refunds_only: bool = False
+    ) -> tuple[list[OrderView], int]:
         mine = sorted(
-            (v for (owner, _), v in self._uow.orders_working.items() if owner == user_id),
+            (
+                v
+                for (owner, _), v in self._uow.orders_working.items()
+                if owner == user_id and (not refunds_only or v.refund is not None or v.status == "cancelled")
+            ),
             key=lambda v: v.created_at,
             reverse=True,
         )
         return mine[(page - 1) * size : page * size], len(mine)
+
+    async def add_refund(self, order_id: UUID, reason: str) -> RefundView | None:
+        for key, view in self._uow.orders_working.items():
+            if view.id == order_id:
+                if view.refund is not None:
+                    return None
+                refund = RefundView(
+                    status="requested", reason=reason, created_at=datetime.now(timezone.utc), reviewed_at=None
+                )
+                self._uow.orders_working[key] = replace(view, refund=refund)
+                return refund
+        return None
 
 
 class FakeUnitOfWork:

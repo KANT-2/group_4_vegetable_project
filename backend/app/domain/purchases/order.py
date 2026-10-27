@@ -18,6 +18,34 @@ from app.domain.purchases.pricing import calculate_amounts
 
 _PHONE = re.compile(r"0[0-9]{8,10}")  # [0-9] 로 제한해 전각 숫자 같은 다른 숫자 문자를 막는다
 _POSTAL_CODE = re.compile(r"[0-9]{5}")
+_HANGUL = re.compile(r"[가-힣]")
+_LATIN = re.compile(r"[A-Za-z]")
+_ALNUM = re.compile(r"[0-9A-Za-z가-힣]")
+
+
+def _is_plausible_postal_code(postal: str) -> bool:
+    """실제 우편번호처럼 보이는지 본다: 01000~63999 범위, 같은 숫자 반복(11111·00000)은 거부한다.
+
+    12345 같은 연속 숫자는 실제 우편번호일 수 있어 막지 않는다(진짜 고객을 거절하지 않기 위해)."""
+    if not 1000 <= int(postal) <= 63999:
+        return False
+    return len(set(postal)) > 1
+
+
+def _is_plausible_address(address: str) -> bool:
+    """주소에는 글자(한글 2자 이상 또는 영문 3자 이상)가 있어야 한다. 숫자만 또는 한 글자 반복은 거부한다."""
+    letters = len(_HANGUL.findall(address)), len(_LATIN.findall(address))
+    if letters[0] < 2 and letters[1] < 3:
+        return False
+    compact = re.sub(r"\s", "", address)
+    return len(set(compact)) > 2
+
+
+def _is_plausible_detail(detail: str) -> bool:
+    """상세주소는 글자나 숫자가 있어야 하고, 같은 글자를 4번 이상 반복한 것(1111)은 거부한다."""
+    if not _ALNUM.search(detail):
+        return False
+    return not re.search(r"(.)\1{3,}", re.sub(r"\s", "", detail))
 
 
 class OrderDomainError(PurchaseDomainError):
@@ -30,6 +58,14 @@ class InvalidShipping(OrderDomainError, ValueError):
 
 class EmptyCart(OrderDomainError):
     pass
+
+
+class InvalidRefundReason(OrderDomainError, ValueError):
+    pass
+
+
+class RefundNotAllowed(OrderDomainError):
+    """결제 완료 주문만 환불을 신청할 수 있다."""
 
 
 class CartChanged(OrderDomainError):
@@ -55,6 +91,20 @@ def _text(value: object, field: str) -> str:
     return value.strip()
 
 
+REFUND_REASON_MIN = 10  # DB 제약(refund_requests.reason)과 같다
+REFUND_REASON_MAX = 500
+
+
+def validate_refund_reason(reason: object) -> str:
+    """환불 사유의 앞뒤 공백을 정리하고 10~500자인지 확인한다."""
+    if not isinstance(reason, str):
+        raise InvalidRefundReason("환불 사유를 입력해 주세요.")
+    cleaned = reason.strip()
+    if not REFUND_REASON_MIN <= len(cleaned) <= REFUND_REASON_MAX:
+        raise InvalidRefundReason(f"환불 사유는 {REFUND_REASON_MIN}~{REFUND_REASON_MAX}자로 입력해 주세요.")
+    return cleaned
+
+
 @dataclass(frozen=True)
 class ShippingAddress:
     """주문 당시 배송지. 만들 때 공백을 정리하고 검증한다."""
@@ -77,10 +127,16 @@ class ShippingAddress:
             raise InvalidShipping("전화번호는 0으로 시작하는 숫자 9~11자리여야 합니다.")
         if not isinstance(postal, str) or not _POSTAL_CODE.fullmatch(postal):
             raise InvalidShipping("우편번호는 숫자 5자리여야 합니다.")
+        if not _is_plausible_postal_code(postal):
+            raise InvalidShipping("우편번호를 확인해 주세요. 실제 우편번호 5자리를 입력해 주세요.")
         if not 5 <= len(address) <= 200:
             raise InvalidShipping("주소는 5~200자여야 합니다.")
+        if not _is_plausible_address(address):
+            raise InvalidShipping("기본 주소를 확인해 주세요. 도로명 또는 지번 주소를 글자로 입력해 주세요.")
         if not 1 <= len(detail) <= 100:
             raise InvalidShipping("상세주소는 1~100자로 입력해 주세요.")
+        if not _is_plausible_detail(detail):
+            raise InvalidShipping("상세주소를 확인해 주세요. 동·호수 등을 입력해 주세요.")
         object.__setattr__(self, "recipient_name", name)
         object.__setattr__(self, "address", address)
         object.__setattr__(self, "address_detail", detail)

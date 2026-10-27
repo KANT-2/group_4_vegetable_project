@@ -3,7 +3,7 @@
 from typing import Protocol
 from uuid import UUID
 
-from app.application.purchases.read_models import CartLine, OrderView
+from app.application.purchases.read_models import CartLine, OrderView, RefundView
 from app.domain.purchases.cart import CartItem, ProductInfo
 from app.domain.purchases.order import Order
 
@@ -46,7 +46,13 @@ class OrderRepository(Protocol):
     async def get(self, user_id: UUID, order_id: UUID) -> OrderView | None:
         """본인 주문만 돌려준다. 남의 주문이거나 없으면 None."""
 
-    async def list_for_user(self, user_id: UUID, page: int, size: int) -> tuple[list[OrderView], int]: ...
+    async def list_for_user(
+        self, user_id: UUID, page: int, size: int, refunds_only: bool = False
+    ) -> tuple[list[OrderView], int]:
+        """내 주문 목록(최신순). refunds_only 면 환불을 신청했거나 취소된 주문만 돌려준다."""
+
+    async def add_refund(self, order_id: UUID, reason: str) -> RefundView | None:
+        """환불 신청을 저장한다. 이미 신청한 주문이면 저장하지 않고 None 을 돌려준다(주문당 신청 1건)."""
 
 
 class PurchaseUnitOfWork(Protocol):
