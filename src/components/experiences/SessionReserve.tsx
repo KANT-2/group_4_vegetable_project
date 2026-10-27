@@ -19,6 +19,8 @@ export function SessionReserve({
   const [headcounts, setHeadcounts] = useState<Record<string, number>>({});
   const [notices, setNotices] = useState<Record<string, Notice>>({});
   const [pendingId, setPendingId] = useState<string | null>(null);
+  // 이 화면에서 방금 예약한 회차: 같은 회차를 또 누르지 못하게 "예약 완료"로 보여줘요.
+  const [reservedIds, setReservedIds] = useState<string[]>([]);
   const [, startTransition] = useTransition();
 
   if (sessions.length === 0) {
@@ -36,6 +38,7 @@ export function SessionReserve({
           ? { kind: "ok", text: `${headcount}명 예약했어요.` }
           : { kind: "error", text: result.error },
       }));
+      if (result.ok) setReservedIds((ids) => [...ids, session.id]);
       setPendingId(null);
     });
   }
@@ -98,11 +101,15 @@ export function SessionReserve({
                   </select>
                   <button
                     type="button"
-                    disabled={pendingId === s.id}
+                    disabled={pendingId === s.id || reservedIds.includes(s.id)}
                     onClick={() => submit(s)}
                     className="btn btn-primary"
                   >
-                    {pendingId === s.id ? "예약 중…" : "예약하기"}
+                    {pendingId === s.id
+                      ? "예약 중…"
+                      : reservedIds.includes(s.id)
+                        ? "예약 완료"
+                        : "예약하기"}
                   </button>
                 </div>
               )}
