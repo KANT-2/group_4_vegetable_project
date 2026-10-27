@@ -13,6 +13,7 @@ export type AdminProfileView = {
   editable: boolean;
   local: boolean;
   googleOnly?: boolean;
+  fastApi?: boolean;
 };
 
 export function AdminMyPage({ profile }: { profile: AdminProfileView }) {
@@ -64,9 +65,10 @@ export function AdminMyPage({ profile }: { profile: AdminProfileView }) {
               <input
                 name="name"
                 defaultValue={profile.name}
-                readOnly={!profile.local}
+                readOnly={!profile.editable}
                 required
-                maxLength={60}
+                minLength={profile.fastApi ? 2 : 1}
+                maxLength={profile.fastApi ? 20 : 60}
                 autoComplete="name"
                 className={field}
               />
@@ -78,7 +80,7 @@ export function AdminMyPage({ profile }: { profile: AdminProfileView }) {
                 type="email"
                 required
                 maxLength={254}
-                readOnly={!profile.editable}
+                readOnly={!profile.editable || profile.fastApi}
                 defaultValue={profile.email === "미등록" ? "" : profile.email}
                 placeholder="이메일을 입력해 주세요"
                 className={field}
@@ -109,7 +111,7 @@ export function AdminMyPage({ profile }: { profile: AdminProfileView }) {
             </div>
           </form>
         </section>
-        <AdminPasswordForm googleOnly={profile.googleOnly ?? false} />
+        <AdminPasswordForm googleOnly={profile.googleOnly ?? false} fastApi={profile.fastApi} />
       </div>
     </AdminProducts>
   );

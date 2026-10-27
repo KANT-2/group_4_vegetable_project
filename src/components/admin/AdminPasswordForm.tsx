@@ -4,7 +4,7 @@ import { useActionState, useState } from "react";
 import { changeAdminPassword } from "@/actions/admin-password";
 import { adminPasswordError } from "@/lib/admin-password-validation";
 
-export function AdminPasswordForm({ googleOnly }: { googleOnly: boolean }) {
+export function AdminPasswordForm({ googleOnly, fastApi }: { googleOnly: boolean; fastApi?: boolean }) {
   const [state, action, pending] = useActionState(changeAdminPassword, {
     error: "",
     success: "",
@@ -13,13 +13,15 @@ export function AdminPasswordForm({ googleOnly }: { googleOnly: boolean }) {
   const [confirmation, setConfirmation] = useState("");
   const [error, setError] = useState("");
   const mismatch = confirmation.length > 0 && confirmation !== password;
-  const unavailable = googleOnly;
+  const unavailable = googleOnly || fastApi;
   return (
     <section className="min-w-0 self-start rounded-card border border-line bg-white p-6 sm:p-8">
       <h2 className="text-xl font-bold">비밀번호 변경</h2>
       {unavailable ? (
         <p className="mt-4 text-sm text-ink-muted">
-          Google 연동 계정의 비밀번호는 Google 계정 설정에서 변경해 주세요.
+          {fastApi
+            ? "이 계정의 비밀번호 변경 기능은 준비 중입니다."
+            : "Google 연동 계정의 비밀번호는 Google 계정 설정에서 변경해 주세요."}
         </p>
       ) : (
         <form

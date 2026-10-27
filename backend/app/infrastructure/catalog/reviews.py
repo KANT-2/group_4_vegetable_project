@@ -1,18 +1,32 @@
 """Reviews and bounded, re-encoded images share one PostgreSQL transaction."""
 from uuid import uuid4
 from sqlalchemy import text
-from app.application.catalog.reviews import ReviewConflict, ReviewNotFound
+from app.application.catalog.reviews import ReviewConflict, ReviewNotFound, ReviewPurchaseRequired
 
 
 class SqlReviewRepository:
     def __init__(self, session):
         self.session = session
 
+    async def purchased(self, user_id, product_id, *, lock=False):
+        query = """
+            SELECT o.id FROM public.orders o
+            JOIN public.order_items i ON i.order_id=o.id
+            WHERE o.user_id=:user AND i.product_id=:product
+              AND o.status='paid' AND o.paid_at IS NOT NULL
+            ORDER BY o.id LIMIT 1
+        """
+        if lock:
+            query += " FOR SHARE OF o"
+        return await self.session.scalar(text(query), {"user": user_id, "product": product_id}) is not None
+
     async def create(self, user_id, product_id, content, rating, images):
         try:
-            product = await self.session.scalar(text("SELECT id FROM products WHERE id=:id AND is_active FOR SHARE"), {"id": product_id})
+            product = await self.session.scalar(text("SELECT id FROM products WHERE id=:id AND is_active FOR UPDATE"), {"id": product_id})
             if not product:
                 raise ReviewNotFound()
+            if not await self.purchased(user_id, product_id, lock=True):
+                raise ReviewPurchaseRequired()
             rid = uuid4()
             result = await self.session.scalar(text("""
                 INSERT INTO product_reviews(id,user_id,product_id,content,rating,image_count)

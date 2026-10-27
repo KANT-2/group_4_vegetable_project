@@ -4,6 +4,7 @@ import {
   mkdirSync,
   writeFileSync,
   renameSync,
+  rmSync,
 } from "node:fs";
 import { join, dirname } from "node:path";
 import { randomUUID } from "node:crypto";
@@ -21,7 +22,22 @@ export type ContentSnapshot = { revision: number; state: AdminState };
 export function readContent(path = contentPath()): ContentSnapshot {
   if (!existsSync(/* turbopackIgnore: true */ path))
     return { revision: 0, state: { products, recipeChanges: {}, trash: [] } };
-  return JSON.parse(readFileSync(/* turbopackIgnore: true */ path, "utf8"));
+  const data = JSON.parse(
+    readFileSync(/* turbopackIgnore: true */ path, "utf8"),
+  );
+  if (
+    !data ||
+    !Number.isSafeInteger(data.revision) ||
+    data.revision < 0 ||
+    !data.state ||
+    !Array.isArray(data.state.products) ||
+    !Array.isArray(data.state.trash) ||
+    !data.state.recipeChanges ||
+    typeof data.state.recipeChanges !== "object" ||
+    Array.isArray(data.state.recipeChanges)
+  )
+    throw new Error("INVALID_CONTENT_SNAPSHOT");
+  return data as ContentSnapshot;
 }
 // 단일 Node 서버에서 읽기·수정·파일 교체를 동기적으로 처리합니다.
 export function mutateContent(
@@ -38,8 +54,12 @@ export function mutateContent(
   };
   mkdirSync(dirname(path), { recursive: true });
   const temporary = `${path}.${randomUUID()}.tmp`;
-  writeFileSync(temporary, JSON.stringify(next), "utf8");
-  renameSync(temporary, path);
+  try {
+    writeFileSync(temporary, JSON.stringify(next), "utf8");
+    renameSync(temporary, path);
+  } finally {
+    rmSync(temporary, { force: true });
+  }
   return next;
 }
 export function hiddenContent(state: AdminState, kind: string, id: string) {

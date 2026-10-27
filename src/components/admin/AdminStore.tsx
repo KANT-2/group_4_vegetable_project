@@ -54,6 +54,7 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
   const ready = useRef(false);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
+  const [loadError, setLoadError] = useState("");
   useEffect(() => {
     let disposed = false;
     let version: string | undefined;
@@ -101,7 +102,7 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
           admin ? "/admin/api/content?admin=1" : "/api/managed-content",
           { cache: "no-store" },
         );
-        if (!response.ok) return;
+        if (!response.ok) throw new Error("content unavailable");
         const data = await response.json();
         if (disposed) return;
         const changed =
@@ -109,10 +110,14 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
         current.current = data;
         ready.current = true;
         loaded = true;
+        setLoadError("");
         dispatch({ type: "hydrate", state: data.state });
         if (changed && !admin) router.refresh();
       } catch {
-        /* Keep the last confirmed content while offline. */
+        if (!disposed && admin)
+          setLoadError(
+            "관리자 정보를 불러오지 못했어요. 서버 연결을 확인해 주세요.",
+          );
       }
     };
     void refresh();
@@ -125,7 +130,7 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
     };
   }, [pathname, router, saving]);
   function persist(action: AdminAction) {
-    queue.current = queue.current.then(async () => {
+    const result = queue.current.then(async () => {
       setSaving(true);
       setSaveError("");
       try {
@@ -142,25 +147,35 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
             : action;
         const response = await fetch("/admin/api/content", {
           method: "POST",
+          signal: AbortSignal.timeout(45000),
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             revision: current.current.revision,
             action: serializable,
           }),
         });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error);
+        const data = await response.json().catch(() => null);
+        if (!response.ok || !data?.state)
+          throw new Error(
+            typeof data?.error === "string"
+              ? data.error
+              : "저장 결과를 확인하지 못했어요. 새로고침 후 확인해 주세요.",
+          );
         current.current = data;
         dispatch({ type: "hydrate", state: data.state });
         router.refresh();
+        return true;
       } catch (error) {
         setSaveError(
           error instanceof Error ? error.message : "저장하지 못했습니다.",
         );
+        return false;
       } finally {
         setSaving(false);
       }
     });
+    queue.current = result.then(() => undefined);
+    return result;
   }
   type Request = {
     message: string;
@@ -208,11 +223,10 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
             }))
           )
             return false;
-          persist({
+          return persist({
             type: "trash",
             entry: { ...entry, deletedAt: new Date().toISOString() },
           });
-          return true;
         },
         restore: async (kind, id) => {
           const entry = state.trash.find(
@@ -233,8 +247,7 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
             }))
           )
             return false;
-          persist({ type: "restore", kind, id });
-          return true;
+          return persist({ type: "restore", kind, id });
         },
         permanentlyDelete: async (kind, id) => {
           const entry = state.trash.find(
@@ -250,18 +263,17 @@ export function AdminStore({ children }: { children: React.ReactNode }) {
             }))
           )
             return false;
-          persist({ type: "permanent-delete", kind, id });
-          return true;
+          return persist({ type: "permanent-delete", kind, id });
         },
       }}
     >
       {children}
-      {(saving || saveError) && (
+      {(saving || saveError || loadError) && (
         <div
-          role={saveError ? "alert" : "status"}
+          role={saveError || loadError ? "alert" : "status"}
           className="fixed bottom-5 left-1/2 z-[100] max-w-[90vw] -translate-x-1/2 rounded-xl border border-line bg-white px-5 py-3 text-sm shadow-lg"
         >
-          {saveError || "서버에 저장하고 있어요…"}
+          {saveError || loadError || "서버에 저장하고 있어요…"}
         </div>
       )}
       {request && <ConfirmDialog {...request} onResult={finish} />}

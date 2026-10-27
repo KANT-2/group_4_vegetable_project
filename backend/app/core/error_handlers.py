@@ -12,12 +12,16 @@ import logging
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
-from sqlalchemy.exc import DBAPIError
+from sqlalchemy.exc import DBAPIError, TimeoutError as DatabaseTimeout
 
 logger = logging.getLogger("app.error")
 
 
 def register_common_error_handlers(app: FastAPI) -> None:
+    @app.exception_handler(DatabaseTimeout)
+    async def database_timeout(_: Request, exc: DatabaseTimeout) -> JSONResponse:
+        return JSONResponse({"detail": "데이터베이스 연결이 지연되고 있어요. 잠시 뒤 다시 시도해 주세요."}, status_code=503)
+
     @app.exception_handler(RequestValidationError)
     async def validation_error(_: Request, exc: RequestValidationError) -> JSONResponse:
         errors = [{"loc": list(e["loc"]), "msg": e["msg"], "type": e["type"]} for e in exc.errors()]
@@ -37,4 +41,10 @@ def register_common_error_handlers(app: FastAPI) -> None:
         if isinstance(sqlstate, str) and sqlstate.startswith("22"):
             logger.warning("DB 가 거부한 입력: %s %s (%s)", request.method, request.url.path, sqlstate)
             return JSONResponse({"detail": "입력값에 허용되지 않는 문자가 있거나 범위를 벗어났어요."}, status_code=422)
+        if sqlstate == "23514":
+            return JSONResponse({"detail": "입력값이 저장 조건에 맞지 않아요."}, status_code=422)
+        if sqlstate in ("23503", "23505"):
+            return JSONResponse({"detail": "이미 등록되었거나 다른 데이터와 연결된 항목입니다. 최신 상태를 확인해 주세요."}, status_code=409)
+        if exc.connection_invalidated or (isinstance(sqlstate, str) and sqlstate[:2] in ("08", "53", "57")):
+            return JSONResponse({"detail": "데이터베이스에 연결하지 못했어요. 잠시 뒤 다시 시도해 주세요."}, status_code=503)
         return await unhandled_error(request, exc)

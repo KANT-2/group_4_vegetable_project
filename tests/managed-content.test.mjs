@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp, rm, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
@@ -8,6 +8,19 @@ import {
   mutateContent,
   hiddenContent,
 } from "../src/lib/managed-content.ts";
+
+test("깨진 관리자 저장 파일은 기본값으로 덮어쓰지 않고 보존한다", async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), "managed-corrupt-"));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const path = join(directory, "catalog.json");
+  for (const content of ["{broken", "null", '{"revision":1,"state":{}}']) {
+    await writeFile(path, content);
+    assert.throws(() =>
+      mutateContent({ type: "products", update: [] }, 0, path),
+    );
+    assert.equal(await readFile(path, "utf8"), content);
+  }
+});
 
 test("관리자 변경은 서버 파일에 유지되며 품절·삭제·복원과 동시 수정 충돌을 처리한다", async (t) => {
   const directory = await mkdtemp(join(tmpdir(), "managed-content-"));

@@ -4,6 +4,7 @@ import { fastApi } from "@/lib/fastapi";
 import { reviewOriginAllowed } from "@/lib/review-proxy";
 import { recipeIdSchema } from "@/schemas/recipe";
 import { getRecipe } from "@/services/recipes";
+import { readBoundedText, RequestBodyError } from "@/lib/request-body";
 
 const COOKIE = "motnani_recipe_visitor";
 const UUID =
@@ -11,13 +12,14 @@ const UUID =
 
 export async function POST(request: Request) {
   if (!reviewOriginAllowed(request)) return new Response(null, { status: 403 });
-  const raw = await request.text();
-  if (raw.length > 256) return new Response(null, { status: 413 });
   let id: string;
   try {
+    const raw = await readBoundedText(request, 256);
     id = recipeIdSchema.parse(JSON.parse(raw).recipeId);
-  } catch {
-    return new Response(null, { status: 422 });
+  } catch (error) {
+    return new Response(null, {
+      status: error instanceof RequestBodyError ? error.status : 422,
+    });
   }
   try {
     // 목록의 프리패치나 임의 ID 요청은 집계하지 않아요.
