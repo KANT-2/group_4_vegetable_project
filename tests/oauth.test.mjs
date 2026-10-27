@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
 import {
   getSiteOrigin,
   googleCallbackUrl,
@@ -68,4 +69,13 @@ test("개인 경로는 하위 경로까지 보호하고 공개 경로는 유지�
     "/mypages",
   ])
     assert.equal(isPrivatePath(path), false);
+});
+
+test("로그인된 사용자는 이전 OAuth 오류 표시가 남아 있어도 로그인 폼을 보지 않는다", () => {
+  const loginPage = readFileSync(
+    new URL("../src/app/login/page.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(loginPage, /if \(user\) redirect\(next\)/);
+  assert.doesNotMatch(loginPage, /user\s*&&\s*!params\.error/);
 });
