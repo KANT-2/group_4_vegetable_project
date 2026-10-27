@@ -5,7 +5,13 @@ from fastapi.responses import JSONResponse
 
 from app.application.purchases.errors import NotFound
 from app.domain.purchases.cart import InsufficientStock, InvalidQuantity, ProductNotPurchasable, PurchaseDomainError
-from app.domain.purchases.order import CartChanged, EmptyCart, InvalidShipping
+from app.domain.purchases.order import (
+    CartChanged,
+    EmptyCart,
+    InvalidRefundReason,
+    InvalidShipping,
+    RefundNotAllowed,
+)
 
 STATUS_BY_ERROR: dict[type[Exception], int] = {
     NotFound: status.HTTP_404_NOT_FOUND,
@@ -13,6 +19,8 @@ STATUS_BY_ERROR: dict[type[Exception], int] = {
     ProductNotPurchasable: status.HTTP_409_CONFLICT,
     InsufficientStock: status.HTTP_409_CONFLICT,
     InvalidShipping: status.HTTP_422_UNPROCESSABLE_ENTITY,
+    InvalidRefundReason: status.HTTP_422_UNPROCESSABLE_ENTITY,
+    RefundNotAllowed: status.HTTP_409_CONFLICT,
     EmptyCart: status.HTTP_409_CONFLICT,
     CartChanged: status.HTTP_409_CONFLICT,
 }

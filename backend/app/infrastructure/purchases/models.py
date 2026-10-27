@@ -66,3 +66,15 @@ class OrderItemModel(PurchaseBase):
     product_unit: Mapped[str] = mapped_column(Text)
     unit_price: Mapped[int] = mapped_column(Integer)
     quantity: Mapped[int] = mapped_column(Integer)
+
+
+class RefundRequestModel(PurchaseBase):
+    """환불 신청(접수). 테이블은 supabase/migrations/202610120002_refund_requests.sql 과 같다. 주문당 1건(order_id 가 기본키)."""
+
+    __tablename__ = "refund_requests"
+
+    order_id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True)
+    reason: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(Text, server_default=text("'requested'"))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

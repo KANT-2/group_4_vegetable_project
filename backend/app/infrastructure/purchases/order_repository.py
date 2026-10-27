@@ -2,16 +2,23 @@
 
 from uuid import UUID
 
-from sqlalchemy import delete, func, select, text
+from sqlalchemy import delete, func, or_, select, text
+from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.application.purchases.read_models import OrderItemView, OrderView, ShippingView
+from app.application.purchases.read_models import OrderItemView, OrderView, RefundView, ShippingView
 from app.domain.purchases.cart import InsufficientStock, ProductInfo
 from app.domain.purchases.order import Order
-from app.infrastructure.purchases.models import CartItemModel, OrderItemModel, OrderModel
+from app.infrastructure.purchases.models import CartItemModel, OrderItemModel, OrderModel, RefundRequestModel
 
 
-def _to_view(order: OrderModel, items: list[OrderItemModel]) -> OrderView:
+def _to_refund(row: RefundRequestModel | None) -> RefundView | None:
+    if row is None:
+        return None
+    return RefundView(status=row.status, reason=row.reason, created_at=row.created_at, reviewed_at=row.reviewed_at)
+
+
+def _to_view(order: OrderModel, items: list[OrderItemModel], refund: RefundRequestModel | None = None) -> OrderView:
     return OrderView(
         id=order.id,
         status=order.status,
@@ -31,6 +38,7 @@ def _to_view(order: OrderModel, items: list[OrderItemModel]) -> OrderView:
         shipping_fee=order.shipping_fee,
         paid_at=order.paid_at,
         created_at=order.created_at,
+        refund=_to_refund(refund),
     )
 
 
@@ -148,23 +156,37 @@ class SqlAlchemyOrderRepository:
             delete(CartItemModel).where(CartItemModel.user_id == user_id, CartItemModel.product_id.in_(product_ids))
         )
 
+    async def _refunds_of(self, order_ids: list[UUID]) -> dict[UUID, RefundRequestModel]:
+        if not order_ids:
+            return {}
+        rows = await self._session.execute(select(RefundRequestModel).where(RefundRequestModel.order_id.in_(order_ids)))
+        return {row.order_id: row for row in rows.scalars()}
+
     async def get(self, user_id: UUID, order_id: UUID) -> OrderView | None:
         row = (
             await self._session.execute(select(OrderModel).where(OrderModel.id == order_id, OrderModel.user_id == user_id))
         ).scalar_one_or_none()
         if row is None:
             return None
-        return _to_view(row, (await self._items_of([row.id]))[row.id])
+        items = await self._items_of([row.id])
+        refunds = await self._refunds_of([row.id])
+        return _to_view(row, items[row.id], refunds.get(row.id))
 
-    async def list_for_user(self, user_id: UUID, page: int, size: int) -> tuple[list[OrderView], int]:
-        total = (
-            await self._session.execute(select(func.count()).select_from(OrderModel).where(OrderModel.user_id == user_id))
-        ).scalar_one()
+    async def list_for_user(
+        self, user_id: UUID, page: int, size: int, refunds_only: bool = False
+    ) -> tuple[list[OrderView], int]:
+        condition = [OrderModel.user_id == user_id]
+        if refunds_only:
+            # 환불을 신청했거나 취소된 주문만(예전 Supabase 주문 화면의 "취소·환불 내역"과 같은 기준)
+            condition.append(
+                or_(OrderModel.status == "cancelled", OrderModel.id.in_(select(RefundRequestModel.order_id)))
+            )
+        total = (await self._session.execute(select(func.count()).select_from(OrderModel).where(*condition))).scalar_one()
         rows = (
             (
                 await self._session.execute(
                     select(OrderModel)
-                    .where(OrderModel.user_id == user_id)
+                    .where(*condition)
                     .order_by(OrderModel.created_at.desc(), OrderModel.id)
                     .offset((page - 1) * size)
                     .limit(size)
@@ -173,5 +195,18 @@ class SqlAlchemyOrderRepository:
             .scalars()
             .all()
         )
-        items = await self._items_of([row.id for row in rows])
-        return [_to_view(row, items[row.id]) for row in rows], total
+        ids = [row.id for row in rows]
+        items = await self._items_of(ids)
+        refunds = await self._refunds_of(ids)
+        return [_to_view(row, items[row.id], refunds.get(row.id)) for row in rows], total
+
+    async def add_refund(self, order_id: UUID, reason: str) -> RefundView | None:
+        # 주문당 신청 1건: 이미 있으면 충돌로 아무것도 저장하지 않고 None. 동시에 두 번 눌러도 한 건만 생긴다.
+        statement = (
+            pg_insert(RefundRequestModel)
+            .values(order_id=order_id, reason=reason)
+            .on_conflict_do_nothing(index_elements=[RefundRequestModel.order_id])
+            .returning(RefundRequestModel)
+        )
+        row = (await self._session.execute(statement)).scalar_one_or_none()
+        return _to_refund(row)

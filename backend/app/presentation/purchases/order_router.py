@@ -11,7 +11,7 @@ from fastapi import APIRouter, Depends, Query, Response, status
 
 from app.application.purchases.order_service import OrderService
 from app.presentation.purchases.dependencies import CurrentUser, get_order_service
-from app.presentation.purchases.order_schemas import OrderCreate, OrderList, OrderOut
+from app.presentation.purchases.order_schemas import OrderCreate, OrderList, OrderOut, RefundCreate, RefundOut
 
 router = APIRouter(prefix="/orders", tags=["purchases"])
 
@@ -41,11 +41,26 @@ async def place_order(body: OrderCreate, response: Response, service: Service, u
 
 
 @router.get("", response_model=OrderList, summary="내 주문 목록 (최신순)")
-async def list_orders(service: Service, user: User, page: Page = 1, size: Size = 20):
-    orders, total = await service.list_orders(user.id, page, size)
+async def list_orders(
+    service: Service, user: User, page: Page = 1, size: Size = 20, refunds_only: bool = False
+):
+    orders, total = await service.list_orders(user.id, page, size, refunds_only)
     return OrderList(items=[OrderOut.from_view(o) for o in orders], total=total, page=page, size=size)
 
 
 @router.get("/{order_id}", response_model=OrderOut, summary="내 주문 상세 (남의 주문은 404)")
 async def get_order(order_id: UUID, service: Service, user: User):
     return OrderOut.from_view(await service.get_order(user.id, order_id))
+
+
+@router.post(
+    "/{order_id}/refund",
+    response_model=RefundOut,
+    status_code=status.HTTP_201_CREATED,
+    summary="환불 신청 접수 (주문당 1건, 다시 신청하면 처음 신청을 200으로 반환. 접수만 하며 실제 환불은 하지 않음)",
+)
+async def request_refund(order_id: UUID, body: RefundCreate, response: Response, service: Service, user: User):
+    result = await service.request_refund(user.id, order_id, body.reason)
+    if not result.created:
+        response.status_code = status.HTTP_200_OK
+    return RefundOut.from_view(result.refund)

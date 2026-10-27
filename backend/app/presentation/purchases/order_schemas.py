@@ -5,7 +5,7 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from app.application.purchases.read_models import OrderItemView, OrderView
+from app.application.purchases.read_models import OrderItemView, OrderView, RefundView
 from app.domain.purchases.order import PaymentMethod, ShippingAddress
 
 
@@ -36,6 +36,27 @@ class OrderCreate(BaseModel):
         strict=True,
         description="화면에 보인 총 결제 금액. 서버 계산과 다르면 거부한다. 이 값이 저장·적용되지는 않는다.",
     )
+
+
+class RefundCreate(BaseModel):
+    """환불 신청 사유. 길이(10~500자)는 도메인이 검증한다. 여기서는 터무니없이 긴 입력만 막는다."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    reason: str = Field(max_length=2000)
+
+
+class RefundOut(BaseModel):
+    status: str
+    reason: str
+    created_at: datetime
+    reviewed_at: datetime | None
+
+    @classmethod
+    def from_view(cls, refund: RefundView) -> "RefundOut":
+        return cls(
+            status=refund.status, reason=refund.reason, created_at=refund.created_at, reviewed_at=refund.reviewed_at
+        )
 
 
 class ShippingOut(BaseModel):
@@ -77,6 +98,7 @@ class OrderOut(BaseModel):
     total_amount: int
     paid_at: datetime | None
     created_at: datetime
+    refund: RefundOut | None = None
 
     @classmethod
     def from_view(cls, order: OrderView) -> "OrderOut":
@@ -97,6 +119,7 @@ class OrderOut(BaseModel):
             total_amount=order.total_amount,
             paid_at=order.paid_at,
             created_at=order.created_at,
+            refund=RefundOut.from_view(order.refund) if order.refund else None,
         )
 
 

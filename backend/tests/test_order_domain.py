@@ -64,10 +64,24 @@ def test_recipient_name_boundaries_are_allowed(name):
     assert shipping(recipient_name=name).recipient_name == name
 
 
-@pytest.mark.parametrize("phone", ["010-1234-5678", "1012345678", "0101234", "010123456789", " 01012345678", "０１０１２３４５６７８", "010１２３４５６７８", "0１0１2345678", "abc", ""])
+@pytest.mark.parametrize("phone", ["1012345678", "0101234", "010123456789", "０１０１２３４５６７８", "010１２３４５６７８", "0１0１2345678", "abc", "", "   ", "010-１２３４-5678"])
 def test_invalid_phone(phone):
     with pytest.raises(InvalidShipping):
         shipping(recipient_phone=phone)
+
+
+@pytest.mark.parametrize(
+    ("typed", "saved"),
+    [
+        ("010-1234-5678", "01012345678"),
+        ("010 1234 5678", "01012345678"),
+        (" 010-1234-5678 ", "01012345678"),
+        ("02-123-4567", "021234567"),
+        ("031-123-4567", "0311234567"),
+    ],
+)
+def test_phone_with_hyphens_or_spaces_is_saved_as_digits_only(typed, saved):
+    assert shipping(recipient_phone=typed).recipient_phone == saved  # 배송지 저장과 같은 방식
 
 
 @pytest.mark.parametrize("phone", ["021234567", "0212345678", "01012345678"])  # 9, 10, 11자리
