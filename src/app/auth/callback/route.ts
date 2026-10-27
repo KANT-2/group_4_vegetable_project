@@ -21,16 +21,19 @@ export async function GET(request: Request) {
   const failure = new URL(adminLogin ? "/admin/login" : "/login", origin);
   failure.searchParams.set("error", "oauth");
   failure.searchParams.set("next", next);
+  let stage = "request-validation";
   try {
     if (request.headers.get("host") !== new URL(origin).host)
       throw new Error("wrong callback host");
     const code = requestUrl.searchParams.get("code");
     if (!code || requestUrl.searchParams.has("error"))
       throw new Error("missing code");
+    stage = "code-exchange";
     const supabase = await createClient();
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
     if (error || !data.session?.access_token)
       throw new Error("code exchange failed");
+    stage = "fastapi-login";
     const token = await fastApi<FastApiToken>("/api/v1/accounts/google-login", {
       method: "POST",
       body: JSON.stringify({ access_token: data.session.access_token }),
@@ -43,6 +46,7 @@ export async function GET(request: Request) {
       token.access_token,
       accessTokenCookieOptions(token.expires_in),
     );
+    stage = "profile-check";
     try {
       await getProfile();
     } catch {
@@ -50,7 +54,11 @@ export async function GET(request: Request) {
       throw new Error("profile setup failed");
     }
     return success;
-  } catch {
+  } catch (error) {
+    console.error("[auth/callback] Google login failed", {
+      stage,
+      error: error instanceof Error ? error.message : "unknown error",
+    });
     return NextResponse.redirect(failure, {
       headers: { "Cache-Control": "private, no-store" },
     });
