@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { PageHeading } from "@/components/common/PageHeading";
-import { listExperiences } from "@/lib/experiences-api";
+import { getExperience, listExperiences } from "@/lib/experiences-api";
+import { getExperienceContent } from "@/lib/experiences-content";
+import { formatSessionTime, type Session } from "@/lib/experiences-types";
 import { FastApiError } from "@/lib/fastapi";
 import { SafeImage } from "@/components/common/SafeImage";
 import {
@@ -35,8 +37,21 @@ export default async function ExperiencesPage({
     error =
       e instanceof FastApiError
         ? e.message
-        : "체험 목록을 불러오지 못했어요. 백엔드가 켜져 있는지 확인해 주세요.";
+        : "체험 목록을 불러오지 못했어요. 잠시 후 다시 시도해 주세요.";
   }
+
+  // 카드에 "다음 회차"와 남은 자리를 보여주려고 체험별 회차를 함께 불러와요. 실패해도 목록은 그대로 보여요.
+  const sessionsById = new Map<string, Session[]>();
+  if (data) {
+    const details = await Promise.all(
+      data.items.map((e) => getExperience(e.id).catch(() => null)),
+    );
+    details.forEach((d) => d && sessionsById.set(d.id, d.sessions));
+  }
+  const nextSession = (id: string) =>
+    (sessionsById.get(id) ?? [])
+      .filter((s) => s.status === "open" && !s.started && s.remaining > 0)
+      .sort((a, b) => a.starts_at.localeCompare(b.starts_at))[0];
 
   const totalPages = data ? Math.max(1, Math.ceil(data.total / SIZE)) : 1;
   const pageHref = (p: number) => {
@@ -119,8 +134,13 @@ export default async function ExperiencesPage({
                         {e.farm_name}
                       </p>
                       <p className="mt-3 line-clamp-2 text-sm text-ink">
-                        {e.description}
+                        {getExperienceContent(e.id)?.tagline ?? e.description}
                       </p>
+                      <ExperienceCardInfo
+                        duration={getExperienceContent(e.id)?.duration}
+                        next={nextSession(e.id)}
+                        loaded={sessionsById.has(e.id)}
+                      />
                       <p className="mt-4 text-base font-bold text-ink">
                         {e.fee > 0 ? `${formatPrice(e.fee)}` : "무료"}
                         <span className="ml-1 text-xs font-normal text-ink-muted">
@@ -164,5 +184,52 @@ export default async function ExperiencesPage({
         </>
       )}
     </>
+  );
+}
+
+// 카드 아래쪽 정보: 소요 시간, 다음 회차, 남은 자리 (3자리 이하면 "마감 임박")
+function ExperienceCardInfo({
+  duration,
+  next,
+  loaded,
+}: {
+  duration?: string;
+  next?: Session;
+  loaded: boolean;
+}) {
+  return (
+    <dl className="mt-3 grid gap-1 text-sm">
+      {duration && (
+        <div className="flex gap-2">
+          <dt className="w-16 shrink-0 text-ink-muted">소요 시간</dt>
+          <dd className="text-ink">{duration}</dd>
+        </div>
+      )}
+      {loaded && (
+        <div className="flex gap-2">
+          <dt className="w-16 shrink-0 text-ink-muted">다음 회차</dt>
+          <dd className="text-ink">
+            {next ? (
+              <>
+                {formatSessionTime(next.starts_at)}
+                <span
+                  className={`ml-2 rounded-full px-2 py-0.5 text-xs font-bold ${
+                    next.remaining <= 3
+                      ? "bg-accent-soft text-accent"
+                      : "bg-brand-soft text-brand"
+                  }`}
+                >
+                  {next.remaining <= 3
+                    ? `마감 임박 · ${next.remaining}자리`
+                    : `${next.remaining}자리 남음`}
+                </span>
+              </>
+            ) : (
+              "예약 가능한 회차가 없어요"
+            )}
+          </dd>
+        </div>
+      )}
+    </dl>
   );
 }

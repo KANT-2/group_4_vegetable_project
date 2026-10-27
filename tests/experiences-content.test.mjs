@@ -17,6 +17,21 @@ test("시드의 체험 3개 모두 상세 안내가 있다", () => {
     assert.ok(content.included.length > 0, `${id} 포함 사항이 비었어요`);
     assert.ok(content.bring.length > 0, `${id} 준비물이 비었어요`);
     assert.ok(content.audience.length > 0, `${id} 추천 대상이 비었어요`);
+    assert.ok(content.tagline, `${id} 한 줄 소개가 비었어요`);
+    assert.ok(content.intro.length > 0, `${id} 소개 문단이 비었어요`);
+    assert.ok(content.highlights.length >= 3, `${id} 체험 포인트가 적어요`);
+    assert.ok(content.farmStory, `${id} 농가 이야기가 비었어요`);
+    assert.ok(content.takeHome.length > 0, `${id} 가져가는 것이 비었어요`);
+    assert.ok(content.meeting, `${id} 모이는 곳이 비었어요`);
+    assert.ok(content.faq.length >= 3, `${id} 자주 묻는 질문이 적어요`);
+  }
+});
+
+test("자주 묻는 질문은 질문과 답이 모두 있고 겹치지 않는다", () => {
+  for (const [id, content] of Object.entries(EXPERIENCE_CONTENT)) {
+    const questions = content.faq.map((f) => f.q);
+    assert.equal(new Set(questions).size, questions.length, `${id} 질문 중복`);
+    for (const f of content.faq) assert.ok(f.q && f.a, `${id}: ${f.q}`);
   }
 });
 
