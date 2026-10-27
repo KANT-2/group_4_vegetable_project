@@ -41,6 +41,7 @@ export function ProductReviews({ productId }: { productId: string }) {
     "checking",
   );
   const [mine, setMine] = useState<MyReview | null>(null);
+  const [purchased, setPurchased] = useState(false);
   const [rating, setRating] = useState(5);
   const [content, setContent] = useState("");
   const [files, setFiles] = useState<File[]>([]);
@@ -69,6 +70,7 @@ export function ProductReviews({ productId }: { productId: string }) {
         return response.json() as Promise<ReviewPage>;
       })
       .then((result) => {
+        if (controller.signal.aborted) return;
         setData(result);
         setError("");
         setLoading(false);
@@ -90,7 +92,15 @@ export function ProductReviews({ productId }: { productId: string }) {
           return;
         }
         if (!response.ok) throw new Error();
-        setMine(await response.json());
+        const ownReview = await response.json();
+        const eligibility = await fetch(
+          `/api/reviews/eligibility?${new URLSearchParams({ product_id: productId })}`,
+          { signal: controller.signal, cache: "no-store" },
+        );
+        if (!eligibility.ok) throw new Error();
+        const purchase = await eligibility.json();
+        setMine(ownReview);
+        setPurchased(purchase.purchased === true);
         setAuth("member");
       })
       .catch(() => {
@@ -123,7 +133,7 @@ export function ProductReviews({ productId }: { productId: string }) {
       if (!response.ok) {
         const result = await response.json();
         if (response.status === 401) setAuth("guest");
-        if (response.status === 409) refresh();
+        if (response.status === 409 || response.status === 403) refresh();
         throw new Error(
           typeof result.detail === "string"
             ? result.detail
@@ -222,6 +232,10 @@ export function ProductReviews({ productId }: { productId: string }) {
               상품당 한 번 후기를 남길 수 있어요.
             </p>
           </div>
+        ) : !purchased ? (
+          <p className="mt-3 text-sm text-ink-muted">
+            결제 완료한 주문에 포함된 상품만 후기를 작성할 수 있어요.
+          </p>
         ) : (
           <form onSubmit={submit} className="mt-5 space-y-4">
             <label className="block text-sm font-semibold">

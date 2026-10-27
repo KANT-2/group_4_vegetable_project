@@ -24,6 +24,18 @@ export function RecipeDiscovery({ vegetables }: { vegetables: Guide[] }) {
         });
         if (!response.ok) throw new Error("rankings");
         const data = await response.json();
+        if (
+          !Array.isArray(data.items) ||
+          data.items.some(
+            (item: RankedRecipe) =>
+              !item ||
+              typeof item.id !== "string" ||
+              typeof item.name !== "string" ||
+              !Number.isSafeInteger(item.views) ||
+              item.views < 0,
+          )
+        )
+          throw new Error("invalid rankings");
         if (!controller.signal.aborted) {
           setRanking(data.items);
           setFailed(false);

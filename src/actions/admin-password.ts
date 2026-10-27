@@ -11,6 +11,8 @@ import {
   saveSessionAdminProfile,
 } from "@/lib/admin-auth";
 import { adminPasswordError } from "@/lib/admin-password-validation";
+import { cookies } from "next/headers";
+import { ACCESS_TOKEN_COOKIE } from "@/lib/auth-cookie";
 
 export async function changeAdminPassword(
   _previous: { error: string; success: string },
@@ -38,6 +40,8 @@ export async function changeAdminPassword(
           "비밀번호가 변경되었습니다. 다음 로그인부터 새 비밀번호를 사용해 주세요.",
       };
     }
+    if ((await cookies()).get(ACCESS_TOKEN_COOKIE)?.value)
+      return { error: "이 계정의 비밀번호 변경 기능은 준비 중입니다.", success: "" };
     const supabase = await createClient();
     const {
       data: { user },

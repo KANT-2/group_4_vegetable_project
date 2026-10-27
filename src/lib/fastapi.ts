@@ -1,4 +1,5 @@
 import "server-only";
+import { unstable_rethrow } from "next/navigation";
 
 export type FastApiToken = {
   access_token: string;
@@ -61,11 +62,24 @@ export async function fastApi<T>(
     headers.set("Content-Type", "application/json");
   if (token) headers.set("Authorization", `Bearer ${token}`);
 
-  const response = await fetch(apiUrl(path), {
-    ...init,
-    headers,
-    cache: "no-store",
-  });
+  const timeout = AbortSignal.timeout(20000);
+  let response: Response;
+  try {
+    response = await fetch(apiUrl(path), {
+      ...init,
+      headers,
+      cache: "no-store",
+      signal: init.signal ? AbortSignal.any([init.signal, timeout]) : timeout,
+    });
+  } catch (error) {
+    unstable_rethrow(error);
+    throw new FastApiError(
+      timeout.aborted ? 504 : 503,
+      timeout.aborted
+        ? "서버 응답이 지연되고 있어요. 처리 결과를 확인한 후 다시 시도해 주세요."
+        : "서버에 연결하지 못했어요. 잠시 후 다시 시도해 주세요.",
+    );
+  }
   if (!response.ok) {
     let message = "요청을 처리하지 못했습니다.";
     let available: number | undefined;
@@ -74,7 +88,8 @@ export async function fastApi<T>(
         detail?: unknown;
         available?: unknown;
       };
-      if (typeof body.detail === "string") message = body.detail;
+      if (response.status < 500 && typeof body.detail === "string")
+        message = body.detail;
       if (Number.isInteger(body.available))
         available = body.available as number;
     } catch {
@@ -83,7 +98,15 @@ export async function fastApi<T>(
     throw new FastApiError(response.status, message, available);
   }
   if (response.status === 204) return undefined as T;
-  return (await response.json()) as T;
+  try {
+    return (await response.json()) as T;
+  } catch (error) {
+    unstable_rethrow(error);
+    throw new FastApiError(
+      502,
+      "서버 응답을 확인하지 못했어요. 처리 결과를 확인해 주세요.",
+    );
+  }
 }
 
 export function loginWithPassword(email: string, password: string) {

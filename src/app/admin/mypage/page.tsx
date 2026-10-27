@@ -51,6 +51,7 @@ export default async function AdminMyPagePage() {
         : "아이디 · 비밀번호 로그인",
     editable: Boolean(fastApiUser),
     local: false,
+    fastApi: Boolean(fastApiUser),
     googleOnly: "identities" in user && !user.identities?.some(
       (identity) => identity.provider === "email",
     ),

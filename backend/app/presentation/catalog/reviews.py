@@ -8,7 +8,7 @@ from PIL import Image, ImageOps, UnidentifiedImageError
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_session
-from app.application.catalog.reviews import ReviewConflict, ReviewNotFound, ReviewService
+from app.application.catalog.reviews import ReviewConflict, ReviewNotFound, ReviewPurchaseRequired, ReviewService
 from app.domain.catalog.reviews import MAX_IMAGE_BYTES, MAX_IMAGES
 from app.infrastructure.catalog.reviews import SqlReviewRepository
 from app.presentation.accounts.dependencies import CurrentUser, AdminUser
@@ -61,6 +61,11 @@ async def mine(service: Service, user: CurrentUser, product_id: ProductId):
     return await service.repository.mine(user.id, product_id)
 
 
+@router.get("/eligibility")
+async def eligibility(service: Service, user: CurrentUser, product_id: ProductId):
+    return {"purchased": await service.repository.purchased(user.id, product_id)}
+
+
 @router.post("", status_code=201)
 async def create(service: Service, user: CurrentUser, product_id: Annotated[str, Form(min_length=1, max_length=100, pattern=r"^[a-z0-9]+(-[a-z0-9]+)*$")],
                  content: Annotated[str, Form(min_length=1, max_length=1000)], rating: Annotated[int, Form(ge=1, le=5)],
@@ -79,6 +84,8 @@ async def create(service: Service, user: CurrentUser, product_id: Annotated[str,
         raise HTTPException(404, "판매 중인 상품을 찾을 수 없어요.") from None
     except ReviewConflict:
         raise HTTPException(409, "이미 리뷰를 작성한 상품이에요.") from None
+    except ReviewPurchaseRequired:
+        raise HTTPException(403, "결제 완료한 주문에 포함된 상품만 후기를 작성할 수 있어요.") from None
     finally:
         for upload in uploads:
             await upload.close()

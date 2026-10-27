@@ -46,6 +46,28 @@ async def test_review_flow_permissions_filters_images_and_moderation():
                             tokens[label] = {"Authorization": "Bearer " + r.json()["access_token"]}
                         base = "/api/v1/catalog/reviews"
                         form = {"product_id": product, "rating": "5", "content": "정말 신선해요"}
+                        # Login alone, another person's purchase, and unpaid/cancelled orders grant no permission.
+                        assert (await c.post(base, data=form, headers=tokens["a"])).status_code == 403
+                        assert (await c.get(base + "/eligibility", params={"product_id": product}, headers=tokens["a"])).json() == {"purchased": False}
+                        async def purchase(label, status):
+                            order_id = uuid4()
+                            await session.execute(text("""
+                                INSERT INTO orders(id,user_id,request_key,status,total_amount,recipient_name,recipient_phone,postal_code,address,paid_at)
+                                SELECT :id,id,:key,:status,1000,'리뷰검증','01012345678','12345','테스트 주소',
+                                    CASE WHEN :status='paid' THEN now() ELSE NULL END
+                                FROM app_users WHERE email=:email
+                            """), {"id": order_id, "key": uuid4(), "status": status, "email": emails[label]})
+                            await session.execute(text("""
+                                INSERT INTO order_items(order_id,product_id,product_name,product_unit,unit_price,quantity)
+                                VALUES (:id,:product,'review fixture','1kg',1000,1)
+                            """), {"id": order_id, "product": product})
+                            await session.commit()
+                        await purchase("b", "paid")
+                        for status in ("pending", "payment_failed", "cancelled"):
+                            await purchase("a", status)
+                            assert (await c.post(base, data=form, headers=tokens["a"])).status_code == 403
+                        await purchase("a", "paid")
+                        assert (await c.get(base + "/eligibility", params={"product_id": product}, headers=tokens["a"])).json() == {"purchased": True}
                         assert (await c.post(base, data=form)).status_code == 401
                         assert (await c.post(base, data=form | {"content": " "}, headers=tokens["a"])).status_code == 422
                         assert (await c.post(base, data=form, files=[("images", ("x.png", photo(), "image/png"))] * 4, headers=tokens["a"])).status_code == 422
@@ -53,8 +75,10 @@ async def test_review_flow_permissions_filters_images_and_moderation():
                         posted = await c.post(base, data=form, files=[("images", (f"{i}.png", photo(), "image/png")) for i in range(3)], headers=tokens["a"])
                         assert posted.status_code == 201, posted.text
                         rid = posted.json()["id"]
+                        assert (await session.execute(text("SELECT review_count,rating FROM products WHERE id=:id"), {"id": product})).one() == (1, 5)
                         assert (await c.post(base, data=form, headers=tokens["a"])).status_code == 409
-                        assert (await c.post(base, data=form | {"content": "글 리뷰입니다"}, headers=tokens["b"])).status_code == 201
+                        assert (await c.post(base, data=form | {"content": "글 리뷰입니다", "rating": "4"}, headers=tokens["b"])).status_code == 201
+                        assert (await session.execute(text("SELECT review_count,rating FROM products WHERE id=:id"), {"id": product})).one() == (2, 4.5)
                         # Make ordering deterministic even within the outer transaction.
                         await session.execute(text("UPDATE product_reviews SET created_at=:time WHERE id=:id"), {"time": datetime.now(UTC) - timedelta(days=1), "id": rid})
                         await session.commit()
@@ -81,10 +105,12 @@ async def test_review_flow_permissions_filters_images_and_moderation():
                         assert (await c.request("DELETE", base + f"/admin/{rid}", json={"reason": "무관한 내용"}, headers=tokens["b"])).status_code == 403
                         assert (await c.request("DELETE", base + f"/admin/{rid}", json={"reason": "무관한 내용"}, headers=tokens["admin"])).status_code == 204
                         assert (await c.get(base, params={"product_id": product})).json()["total"] == 1
+                        assert (await session.execute(text("SELECT review_count,rating FROM products WHERE id=:id"), {"id": product})).one() == (1, 4)
                         assert (await c.get(base + f"/{rid}/images/0")).status_code == 404
                         hidden = (await c.get(base + "/admin", params={"status": "deleted", "q": "review fixture"}, headers=tokens["admin"])).json()
                         assert hidden["total"] == 1 and hidden["items"][0]["deletion_reason"] == "무관한 내용"
                         assert (await c.post(base + f"/admin/{rid}/restore", headers=tokens["admin"])).status_code == 204
+                        assert (await session.execute(text("SELECT review_count,rating FROM products WHERE id=:id"), {"id": product})).one() == (2, 4.5)
                         assert (await c.get(base, params={"product_id": product})).json()["total"] == 2
                         # 공개 중인 리뷰는 바로 완전 삭제할 수 없다(휴지통을 거쳐야 함)
                         assert (await c.delete(base + f"/admin/{rid}/permanent", headers=tokens["admin"])).status_code == 404

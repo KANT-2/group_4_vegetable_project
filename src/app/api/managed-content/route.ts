@@ -8,6 +8,7 @@ import {
 } from "@/lib/managed-content";
 import type { AdminAction } from "@/lib/admin-store";
 import { z } from "zod";
+import { readBoundedText, RequestBodyError } from "@/lib/request-body";
 import { isFastApiCatalog } from "@/lib/catalog-mode";
 import { catalogToken } from "@/lib/catalog-api";
 import {
@@ -32,68 +33,76 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 const headers = { "Cache-Control": "private, no-store" };
 export async function GET(request: Request) {
-  const data = readContent();
-  if (new URL(request.url).searchParams.has("version"))
-    return NextResponse.json({ revision: data.revision }, { headers });
-  if (new URL(request.url).searchParams.has("admin")) {
-    if (!(await getAdminAccess()).allowed)
-      return NextResponse.json(
-        { error: "관리자 로그인이 필요합니다." },
-        { status: 403, headers },
-      );
-    try {
-      return NextResponse.json(await withCatalogProducts(data), { headers });
-    } catch {
-      return NextResponse.json(
-        {
-          error:
-            "상품 목록을 불러오지 못했습니다. 백엔드 서버를 확인해 주세요.",
-        },
-        { status: 503, headers },
-      );
+  try {
+    const data = readContent();
+    if (new URL(request.url).searchParams.has("version"))
+      return NextResponse.json({ revision: data.revision }, { headers });
+    if (new URL(request.url).searchParams.has("admin")) {
+      if (!(await getAdminAccess()).allowed)
+        return NextResponse.json(
+          { error: "관리자 로그인이 필요합니다." },
+          { status: 403, headers },
+        );
+      try {
+        return NextResponse.json(await withCatalogProducts(data), { headers });
+      } catch {
+        return NextResponse.json(
+          {
+            error:
+              "상품 목록을 불러오지 못했습니다. 백엔드 서버를 확인해 주세요.",
+          },
+          { status: 503, headers },
+        );
+      }
     }
-  }
-  const state = data.state;
-  return NextResponse.json(
-    {
-      revision: data.revision,
-      state: {
-        products: state.products.filter((product) => product.isActive),
-        recipeChanges: Object.fromEntries(
-          Object.entries(state.recipeChanges).filter(
-            ([id]) => !hiddenContent(state, "recipe", id),
+    const state = data.state;
+    return NextResponse.json(
+      {
+        revision: data.revision,
+        state: {
+          products: state.products.filter((product) => product.isActive),
+          recipeChanges: Object.fromEntries(
+            Object.entries(state.recipeChanges).filter(
+              ([id]) => !hiddenContent(state, "recipe", id),
+            ),
           ),
-        ),
-        otherChanges: Object.fromEntries(
-          Object.entries(state.otherChanges ?? {}).filter(
-            ([key, value]) =>
-              !hiddenContent(state, key.split(":")[0], value.id) &&
-              (key.startsWith("farm:") ||
-                ("published" in value && value.published === true)),
+          otherChanges: Object.fromEntries(
+            Object.entries(state.otherChanges ?? {}).filter(
+              ([key, value]) =>
+                !hiddenContent(state, key.split(":")[0], value.id) &&
+                (key.startsWith("farm:") ||
+                  ("published" in value && value.published === true)),
+            ),
           ),
-        ),
-        deletedKeys: [
-          ...(state.deletedKeys ?? []),
-          ...state.trash.map((entry) => `${entry.kind}:${entry.item.id}`),
-          ...Object.entries(state.otherChanges ?? {})
-            .filter(
-              ([key, item]) =>
-                key.startsWith("promotion:") &&
-                "published" in item &&
-                !item.published,
-            )
-            .map(([key]) => key),
-        ],
-        trash: [],
+          deletedKeys: [
+            ...(state.deletedKeys ?? []),
+            ...state.trash.map((entry) => `${entry.kind}:${entry.item.id}`),
+            ...Object.entries(state.otherChanges ?? {})
+              .filter(
+                ([key, item]) =>
+                  key.startsWith("promotion:") &&
+                  "published" in item &&
+                  !item.published,
+              )
+              .map(([key]) => key),
+          ],
+          trash: [],
+        },
       },
-    },
-    { headers },
-  );
+      { headers },
+    );
+  } catch {
+    return NextResponse.json(
+      { error: "저장된 정보를 불러오지 못했어요. 잠시 후 다시 시도해 주세요." },
+      { status: 503, headers },
+    );
+  }
 }
 const item = z
   .object({ id: z.string().min(1).max(100), name: z.string().min(1).max(200) })
   .passthrough();
 const product = item.extend({
+  name: z.string().min(1).max(100),
   price: z.number().int().min(1).max(2147483647),
   originalPrice: z.number().int().min(1),
   isActive: z.boolean(),
@@ -145,15 +154,21 @@ export async function POST(request: Request) {
       { status: 403 },
     );
   try {
-    const body = await request.text();
+    const body = await readBoundedText(request, 25 * 1024 * 1024);
     if (Buffer.byteLength(body) > 25 * 1024 * 1024)
       return NextResponse.json(
         { error: "이미지 용량을 줄여 주세요." },
         { status: 413 },
       );
+    let payload: unknown;
+    try {
+      payload = JSON.parse(body);
+    } catch {
+      throw new RequestBodyError(400);
+    }
     const parsed = z
       .object({ revision: z.number().int().min(0), action })
-      .safeParse(JSON.parse(body));
+      .safeParse(payload);
     if (!parsed.success)
       return NextResponse.json(
         { error: "저장할 정보를 확인해 주세요." },
@@ -176,6 +191,11 @@ export async function POST(request: Request) {
     revalidatePath("/", "layout");
     return NextResponse.json(await withCatalogProducts(data), { headers });
   } catch (error) {
+    if (error instanceof RequestBodyError)
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.status, headers },
+      );
     if (error instanceof CatalogSyncError)
       return NextResponse.json(
         { error: error.message },

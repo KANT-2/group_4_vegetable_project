@@ -32,6 +32,11 @@ export async function updateAdminName(
     }
     const token = (await cookies()).get(ACCESS_TOKEN_COOKIE)?.value;
     if (token) {
+      if (name.length < 2 || name.length > 20)
+        return { error: "이름은 2~20자로 입력해 주세요.", success: "" };
+      const account = await fastApi<{ email: string }>("/api/v1/accounts/me", {}, token);
+      if (email !== account.email.toLowerCase())
+        return { error: "이 계정의 이메일은 여기서 변경할 수 없습니다.", success: "" };
       await fastApi(
         "/api/v1/accounts/me/profile",
         { method: "PATCH", body: JSON.stringify({ nickname: name }) },
