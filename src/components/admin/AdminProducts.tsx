@@ -172,6 +172,7 @@ export function AdminProducts({
               width={195}
               height={81}
               className="h-auto w-40 sm:w-48"
+              style={{ height: "auto" }}
               priority
             />
           </Link>

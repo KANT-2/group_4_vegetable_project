@@ -61,6 +61,7 @@ export default function AdminLoginPage({
             alt="못난이마켓"
             width={195}
             height={81}
+            style={{ width: "auto", height: "auto" }}
             priority
           />
         </div>
@@ -78,6 +79,7 @@ export default function AdminLoginPage({
           width={2172}
           height={724}
           className="mt-6 h-auto w-full"
+          priority
         />
         <div className="mt-6 flex flex-wrap items-center justify-center gap-6">
           <Link

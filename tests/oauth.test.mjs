@@ -79,3 +79,20 @@ test("로그인된 사용자는 이전 OAuth 오류 표시가 남아 있어도 �
   assert.match(loginPage, /if \(user\) redirect\(next\)/);
   assert.doesNotMatch(loginPage, /user\s*&&\s*!params\.error/);
 });
+
+test("OAuth 연동 실패는 Supabase 세션을 정리하고 단독 세션 우회를 허용하지 않는다", () => {
+  const callback = readFileSync(
+    new URL("../src/app/auth/callback/route.ts", import.meta.url),
+    "utf8",
+  );
+  const auth = readFileSync(new URL("../src/lib/auth.ts", import.meta.url), "utf8");
+  const profile = readFileSync(
+    new URL("../src/services/profile.ts", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(callback, /catch \(error\)[\s\S]*supabase\.auth\.signOut\(\)/);
+  assert.doesNotMatch(auth, /supabase\.auth\.getUser\(\)/);
+  assert.doesNotMatch(profile, /from\("profiles"\)/);
+  assert.doesNotMatch(profile, /새싹회원/);
+});
