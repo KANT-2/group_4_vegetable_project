@@ -37,9 +37,7 @@ async function ProfileContent() {
         }}
       />
       <PasswordChangeForm
-        googleOnly={
-          "identities" in user && !user.identities?.some((identity) => identity.provider === "email")
-        }
+        googleOnly={!user.username}
       />
     </div>
   );

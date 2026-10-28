@@ -1,5 +1,6 @@
 node_modules/
 .next/
+.next-*/
 out/
 build/
 package-lock.json
@@ -7,6 +8,7 @@ next-env.d.ts
 *.tsbuildinfo
 playwright-report/
 test-results/
+backend/.venv*/
 README.md
 docs/ERD.md
 docs/wireframes/
