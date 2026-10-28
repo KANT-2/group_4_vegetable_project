@@ -6,6 +6,7 @@ from app.domain.accounts.models import (
     Account,
     AdminRegistration,
     AdminRegistrationStatus,
+    Profile,
     UserRole,
 )
 from app.infrastructure.accounts.models import (
@@ -45,6 +46,33 @@ def test_app_user_id_has_no_independent_uuid_default():
     assert AppUserModel.__table__.c.id.server_default is None
     assert not AppUserModel.__table__.c.supabase_user_id.nullable
     assert AppUserModel.__table__.c.supabase_user_id.unique
+
+
+async def test_add_oauth_user_reuses_existing_profile():
+    user_id = uuid4()
+    account = Account(
+        user_id,
+        "google@example.test",
+        "oauth-disabled",
+        UserRole.USER,
+        True,
+    )
+    profile = Profile(user_id, "Google 사용자")
+    existing_profile = ProfileModel(id=user_id, nickname="기존닉네임")
+    session = Mock()
+    session.add = Mock()
+    session.get = AsyncMock(return_value=existing_profile)
+    session.flush = AsyncMock()
+    repo = SqlAlchemyAccountRepository(session)
+
+    await repo.add_oauth_user(account, profile)
+
+    session.get.assert_awaited_once_with(ProfileModel, user_id)
+    added = [call.args[0] for call in session.add.call_args_list]
+    assert len(added) == 1
+    assert isinstance(added[0], AppUserModel)
+    assert existing_profile.nickname == "기존닉네임"
+    session.flush.assert_awaited_once()
 
 
 async def test_profile_round_trip_maps_shipping_address():

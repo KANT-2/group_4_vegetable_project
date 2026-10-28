@@ -1,4 +1,6 @@
-# 못난이이야기 ERD (적용 스키마)
+# 못난이이야기 ERD (이전 설계 보관본)
+
+> **제출 시점의 최신 ERD는 [ERD-current.md](ERD-current.md)를 확인하세요.** 이 문서는 2026-10-12까지의 이전 설계를 보존합니다.
 
 > 작성일: 2026-10-07 · 상태: **v5 (공통 테이블·제약·RLS 적용 완료)** · v2: `products.is_featured` 추가 · v3: `products.description` 추가
 > 수정일: 2026-10-08 · v4: 주문 테이블 설계 추가 · v5: 실제 migration·Storage·DB 타입 적용 상태와 관계·제약 반영
@@ -149,43 +151,43 @@ erDiagram
 
 "당근"이라는 채소 자체의 정보예요. 특정 농가의 판매 상품과는 구분해요.
 
-| 컬럼 | 타입 | 필수 | 기본값 | 설명·제약 |
-| --- | --- | --- | --- | --- |
-| `id` | text | PK | | 영문 소문자·하이픈. 예: `carrot` |
-| `name` | text | O | | 채소 이름. 예: 당근 |
-| `category` | text | O | | `root`(뿌리채소), `leaf`(잎채소), `fruit_veg`(열매채소), `mushroom`(버섯), `fruit`(과일), `seasoning`(양념채소) 중 하나 |
-| `description` | text | O | | 채소 소개 |
-| `storage_guide` | text | | | 보관법 |
-| `prep_guide` | text | | | 손질법 |
-| `season` | text | | | 제철. 예: 9~12월 |
-| `image_path` | text | | | Storage 상대 경로. 예: `vegetables/carrot.jpg` |
-| `created_at` | timestamptz | O | `now()` | |
+| 컬럼            | 타입        | 필수 | 기본값  | 설명·제약                                                                                                               |
+| --------------- | ----------- | ---- | ------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `id`            | text        | PK   |         | 영문 소문자·하이픈. 예: `carrot`                                                                                        |
+| `name`          | text        | O    |         | 채소 이름. 예: 당근                                                                                                     |
+| `category`      | text        | O    |         | `root`(뿌리채소), `leaf`(잎채소), `fruit_veg`(열매채소), `mushroom`(버섯), `fruit`(과일), `seasoning`(양념채소) 중 하나 |
+| `description`   | text        | O    |         | 채소 소개                                                                                                               |
+| `storage_guide` | text        |      |         | 보관법                                                                                                                  |
+| `prep_guide`    | text        |      |         | 손질법                                                                                                                  |
+| `season`        | text        |      |         | 제철. 예: 9~12월                                                                                                        |
+| `image_path`    | text        |      |         | Storage 상대 경로. 예: `vegetables/carrot.jpg`                                                                          |
+| `created_at`    | timestamptz | O    | `now()` |                                                                                                                         |
 
 ### 2-2. `products` 판매 상품 (테이블: C, 기능·데이터: B, 판매 중 상품 읽기)
 
 특정 농가가 파는 "못난이 당근 1kg" 같은 실제 판매 상품이에요.
 
-| 컬럼 | 타입 | 필수 | 기본값 | 설명·제약 |
-| --- | --- | --- | --- | --- |
-| `id` | text | PK | | 예: `carrot-bent-1kg` |
-| `vegetable_id` | text | O | | FK → `vegetables.id` |
-| `name` | text | O | | 상품명 |
-| `tagline` | text | | | 선택 홍보 문구. 미등록 시 NULL, 이름과 별도로 표시 |
-| `price` | integer | O | | 판매가(원). `price > 0` |
-| `original_price` | integer | O | | 정상가(원). `original_price >= price` |
-| `unit` | text | O | | 판매 단위. 예: 1kg, 4입 |
-| `ugly_reason` | text | O | | 필터용 분류. `small`(작아요), `bent`(휘었어요), `scratched`(흠집), `irregular`(모양이 제각각) 중 하나 |
-| `description` | text | O | | 상품 설명 (평가표 필수 속성) |
-| `condition_note` | text | | | 화면에 보여줄 상태 설명 |
-| `farm_name` | text | O | | 농가 이름 |
-| `farm_region` | text | | | 지역. 예: 전라남도 해남 |
-| `farm_story` | text | | | 농가 소개 |
-| `image_path` | text | | | 예: `products/carrot-bent-1kg.jpg` |
-| `is_seasonal` | boolean | O | `false` | 제철 상품 여부 |
-| `is_featured` | boolean | O | `false` | 메인 "추천 상품"에 보여줄지 여부. `true`인 상품 중 4개를 메인에 표시 |
-| `is_active` | boolean | O | `true` | 판매 중 여부. 판매 종료는 삭제 대신 `false` |
-| `created_at` | timestamptz | O | `now()` | |
-| `updated_at` | timestamptz | O | `now()` | |
+| 컬럼             | 타입        | 필수 | 기본값  | 설명·제약                                                                                             |
+| ---------------- | ----------- | ---- | ------- | ----------------------------------------------------------------------------------------------------- |
+| `id`             | text        | PK   |         | 예: `carrot-bent-1kg`                                                                                 |
+| `vegetable_id`   | text        | O    |         | FK → `vegetables.id`                                                                                  |
+| `name`           | text        | O    |         | 상품명                                                                                                |
+| `tagline`        | text        |      |         | 선택 홍보 문구. 미등록 시 NULL, 이름과 별도로 표시                                                    |
+| `price`          | integer     | O    |         | 판매가(원). `price > 0`                                                                               |
+| `original_price` | integer     | O    |         | 정상가(원). `original_price >= price`                                                                 |
+| `unit`           | text        | O    |         | 판매 단위. 예: 1kg, 4입                                                                               |
+| `ugly_reason`    | text        | O    |         | 필터용 분류. `small`(작아요), `bent`(휘었어요), `scratched`(흠집), `irregular`(모양이 제각각) 중 하나 |
+| `description`    | text        | O    |         | 상품 설명 (평가표 필수 속성)                                                                          |
+| `condition_note` | text        |      |         | 화면에 보여줄 상태 설명                                                                               |
+| `farm_name`      | text        | O    |         | 농가 이름                                                                                             |
+| `farm_region`    | text        |      |         | 지역. 예: 전라남도 해남                                                                               |
+| `farm_story`     | text        |      |         | 농가 소개                                                                                             |
+| `image_path`     | text        |      |         | 예: `products/carrot-bent-1kg.jpg`                                                                    |
+| `is_seasonal`    | boolean     | O    | `false` | 제철 상품 여부                                                                                        |
+| `is_featured`    | boolean     | O    | `false` | 메인 "추천 상품"에 보여줄지 여부. `true`인 상품 중 4개를 메인에 표시                                  |
+| `is_active`      | boolean     | O    | `true`  | 판매 중 여부. 판매 종료는 삭제 대신 `false`                                                           |
+| `created_at`     | timestamptz | O    | `now()` |                                                                                                       |
+| `updated_at`     | timestamptz | O    | `now()` |                                                                                                       |
 
 - 할인율은 저장하지 않고 `price`와 `original_price`로 계산해요.
 - 인덱스: `vegetable_id`, `is_active`
@@ -193,18 +195,18 @@ erDiagram
 
 ### 2-3. `recipes` 레시피 (테이블: C, 기능·데이터: A, 누구나 읽기)
 
-| 컬럼 | 타입 | 필수 | 기본값 | 설명·제약 |
-| --- | --- | --- | --- | --- |
-| `id` | text | PK | | 예: `carrot-rapee` |
-| `name` | text | O | | 요리 이름 |
-| `description` | text | O | | 한 줄 소개 |
-| `cook_time_min` | integer | O | | 조리 시간(분). `> 0` |
-| `difficulty` | text | O | | `easy`(쉬움), `normal`(보통), `hard`(어려움) |
-| `servings` | integer | | | 몇 인분 |
-| `ingredients` | jsonb | O | `'[]'` | 재료 목록. 아래 예시 참고 |
-| `steps` | jsonb | O | `'[]'` | 조리 순서 문자열 배열 |
-| `image_path` | text | | | 예: `recipes/carrot-rapee.jpg` |
-| `created_at` | timestamptz | O | `now()` | |
+| 컬럼            | 타입        | 필수 | 기본값  | 설명·제약                                    |
+| --------------- | ----------- | ---- | ------- | -------------------------------------------- |
+| `id`            | text        | PK   |         | 예: `carrot-rapee`                           |
+| `name`          | text        | O    |         | 요리 이름                                    |
+| `description`   | text        | O    |         | 한 줄 소개                                   |
+| `cook_time_min` | integer     | O    |         | 조리 시간(분). `> 0`                         |
+| `difficulty`    | text        | O    |         | `easy`(쉬움), `normal`(보통), `hard`(어려움) |
+| `servings`      | integer     |      |         | 몇 인분                                      |
+| `ingredients`   | jsonb       | O    | `'[]'`  | 재료 목록. 아래 예시 참고                    |
+| `steps`         | jsonb       | O    | `'[]'`  | 조리 순서 문자열 배열                        |
+| `image_path`    | text        |      |         | 예: `recipes/carrot-rapee.jpg`               |
+| `created_at`    | timestamptz | O    | `now()` |                                              |
 
 ```json
 {
@@ -212,7 +214,11 @@ erDiagram
     { "name": "당근", "amount": "2개" },
     { "name": "올리브유", "amount": "2큰술" }
   ],
-  "steps": ["당근을 얇게 채 썬다.", "소금을 뿌려 10분 둔다.", "드레싱과 버무린다."]
+  "steps": [
+    "당근을 얇게 채 썬다.",
+    "소금을 뿌려 10분 둔다.",
+    "드레싱과 버무린다."
+  ]
 }
 ```
 
@@ -220,9 +226,9 @@ erDiagram
 
 레시피 상세에서 "이 요리에 쓸 수 있는 상품"을 보여주기 위한 연결표예요. 판매하지 않는 재료(올리브유 등)는 `ingredients`에만 적어요.
 
-| 컬럼 | 타입 | 필수 | 설명·제약 |
-| --- | --- | --- | --- |
-| `recipe_id` | text | PK, FK | → `recipes.id` |
+| 컬럼         | 타입 | 필수   | 설명·제약       |
+| ------------ | ---- | ------ | --------------- |
+| `recipe_id`  | text | PK, FK | → `recipes.id`  |
 | `product_id` | text | PK, FK | → `products.id` |
 
 - `PRIMARY KEY (recipe_id, product_id)`로 같은 연결이 두 번 들어가지 않아요.
@@ -230,28 +236,28 @@ erDiagram
 
 ### 2-5. `profiles` 사용자 프로필 (담당: C, 본인만)
 
-| 컬럼 | 타입 | 필수 | 기본값 | 설명·제약 |
-| --- | --- | --- | --- | --- |
-| `id` | uuid | PK, FK | | → `auth.users.id`, 회원 탈퇴 시 함께 삭제 (`ON DELETE CASCADE`) |
-| `nickname` | text | O | | 2~20자 |
-| `recipient_name` | text | 배송지 저장 시 | NULL | 2~40자, 앞뒤 공백 없음 |
-| `recipient_phone` | text | 배송지 저장 시 | NULL | 0으로 시작하는 숫자 9~11자리 |
-| `postal_code` | text | 배송지 저장 시 | NULL | 숫자 5자리 |
-| `address` | text | 배송지 저장 시 | NULL | 5~200자, 앞뒤 공백 없음 |
-| `address_detail` | text | 배송지 저장 시 | NULL | 0~100자, 빈 문자열 허용 |
-| `created_at` | timestamptz | O | `now()` | |
-| `updated_at` | timestamptz | O | `now()` | |
+| 컬럼              | 타입        | 필수           | 기본값  | 설명·제약                                                       |
+| ----------------- | ----------- | -------------- | ------- | --------------------------------------------------------------- |
+| `id`              | uuid        | PK, FK         |         | → `auth.users.id`, 회원 탈퇴 시 함께 삭제 (`ON DELETE CASCADE`) |
+| `nickname`        | text        | O              |         | 2~20자                                                          |
+| `recipient_name`  | text        | 배송지 저장 시 | NULL    | 2~40자, 앞뒤 공백 없음                                          |
+| `recipient_phone` | text        | 배송지 저장 시 | NULL    | 0으로 시작하는 숫자 9~11자리                                    |
+| `postal_code`     | text        | 배송지 저장 시 | NULL    | 숫자 5자리                                                      |
+| `address`         | text        | 배송지 저장 시 | NULL    | 5~200자, 앞뒤 공백 없음                                         |
+| `address_detail`  | text        | 배송지 저장 시 | NULL    | 0~100자, 빈 문자열 허용                                         |
+| `created_at`      | timestamptz | O              | `now()` |                                                                 |
+| `updated_at`      | timestamptz | O              | `now()` |                                                                 |
 
 ### 2-6. `cart_items` 장바구니 (담당: C, 본인만)
 
-| 컬럼 | 타입 | 필수 | 기본값 | 설명·제약 |
-| --- | --- | --- | --- | --- |
-| `id` | uuid | PK | `gen_random_uuid()` | |
-| `user_id` | uuid | O | `auth.uid()` | FK → `auth.users.id`, `ON DELETE CASCADE` |
-| `product_id` | text | O | | FK → `products.id` |
-| `quantity` | integer | O | `1` | `quantity BETWEEN 1 AND 99` |
-| `created_at` | timestamptz | O | `now()` | |
-| `updated_at` | timestamptz | O | `now()` | |
+| 컬럼         | 타입        | 필수 | 기본값              | 설명·제약                                 |
+| ------------ | ----------- | ---- | ------------------- | ----------------------------------------- |
+| `id`         | uuid        | PK   | `gen_random_uuid()` |                                           |
+| `user_id`    | uuid        | O    | `auth.uid()`        | FK → `auth.users.id`, `ON DELETE CASCADE` |
+| `product_id` | text        | O    |                     | FK → `products.id`                        |
+| `quantity`   | integer     | O    | `1`                 | `quantity BETWEEN 1 AND 99`               |
+| `created_at` | timestamptz | O    | `now()`             |                                           |
+| `updated_at` | timestamptz | O    | `now()`             |                                           |
 
 - `UNIQUE (user_id, product_id)`: 같은 상품은 한 줄에 수량만 늘어나요.
 - 가격은 저장하지 않아요. 금액은 항상 `products.price × quantity`로 계산해요.
@@ -259,12 +265,12 @@ erDiagram
 
 ### 2-7. `wishlist_items` 찜 (담당: C, 본인만)
 
-| 컬럼 | 타입 | 필수 | 기본값 | 설명·제약 |
-| --- | --- | --- | --- | --- |
-| `id` | uuid | PK | `gen_random_uuid()` | |
-| `user_id` | uuid | O | `auth.uid()` | FK → `auth.users.id`, `ON DELETE CASCADE` |
-| `product_id` | text | O | | FK → `products.id` |
-| `created_at` | timestamptz | O | `now()` | |
+| 컬럼         | 타입        | 필수 | 기본값              | 설명·제약                                 |
+| ------------ | ----------- | ---- | ------------------- | ----------------------------------------- |
+| `id`         | uuid        | PK   | `gen_random_uuid()` |                                           |
+| `user_id`    | uuid        | O    | `auth.uid()`        | FK → `auth.users.id`, `ON DELETE CASCADE` |
+| `product_id` | text        | O    |                     | FK → `products.id`                        |
+| `created_at` | timestamptz | O    | `now()`             |                                           |
 
 - `UNIQUE (user_id, product_id)`: 같은 상품을 두 번 찜할 수 없어요.
 - 인덱스: `user_id`
@@ -273,23 +279,23 @@ erDiagram
 
 주문 상태와 받는 사람 정보를 저장해요. 배송지를 프로필과 별도로 저장하므로 이후 사용자 정보가 바뀌어도 주문 당시 배송지를 유지해요. 주문 번호는 `id`를 사용해요.
 
-| 컬럼 | 타입 | 필수 | 기본값 | 설명·제약 |
-| --- | --- | --- | --- | --- |
-| `id` | uuid | PK | `gen_random_uuid()` | 주문 식별자 |
-| `user_id` | uuid | O | | FK → `auth.users.id`, 시연 프로젝트에서는 `ON DELETE CASCADE` |
-| `request_key` | uuid | O | | 클라이언트가 새 주문마다 생성. 재전송에는 같은 값, 상품·수량·배송지 변경에는 새 값 사용 |
-| `status` | text | O | `'pending'` | `pending`, `paid`, `payment_failed`, `cancelled` 중 하나, text + CHECK |
-| `total_amount` | bigint | O | | 상품 금액 합계(원). `> 0`, 서버가 주문상품의 `unit_price × quantity` 합으로 계산 |
-| `recipient_name` | text | O | | 받는 사람 이름. 공백만 입력 불가 |
-| `recipient_phone` | text | O | | 연락처. 문자열로 저장, 서버에서 형식 검증 |
-| `postal_code` | text | O | | 우편번호. 국내 주소 기준 숫자 5자리, 앞자리 0 보존 |
-| `address` | text | O | | 기본 주소. 공백만 입력 불가 |
-| `address_detail` | text | | | 상세 주소 |
-| `paid_at` | timestamptz | | | 모의 결제 성공 시 서버에서 설정. `paid`일 때만 값 존재 |
-| `payment_method` | text | | | card / bank_transfer / easy_pay. 기존 주문은 NULL, 신규 주문은 선택한 수단 저장 |
-| `shipping_fee` | integer | O | | 상품 금액 20,000원 이상 0, 미만 3,500. total_amount는 배송비 포함, 기존 주문은 0 유지 |
-| `created_at` | timestamptz | O | `now()` | 주문 생성 시각 |
-| `updated_at` | timestamptz | O | `now()` | 주문 상태 변경 시 자동 갱신 |
+| 컬럼              | 타입        | 필수 | 기본값              | 설명·제약                                                                               |
+| ----------------- | ----------- | ---- | ------------------- | --------------------------------------------------------------------------------------- |
+| `id`              | uuid        | PK   | `gen_random_uuid()` | 주문 식별자                                                                             |
+| `user_id`         | uuid        | O    |                     | FK → `auth.users.id`, 시연 프로젝트에서는 `ON DELETE CASCADE`                           |
+| `request_key`     | uuid        | O    |                     | 클라이언트가 새 주문마다 생성. 재전송에는 같은 값, 상품·수량·배송지 변경에는 새 값 사용 |
+| `status`          | text        | O    | `'pending'`         | `pending`, `paid`, `payment_failed`, `cancelled` 중 하나, text + CHECK                  |
+| `total_amount`    | bigint      | O    |                     | 상품 금액 합계(원). `> 0`, 서버가 주문상품의 `unit_price × quantity` 합으로 계산        |
+| `recipient_name`  | text        | O    |                     | 받는 사람 이름. 공백만 입력 불가                                                        |
+| `recipient_phone` | text        | O    |                     | 연락처. 문자열로 저장, 서버에서 형식 검증                                               |
+| `postal_code`     | text        | O    |                     | 우편번호. 국내 주소 기준 숫자 5자리, 앞자리 0 보존                                      |
+| `address`         | text        | O    |                     | 기본 주소. 공백만 입력 불가                                                             |
+| `address_detail`  | text        |      |                     | 상세 주소                                                                               |
+| `paid_at`         | timestamptz |      |                     | 모의 결제 성공 시 서버에서 설정. `paid`일 때만 값 존재                                  |
+| `payment_method`  | text        |      |                     | card / bank_transfer / easy_pay. 기존 주문은 NULL, 신규 주문은 선택한 수단 저장         |
+| `shipping_fee`    | integer     | O    |                     | 상품 금액 20,000원 이상 0, 미만 3,500. total_amount는 배송비 포함, 기존 주문은 0 유지   |
+| `created_at`      | timestamptz | O    | `now()`             | 주문 생성 시각                                                                          |
+| `updated_at`      | timestamptz | O    | `now()`             | 주문 상태 변경 시 자동 갱신                                                             |
 
 - `UNIQUE (user_id, request_key)`: 같은 사용자와 키로 요청하면 요청 내용이나 주문 상태와 관계없이 기존 주문을 반환해요. 요청 해시는 저장하지 않고 내용 차이도 비교하지 않아요. 기존 주문은 변경하지 않으며, 상품·수량·배송지를 바꿔 새로 주문할 때는 새 키를 사용해요. 취소한 주문의 키도 재사용하지 않아요.
 - 인덱스: `(user_id, created_at DESC)` — 본인 주문 내역 최신순 조회.
@@ -301,14 +307,14 @@ erDiagram
 
 가격과 상품명이 바뀌거나 상품 판매가 종료돼도 주문 내역을 유지하기 위한 **주문 당시 정보**예요. 화면은 `products`와의 조인 없이 이 테이블로 상품명·판매 단위·가격을 표시해요.
 
-| 컬럼 | 타입 | 필수 | 설명·제약 |
-| --- | --- | --- | --- |
-| `order_id` | uuid | PK, FK | → `orders.id`, `ON DELETE CASCADE` |
-| `product_id` | text | PK, FK | → `products.id`, `ON DELETE RESTRICT` |
-| `product_name` | text | O | 주문 생성 시 `products.name` 복사 |
-| `product_unit` | text | O | 주문 생성 시 `products.unit` 복사. 예: 1kg |
-| `unit_price` | integer | O | 주문 생성 시 `products.price` 복사. `> 0` |
-| `quantity` | integer | O | `BETWEEN 1 AND 99` |
+| 컬럼           | 타입    | 필수   | 설명·제약                                  |
+| -------------- | ------- | ------ | ------------------------------------------ |
+| `order_id`     | uuid    | PK, FK | → `orders.id`, `ON DELETE CASCADE`         |
+| `product_id`   | text    | PK, FK | → `products.id`, `ON DELETE RESTRICT`      |
+| `product_name` | text    | O      | 주문 생성 시 `products.name` 복사          |
+| `product_unit` | text    | O      | 주문 생성 시 `products.unit` 복사. 예: 1kg |
+| `unit_price`   | integer | O      | 주문 생성 시 `products.price` 복사. `> 0`  |
+| `quantity`     | integer | O      | `BETWEEN 1 AND 99`                         |
 
 - `PRIMARY KEY (order_id, product_id)`: 한 주문에서 같은 상품은 한 줄로 합쳐요.
 - 인덱스: `product_id` — 상품 FK 조회·삭제 검사에 사용.
@@ -318,14 +324,14 @@ erDiagram
 
 ## 3. 접근 권한 (RLS) 요약
 
-| 테이블 | 읽기 | 쓰기 (추가·수정·삭제) |
-| --- | --- | --- |
-| `vegetables`, `products`, `recipes`, `recipe_products` | 누구나 (`products`는 `is_active = true`만) | 일반 사용자 불가 (migration·seed로만 입력) |
-| `profiles` | 본인만 (`id = auth.uid()`) | 본인만 추가·수정, 삭제 없음 |
-| `cart_items` | 본인만 (`user_id = auth.uid()`) | 본인만 추가·수정·삭제 |
-| `wishlist_items` | 본인만 (`user_id = auth.uid()`) | 본인만 추가·삭제 |
-| `orders` | 본인만 (`user_id = auth.uid()`) | 일반 사용자 직접 쓰기 불가. 인증된 서버 또는 제한된 RPC에서만 생성·상태 변경 |
-| `order_items` | 연결된 `orders.user_id = auth.uid()`인 행만 | 일반 사용자 직접 쓰기 불가. 주문 생성 트랜잭션에서만 추가 |
+| 테이블                                                 | 읽기                                        | 쓰기 (추가·수정·삭제)                                                        |
+| ------------------------------------------------------ | ------------------------------------------- | ---------------------------------------------------------------------------- |
+| `vegetables`, `products`, `recipes`, `recipe_products` | 누구나 (`products`는 `is_active = true`만)  | 일반 사용자 불가 (migration·seed로만 입력)                                   |
+| `profiles`                                             | 본인만 (`id = auth.uid()`)                  | 본인만 추가·수정, 삭제 없음                                                  |
+| `cart_items`                                           | 본인만 (`user_id = auth.uid()`)             | 본인만 추가·수정·삭제                                                        |
+| `wishlist_items`                                       | 본인만 (`user_id = auth.uid()`)             | 본인만 추가·삭제                                                             |
+| `orders`                                               | 본인만 (`user_id = auth.uid()`)             | 일반 사용자 직접 쓰기 불가. 인증된 서버 또는 제한된 RPC에서만 생성·상태 변경 |
+| `order_items`                                          | 연결된 `orders.user_id = auth.uid()`인 행만 | 일반 사용자 직접 쓰기 불가. 주문 생성 트랜잭션에서만 추가                    |
 
 - 신규 두 테이블 모두 RLS를 활성화하고, 일반 사용자에게는 위 SELECT 정책만 허용해요. 기존 일반 사용자 쓰기 정책을 그대로 복사하지 않아요.
 - 주문 RPC를 사용한다면 호출 대상은 `authenticated`로 제한하고, 로그인 여부와 주문 소유권을 함수 내부에서도 확인해요. `user_id`는 클라이언트 입력을 받지 않고 `auth.uid()`에서 정해요.
@@ -346,25 +352,25 @@ erDiagram
 
 아래는 초기 사진(`docs/photos/`)에 맞춘 6개 ID 참고표예요. 실제 적용 데이터는 `supabase/seeds/catalog.sql`의 채소 12개·상품 16개이며 아래 표가 전체 목록은 아니에요. 실제 Storage 이미지 업로드는 아직 완료하지 않았어요.
 
-| 채소 `vegetables.id` | 상품 `products.id` | 못난이 사유 | 메인 추천 `is_featured` | 사진 |
-| --- | --- | --- | --- | --- |
-| `carrot` | `carrot-bent-1kg` | `bent` | `true` | `carrot.jpg` |
-| `apple` | `apple-scratched-2kg` | `scratched` | `true` | `apple.jpg` |
-| `shiitake` | `shiitake-irregular-500g` | `irregular` | `true` | `shiitake.jpg` |
-| `cabbage` | `cabbage-small-1ea` | `small` | `true` | `cabbage.jpg` |
-| `paprika` | `paprika-irregular-4ea` | `irregular` | `false` | `paprika.jpg` |
-| `onion` | `onion-small-2kg` | `small` | `false` | `onion.jpg` |
+| 채소 `vegetables.id` | 상품 `products.id`        | 못난이 사유 | 메인 추천 `is_featured` | 사진           |
+| -------------------- | ------------------------- | ----------- | ----------------------- | -------------- |
+| `carrot`             | `carrot-bent-1kg`         | `bent`      | `true`                  | `carrot.jpg`   |
+| `apple`              | `apple-scratched-2kg`     | `scratched` | `true`                  | `apple.jpg`    |
+| `shiitake`           | `shiitake-irregular-500g` | `irregular` | `true`                  | `shiitake.jpg` |
+| `cabbage`            | `cabbage-small-1ea`       | `small`     | `true`                  | `cabbage.jpg`  |
+| `paprika`            | `paprika-irregular-4ea`   | `irregular` | `false`                 | `paprika.jpg`  |
+| `onion`              | `onion-small-2kg`         | `small`     | `false`                 | `onion.jpg`    |
 
 ## 4-1. 팀 개발 가이드(8장)와 달라진 점
 
-| 테이블 | 가이드에 없던 컬럼 | 이유 |
-| --- | --- | --- |
-| `vegetables` | `season`, `created_at` | 채소 정보에 제철 표시, 생성 시각 기록 |
-| `products` | `description`, `is_featured`, `created_at`, `updated_at` | 평가표 필수 속성(설명), 메인 추천 상품 선택, 최신순 정렬, 수정 기록 |
-| `recipes` | `cook_time_min`, `difficulty`, `servings`, `created_at` | 레시피 카드의 "15분 · 쉬움" 표시 (목업 기준) |
-| `profiles` | `created_at` | 가입 시각 기록 |
-| `orders` (신규) | 전체 컬럼 | 주문 상태, 중복 요청 방지, 주문 총액, 배송지, 모의 결제 시각 |
-| `order_items` (신규) | 전체 컬럼 | 주문 당시 상품명·판매 단위·단가·수량 기록 |
+| 테이블               | 가이드에 없던 컬럼                                       | 이유                                                                |
+| -------------------- | -------------------------------------------------------- | ------------------------------------------------------------------- |
+| `vegetables`         | `season`, `created_at`                                   | 채소 정보에 제철 표시, 생성 시각 기록                               |
+| `products`           | `description`, `is_featured`, `created_at`, `updated_at` | 평가표 필수 속성(설명), 메인 추천 상품 선택, 최신순 정렬, 수정 기록 |
+| `recipes`            | `cook_time_min`, `difficulty`, `servings`, `created_at`  | 레시피 카드의 "15분 · 쉬움" 표시 (목업 기준)                        |
+| `profiles`           | `created_at`                                             | 가입 시각 기록                                                      |
+| `orders` (신규)      | 전체 컬럼                                                | 주문 상태, 중복 요청 방지, 주문 총액, 배송지, 모의 결제 시각        |
+| `order_items` (신규) | 전체 컬럼                                                | 주문 당시 상품명·판매 단위·단가·수량 기록                           |
 
 ## 5. 정해야 할 것 (DB 담당과 확인)
 
